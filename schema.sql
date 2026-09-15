@@ -12,6 +12,8 @@ CREATE TABLE IF NOT EXISTS applications (
     icon_url TEXT,
     store_url TEXT,
     risk_level TEXT NOT NULL CHECK (risk_level IN ('CRITICAL', 'HIGH', 'MEDIUM', 'LOW')),
+    risk_score REAL DEFAULT 1.0,
+    risk_score_color TEXT DEFAULT 'Green',
     risk_reasons TEXT, -- JSON array of risk descriptions
     admin_access_level TEXT DEFAULT 'UNCONFIGURED' CHECK (admin_access_level IN ('TRUSTED', 'LIMITED', 'SPECIFIC_DATA', 'BLOCKED', 'UNCONFIGURED')),
     total_users_count INTEGER DEFAULT 0,

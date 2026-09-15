@@ -1,15 +1,15 @@
 {
   "metrics": {
-    "total": 59,
-    "restricted": 19,
-    "sensitive": 32,
-    "nonSensitive": 8,
+    "total": 111,
+    "restricted": 38,
+    "sensitive": 59,
+    "nonSensitive": 14,
     "scores": {
-      "critical": 10,
-      "high": 11,
-      "medium": 21,
-      "low": 11,
-      "minimal": 6
+      "critical": 16,
+      "high": 24,
+      "medium": 40,
+      "low": 21,
+      "minimal": 10
     },
     "services": [
       "Admin SDK",
@@ -23,6 +23,16 @@
     ]
   },
   "scopes": [
+    {
+      "scope_url": "https://www.googleapis.com/auth/admin.datatransfer",
+      "service_name": "Admin SDK",
+      "google_tier": "Restricted",
+      "admin_score": 5,
+      "admin_color": "Red",
+      "rationale": "Cross-Account Bulk Data Transfer",
+      "threat_impact": "Transfer ownership of entire Drive files and Calendar events between domain users during de-provisioning. Extreme egress potential.",
+      "active_apps_count": 5
+    },
     {
       "scope_url": "https://www.googleapis.com/auth/admin.directory.domain",
       "service_name": "Admin SDK",
@@ -52,6 +62,56 @@
       "rationale": "Total Account Administration",
       "threat_impact": "Create, reset passwords, suspend, or delete any domain user account, including administrators.",
       "active_apps_count": 8
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/admin.directory.user.security",
+      "service_name": "Admin SDK",
+      "google_tier": "Restricted",
+      "admin_score": 5,
+      "admin_color": "Red",
+      "rationale": "User Security & 2SV Credential Manipulation",
+      "threat_impact": "Manage user MFA/2-step verification, security keys, backup codes, and session cookies. High privilege takeover.",
+      "active_apps_count": 5
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/cloud-identity.inboundsso",
+      "service_name": "Admin SDK",
+      "google_tier": "Restricted",
+      "admin_score": 5,
+      "admin_color": "Red",
+      "rationale": "Inbound SAML/OIDC SSO Configuration",
+      "threat_impact": "Modify third-party identity provider SSO profiles, SAML certificates, and redirect URLs. Massive authentication hijack vector.",
+      "active_apps_count": 5
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/cloud-identity.policies",
+      "service_name": "Admin SDK",
+      "google_tier": "Restricted",
+      "admin_score": 5,
+      "admin_color": "Red",
+      "rationale": "Cloud Identity Security Policies Administration",
+      "threat_impact": "Define and enforce domain-wide identity policies, password complexity rules, and session controls.",
+      "active_apps_count": 1
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/cloud-platform",
+      "service_name": "Admin SDK",
+      "google_tier": "Restricted",
+      "admin_score": 5,
+      "admin_color": "Red",
+      "rationale": "Full Google Cloud Platform Infrastructure Control",
+      "threat_impact": "Full administrative access to all GCP projects, IAM roles, compute instances, BigQuery databases, and storage buckets.",
+      "active_apps_count": 1
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/ediscovery",
+      "service_name": "Admin SDK",
+      "google_tier": "Restricted",
+      "admin_score": 5,
+      "admin_color": "Red",
+      "rationale": "Google Vault Legal Holds & eDiscovery Exfiltration",
+      "threat_impact": "Access Google Vault matters, legal holds, export queries, and litigation audits covering all historical domain emails and files.",
+      "active_apps_count": 5
     },
     {
       "scope_url": "https://mail.google.com/",
@@ -124,6 +184,36 @@
       "active_apps_count": 0
     },
     {
+      "scope_url": "https://www.googleapis.com/auth/admin.contact.delegation",
+      "service_name": "Admin SDK",
+      "google_tier": "Restricted",
+      "admin_score": 4,
+      "admin_color": "Orange",
+      "rationale": "Domain Contact Delegation Control",
+      "threat_impact": "Manage shared external contacts and delegated address book access across tenant users.",
+      "active_apps_count": 5
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/admin.directory.customer",
+      "service_name": "Admin SDK",
+      "google_tier": "Restricted",
+      "admin_score": 4,
+      "admin_color": "Orange",
+      "rationale": "Customer Account Profile Administration",
+      "threat_impact": "Manage customer domain account details, technical contacts, and postal addresses.",
+      "active_apps_count": 5
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/admin.directory.device.mobile",
+      "service_name": "Admin SDK",
+      "google_tier": "Restricted",
+      "admin_score": 4,
+      "admin_color": "Orange",
+      "rationale": "Mobile Device Management & Remote Wipe",
+      "threat_impact": "Enumerate, approve, block, or remotely wipe corporate mobile devices carrying enterprise email and files.",
+      "active_apps_count": 5
+    },
+    {
       "scope_url": "https://www.googleapis.com/auth/admin.directory.group",
       "service_name": "Admin SDK",
       "google_tier": "Sensitive",
@@ -144,6 +234,16 @@
       "active_apps_count": 7
     },
     {
+      "scope_url": "https://www.googleapis.com/auth/admin.directory.userschema",
+      "service_name": "Admin SDK",
+      "google_tier": "Restricted",
+      "admin_score": 4,
+      "admin_color": "Orange",
+      "rationale": "Custom Directory Schema Tampering",
+      "threat_impact": "Define and modify custom attributes for domain user accounts (often storing internal employee IDs or clearance levels).",
+      "active_apps_count": 5
+    },
+    {
       "scope_url": "https://www.googleapis.com/auth/admin.reports.audit.readonly",
       "service_name": "Admin SDK",
       "google_tier": "Sensitive",
@@ -152,6 +252,56 @@
       "rationale": "Security Audit Log Surveillance",
       "threat_impact": "Read tenant security audit logs, monitoring detection mechanisms and tracking admin investigation activities.",
       "active_apps_count": 9
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/apps.groups.migration",
+      "service_name": "Admin SDK",
+      "google_tier": "Restricted",
+      "admin_score": 4,
+      "admin_color": "Orange",
+      "rationale": "Google Groups Message Ingestion / Migration",
+      "threat_impact": "Inject and archive historical messages into Google Groups mailing lists.",
+      "active_apps_count": 5
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/apps.groups.settings",
+      "service_name": "Admin SDK",
+      "google_tier": "Restricted",
+      "admin_score": 4,
+      "admin_color": "Orange",
+      "rationale": "Google Groups Security Configuration",
+      "threat_impact": "Modify group security settings, including allowing external participants, public web postings, or collaborative inbox access.",
+      "active_apps_count": 5
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/chrome.management.policy",
+      "service_name": "Admin SDK",
+      "google_tier": "Restricted",
+      "admin_score": 4,
+      "admin_color": "Orange",
+      "rationale": "Chrome Browser Policy Administration",
+      "threat_impact": "Enforce or alter enterprise Chrome browser policies, extension blocklists, and network proxy rules.",
+      "active_apps_count": 5
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/cloud-identity.groups",
+      "service_name": "Admin SDK",
+      "google_tier": "Restricted",
+      "admin_score": 4,
+      "admin_color": "Orange",
+      "rationale": "Cloud Identity Security Groups Management",
+      "threat_impact": "Full CRUD control over Cloud Identity groups, security labels, dynamic memberships, and IAM group bindings.",
+      "active_apps_count": 5
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/cloud-identity.orgunits",
+      "service_name": "Admin SDK",
+      "google_tier": "Restricted",
+      "admin_score": 4,
+      "admin_color": "Orange",
+      "rationale": "Cloud Identity Organizational Units Management",
+      "threat_impact": "Create, move, and delete Cloud Identity organizational units and root domain hierarchy.",
+      "active_apps_count": 5
     },
     {
       "scope_url": "https://www.googleapis.com/auth/gmail.readonly",
@@ -194,6 +344,26 @@
       "active_apps_count": 10
     },
     {
+      "scope_url": "https://www.googleapis.com/auth/chat.messages.readonly",
+      "service_name": "Google Chat & Classroom",
+      "google_tier": "Restricted",
+      "admin_score": 4,
+      "admin_color": "Orange",
+      "rationale": "Bulk Chat Message Surveillance",
+      "threat_impact": "Read-only access to all message histories, private discussions, and file attachments in Google Chat.",
+      "active_apps_count": 1
+    },
+    {
+      "scope_url": "https://www.google.com/m8/feeds",
+      "service_name": "Google Contacts",
+      "google_tier": "Sensitive",
+      "admin_score": 4,
+      "admin_color": "Orange",
+      "rationale": "Legacy Google Contacts GData Feed Access",
+      "threat_impact": "Full read/write access to personal and shared domain contacts via legacy API.",
+      "active_apps_count": 5
+    },
+    {
       "scope_url": "https://www.googleapis.com/auth/contacts",
       "service_name": "Google Contacts",
       "google_tier": "Sensitive",
@@ -202,6 +372,16 @@
       "rationale": "Full Address Book Tampering",
       "threat_impact": "Full read/write to personal and corporate contact lists. Can overwrite or poison phone numbers and addresses.",
       "active_apps_count": 5
+    },
+    {
+      "scope_url": "https://spreadsheets.google.com/feeds",
+      "service_name": "Google Drive & Docs",
+      "google_tier": "Restricted",
+      "admin_score": 4,
+      "admin_color": "Orange",
+      "rationale": "Legacy Google Sheets GData Feed Access",
+      "threat_impact": "Full read/write access to user Google Sheets via legacy XML feed protocol.",
+      "active_apps_count": 1
     },
     {
       "scope_url": "https://www.googleapis.com/auth/documents",
@@ -234,6 +414,26 @@
       "active_apps_count": 12
     },
     {
+      "scope_url": "https://www.google.com/accounts/OAuthLogin",
+      "service_name": "Identity & SSO",
+      "google_tier": "Restricted",
+      "admin_score": 4,
+      "admin_color": "Orange",
+      "rationale": "Legacy Master ClientLogin / OAuth Session Login",
+      "threat_impact": "Legacy full-account session login token for Google services with broad scope implications.",
+      "active_apps_count": 4
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/admin.directory.device.chromebrowsers",
+      "service_name": "Admin SDK",
+      "google_tier": "Sensitive",
+      "admin_score": 3,
+      "admin_color": "Yellow",
+      "rationale": "Enrolled Chrome Browser Fleet Inspection",
+      "threat_impact": "View enrolled Chrome browser instances, OS versions, and enterprise policies.",
+      "active_apps_count": 5
+    },
+    {
       "scope_url": "https://www.googleapis.com/auth/admin.directory.device.chromeos",
       "service_name": "Admin SDK",
       "google_tier": "Sensitive",
@@ -242,6 +442,16 @@
       "rationale": "Fleet Device Management",
       "threat_impact": "Remote control, wipe, reboot, or de-provision managed Chromebook devices across the fleet.",
       "active_apps_count": 6
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/admin.directory.domain.readonly",
+      "service_name": "Admin SDK",
+      "google_tier": "Sensitive",
+      "admin_score": 3,
+      "admin_color": "Yellow",
+      "rationale": "Domain Name & Alias Reconnaissance",
+      "threat_impact": "View domain names, domain aliases, and primary/secondary tenant domain configurations.",
+      "active_apps_count": 2
     },
     {
       "scope_url": "https://www.googleapis.com/auth/admin.directory.group.readonly",
@@ -254,6 +464,26 @@
       "active_apps_count": 2
     },
     {
+      "scope_url": "https://www.googleapis.com/auth/admin.directory.orgunit.readonly",
+      "service_name": "Admin SDK",
+      "google_tier": "Sensitive",
+      "admin_score": 3,
+      "admin_color": "Yellow",
+      "rationale": "Organizational Unit Structure Reconnaissance",
+      "threat_impact": "Read-only enumeration of tenant organizational structure and department hierarchy.",
+      "active_apps_count": 2
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/admin.directory.resource.calendar",
+      "service_name": "Admin SDK",
+      "google_tier": "Sensitive",
+      "admin_score": 3,
+      "admin_color": "Yellow",
+      "rationale": "Calendar Resource Administration",
+      "threat_impact": "Manage conference rooms, video hardware resources, and physical domain facilities.",
+      "active_apps_count": 5
+    },
+    {
       "scope_url": "https://www.googleapis.com/auth/admin.directory.user.readonly",
       "service_name": "Admin SDK",
       "google_tier": "Sensitive",
@@ -261,6 +491,56 @@
       "admin_color": "Yellow",
       "rationale": "Organizational Directory Harvesting",
       "threat_impact": "Enumerate all employee emails, titles, managers, phone numbers, and physical office locations.",
+      "active_apps_count": 5
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/apps.licensing",
+      "service_name": "Admin SDK",
+      "google_tier": "Restricted",
+      "admin_score": 3,
+      "admin_color": "Yellow",
+      "rationale": "Workspace SKU License Assignment",
+      "threat_impact": "Assign or revoke Google Workspace and Google Cloud licenses for domain users.",
+      "active_apps_count": 5
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/apps_genai",
+      "service_name": "Admin SDK",
+      "google_tier": "Sensitive",
+      "admin_score": 3,
+      "admin_color": "Yellow",
+      "rationale": "Workspace Generative AI & Gemini Configuration",
+      "threat_impact": "Manage administrative configurations and policies for generative AI features in Google Workspace.",
+      "active_apps_count": 1
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/chrome.management.profiles",
+      "service_name": "Admin SDK",
+      "google_tier": "Sensitive",
+      "admin_score": 3,
+      "admin_color": "Yellow",
+      "rationale": "Managed Chrome Browser Profile Administration",
+      "threat_impact": "View and manage enterprise-managed user profiles within Chrome browsers.",
+      "active_apps_count": 5
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/cloud-identity.policies.readonly",
+      "service_name": "Admin SDK",
+      "google_tier": "Sensitive",
+      "admin_score": 3,
+      "admin_color": "Yellow",
+      "rationale": "Cloud Identity Security Policies Inspection",
+      "threat_impact": "Audit security policies, 2SV enforcement rules, and context-aware session policies.",
+      "active_apps_count": 4
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/cloud-identity.userinvitations",
+      "service_name": "Admin SDK",
+      "google_tier": "Sensitive",
+      "admin_score": 3,
+      "admin_color": "Yellow",
+      "rationale": "Unmanaged User Account Invitations",
+      "threat_impact": "Send and manage invitations to unmanaged personal Google accounts to migrate into the corporate domain.",
       "active_apps_count": 5
     },
     {
@@ -294,6 +574,16 @@
       "active_apps_count": 3
     },
     {
+      "scope_url": "https://www.googleapis.com/auth/flexible-api",
+      "service_name": "Google Apps Script",
+      "google_tier": "Sensitive",
+      "admin_score": 3,
+      "admin_color": "Yellow",
+      "rationale": "Flexible Integration API Access",
+      "threat_impact": "Programmatic gateway execution for third-party automated add-on integrations.",
+      "active_apps_count": 1
+    },
+    {
       "scope_url": "https://www.googleapis.com/auth/script.scriptapp",
       "service_name": "Google Apps Script",
       "google_tier": "Sensitive",
@@ -312,6 +602,16 @@
       "rationale": "Task Manipulation",
       "threat_impact": "Read and write personal and shared tasks.",
       "active_apps_count": 0
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/workspace.workflows.trigger",
+      "service_name": "Google Apps Script",
+      "google_tier": "Sensitive",
+      "admin_score": 3,
+      "admin_color": "Yellow",
+      "rationale": "Google Workspace Workflow Execution",
+      "threat_impact": "Trigger and invoke enterprise automated workflows across Google Workspace services.",
+      "active_apps_count": 2
     },
     {
       "scope_url": "https://www.googleapis.com/auth/calendar.events",
@@ -344,6 +644,26 @@
       "active_apps_count": 2
     },
     {
+      "scope_url": "https://www.googleapis.com/auth/chat.memberships",
+      "service_name": "Google Chat & Classroom",
+      "google_tier": "Sensitive",
+      "admin_score": 3,
+      "admin_color": "Yellow",
+      "rationale": "Chat Space Membership Management",
+      "threat_impact": "Add, remove, and list members in Google Chat spaces.",
+      "active_apps_count": 1
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/chat.messages.create",
+      "service_name": "Google Chat & Classroom",
+      "google_tier": "Sensitive",
+      "admin_score": 3,
+      "admin_color": "Yellow",
+      "rationale": "Send Google Chat Messages",
+      "threat_impact": "Send messages into Google Chat spaces and direct messages as an authenticated user or bot.",
+      "active_apps_count": 1
+    },
+    {
       "scope_url": "https://www.googleapis.com/auth/chat.spaces",
       "service_name": "Google Chat & Classroom",
       "google_tier": "Sensitive",
@@ -352,6 +672,16 @@
       "rationale": "Chat Space Management",
       "threat_impact": "Create and modify internal Google Chat rooms and spaces.",
       "active_apps_count": 1
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/classroom.announcements",
+      "service_name": "Google Chat & Classroom",
+      "google_tier": "Sensitive",
+      "admin_score": 3,
+      "admin_color": "Yellow",
+      "rationale": "Classroom Announcements Posting & Editing",
+      "threat_impact": "Create, view, and modify student announcements across all enrolled classes.",
+      "active_apps_count": 6
     },
     {
       "scope_url": "https://www.googleapis.com/auth/classroom.coursework.students",
@@ -364,6 +694,26 @@
       "active_apps_count": 6
     },
     {
+      "scope_url": "https://www.googleapis.com/auth/classroom.courseworkmaterials",
+      "service_name": "Google Chat & Classroom",
+      "google_tier": "Sensitive",
+      "admin_score": 3,
+      "admin_color": "Yellow",
+      "rationale": "Coursework Teaching Materials Management",
+      "threat_impact": "Manage instructional documents, links, and study materials published to students.",
+      "active_apps_count": 5
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/classroom.guardianlinks.students",
+      "service_name": "Google Chat & Classroom",
+      "google_tier": "Sensitive",
+      "admin_score": 3,
+      "admin_color": "Yellow",
+      "rationale": "Parent & Guardian Student Linkage",
+      "threat_impact": "Access and modify parent/guardian email invitations and contact links for student accounts.",
+      "active_apps_count": 5
+    },
+    {
       "scope_url": "https://www.googleapis.com/auth/classroom.rosters",
       "service_name": "Google Chat & Classroom",
       "google_tier": "Sensitive",
@@ -372,6 +722,26 @@
       "rationale": "Student & Teacher Roster Exposure",
       "threat_impact": "Access teacher and student roster directories (FERPA/COPPA student privacy compliance exposure).",
       "active_apps_count": 7
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/classroom.student-submissions.students.readonly",
+      "service_name": "Google Chat & Classroom",
+      "google_tier": "Sensitive",
+      "admin_score": 3,
+      "admin_color": "Yellow",
+      "rationale": "Student Assignment Submissions Read-Only",
+      "threat_impact": "Read-only access to homework submissions and student coursework drafts.",
+      "active_apps_count": 1
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/carddav",
+      "service_name": "Google Contacts",
+      "google_tier": "Sensitive",
+      "admin_score": 3,
+      "admin_color": "Yellow",
+      "rationale": "CardDAV Contact Synchronization",
+      "threat_impact": "Synchronize user address books via CardDAV protocol across external clients.",
+      "active_apps_count": 2
     },
     {
       "scope_url": "https://www.googleapis.com/auth/contacts.other.readonly",
@@ -424,6 +794,16 @@
       "active_apps_count": 5
     },
     {
+      "scope_url": "https://www.googleapis.com/auth/forms",
+      "service_name": "Google Drive & Docs",
+      "google_tier": "Sensitive",
+      "admin_score": 3,
+      "admin_color": "Yellow",
+      "rationale": "Google Forms Management & Survey Responses",
+      "threat_impact": "View, edit, and export corporate surveys, quizzes, and respondent submissions.",
+      "active_apps_count": 1
+    },
+    {
       "scope_url": "https://www.googleapis.com/auth/presentations",
       "service_name": "Google Drive & Docs",
       "google_tier": "Sensitive",
@@ -444,6 +824,16 @@
       "active_apps_count": 0
     },
     {
+      "scope_url": "https://www.googleapis.com/auth/admin.chrome.printers",
+      "service_name": "Admin SDK",
+      "google_tier": "Sensitive",
+      "admin_score": 2,
+      "admin_color": "Green",
+      "rationale": "Enterprise Printer Infrastructure Administration",
+      "threat_impact": "Configure native printers and print server endpoints for ChromeOS devices.",
+      "active_apps_count": 5
+    },
+    {
       "scope_url": "https://www.googleapis.com/auth/admin.reports.usage.readonly",
       "service_name": "Admin SDK",
       "google_tier": "Non-Sensitive",
@@ -452,6 +842,26 @@
       "rationale": "Aggregate Usage Metrics",
       "threat_impact": "Read aggregate domain usage reports and service adoption statistics without individual PII.",
       "active_apps_count": 5
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/chrome.management.reports.readonly",
+      "service_name": "Admin SDK",
+      "google_tier": "Sensitive",
+      "admin_score": 2,
+      "admin_color": "Green",
+      "rationale": "Chrome Management Reporting",
+      "threat_impact": "View telemetry reports regarding browser versions, security events, and installed extensions.",
+      "active_apps_count": 5
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/chrome.management.telemetry.readonly",
+      "service_name": "Admin SDK",
+      "google_tier": "Sensitive",
+      "admin_score": 2,
+      "admin_color": "Green",
+      "rationale": "Chrome Device Telemetry Readout",
+      "threat_impact": "Read hardware diagnostic telemetry, network metrics, and CPU usage on ChromeOS devices.",
+      "active_apps_count": 6
     },
     {
       "scope_url": "https://www.googleapis.com/auth/gmail.labels",
@@ -494,6 +904,26 @@
       "active_apps_count": 0
     },
     {
+      "scope_url": "https://www.googleapis.com/auth/chat.memberships.app",
+      "service_name": "Google Chat & Classroom",
+      "google_tier": "Non-Sensitive",
+      "admin_score": 2,
+      "admin_color": "Green",
+      "rationale": "Chat App Space Membership Integration",
+      "threat_impact": "Allows the Chat app to view its own membership status in a room without user eavesdropping.",
+      "active_apps_count": 1
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/chat.users.readstate",
+      "service_name": "Google Chat & Classroom",
+      "google_tier": "Sensitive",
+      "admin_score": 2,
+      "admin_color": "Green",
+      "rationale": "Chat Read State & Activity Status",
+      "threat_impact": "View message read receipts and presence state for users in Google Chat.",
+      "active_apps_count": 1
+    },
+    {
       "scope_url": "https://www.googleapis.com/auth/classroom.courses",
       "service_name": "Google Chat & Classroom",
       "google_tier": "Sensitive",
@@ -504,6 +934,26 @@
       "active_apps_count": 7
     },
     {
+      "scope_url": "https://www.googleapis.com/auth/classroom.profile.emails",
+      "service_name": "Google Chat & Classroom",
+      "google_tier": "Non-Sensitive",
+      "admin_score": 2,
+      "admin_color": "Green",
+      "rationale": "Student & Teacher Email Lookup",
+      "threat_impact": "View the email addresses of people in Google Classroom classes.",
+      "active_apps_count": 7
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/classroom.topics",
+      "service_name": "Google Chat & Classroom",
+      "google_tier": "Sensitive",
+      "admin_score": 2,
+      "admin_color": "Green",
+      "rationale": "Classroom Course Topics Management",
+      "threat_impact": "Create and organize subject module topics within Google Classroom.",
+      "active_apps_count": 5
+    },
+    {
       "scope_url": "https://www.googleapis.com/auth/drive.appdata",
       "service_name": "Google Drive & Docs",
       "google_tier": "Sensitive",
@@ -512,6 +962,16 @@
       "rationale": "Isolated App Configuration Storage",
       "threat_impact": "Accesses only a dedicated hidden app folder. Cannot touch or see regular corporate user files.",
       "active_apps_count": 0
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/drive.appfolder",
+      "service_name": "Google Drive & Docs",
+      "google_tier": "Sensitive",
+      "admin_score": 2,
+      "admin_color": "Green",
+      "rationale": "Application Dedicated Folder Access",
+      "threat_impact": "Read and write files solely within the application-specific Drive directory.",
+      "active_apps_count": 2
     },
     {
       "scope_url": "https://www.googleapis.com/auth/drive.metadata",
@@ -554,6 +1014,36 @@
       "active_apps_count": 0
     },
     {
+      "scope_url": "https://www.googleapis.com/auth/spreadsheets.currentonly",
+      "service_name": "Google Drive & Docs",
+      "google_tier": "Sensitive",
+      "admin_score": 2,
+      "admin_color": "Green",
+      "rationale": "Active Google Spreadsheet Scoped Access",
+      "threat_impact": "Accesses only the specific Google Spreadsheet document where the add-on is currently running.",
+      "active_apps_count": 1
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/user.phonenumbers.read",
+      "service_name": "Identity & SSO",
+      "google_tier": "Sensitive",
+      "admin_score": 2,
+      "admin_color": "Green",
+      "rationale": "User Phone Number Read-Only",
+      "threat_impact": "View the user's personal and work phone numbers registered in their Google profile.",
+      "active_apps_count": 1
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/chrome.management.appdetails.readonly",
+      "service_name": "Admin SDK",
+      "google_tier": "Non-Sensitive",
+      "admin_score": 1,
+      "admin_color": "Blue",
+      "rationale": "Chrome Web Store App Metadata Inspection",
+      "threat_impact": "Read public and private app details for Chrome extensions installed across the domain.",
+      "active_apps_count": 5
+    },
+    {
       "scope_url": "https://www.googleapis.com/auth/script.container.ui",
       "service_name": "Google Apps Script",
       "google_tier": "Non-Sensitive",
@@ -574,6 +1064,16 @@
       "active_apps_count": 0
     },
     {
+      "scope_url": "https://www.googleapis.com/auth/classroom.profile.photos",
+      "service_name": "Google Chat & Classroom",
+      "google_tier": "Non-Sensitive",
+      "admin_score": 1,
+      "admin_color": "Blue",
+      "rationale": "Classroom User Profile Photos",
+      "threat_impact": "View profile photos of teachers and students in Google Classroom.",
+      "active_apps_count": 6
+    },
+    {
       "scope_url": "https://www.googleapis.com/auth/drive.install",
       "service_name": "Google Drive & Docs",
       "google_tier": "Non-Sensitive",
@@ -581,6 +1081,26 @@
       "admin_color": "Blue",
       "rationale": "App Extension Registration",
       "threat_impact": "Registers the application in the Google Drive \"Open With\" menu. Carries no data access privileges.",
+      "active_apps_count": 1
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/plus.me",
+      "service_name": "Identity & SSO",
+      "google_tier": "Non-Sensitive",
+      "admin_score": 1,
+      "admin_color": "Blue",
+      "rationale": "Legacy Google+ Identity Verification",
+      "threat_impact": "Legacy user identity token equivalent to basic user profile.",
+      "active_apps_count": 1
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/user.organization.read",
+      "service_name": "Identity & SSO",
+      "google_tier": "Non-Sensitive",
+      "admin_score": 1,
+      "admin_color": "Blue",
+      "rationale": "User Organization & Job Title Read-Only",
+      "threat_impact": "View the user's employer, department, and job title from their profile.",
       "active_apps_count": 1
     },
     {

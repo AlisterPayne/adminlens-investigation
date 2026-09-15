@@ -2,6 +2,13 @@ import fs from 'fs';
 import path from 'path';
 import { lookupChromeExtension } from './chrome_webstore_search.mjs';
 import { enrichApplicationRecord } from './app_enrichment_service.mjs';
+import { OAUTH_SCOPES_DATA } from './seed_scope_reference.mjs';
+
+// Build OAuth Scope Reference lookup map
+const SCOPE_REFERENCE_MAP = new Map();
+for (const s of OAUTH_SCOPES_DATA) {
+  SCOPE_REFERENCE_MAP.set(s.scope_url, s);
+}
 
 const activeTokens = JSON.parse(fs.readFileSync('./extracted_data/active_tokens.json', 'utf8'));
 const auditEvents = JSON.parse(fs.readFileSync('./extracted_data/token_audit_events.json', 'utf8'));
@@ -390,12 +397,44 @@ for (const [id, app] of catalog.entries()) {
     grantedScopes: Array.from(u.grantedScopes),
   }));
 
-  const scopesList = Array.from(app.scopes.entries()).map(([scope, risk]) => ({
-    scope,
-    riskLevel: risk.level,
-    description: risk.reason,
-    service: detectServiceBucket(scope)
-  }));
+  const scopesList = Array.from(app.scopes.entries()).map(([scope, risk]) => {
+    const ref = SCOPE_REFERENCE_MAP.get(scope);
+    const adminScore = ref ? ref.admin_score : 1;
+    const adminColor = ref ? ref.admin_color : 'Blue';
+    const googleTier = ref ? ref.google_tier : 'Non-Sensitive';
+    return {
+      scope,
+      riskLevel: risk.level,
+      description: ref ? ref.rationale : risk.reason,
+      threatImpact: ref ? ref.threat_impact : '',
+      adminScore,
+      adminColor,
+      googleTier,
+      service: ref ? ref.service_name : detectServiceBucket(scope)
+    };
+  });
+
+  // Calculate Application Risk Score: Average of allocated Scope Admin Scores
+  const calculatedRiskScore = scopesList.length > 0
+    ? Number((scopesList.reduce((sum, s) => sum + s.adminScore, 0) / scopesList.length).toFixed(2))
+    : 1.0;
+
+  // Derive standardized riskLevel and riskScoreColor from average score
+  let calculatedRiskLevel = 'LOW';
+  let calculatedRiskColor = 'Green';
+  if (calculatedRiskScore >= 4.0) {
+    calculatedRiskLevel = 'CRITICAL';
+    calculatedRiskColor = 'Red';
+  } else if (calculatedRiskScore >= 3.0) {
+    calculatedRiskLevel = 'HIGH';
+    calculatedRiskColor = 'Orange';
+  } else if (calculatedRiskScore >= 2.0) {
+    calculatedRiskLevel = 'MEDIUM';
+    calculatedRiskColor = 'Yellow';
+  } else {
+    calculatedRiskLevel = 'LOW';
+    calculatedRiskColor = 'Green';
+  }
 
   const isStale = app.totalActivityEvents === 0;
   const activityDateFormatted = app.lastActive 
@@ -450,7 +489,10 @@ for (const [id, app] of catalog.entries()) {
     iconUrl: app.iconUrl,
     storeUrl: app.storeUrl,
     description: app.description,
-    riskLevel: app.maxRisk,
+    riskScore: calculatedRiskScore,
+    riskLevel: calculatedRiskLevel,
+    riskScoreColor: calculatedRiskColor,
+    rawMaxRisk: app.maxRisk,
     riskReasons: Array.from(app.riskReasons),
     adminAccessLevel: adminAccessLevel,
     accessPolicy: appPolicy,
@@ -490,18 +532,27 @@ finalizedApps.sort((a, b) => {
 });
 
 // Build Product Families summary structure for UI
-const productFamiliesSummary = Array.from(familyMap.values()).map(f => ({
-  familyId: f.familyId,
-  familyName: f.familyName,
-  vendor: f.vendor,
-  iconUrl: f.iconUrl,
-  deploymentsCount: f.deployments.length,
-  totalUsersCount: f.deployments.reduce((acc, d) => acc + d.users.size, 0),
-  maxRisk: f.deployments.reduce((max, d) => {
-    return (riskWeights[d.maxRisk] > riskWeights[max]) ? d.maxRisk : max;
-  }, 'LOW'),
-  deploymentIds: f.deployments.map(d => d.id),
-}));
+const productFamiliesSummary = Array.from(familyMap.values()).map(f => {
+  const familyDeployments = finalizedApps.filter(d => d.familyId === f.familyId);
+  const maxRisk = familyDeployments.reduce((max, d) => {
+    return (riskWeights[d.riskLevel] > riskWeights[max]) ? d.riskLevel : max;
+  }, 'LOW');
+  const avgRiskScore = familyDeployments.length > 0
+    ? Number((familyDeployments.reduce((sum, d) => sum + (d.riskScore || 1.0), 0) / familyDeployments.length).toFixed(2))
+    : 1.0;
+
+  return {
+    familyId: f.familyId,
+    familyName: f.familyName,
+    vendor: f.vendor,
+    iconUrl: f.iconUrl,
+    deploymentsCount: f.deployments.length,
+    totalUsersCount: f.deployments.reduce((acc, d) => acc + d.users.size, 0),
+    maxRisk: maxRisk,
+    avgRiskScore: avgRiskScore,
+    deploymentIds: f.deployments.map(d => d.id),
+  };
+});
 
 productFamiliesSummary.sort((a, b) => b.deploymentsCount - a.deploymentsCount);
 

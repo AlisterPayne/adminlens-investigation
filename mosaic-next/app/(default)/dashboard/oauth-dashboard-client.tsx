@@ -17,6 +17,10 @@ interface ScopeItem {
   scope: string;
   riskLevel: string;
   description: string;
+  threatImpact?: string;
+  adminScore?: number;
+  adminColor?: string;
+  googleTier?: string;
   service?: string;
 }
 
@@ -56,6 +60,9 @@ interface Application {
   iconUrl: string;
   storeUrl: string | null;
   description?: string;
+  riskScore?: number;
+  riskScoreColor?: string;
+  rawMaxRisk?: string;
   riskLevel: string;
   riskReasons: string[];
   adminAccessLevel?: string;
@@ -425,30 +432,55 @@ export default function OAuthDashboardClient({
     }
   };
 
-  const getRiskBadge = (level: string) => {
+  const getRiskBadge = (level: string, score?: number) => {
+    const formattedScore = score !== undefined ? `${score.toFixed(1)}/5` : null;
     switch (level) {
       case "CRITICAL":
         return (
-          <span className="inline-flex items-center gap-1 rounded-full bg-red-50 px-2.5 py-0.5 text-xs font-semibold text-red-700 border border-red-200">
-            <span className="h-1.5 w-1.5 rounded-full bg-red-600"></span> Critical
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-red-50 px-2.5 py-0.5 text-xs font-semibold text-red-700 border border-red-200">
+            <span className="h-1.5 w-1.5 rounded-full bg-red-600"></span>
+            <span>Critical</span>
+            {formattedScore && (
+              <span className="bg-red-200/60 text-red-800 text-[10px] font-mono px-1 py-0.2 rounded font-bold">
+                {formattedScore}
+              </span>
+            )}
           </span>
         );
       case "HIGH":
         return (
-          <span className="inline-flex items-center gap-1 rounded-full bg-amber-50 px-2.5 py-0.5 text-xs font-semibold text-amber-700 border border-amber-200">
-            <span className="h-1.5 w-1.5 rounded-full bg-amber-600"></span> High
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-2.5 py-0.5 text-xs font-semibold text-amber-700 border border-amber-200">
+            <span className="h-1.5 w-1.5 rounded-full bg-amber-600"></span>
+            <span>High</span>
+            {formattedScore && (
+              <span className="bg-amber-200/60 text-amber-800 text-[10px] font-mono px-1 py-0.2 rounded font-bold">
+                {formattedScore}
+              </span>
+            )}
           </span>
         );
       case "MEDIUM":
         return (
-          <span className="inline-flex items-center gap-1 rounded-full bg-yellow-50 px-2.5 py-0.5 text-xs font-semibold text-yellow-800 border border-yellow-200">
-            <span className="h-1.5 w-1.5 rounded-full bg-yellow-600"></span> Medium
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-yellow-50 px-2.5 py-0.5 text-xs font-semibold text-yellow-800 border border-yellow-200">
+            <span className="h-1.5 w-1.5 rounded-full bg-yellow-600"></span>
+            <span>Medium</span>
+            {formattedScore && (
+              <span className="bg-yellow-200/60 text-yellow-900 text-[10px] font-mono px-1 py-0.2 rounded font-bold">
+                {formattedScore}
+              </span>
+            )}
           </span>
         );
       default:
         return (
-          <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-semibold text-emerald-700 border border-emerald-200">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-600"></span> Low
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-semibold text-emerald-700 border border-emerald-200">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-600"></span>
+            <span>Low</span>
+            {formattedScore && (
+              <span className="bg-emerald-200/60 text-emerald-800 text-[10px] font-mono px-1 py-0.2 rounded font-bold">
+                {formattedScore}
+              </span>
+            )}
           </span>
         );
     }
@@ -522,7 +554,7 @@ export default function OAuthDashboardClient({
               activeTab === "scopes" ? "bg-white text-blue-600 shadow-sm" : "text-gray-600 hover:text-gray-900"
             }`}
           >
-            🛡️ Scope Threat Matrix ({initialScopes.length || 59})
+            🛡️ Scope Threat Matrix ({initialScopes.length || 111})
           </button>
         </div>
       </div>
@@ -1198,7 +1230,7 @@ export default function OAuthDashboardClient({
                             </td>
 
                             {/* Risk Level Column */}
-                            <td className="py-3 px-4">{getRiskBadge(app.riskLevel)}</td>
+                            <td className="py-3 px-4">{getRiskBadge(app.riskLevel, app.riskScore)}</td>
 
                             {/* Users Column */}
                             <td className="py-3 px-4 text-center">
@@ -1307,7 +1339,7 @@ export default function OAuthDashboardClient({
                         </td>
 
                         {/* Risk Level Column */}
-                        <td className="py-3 px-4">{getRiskBadge(app.riskLevel)}</td>
+                        <td className="py-3 px-4">{getRiskBadge(app.riskLevel, app.riskScore)}</td>
 
                         {/* Users Column */}
                         <td className="py-3 px-4 text-center">
@@ -1434,7 +1466,7 @@ export default function OAuthDashboardClient({
                         Verified
                       </span>
                     )}
-                    {getRiskBadge(selectedApp.riskLevel)}
+                    {getRiskBadge(selectedApp.riskLevel, selectedApp.riskScore)}
                   </div>
                   <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs text-gray-500 mt-1.5">
                     <span className="font-semibold text-gray-800">{selectedApp.vendor}</span>
@@ -1685,14 +1717,40 @@ export default function OAuthDashboardClient({
                 </h3>
                 <div className="space-y-2 text-xs">
                   {selectedApp.scopes.map((s, i) => (
-                    <div key={i} className="bg-gray-50 border border-gray-200 rounded-lg p-2.5 flex justify-between items-center gap-3">
-                      <div className="flex items-center gap-2 truncate">
-                        <div className="w-5 h-5 bg-white rounded p-0.5 border border-gray-200/60 flex items-center justify-center flex-shrink-0">
-                          <GoogleProductIcon service={s.service || s.scope} className="w-3.5 h-3.5" />
+                    <div key={i} className="bg-gray-50 border border-gray-200 rounded-lg p-3 space-y-1.5">
+                      <div className="flex justify-between items-center gap-3">
+                        <div className="flex items-center gap-2 truncate">
+                          <div className="w-6 h-6 bg-white rounded p-0.5 border border-gray-200/60 flex items-center justify-center flex-shrink-0">
+                            <GoogleProductIcon service={s.service || s.scope} className="w-4 h-4" />
+                          </div>
+                          <span className="truncate font-mono text-gray-800 font-semibold">{s.scope}</span>
                         </div>
-                        <span className="truncate font-mono text-gray-800">{s.scope}</span>
+                        <div className="flex items-center gap-2 flex-shrink-0">
+                          {s.googleTier && (
+                            <span className="text-[10px] px-2 py-0.5 rounded-full font-semibold border bg-white text-gray-600 border-gray-200">
+                              {s.googleTier}
+                            </span>
+                          )}
+                          {s.adminScore !== undefined ? (
+                            <span className={`inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-0.5 rounded-full border ${
+                              s.adminScore === 5 ? 'bg-red-50 text-red-700 border-red-200' :
+                              s.adminScore === 4 ? 'bg-amber-50 text-amber-800 border-amber-200' :
+                              s.adminScore === 3 ? 'bg-yellow-50 text-yellow-800 border-yellow-200' :
+                              s.adminScore === 2 ? 'bg-emerald-50 text-emerald-800 border-emerald-200' :
+                              'bg-blue-50 text-blue-800 border-blue-200'
+                            }`}>
+                              Score: {s.adminScore}/5
+                            </span>
+                          ) : (
+                            getRiskBadge(s.riskLevel)
+                          )}
+                        </div>
                       </div>
-                      <div className="flex-shrink-0">{getRiskBadge(s.riskLevel)}</div>
+                      {s.description && (
+                        <div className="text-[11px] text-gray-600 pl-8">
+                          <span className="font-semibold text-gray-700">{s.description}:</span> {s.threatImpact || ''}
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>

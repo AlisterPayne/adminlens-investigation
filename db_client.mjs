@@ -69,7 +69,13 @@ export class AdminLensDatabase {
     if (!app) return null;
 
     const clientIds = this.db.prepare('SELECT client_id, project_number FROM application_client_ids WHERE application_id = ?').all(appId);
-    const scopes = this.db.prepare('SELECT scope_url, risk_level, description FROM application_scopes WHERE application_id = ?').all(appId);
+    const scopes = this.db.prepare(`
+      SELECT s.scope_url, s.risk_level, s.description,
+             r.admin_score, r.admin_color, r.google_tier, r.rationale, r.threat_impact, r.service_name
+      FROM application_scopes s
+      LEFT JOIN oauth_scope_reference r ON s.scope_url = r.scope_url
+      WHERE s.application_id = ?
+    `).all(appId);
     const policy = this.db.prepare('SELECT * FROM app_access_policies WHERE application_id = ? LIMIT 1').get(appId);
     const grants = this.db.prepare(`
       SELECT g.id, g.client_id, g.user_email, g.scopes_json, u.name as user_name, u.org_unit_path, u.is_admin

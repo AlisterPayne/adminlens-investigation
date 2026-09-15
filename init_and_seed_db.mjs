@@ -56,9 +56,9 @@ console.log('[3] Seeding Applications, Client IDs, Scopes, and Policies...');
 const insertApp = db.prepare(`
   INSERT INTO applications (
     id, display_name, vendor, publisher_domain, category, is_verified,
-    icon_url, store_url, risk_level, risk_reasons, admin_access_level,
+    icon_url, store_url, risk_level, risk_score, risk_score_color, risk_reasons, admin_access_level,
     total_users_count, admin_users_count, first_seen_at, last_active_at
-  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 `);
 
 const insertClientId = db.prepare(`
@@ -91,6 +91,8 @@ for (const app of catalog) {
     app.iconUrl || 'https://ui-avatars.com/api/?name=App&background=3B82F6&color=fff',
     app.storeUrl || null,
     app.riskLevel || 'LOW',
+    app.riskScore ?? 1.0,
+    app.riskScoreColor || 'Green',
     JSON.stringify(app.riskReasons || []),
     app.adminAccessLevel || 'UNCONFIGURED',
     app.totalUsersCount || 0,
