@@ -135,7 +135,7 @@ export default function OAuthDashboardClient({
 }) {
   const [currentApps, setCurrentApps] = useState<Application[]>(initialApps);
   const [currentMetrics, setCurrentMetrics] = useState<Metrics>(metrics);
-  const [activeTab, setActiveTab] = useState<"dashboard" | "apps" | "recs" | "users" | "scopes">("dashboard");
+  const [activeTab, setActiveTab] = useState<"dashboard" | "apps" | "recs" | "scopes">("dashboard");
   const [search, setSearch] = useState("");
   const [riskFilter, setRiskFilter] = useState("ALL");
   const [policyFilter, setPolicyFilter] = useState("ALL");
@@ -515,14 +515,6 @@ export default function OAuthDashboardClient({
             }`}
           >
             🚨 Recommendations ({initialRecs.totalFindings || 73})
-          </button>
-          <button
-            onClick={() => setActiveTab("users")}
-            className={`px-4 py-2 text-xs font-semibold rounded-md transition-colors flex items-center gap-1.5 whitespace-nowrap ${
-              activeTab === "users" ? "bg-white text-blue-600 shadow-sm" : "text-gray-600 hover:text-gray-900"
-            }`}
-          >
-            👥 User Search ({users.length})
           </button>
           <button
             onClick={() => setActiveTab("scopes")}
@@ -1408,60 +1400,6 @@ export default function OAuthDashboardClient({
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      )}
-
-      {/* ============================================================== */}
-      {/* VIEW 4: USERS DIRECTORY                                        */}
-      {/* ============================================================== */}
-      {activeTab === "users" && (
-        <div className="space-y-4">
-          <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm flex justify-between items-center">
-            <div>
-              <h2 className="text-base font-bold text-gray-900">Domain Users Directory</h2>
-              <p className="text-xs text-gray-500">Overview of domain accounts and authorized OAuth apps.</p>
-            </div>
-          </div>
-
-          <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
-            <table className="w-full text-left text-sm text-gray-600">
-              <thead className="bg-gray-50/80 text-xs uppercase font-semibold text-gray-500 border-b border-gray-200">
-                <tr>
-                  <th className="py-3 px-4">User</th>
-                  <th className="py-3 px-4">Org Unit</th>
-                  <th className="py-3 px-4">Role</th>
-                  <th className="py-3 px-4 text-center">Status</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                {users.slice(0, 50).map((u: any) => (
-                  <tr key={u.id} className="hover:bg-gray-50">
-                    <td className="py-3 px-4">
-                      <div className="font-semibold text-gray-900">{u.name?.fullName || u.primaryEmail}</div>
-                      <div className="text-xs font-mono text-gray-500">{u.primaryEmail}</div>
-                    </td>
-                    <td className="py-3 px-4 text-xs font-mono text-gray-600">{u.orgUnitPath || "/"}</td>
-                    <td className="py-3 px-4 text-xs">
-                      {u.isAdmin || u.isDelegatedAdmin ? (
-                        <span className="rounded-full bg-red-100 text-red-800 px-2.5 py-0.5 text-xs font-bold border border-red-200">
-                          Super Admin
-                        </span>
-                      ) : (
-                        <span className="text-gray-500">Standard User</span>
-                      )}
-                    </td>
-                    <td className="py-3 px-4 text-center text-xs">
-                      {u.suspended ? (
-                        <span className="text-gray-400">Suspended</span>
-                      ) : (
-                        <span className="text-emerald-700 font-medium">Active</span>
-                      )}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
           </div>
         </div>
       )}
