@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-900 text-slate-100">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Lens — OAuth App Governance Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: #0f172a; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+  </style>
+</head>
+<body class="h-full flex flex-col custom-scrollbar overflow-x-hidden">
+
+  <!-- Navbar -->
+  <header class="border-b border-slate-800 bg-slate-950/80 backdrop-blur sticky top-0 z-30 px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-blue-500/20">
+        <i data-lucide="shield-check" class="w-6 h-6 text-white"></i>
+      </div>
+      <div>
+        <div class="flex items-center gap-2">
+          <h1 class="font-bold text-lg text-white tracking-tight">Admin Lens</h1>
+          <span class="text-xs px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 font-medium">OAuth Governance</span>
+        </div>
+        <p class="text-xs text-slate-400">Workspace Domain: <span class="text-slate-200 font-mono font-medium">gafe.co.za</span></p>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="flex items-center bg-slate-900 border border-slate-800 rounded-lg p-1">
+      <button onclick="setTab('apps')" id="tab-apps-btn" class="px-4 py-1.5 rounded-md text-sm font-medium transition-colors bg-blue-600 text-white flex items-center gap-2">
+        <i data-lucide="grid" class="w-4 h-4"></i> Applications (<span id="stat-tab-apps">53</span>)
+      </button>
+      <button onclick="setTab('recommendations')" id="tab-recs-btn" class="px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-slate-200 flex items-center gap-2">
+        <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-400"></i> Recommendations (<span id="stat-tab-recs">73</span>)
+      </button>
+      <button onclick="setTab('users')" id="tab-users-btn" class="px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-slate-200 flex items-center gap-2">
+        <i data-lucide="users" class="w-4 h-4"></i> Directory Users (<span id="stat-tab-users">296</span>)
+      </button>
+      <button onclick="setTab('settings')" id="tab-settings-btn" class="px-4 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-400 hover:text-slate-200 flex items-center gap-2">
+        <i data-lucide="shield-alert" class="w-4 h-4 text-purple-400"></i> Scope Risk Matrix (<span id="stat-tab-scopes">59</span>)
+      </button>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <div class="text-right hidden sm:block">
+        <div class="text-xs text-slate-400">Authenticated Super Admin</div>
+        <div class="text-xs font-mono text-slate-200">alister@gafe.co.za</div>
+      </div>
+      <div class="w-8 h-8 rounded-full bg-indigo-900/60 border border-indigo-500/30 flex items-center justify-center text-xs font-bold text-indigo-200">
+        AG
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-1 p-6 max-w-7xl w-full mx-auto space-y-6">
+
+    <!-- App Access Control Baseline Banner -->
+    <div class="bg-gradient-to-r from-blue-950/50 via-indigo-950/40 to-slate-900 border border-blue-800/40 rounded-xl p-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-lg shadow-blue-950/20">
+      <div class="flex items-start sm:items-center gap-3.5">
+        <div class="w-10 h-10 rounded-xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 flex-shrink-0 mt-0.5 sm:mt-0 shadow-inner">
+          <i data-lucide="shield-check" class="w-5 h-5 text-emerald-400"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2 flex-wrap">
+            <span class="font-bold text-sm text-white tracking-tight">Google Admin App Access Control Baseline</span>
+            <span id="baseline-status-badge" class="text-[11px] px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 font-semibold flex items-center gap-1.5 shadow-xs">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Ground-Truth Active (owl_apps.csv)
+            </span>
+          </div>
+          <p class="text-xs text-slate-300 mt-1">
+            <span class="text-emerald-300 font-semibold" id="baseline-policy-summary">32 domain policies synchronized</span> across Organizational Units. Overcomes Google's 180-day audit log expiration to reveal dormant, trusted, and restricted applications.
+          </p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2.5 w-full md:w-auto flex-shrink-0">
+        <button onclick="openSetupModal()" class="px-3.5 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-semibold flex items-center gap-2 transition-all shadow-md shadow-blue-600/20">
+          <i data-lucide="book-open" class="w-4 h-4"></i> Setup Instructions
+        </button>
+        <label class="px-3.5 py-2 bg-slate-800/90 hover:bg-slate-750 text-slate-200 rounded-lg text-xs font-semibold flex items-center gap-2 transition-colors border border-slate-700 cursor-pointer shadow-sm">
+          <i data-lucide="upload-cloud" class="w-4 h-4 text-blue-400"></i> Update CSV
+          <input type="file" id="html-csv-file-input" accept=".csv" class="hidden" onchange="handleHtmlCsvUpload(event)">
+        </label>
+      </div>
+    </div>
+
+    <!-- KPI Metric Cards -->
+    <section class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+      <div class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-4 shadow-sm">
+        <div class="text-slate-400 text-xs font-medium">Total Apps</div>
+        <div class="text-2xl font-bold text-white mt-1" id="metric-apps">-</div>
+        <div class="text-[11px] text-slate-500 mt-1">Unique entities</div>
+      </div>
+      <div class="bg-slate-950/60 border border-emerald-950/50 bg-emerald-950/10 rounded-xl p-4 shadow-sm">
+        <div class="text-emerald-400 text-xs font-medium flex items-center gap-1">
+          <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Trusted by Admin
+        </div>
+        <div class="text-2xl font-bold text-emerald-400 mt-1" id="metric-trusted">-</div>
+        <div class="text-[11px] text-slate-500 mt-1">Admin sanctioned</div>
+      </div>
+      <div class="bg-slate-950/60 border border-red-950/50 bg-red-950/10 rounded-xl p-4 shadow-sm">
+        <div class="text-red-400 text-xs font-medium flex items-center gap-1">
+          <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span> Critical Risk
+        </div>
+        <div class="text-2xl font-bold text-red-400 mt-1" id="metric-critical">-</div>
+        <div class="text-[11px] text-slate-500 mt-1">Admin/Mail rights</div>
+      </div>
+      <div class="bg-slate-950/60 border border-amber-950/50 bg-amber-950/10 rounded-xl p-4 shadow-sm">
+        <div class="text-amber-400 text-xs font-medium">High Risk</div>
+        <div class="text-2xl font-bold text-amber-400 mt-1" id="metric-high">-</div>
+        <div class="text-[11px] text-slate-500 mt-1">Full Drive scopes</div>
+      </div>
+      <div class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-4 shadow-sm">
+        <div class="text-slate-400 text-xs font-medium">Active Grants</div>
+        <div class="text-2xl font-bold text-blue-400 mt-1" id="metric-grants">-</div>
+        <div class="text-[11px] text-slate-500 mt-1">Tokens across users</div>
+      </div>
+      <div class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-4 shadow-sm">
+        <div class="text-slate-400 text-xs font-medium">Actionable Risks</div>
+        <div class="text-2xl font-bold text-purple-400 mt-1" id="metric-findings">-</div>
+        <div class="text-[11px] text-slate-500 mt-1">Remediation actions</div>
+      </div>
+    </section>
+
+    <!-- VIEW 1: APPLICATIONS CATALOG -->
+    <div id="view-apps" class="space-y-4">
+      <!-- Search and Filter Bar -->
+      <div class="bg-slate-950/60 border border-slate-800 rounded-xl p-4 flex flex-col md:flex-row gap-4 items-center justify-between">
+        <div class="relative w-full md:w-80">
+          <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3 top-3"></i>
+          <input 
+            type="text" 
+            id="search-input" 
+            placeholder="Search apps, vendors, client IDs..." 
+            class="w-full bg-slate-900 border border-slate-800 rounded-lg pl-9 pr-4 py-2 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+            oninput="renderAppsTable()"
+          />
+        </div>
+
+        <div class="flex items-center gap-3 w-full md:w-auto overflow-x-auto pb-1 md:pb-0">
+          <!-- Admin Access Policy Filter -->
+          <select id="filter-policy" onchange="renderAppsTable()" class="bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-blue-500">
+            <option value="ALL">All Access Policies</option>
+            <option value="TRUSTED">🛡️ Trusted (Admin Allowlist)</option>
+            <option value="LIMITED">🔹 Limited</option>
+            <option value="SPECIFIC_DATA">🔸 Specific Google Data</option>
+            <option value="BLOCKED">🚫 Blocked</option>
+            <option value="UNCONFIGURED">⚪ Unconfigured (Shadow IT)</option>
+          </select>
+
+          <!-- Risk Filter -->
+          <select id="filter-risk" onchange="renderAppsTable()" class="bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-blue-500">
+            <option value="ALL">All Risk Levels</option>
+            <option value="CRITICAL">🔴 Critical Risk</option>
+            <option value="HIGH">🟠 High Risk</option>
+            <option value="MEDIUM">🟡 Medium Risk</option>
+            <option value="LOW">🟢 Low Risk</option>
+          </select>
+
+          <!-- Category Filter -->
+          <select id="filter-category" onchange="renderAppsTable()" class="bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-blue-500">
+            <option value="ALL">All Categories</option>
+          </select>
+
+          <!-- Multi-Client Checkbox -->
+          <label class="flex items-center gap-2 text-xs text-slate-300 cursor-pointer whitespace-nowrap bg-slate-900 border border-slate-800 rounded-lg px-3 py-2">
+            <input type="checkbox" id="filter-multiclient" onchange="renderAppsTable()" class="rounded bg-slate-800 border-slate-700 text-blue-600 focus:ring-0">
+            Multi-Client
+          </label>
+        </div>
+      </div>
+
+      <!-- Applications Table -->
+      <div class="bg-slate-950/60 border border-slate-800 rounded-xl overflow-hidden shadow">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm text-slate-300">
+            <thead class="bg-slate-900/90 text-xs uppercase tracking-wider text-slate-400 border-b border-slate-800">
+              <tr>
+                <th class="py-3 px-4">Application & Vendor</th>
+                <th class="py-3 px-4">Category</th>
+                <th class="py-3 px-4">Access Control Policy</th>
+                <th class="py-3 px-4">Risk Level</th>
+                <th class="py-3 px-4 text-center">Multi-Client IDs</th>
+                <th class="py-3 px-4 text-center">Users (Admins)</th>
+                <th class="py-3 px-4 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="apps-table-body" class="divide-y divide-slate-800/60">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 2: RECOMMENDATIONS -->
+    <div id="view-recommendations" class="hidden space-y-4">
+      <div class="bg-slate-950/60 border border-slate-800 rounded-xl p-4 flex flex-col md:flex-row gap-4 items-center justify-between">
+        <div>
+          <h2 class="text-base font-bold text-white">Actionable Security Recommendations</h2>
+          <p class="text-xs text-slate-400">Prioritized governance actions to mitigate third-party token, policy, and script risk.</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <select id="rec-filter-severity" onchange="renderRecommendations()" class="bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-sm text-slate-200">
+            <option value="ALL">All Severities</option>
+            <option value="CRITICAL">🔴 Critical Only</option>
+            <option value="HIGH">🟠 High Only</option>
+            <option value="MEDIUM">🟡 Medium Only</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="recs-container" class="space-y-3">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+
+    <!-- VIEW 3: USERS DIRECTORY -->
+    <div id="view-users" class="hidden space-y-4">
+      <div class="bg-slate-950/60 border border-slate-800 rounded-xl p-4 flex justify-between items-center">
+        <div>
+          <h2 class="text-base font-bold text-white">Domain User Token Profiles</h2>
+          <p class="text-xs text-slate-400">Overview of users who have authorized third-party OAuth access.</p>
+        </div>
+        <input 
+          type="text" 
+          id="user-search-input" 
+          placeholder="Filter by email or name..." 
+          class="bg-slate-900 border border-slate-800 rounded-lg px-3 py-1.5 text-sm text-slate-200 w-72"
+          oninput="renderUsersTable()"
+        />
+      </div>
+
+      <div class="bg-slate-950/60 border border-slate-800 rounded-xl overflow-hidden shadow">
+        <table class="w-full text-left text-sm text-slate-300">
+          <thead class="bg-slate-900/90 text-xs uppercase tracking-wider text-slate-400 border-b border-slate-800">
+            <tr>
+              <th class="py-3 px-4">User</th>
+              <th class="py-3 px-4">Organizational Unit</th>
+              <th class="py-3 px-4">Role</th>
+              <th class="py-3 px-4 text-center">Active Apps</th>
+            </tr>
+          </thead>
+          <tbody id="users-table-body" class="divide-y divide-slate-800/60">
+            <!-- Rendered via JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- VIEW 4: SETTINGS & OAUTH SCOPE THREAT MATRIX -->
+    <div id="view-settings" class="hidden space-y-6">
+      
+      <!-- Informational Overview & Policy Header -->
+      <div class="bg-gradient-to-r from-slate-950 via-indigo-950/30 to-slate-900 border border-slate-800 rounded-xl p-6 shadow-lg">
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+          <div class="space-y-1.5">
+            <div class="flex items-center gap-2.5">
+              <span class="p-2 rounded-lg bg-indigo-600/20 text-indigo-400 border border-indigo-500/30">
+                <i data-lucide="sliders" class="w-5 h-5"></i>
+              </span>
+              <h2 class="text-lg font-bold text-white tracking-tight">Google Workspace OAuth Scope Threat Matrix</h2>
+              <span class="text-xs px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 font-medium">
+                Ground-Truth Reference
+              </span>
+            </div>
+            <p class="text-xs text-slate-300 max-w-3xl leading-relaxed">
+              Maps Google Workspace OAuth permissions to Google's official <strong class="text-slate-100">API User Data Policy Tiers</strong> (Restricted, Sensitive, Non-Sensitive) and the <strong class="text-slate-100">AdminLens 5-Point Threat Scale</strong> (1=Blue, 2=Green, 3=Yellow, 4=Orange, 5=Red). Active domain authorizations are dynamically cross-referenced from live tenant tokens.
+            </p>
+          </div>
+          <div class="flex items-center gap-2 flex-wrap">
+            <a href="https://support.google.com/cloud/answer/9110914" target="_blank" class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs text-slate-300 hover:text-white hover:border-slate-600 transition-colors flex items-center gap-1.5">
+              <i data-lucide="external-link" class="w-3.5 h-3.5 text-blue-400"></i> Google OAuth FAQ
+            </a>
+            <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs text-slate-300 hover:text-white hover:border-slate-600 transition-colors flex items-center gap-1.5">
+              <i data-lucide="shield" class="w-3.5 h-3.5 text-indigo-400"></i> User Data Policy
+            </a>
+          </div>
+        </div>
+
+        <!-- Scope Classification Legend -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-5 pt-4 border-t border-slate-800/80 text-xs">
+          <div class="flex items-start gap-2.5 p-2.5 rounded-lg bg-red-950/20 border border-red-900/30">
+            <span class="w-2 h-2 rounded-full bg-red-400 mt-1 flex-shrink-0"></span>
+            <div>
+              <span class="font-bold text-red-300">Restricted Scopes (Google Tier)</span>
+              <p class="text-slate-400 text-[11px] mt-0.5">Mandates annual CASA Tier 2 third-party security audits ($3k–$15k/yr). Full mailbox or cloud drive control.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-2.5 p-2.5 rounded-lg bg-amber-950/20 border border-amber-900/30">
+            <span class="w-2 h-2 rounded-full bg-amber-400 mt-1 flex-shrink-0"></span>
+            <div>
+              <span class="font-bold text-amber-300">Sensitive Scopes (Google Tier)</span>
+              <p class="text-slate-400 text-[11px] mt-0.5">Accesses private personal/corporate data (calendars, contacts, drive.file). Requires Google Trust & Safety verification.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-2.5 p-2.5 rounded-lg bg-blue-950/20 border border-blue-900/30">
+            <span class="w-2 h-2 rounded-full bg-blue-400 mt-1 flex-shrink-0"></span>
+            <div>
+              <span class="font-bold text-blue-300">Non-Sensitive Scopes (Google Tier)</span>
+              <p class="text-slate-400 text-[11px] mt-0.5">Basic authentication (openid, email, profile) or read-only operational metadata with minimal exfiltration surface.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI Summary Cards for Scopes -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        <div class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-3.5">
+          <div class="text-slate-400 text-xs font-medium">Cataloged Scopes</div>
+          <div class="text-xl font-bold text-white mt-1" id="stat-scope-total">-</div>
+          <div class="text-[10px] text-slate-500 mt-0.5">Verified definitions</div>
+        </div>
+        <div class="bg-slate-950/60 border border-red-900/30 bg-red-950/10 rounded-xl p-3.5">
+          <div class="text-red-400 text-xs font-medium flex items-center gap-1">
+            <i data-lucide="shield-alert" class="w-3.5 h-3.5"></i> Restricted Tiers
+          </div>
+          <div class="text-xl font-bold text-red-300 mt-1" id="stat-scope-restricted">-</div>
+          <div class="text-[10px] text-red-400/70 mt-0.5">CASA Tier 2 audit</div>
+        </div>
+        <div class="bg-slate-950/60 border border-amber-900/30 bg-amber-950/10 rounded-xl p-3.5">
+          <div class="text-amber-400 text-xs font-medium flex items-center gap-1">
+            <i data-lucide="eye" class="w-3.5 h-3.5"></i> Sensitive Tiers
+          </div>
+          <div class="text-xl font-bold text-amber-300 mt-1" id="stat-scope-sensitive">-</div>
+          <div class="text-[10px] text-amber-400/70 mt-0.5">Google reviewed</div>
+        </div>
+        <div class="bg-slate-950/60 border border-blue-900/30 bg-blue-950/10 rounded-xl p-3.5">
+          <div class="text-blue-400 text-xs font-medium flex items-center gap-1">
+            <i data-lucide="check-circle" class="w-3.5 h-3.5"></i> Non-Sensitive
+          </div>
+          <div class="text-xl font-bold text-blue-300 mt-1" id="stat-scope-nonsensitive">-</div>
+          <div class="text-[10px] text-blue-400/70 mt-0.5">Basic identity / SSO</div>
+        </div>
+        <div class="bg-slate-950/60 border border-purple-900/30 bg-purple-950/10 rounded-xl p-3.5">
+          <div class="text-purple-400 text-xs font-medium flex items-center gap-1">
+            <i data-lucide="flame" class="w-3.5 h-3.5"></i> Critical Threats
+          </div>
+          <div class="text-xl font-bold text-purple-300 mt-1" id="stat-scope-critical">-</div>
+          <div class="text-[10px] text-purple-400/70 mt-0.5">Score 5 (Red)</div>
+        </div>
+        <div class="bg-slate-950/60 border border-emerald-900/30 bg-emerald-950/10 rounded-xl p-3.5">
+          <div class="text-emerald-400 text-xs font-medium flex items-center gap-1">
+            <i data-lucide="radio" class="w-3.5 h-3.5"></i> Active in Domain
+          </div>
+          <div class="text-xl font-bold text-emerald-300 mt-1" id="stat-scope-active">-</div>
+          <div class="text-[10px] text-emerald-400/70 mt-0.5">Granted to tenant apps</div>
+        </div>
+      </div>
+
+      <!-- Filter Controls Bar -->
+      <div class="bg-slate-950/60 border border-slate-800 rounded-xl p-4 flex flex-col md:flex-row gap-3 items-center justify-between shadow-sm">
+        <div class="relative w-full md:w-80">
+          <i data-lucide="search" class="w-4 h-4 text-slate-500 absolute left-3 top-2.5"></i>
+          <input 
+            type="text" 
+            id="scope-search-input" 
+            placeholder="Search scope URL, rationale, or impact..." 
+            class="w-full bg-slate-900 border border-slate-800 rounded-lg pl-9 pr-3 py-1.5 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors"
+            oninput="renderScopeReferenceTable()"
+          />
+        </div>
+
+        <div class="flex items-center gap-2.5 flex-wrap w-full md:w-auto">
+          <!-- Service Filter -->
+          <div class="flex items-center gap-1.5">
+            <label class="text-xs text-slate-400 font-medium">Service:</label>
+            <select id="scope-service-filter" onchange="renderScopeReferenceTable()" class="bg-slate-900 border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-blue-500">
+              <option value="ALL">All Services</option>
+            </select>
+          </div>
+
+          <!-- Google Tier Filter -->
+          <div class="flex items-center gap-1.5">
+            <label class="text-xs text-slate-400 font-medium">Google Tier:</label>
+            <select id="scope-tier-filter" onchange="renderScopeReferenceTable()" class="bg-slate-900 border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-blue-500">
+              <option value="ALL">All Tiers</option>
+              <option value="Restricted">Restricted</option>
+              <option value="Sensitive">Sensitive</option>
+              <option value="Non-Sensitive">Non-Sensitive</option>
+            </select>
+          </div>
+
+          <!-- Admin Score Filter -->
+          <div class="flex items-center gap-1.5">
+            <label class="text-xs text-slate-400 font-medium">Threat Score:</label>
+            <select id="scope-score-filter" onchange="renderScopeReferenceTable()" class="bg-slate-900 border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-blue-500">
+              <option value="ALL">All Scores</option>
+              <option value="5">🔴 5 — Critical (Red)</option>
+              <option value="4">🟠 4 — High (Orange)</option>
+              <option value="3">🟡 3 — Medium (Yellow)</option>
+              <option value="2">🟢 2 — Low (Green)</option>
+              <option value="1">🔵 1 — Minimal (Blue)</option>
+            </select>
+          </div>
+
+          <!-- Active in domain only toggle -->
+          <label class="flex items-center gap-1.5 text-xs text-slate-300 cursor-pointer ml-1 select-none">
+            <input type="checkbox" id="scope-active-only" onchange="renderScopeReferenceTable()" class="rounded border-slate-700 bg-slate-900 text-blue-600 focus:ring-0">
+            <span>In Domain Only</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Scopes Table -->
+      <div class="bg-slate-950/60 border border-slate-800 rounded-xl overflow-hidden shadow">
+        <table class="w-full text-left text-sm text-slate-300">
+          <thead class="bg-slate-900/90 text-xs uppercase tracking-wider text-slate-400 border-b border-slate-800">
+            <tr>
+              <th class="py-3 px-4">OAuth Scope URI</th>
+              <th class="py-3 px-4">Service</th>
+              <th class="py-3 px-4">Google Tier</th>
+              <th class="py-3 px-4">Admin Score</th>
+              <th class="py-3 px-4">Threat Rationale & Technical Impact</th>
+              <th class="py-3 px-4 text-center">Tenant Footprint</th>
+            </tr>
+          </thead>
+          <tbody id="scopes-table-body" class="divide-y divide-slate-800/60">
+            <!-- Rendered via JS -->
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Application Detail Modal / Drawer -->
+  <div id="app-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-3xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+      
+      <!-- Modal Header -->
+      <div class="p-6 border-b border-slate-800 flex items-start justify-between bg-slate-950/50">
+        <div class="flex items-center gap-4">
+          <img id="modal-app-icon" src="" alt="" class="w-14 h-14 rounded-xl border border-slate-700 bg-slate-800 object-contain p-1">
+          <div>
+            <div class="flex items-center gap-2">
+              <h2 id="modal-app-name" class="text-xl font-bold text-white">App Name</h2>
+              <span id="modal-app-verified" class="hidden text-xs px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-medium">Verified</span>
+              <span id="modal-app-risk" class="text-xs px-2 py-0.5 rounded font-bold uppercase">RISK</span>
+            </div>
+            <div class="flex items-center gap-3 text-xs text-slate-400 mt-1">
+              <span id="modal-app-vendor">Vendor</span>
+              <span>•</span>
+              <span id="modal-app-category">Category</span>
+              <span id="modal-app-domain-container">• <a id="modal-app-domain" href="#" target="_blank" class="text-blue-400 hover:underline">domain</a></span>
+            </div>
+          </div>
+        </div>
+        <button onclick="closeModal()" class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800">
+          <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+      </div>
+
+      <!-- Modal Body (Scrollable) -->
+      <div class="p-6 space-y-6 overflow-y-auto custom-scrollbar flex-1">
+        
+        <!-- Google Admin Access Control Policy Section -->
+        <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-4 space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-800/80 pb-3">
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-lg bg-blue-600/20 text-blue-400 flex items-center justify-center">
+                <i data-lucide="shield" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <h3 class="text-sm font-bold text-white">Access to Google Data</h3>
+                <p class="text-[11px] text-slate-400">Google Admin Console API Access Control Policy</p>
+              </div>
+            </div>
+            <div id="modal-policy-badge"></div>
+          </div>
+
+          <!-- Policy Options Visualizer -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            <div id="policy-opt-trusted" class="p-3 rounded-lg border border-slate-800 bg-slate-900/40 flex items-start gap-2.5">
+              <div id="radio-trusted" class="w-4 h-4 rounded-full border border-slate-600 mt-0.5 flex items-center justify-center"></div>
+              <div>
+                <div class="font-semibold text-slate-200">Trusted</div>
+                <div class="text-slate-400 text-[11px]">App can request access to all Google data</div>
+                <div id="context-aware-exemption" class="hidden mt-1.5 text-[10px] text-emerald-400 bg-emerald-950/30 border border-emerald-900/40 px-2 py-0.5 rounded">
+                  ✓ Exempt from Context-Aware Access blocks
+                </div>
+              </div>
+            </div>
+
+            <div id="policy-opt-limited" class="p-3 rounded-lg border border-slate-800 bg-slate-900/40 flex items-start gap-2.5">
+              <div id="radio-limited" class="w-4 h-4 rounded-full border border-slate-600 mt-0.5 flex items-center justify-center"></div>
+              <div>
+                <div class="font-semibold text-slate-200">Limited</div>
+                <div class="text-slate-400 text-[11px]">App can request access to unrestricted Google data</div>
+              </div>
+            </div>
+
+            <div id="policy-opt-specific" class="p-3 rounded-lg border border-slate-800 bg-slate-900/40 flex items-start gap-2.5">
+              <div id="radio-specific" class="w-4 h-4 rounded-full border border-slate-600 mt-0.5 flex items-center justify-center"></div>
+              <div>
+                <div class="font-semibold text-slate-200">Specific Google data</div>
+                <div class="text-slate-400 text-[11px]">Restricted strictly to specified Google services & scopes</div>
+                <div id="modal-policy-services" class="mt-2 space-y-1"></div>
+              </div>
+            </div>
+
+            <div id="policy-opt-blocked" class="p-3 rounded-lg border border-slate-800 bg-slate-900/40 flex items-start gap-2.5">
+              <div id="radio-blocked" class="w-4 h-4 rounded-full border border-slate-600 mt-0.5 flex items-center justify-center"></div>
+              <div>
+                <div class="font-semibold text-slate-200">Blocked</div>
+                <div class="text-slate-400 text-[11px]">App cannot request access to any Google data</div>
+              </div>
+            </div>
+          </div>
+
+          <div id="modal-policy-meta" class="text-[11px] text-slate-400 border-t border-slate-800/80 pt-2 flex flex-wrap gap-4 justify-between">
+            <div>Policy Scope: <span id="modal-policy-ou" class="font-mono text-slate-200">gafe.co.za</span></div>
+            <div>Inheritance: <span id="modal-policy-status" class="text-slate-200">Status: Default</span></div>
+          </div>
+        </div>
+
+        <!-- Risk Reasons -->
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Security Evaluation</h3>
+          <div id="modal-risk-reasons" class="space-y-1"></div>
+        </div>
+
+        <!-- Mapped Client IDs -->
+        <div>
+          <div class="flex justify-between items-center mb-2">
+            <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-400">Mapped OAuth Client IDs (<span id="modal-clientids-count">0</span>)</h3>
+            <span class="text-[11px] text-slate-500">Unified under this vendor profile</span>
+          </div>
+          <div id="modal-clientids-list" class="space-y-1.5 font-mono text-xs"></div>
+        </div>
+
+        <!-- Scopes -->
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Requested Scopes (<span id="modal-scopes-count">0</span>)</h3>
+          <div id="modal-scopes-list" class="space-y-2 text-xs"></div>
+        </div>
+
+        <!-- Authorized Users -->
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Authorized Users (<span id="modal-users-count">0</span>)</h3>
+          <div id="modal-users-list" class="max-h-48 overflow-y-auto divide-y divide-slate-800/60 bg-slate-950/40 rounded-lg border border-slate-800"></div>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="p-4 border-t border-slate-800 bg-slate-950/50 flex justify-between items-center text-xs text-slate-400">
+        <div>Activity Events Recorded: <span id="modal-audit-count" class="font-bold text-slate-200">0</span></div>
+        <button onclick="closeModal()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg font-medium">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let appData = [];
+    let recsData = [];
+    let usersData = [];
+    let scopesData = [];
+    let scopeMetrics = null;
+    let activeTab = 'apps';
+
+    async function loadData() {
+      try {
+        const [appsRes, recsRes, metricsRes, scopesRes] = await Promise.all([
+          fetch('/api/applications'),
+          fetch('/api/recommendations'),
+          fetch('/api/metrics'),
+          fetch('/api/scope-reference')
+        ]);
+
+        appData = await appsRes.json();
+        recsData = await recsRes.json();
+        const metrics = await metricsRes.json();
+        const scopePayload = await scopesRes.json();
+        scopesData = scopePayload.scopes || [];
+        scopeMetrics = scopePayload.metrics || {};
+
+        // Update metrics
+        document.getElementById('metric-apps').innerText = metrics.totalApplications;
+        document.getElementById('metric-trusted').innerText = metrics.trustedAppsCount || 2;
+        document.getElementById('metric-grants').innerText = metrics.totalActiveGrants;
+        document.getElementById('metric-critical').innerText = metrics.criticalRiskApps;
+        document.getElementById('metric-high').innerText = metrics.highRiskApps;
+        document.getElementById('metric-findings').innerText = recsData.totalFindings || 117;
+
+        document.getElementById('stat-tab-apps').innerText = appData.length;
+        document.getElementById('stat-tab-recs').innerText = recsData.totalFindings || 117;
+        document.getElementById('stat-tab-scopes').innerText = scopesData.length;
+
+        // Populate Scope Metrics
+        if (scopeMetrics) {
+          document.getElementById('stat-scope-total').innerText = scopeMetrics.total || scopesData.length;
+          document.getElementById('stat-scope-restricted').innerText = scopeMetrics.restricted || 0;
+          document.getElementById('stat-scope-sensitive').innerText = scopeMetrics.sensitive || 0;
+          document.getElementById('stat-scope-nonsensitive').innerText = scopeMetrics.nonSensitive || 0;
+          document.getElementById('stat-scope-critical').innerText = (scopeMetrics.scores?.critical || 0) + (scopeMetrics.scores?.high || 0);
+
+          const activeCount = scopesData.filter(s => s.active_apps_count > 0).length;
+          document.getElementById('stat-scope-active').innerText = `${activeCount} in use`;
+
+          const scopeServiceSelect = document.getElementById('scope-service-filter');
+          (scopeMetrics.services || []).forEach(svc => {
+            const opt = document.createElement('option');
+            opt.value = svc;
+            opt.innerText = svc;
+            scopeServiceSelect.appendChild(opt);
+          });
+        }
+
+        // Populate Categories
+        const categories = Array.from(new Set(appData.map(a => a.category))).sort();
+        const catSelect = document.getElementById('filter-category');
+        categories.forEach(c => {
+          const opt = document.createElement('option');
+          opt.value = c;
+          opt.innerText = c;
+          catSelect.appendChild(opt);
+        });
+
+        // Load users from apps
+        const userMap = new Map();
+        appData.forEach(app => {
+          (app.users || []).forEach(u => {
+            if (!userMap.has(u.email)) {
+              userMap.set(u.email, {
+                email: u.email,
+                name: u.name,
+                orgUnit: u.orgUnit,
+                isAdmin: u.isAdmin,
+                apps: []
+              });
+            }
+            userMap.get(u.email).apps.push(app.displayName);
+          });
+        });
+        usersData = Array.from(userMap.values()).sort((a, b) => b.apps.length - a.apps.length);
+        document.getElementById('stat-tab-users').innerText = usersData.length;
+
+        renderAppsTable();
+        renderRecommendations();
+        renderUsersTable();
+        renderScopeReferenceTable();
+        lucide.createIcons();
+      } catch (err) {
+        console.error('Error loading data:', err);
+      }
+    }
+
+    function setTab(tab) {
+      activeTab = tab;
+      document.getElementById('view-apps').classList.toggle('hidden', tab !== 'apps');
+      document.getElementById('view-recommendations').classList.toggle('hidden', tab !== 'recommendations');
+      document.getElementById('view-users').classList.toggle('hidden', tab !== 'users');
+      document.getElementById('view-settings').classList.toggle('hidden', tab !== 'settings');
+
+      const btnClassesActive = ['bg-blue-600', 'text-white'];
+      const btnClassesInactive = ['text-slate-400', 'hover:text-slate-200'];
+
+      ['apps', 'recs', 'users', 'settings'].forEach(t => {
+        const btn = document.getElementById(`tab-${t}-btn`);
+        if (!btn) return;
+        const isActive = (tab === 'apps' && t === 'apps') || 
+                         (tab === 'recommendations' && t === 'recs') || 
+                         (tab === 'users' && t === 'users') ||
+                         (tab === 'settings' && t === 'settings');
+        if (isActive) {
+          btn.classList.add(...btnClassesActive);
+          btn.classList.remove(...btnClassesInactive);
+        } else {
+          btn.classList.remove(...btnClassesActive);
+          btn.classList.add(...btnClassesInactive);
+        }
+      });
+      lucide.createIcons();
+    }
+
+    function copyScopeUri(uri, btnElement) {
+      navigator.clipboard.writeText(uri).then(() => {
+        const originalHtml = btnElement.innerHTML;
+        btnElement.innerHTML = '<i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> Copied';
+        lucide.createIcons();
+        setTimeout(() => {
+          btnElement.innerHTML = originalHtml;
+          lucide.createIcons();
+        }, 1500);
+      }).catch(err => {
+        console.error('Copy failed:', err);
+      });
+    }
+
+    function renderScopeReferenceTable() {
+      const search = (document.getElementById('scope-search-input')?.value || '').toLowerCase();
+      const serviceFilter = document.getElementById('scope-service-filter')?.value || 'ALL';
+      const tierFilter = document.getElementById('scope-tier-filter')?.value || 'ALL';
+      const scoreFilter = document.getElementById('scope-score-filter')?.value || 'ALL';
+      const activeOnly = document.getElementById('scope-active-only')?.checked || false;
+
+      const filtered = scopesData.filter(s => {
+        const matchesSearch = s.scope_url.toLowerCase().includes(search) || 
+                              s.rationale.toLowerCase().includes(search) || 
+                              s.threat_impact.toLowerCase().includes(search) ||
+                              s.service_name.toLowerCase().includes(search);
+        const matchesService = serviceFilter === 'ALL' || s.service_name === serviceFilter;
+        const matchesTier = tierFilter === 'ALL' || s.google_tier === tierFilter;
+        const matchesScore = scoreFilter === 'ALL' || s.admin_score.toString() === scoreFilter;
+        const matchesActive = !activeOnly || (s.active_apps_count > 0);
+
+        return matchesSearch && matchesService && matchesTier && matchesScore && matchesActive;
+      });
+
+      const tbody = document.getElementById('scopes-table-body');
+      if (!tbody) return;
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" class="py-12 text-center text-slate-500 font-medium">No OAuth scopes match the selected filters.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(s => {
+        // Google Tier Badge
+        let tierBadge = '';
+        if (s.google_tier === 'Restricted') {
+          tierBadge = '<span class="px-2.5 py-0.5 rounded text-[11px] font-bold bg-red-500/15 text-red-300 border border-red-500/30 inline-flex items-center gap-1"><i data-lucide="shield-alert" class="w-3 h-3 text-red-400"></i> Restricted</span>';
+        } else if (s.google_tier === 'Sensitive') {
+          tierBadge = '<span class="px-2.5 py-0.5 rounded text-[11px] font-bold bg-amber-500/15 text-amber-300 border border-amber-500/30 inline-flex items-center gap-1"><i data-lucide="eye" class="w-3 h-3 text-amber-400"></i> Sensitive</span>';
+        } else {
+          tierBadge = '<span class="px-2.5 py-0.5 rounded text-[11px] font-bold bg-blue-500/15 text-blue-300 border border-blue-500/30 inline-flex items-center gap-1"><i data-lucide="check" class="w-3 h-3 text-blue-400"></i> Non-Sensitive</span>';
+        }
+
+        // Admin Score Badge
+        let scoreBadge = '';
+        switch(s.admin_score) {
+          case 5:
+            scoreBadge = '<span class="px-2.5 py-1 rounded text-xs font-bold bg-red-500/20 text-red-400 border border-red-500/30 shadow-xs whitespace-nowrap inline-flex items-center gap-1">🔴 5 (Red)</span>';
+            break;
+          case 4:
+            scoreBadge = '<span class="px-2.5 py-1 rounded text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30 shadow-xs whitespace-nowrap inline-flex items-center gap-1">🟠 4 (Orange)</span>';
+            break;
+          case 3:
+            scoreBadge = '<span class="px-2.5 py-1 rounded text-xs font-bold bg-yellow-500/20 text-yellow-300 border border-yellow-500/30 shadow-xs whitespace-nowrap inline-flex items-center gap-1">🟡 3 (Yellow)</span>';
+            break;
+          case 2:
+            scoreBadge = '<span class="px-2.5 py-1 rounded text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 shadow-xs whitespace-nowrap inline-flex items-center gap-1">🟢 2 (Green)</span>';
+            break;
+          default:
+            scoreBadge = '<span class="px-2.5 py-1 rounded text-xs font-bold bg-blue-500/20 text-blue-300 border border-blue-500/30 shadow-xs whitespace-nowrap inline-flex items-center gap-1">🔵 1 (Blue)</span>';
+        }
+
+        // Active Apps in Tenant Badge
+        let tenantBadge = '';
+        if (s.active_apps_count > 0) {
+          tenantBadge = `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 shadow-sm"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> ${s.active_apps_count} App${s.active_apps_count > 1 ? 's' : ''}</span>`;
+        } else {
+          tenantBadge = `<span class="text-xs text-slate-500 font-mono">0 apps</span>`;
+        }
+
+        // Service badge styling
+        let serviceColor = 'bg-slate-800 text-slate-300 border-slate-700';
+        if (s.service_name.includes('Gmail')) serviceColor = 'bg-red-950/40 text-red-300 border-red-800/40';
+        else if (s.service_name.includes('Drive')) serviceColor = 'bg-amber-950/40 text-amber-300 border-amber-800/40';
+        else if (s.service_name.includes('Admin')) serviceColor = 'bg-purple-950/40 text-purple-300 border-purple-800/40';
+        else if (s.service_name.includes('Calendar')) serviceColor = 'bg-blue-950/40 text-blue-300 border-blue-800/40';
+        else if (s.service_name.includes('Script')) serviceColor = 'bg-indigo-950/40 text-indigo-300 border-indigo-800/40';
+
+        return `
+          <tr class="hover:bg-slate-900/60 transition-colors">
+            <td class="py-3 px-4">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs text-slate-200 break-all select-all font-semibold">${s.scope_url}</span>
+                <button onclick="copyScopeUri('${s.scope_url}', this)" title="Copy Scope URI" class="p-1 text-slate-500 hover:text-slate-300 rounded hover:bg-slate-800 transition-colors flex-shrink-0">
+                  <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </td>
+            <td class="py-3 px-4">
+              <span class="px-2 py-0.5 rounded text-xs font-medium border ${serviceColor} whitespace-nowrap">
+                ${s.service_name}
+              </span>
+            </td>
+            <td class="py-3 px-4 whitespace-nowrap">${tierBadge}</td>
+            <td class="py-3 px-4 whitespace-nowrap">${scoreBadge}</td>
+            <td class="py-3 px-4 max-w-md">
+              <div class="font-semibold text-slate-100 text-xs">${s.rationale}</div>
+              <div class="text-[11px] text-slate-400 mt-0.5 leading-snug">${s.threat_impact}</div>
+            </td>
+            <td class="py-3 px-4 text-center whitespace-nowrap">
+              ${tenantBadge}
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      lucide.createIcons();
+    }
+
+    function getRiskBadge(level) {
+      switch (level) {
+        case 'CRITICAL': return '<span class="px-2 py-0.5 rounded text-[11px] font-bold bg-red-500/10 text-red-400 border border-red-500/20">🔴 CRITICAL</span>';
+        case 'HIGH': return '<span class="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">🟠 HIGH</span>';
+        case 'MEDIUM': return '<span class="px-2 py-0.5 rounded text-[11px] font-bold bg-yellow-500/10 text-yellow-400 border border-yellow-500/20">🟡 MEDIUM</span>';
+        default: return '<span class="px-2 py-0.5 rounded text-[11px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">🟢 LOW</span>';
+      }
+    }
+
+    function getPolicyBadge(policyLevel) {
+      switch (policyLevel) {
+        case 'TRUSTED':
+          return '<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 shadow-sm shadow-emerald-950"><i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Trusted</span>';
+        case 'LIMITED':
+          return '<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-500/15 text-blue-400 border border-blue-500/30">Limited</span>';
+        case 'SPECIFIC_DATA':
+          return '<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/15 text-amber-400 border border-amber-500/30">Specific Data</span>';
+        case 'BLOCKED':
+          return '<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-red-500/15 text-red-400 border border-red-500/30">Blocked</span>';
+        default:
+          return '<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] text-slate-400 border border-slate-800 bg-slate-900/60">Unconfigured</span>';
+      }
+    }
+
+    function renderAppsTable() {
+      const search = document.getElementById('search-input').value.toLowerCase();
+      const policyFilter = document.getElementById('filter-policy').value;
+      const riskFilter = document.getElementById('filter-risk').value;
+      const catFilter = document.getElementById('filter-category').value;
+      const multiOnly = document.getElementById('filter-multiclient').checked;
+
+      const filtered = appData.filter(a => {
+        const matchesSearch = a.displayName.toLowerCase().includes(search) || 
+                              a.vendor.toLowerCase().includes(search) ||
+                              (a.clientIds || []).some(c => c.toLowerCase().includes(search));
+        const policyLevel = a.adminAccessLevel || a.admin_access_level || 'UNCONFIGURED';
+        const matchesPolicy = policyFilter === 'ALL' || policyLevel === policyFilter;
+        const matchesRisk = riskFilter === 'ALL' || a.riskLevel === riskFilter || a.risk_level === riskFilter;
+        const matchesCat = catFilter === 'ALL' || a.category === catFilter;
+        const matchesMulti = !multiOnly || (a.clientIdsCount > 1 || (a.clientIds && a.clientIds.length > 1));
+        return matchesSearch && matchesPolicy && matchesRisk && matchesCat && matchesMulti;
+      });
+
+      const tbody = document.getElementById('apps-table-body');
+      if (filtered.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="7" class="py-8 text-center text-slate-500">No applications matched the selected filters.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(a => {
+        const policyLevel = a.adminAccessLevel || a.admin_access_level || 'UNCONFIGURED';
+        const clientCount = a.clientIdsCount || (a.clientIds ? a.clientIds.length : 1);
+        const usersCount = a.totalUsersCount || a.total_users_count || 0;
+        const adminUsers = a.adminUsersCount || a.admin_users_count || 0;
+        const risk = a.riskLevel || a.risk_level || 'LOW';
+
+        return `
+          <tr class="hover:bg-slate-900/50 transition-colors cursor-pointer" onclick="openAppModal('${a.id}')">
+            <td class="py-3 px-4">
+              <div class="flex items-center gap-3">
+                <img src="${a.iconUrl || a.icon_url}" alt="" class="w-8 h-8 rounded-lg bg-slate-800 border border-slate-700 object-contain p-0.5 flex-shrink-0">
+                <div class="truncate max-w-[240px]">
+                  <div class="font-semibold text-slate-100 truncate">${a.displayName || a.display_name}</div>
+                  <div class="text-xs text-slate-400 truncate">${a.vendor}</div>
+                </div>
+              </div>
+            </td>
+            <td class="py-3 px-4 text-xs text-slate-300">${a.category}</td>
+            <td class="py-3 px-4">${getPolicyBadge(policyLevel)}</td>
+            <td class="py-3 px-4">${getRiskBadge(risk)}</td>
+            <td class="py-3 px-4 text-center">
+              ${clientCount > 1 
+                ? `<span class="px-2 py-0.5 text-xs rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/20 font-mono font-medium">${clientCount} Client IDs</span>` 
+                : `<span class="text-xs text-slate-500 font-mono">1</span>`}
+            </td>
+            <td class="py-3 px-4 text-center">
+              <div class="text-xs font-semibold text-slate-200">${usersCount} user(s)</div>
+              ${adminUsers > 0 ? `<span class="text-[10px] text-red-400 font-medium">⚠️ ${adminUsers} admin(s)</span>` : ''}
+            </td>
+            <td class="py-3 px-4 text-right">
+              <button class="px-3 py-1 bg-slate-800 hover:bg-slate-700 text-xs text-slate-200 rounded-md transition-colors">
+                Inspect
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+      lucide.createIcons();
+    }
+
+    function renderRecommendations() {
+      const severityFilter = document.getElementById('rec-filter-severity').value;
+      const findings = (recsData.findings || []).filter(f => severityFilter === 'ALL' || f.severity === severityFilter);
+      const container = document.getElementById('recs-container');
+
+      if (findings.length === 0) {
+        container.innerHTML = `<div class="p-8 text-center text-slate-500 bg-slate-950/40 rounded-xl border border-slate-800">No recommendations for this severity.</div>`;
+        return;
+      }
+
+      container.innerHTML = findings.map(f => `
+        <div class="bg-slate-950/60 border ${f.severity === 'CRITICAL' ? 'border-red-900/40 bg-red-950/5' : (f.severity === 'HIGH' ? 'border-amber-900/40 bg-amber-950/5' : 'border-slate-800')} rounded-xl p-4 space-y-3">
+          <div class="flex items-start justify-between gap-4">
+            <div class="space-y-1">
+              <div class="flex items-center gap-2">
+                ${getRiskBadge(f.severity)}
+                <h3 class="font-bold text-sm text-slate-100">${f.title}</h3>
+              </div>
+              <p class="text-xs text-slate-300">${f.details}</p>
+            </div>
+            <div class="text-right text-xs text-slate-400 flex-shrink-0">
+              Target: <span class="font-mono text-slate-200">${f.affectedAccount}</span>
+            </div>
+          </div>
+
+          <div class="bg-slate-900/80 rounded-lg p-3 border border-slate-800/80 space-y-2 text-xs">
+            <div class="text-slate-300 font-medium"><span class="text-blue-400 font-semibold">Recommended Fix:</span> ${f.remediation}</div>
+            ${f.gamCommand ? `
+              <div class="flex items-center justify-between bg-slate-950 px-3 py-1.5 rounded font-mono text-[11px] text-slate-300 border border-slate-800">
+                <span class="truncate">${f.gamCommand}</span>
+                <button onclick="copyToClipboard('${f.gamCommand}')" class="text-xs text-blue-400 hover:text-blue-300 ml-3 flex-shrink-0">Copy</button>
+              </div>
+            ` : ''}
+          </div>
+        </div>
+      `).join('');
+      lucide.createIcons();
+    }
+
+    function renderUsersTable() {
+      const search = (document.getElementById('user-search-input')?.value || '').toLowerCase();
+      const filtered = usersData.filter(u => u.email.toLowerCase().includes(search) || u.name.toLowerCase().includes(search));
+      const tbody = document.getElementById('users-table-body');
+      
+      tbody.innerHTML = filtered.map(u => `
+        <tr class="hover:bg-slate-900/50">
+          <td class="py-3 px-4">
+            <div class="font-medium text-slate-200">${u.name}</div>
+            <div class="text-xs font-mono text-slate-400">${u.email}</div>
+          </td>
+          <td class="py-3 px-4 text-xs font-mono text-slate-400">${u.orgUnit}</td>
+          <td class="py-3 px-4 text-xs">
+            ${u.isAdmin ? '<span class="px-2 py-0.5 rounded bg-red-500/10 text-red-400 border border-red-500/20 font-bold">Super Admin</span>' : '<span class="text-slate-500">Standard User</span>'}
+          </td>
+          <td class="py-3 px-4 text-center">
+            <span class="px-2 py-1 bg-slate-800 rounded text-xs font-semibold text-blue-400">${u.apps.length} apps</span>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    async function openAppModal(appId) {
+      try {
+        const res = await fetch(`/api/applications/${encodeURIComponent(appId)}`);
+        const app = await res.json();
+
+        document.getElementById('modal-app-name').innerText = app.display_name || app.displayName;
+        document.getElementById('modal-app-vendor').innerText = app.vendor;
+        document.getElementById('modal-app-category').innerText = app.category;
+        document.getElementById('modal-app-icon').src = app.icon_url || app.iconUrl;
+
+        const riskEl = document.getElementById('modal-app-risk');
+        riskEl.innerText = app.risk_level || app.riskLevel;
+        riskEl.className = `text-xs px-2 py-0.5 rounded font-bold uppercase ${app.risk_level === 'CRITICAL' ? 'bg-red-500/20 text-red-400' : (app.risk_level === 'HIGH' ? 'bg-amber-500/20 text-amber-400' : 'bg-emerald-500/20 text-emerald-400')}`;
+
+        const verifiedEl = document.getElementById('modal-app-verified');
+        verifiedEl.classList.toggle('hidden', !app.is_verified);
+
+        const domainEl = document.getElementById('modal-app-domain');
+        if (app.publisher_domain || app.domain) {
+          const d = app.publisher_domain || app.domain;
+          domainEl.href = `https://${d}`;
+          domainEl.innerText = d;
+          document.getElementById('modal-app-domain-container').classList.remove('hidden');
+        } else {
+          document.getElementById('modal-app-domain-container').classList.add('hidden');
+        }
+
+        // Access Control Policy Visualizer
+        const policy = app.accessPolicy;
+        const policyLevel = app.admin_access_level || (policy ? policy.access_level || policy.accessLevel : 'UNCONFIGURED');
+        
+        document.getElementById('modal-policy-badge').innerHTML = getPolicyBadge(policyLevel);
+
+        // Reset radio highlights
+        ['trusted', 'limited', 'specific', 'blocked'].forEach(p => {
+          const card = document.getElementById(`policy-opt-${p}`);
+          const radio = document.getElementById(`radio-${p}`);
+          card.className = "p-3 rounded-lg border border-slate-800 bg-slate-900/40 flex items-start gap-2.5 opacity-60";
+          radio.className = "w-4 h-4 rounded-full border border-slate-600 mt-0.5 flex items-center justify-center";
+          radio.innerHTML = "";
+        });
+
+        const activePolicyKey = policyLevel === 'TRUSTED' ? 'trusted' :
+                               (policyLevel === 'LIMITED' ? 'limited' :
+                               (policyLevel === 'SPECIFIC_DATA' ? 'specific' :
+                               (policyLevel === 'BLOCKED' ? 'blocked' : null)));
+
+        if (activePolicyKey) {
+          const activeCard = document.getElementById(`policy-opt-${activePolicyKey}`);
+          const activeRadio = document.getElementById(`radio-${activePolicyKey}`);
+          activeCard.className = "p-3 rounded-lg border border-blue-500/60 bg-blue-950/20 flex items-start gap-2.5 shadow-sm";
+          activeRadio.className = "w-4 h-4 rounded-full border-2 border-blue-400 mt-0.5 flex items-center justify-center bg-blue-600";
+          activeRadio.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-white"></span>';
+        }
+
+        const exemptionEl = document.getElementById('context-aware-exemption');
+        if (policy && (policy.exempt_from_context_aware_access || policy.exemptFromContextAwareAccess)) {
+          exemptionEl.classList.remove('hidden');
+        } else {
+          exemptionEl.classList.add('hidden');
+        }
+
+        // Specific services if configured
+        const servicesEl = document.getElementById('modal-policy-services');
+        const allowedServices = policy?.allowed_services || policy?.allowedServices || {};
+        const serviceKeys = Object.keys(allowedServices);
+        if (serviceKeys.length > 0) {
+          servicesEl.innerHTML = serviceKeys.map(k => `
+            <div class="flex justify-between items-center text-[10px] text-slate-300 bg-slate-950 px-2 py-0.5 rounded border border-slate-800">
+              <span>${k}</span>
+              <span class="text-blue-400 font-mono font-medium">${allowedServices[k]} scope(s)</span>
+            </div>
+          `).join('');
+        } else {
+          servicesEl.innerHTML = '';
+        }
+
+        // Policy Metadata
+        document.getElementById('modal-policy-ou').innerText = policy?.org_unit_path || policy?.orgUnitPath || 'gafe.co.za';
+        document.getElementById('modal-policy-status').innerText = policy?.is_overridden || policy?.isOverridden ? 'Status: Overridden (Direct OU Assignment)' : 'Status: Inherited from Root Domain';
+
+        // Risk Reasons
+        const reasonsEl = document.getElementById('modal-risk-reasons');
+        const reasons = app.risk_reasons || app.riskReasons || [];
+        reasonsEl.innerHTML = reasons.length > 0 
+          ? reasons.map(r => `<div class="text-xs text-amber-300 bg-amber-950/20 border border-amber-900/30 rounded px-2.5 py-1.5 flex items-center gap-2">⚠️ ${r}</div>`).join('')
+          : '<div class="text-xs text-slate-500">No elevated security risks detected for this application.</div>';
+
+        // Client IDs
+        const clientIds = app.clientIds || [];
+        document.getElementById('modal-clientids-count').innerText = clientIds.length;
+        document.getElementById('modal-clientids-list').innerHTML = clientIds.map(c => {
+          const cid = typeof c === 'string' ? c : (c.client_id || c.clientId);
+          return `
+            <div class="bg-slate-950 border border-slate-800 rounded px-3 py-1.5 flex justify-between items-center">
+              <span class="truncate text-slate-300">${cid}</span>
+              <button onclick="copyToClipboard('${cid}')" class="text-blue-400 hover:text-blue-300 ml-2">Copy</button>
+            </div>
+          `;
+        }).join('');
+
+        // Scopes
+        const scopes = app.scopes || [];
+        document.getElementById('modal-scopes-count').innerText = scopes.length;
+        document.getElementById('modal-scopes-list').innerHTML = scopes.map(s => {
+          const surl = typeof s === 'string' ? s : (s.scope_url || s.scope);
+          const srisk = typeof s === 'object' ? (s.risk_level || s.riskLevel) : 'LOW';
+          return `
+            <div class="bg-slate-950 border border-slate-800 rounded p-2 flex justify-between items-center gap-2">
+              <div class="truncate font-mono text-slate-300">${surl}</div>
+              <div class="flex-shrink-0">${getRiskBadge(srisk)}</div>
+            </div>
+          `;
+        }).join('');
+
+        // Users
+        const users = app.grants || app.users || [];
+        document.getElementById('modal-users-count').innerText = users.length;
+        document.getElementById('modal-users-list').innerHTML = users.map(u => `
+          <div class="p-2.5 flex justify-between items-center text-xs">
+            <div>
+              <div class="font-medium text-slate-200">${u.user_name || u.name || u.user_email || u.email}</div>
+              <div class="text-slate-400 font-mono text-[11px]">${u.user_email || u.email}</div>
+            </div>
+            <div>
+              ${u.is_admin || u.isAdmin ? '<span class="text-red-400 font-bold text-[10px] px-2 py-0.5 rounded bg-red-950 border border-red-900">Admin</span>' : '<span class="text-slate-500">User</span>'}
+            </div>
+          </div>
+        `).join('');
+
+        document.getElementById('modal-audit-count').innerText = app.totalAuditEvents || 0;
+
+        document.getElementById('app-modal').classList.remove('hidden');
+        lucide.createIcons();
+      } catch (err) {
+        console.error('Failed to load modal details:', err);
+      }
+    }
+
+    function closeModal() {
+      document.getElementById('app-modal').classList.add('hidden');
+    }
+
+    function openSetupModal() {
+      document.getElementById('setup-modal').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeSetupModal() {
+      document.getElementById('setup-modal').classList.add('hidden');
+    }
+
+    function handleHtmlCsvUpload(event) {
+      const file = event.target.files?.[0];
+      if (!file) return;
+      processCsvFile(file);
+    }
+
+    function handleDropCsv(event) {
+      event.preventDefault();
+      const file = event.dataTransfer.files?.[0];
+      if (!file) return;
+      processCsvFile(file);
+    }
+
+    function processCsvFile(file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const text = e.target.result;
+        try {
+          const parseLine = (line) => {
+            const res = [];
+            let cur = '';
+            let q = false;
+            for (let i = 0; i < line.length; i++) {
+              const c = line[i];
+              if (c === '"') {
+                if (q && line[i+1] === '"') { cur += '"'; i++; }
+                else { q = !q; }
+              } else if (c === ',' && !q) {
+                res.push(cur);
+                cur = '';
+              } else {
+                cur += c;
+              }
+            }
+            res.push(cur);
+            return res;
+          };
+
+          const lines = text.trim().split(/\r?\n/);
+          if (lines.length < 2) return;
+          const headers = parseLine(lines[0]).map(h => h.trim());
+          const policyMap = new Map();
+
+          for (let i = 1; i < lines.length; i++) {
+            if (!lines[i].trim()) continue;
+            const vals = parseLine(lines[i]);
+            const row = {};
+            headers.forEach((h, idx) => row[h] = vals[idx] ? vals[idx].trim() : '');
+            const cid = row['Id'];
+            if (cid) {
+              const accessRaw = (row['Access'] || '').toUpperCase();
+              const accessLevel = accessRaw === 'TRUSTED' ? 'TRUSTED' :
+                                 (accessRaw === 'LIMITED' ? 'LIMITED' :
+                                 (accessRaw === 'BLOCKED' ? 'BLOCKED' :
+                                 (accessRaw.includes('SPECIFIC') ? 'SPECIFIC_DATA' : 'UNCONFIGURED')));
+              policyMap.set(cid, {
+                accessLevel,
+                orgUnitPath: row['Org Unit'] || '/',
+                isOverridden: row['Org Unit'] && row['Org Unit'] !== '/',
+                appName: row['App Name']
+              });
+            }
+          }
+
+          let matched = 0;
+          appData.forEach(app => {
+            for (const cid of (app.clientIds || [])) {
+              if (policyMap.has(cid)) {
+                matched++;
+                const p = policyMap.get(cid);
+                app.adminAccessLevel = p.accessLevel;
+                app.admin_access_level = p.accessLevel;
+                app.accessPolicy = {
+                  access_level: p.accessLevel,
+                  org_unit_path: p.orgUnitPath,
+                  is_overridden: p.isOverridden,
+                  domain_name: 'gafe.co.za'
+                };
+                break;
+              }
+            }
+          });
+
+          const trustedCount = appData.filter(a => (a.adminAccessLevel || a.admin_access_level) === 'TRUSTED').length;
+          document.getElementById('metric-trusted').innerText = trustedCount;
+          document.getElementById('baseline-policy-summary').innerText = `${policyMap.size} domain policies synchronized`;
+          document.getElementById('baseline-status-badge').innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Ground-Truth Active (${file.name})`;
+          
+          renderAppsTable();
+          closeSetupModal();
+          alert(`✓ Successfully loaded "${file.name}"!\nIngested ${policyMap.size} policies. ${trustedCount} applications marked as Trusted.`);
+        } catch (err) {
+          console.error('Error processing CSV:', err);
+          alert('Failed to parse CSV file: ' + err.message);
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text);
+      alert('Copied to clipboard: ' + text);
+    }
+
+    window.addEventListener('DOMContentLoaded', loadData);
+  </script>
+
+  <!-- Setup & Export Guide Modal -->
+  <div id="setup-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-700/80 rounded-2xl w-full max-w-3xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+      
+      <!-- Modal Header -->
+      <div class="p-6 border-b border-slate-800 flex items-start justify-between bg-slate-950/70">
+        <div class="flex items-center gap-3.5">
+          <div class="w-11 h-11 rounded-xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 shadow-inner">
+            <i data-lucide="file-spreadsheet" class="w-6 h-6 text-blue-400"></i>
+          </div>
+          <div>
+            <h2 class="text-lg font-bold text-white tracking-tight flex items-center gap-2">
+              App Access Control Baseline Setup
+              <span class="text-[11px] px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 font-semibold">Recommended</span>
+            </h2>
+            <p class="text-xs text-slate-400 mt-0.5">Establishing 100% Ground Truth for Third-Party Applications &amp; Delegated Access</p>
+          </div>
+        </div>
+        <button onclick="closeSetupModal()" class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 transition-colors">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Modal Body (Scrollable) -->
+      <div class="p-6 space-y-6 overflow-y-auto custom-scrollbar flex-1 text-xs">
+        
+        <!-- Context Alert: The 180-Day Retention Limitation -->
+        <div class="bg-amber-950/20 border border-amber-800/40 rounded-xl p-4 flex gap-3.5 items-start">
+          <div class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <i data-lucide="alert-triangle" class="w-4 h-4"></i>
+          </div>
+          <div class="space-y-1">
+            <div class="font-bold text-amber-300 text-sm">Why is this CSV export necessary?</div>
+            <p class="text-slate-300 leading-relaxed text-[11px]">
+              Google’s Directory API only returns applications with <strong class="text-white">currently active user tokens</strong>, and the Reports API automatically purges audit logs after <strong class="text-white">180 days</strong>. Furthermore, Google does not expose a public Admin SDK endpoint for the App Access Control table—meaning even automation tools like <strong class="text-white">GAM 7</strong> cannot query this data directly.
+            </p>
+            <p class="text-slate-400 leading-relaxed text-[11px]">
+              Exporting the list from the Google Admin Console provides the permanent domain baseline, allowing Admin Lens to discover dormant sanctioned apps, OU-level trust overrides, and restricted scopes that would otherwise be completely invisible.
+            </p>
+          </div>
+        </div>
+
+        <!-- 4-Step Walkthrough Guide -->
+        <div class="space-y-4">
+          <div class="text-xs uppercase font-bold text-slate-400 tracking-wider">Step-by-Step Export Instructions</div>
+
+          <!-- Step 1 -->
+          <div class="bg-slate-950/50 border border-slate-800 rounded-xl p-4 flex items-start gap-4">
+            <div class="w-7 h-7 rounded-full bg-blue-600/20 border border-blue-500/30 text-blue-400 flex items-center justify-center font-bold text-xs flex-shrink-0">1</div>
+            <div class="space-y-1 flex-1">
+              <div class="font-semibold text-slate-100 flex items-center justify-between">
+                <span>Navigate to App Access Control in Google Admin Console</span>
+                <a href="https://admin.google.com/ac/owl/list?tab=apps" target="_blank" class="inline-flex items-center gap-1 text-[11px] text-blue-400 hover:text-blue-300 hover:underline">
+                  Open Console ↗
+                </a>
+              </div>
+              <p class="text-slate-400 text-[11px]">
+                Sign in to <span class="text-slate-200 font-mono">admin.google.com</span> as Super Admin. In the left navigation, go to:
+                <br>
+                <span class="inline-block mt-1 font-mono text-[10px] bg-slate-900 px-2 py-0.5 rounded border border-slate-800 text-slate-300">
+                  Security &gt; Access and data control &gt; API controls &gt; App access control &gt; Apps tab
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="bg-slate-950/50 border border-slate-800 rounded-xl p-4 flex items-start gap-4">
+            <div class="w-7 h-7 rounded-full bg-blue-600/20 border border-blue-500/30 text-blue-400 flex items-center justify-center font-bold text-xs flex-shrink-0">2</div>
+            <div class="space-y-1 flex-1">
+              <div class="font-semibold text-slate-100">Download the Application List as CSV</div>
+              <p class="text-slate-400 text-[11px]">
+                In the upper right corner of the applications table, click the <strong class="text-slate-200">Download list</strong> icon (📥) and choose <strong class="text-emerald-400">Comma-separated values (.csv)</strong>.
+              </p>
+              <div class="text-[10px] text-slate-500 italic mt-0.5">
+                Google will generate a file containing App Name, Client IDs, Verification Status, Access (Trusted/Limited/Blocked), and Scope lists.
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="bg-slate-950/50 border border-slate-800 rounded-xl p-4 flex items-start gap-4">
+            <div class="w-7 h-7 rounded-full bg-blue-600/20 border border-blue-500/30 text-blue-400 flex items-center justify-center font-bold text-xs flex-shrink-0">3</div>
+            <div class="space-y-1 flex-1">
+              <div class="font-semibold text-slate-100">Import File into Admin Lens</div>
+              <p class="text-slate-400 text-[11px]">
+                Save the exported file as <span class="text-slate-200 font-mono">owl_apps.csv</span> in your Admin Lens project folder, or simply drag and drop the CSV into the upload area below.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Interactive Drag & Drop Upload Zone -->
+        <div 
+          ondragover="event.preventDefault(); this.classList.add('border-blue-500');" 
+          ondragleave="this.classList.remove('border-blue-500');" 
+          ondrop="handleDropCsv(event)"
+          class="border-2 border-dashed border-slate-700 hover:border-blue-500/60 rounded-xl p-6 bg-slate-950/30 text-center transition-colors cursor-pointer group"
+          onclick="document.getElementById('modal-csv-input').click()"
+        >
+          <div class="w-12 h-12 mx-auto rounded-full bg-blue-600/10 text-blue-400 flex items-center justify-center group-hover:scale-105 transition-transform mb-2">
+            <i data-lucide="upload-cloud" class="w-6 h-6"></i>
+          </div>
+          <div class="font-bold text-slate-200 text-sm">Drop your Google Admin CSV export here</div>
+          <p class="text-slate-500 text-[11px] mt-1">or click to browse your computer (<span class="font-mono text-slate-400">owl_apps.csv</span>)</p>
+          <input type="file" id="modal-csv-input" accept=".csv" class="hidden" onchange="handleHtmlCsvUpload(event)">
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="p-4 border-t border-slate-800 bg-slate-950/70 flex justify-between items-center">
+        <div class="text-[11px] text-slate-500">
+          Current Baseline: <span class="text-emerald-400 font-mono font-medium">owl_apps.csv loaded</span>
+        </div>
+        <button onclick="closeSetupModal()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg text-xs font-semibold transition-colors">
+          Dismiss
+        </button>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

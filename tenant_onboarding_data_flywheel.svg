@@ -1,0 +1,1 @@
+<svg xmlns="http://www.w3.org/2000/svg"';for(var u in this.attributes)Object.prototype.hasOwnProperty.call(this.attributes,u)&&(s+=" "+u+"='"+this.attributes[u]+"'");s+=">";for(var d=0;d<this.children.length;d++)s+=this.children[d].toMarkup();return s+="</svg>

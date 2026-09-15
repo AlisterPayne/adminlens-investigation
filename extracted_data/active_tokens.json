@@ -1,0 +1,4321 @@
+[
+  {
+    "userEmail": "abm_mdm@winstore.co.za",
+    "userId": "104435600379044401911",
+    "userOrgUnit": "/CloudEDU Technical/Dev/apple mdm",
+    "isUserAdmin": false,
+    "clientId": "936475272427.apps.googleusercontent.com",
+    "displayText": "iOS Account Manager",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/06cFMmk2bA3EgwjwHa-Ws4VGegA\""
+  },
+  {
+    "userEmail": "ackbar@gafe.co.za",
+    "userId": "109063064967270932458",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/eMnkeVA5ilRpzISUXRAWP5Afs6U\""
+  },
+  {
+    "userEmail": "ackbar@gafe.co.za",
+    "userId": "109063064967270932458",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "779010036194-lf6spugv22vvj41pqjdj4d8k2tq7o5fd.apps.googleusercontent.com",
+    "displayText": "Canva",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/lW-gNqM45YwsxELtNFi7fa14dj8\""
+  },
+  {
+    "userEmail": "ackbar@gafe.co.za",
+    "userId": "109063064967270932458",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/Lt1s29tL_4nTiT1PXwCPPTTb2Ss\""
+  },
+  {
+    "userEmail": "adaobi@gafe.co.za",
+    "userId": "104606809944181351292",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/ND3m073qE3cEK8uQ_XBROjnS3tk\""
+  },
+  {
+    "userEmail": "adaobi@gafe.co.za",
+    "userId": "104606809944181351292",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": false,
+    "clientId": "961782772109-gr6rmo3pe7iibrmjifhhar5iu2mjin9r.apps.googleusercontent.com",
+    "displayText": "Lusha",
+    "scopes": [
+      "https://www.googleapis.com/auth/calendar.events",
+      "https://www.googleapis.com/auth/gmail.readonly",
+      "https://www.googleapis.com/auth/contacts.other.readonly",
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/contacts.readonly",
+      "https://www.googleapis.com/auth/gmail.send",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.googleapis.com/auth/directory.readonly"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/RBQkDJcpo_98zaLgbKznrPRmwDU\""
+  },
+  {
+    "userEmail": "alister@gafe.co.za",
+    "userId": "102305463948441239613",
+    "userOrgUnit": "/CloudEDU Technical",
+    "isUserAdmin": true,
+    "clientId": "417521716396-sr8h84pflr3sro5i53r66hi76rco6bug.apps.googleusercontent.com",
+    "displayText": "Untitled project",
+    "scopes": [
+      "https://www.googleapis.com/auth/spreadsheets",
+      "https://www.googleapis.com/auth/admin.reports.audit.readonly"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/Gp4BXMKgkMVhY5i8FSnB_15oKE8\""
+  },
+  {
+    "userEmail": "alister@gafe.co.za",
+    "userId": "102305463948441239613",
+    "userOrgUnit": "/CloudEDU Technical",
+    "isUserAdmin": true,
+    "clientId": "539614054292-v48fp11ou2nrhh7lb47qgqq4k5d1fd8u.apps.googleusercontent.com",
+    "displayText": "adminlens.io",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/B-w_7dVbErxLOxJBmI9uKoBRoj8\""
+  },
+  {
+    "userEmail": "alister@gafe.co.za",
+    "userId": "102305463948441239613",
+    "userOrgUnit": "/CloudEDU Technical",
+    "isUserAdmin": true,
+    "clientId": "382288895817-ktepnf9i7mmnpgcv1vhjqucrldsgutnd.apps.googleusercontent.com",
+    "displayText": "alister@gafe.co.za's Apps",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/b3z-3VHDDlOyUv2eZthaXqvFFNg\""
+  },
+  {
+    "userEmail": "alister@gafe.co.za",
+    "userId": "102305463948441239613",
+    "userOrgUnit": "/CloudEDU Technical",
+    "isUserAdmin": true,
+    "clientId": "947318989803-6bn6qk8qdgf4n4g3pfee6491hc0brc4i.apps.googleusercontent.com",
+    "displayText": "Google Drive for desktop",
+    "scopes": [
+      "https://www.googleapis.com/auth/flexible-api"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/cAOiOFoVZk-cNujunG0TsBoILNk\""
+  },
+  {
+    "userEmail": "alister@gafe.co.za",
+    "userId": "102305463948441239613",
+    "userOrgUnit": "/CloudEDU Technical",
+    "isUserAdmin": true,
+    "clientId": "892359244178-5umuheruf74ttkti2115q78gkei82s0s.apps.googleusercontent.com",
+    "displayText": "Untitled project",
+    "scopes": [
+      "https://www.googleapis.com/auth/spreadsheets",
+      "https://www.googleapis.com/auth/admin.reports.audit.readonly"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/rCt-iUb6ewrFfguV62wkp5-gXGc\""
+  },
+  {
+    "userEmail": "alister@gafe.co.za",
+    "userId": "102305463948441239613",
+    "userOrgUnit": "/CloudEDU Technical",
+    "isUserAdmin": true,
+    "clientId": "476257776955-t129f3c8h8tgq60g7rp4cmganf4n7dn7.apps.googleusercontent.com",
+    "displayText": "dev.adminlens.io",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/mLugRQOTCbQNBE0NY2aqcOh7hZg\""
+  },
+  {
+    "userEmail": "alister@gafe.co.za",
+    "userId": "102305463948441239613",
+    "userOrgUnit": "/CloudEDU Technical",
+    "isUserAdmin": true,
+    "clientId": "779010036194-lf6spugv22vvj41pqjdj4d8k2tq7o5fd.apps.googleusercontent.com",
+    "displayText": "Canva",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/Cj6_sG1mmTpf32xs0H6Mfd73HKY\""
+  },
+  {
+    "userEmail": "alister@gafe.co.za",
+    "userId": "102305463948441239613",
+    "userOrgUnit": "/CloudEDU Technical",
+    "isUserAdmin": true,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/Uey1kI2sHNDjzfDsn79xWDWwInY\""
+  },
+  {
+    "userEmail": "alister@gafe.co.za",
+    "userId": "102305463948441239613",
+    "userOrgUnit": "/CloudEDU Technical",
+    "isUserAdmin": true,
+    "clientId": "98765955635-75tqcmksqbd6hb2ekmfp06guektk4odm.apps.googleusercontent.com",
+    "displayText": "98765955635-75tqcmksqbd6hb2ekmfp06guektk4odm.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/LyhLu3tZLf8MHpyH-_J9hPFLecg\""
+  },
+  {
+    "userEmail": "alister@gafe.co.za",
+    "userId": "102305463948441239613",
+    "userOrgUnit": "/CloudEDU Technical",
+    "isUserAdmin": true,
+    "clientId": "172700529642-48obmiqhk5joviftkt87d0po0bnbunbu.apps.googleusercontent.com",
+    "displayText": "project-172700529642",
+    "scopes": [
+      "https://www.googleapis.com/auth/user.organization.read",
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "https://www.googleapis.com/auth/admin.directory.group.readonly",
+      "https://www.googleapis.com/auth/gmail.settings.basic",
+      "openid",
+      "https://www.googleapis.com/auth/admin.directory.orgunit.readonly",
+      "https://www.googleapis.com/auth/user.phonenumbers.read",
+      "https://www.googleapis.com/auth/admin.directory.user.readonly"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/nwss0FjMuWWXdz9ZP7O6sABQzjg\""
+  },
+  {
+    "userEmail": "alister@gafe.co.za",
+    "userId": "102305463948441239613",
+    "userOrgUnit": "/CloudEDU Technical",
+    "isUserAdmin": true,
+    "clientId": "392340392943-70qd4bepckt70f50s169tj5ms16cflfk.apps.googleusercontent.com",
+    "displayText": "Chrome Readiness Assessment",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/n1mObE7K3Leeplx3vzw8Qc212Z0\""
+  },
+  {
+    "userEmail": "alister@gafe.co.za",
+    "userId": "102305463948441239613",
+    "userOrgUnit": "/CloudEDU Technical",
+    "isUserAdmin": true,
+    "clientId": "526554529059-emb2o69t2ri25uicvjkj444o71sku29p.apps.googleusercontent.com",
+    "displayText": "526554529059-emb2o69t2ri25uicvjkj444o71sku29p.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/calendar.events",
+      "https://www.googleapis.com/auth/gmail.readonly",
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/contacts.readonly",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "https://www.googleapis.com/auth/gmail.send",
+      "openid",
+      "https://www.googleapis.com/auth/drive.file",
+      "https://www.googleapis.com/auth/calendar.readonly",
+      "https://www.googleapis.com/auth/drive.appfolder",
+      "https://www.googleapis.com/auth/drive",
+      "https://www.googleapis.com/auth/gmail.modify"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/FUxk3aFZmnwIPwslvB2f854G34g\""
+  },
+  {
+    "userEmail": "alister@gafe.co.za",
+    "userId": "102305463948441239613",
+    "userOrgUnit": "/CloudEDU Technical",
+    "isUserAdmin": true,
+    "clientId": "74140984847-ev97f2i1adth1ivc40prputvbv8auunq.apps.googleusercontent.com",
+    "displayText": "Untitled project",
+    "scopes": [
+      "https://www.googleapis.com/auth/spreadsheets",
+      "https://www.googleapis.com/auth/admin.directory.user.readonly"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/_s1DR0d2jG8yQGOdZipXxFG3APw\""
+  },
+  {
+    "userEmail": "alister@gafe.co.za",
+    "userId": "102305463948441239613",
+    "userOrgUnit": "/CloudEDU Technical",
+    "isUserAdmin": true,
+    "clientId": "821073268825-uj405qcuu2pbpq5ab05rsupc98ldq2ou.apps.googleusercontent.com",
+    "displayText": "Apple Business Manager",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.googleapis.com/auth/admin.directory.domain.readonly",
+      "https://www.googleapis.com/auth/admin.reports.audit.readonly",
+      "https://www.googleapis.com/auth/admin.directory.user.readonly"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/xepeuTxQ87K508rDkhb7YtROk_o\""
+  },
+  {
+    "userEmail": "alister@gafe.co.za",
+    "userId": "102305463948441239613",
+    "userOrgUnit": "/CloudEDU Technical",
+    "isUserAdmin": true,
+    "clientId": "297408095146-fug707qsjv4ikron0hugpevbrjhkmsk7.apps.googleusercontent.com",
+    "displayText": "GAM Project Creation",
+    "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/KUG6qNXsV-7LULbjxJdc-ruVedo\""
+  },
+  {
+    "userEmail": "alister@gafe.co.za",
+    "userId": "102305463948441239613",
+    "userOrgUnit": "/CloudEDU Technical",
+    "isUserAdmin": true,
+    "clientId": "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
+    "displayText": "Gemini for Workspace Studio",
+    "scopes": [
+      "https://www.googleapis.com/auth/documents",
+      "https://www.googleapis.com/auth/spreadsheets",
+      "https://www.googleapis.com/auth/apps_genai",
+      "https://www.googleapis.com/auth/drive"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/DEHhnIxba4CmVc7afwdQWXRGeJY\""
+  },
+  {
+    "userEmail": "alister@gafe.co.za",
+    "userId": "102305463948441239613",
+    "userOrgUnit": "/CloudEDU Technical",
+    "isUserAdmin": true,
+    "clientId": "823511539352-ojaretejk1s95sdvkic0te923pt7knpu.apps.googleusercontent.com",
+    "displayText": "Google AI Studio",
+    "scopes": [
+      "https://www.googleapis.com/auth/drive.install",
+      "https://www.googleapis.com/auth/drive"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/aDUiL5fPilPQfx9B0Hnp7KchQk4\""
+  },
+  {
+    "userEmail": "alister@gafe.co.za",
+    "userId": "102305463948441239613",
+    "userOrgUnit": "/CloudEDU Technical",
+    "isUserAdmin": true,
+    "clientId": "807481657183-jdmu3o6ahn0m8efks7nrghqpe4mpst3g.apps.googleusercontent.com",
+    "displayText": "Untitled project",
+    "scopes": [
+      "https://www.googleapis.com/auth/spreadsheets",
+      "https://www.googleapis.com/auth/drive.readonly"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/QUUqzilGsVkEKcWUQGnS-09xfg4\""
+  },
+  {
+    "userEmail": "alister@gafe.co.za",
+    "userId": "102305463948441239613",
+    "userOrgUnit": "/CloudEDU Technical",
+    "isUserAdmin": true,
+    "clientId": "696916210722-n0mvdqjq01ebg21eeaeraggm9vb0jbr6.apps.googleusercontent.com",
+    "displayText": "GA7-demo2",
+    "scopes": [
+      "https://www.googleapis.com/auth/classroom.topics",
+      "https://www.googleapis.com/auth/admin.directory.orgunit",
+      "https://www.googleapis.com/auth/apps.groups.settings",
+      "https://www.googleapis.com/auth/classroom.courseworkmaterials",
+      "https://www.googleapis.com/auth/admin.directory.userschema",
+      "https://www.googleapis.com/auth/admin.directory.device.chromeos",
+      "https://www.googleapis.com/auth/admin.contact.delegation",
+      "https://www.googleapis.com/auth/admin.directory.device.chromebrowsers",
+      "https://www.googleapis.com/auth/chrome.management.telemetry.readonly",
+      "https://www.googleapis.com/auth/cloud-identity.groups",
+      "https://www.googleapis.com/auth/classroom.coursework.students",
+      "https://www.googleapis.com/auth/contacts",
+      "https://www.google.com/m8/feeds",
+      "https://www.googleapis.com/auth/admin.directory.device.mobile",
+      "https://www.googleapis.com/auth/admin.chrome.printers",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "https://www.googleapis.com/auth/chrome.management.appdetails.readonly",
+      "https://www.googleapis.com/auth/apps.groups.migration",
+      "https://www.googleapis.com/auth/classroom.announcements",
+      "https://www.googleapis.com/auth/cloud-identity.userinvitations",
+      "https://www.googleapis.com/auth/ediscovery",
+      "https://www.googleapis.com/auth/admin.directory.user.security",
+      "https://www.googleapis.com/auth/admin.reports.audit.readonly",
+      "https://www.googleapis.com/auth/admin.directory.user",
+      "https://www.googleapis.com/auth/admin.directory.group",
+      "https://www.googleapis.com/auth/chrome.management.reports.readonly",
+      "https://www.googleapis.com/auth/apps.licensing",
+      "https://www.googleapis.com/auth/classroom.courses",
+      "https://www.googleapis.com/auth/chrome.management.profiles",
+      "openid",
+      "https://www.googleapis.com/auth/admin.directory.domain",
+      "https://www.googleapis.com/auth/chrome.management.policy",
+      "https://www.googleapis.com/auth/cloud-identity.policies.readonly",
+      "https://www.googleapis.com/auth/directory.readonly",
+      "https://www.googleapis.com/auth/admin.directory.rolemanagement",
+      "https://www.googleapis.com/auth/admin.directory.resource.calendar",
+      "https://www.googleapis.com/auth/classroom.rosters",
+      "https://www.googleapis.com/auth/cloud-identity.inboundsso",
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/classroom.profile.emails",
+      "https://www.googleapis.com/auth/classroom.guardianlinks.students",
+      "https://www.googleapis.com/auth/calendar",
+      "https://www.googleapis.com/auth/classroom.profile.photos",
+      "https://www.googleapis.com/auth/admin.datatransfer",
+      "https://www.googleapis.com/auth/admin.directory.customer",
+      "https://www.googleapis.com/auth/admin.reports.usage.readonly",
+      "https://www.googleapis.com/auth/cloud-identity.orgunits"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/GJNsC4VoEQpf71X2GlKNCaoqDnk\""
+  },
+  {
+    "userEmail": "alister@gafe.co.za",
+    "userId": "102305463948441239613",
+    "userOrgUnit": "/CloudEDU Technical",
+    "isUserAdmin": true,
+    "clientId": "1051074958188-u3h5tcv96sm52jubv7cqnp1squird12f.apps.googleusercontent.com",
+    "displayText": "project-1051074958188",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/fwneAIu6atbLc2nc_bUwnvCIQSI\""
+  },
+  {
+    "userEmail": "alister@gafe.co.za",
+    "userId": "102305463948441239613",
+    "userOrgUnit": "/CloudEDU Technical",
+    "isUserAdmin": true,
+    "clientId": "871655740233-iad5enbpe9r7o18h2ajle4vdd51vhflp.apps.googleusercontent.com",
+    "displayText": "Chromebook Getter",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/admin.directory.orgunit",
+      "https://www.googleapis.com/auth/script.external_request",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "https://www.googleapis.com/auth/spreadsheets",
+      "https://www.googleapis.com/auth/script.container.ui",
+      "openid",
+      "https://www.googleapis.com/auth/admin.directory.user",
+      "https://www.googleapis.com/auth/admin.directory.device.chromeos",
+      "https://www.googleapis.com/auth/spreadsheets.currentonly"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/V6HK0wvn2w-egQ6pEH84PE28xGg\""
+  },
+  {
+    "userEmail": "alister@gafe.co.za",
+    "userId": "102305463948441239613",
+    "userOrgUnit": "/CloudEDU Technical",
+    "isUserAdmin": true,
+    "clientId": "458969862783-1smfdj4v8qbnibgarka1a99400lhsa13.apps.googleusercontent.com",
+    "displayText": "GAM",
+    "scopes": [
+      "https://www.googleapis.com/auth/classroom.topics",
+      "https://www.googleapis.com/auth/admin.directory.orgunit",
+      "https://www.googleapis.com/auth/apps.groups.settings",
+      "https://www.googleapis.com/auth/classroom.courseworkmaterials",
+      "https://www.googleapis.com/auth/admin.directory.userschema",
+      "https://www.googleapis.com/auth/admin.directory.device.chromeos",
+      "https://www.googleapis.com/auth/admin.contact.delegation",
+      "https://www.googleapis.com/auth/admin.directory.device.chromebrowsers",
+      "https://www.googleapis.com/auth/chrome.management.telemetry.readonly",
+      "https://www.googleapis.com/auth/cloud-identity.groups",
+      "https://www.googleapis.com/auth/classroom.coursework.students",
+      "https://www.googleapis.com/auth/contacts",
+      "https://www.google.com/m8/feeds",
+      "https://www.googleapis.com/auth/admin.directory.device.mobile",
+      "https://www.googleapis.com/auth/admin.chrome.printers",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "https://www.googleapis.com/auth/chrome.management.appdetails.readonly",
+      "https://www.googleapis.com/auth/apps.groups.migration",
+      "https://www.googleapis.com/auth/classroom.announcements",
+      "https://www.googleapis.com/auth/cloud-identity.userinvitations",
+      "https://www.googleapis.com/auth/ediscovery",
+      "https://www.googleapis.com/auth/admin.directory.user.security",
+      "https://www.googleapis.com/auth/admin.reports.audit.readonly",
+      "https://www.googleapis.com/auth/admin.directory.user",
+      "https://www.googleapis.com/auth/admin.directory.group",
+      "https://www.googleapis.com/auth/chrome.management.reports.readonly",
+      "https://www.googleapis.com/auth/apps.licensing",
+      "https://www.googleapis.com/auth/classroom.courses",
+      "https://www.googleapis.com/auth/chrome.management.profiles",
+      "openid",
+      "https://www.googleapis.com/auth/admin.directory.domain",
+      "https://www.googleapis.com/auth/chrome.management.policy",
+      "https://www.googleapis.com/auth/cloud-identity.policies.readonly",
+      "https://www.googleapis.com/auth/directory.readonly",
+      "https://www.googleapis.com/auth/admin.directory.rolemanagement",
+      "https://www.googleapis.com/auth/admin.directory.resource.calendar",
+      "https://www.googleapis.com/auth/classroom.rosters",
+      "https://www.googleapis.com/auth/cloud-identity.inboundsso",
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/classroom.profile.emails",
+      "https://www.googleapis.com/auth/classroom.guardianlinks.students",
+      "https://www.googleapis.com/auth/calendar",
+      "https://www.googleapis.com/auth/classroom.profile.photos",
+      "https://www.googleapis.com/auth/admin.datatransfer",
+      "https://www.googleapis.com/auth/admin.directory.customer",
+      "https://www.googleapis.com/auth/admin.reports.usage.readonly",
+      "https://www.googleapis.com/auth/cloud-identity.orgunits"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/bP9PV3pI7yuUNN0ZR7zrLBLeCKc\""
+  },
+  {
+    "userEmail": "alister@gafe.co.za",
+    "userId": "102305463948441239613",
+    "userOrgUnit": "/CloudEDU Technical",
+    "isUserAdmin": true,
+    "clientId": "72867247940-n969jo6c29qg22m8sodb2hftn6dck1mk.apps.googleusercontent.com",
+    "displayText": "GAM7-demo",
+    "scopes": [
+      "https://www.googleapis.com/auth/classroom.topics",
+      "https://www.googleapis.com/auth/admin.directory.orgunit",
+      "https://www.googleapis.com/auth/apps.groups.settings",
+      "https://www.googleapis.com/auth/classroom.courseworkmaterials",
+      "https://www.googleapis.com/auth/admin.directory.userschema",
+      "https://www.googleapis.com/auth/admin.directory.device.chromeos",
+      "https://www.googleapis.com/auth/admin.contact.delegation",
+      "https://www.googleapis.com/auth/admin.directory.device.chromebrowsers",
+      "https://www.googleapis.com/auth/chrome.management.telemetry.readonly",
+      "https://www.googleapis.com/auth/cloud-identity.groups",
+      "https://www.googleapis.com/auth/classroom.coursework.students",
+      "https://www.googleapis.com/auth/contacts",
+      "https://www.google.com/m8/feeds",
+      "https://www.googleapis.com/auth/admin.directory.device.mobile",
+      "https://www.googleapis.com/auth/admin.chrome.printers",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "https://www.googleapis.com/auth/chrome.management.appdetails.readonly",
+      "https://www.googleapis.com/auth/apps.groups.migration",
+      "https://www.googleapis.com/auth/classroom.announcements",
+      "https://www.googleapis.com/auth/cloud-identity.userinvitations",
+      "https://www.googleapis.com/auth/ediscovery",
+      "https://www.googleapis.com/auth/admin.directory.user.security",
+      "https://www.googleapis.com/auth/admin.reports.audit.readonly",
+      "https://www.googleapis.com/auth/admin.directory.user",
+      "https://www.googleapis.com/auth/admin.directory.group",
+      "https://www.googleapis.com/auth/chrome.management.reports.readonly",
+      "https://www.googleapis.com/auth/apps.licensing",
+      "https://www.googleapis.com/auth/classroom.courses",
+      "https://www.googleapis.com/auth/chrome.management.profiles",
+      "openid",
+      "https://www.googleapis.com/auth/admin.directory.domain",
+      "https://www.googleapis.com/auth/chrome.management.policy",
+      "https://www.googleapis.com/auth/cloud-identity.policies.readonly",
+      "https://www.googleapis.com/auth/directory.readonly",
+      "https://www.googleapis.com/auth/admin.directory.rolemanagement",
+      "https://www.googleapis.com/auth/admin.directory.resource.calendar",
+      "https://www.googleapis.com/auth/classroom.rosters",
+      "https://www.googleapis.com/auth/cloud-identity.inboundsso",
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/classroom.profile.emails",
+      "https://www.googleapis.com/auth/classroom.guardianlinks.students",
+      "https://www.googleapis.com/auth/calendar",
+      "https://www.googleapis.com/auth/classroom.profile.photos",
+      "https://www.googleapis.com/auth/admin.datatransfer",
+      "https://www.googleapis.com/auth/admin.directory.customer",
+      "https://www.googleapis.com/auth/admin.reports.usage.readonly",
+      "https://www.googleapis.com/auth/cloud-identity.orgunits"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/-tBgz296gM7XRAORT9h6r1h9hLE\""
+  },
+  {
+    "userEmail": "alister@gafe.co.za",
+    "userId": "102305463948441239613",
+    "userOrgUnit": "/CloudEDU Technical",
+    "isUserAdmin": true,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/MSog-89EATkF4inhcW-s_d1iTzY\""
+  },
+  {
+    "userEmail": "alister@gafe.co.za",
+    "userId": "102305463948441239613",
+    "userOrgUnit": "/CloudEDU Technical",
+    "isUserAdmin": true,
+    "clientId": "526554529059-bpm1k15t6a60h9u79tjhmpnutblkmalu.apps.googleusercontent.com",
+    "displayText": "gemini-enterprise",
+    "scopes": [
+      "https://www.googleapis.com/auth/calendar.events",
+      "https://www.googleapis.com/auth/gmail.readonly",
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/contacts.readonly",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "https://www.googleapis.com/auth/gmail.send",
+      "openid",
+      "https://www.googleapis.com/auth/drive.file",
+      "https://www.googleapis.com/auth/calendar.readonly",
+      "https://www.googleapis.com/auth/drive.appfolder",
+      "https://www.googleapis.com/auth/gmail.modify",
+      "https://www.googleapis.com/auth/drive"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/POptGg7glfICTBemuGQqav_2-oE\""
+  },
+  {
+    "userEmail": "alister@gafe.co.za",
+    "userId": "102305463948441239613",
+    "userOrgUnit": "/CloudEDU Technical",
+    "isUserAdmin": true,
+    "clientId": "521549528509-f17hlgjd91nbi5sooc73ia3d4dqln10s.apps.googleusercontent.com",
+    "displayText": "GAM7-CGP-Training",
+    "scopes": [
+      "https://www.googleapis.com/auth/classroom.topics",
+      "https://www.googleapis.com/auth/admin.directory.orgunit",
+      "https://www.googleapis.com/auth/apps.groups.settings",
+      "https://www.googleapis.com/auth/classroom.courseworkmaterials",
+      "https://www.googleapis.com/auth/admin.directory.userschema",
+      "https://www.googleapis.com/auth/admin.directory.device.chromeos",
+      "https://www.googleapis.com/auth/admin.contact.delegation",
+      "https://www.googleapis.com/auth/admin.directory.device.chromebrowsers",
+      "https://www.googleapis.com/auth/chrome.management.telemetry.readonly",
+      "https://www.googleapis.com/auth/cloud-identity.groups",
+      "https://www.googleapis.com/auth/classroom.coursework.students",
+      "https://www.googleapis.com/auth/contacts",
+      "https://www.google.com/m8/feeds",
+      "https://www.googleapis.com/auth/admin.directory.device.mobile",
+      "https://www.googleapis.com/auth/admin.chrome.printers",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "https://www.googleapis.com/auth/chrome.management.appdetails.readonly",
+      "https://www.googleapis.com/auth/apps.groups.migration",
+      "https://www.googleapis.com/auth/classroom.announcements",
+      "https://www.googleapis.com/auth/cloud-identity.userinvitations",
+      "https://www.googleapis.com/auth/ediscovery",
+      "https://www.googleapis.com/auth/admin.directory.user.security",
+      "https://www.googleapis.com/auth/admin.reports.audit.readonly",
+      "https://www.googleapis.com/auth/admin.directory.user",
+      "https://www.googleapis.com/auth/admin.directory.group",
+      "https://www.googleapis.com/auth/chrome.management.reports.readonly",
+      "https://www.googleapis.com/auth/apps.licensing",
+      "https://www.googleapis.com/auth/classroom.courses",
+      "https://www.googleapis.com/auth/chrome.management.profiles",
+      "openid",
+      "https://www.googleapis.com/auth/admin.directory.domain",
+      "https://www.googleapis.com/auth/chrome.management.policy",
+      "https://www.googleapis.com/auth/cloud-identity.policies.readonly",
+      "https://www.googleapis.com/auth/directory.readonly",
+      "https://www.googleapis.com/auth/admin.directory.rolemanagement",
+      "https://www.googleapis.com/auth/admin.directory.resource.calendar",
+      "https://www.googleapis.com/auth/classroom.rosters",
+      "https://www.googleapis.com/auth/cloud-identity.inboundsso",
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/classroom.profile.emails",
+      "https://www.googleapis.com/auth/classroom.guardianlinks.students",
+      "https://www.googleapis.com/auth/calendar",
+      "https://www.googleapis.com/auth/classroom.profile.photos",
+      "https://www.googleapis.com/auth/admin.datatransfer",
+      "https://www.googleapis.com/auth/admin.directory.customer",
+      "https://www.googleapis.com/auth/admin.reports.usage.readonly",
+      "https://www.googleapis.com/auth/cloud-identity.orgunits"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/WK72fby1r-piGXsPVZmbdNZvEJ0\""
+  },
+  {
+    "userEmail": "alister@gafe.co.za",
+    "userId": "102305463948441239613",
+    "userOrgUnit": "/CloudEDU Technical",
+    "isUserAdmin": true,
+    "clientId": "97402216672-ho80qpeolqdr24nltc29n6krpebk9ss3.apps.googleusercontent.com",
+    "displayText": "Untitled project",
+    "scopes": [
+      "https://www.googleapis.com/auth/classroom.rosters",
+      "https://www.googleapis.com/auth/classroom.courses",
+      "https://www.googleapis.com/auth/classroom.profile.emails",
+      "https://www.googleapis.com/auth/spreadsheets",
+      "https://www.googleapis.com/auth/classroom.profile.photos"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/hAjOtAedGn29TmsTh4HUpxxksME\""
+  },
+  {
+    "userEmail": "alister@gafe.co.za",
+    "userId": "102305463948441239613",
+    "userOrgUnit": "/CloudEDU Technical",
+    "isUserAdmin": true,
+    "clientId": "705539309036-4ej1ri9jplb9a4791jsppcchjbvk74fp.apps.googleusercontent.com",
+    "displayText": "Untitled project",
+    "scopes": [
+      "https://www.googleapis.com/auth/spreadsheets",
+      "https://www.googleapis.com/auth/admin.reports.audit.readonly"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/jo0oj5dJJk8PcYTS1awArhCTfr8\""
+  },
+  {
+    "userEmail": "androidmdm@gafe.co.za",
+    "userId": "103207223531869234909",
+    "userOrgUnit": "/Devices",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/d0Ccjer7OdYZ6RSR7YCdqkuesHw\""
+  },
+  {
+    "userEmail": "applemdm@gafe.co.za",
+    "userId": "113680142019416023520",
+    "userOrgUnit": "/Jacaranda Academy/Students/Senior Phase",
+    "isUserAdmin": false,
+    "clientId": "936475272427.apps.googleusercontent.com",
+    "displayText": "iOS Account Manager",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/-o1aMilR0_WjgxDOz3HOiNtEakY\""
+  },
+  {
+    "userEmail": "artem@gafe.co.za",
+    "userId": "111033113571873118569",
+    "userOrgUnit": "/",
+    "isUserAdmin": true,
+    "clientId": "539614054292-v48fp11ou2nrhh7lb47qgqq4k5d1fd8u.apps.googleusercontent.com",
+    "displayText": "adminlens.io",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/PpZvjtiQ1mQF77iACDf5oqThmzo\""
+  },
+  {
+    "userEmail": "artem@gafe.co.za",
+    "userId": "111033113571873118569",
+    "userOrgUnit": "/",
+    "isUserAdmin": true,
+    "clientId": "476257776955-t129f3c8h8tgq60g7rp4cmganf4n7dn7.apps.googleusercontent.com",
+    "displayText": "dev.adminlens.io",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/AjoZEaiaBl3Rs441AOnN8RS28sI\""
+  },
+  {
+    "userEmail": "artem@gafe.co.za",
+    "userId": "111033113571873118569",
+    "userOrgUnit": "/",
+    "isUserAdmin": true,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/CgyV86gKbyLy-zh9wW3ANnk7Zgs\""
+  },
+  {
+    "userEmail": "askywalker@gafe.co.za",
+    "userId": "114920839580619063190",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "936475272427.apps.googleusercontent.com",
+    "displayText": "iOS Account Manager",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/3j--IZkRW0HzZ95RaCIfvByDPo4\""
+  },
+  {
+    "userEmail": "askywalker@gafe.co.za",
+    "userId": "114920839580619063190",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/3nGqS81tkqZ9RfCAcs-f8iqG9xo\""
+  },
+  {
+    "userEmail": "askywalker@gafe.co.za",
+    "userId": "114920839580619063190",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "779010036194-lf6spugv22vvj41pqjdj4d8k2tq7o5fd.apps.googleusercontent.com",
+    "displayText": "Canva",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/D8TvVrx229rBsbYqO47sfAnCFYA\""
+  },
+  {
+    "userEmail": "askywalker@gafe.co.za",
+    "userId": "114920839580619063190",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/rSOxm6lBFNXjLydQK02o6GA8b9E\""
+  },
+  {
+    "userEmail": "azelinskova7259@gafe.co.za",
+    "userId": "104709671941401232070",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/No license",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/xOO0Xkgzflzx6mymoHT9aStXPA0\""
+  },
+  {
+    "userEmail": "babbot9232@gafe.co.za",
+    "userId": "112132910252868734635",
+    "userOrgUnit": "/Jacaranda Academy/Students",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/i2wOnpLHeGNx212NUQ7afGVdC88\""
+  },
+  {
+    "userEmail": "billaba@gafe.co.za",
+    "userId": "103384962604831793808",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/vFrS7tC39T2dukAJd1MfEhLI0Z8\""
+  },
+  {
+    "userEmail": "billaba@gafe.co.za",
+    "userId": "103384962604831793808",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/KxwtoUsNHejHtUNOR985EeTfP4E\""
+  },
+  {
+    "userEmail": "binks@gafe.co.za",
+    "userId": "115646521610449850163",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/iCYEki22FKyfyfkHNerd3knMuWE\""
+  },
+  {
+    "userEmail": "binks@gafe.co.za",
+    "userId": "115646521610449850163",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/uEHpEqz8InYA0h86JKx6H7_m73U\""
+  },
+  {
+    "userEmail": "bliss@gafe.co.za",
+    "userId": "114688689448641417529",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training",
+    "isUserAdmin": false,
+    "clientId": "779010036194-lf6spugv22vvj41pqjdj4d8k2tq7o5fd.apps.googleusercontent.com",
+    "displayText": "Canva",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/cS8QHGCZ_kheTpQNSjuGfIDGgWc\""
+  },
+  {
+    "userEmail": "c3p0@gafe.co.za",
+    "userId": "113518919542482923459",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/bL9j_DhWMMOAGCom07K8aAonmps\""
+  },
+  {
+    "userEmail": "c3p0@gafe.co.za",
+    "userId": "113518919542482923459",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/PYlahPqmlff0M0IWI3iUky79izI\""
+  },
+  {
+    "userEmail": "calrissian@gafe.co.za",
+    "userId": "115283134611160700590",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/4G-u79brCtMDlBLkjWzrCs4E4is\""
+  },
+  {
+    "userEmail": "calrissian@gafe.co.za",
+    "userId": "115283134611160700590",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/of9Cq6goyFWAIaq7TNujyv8Jp8Q\""
+  },
+  {
+    "userEmail": "cameyo@gafe.co.za",
+    "userId": "103416915522411762101",
+    "userOrgUnit": "/CloudEDU Technical/Cameyo_development",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/g60bq4T2Wq9p0P4ACTYnaiJ2A28\""
+  },
+  {
+    "userEmail": "cheri@gafe.co.za",
+    "userId": "109448364429284019387",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/OU_I2kSpYIpcgRi_OK9crz0_HYA\""
+  },
+  {
+    "userEmail": "cheri@gafe.co.za",
+    "userId": "109448364429284019387",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": false,
+    "clientId": "961782772109-gr6rmo3pe7iibrmjifhhar5iu2mjin9r.apps.googleusercontent.com",
+    "displayText": "Lusha",
+    "scopes": [
+      "https://www.googleapis.com/auth/contacts.other.readonly",
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/TKfx-etFN7Oc9cV87TUNnJSDFpY\""
+  },
+  {
+    "userEmail": "cheri@gafe.co.za",
+    "userId": "109448364429284019387",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/qeDtsIN3yaMX0zqAkWwI-iHUFWw\""
+  },
+  {
+    "userEmail": "cheri@gafe.co.za",
+    "userId": "109448364429284019387",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": false,
+    "clientId": "499298628135-btb03c1lpe4146utgj65me0pujfpri43.apps.googleusercontent.com",
+    "displayText": "Apollo",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.googleapis.com/auth/calendar",
+      "https://mail.google.com/",
+      "https://www.googleapis.com/auth/directory.readonly"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/1YhUaBZi5SBR6JQ6bEJCBVWtdEI\""
+  },
+  {
+    "userEmail": "cheri@gafe.co.za",
+    "userId": "109448364429284019387",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": false,
+    "clientId": "86031167857-hapr09njcucvm0jv3hbpd7p0t75qjnm5.apps.googleusercontent.com",
+    "displayText": "Lusha",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/hh_NUzhiOd1x5wvYlUR-Qr9Sr3I\""
+  },
+  {
+    "userEmail": "chewbacca@gafe.co.za",
+    "userId": "100579017097539805290",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/2oMsq8-ojW8RWIh8kQks3X7oGTY\""
+  },
+  {
+    "userEmail": "chewbacca@gafe.co.za",
+    "userId": "100579017097539805290",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/-JF2FtTWvq4dBGb6v_mgfEr1ZoM\""
+  },
+  {
+    "userEmail": "clarissa@gafe.co.za",
+    "userId": "109645915470710837868",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/na7_UtRyuZzH5_Ghuw0uh66OzJI\""
+  },
+  {
+    "userEmail": "d.chen@gafe.co.za",
+    "userId": "111155289945283952504",
+    "userOrgUnit": "/Jacaranda Academy/Students/Intermediate Phase/Grade 7",
+    "isUserAdmin": false,
+    "clientId": "936475272427.apps.googleusercontent.com",
+    "displayText": "iOS Account Manager",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/UCgjzgW9WYDoUGdhpjSMVdEUhWw\""
+  },
+  {
+    "userEmail": "d.chen@gafe.co.za",
+    "userId": "111155289945283952504",
+    "userOrgUnit": "/Jacaranda Academy/Students/Intermediate Phase/Grade 7",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/0A6HtQF2oHxZAO5fO-yEhEGS0Ec\""
+  },
+  {
+    "userEmail": "dameron@gafe.co.za",
+    "userId": "112704667929228875778",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/dI8ToDwnFacSCSdwmDnHuxa_0yY\""
+  },
+  {
+    "userEmail": "dameron@gafe.co.za",
+    "userId": "112704667929228875778",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/I1QT00ReIVjxwYO_Rz_B1wYykm0\""
+  },
+  {
+    "userEmail": "darklighter@gafe.co.za",
+    "userId": "107570569515894761769",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/Av2gyMM7xWPYY_Pb2WPL4o9UTFU\""
+  },
+  {
+    "userEmail": "darklighter@gafe.co.za",
+    "userId": "107570569515894761769",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/cDCwbB-B3PGyB0K0TEMsde58uxM\""
+  },
+  {
+    "userEmail": "deidre@gafe.co.za",
+    "userId": "108529170927100956427",
+    "userOrgUnit": "/deidre Testing OU",
+    "isUserAdmin": true,
+    "clientId": "900360109870-ctveqiiu7np4uilcnphj4m42kv1njukq.apps.googleusercontent.com",
+    "displayText": "deidre@cloudedu.co.za's Apps",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/Sq1nk8o2FE1SsN3dgm617M5s0kw\""
+  },
+  {
+    "userEmail": "deidre@gafe.co.za",
+    "userId": "108529170927100956427",
+    "userOrgUnit": "/deidre Testing OU",
+    "isUserAdmin": true,
+    "clientId": "936475272427.apps.googleusercontent.com",
+    "displayText": "iOS Account Manager",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "https://www.googleapis.com/auth/plus.me",
+      "openid",
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/ycHf3eKMp48eRbGgB09zBa34QvY\""
+  },
+  {
+    "userEmail": "deidre@gafe.co.za",
+    "userId": "108529170927100956427",
+    "userOrgUnit": "/deidre Testing OU",
+    "isUserAdmin": true,
+    "clientId": "718809722883-l2mt5r2m2omka59ahjm1js78slbubsd7.apps.googleusercontent.com",
+    "displayText": "InactiveUserInventory",
+    "scopes": [
+      "https://www.googleapis.com/auth/admin.directory.orgunit",
+      "https://www.googleapis.com/auth/script.external_request",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "https://www.googleapis.com/auth/spreadsheets",
+      "https://www.googleapis.com/auth/script.container.ui",
+      "openid",
+      "https://www.googleapis.com/auth/admin.directory.user",
+      "https://www.googleapis.com/auth/drive"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/CEjPYa-7mXB8EsoapDkL8w6Y5aA\""
+  },
+  {
+    "userEmail": "deidre@gafe.co.za",
+    "userId": "108529170927100956427",
+    "userOrgUnit": "/deidre Testing OU",
+    "isUserAdmin": true,
+    "clientId": "779010036194-lf6spugv22vvj41pqjdj4d8k2tq7o5fd.apps.googleusercontent.com",
+    "displayText": "Canva",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/wpo5hlSN6gEg1cINcAu4DVqgs5c\""
+  },
+  {
+    "userEmail": "deidre@gafe.co.za",
+    "userId": "108529170927100956427",
+    "userOrgUnit": "/deidre Testing OU",
+    "isUserAdmin": true,
+    "clientId": "188883250313-8nmnraov1542echfae84q33gmdi5k54g.apps.googleusercontent.com",
+    "displayText": "MyLogin",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.googleapis.com/auth/admin.directory.orgunit.readonly",
+      "https://www.googleapis.com/auth/admin.directory.domain.readonly",
+      "https://www.googleapis.com/auth/admin.directory.user.readonly"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/-y-CCr0vXlH7-lim_1flLPhGgy4\""
+  },
+  {
+    "userEmail": "deidre@gafe.co.za",
+    "userId": "108529170927100956427",
+    "userOrgUnit": "/deidre Testing OU",
+    "isUserAdmin": true,
+    "clientId": "871655740233-iad5enbpe9r7o18h2ajle4vdd51vhflp.apps.googleusercontent.com",
+    "displayText": "Chromebook Getter",
+    "scopes": [
+      "https://www.googleapis.com/auth/chrome.management.telemetry.readonly",
+      "https://www.googleapis.com/auth/admin.directory.orgunit",
+      "https://www.googleapis.com/auth/script.external_request",
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "https://www.googleapis.com/auth/spreadsheets",
+      "https://www.googleapis.com/auth/script.container.ui",
+      "openid",
+      "https://www.googleapis.com/auth/admin.directory.user",
+      "https://www.googleapis.com/auth/admin.directory.device.chromeos"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/4IEwzScb8Oy3tp6jk5TRJ_lQQyA\""
+  },
+  {
+    "userEmail": "deidre@gafe.co.za",
+    "userId": "108529170927100956427",
+    "userOrgUnit": "/deidre Testing OU",
+    "isUserAdmin": true,
+    "clientId": "777045243888-mrs2ah6saspk0q3tcd9650ptjbks7buh.apps.googleusercontent.com",
+    "displayText": "Bark for Schools",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/MhLe_4Pusuliz5gH5Rn2ZYUEGrM\""
+  },
+  {
+    "userEmail": "deidre@gafe.co.za",
+    "userId": "108529170927100956427",
+    "userOrgUnit": "/deidre Testing OU",
+    "isUserAdmin": true,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/xae38W6NHh1unm5ME-VPDh5CnLA\""
+  },
+  {
+    "userEmail": "deidre@gafe.co.za",
+    "userId": "108529170927100956427",
+    "userOrgUnit": "/deidre Testing OU",
+    "isUserAdmin": true,
+    "clientId": "946018238758-bi6ni53dfoddlgn97pk3b8i7nphige40.apps.googleusercontent.com",
+    "displayText": "macOS",
+    "scopes": [
+      "https://www.googleapis.com/auth/carddav",
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.googleapis.com/auth/calendar",
+      "https://mail.google.com/"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/wJtsE6Pck-m3vt9UjYg6U6vReKQ\""
+  },
+  {
+    "userEmail": "deidre@gafe.co.za",
+    "userId": "108529170927100956427",
+    "userOrgUnit": "/deidre Testing OU",
+    "isUserAdmin": true,
+    "clientId": "172700529642-48obmiqhk5joviftkt87d0po0bnbunbu.apps.googleusercontent.com",
+    "displayText": "project-172700529642",
+    "scopes": [
+      "https://www.googleapis.com/auth/user.organization.read",
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "https://www.googleapis.com/auth/gmail.settings.basic",
+      "openid",
+      "https://www.googleapis.com/auth/user.phonenumbers.read",
+      "https://www.googleapis.com/auth/admin.directory.user.readonly"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/g-Vuuy0_jY0i6FAI_aT7ho9y_U8\""
+  },
+  {
+    "userEmail": "deidre@gafe.co.za",
+    "userId": "108529170927100956427",
+    "userOrgUnit": "/deidre Testing OU",
+    "isUserAdmin": true,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/VgoBehB3Erv86fCATXIPHGJVqvI\""
+  },
+  {
+    "userEmail": "deidre@gafe.co.za",
+    "userId": "108529170927100956427",
+    "userOrgUnit": "/deidre Testing OU",
+    "isUserAdmin": true,
+    "clientId": "1098397018324-aqmj80n4sfufvbn3cg4bd7ugkcfpu21o.apps.googleusercontent.com",
+    "displayText": "Wonde School Portal",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/LSLRNZl9G-97KrP_rQyWM934KGo\""
+  },
+  {
+    "userEmail": "deidre@gafe.co.za",
+    "userId": "108529170927100956427",
+    "userOrgUnit": "/deidre Testing OU",
+    "isUserAdmin": true,
+    "clientId": "953348912797-h2fo9tmk42mnrkk0kc6gula9i8ipv3re.apps.googleusercontent.com",
+    "displayText": "Google AppSheet",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "https://www.googleapis.com/auth/spreadsheets",
+      "openid",
+      "https://www.googleapis.com/auth/drive",
+      "https://spreadsheets.google.com/feeds"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/mE6PqYvvWoOo5EuhWZ3uEljdn-k\""
+  },
+  {
+    "userEmail": "deidre@gafe.co.za",
+    "userId": "108529170927100956427",
+    "userOrgUnit": "/deidre Testing OU",
+    "isUserAdmin": true,
+    "clientId": "108309815588-d8c3litltbdoibd7vr078iu6njc2292u.apps.googleusercontent.com",
+    "displayText": "PDFSimpli",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/q1a4GKCBl1aMWuPmSLYpQJe4wLs\""
+  },
+  {
+    "userEmail": "dooku@gafe.co.za",
+    "userId": "109163712476859319533",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/1aV_TnZZNYX67ZyP_b5D0PdLaYU\""
+  },
+  {
+    "userEmail": "dooku@gafe.co.za",
+    "userId": "109163712476859319533",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/PZlqKNj8hx5gu0FGHm6dx5n__JU\""
+  },
+  {
+    "userEmail": "dune@gafe.co.za",
+    "userId": "111663298299257974367",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/No license",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/ejroAWj2jw7UXEoOVOA6N6SjNAw\""
+  },
+  {
+    "userEmail": "e.johnson@gafe.co.za",
+    "userId": "102460298356310712717",
+    "userOrgUnit": "/Jacaranda Academy/Students/Senior Phase/Grade 11",
+    "isUserAdmin": false,
+    "clientId": "936475272427.apps.googleusercontent.com",
+    "displayText": "iOS Account Manager",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/ccmnn95129ULNykC7u8ZZqhrEqI\""
+  },
+  {
+    "userEmail": "e.johnson@gafe.co.za",
+    "userId": "102460298356310712717",
+    "userOrgUnit": "/Jacaranda Academy/Students/Senior Phase/Grade 11",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/2hN40N2VBksb32KKHzIck-rbB9M\""
+  },
+  {
+    "userEmail": "e.johnson@gafe.co.za",
+    "userId": "102460298356310712717",
+    "userOrgUnit": "/Jacaranda Academy/Students/Senior Phase/Grade 11",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/nGw1XMDuab_5qod6nwuba0xvYgc\""
+  },
+  {
+    "userEmail": "farrakhan@gafe.co.za",
+    "userId": "105221937046664268034",
+    "userOrgUnit": "/",
+    "isUserAdmin": true,
+    "clientId": "936475272427.apps.googleusercontent.com",
+    "displayText": "iOS Account Manager",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/UQXUkTfx66k77U7yNWtOTWeGrV4\""
+  },
+  {
+    "userEmail": "farrakhan@gafe.co.za",
+    "userId": "105221937046664268034",
+    "userOrgUnit": "/",
+    "isUserAdmin": true,
+    "clientId": "579706874471-v1v2akhe8lqriu4hhrm58rb1e1tpo6fn.apps.googleusercontent.com",
+    "displayText": "Annual Leave ",
+    "scopes": [
+      "https://www.googleapis.com/auth/spreadsheets",
+      "https://www.googleapis.com/auth/calendar",
+      "https://www.googleapis.com/auth/forms"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/lrG2iTGgyVNSj_RqE9HiiLkzJxM\""
+  },
+  {
+    "userEmail": "farrakhan@gafe.co.za",
+    "userId": "105221937046664268034",
+    "userOrgUnit": "/",
+    "isUserAdmin": true,
+    "clientId": "742713087391-4otjds6c701o8q958uhcku0c40r48vjk.apps.googleusercontent.com",
+    "displayText": "Untitled project",
+    "scopes": [
+      "https://www.googleapis.com/auth/script.send_mail",
+      "https://www.googleapis.com/auth/spreadsheets",
+      "https://www.googleapis.com/auth/admin.directory.user"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/F7yIBocOhHeOe6ja5eKbfHo_IHU\""
+  },
+  {
+    "userEmail": "farrakhan@gafe.co.za",
+    "userId": "105221937046664268034",
+    "userOrgUnit": "/",
+    "isUserAdmin": true,
+    "clientId": "297408095146-fug707qsjv4ikron0hugpevbrjhkmsk7.apps.googleusercontent.com",
+    "displayText": "GAM Project Creation",
+    "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/-wxG5M4PLAZtvSfV2zmJqDJ_ccE\""
+  },
+  {
+    "userEmail": "farrakhan@gafe.co.za",
+    "userId": "105221937046664268034",
+    "userOrgUnit": "/",
+    "isUserAdmin": true,
+    "clientId": "657959631782-gig0qdc3vaieq93qtv1mubvj0c4mjdfl.apps.googleusercontent.com",
+    "displayText": "Collaborative Whiteboard",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/ttXWcFDT2zdSrD-52pXjpbVsEJg\""
+  },
+  {
+    "userEmail": "farrakhan@gafe.co.za",
+    "userId": "105221937046664268034",
+    "userOrgUnit": "/",
+    "isUserAdmin": true,
+    "clientId": "657959631782-i9cm367mk2m810gc99sp2lsie03vo4u3.apps.googleusercontent.com",
+    "displayText": "Collaborative Whiteboard",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/oLMWjS22tCm78Rixj-UkiUIMQqc\""
+  },
+  {
+    "userEmail": "farrakhan@gafe.co.za",
+    "userId": "105221937046664268034",
+    "userOrgUnit": "/",
+    "isUserAdmin": true,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/aI0hIzEtHgXIwc0WIcqgMp5dYHA\""
+  },
+  {
+    "userEmail": "farrakhan@gafe.co.za",
+    "userId": "105221937046664268034",
+    "userOrgUnit": "/",
+    "isUserAdmin": true,
+    "clientId": "779010036194-lf6spugv22vvj41pqjdj4d8k2tq7o5fd.apps.googleusercontent.com",
+    "displayText": "Canva",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/jYQMObecImVWLH-Y0vtV1WqwdEY\""
+  },
+  {
+    "userEmail": "farrakhan@gafe.co.za",
+    "userId": "105221937046664268034",
+    "userOrgUnit": "/",
+    "isUserAdmin": true,
+    "clientId": "585538275436-4lk6emnir2l22atsdk61fstd4nhkgbku.apps.googleusercontent.com",
+    "displayText": "GAM",
+    "scopes": [
+      "https://www.googleapis.com/auth/classroom.topics",
+      "https://www.googleapis.com/auth/admin.directory.orgunit",
+      "https://www.googleapis.com/auth/apps.groups.settings",
+      "https://www.googleapis.com/auth/classroom.courseworkmaterials",
+      "https://www.googleapis.com/auth/admin.directory.userschema",
+      "https://www.googleapis.com/auth/admin.directory.device.chromeos",
+      "https://www.googleapis.com/auth/cloud-identity.policies",
+      "https://www.googleapis.com/auth/admin.contact.delegation",
+      "https://www.googleapis.com/auth/admin.directory.device.chromebrowsers",
+      "https://www.googleapis.com/auth/chrome.management.telemetry.readonly",
+      "https://www.googleapis.com/auth/cloud-identity.groups",
+      "https://www.googleapis.com/auth/classroom.coursework.students",
+      "https://www.googleapis.com/auth/contacts",
+      "https://www.google.com/m8/feeds",
+      "https://www.googleapis.com/auth/admin.directory.device.mobile",
+      "https://www.googleapis.com/auth/admin.chrome.printers",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "https://www.googleapis.com/auth/chrome.management.appdetails.readonly",
+      "https://www.googleapis.com/auth/apps.groups.migration",
+      "https://www.googleapis.com/auth/classroom.announcements",
+      "https://www.googleapis.com/auth/cloud-identity.userinvitations",
+      "https://www.googleapis.com/auth/ediscovery",
+      "https://www.googleapis.com/auth/admin.directory.user.security",
+      "https://www.googleapis.com/auth/admin.reports.audit.readonly",
+      "https://www.googleapis.com/auth/admin.directory.user",
+      "https://www.googleapis.com/auth/admin.directory.group",
+      "https://www.googleapis.com/auth/chrome.management.reports.readonly",
+      "https://www.googleapis.com/auth/apps.licensing",
+      "https://www.googleapis.com/auth/classroom.courses",
+      "https://www.googleapis.com/auth/chrome.management.profiles",
+      "openid",
+      "https://www.googleapis.com/auth/admin.directory.domain",
+      "https://www.googleapis.com/auth/chrome.management.policy",
+      "https://www.googleapis.com/auth/directory.readonly",
+      "https://www.googleapis.com/auth/admin.directory.rolemanagement",
+      "https://www.googleapis.com/auth/admin.directory.resource.calendar",
+      "https://www.googleapis.com/auth/classroom.rosters",
+      "https://www.googleapis.com/auth/cloud-identity.inboundsso",
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/classroom.profile.emails",
+      "https://www.googleapis.com/auth/classroom.guardianlinks.students",
+      "https://www.googleapis.com/auth/calendar",
+      "https://www.googleapis.com/auth/classroom.profile.photos",
+      "https://www.googleapis.com/auth/admin.datatransfer",
+      "https://www.googleapis.com/auth/admin.directory.customer",
+      "https://www.googleapis.com/auth/admin.reports.usage.readonly",
+      "https://www.googleapis.com/auth/cloud-identity.orgunits"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/_-II5SzcGqKkJRa6hgPcCqcKcXo\""
+  },
+  {
+    "userEmail": "farrakhan@gafe.co.za",
+    "userId": "105221937046664268034",
+    "userOrgUnit": "/",
+    "isUserAdmin": true,
+    "clientId": "64634722053-udlis9tvkf8tuh5r1r3jgbfsh1b29e00.apps.googleusercontent.com",
+    "displayText": "BulkSignature",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/lXGRnVy7H-oALK3UpzfMEqHqPW8\""
+  },
+  {
+    "userEmail": "farrakhan@gafe.co.za",
+    "userId": "105221937046664268034",
+    "userOrgUnit": "/",
+    "isUserAdmin": true,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/r6moaKvE57Ptn6A_b1B2qUx1INI\""
+  },
+  {
+    "userEmail": "fett@gafe.co.za",
+    "userId": "111862280074858733376",
+    "userOrgUnit": "/",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/OpmFshRfm5HgwYdHGThCD3OV-_U\""
+  },
+  {
+    "userEmail": "fett@gafe.co.za",
+    "userId": "111862280074858733376",
+    "userOrgUnit": "/",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/GBOj0WoEEo8OL70BPg4em5q5F7U\""
+  },
+  {
+    "userEmail": "finn@gafe.co.za",
+    "userId": "102458000606243379901",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "936475272427.apps.googleusercontent.com",
+    "displayText": "iOS Account Manager",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/Hr-kYoVUAwztJqI-gT4oAmwVfws\""
+  },
+  {
+    "userEmail": "finn@gafe.co.za",
+    "userId": "102458000606243379901",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/CyQh2Z4pj-46y_LrSAM1vMt51Xo\""
+  },
+  {
+    "userEmail": "finn@gafe.co.za",
+    "userId": "102458000606243379901",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/-GoJZbZUQ0MNoTXZ73eOhEpGyUc\""
+  },
+  {
+    "userEmail": "fisto@gafe.co.za",
+    "userId": "102136990782956973559",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/VCo9B2KKima5fNwmsYJV1N0ycE8\""
+  },
+  {
+    "userEmail": "fisto@gafe.co.za",
+    "userId": "102136990782956973559",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "779010036194-lf6spugv22vvj41pqjdj4d8k2tq7o5fd.apps.googleusercontent.com",
+    "displayText": "Canva",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/OeP-ozPP7E9vVRpMhmnaLLOHekg\""
+  },
+  {
+    "userEmail": "fisto@gafe.co.za",
+    "userId": "102136990782956973559",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/xVqTy2Kc8t_Cj9RrXSkmf1agp0U\""
+  },
+  {
+    "userEmail": "fortuna@gafe.co.za",
+    "userId": "101366292891254076610",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/uHPYFU952iCL6ez0GRjvLZaEhNY\""
+  },
+  {
+    "userEmail": "fortuna@gafe.co.za",
+    "userId": "101366292891254076610",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/-HO_fVzMUcs-YvKbxVzhlFuyrnA\""
+  },
+  {
+    "userEmail": "gafe10@gafe.co.za",
+    "userId": "114122057118464318950",
+    "userOrgUnit": "/CloudEDU Technical/InnovateEDU Users",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/cEYNrM1AQpRwPVMoxLQULsUNEaU\""
+  },
+  {
+    "userEmail": "gafe11@gafe.co.za",
+    "userId": "114022384764829448121",
+    "userOrgUnit": "/CloudEDU Technical/InnovateEDU Users",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/yrTfG7pF8-LGWK-Pb4erWMlyGrY\""
+  },
+  {
+    "userEmail": "gafe12@gafe.co.za",
+    "userId": "103312707498172880109",
+    "userOrgUnit": "/CloudEDU Technical/InnovateEDU Users",
+    "isUserAdmin": false,
+    "clientId": "779010036194-lf6spugv22vvj41pqjdj4d8k2tq7o5fd.apps.googleusercontent.com",
+    "displayText": "Canva",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/c7olWX9msKhkRu7EWD53ChuPNnA\""
+  },
+  {
+    "userEmail": "gafe14@gafe.co.za",
+    "userId": "115580030147815392680",
+    "userOrgUnit": "/CloudEDU Technical/InnovateEDU Users",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/-TEkEhsx59mWFQCLPL8lblTAECc\""
+  },
+  {
+    "userEmail": "gafe14@gafe.co.za",
+    "userId": "115580030147815392680",
+    "userOrgUnit": "/CloudEDU Technical/InnovateEDU Users",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/WjJwr9wOyF45eiINdCPxKb1j4XI\""
+  },
+  {
+    "userEmail": "gafe15@gafe.co.za",
+    "userId": "111689298534973960275",
+    "userOrgUnit": "/CloudEDU Technical/InnovateEDU Users",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/M8erKdQ3zDBqrQ8ostHskASSAXg\""
+  },
+  {
+    "userEmail": "gafe15@gafe.co.za",
+    "userId": "111689298534973960275",
+    "userOrgUnit": "/CloudEDU Technical/InnovateEDU Users",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/WGLUkZ37KLY8x1C_FUL6oOLIMBQ\""
+  },
+  {
+    "userEmail": "gafe16@gafe.co.za",
+    "userId": "100824884648605271418",
+    "userOrgUnit": "/CloudEDU Technical/InnovateEDU Users",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/0AetkVg6Tf0wgGYbmQa___AqzwA\""
+  },
+  {
+    "userEmail": "gafe17@gafe.co.za",
+    "userId": "110326726672976304401",
+    "userOrgUnit": "/CloudEDU Technical/InnovateEDU Users",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/46sTzWvl9X_Z2KNQZ4lWJJVxnuU\""
+  },
+  {
+    "userEmail": "gafe18@gafe.co.za",
+    "userId": "113274611253731305103",
+    "userOrgUnit": "/CloudEDU Technical/InnovateEDU Users",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/i879DWo_lU-DF6OB5A_NuNFkP10\""
+  },
+  {
+    "userEmail": "gafe19@gafe.co.za",
+    "userId": "109978234686377034899",
+    "userOrgUnit": "/CloudEDU Technical/InnovateEDU Users",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/iNpRkWo8obLce-PA7j3OdV_FHRU\""
+  },
+  {
+    "userEmail": "gafe19@gafe.co.za",
+    "userId": "109978234686377034899",
+    "userOrgUnit": "/CloudEDU Technical/InnovateEDU Users",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/f17awfuP_JAD6hyuYTGWPaQjn1I\""
+  },
+  {
+    "userEmail": "gafe1@gafe.co.za",
+    "userId": "112367893214935637698",
+    "userOrgUnit": "/CloudEDU Technical/InnovateEDU Users",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/J8MDaYQmLiwwRWj-XYWevxW2ojA\""
+  },
+  {
+    "userEmail": "gafe1@gafe.co.za",
+    "userId": "112367893214935637698",
+    "userOrgUnit": "/CloudEDU Technical/InnovateEDU Users",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/CmWtYxyEphrLhS1-1nIit33aZ-Y\""
+  },
+  {
+    "userEmail": "gafe20@gafe.co.za",
+    "userId": "112564123669657586223",
+    "userOrgUnit": "/CloudEDU Technical/InnovateEDU Users",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/ll1NB_NVeVkPCEVTJoTyHnVOJiQ\""
+  },
+  {
+    "userEmail": "gafe20@gafe.co.za",
+    "userId": "112564123669657586223",
+    "userOrgUnit": "/CloudEDU Technical/InnovateEDU Users",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/bvEkIVgJ0QD8IJSOaazhvKJlKlw\""
+  },
+  {
+    "userEmail": "gafe2@gafe.co.za",
+    "userId": "102935771448515809954",
+    "userOrgUnit": "/CloudEDU Technical/InnovateEDU Users",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/Z_NAqOVupc2iv2NDvRfUwruwRLY\""
+  },
+  {
+    "userEmail": "gafe2@gafe.co.za",
+    "userId": "102935771448515809954",
+    "userOrgUnit": "/CloudEDU Technical/InnovateEDU Users",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/D-AhqZrFdTmKpznosaFs9dYM0bk\""
+  },
+  {
+    "userEmail": "gafe4@gafe.co.za",
+    "userId": "118402370929458914371",
+    "userOrgUnit": "/CloudEDU Technical/InnovateEDU Users",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/YcGZ3ep_E2nBR5m9mUyIsB2qrB8\""
+  },
+  {
+    "userEmail": "gafe4@gafe.co.za",
+    "userId": "118402370929458914371",
+    "userOrgUnit": "/CloudEDU Technical/InnovateEDU Users",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/RAYK7q50ulkbugv6teymHADgaJc\""
+  },
+  {
+    "userEmail": "gafe5@gafe.co.za",
+    "userId": "111479546291692150249",
+    "userOrgUnit": "/CloudEDU Technical/InnovateEDU Users",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/HA_2HQL9JV6P1MuanCnufW7Elp8\""
+  },
+  {
+    "userEmail": "gafe5@gafe.co.za",
+    "userId": "111479546291692150249",
+    "userOrgUnit": "/CloudEDU Technical/InnovateEDU Users",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/BS-RR0gwziA534nx0Irkt4oN0Xw\""
+  },
+  {
+    "userEmail": "gafe6@gafe.co.za",
+    "userId": "115026978536065309513",
+    "userOrgUnit": "/CloudEDU Technical/InnovateEDU Users",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/5Wi34Onio5_feP5e2A1Eun3dmeY\""
+  },
+  {
+    "userEmail": "gafe7@gafe.co.za",
+    "userId": "111598063586947560014",
+    "userOrgUnit": "/CloudEDU Technical/InnovateEDU Users",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/EIaMzppwuDI_jZeUwzpjTL9LnKw\""
+  },
+  {
+    "userEmail": "gafe7@gafe.co.za",
+    "userId": "111598063586947560014",
+    "userOrgUnit": "/CloudEDU Technical/InnovateEDU Users",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/jxVhxQ-LnH6g3DZuBkRMe8o5b1k\""
+  },
+  {
+    "userEmail": "gafe8@gafe.co.za",
+    "userId": "105419487666791455225",
+    "userOrgUnit": "/CloudEDU Technical/InnovateEDU Users",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/y7-hx30hpVX1ocWIgxz8_KYtn1w\""
+  },
+  {
+    "userEmail": "gafe8@gafe.co.za",
+    "userId": "105419487666791455225",
+    "userOrgUnit": "/CloudEDU Technical/InnovateEDU Users",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/AwD8I2cQVhR3eBN654xrlLiBi6A\""
+  },
+  {
+    "userEmail": "gafe9@gafe.co.za",
+    "userId": "112803111290919481116",
+    "userOrgUnit": "/CloudEDU Technical/InnovateEDU Users",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/OyBL7Bt8GfsvCp9i_fObAoStvVI\""
+  },
+  {
+    "userEmail": "gamu@gafe.co.za",
+    "userId": "111749199120022399733",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": false,
+    "clientId": "961782772109-gr6rmo3pe7iibrmjifhhar5iu2mjin9r.apps.googleusercontent.com",
+    "displayText": "Lusha",
+    "scopes": [
+      "https://www.googleapis.com/auth/calendar.events",
+      "https://www.googleapis.com/auth/gmail.readonly",
+      "https://www.googleapis.com/auth/contacts.other.readonly",
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/contacts.readonly",
+      "https://www.googleapis.com/auth/gmail.send",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.googleapis.com/auth/directory.readonly"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/S8F3Y5PXzAHyFb-DyZ7ppmFKgr0\""
+  },
+  {
+    "userEmail": "gamu@gafe.co.za",
+    "userId": "111749199120022399733",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/d9XQFHBg4tUthYrkqoLkfFxXE2s\""
+  },
+  {
+    "userEmail": "gde@gafe.co.za",
+    "userId": "113879282288539957612",
+    "userOrgUnit": "/CloudEDU Technical/Dev/Education Dept/gde",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/6Hqa2xRQFX4-Yar56KEGYTIAzwk\""
+  },
+  {
+    "userEmail": "heidi@gafe.co.za",
+    "userId": "100932700456172105274",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": false,
+    "clientId": "936475272427.apps.googleusercontent.com",
+    "displayText": "iOS Account Manager",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/FhbvNstU89AkUFJtOzVwK1c-Rxg\""
+  },
+  {
+    "userEmail": "holdo@gafe.co.za",
+    "userId": "116923659839907150464",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/DId09MSxmYuuVVnpeA0yPsgmJ08\""
+  },
+  {
+    "userEmail": "holdo@gafe.co.za",
+    "userId": "116923659839907150464",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/j6sIdyIMdIMZCVwGuv22Wxe7_WA\""
+  },
+  {
+    "userEmail": "hutt@gafe.co.za",
+    "userId": "114213191744015865725",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/1-brGlqY1ccGrgDVmSWnTDH9yC0\""
+  },
+  {
+    "userEmail": "hutt@gafe.co.za",
+    "userId": "114213191744015865725",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/NXoQyAPe5MBLMSHhqsO2IiCS7ss\""
+  },
+  {
+    "userEmail": "iostest@gafe.co.za",
+    "userId": "113196880693862690559",
+    "userOrgUnit": "/Jacaranda Academy/Resources/iOS",
+    "isUserAdmin": false,
+    "clientId": "450232826690-0rm6bs9d2fps9tifvk2oodh3tasd7vl7.apps.googleusercontent.com",
+    "displayText": "iOS",
+    "scopes": [
+      "https://www.googleapis.com/auth/carddav",
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.googleapis.com/auth/calendar",
+      "https://mail.google.com/"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/LLDP8aALoLTaO_8xn6PCQG1QN_0\""
+  },
+  {
+    "userEmail": "iostest@gafe.co.za",
+    "userId": "113196880693862690559",
+    "userOrgUnit": "/Jacaranda Academy/Resources/iOS",
+    "isUserAdmin": false,
+    "clientId": "602224180431-4n16sppuiom7hqkn78hsnre3bt0pohd6.apps.googleusercontent.com",
+    "displayText": "ExceedLMS",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/fuWQFhIlCDq-Tokn1eepHZp4D2o\""
+  },
+  {
+    "userEmail": "iostest@gafe.co.za",
+    "userId": "113196880693862690559",
+    "userOrgUnit": "/Jacaranda Academy/Resources/iOS",
+    "isUserAdmin": false,
+    "clientId": "936475272427.apps.googleusercontent.com",
+    "displayText": "iOS Account Manager",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/I8mioqKVvzKv5MtVakn2TTQHfEU\""
+  },
+  {
+    "userEmail": "iostest@gafe.co.za",
+    "userId": "113196880693862690559",
+    "userOrgUnit": "/Jacaranda Academy/Resources/iOS",
+    "isUserAdmin": false,
+    "clientId": "821073268825-uj405qcuu2pbpq5ab05rsupc98ldq2ou.apps.googleusercontent.com",
+    "displayText": "Apple Business Manager",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/-BO-9n4PU9wueE8aIGlEIKiIVcM\""
+  },
+  {
+    "userEmail": "jamie@gafe.co.za",
+    "userId": "102423725616725908414",
+    "userOrgUnit": "/",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/X6fOPTtT5utwLsRIeu3zwPUZ4g8\""
+  },
+  {
+    "userEmail": "jamie@gafe.co.za",
+    "userId": "102423725616725908414",
+    "userOrgUnit": "/",
+    "isUserAdmin": false,
+    "clientId": "1023251155897-tb54g624q9e77gtsrnemgv4c2ihekurv.apps.googleusercontent.com",
+    "displayText": "Google Skills",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/UbktPCXkqq2eyvn3g8zvKsaXBeg\""
+  },
+  {
+    "userEmail": "jamie@gafe.co.za",
+    "userId": "102423725616725908414",
+    "userOrgUnit": "/",
+    "isUserAdmin": false,
+    "clientId": "779010036194-lf6spugv22vvj41pqjdj4d8k2tq7o5fd.apps.googleusercontent.com",
+    "displayText": "Canva",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/G_AlNAu9SIul1pGTPDGlOQzBSXc\""
+  },
+  {
+    "userEmail": "jamie@gafe.co.za",
+    "userId": "102423725616725908414",
+    "userOrgUnit": "/",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/hOfE1DuwFgCRfXmY3H025uERTeE\""
+  },
+  {
+    "userEmail": "jinn@gafe.co.za",
+    "userId": "101915412483740662780",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "936475272427.apps.googleusercontent.com",
+    "displayText": "iOS Account Manager",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/OkBgdw564QTNWCXu1MOS3zXNc08\""
+  },
+  {
+    "userEmail": "jinn@gafe.co.za",
+    "userId": "101915412483740662780",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "539614054292-v48fp11ou2nrhh7lb47qgqq4k5d1fd8u.apps.googleusercontent.com",
+    "displayText": "adminlens.io",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/Eei-QkKGUoLxl00EH1igb1wJRMo\""
+  },
+  {
+    "userEmail": "karga@gafe.co.za",
+    "userId": "109865527608866414958",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/vpbykQcF-ZJs-VDdrirURE7lkT8\""
+  },
+  {
+    "userEmail": "karga@gafe.co.za",
+    "userId": "109865527608866414958",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/jxZ8hLFXRYNsY2AtxjhLpB-VkUA\""
+  },
+  {
+    "userEmail": "karien@gafe.co.za",
+    "userId": "104163325107308236111",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": true,
+    "clientId": "936475272427.apps.googleusercontent.com",
+    "displayText": "iOS Account Manager",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/095Ml5fOQijPLjjKz5ICc9Md7ZY\""
+  },
+  {
+    "userEmail": "karien@gafe.co.za",
+    "userId": "104163325107308236111",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": true,
+    "clientId": "968320677628-ort3v6hao1mu08d1i4eg97it7rgo7e43.apps.googleusercontent.com",
+    "displayText": "Canva Charts",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/drive.file",
+      "https://www.googleapis.com/auth/drive.readonly"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/DGb2vKBULSoPj6tD7qQWvXtEhA8\""
+  },
+  {
+    "userEmail": "karien@gafe.co.za",
+    "userId": "104163325107308236111",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": true,
+    "clientId": "58172892053-6laet7k6ls3k5va0jija3b175sm3jjms.apps.googleusercontent.com",
+    "displayText": "Wayground (formerly Quizizz)",
+    "scopes": [
+      "https://www.googleapis.com/auth/classroom.rosters",
+      "https://www.googleapis.com/auth/classroom.courses",
+      "https://www.googleapis.com/auth/classroom.coursework.students",
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "https://www.googleapis.com/auth/admin.directory.group.readonly",
+      "https://www.googleapis.com/auth/classroom.profile.emails",
+      "openid",
+      "https://www.googleapis.com/auth/classroom.announcements",
+      "https://www.googleapis.com/auth/drive.file",
+      "https://www.googleapis.com/auth/classroom.student-submissions.students.readonly",
+      "https://www.googleapis.com/auth/admin.directory.user.readonly"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/dqYC5e1RV0yFUkV5GYmxaP4Qxyk\""
+  },
+  {
+    "userEmail": "karien@gafe.co.za",
+    "userId": "104163325107308236111",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": true,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/Mpaicki68dMiGabktkj1anlrOxs\""
+  },
+  {
+    "userEmail": "karien@gafe.co.za",
+    "userId": "104163325107308236111",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": true,
+    "clientId": "58172892053-faol054co4k3tsmtbtuk41v4si41slq0.apps.googleusercontent.com",
+    "displayText": "Wayground (formerly Quizizz)",
+    "scopes": [
+      "https://www.googleapis.com/auth/drive.file",
+      "https://www.googleapis.com/auth/drive.readonly"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/V8Qnw9rjzsREph-m4YCPfLFsmpg\""
+  },
+  {
+    "userEmail": "karien@gafe.co.za",
+    "userId": "104163325107308236111",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": true,
+    "clientId": "779010036194-lf6spugv22vvj41pqjdj4d8k2tq7o5fd.apps.googleusercontent.com",
+    "displayText": "Canva",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/_aRi216-eqUi__9OAqLoMv_Ekf8\""
+  },
+  {
+    "userEmail": "karien@gafe.co.za",
+    "userId": "104163325107308236111",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": true,
+    "clientId": "532352704633-6pkces9iboppp465idnovkcqtlsa8j7t.apps.googleusercontent.com",
+    "displayText": "Figma",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/5H8BHHOUhHnBWWbrBodPbO5Tsvw\""
+  },
+  {
+    "userEmail": "karien@gafe.co.za",
+    "userId": "104163325107308236111",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": true,
+    "clientId": "871655740233-iad5enbpe9r7o18h2ajle4vdd51vhflp.apps.googleusercontent.com",
+    "displayText": "Chromebook Getter",
+    "scopes": [
+      "https://www.googleapis.com/auth/chrome.management.telemetry.readonly",
+      "https://www.googleapis.com/auth/admin.directory.orgunit",
+      "https://www.googleapis.com/auth/script.external_request",
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "https://www.googleapis.com/auth/spreadsheets",
+      "https://www.googleapis.com/auth/script.container.ui",
+      "openid",
+      "https://www.googleapis.com/auth/admin.directory.user",
+      "https://www.googleapis.com/auth/admin.directory.device.chromeos"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/PQwZiBLddU6JbgNaDJ5BlrXTa9c\""
+  },
+  {
+    "userEmail": "karien@gafe.co.za",
+    "userId": "104163325107308236111",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": true,
+    "clientId": "892091831180-vku8hlevbroittbncabe8gcqc79jf4qr.apps.googleusercontent.com",
+    "displayText": "Padlet",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/fpNZrtEu1GfABbDliUeOk2POENI\""
+  },
+  {
+    "userEmail": "karien@gafe.co.za",
+    "userId": "104163325107308236111",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": true,
+    "clientId": "913728339568-tjccmfojammmqs9q0kunokb507mpjqum.apps.googleusercontent.com",
+    "displayText": "Grammarly",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/jiRN13zNHtW5CV76qh5rpidNJa8\""
+  },
+  {
+    "userEmail": "karien@gafe.co.za",
+    "userId": "104163325107308236111",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": true,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/S96dtB44WdWaF16Jp9seU4xMC0k\""
+  },
+  {
+    "userEmail": "kenobi@gafe.co.za",
+    "userId": "116909570289613988756",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "539614054292-v48fp11ou2nrhh7lb47qgqq4k5d1fd8u.apps.googleusercontent.com",
+    "displayText": "adminlens.io",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/7tXHKHNe-NwJVBwMFsHhVXTLHDA\""
+  },
+  {
+    "userEmail": "kenobi@gafe.co.za",
+    "userId": "116909570289613988756",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "936475272427.apps.googleusercontent.com",
+    "displayText": "iOS Account Manager",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/TZdBuFiWtjivtlBh5G5gzMYycRI\""
+  },
+  {
+    "userEmail": "kenobi@gafe.co.za",
+    "userId": "116909570289613988756",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/wezPw0ao7xySAeXOfOiOWtC-e0Q\""
+  },
+  {
+    "userEmail": "kenobi@gafe.co.za",
+    "userId": "116909570289613988756",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "476257776955-t129f3c8h8tgq60g7rp4cmganf4n7dn7.apps.googleusercontent.com",
+    "displayText": "dev.adminlens.io",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/InuTHHQl1kNB6gce6FABbJNUs4I\""
+  },
+  {
+    "userEmail": "kenobi@gafe.co.za",
+    "userId": "116909570289613988756",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/KxqI53gfINTOvv6IfnikeUUCmvo\""
+  },
+  {
+    "userEmail": "kevin@gafe.co.za",
+    "userId": "110373738102602631270",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": true,
+    "clientId": "539614054292-v48fp11ou2nrhh7lb47qgqq4k5d1fd8u.apps.googleusercontent.com",
+    "displayText": "adminlens.io",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/7LysR6eZaQOGXKVGoJPoYy4ob2o\""
+  },
+  {
+    "userEmail": "kevin@gafe.co.za",
+    "userId": "110373738102602631270",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": true,
+    "clientId": "936475272427.apps.googleusercontent.com",
+    "displayText": "iOS Account Manager",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "https://www.googleapis.com/auth/plus.me",
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": true,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/fxqfkTbT0h1dyXj2xuQst6Z5oPU\""
+  },
+  {
+    "userEmail": "kevin@gafe.co.za",
+    "userId": "110373738102602631270",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": true,
+    "clientId": "489890094529-ueegekuf9mubvv4sc6bh57op2rkjok62.apps.googleusercontent.com",
+    "displayText": "Bitly",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/kaDHgf63CXIC5S8w-603k3m41pw\""
+  },
+  {
+    "userEmail": "kevin@gafe.co.za",
+    "userId": "110373738102602631270",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": true,
+    "clientId": "469390422673-r0p2tar3lgjlnhtsv4t4uonq4bi2svf8.apps.googleusercontent.com",
+    "displayText": "Google Calendar for Workspace Studio",
+    "scopes": [
+      "https://www.googleapis.com/auth/calendar",
+      "https://www.googleapis.com/auth/workspace.workflows.trigger"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/3dWW86Y6LhW70Hly6yjGG_vFGW0\""
+  },
+  {
+    "userEmail": "kevin@gafe.co.za",
+    "userId": "110373738102602631270",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": true,
+    "clientId": "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
+    "displayText": "Gemini for Workspace Studio",
+    "scopes": [
+      "https://www.googleapis.com/auth/documents",
+      "https://www.googleapis.com/auth/spreadsheets",
+      "https://www.googleapis.com/auth/apps_genai",
+      "https://www.googleapis.com/auth/drive"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/zb1O7BRvBPIVzUabpk35omyIHyQ\""
+  },
+  {
+    "userEmail": "kevin@gafe.co.za",
+    "userId": "110373738102602631270",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": true,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/-G8yOIJ7WgZ11TLWQ0AhhFK0XbA\""
+  },
+  {
+    "userEmail": "kevin@gafe.co.za",
+    "userId": "110373738102602631270",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": true,
+    "clientId": "1062961139910-l2m55cb9h51u5cuc9c56eb3fevouidh9.apps.googleusercontent.com",
+    "displayText": "Claude",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/GZItn_xDs3R4sx-aXaTsvj7c2fY\""
+  },
+  {
+    "userEmail": "kevin@gafe.co.za",
+    "userId": "110373738102602631270",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": true,
+    "clientId": "779010036194-lf6spugv22vvj41pqjdj4d8k2tq7o5fd.apps.googleusercontent.com",
+    "displayText": "Canva",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/MF8U-oVz6E4VRErDMuaYlvk102Y\""
+  },
+  {
+    "userEmail": "kevin@gafe.co.za",
+    "userId": "110373738102602631270",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": true,
+    "clientId": "476257776955-t129f3c8h8tgq60g7rp4cmganf4n7dn7.apps.googleusercontent.com",
+    "displayText": "dev.adminlens.io",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/XYtciEvEUb1JgHGniNmu7kEDwFA\""
+  },
+  {
+    "userEmail": "kevin@gafe.co.za",
+    "userId": "110373738102602631270",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": true,
+    "clientId": "104648517694-6cbvg9ida7ivm77gj2cbdee67o29vhe4.apps.googleusercontent.com",
+    "displayText": "Howdou",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/TfQNDHaQnLUCACUDYNJ8IFV8r34\""
+  },
+  {
+    "userEmail": "kevin@gafe.co.za",
+    "userId": "110373738102602631270",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": true,
+    "clientId": "873507009103-gi4ff8nkju6ggaurt6ebbiqrfmr0c79j.apps.googleusercontent.com",
+    "displayText": "Google Chat for Workspace Studio",
+    "scopes": [
+      "https://www.googleapis.com/auth/chat.users.readstate",
+      "https://www.googleapis.com/auth/chat.messages.readonly",
+      "https://www.googleapis.com/auth/chat.memberships",
+      "https://www.googleapis.com/auth/chat.spaces",
+      "https://www.googleapis.com/auth/chat.memberships.app",
+      "https://www.googleapis.com/auth/workspace.workflows.trigger",
+      "https://www.googleapis.com/auth/chat.messages.create"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/Etvg762mqlINE6paoEKYOP7fVQ0\""
+  },
+  {
+    "userEmail": "kevin@gafe.co.za",
+    "userId": "110373738102602631270",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": true,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/1exAMc_uX-Rcs6rhTkMDgsIJkjs\""
+  },
+  {
+    "userEmail": "louise@gafe.co.za",
+    "userId": "106910150519995059699",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": false,
+    "clientId": "936475272427.apps.googleusercontent.com",
+    "displayText": "iOS Account Manager",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/WNLfUrxJrWTpd3xSwheXYnL8BBY\""
+  },
+  {
+    "userEmail": "louise@gafe.co.za",
+    "userId": "106910150519995059699",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": false,
+    "clientId": "58172892053-hh2k290hilpi3edodu8lrv3cag3pop0f.apps.googleusercontent.com",
+    "displayText": "Wayground (formerly Quizizz)",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.googleapis.com/auth/drive"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/TQ1eCAqCFxWFdwBXdQ3AsdwZhe4\""
+  },
+  {
+    "userEmail": "louise@gafe.co.za",
+    "userId": "106910150519995059699",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/3OFpZZNVqDvi4T1Jgeef218ISlw\""
+  },
+  {
+    "userEmail": "louise@gafe.co.za",
+    "userId": "106910150519995059699",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": false,
+    "clientId": "58172892053-6laet7k6ls3k5va0jija3b175sm3jjms.apps.googleusercontent.com",
+    "displayText": "Wayground (formerly Quizizz)",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/y-v26HQzkx8LIzL5TTP2Q2uMOnU\""
+  },
+  {
+    "userEmail": "louise@gafe.co.za",
+    "userId": "106910150519995059699",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": false,
+    "clientId": "779010036194-lf6spugv22vvj41pqjdj4d8k2tq7o5fd.apps.googleusercontent.com",
+    "displayText": "Canva",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/Sx1lnk37bOM34RHn2K-OECqbCrg\""
+  },
+  {
+    "userEmail": "louise@gafe.co.za",
+    "userId": "106910150519995059699",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/NPB-3xRoOXYBwBWG2olm2AMBPP8\""
+  },
+  {
+    "userEmail": "louise@gafe.co.za",
+    "userId": "106910150519995059699",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": false,
+    "clientId": "86031167857-hapr09njcucvm0jv3hbpd7p0t75qjnm5.apps.googleusercontent.com",
+    "displayText": "Lusha",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/2tdHn2GMRxc54CFfiHym-8oJA6w\""
+  },
+  {
+    "userEmail": "lskywalker@gafe.co.za",
+    "userId": "105711821200289112172",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/CDW2LBfZRNAyS_KAQ_rvWG4fIzw\""
+  },
+  {
+    "userEmail": "lskywalker@gafe.co.za",
+    "userId": "105711821200289112172",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "779010036194-lf6spugv22vvj41pqjdj4d8k2tq7o5fd.apps.googleusercontent.com",
+    "displayText": "Canva",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/WG2sN2LDuw8Ntxyvgh3De265emM\""
+  },
+  {
+    "userEmail": "lskywalker@gafe.co.za",
+    "userId": "105711821200289112172",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/xfdHPaGnRWFNtVsZzHMApP8dYGI\""
+  },
+  {
+    "userEmail": "m.davis@gafe.co.za",
+    "userId": "108931423308206198653",
+    "userOrgUnit": "/Jacaranda Academy/Staff/Intermediate Phase Teachers",
+    "isUserAdmin": false,
+    "clientId": "936475272427.apps.googleusercontent.com",
+    "displayText": "iOS Account Manager",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/NV2oPWI0AJLeklBcgEhM_KgSn-U\""
+  },
+  {
+    "userEmail": "m.davis@gafe.co.za",
+    "userId": "108931423308206198653",
+    "userOrgUnit": "/Jacaranda Academy/Staff/Intermediate Phase Teachers",
+    "isUserAdmin": false,
+    "clientId": "657959631782-i9cm367mk2m810gc99sp2lsie03vo4u3.apps.googleusercontent.com",
+    "displayText": "Collaborative Whiteboard",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/ayKQWLLBYqBWD1OQEkI4KFoSemU\""
+  },
+  {
+    "userEmail": "m.davis@gafe.co.za",
+    "userId": "108931423308206198653",
+    "userOrgUnit": "/Jacaranda Academy/Staff/Intermediate Phase Teachers",
+    "isUserAdmin": false,
+    "clientId": "657959631782-gig0qdc3vaieq93qtv1mubvj0c4mjdfl.apps.googleusercontent.com",
+    "displayText": "Collaborative Whiteboard",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/H563GIb8o-ybkO9AwDBnROZWWNs\""
+  },
+  {
+    "userEmail": "m.davis@gafe.co.za",
+    "userId": "108931423308206198653",
+    "userOrgUnit": "/Jacaranda Academy/Staff/Intermediate Phase Teachers",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/apxKnZpAi9q8D2U69LYo7DGeRd4\""
+  },
+  {
+    "userEmail": "m.davis@gafe.co.za",
+    "userId": "108931423308206198653",
+    "userOrgUnit": "/Jacaranda Academy/Staff/Intermediate Phase Teachers",
+    "isUserAdmin": false,
+    "clientId": "864619725951-na3uleaalbekeilaalb3ak9qdpuoddeo.apps.googleusercontent.com",
+    "displayText": "Suno",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/Ii7UBTuSTPoHKNy3cDJrWbvCEZo\""
+  },
+  {
+    "userEmail": "m.davis@gafe.co.za",
+    "userId": "108931423308206198653",
+    "userOrgUnit": "/Jacaranda Academy/Staff/Intermediate Phase Teachers",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/jXeZ7ecakQRf-CIgOCUvHyiSrQQ\""
+  },
+  {
+    "userEmail": "mantest2@gafe.co.za",
+    "userId": "104727216859134743535",
+    "userOrgUnit": "/",
+    "isUserAdmin": false,
+    "clientId": "936475272427.apps.googleusercontent.com",
+    "displayText": "iOS Account Manager",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/kwVpINmssnE6FtjTxh1DkeW9si4\""
+  },
+  {
+    "userEmail": "marinus@gafe.co.za",
+    "userId": "116269444131856489058",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": false,
+    "clientId": "936475272427.apps.googleusercontent.com",
+    "displayText": "iOS Account Manager",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/eXs8lFPQvcsVajfbtfxxl3WHcW0\""
+  },
+  {
+    "userEmail": "marinus@gafe.co.za",
+    "userId": "116269444131856489058",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/T74XKIDv4H7vDEVXxSooEsULX1c\""
+  },
+  {
+    "userEmail": "maul@gafe.co.za",
+    "userId": "111579658269645022377",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/Vvi5OVzzPzINXKTFWunRVrMfIug\""
+  },
+  {
+    "userEmail": "maul@gafe.co.za",
+    "userId": "111579658269645022377",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/XxsVAyAeWd-I5_0tYwaRKzl4Sfg\""
+  },
+  {
+    "userEmail": "mickey@gafe.co.za",
+    "userId": "102796934296793340626",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": false,
+    "clientId": "469390422673-r0p2tar3lgjlnhtsv4t4uonq4bi2svf8.apps.googleusercontent.com",
+    "displayText": "Google Calendar for Workspace Studio",
+    "scopes": [
+      "https://www.googleapis.com/auth/calendar",
+      "https://www.googleapis.com/auth/workspace.workflows.trigger"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/fqQXQcYBWdqdhZxgsu8ybOjMXWQ\""
+  },
+  {
+    "userEmail": "mickey@gafe.co.za",
+    "userId": "102796934296793340626",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": false,
+    "clientId": "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
+    "displayText": "Gemini for Workspace Studio",
+    "scopes": [
+      "https://www.googleapis.com/auth/documents",
+      "https://www.googleapis.com/auth/spreadsheets",
+      "https://www.googleapis.com/auth/apps_genai",
+      "https://www.googleapis.com/auth/drive"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/HNV_y-RauzHE8u2mwhnF0Lb7Ffk\""
+  },
+  {
+    "userEmail": "mickey@gafe.co.za",
+    "userId": "102796934296793340626",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/RC1s-XSdnssURtuxRcePwwNl_G8\""
+  },
+  {
+    "userEmail": "mickey@gafe.co.za",
+    "userId": "102796934296793340626",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": false,
+    "clientId": "873507009103-gi4ff8nkju6ggaurt6ebbiqrfmr0c79j.apps.googleusercontent.com",
+    "displayText": "Google Chat for Workspace Studio",
+    "scopes": [
+      "https://www.googleapis.com/auth/chat.users.readstate",
+      "https://www.googleapis.com/auth/chat.messages.readonly",
+      "https://www.googleapis.com/auth/chat.memberships",
+      "https://www.googleapis.com/auth/chat.spaces",
+      "https://www.googleapis.com/auth/chat.memberships.app",
+      "https://www.googleapis.com/auth/workspace.workflows.trigger",
+      "https://www.googleapis.com/auth/chat.messages.create"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/fFGtuPUHT-Ax4jaNGKvio7IrWR8\""
+  },
+  {
+    "userEmail": "migrate@gafe.co.za",
+    "userId": "113601412542180259619",
+    "userOrgUnit": "/CloudEDU Technical/Resources",
+    "isUserAdmin": false,
+    "clientId": "947318989803-6bn6qk8qdgf4n4g3pfee6491hc0brc4i.apps.googleusercontent.com",
+    "displayText": "Google Drive for desktop",
+    "scopes": [
+      "https://www.googleapis.com/auth/flexible-api"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/JFkDCPldECriISvFqCH8_3hVqRg\""
+  },
+  {
+    "userEmail": "mskywalker@gafe.co.za",
+    "userId": "115302606900258069542",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "936475272427.apps.googleusercontent.com",
+    "displayText": "iOS Account Manager",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/buPj5dQs1WE62ZFWcIJ2twAC8Cs\""
+  },
+  {
+    "userEmail": "mskywalker@gafe.co.za",
+    "userId": "115302606900258069542",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/5kElJ8sGJjc3BMNp1Ec7tj0McWU\""
+  },
+  {
+    "userEmail": "mskywalker@gafe.co.za",
+    "userId": "115302606900258069542",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/Fh2DVMcJgRyuDUkCWF0D1C-5UUY\""
+  },
+  {
+    "userEmail": "nontokozo@gafe.co.za",
+    "userId": "112053341857159946100",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": false,
+    "clientId": "936475272427.apps.googleusercontent.com",
+    "displayText": "iOS Account Manager",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/myHjk3RKw84EC1i_X7YJBISy2kQ\""
+  },
+  {
+    "userEmail": "nontokozo@gafe.co.za",
+    "userId": "112053341857159946100",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": false,
+    "clientId": "899041083010-d9l71rq1omp8sj53qo1v0sjb9n6aqpu8.apps.googleusercontent.com",
+    "displayText": "CloudReady Home Edition",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/nLgZz5ese8TCowRK9zDyZ67MCTk\""
+  },
+  {
+    "userEmail": "nu@gafe.co.za",
+    "userId": "113840585196469505828",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/vbinDaabyxxgzIHlB8k8durHOl0\""
+  },
+  {
+    "userEmail": "nu@gafe.co.za",
+    "userId": "113840585196469505828",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/2wleApq-l1sUfJ2PYSlk0sPxXKA\""
+  },
+  {
+    "userEmail": "panaka@gafe.co.za",
+    "userId": "115372228692313483495",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/Zvx5xaQynHjKwEfJCB7ddKlaUiM\""
+  },
+  {
+    "userEmail": "panaka@gafe.co.za",
+    "userId": "115372228692313483495",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "779010036194-lf6spugv22vvj41pqjdj4d8k2tq7o5fd.apps.googleusercontent.com",
+    "displayText": "Canva",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/Nf8gppJreOGFsEiWEGv9LJGaKok\""
+  },
+  {
+    "userEmail": "panaka@gafe.co.za",
+    "userId": "115372228692313483495",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/jHtN6Pcz5r43zIrbzrtOH2qdOOU\""
+  },
+  {
+    "userEmail": "paploo@gafe.co.za",
+    "userId": "103985497524070573910",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/plsH9dGEat9B2CWV3YhbRDUkTRY\""
+  },
+  {
+    "userEmail": "paploo@gafe.co.za",
+    "userId": "103985497524070573910",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/8sFz-1kwdRDu7K1UB_yStIgahc8\""
+  },
+  {
+    "userEmail": "pavel@gafe.co.za",
+    "userId": "115213879076638367846",
+    "userOrgUnit": "/",
+    "isUserAdmin": true,
+    "clientId": "936475272427.apps.googleusercontent.com",
+    "displayText": "iOS Account Manager",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/bnI6o_IduhDIPrhFmvEZahXFypI\""
+  },
+  {
+    "userEmail": "pavel@gafe.co.za",
+    "userId": "115213879076638367846",
+    "userOrgUnit": "/",
+    "isUserAdmin": true,
+    "clientId": "539614054292-v48fp11ou2nrhh7lb47qgqq4k5d1fd8u.apps.googleusercontent.com",
+    "displayText": "adminlens.io",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/FAFNyVj4MyQUeehtrvwfQrVo7cQ\""
+  },
+  {
+    "userEmail": "pavel@gafe.co.za",
+    "userId": "115213879076638367846",
+    "userOrgUnit": "/",
+    "isUserAdmin": true,
+    "clientId": "609427711699-sq919k8t73af34500gr6vrfclaafcslb.apps.googleusercontent.com",
+    "displayText": "LinkHMS",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/Bpx11QbqbJdAKak4xrwIpBv3jcc\""
+  },
+  {
+    "userEmail": "pavel@gafe.co.za",
+    "userId": "115213879076638367846",
+    "userOrgUnit": "/",
+    "isUserAdmin": true,
+    "clientId": "476257776955-t129f3c8h8tgq60g7rp4cmganf4n7dn7.apps.googleusercontent.com",
+    "displayText": "dev.adminlens.io",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/TkvYgab824wDt6fGPW1IV9B5kJI\""
+  },
+  {
+    "userEmail": "pavel@gafe.co.za",
+    "userId": "115213879076638367846",
+    "userOrgUnit": "/",
+    "isUserAdmin": true,
+    "clientId": "609427711699-8kgr4bj5hc7ip93n5erf04qjtr1c1tel.apps.googleusercontent.com",
+    "displayText": "LinkHMS",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/quTXp0ZfI4WHYZ3UcJaW2iP2XZg\""
+  },
+  {
+    "userEmail": "r2d2@gafe.co.za",
+    "userId": "100692513024067153801",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/AlT8_ksydQS_mfuKwZntdWbX0Xc\""
+  },
+  {
+    "userEmail": "r2d2@gafe.co.za",
+    "userId": "100692513024067153801",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/ghHmCNUkp3usu22yR9fTp38JApY\""
+  },
+  {
+    "userEmail": "reeves@gafe.co.za",
+    "userId": "109559720826003108128",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/d-9xRDpc9Z9iKYY8WFW4qEcqzyc\""
+  },
+  {
+    "userEmail": "reeves@gafe.co.za",
+    "userId": "109559720826003108128",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/KoWH4EGTU_e7X_aDZD-EDyCvC1o\""
+  },
+  {
+    "userEmail": "ren@gafe.co.za",
+    "userId": "100949421687065827048",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/cG2ROajBYz5GgwFHoRHwHPYGJnA\""
+  },
+  {
+    "userEmail": "ren@gafe.co.za",
+    "userId": "100949421687065827048",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/fKyi86H2Ch8Q3huQ3tQl9PXTBbE\""
+  },
+  {
+    "userEmail": "rey@gafe.co.za",
+    "userId": "104858424284619903050",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training",
+    "isUserAdmin": false,
+    "clientId": "913728339568-tjccmfojammmqs9q0kunokb507mpjqum.apps.googleusercontent.com",
+    "displayText": "Grammarly",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/-SzE3cZ0N_iNL7Q-g2pdDgtmZwk\""
+  },
+  {
+    "userEmail": "s.bones@gafe.co.za",
+    "userId": "102208185860478392329",
+    "userOrgUnit": "/Jacaranda Academy/Staff/Admin Staff",
+    "isUserAdmin": false,
+    "clientId": "936475272427.apps.googleusercontent.com",
+    "displayText": "iOS Account Manager",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/T4qgdwe78e9YN9R7Lc9w8zh0-W4\""
+  },
+  {
+    "userEmail": "samram2566@gafe.co.za",
+    "userId": "103988474234630849008",
+    "userOrgUnit": "/Jacaranda Academy/Students",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/ZpWHv0A-NULSmXDRD7Gr9gz_TDw\""
+  },
+  {
+    "userEmail": "samram2566@gafe.co.za",
+    "userId": "103988474234630849008",
+    "userOrgUnit": "/Jacaranda Academy/Students",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/gHvenpwlFnOWgQNFFZ3XP52ypXo\""
+  },
+  {
+    "userEmail": "school_calendar@gafe.co.za",
+    "userId": "104711847174635317348",
+    "userOrgUnit": "/CloudEDU Technical/Demo",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/qMWnxTBZQ53lQcHEKyDAV7Ss3cQ\""
+  },
+  {
+    "userEmail": "sharon@gafe.co.za",
+    "userId": "105892160355970817800",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/tHHTbGwY9T8j3hlKtnGIMVW5EuM\""
+  },
+  {
+    "userEmail": "signafly@gafe.co.za",
+    "userId": "116740260067277888923",
+    "userOrgUnit": "/",
+    "isUserAdmin": false,
+    "clientId": "172700529642-48obmiqhk5joviftkt87d0po0bnbunbu.apps.googleusercontent.com",
+    "displayText": "project-172700529642",
+    "scopes": [
+      "https://www.googleapis.com/auth/user.organization.read",
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "https://www.googleapis.com/auth/gmail.settings.basic",
+      "openid",
+      "https://www.googleapis.com/auth/user.phonenumbers.read",
+      "https://www.googleapis.com/auth/admin.directory.user.readonly"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/KmALNUDHm0oO0jH_AUOh8CA0rOI\""
+  },
+  {
+    "userEmail": "solo@gafe.co.za",
+    "userId": "100501870297482790167",
+    "userOrgUnit": "/",
+    "isUserAdmin": false,
+    "clientId": "936475272427.apps.googleusercontent.com",
+    "displayText": "iOS Account Manager",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/OQqjWoIcPvBQVvj35AuW1yreWl8\""
+  },
+  {
+    "userEmail": "solo@gafe.co.za",
+    "userId": "100501870297482790167",
+    "userOrgUnit": "/",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/5RviqJjE9R1xy-M9bpJNuMMXOKA\""
+  },
+  {
+    "userEmail": "solo@gafe.co.za",
+    "userId": "100501870297482790167",
+    "userOrgUnit": "/",
+    "isUserAdmin": false,
+    "clientId": "58172892053-6laet7k6ls3k5va0jija3b175sm3jjms.apps.googleusercontent.com",
+    "displayText": "Wayground (formerly Quizizz)",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/Pgy3orHudNFpxXbrxYU6_LXmG5E\""
+  },
+  {
+    "userEmail": "solo@gafe.co.za",
+    "userId": "100501870297482790167",
+    "userOrgUnit": "/",
+    "isUserAdmin": false,
+    "clientId": "58172892053-faol054co4k3tsmtbtuk41v4si41slq0.apps.googleusercontent.com",
+    "displayText": "Wayground (formerly Quizizz)",
+    "scopes": [
+      "https://www.googleapis.com/auth/drive.file",
+      "https://www.googleapis.com/auth/drive.readonly"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/6zWe0b25EgU7r9mG12MwQ1DnhPI\""
+  },
+  {
+    "userEmail": "solo@gafe.co.za",
+    "userId": "100501870297482790167",
+    "userOrgUnit": "/",
+    "isUserAdmin": false,
+    "clientId": "779010036194-lf6spugv22vvj41pqjdj4d8k2tq7o5fd.apps.googleusercontent.com",
+    "displayText": "Canva",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/a9DLZNem9NDITcPBd8qV1NocVzk\""
+  },
+  {
+    "userEmail": "solo@gafe.co.za",
+    "userId": "100501870297482790167",
+    "userOrgUnit": "/",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/4mtfqPh5HZPkjIRlR2ZztiVm3Gg\""
+  },
+  {
+    "userEmail": "syates1142@gafe.co.za",
+    "userId": "109036757561171729367",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/No license",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/pWe2k_XKgNFDctfMBUmtVxfBgGY\""
+  },
+  {
+    "userEmail": "tetiana_kaminska@gafe.co.za",
+    "userId": "117699704439186118473",
+    "userOrgUnit": "/Existek",
+    "isUserAdmin": true,
+    "clientId": "539614054292-v48fp11ou2nrhh7lb47qgqq4k5d1fd8u.apps.googleusercontent.com",
+    "displayText": "adminlens.io",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/ParseE5S2zscJcEonOpVPyXjNKE\""
+  },
+  {
+    "userEmail": "tetiana_kaminska@gafe.co.za",
+    "userId": "117699704439186118473",
+    "userOrgUnit": "/Existek",
+    "isUserAdmin": true,
+    "clientId": "476257776955-t129f3c8h8tgq60g7rp4cmganf4n7dn7.apps.googleusercontent.com",
+    "displayText": "dev.adminlens.io",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/dM79jRcO74aWe0GkLH_I516Kvj4\""
+  },
+  {
+    "userEmail": "tetiana_kaminska@gafe.co.za",
+    "userId": "117699704439186118473",
+    "userOrgUnit": "/Existek",
+    "isUserAdmin": true,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/pQ8-OBaiBc2YYAhyFOxE1KE20RY\""
+  },
+  {
+    "userEmail": "themba@gafe.co.za",
+    "userId": "115765194836052357025",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": true,
+    "clientId": "936475272427.apps.googleusercontent.com",
+    "displayText": "iOS Account Manager",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/6COBGZ2Qo2_uj9CsXnudrqwoBi4\""
+  },
+  {
+    "userEmail": "themba@gafe.co.za",
+    "userId": "115765194836052357025",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": true,
+    "clientId": "99790332366-7jbqgn7andc12kui6o7810gk03le7asr.apps.googleusercontent.com",
+    "displayText": "Edu Launchpad",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/xWGA3_puhy0jVkov00D-PO3x8rc\""
+  },
+  {
+    "userEmail": "themba@gafe.co.za",
+    "userId": "115765194836052357025",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": true,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/dLcrcVnAR30ZUQDrrzPKz74DGSQ\""
+  },
+  {
+    "userEmail": "themba@gafe.co.za",
+    "userId": "115765194836052357025",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": true,
+    "clientId": "779010036194-lf6spugv22vvj41pqjdj4d8k2tq7o5fd.apps.googleusercontent.com",
+    "displayText": "Canva",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/FcE0XoTSscyvjOsUGmOEej0kHVI\""
+  },
+  {
+    "userEmail": "themba@gafe.co.za",
+    "userId": "115765194836052357025",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": true,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/XWkqRCLYZ-b-huDZF09weI57UYc\""
+  },
+  {
+    "userEmail": "vadar@gafe.co.za",
+    "userId": "109540952416409710790",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/OpqA0ou5_dtZnPc4XbMoIjLzLGw\""
+  },
+  {
+    "userEmail": "vadar@gafe.co.za",
+    "userId": "109540952416409710790",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/ZF3sG0fp4Eb1wdG_W_SILydnsPc\""
+  },
+  {
+    "userEmail": "w.smith@gafe.co.za",
+    "userId": "107819280743358008931",
+    "userOrgUnit": "/Jacaranda Academy/Staff/Foundation phase Teachers",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/oPp86fXjrhsJNThnnnri4xAwbjs\""
+  },
+  {
+    "userEmail": "warrick@gafe.co.za",
+    "userId": "108676585634554558048",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/P5Cjx6-fjtULx8YfhpbTGQ-ybTk\""
+  },
+  {
+    "userEmail": "warrick@gafe.co.za",
+    "userId": "108676585634554558048",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/dGV6GfcD3HWES0vOcOB_pJDcoNQ\""
+  },
+  {
+    "userEmail": "wayground1@gafe.co.za",
+    "userId": "115224574380476538398",
+    "userOrgUnit": "/Quizzes Users",
+    "isUserAdmin": false,
+    "clientId": "58172892053-6laet7k6ls3k5va0jija3b175sm3jjms.apps.googleusercontent.com",
+    "displayText": "Wayground (formerly Quizizz)",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/w0cXYC1kabbFmi1yl4-rXPbhb0I\""
+  },
+  {
+    "userEmail": "yoda@gafe.co.za",
+    "userId": "101070053329965705565",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/185LCZLTLc9j_IF4uYAFgSAQy4A\""
+  },
+  {
+    "userEmail": "yoda@gafe.co.za",
+    "userId": "101070053329965705565",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/EzkQlXdePOQUN6NP6q3IsokZTGw\""
+  },
+  {
+    "userEmail": "yularen@gafe.co.za",
+    "userId": "113517298582674179219",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training",
+    "isUserAdmin": false,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/LQbwSggffoRAyqlwOmYAUMo3-6c\""
+  },
+  {
+    "userEmail": "yularen@gafe.co.za",
+    "userId": "113517298582674179219",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"fCTAT2Qgjhnvei5QL8StlWAzWu5li8JALJA0szn-A6I/mPgWghBJb2DLAZ76yIEvNFoGhl0\""
+  }
+]

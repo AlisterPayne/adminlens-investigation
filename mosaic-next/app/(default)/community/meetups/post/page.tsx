@@ -1,0 +1,479 @@
+export const metadata = {
+  title: "Meetup Post - Mosaic",
+  description: "Page description",
+};
+
+import Image from "next/image";
+import Link from "next/link";
+
+import Avatar02 from "@/public/images/avatar-02.jpg";
+import Avatar03 from "@/public/images/avatar-03.jpg";
+import Avatar04 from "@/public/images/avatar-04.jpg";
+import MeetupImage from "@/public/images/meetup-image.jpg";
+import MeetupPhoto01 from "@/public/images/meetup-photo-01.jpg";
+import MeetupPhoto02 from "@/public/images/meetup-photo-02.jpg";
+import MeetupPhoto03 from "@/public/images/meetup-photo-03.jpg";
+import MeetupThumb from "@/public/images/meetups-thumb-02.jpg";
+import UserImage01 from "@/public/images/user-32-01.jpg";
+import UserImage02 from "@/public/images/user-32-02.jpg";
+import UserImage03 from "@/public/images/user-32-03.jpg";
+import UserImage04 from "@/public/images/user-32-04.jpg";
+import UserImage05 from "@/public/images/user-32-05.jpg";
+import UserImage06 from "@/public/images/user-32-06.jpg";
+import UserImage07 from "@/public/images/user-32-07.jpg";
+import UserImage08 from "@/public/images/user-32-08.jpg";
+
+export default function MeetupPost() {
+  return (
+    <div className="w-full px-4 py-8 sm:px-6 lg:px-8">
+      {/* Page content */}
+      <div className="mx-auto flex max-w-5xl flex-col lg:flex-row lg:space-x-8 xl:space-x-16">
+        {/* Content */}
+        <div>
+          <div className="mb-6">
+            <Link
+              className="btn-sm border-gray-200 bg-white px-3 text-gray-800 hover:border-gray-300 dark:border-gray-700/60 dark:bg-gray-800 dark:text-gray-300 dark:hover:border-gray-600"
+              href="/community/meetups"
+            >
+              <svg
+                className="mr-2 fill-current text-gray-400 dark:text-gray-500"
+                width="7"
+                height="12"
+                viewBox="0 0 7 12"
+              >
+                <path d="M5.4.6 6.8 2l-4 4 4 4-1.4 1.4L0 6z" />
+              </svg>
+              <span>Back To Meetups</span>
+            </Link>
+          </div>
+          <div className="mb-2 text-sm font-semibold text-violet-500 uppercase">
+            Mon 27 Dec, 2024 - 9:00 PM -&gt; 10:00 PM
+          </div>
+          <header className="mb-4">
+            {/* Title */}
+            <h1 className="mb-2 text-2xl font-bold text-gray-800 md:text-3xl dark:text-gray-100">
+              The World of AI and Machine Learning — Open Chat
+            </h1>
+            <p>
+              Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for
+              previewing layouts.
+            </p>
+          </header>
+
+          {/* Meta */}
+          <div className="mb-6 space-y-3 sm:flex sm:items-center sm:justify-between sm:space-y-0">
+            {/* Author */}
+            <div className="flex items-center sm:mr-4">
+              <a className="mr-2 block shrink-0" href="#0">
+                <Image className="rounded-full" src={UserImage07} width={32} height={32} alt="User 04" />
+              </a>
+              <div className="text-sm whitespace-nowrap">
+                Hosted by{" "}
+                <a className="font-semibold text-gray-800 dark:text-gray-100" href="#0">
+                  Monica Fishkin
+                </a>
+              </div>
+            </div>
+            {/* Right side */}
+            <div className="flex flex-wrap items-center space-x-2 sm:justify-end">
+              {/* Tags */}
+              <div className="inline-flex items-center rounded-full border border-gray-200 px-2.5 py-1 text-center text-xs font-medium text-gray-600 dark:border-gray-700/60 dark:text-gray-400">
+                <svg className="mr-2 h-3 w-4 fill-gray-400 dark:fill-gray-500" viewBox="0 0 16 12">
+                  <path d="m16 2-4 2.4V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7.6l4 2.4V2ZM2 10V2h8v8H2Z" />
+                </svg>
+                <span>Online Event</span>
+              </div>
+              <div className="inline-flex rounded-full bg-green-500/20 px-2.5 py-1 text-center text-xs font-medium text-green-700 uppercase">
+                Free
+              </div>
+            </div>
+          </div>
+
+          {/* Image */}
+          <figure className="mb-6">
+            <Image className="w-full rounded-xs" src={MeetupImage} width={640} height={360} alt="Meetup" />
+          </figure>
+
+          {/* Post content */}
+          <div>
+            <h2 className="mb-2 text-xl leading-snug font-bold text-gray-800 dark:text-gray-100">Meetup Details</h2>
+            <p className="mb-6">
+              In the world of AI, behavioural predictions are leading the charge to better machine learning.
+            </p>
+            <p className="mb-6">
+              There is so much happening in the AI space. Advances in the economic sectors have seen automated business
+              practices rapidly increasing economic value. While the realm of the human sciences has used the power
+              afforded by computational capabilities to solve many human based dilemmas. Even the art scene has adopted
+              carefully selected ML applications to usher in the technological movement.
+            </p>
+            <p className="mb-6">
+              Join us every second Wednesday as we host an open discussion about the amazing things happening in the
+              world of AI and machine learning. Feel free to share your experiences, ask questions, ponder the
+              possibilities, or just listen as we explore new topics and revisit old ones.
+            </p>
+          </div>
+          <hr className="my-6 border-t border-gray-100 dark:border-gray-700/60" />
+
+          {/* Photos */}
+          <div>
+            <h2 className="mb-2 text-xl leading-snug font-bold text-gray-800 dark:text-gray-100">Photos (3)</h2>
+            <div className="my-6 grid grid-cols-3 gap-4">
+              <a className="block" href="#0">
+                <Image
+                  className="w-full rounded-xs"
+                  src={MeetupPhoto01}
+                  width={203}
+                  height={152}
+                  alt="Meetup photo 01"
+                />
+              </a>
+              <a className="block" href="#0">
+                <Image
+                  className="w-full rounded-xs"
+                  src={MeetupPhoto02}
+                  width={203}
+                  height={152}
+                  alt="Meetup photo 02"
+                />
+              </a>
+              <a className="block" href="#0">
+                <Image
+                  className="w-full rounded-xs"
+                  src={MeetupPhoto03}
+                  width={203}
+                  height={152}
+                  alt="Meetup photo 03"
+                />
+              </a>
+            </div>
+          </div>
+
+          <hr className="my-6 border-t border-gray-100 dark:border-gray-700/60" />
+
+          {/* Comments */}
+          <div>
+            <h2 className="mb-2 text-xl leading-snug font-bold text-gray-800 dark:text-gray-100">Comments (3)</h2>
+            <ul className="my-6 space-y-5">
+              {/* Comment */}
+              <li className="flex items-start">
+                <a className="mr-3 block shrink-0" href="#0">
+                  <Image className="rounded-full" src={UserImage07} width={32} height={32} alt="User 07" />
+                </a>
+                <div className="grow">
+                  <div className="mb-2 text-sm font-semibold text-gray-800 dark:text-gray-100">Taylor Nieman</div>
+                  <div className="italic">
+                    “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam.”
+                  </div>
+                </div>
+              </li>
+              {/* Comment */}
+              <li className="flex items-start">
+                <a className="mr-3 block shrink-0" href="#0">
+                  <Image className="rounded-full" src={UserImage08} width={32} height={32} alt="User 08" />
+                </a>
+                <div className="grow">
+                  <div className="mb-2 text-sm font-semibold text-gray-800 dark:text-gray-100">Meagan Loyst</div>
+                  <div className="italic">
+                    “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam.”
+                  </div>
+                </div>
+              </li>
+              {/* Comment */}
+              <li className="flex items-start">
+                <a className="mr-3 block shrink-0" href="#0">
+                  <Image className="rounded-full" src={UserImage02} width={32} height={32} alt="User 02" />
+                </a>
+                <div className="grow">
+                  <div className="mb-2 text-sm font-semibold text-gray-800 dark:text-gray-100">Frank Malik</div>
+                  <div className="italic">
+                    “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam.”
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <hr className="my-6 border-t border-gray-100 dark:border-gray-700/60" />
+
+          {/* Similar Meetups */}
+          <div>
+            <h2 className="mb-2 text-xl leading-snug font-bold text-gray-800 dark:text-gray-100">Similar Meetups</h2>
+            <div className="my-6 space-y-8 sm:space-y-5 lg:mb-0">
+              {/* Related item */}
+              <article className="flex overflow-hidden rounded-xl bg-white shadow-sm dark:bg-gray-800">
+                {/* Image */}
+                <a
+                  className="lg:sidebar-expanded:w-20 xl:sidebar-expanded:w-[14rem] relative block w-24 shrink-0 sm:w-[14rem]"
+                  href="#0"
+                >
+                  <Image
+                    className="absolute h-full w-full object-cover object-center"
+                    src={MeetupThumb}
+                    width={220}
+                    height={236}
+                    alt="Meetup 02"
+                  />
+                  {/* Like button */}
+                  <button className="absolute top-0 right-0 mt-4 mr-4">
+                    <div className="rounded-full bg-gray-900/60 text-gray-100">
+                      <span className="sr-only">Like</span>
+                      <svg className="h-8 w-8 fill-current" viewBox="0 0 32 32">
+                        <path d="M22.682 11.318A4.485 4.485 0 0019.5 10a4.377 4.377 0 00-3.5 1.707A4.383 4.383 0 0012.5 10a4.5 4.5 0 00-3.182 7.682L16 24l6.682-6.318a4.5 4.5 0 000-6.364zm-1.4 4.933L16 21.247l-5.285-5A2.5 2.5 0 0112.5 12c1.437 0 2.312.681 3.5 2.625C17.187 12.681 18.062 12 19.5 12a2.5 2.5 0 011.785 4.251h-.003z" />
+                      </svg>
+                    </div>
+                  </button>
+                </a>
+                {/* Content */}
+                <div className="flex grow flex-col p-5">
+                  <div className="grow">
+                    <div className="mb-2 text-sm font-semibold text-violet-500 uppercase">Mon 27 Dec, 2024</div>
+                    <a className="mb-2 inline-flex" href="#0">
+                      <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100">
+                        New York &amp; New Jersey Virtual Retreat 2024
+                      </h3>
+                    </a>
+                    <div className="text-sm">
+                      Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for
+                      previewing layouts.
+                    </div>
+                  </div>
+                  {/* Footer */}
+                  <div className="mt-3 flex items-center justify-between">
+                    {/* Tag */}
+                    <div className="inline-flex items-center rounded-full border border-gray-200 px-2.5 py-1 text-center text-xs font-medium text-gray-600 dark:border-gray-700/60 dark:text-gray-400">
+                      <svg className="mr-2 h-3 w-4 fill-gray-400 dark:fill-gray-500" viewBox="0 0 16 12">
+                        <path d="m16 2-4 2.4V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7.6l4 2.4V2ZM2 10V2h8v8H2Z" />
+                      </svg>
+                      <span>Online Event</span>
+                    </div>
+                    {/* Avatars */}
+                    <div className="flex items-center space-x-2">
+                      <div className="-ml-0.5 flex -space-x-3">
+                        <Image
+                          className="box-content rounded-full border-2 border-white dark:border-gray-800"
+                          src={Avatar02}
+                          width={28}
+                          height={28}
+                          alt="User 02"
+                        />
+                        <Image
+                          className="box-content rounded-full border-2 border-white dark:border-gray-800"
+                          src={Avatar03}
+                          width={28}
+                          height={28}
+                          alt="User 03"
+                        />
+                        <Image
+                          className="box-content rounded-full border-2 border-white dark:border-gray-800"
+                          src={Avatar04}
+                          width={28}
+                          height={28}
+                          alt="User 04"
+                        />
+                      </div>
+                      <div className="text-xs font-medium text-gray-400 italic dark:text-gray-500">+132</div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        {/* Sidebar */}
+        <div className="space-y-4">
+          {/* 1st block */}
+          <div className="rounded-xl bg-white p-5 shadow-sm lg:w-[18rem] xl:w-[20rem] dark:bg-gray-800">
+            <div className="space-y-2">
+              <button className="btn w-full bg-gray-900 text-gray-100 hover:bg-gray-800 dark:bg-gray-100 dark:text-gray-800 dark:hover:bg-white">
+                <svg className="shrink-0 fill-current" width="16" height="16" viewBox="0 0 16 16">
+                  <path d="m2.457 8.516.969-.99 2.516 2.481 5.324-5.304.985.989-6.309 6.284z" />
+                </svg>
+                <span className="ml-1">Attending</span>
+              </button>
+              <button className="btn w-full border-gray-200 text-gray-800 hover:border-gray-300 dark:border-gray-700/60 dark:text-gray-300 dark:hover:border-gray-600">
+                <svg className="shrink-0 fill-red-500" width="16" height="16" viewBox="0 0 16 16">
+                  <path d="M14.682 2.318A4.485 4.485 0 0 0 11.5 1 4.377 4.377 0 0 0 8 2.707 4.383 4.383 0 0 0 4.5 1a4.5 4.5 0 0 0-3.182 7.682L8 15l6.682-6.318a4.5 4.5 0 0 0 0-6.364Zm-1.4 4.933L8 12.247l-5.285-5A2.5 2.5 0 0 1 4.5 3c1.437 0 2.312.681 3.5 2.625C9.187 3.681 10.062 3 11.5 3a2.5 2.5 0 0 1 1.785 4.251h-.003Z" />
+                </svg>
+                <span className="ml-2">Favorite</span>
+              </button>
+            </div>
+          </div>
+
+          {/* 2nd block */}
+          <div className="rounded-xl bg-white p-5 shadow-sm lg:w-[18rem] xl:w-[20rem] dark:bg-gray-800">
+            <div className="mb-5 flex justify-between space-x-1">
+              <div className="text-sm font-semibold text-gray-800 dark:text-gray-100">Attendees (127)</div>
+              <a
+                className="text-sm font-medium text-violet-500 hover:text-violet-600 dark:hover:text-violet-400"
+                href="#0"
+              >
+                View All
+              </a>
+            </div>
+            <ul className="space-y-3">
+              <li>
+                <div className="flex justify-between">
+                  <div className="flex grow items-center">
+                    <div className="relative mr-3">
+                      <Image className="h-8 w-8 rounded-full" src={UserImage08} width={32} height={32} alt="User 08" />
+                    </div>
+                    <div className="truncate">
+                      <span className="text-sm font-medium text-gray-800 dark:text-gray-100">Carolyn McNeail</span>
+                    </div>
+                  </div>
+                  <button className="rounded-full text-gray-400 hover:text-gray-500 dark:text-gray-500 dark:hover:text-gray-400">
+                    <span className="sr-only">Menu</span>
+                    <svg className="h-8 w-8 fill-current" viewBox="0 0 32 32">
+                      <circle cx="16" cy="16" r="2" />
+                      <circle cx="10" cy="16" r="2" />
+                      <circle cx="22" cy="16" r="2" />
+                    </svg>
+                  </button>
+                </div>
+              </li>
+              <li>
+                <div className="flex justify-between">
+                  <div className="flex grow items-center">
+                    <div className="relative mr-3">
+                      <Image className="h-8 w-8 rounded-full" src={UserImage01} width={32} height={32} alt="User 01" />
+                    </div>
+                    <div className="truncate">
+                      <span className="text-sm font-medium text-gray-800 dark:text-gray-100">Dominik Lamakani</span>
+                    </div>
+                  </div>
+                  <button className="rounded-full text-gray-400 hover:text-gray-500 dark:text-gray-500 dark:hover:text-gray-400">
+                    <span className="sr-only">Menu</span>
+                    <svg className="h-8 w-8 fill-current" viewBox="0 0 32 32">
+                      <circle cx="16" cy="16" r="2" />
+                      <circle cx="10" cy="16" r="2" />
+                      <circle cx="22" cy="16" r="2" />
+                    </svg>
+                  </button>
+                </div>
+              </li>
+              <li>
+                <div className="flex justify-between">
+                  <div className="flex grow items-center">
+                    <div className="relative mr-3">
+                      <Image className="h-8 w-8 rounded-full" src={UserImage03} width={32} height={32} alt="User 03" />
+                    </div>
+                    <div className="truncate">
+                      <span className="text-sm font-medium text-gray-800 dark:text-gray-100">Ivan Mesaros</span>
+                    </div>
+                  </div>
+                  <button className="rounded-full text-gray-400 hover:text-gray-500 dark:text-gray-500 dark:hover:text-gray-400">
+                    <span className="sr-only">Menu</span>
+                    <svg className="h-8 w-8 fill-current" viewBox="0 0 32 32">
+                      <circle cx="16" cy="16" r="2" />
+                      <circle cx="10" cy="16" r="2" />
+                      <circle cx="22" cy="16" r="2" />
+                    </svg>
+                  </button>
+                </div>
+              </li>
+              <li>
+                <div className="flex justify-between">
+                  <div className="flex grow items-center">
+                    <div className="relative mr-3">
+                      <Image className="h-8 w-8 rounded-full" src={UserImage05} width={32} height={32} alt="User 05" />
+                    </div>
+                    <div className="truncate">
+                      <span className="text-sm font-medium text-gray-800 dark:text-gray-100">Maria Martinez</span>
+                    </div>
+                  </div>
+                  <button className="rounded-full text-gray-400 hover:text-gray-500 dark:text-gray-500 dark:hover:text-gray-400">
+                    <span className="sr-only">Menu</span>
+                    <svg className="h-8 w-8 fill-current" viewBox="0 0 32 32">
+                      <circle cx="16" cy="16" r="2" />
+                      <circle cx="10" cy="16" r="2" />
+                      <circle cx="22" cy="16" r="2" />
+                    </svg>
+                  </button>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          {/* 3rd block */}
+          <div className="rounded-xl bg-white p-5 shadow-sm lg:w-[18rem] xl:w-[20rem] dark:bg-gray-800">
+            <div className="mb-5 flex justify-between space-x-1">
+              <div className="text-sm font-semibold text-gray-800 dark:text-gray-100">Invite Friends</div>
+              <a
+                className="text-sm font-medium text-violet-500 hover:text-violet-600 dark:hover:text-violet-400"
+                href="#0"
+              >
+                View All
+              </a>
+            </div>
+            <ul className="space-y-3">
+              <li>
+                <div className="flex items-center justify-between">
+                  <div className="flex grow items-center">
+                    <div className="relative mr-3">
+                      <Image className="h-8 w-8 rounded-full" src={UserImage02} width={32} height={32} alt="User 02" />
+                    </div>
+                    <div className="truncate">
+                      <span className="text-sm font-medium text-gray-800 dark:text-gray-100">Haruki Masuno</span>
+                    </div>
+                  </div>
+                  <button className="btn-xs rounded-full border-gray-200 px-2.5 py-1 text-xs text-gray-800 shadow-none hover:border-gray-300 dark:border-gray-700/60 dark:text-gray-300 dark:hover:border-gray-600">
+                    Invite
+                  </button>
+                </div>
+              </li>
+              <li>
+                <div className="flex items-center justify-between">
+                  <div className="flex grow items-center">
+                    <div className="relative mr-3">
+                      <Image className="h-8 w-8 rounded-full" src={UserImage04} width={32} height={32} alt="User 04" />
+                    </div>
+                    <div className="truncate">
+                      <span className="text-sm font-medium text-gray-800 dark:text-gray-100">Joe Huang</span>
+                    </div>
+                  </div>
+                  <button className="btn-xs rounded-full border-gray-200 px-2.5 py-1 text-xs text-gray-800 shadow-none hover:border-gray-300 dark:border-gray-700/60 dark:text-gray-300 dark:hover:border-gray-600">
+                    Invite
+                  </button>
+                </div>
+              </li>
+              <li>
+                <div className="flex items-center justify-between">
+                  <div className="flex grow items-center">
+                    <div className="relative mr-3">
+                      <Image className="h-8 w-8 rounded-full" src={UserImage06} width={32} height={32} alt="User 06" />
+                    </div>
+                    <div className="truncate">
+                      <span className="text-sm font-medium text-gray-800 dark:text-gray-100">Carolyn McNeail</span>
+                    </div>
+                  </div>
+                  <button className="btn-xs rounded-full border-gray-200 px-2.5 py-1 text-xs text-gray-800 shadow-none hover:border-gray-300 dark:border-gray-700/60 dark:text-gray-300 dark:hover:border-gray-600">
+                    Invite
+                  </button>
+                </div>
+              </li>
+              <li>
+                <div className="flex items-center justify-between">
+                  <div className="flex grow items-center">
+                    <div className="relative mr-3">
+                      <Image className="h-8 w-8 rounded-full" src={UserImage08} width={32} height={32} alt="User 08" />
+                    </div>
+                    <div className="truncate">
+                      <span className="text-sm font-medium text-gray-800 dark:text-gray-100">Lisa Sitwala</span>
+                    </div>
+                  </div>
+                  <button className="btn-xs rounded-full border-gray-200 px-2.5 py-1 text-xs text-gray-800 shadow-none hover:border-gray-300 dark:border-gray-700/60 dark:text-gray-300 dark:hover:border-gray-600">
+                    Invite
+                  </button>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

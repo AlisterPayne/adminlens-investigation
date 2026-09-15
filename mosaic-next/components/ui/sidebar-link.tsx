@@ -1,0 +1,24 @@
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+import { useAppProvider } from "@/app/app-provider";
+
+interface SidebarLinkProps {
+  children: React.ReactNode;
+  href: string;
+}
+
+export default function SidebarLink({ children, href }: SidebarLinkProps) {
+  const pathname = usePathname();
+  const { setSidebarOpen } = useAppProvider();
+
+  return (
+    <Link
+      className={`block truncate text-gray-800 transition dark:text-gray-100 ${pathname === href ? "group-[.is-link-group]:text-violet-500" : "group-[.is-link-group]:text-gray-500/90 hover:text-gray-900 hover:group-[.is-link-group]:text-gray-700 dark:group-[.is-link-group]:text-gray-400 dark:hover:text-white dark:hover:group-[.is-link-group]:text-gray-200"}`}
+      href={href}
+      onClick={() => setSidebarOpen(false)}
+    >
+      {children}
+    </Link>
+  );
+}

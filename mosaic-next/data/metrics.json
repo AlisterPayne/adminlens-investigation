@@ -1,0 +1,16 @@
+{
+  "totalApplications": 88,
+  "totalProductFamilies": 45,
+  "totalDomainUsers": 296,
+  "totalActiveGrants": 267,
+  "criticalRiskApps": 19,
+  "highRiskApps": 6,
+  "trustedAppsCount": 28,
+  "blockedAppsCount": 0,
+  "specificDataAppsCount": 0,
+  "unconfiguredAppsCount": 60,
+  "multiClientFamiliesCount": 13,
+  "baselineSource": "owl_apps.csv",
+  "baselinePolicyCount": 32,
+  "baselineLoadedAt": "2026-09-13T18:00:00Z"
+}
