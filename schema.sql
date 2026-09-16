@@ -14,6 +14,8 @@ CREATE TABLE IF NOT EXISTS applications (
     risk_level TEXT NOT NULL CHECK (risk_level IN ('CRITICAL', 'HIGH', 'MEDIUM', 'LOW')),
     risk_score REAL DEFAULT 1.0,
     risk_score_color TEXT DEFAULT 'Green',
+    peak_scope_score INTEGER DEFAULT 1,
+    avg_scope_score REAL DEFAULT 1.0,
     risk_reasons TEXT, -- JSON array of risk descriptions
     admin_access_level TEXT DEFAULT 'UNCONFIGURED' CHECK (admin_access_level IN ('TRUSTED', 'LIMITED', 'SPECIFIC_DATA', 'BLOCKED', 'UNCONFIGURED')),
     total_users_count INTEGER DEFAULT 0,
@@ -75,6 +77,8 @@ CREATE TABLE IF NOT EXISTS application_scopes (
     application_id TEXT NOT NULL,
     scope_url TEXT NOT NULL,
     risk_level TEXT NOT NULL CHECK (risk_level IN ('CRITICAL', 'HIGH', 'MEDIUM', 'LOW')),
+    admin_score INTEGER DEFAULT 1,
+    admin_color TEXT DEFAULT 'Blue',
     description TEXT,
     FOREIGN KEY (application_id) REFERENCES applications(id) ON DELETE CASCADE,
     UNIQUE(application_id, scope_url)
