@@ -61,6 +61,8 @@ interface Application {
   storeUrl: string | null;
   description?: string;
   riskScore?: number;
+  peakScopeScore?: number;
+  avgScopeScore?: number;
   riskScoreColor?: string;
   rawMaxRisk?: string;
   riskLevel: string;
@@ -471,11 +473,23 @@ export default function OAuthDashboardClient({
             )}
           </span>
         );
+      case "LOW":
       default:
+        if (score !== undefined && score < 1.5) {
+          return (
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-semibold text-blue-700 border border-blue-200">
+              <span className="h-1.5 w-1.5 rounded-full bg-blue-600"></span>
+              <span>Low</span>
+              <span className="bg-blue-200/60 text-blue-800 text-[10px] font-mono px-1 py-0.2 rounded font-bold">
+                {formattedScore}
+              </span>
+            </span>
+          );
+        }
         return (
           <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-semibold text-emerald-700 border border-emerald-200">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-600"></span>
-            <span>Low</span>
+            <span>{score !== undefined && score < 2.5 ? "Minor" : "Low"}</span>
             {formattedScore && (
               <span className="bg-emerald-200/60 text-emerald-800 text-[10px] font-mono px-1 py-0.2 rounded font-bold">
                 {formattedScore}
@@ -1619,9 +1633,63 @@ export default function OAuthDashboardClient({
                 </div>
               )}
 
+              {/* Option A Hybrid Risk Model Calculation Breakdown */}
+              <div className="bg-gradient-to-br from-slate-50 to-blue-50/40 border border-slate-200 rounded-xl p-4 space-y-3">
+                <div className="flex items-center justify-between border-b border-slate-200 pb-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-base">📐</span>
+                    <div>
+                      <h4 className="text-xs font-bold text-gray-900">
+                        Risk Model Calculation (Option A: Peak-Weighted Hybrid)
+                      </h4>
+                      <p className="text-[11px] text-gray-500">
+                        70% Peak Scope Risk + 30% Average Scope Breadth
+                      </p>
+                    </div>
+                  </div>
+                  {getRiskBadge(selectedApp.riskLevel, selectedApp.riskScore)}
+                </div>
+
+                <div className="grid grid-cols-3 gap-2.5 text-center text-xs pt-1">
+                  <div className="bg-white border border-gray-200 rounded-lg p-2.5 shadow-2xs">
+                    <div className="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Peak Scope (70%)</div>
+                    <div className="text-base font-bold text-red-700 mt-0.5">
+                      {selectedApp.peakScopeScore ?? (selectedApp.scopes?.length ? Math.max(...selectedApp.scopes.map(s => s.adminScore || 1)) : 1)}
+                    </div>
+                    <div className="text-[10px] text-gray-400">
+                      +{(0.7 * (selectedApp.peakScopeScore ?? (selectedApp.scopes?.length ? Math.max(...selectedApp.scopes.map(s => s.adminScore || 1)) : 1))).toFixed(2)} pts
+                    </div>
+                  </div>
+
+                  <div className="bg-white border border-gray-200 rounded-lg p-2.5 shadow-2xs">
+                    <div className="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Avg Scopes (30%)</div>
+                    <div className="text-base font-bold text-blue-700 mt-0.5">
+                      {selectedApp.avgScopeScore !== undefined ? selectedApp.avgScopeScore.toFixed(2) : (selectedApp.scopes?.length ? (selectedApp.scopes.reduce((a,b)=>a+(b.adminScore||1),0)/selectedApp.scopes.length).toFixed(2) : '1.00')}
+                    </div>
+                    <div className="text-[10px] text-gray-400">
+                      +{(0.3 * (selectedApp.avgScopeScore ?? (selectedApp.scopes?.length ? (selectedApp.scopes.reduce((a,b)=>a+(b.adminScore||1),0)/selectedApp.scopes.length) : 1))).toFixed(2)} pts
+                    </div>
+                  </div>
+
+                  <div className="bg-white border border-gray-200 rounded-lg p-2.5 shadow-2xs">
+                    <div className="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Final Risk Score</div>
+                    <div className="text-base font-bold text-gray-900 mt-0.5">
+                      {selectedApp.riskScore !== undefined ? selectedApp.riskScore.toFixed(2) : '1.00'}
+                    </div>
+                    <div className="text-[10px] text-gray-500 font-medium">
+                      / 13 Scale
+                    </div>
+                  </div>
+                </div>
+
+                <div className="text-[11px] text-gray-600 bg-white/70 rounded-md p-2 border border-gray-200/80 leading-snug">
+                  <strong>Risk Assessment Rationale:</strong> The peak score ensures that high-impact administrative or restricted scopes (such as full mailbox or user directory access) can never be diluted by benign identity scopes.
+                </div>
+              </div>
+
               {/* Risk Evaluation */}
               <div>
-                <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">Security Evaluation</h3>
+                <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">Security Evaluation Findings</h3>
                 {selectedApp.riskReasons.length > 0 ? (
                   <div className="space-y-1.5">
                     {selectedApp.riskReasons.map((r, i) => (
@@ -1733,13 +1801,17 @@ export default function OAuthDashboardClient({
                           )}
                           {s.adminScore !== undefined ? (
                             <span className={`inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-0.5 rounded-full border ${
-                              s.adminScore === 5 ? 'bg-red-50 text-red-700 border-red-200' :
-                              s.adminScore === 4 ? 'bg-amber-50 text-amber-800 border-amber-200' :
-                              s.adminScore === 3 ? 'bg-yellow-50 text-yellow-800 border-yellow-200' :
+                              s.adminScore === 13 ? 'bg-red-50 text-red-700 border-red-200' :
+                              s.adminScore === 5 ? 'bg-amber-50 text-amber-800 border-amber-200' :
+                              s.adminScore === 3 ? 'bg-yellow-50 text-yellow-850 border-yellow-200' :
                               s.adminScore === 2 ? 'bg-emerald-50 text-emerald-800 border-emerald-200' :
                               'bg-blue-50 text-blue-800 border-blue-200'
                             }`}>
-                              Score: {s.adminScore}/5
+                              {s.adminScore === 13 ? '🔴 13 Critical' :
+                               s.adminScore === 5 ? '🟠 5 High' :
+                               s.adminScore === 3 ? '🟡 3 Moderate' :
+                               s.adminScore === 2 ? '🟢 2 Minor' :
+                               '🔵 1 Low'}
                             </span>
                           ) : (
                             getRiskBadge(s.riskLevel)

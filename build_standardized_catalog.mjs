@@ -414,27 +414,32 @@ for (const [id, app] of catalog.entries()) {
     };
   });
 
-  // Calculate Application Risk Score: Average of allocated Scope Admin Scores
-  const calculatedRiskScore = scopesList.length > 0
-    ? Number((scopesList.reduce((sum, s) => sum + s.adminScore, 0) / scopesList.length).toFixed(2))
-    : 1.0;
+  // Calculate Application Risk Score: Option A Peak-Weighted Hybrid Model (70% Peak Scope + 30% Average Scope)
+  let calculatedRiskScore = 1.0;
+  let peakScopeScore = 1;
+  let avgScopeScore = 1.0;
 
-  // Derive standardized riskLevel and riskScoreColor from average score
+  if (scopesList.length > 0) {
+    peakScopeScore = Math.max(...scopesList.map(s => s.adminScore || 1));
+    const sumScores = scopesList.reduce((sum, s) => sum + (s.adminScore || 1), 0);
+    avgScopeScore = sumScores / scopesList.length;
+    calculatedRiskScore = Number(((0.70 * peakScopeScore) + (0.30 * avgScopeScore)).toFixed(2));
+  }
+
+  // Derive standardized riskLevel and riskScoreColor from Option A score
+  // Scale: 1 (Low/Blue), 1.5-2.4 (Minor/Green), 2.5-3.9 (Moderate/Yellow), 4.0-7.9 (High/Orange), 8.0-13.0 (Critical/Red)
   let calculatedRiskLevel = 'LOW';
   let calculatedRiskColor = 'Blue';
-  if (calculatedRiskScore >= 5.0) {
-    // 5.0 to 13.0
-    if (calculatedRiskScore >= 9.0) {
-      calculatedRiskLevel = 'CRITICAL';
-      calculatedRiskColor = 'Red';
-    } else {
-      calculatedRiskLevel = 'HIGH';
-      calculatedRiskColor = 'Orange';
-    }
-  } else if (calculatedRiskScore >= 3.0) {
+  if (calculatedRiskScore >= 8.0) {
+    calculatedRiskLevel = 'CRITICAL';
+    calculatedRiskColor = 'Red';
+  } else if (calculatedRiskScore >= 4.0) {
+    calculatedRiskLevel = 'HIGH';
+    calculatedRiskColor = 'Orange';
+  } else if (calculatedRiskScore >= 2.5) {
     calculatedRiskLevel = 'MEDIUM'; // Moderate
     calculatedRiskColor = 'Yellow';
-  } else if (calculatedRiskScore >= 2.0) {
+  } else if (calculatedRiskScore >= 1.5) {
     calculatedRiskLevel = 'LOW'; // Minor
     calculatedRiskColor = 'Green';
   } else {
@@ -496,6 +501,8 @@ for (const [id, app] of catalog.entries()) {
     storeUrl: app.storeUrl,
     description: app.description,
     riskScore: calculatedRiskScore,
+    peakScopeScore: peakScopeScore,
+    avgScopeScore: Number(avgScopeScore.toFixed(2)),
     riskLevel: calculatedRiskLevel,
     riskScoreColor: calculatedRiskColor,
     rawMaxRisk: app.maxRisk,
