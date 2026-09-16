@@ -581,14 +581,21 @@ export default function ScopeMatrixView({
                   {/* Service Scope Table */}
                   {!isCollapsed && (
                     <div className="overflow-x-auto">
-                      <table className="w-full text-left text-sm text-gray-700">
+                      <table className="w-full text-left text-sm text-gray-700 table-fixed min-w-[960px]">
+                        <colgroup>
+                          <col style={{ width: "35%" }} />
+                          <col style={{ width: "150px" }} />
+                          <col style={{ width: "200px" }} />
+                          <col />
+                          <col style={{ width: "120px" }} />
+                        </colgroup>
                         <thead className="bg-gray-50/60 text-[11px] uppercase tracking-wider text-gray-500 border-b border-gray-200 font-semibold">
                           <tr>
-                            <th className="py-2.5 px-4">OAuth Scope URI</th>
-                            <th className="py-2.5 px-4">Google Tier</th>
-                            <th className="py-2.5 px-4">Admin Score</th>
+                            <th className="py-2.5 px-4" style={{ width: "35%" }}>OAuth Scope URI</th>
+                            <th className="py-2.5 px-4" style={{ width: "150px" }}>Google Tier</th>
+                            <th className="py-2.5 px-4" style={{ width: "200px" }}>Admin Score</th>
                             <th className="py-2.5 px-4">Threat Rationale & Exploit Impact</th>
-                            <th className="py-2.5 px-4 text-center">Tenant Apps</th>
+                            <th className="py-2.5 px-4 text-center" style={{ width: "120px" }}>Tenant Apps</th>
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-100">
@@ -630,7 +637,7 @@ export default function ScopeMatrixView({
                                 </td>
 
                                 {/* Threat Rationale & Impact */}
-                                <td className="py-3 px-4 max-w-md">
+                                <td className="py-3 px-4">
                                   <div className="font-bold text-gray-900 text-xs">
                                     {s.rationale}
                                   </div>
