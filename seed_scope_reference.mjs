@@ -5,7 +5,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://mail.google.com/",
     "service_name": "Gmail",
     "google_tier": "Restricted",
-    "admin_score": 13,
+    "admin_score": 5,
     "admin_color": "Red",
     "rationale": "Full Mailbox Takeover",
     "threat_impact": "Read, compose, permanently delete emails, and modify forwarding/POP/IMAP settings. Total communication takeover."
@@ -14,7 +14,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/gmail.modify",
     "service_name": "Gmail",
     "google_tier": "Restricted",
-    "admin_score": 13,
+    "admin_score": 5,
     "admin_color": "Red",
     "rationale": "Message Manipulation & Exfiltration",
     "threat_impact": "Read, compose, modify labels, and move messages to trash. Enables silent email interception and manipulation."
@@ -23,7 +23,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/gmail.settings.sharing",
     "service_name": "Gmail",
     "google_tier": "Restricted",
-    "admin_score": 13,
+    "admin_score": 5,
     "admin_color": "Red",
     "rationale": "Silent Forwarding Rules",
     "threat_impact": "Allows setting up automatic outbound forwarding and send-as aliases to adversary mailboxes without user awareness."
@@ -32,7 +32,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/gmail.settings.basic",
     "service_name": "Gmail",
     "google_tier": "Restricted",
-    "admin_score": 5,
+    "admin_score": 4,
     "admin_color": "Orange",
     "rationale": "Mail Routing & Signature Tampering",
     "threat_impact": "Manage vacation responder, signatures, and filters. Frequently weaponized in business email compromise (BEC) and phishing."
@@ -41,7 +41,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/gmail.readonly",
     "service_name": "Gmail",
     "google_tier": "Restricted",
-    "admin_score": 5,
+    "admin_score": 4,
     "admin_color": "Orange",
     "rationale": "Bulk Email Exfiltration",
     "threat_impact": "Read all historical messages, sensitive corporate contracts, passwords, and reset links without edit rights."
@@ -50,7 +50,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/gmail.compose",
     "service_name": "Gmail",
     "google_tier": "Restricted",
-    "admin_score": 5,
+    "admin_score": 4,
     "admin_color": "Orange",
     "rationale": "Email Impersonation",
     "threat_impact": "Draft and send new emails directly as the authenticated employee. High risk for targeted spear phishing."
@@ -59,7 +59,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/gmail.insert",
     "service_name": "Gmail",
     "google_tier": "Restricted",
-    "admin_score": 5,
+    "admin_score": 4,
     "admin_color": "Orange",
     "rationale": "Mailbox Evidence Planting",
     "threat_impact": "Injects emails directly into mailbox. Can plant false correspondence or spoof received messages."
@@ -77,7 +77,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/gmail.labels",
     "service_name": "Gmail",
     "google_tier": "Restricted",
-    "admin_score": 5,
+    "admin_score": 4,
     "admin_color": "Orange",
     "rationale": "Label Organization",
     "threat_impact": "Manage label hierarchy and tags; cannot read email message bodies or attachments."
@@ -86,7 +86,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/gmail.metadata",
     "service_name": "Gmail",
     "google_tier": "Restricted",
-    "admin_score": 5,
+    "admin_score": 4,
     "admin_color": "Orange",
     "rationale": "Header Reconnaissance",
     "threat_impact": "View message headers (To, From, Subject, Date) and labels; cannot read email message body content."
@@ -95,7 +95,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/drive",
     "service_name": "Google Drive & Docs",
     "google_tier": "Restricted",
-    "admin_score": 13,
+    "admin_score": 5,
     "admin_color": "Red",
     "rationale": "Full Cloud Storage Compromise",
     "threat_impact": "Read, edit, create, and permanently delete all files in My Drive and Shared Drives. Severe ransomware and wipeout risk."
@@ -104,7 +104,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/drive.scripts",
     "service_name": "Google Drive & Docs",
     "google_tier": "Restricted",
-    "admin_score": 13,
+    "admin_score": 5,
     "admin_color": "Red",
     "rationale": "Script Modification & Code Injection",
     "threat_impact": "Read and write Google Apps Scripts. Can inject malicious backdoor triggers into documents and sheets."
@@ -113,7 +113,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/drive.readonly",
     "service_name": "Google Drive & Docs",
     "google_tier": "Restricted",
-    "admin_score": 5,
+    "admin_score": 4,
     "admin_color": "Orange",
     "rationale": "Mass Document Exfiltration",
     "threat_impact": "Bulk read and download of all corporate documents, spreadsheets, presentations, and stored assets."
@@ -122,7 +122,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/documents",
     "service_name": "Google Drive & Docs",
     "google_tier": "Sensitive",
-    "admin_score": 5,
+    "admin_score": 4,
     "admin_color": "Orange",
     "rationale": "Document Manipulation & Espionage",
     "threat_impact": "Read and write access to all Google Docs files (confidential reports, policies, legal contracts)."
@@ -131,7 +131,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/spreadsheets",
     "service_name": "Google Drive & Docs",
     "google_tier": "Sensitive",
-    "admin_score": 5,
+    "admin_score": 4,
     "admin_color": "Orange",
     "rationale": "Financial & Tabular Data Access",
     "threat_impact": "Read and write access to all Google Sheets (financial models, customer lists, HR payroll, and analytics)."
@@ -194,7 +194,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/drive.metadata",
     "service_name": "Google Drive & Docs",
     "google_tier": "Restricted",
-    "admin_score": 5,
+    "admin_score": 4,
     "admin_color": "Orange",
     "rationale": "File Metadata Modification",
     "threat_impact": "View and modify file and folder names and hierarchy; cannot read document content."
@@ -203,7 +203,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/drive.metadata.readonly",
     "service_name": "Google Drive & Docs",
     "google_tier": "Restricted",
-    "admin_score": 5,
+    "admin_score": 4,
     "admin_color": "Orange",
     "rationale": "Drive Structure Enumeration",
     "threat_impact": "Read-only directory tree structure and filenames. Used for corporate file reconnaissance."
@@ -230,7 +230,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/admin.directory.rolemanagement",
     "service_name": "Admin SDK",
     "google_tier": "Restricted",
-    "admin_score": 13,
+    "admin_score": 5,
     "admin_color": "Red",
     "rationale": "Domain Privilege Escalation",
     "threat_impact": "Can create and assign Super Admin roles to rogue accounts. Ultimate domain takeover vector."
@@ -239,7 +239,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/admin.directory.user",
     "service_name": "Admin SDK",
     "google_tier": "Restricted",
-    "admin_score": 13,
+    "admin_score": 5,
     "admin_color": "Red",
     "rationale": "Total Account Administration",
     "threat_impact": "Create, reset passwords, suspend, or delete any domain user account, including administrators."
@@ -248,7 +248,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/admin.directory.domain",
     "service_name": "Admin SDK",
     "google_tier": "Restricted",
-    "admin_score": 13,
+    "admin_score": 5,
     "admin_color": "Red",
     "rationale": "Domain Architecture Control",
     "threat_impact": "Modify DNS, secondary domain aliases, and domain ownership configurations."
@@ -257,7 +257,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/admin.directory.group",
     "service_name": "Admin SDK",
     "google_tier": "Sensitive",
-    "admin_score": 5,
+    "admin_score": 4,
     "admin_color": "Orange",
     "rationale": "Group Membership Tampering",
     "threat_impact": "Add accounts to high-privilege distribution groups, security groups, or restricted mailing lists."
@@ -266,7 +266,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/admin.directory.orgunit",
     "service_name": "Admin SDK",
     "google_tier": "Sensitive",
-    "admin_score": 5,
+    "admin_score": 4,
     "admin_color": "Orange",
     "rationale": "OU Policy Bypass",
     "threat_impact": "Move users between Organizational Units, potentially bypassing 2SV mandates or restricted app policies."
@@ -275,7 +275,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/admin.reports.audit.readonly",
     "service_name": "Admin SDK",
     "google_tier": "Sensitive",
-    "admin_score": 5,
+    "admin_score": 4,
     "admin_color": "Orange",
     "rationale": "Security Audit Log Surveillance",
     "threat_impact": "Read tenant security audit logs, monitoring detection mechanisms and tracking admin investigation activities."
@@ -320,7 +320,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/calendar",
     "service_name": "Google Calendar",
     "google_tier": "Sensitive",
-    "admin_score": 5,
+    "admin_score": 4,
     "admin_color": "Orange",
     "rationale": "Full Calendar Compromise",
     "threat_impact": "Full read/write to all calendars. Can delete schedules, plant fraudulent meeting invites, and read meeting attachments."
@@ -374,7 +374,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/contacts",
     "service_name": "Google Contacts",
     "google_tier": "Sensitive",
-    "admin_score": 5,
+    "admin_score": 4,
     "admin_color": "Orange",
     "rationale": "Full Address Book Tampering",
     "threat_impact": "Full read/write to personal and corporate contact lists. Can overwrite or poison phone numbers and addresses."
@@ -410,7 +410,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/chat.messages",
     "service_name": "Google Chat & Classroom",
     "google_tier": "Restricted",
-    "admin_score": 13,
+    "admin_score": 5,
     "admin_color": "Red",
     "rationale": "Private Chat Surveillance & Impersonation",
     "threat_impact": "Read and send direct chat messages in spaces; access private real-time internal communications."
@@ -455,7 +455,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/script.send_mail",
     "service_name": "Google Apps Script",
     "google_tier": "Restricted",
-    "admin_score": 13,
+    "admin_score": 5,
     "admin_color": "Red",
     "rationale": "Programmatic Email Exfiltration & Phishing",
     "threat_impact": "Direct background programmatic email sending from Apps Script. Top vector for automated internal spear-phishing."
@@ -464,7 +464,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/script.external_request",
     "service_name": "Google Apps Script",
     "google_tier": "Sensitive",
-    "admin_score": 5,
+    "admin_score": 4,
     "admin_color": "Orange",
     "rationale": "Arbitrary Data Egress / Webhooks",
     "threat_impact": "Script can issue external HTTP/REST calls (UrlFetchApp) to transmit internal company data to external servers."
@@ -554,7 +554,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/admin.directory.customer",
     "service_name": "Admin SDK",
     "google_tier": "Restricted",
-    "admin_score": 5,
+    "admin_score": 4,
     "admin_color": "Orange",
     "rationale": "Customer Account Profile Administration",
     "threat_impact": "Manage customer domain account details, technical contacts, and postal addresses."
@@ -563,7 +563,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/admin.directory.userschema",
     "service_name": "Admin SDK",
     "google_tier": "Restricted",
-    "admin_score": 5,
+    "admin_score": 4,
     "admin_color": "Orange",
     "rationale": "Custom Directory Schema Tampering",
     "threat_impact": "Define and modify custom attributes for domain user accounts (often storing internal employee IDs or clearance levels)."
@@ -572,7 +572,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/admin.directory.user.security",
     "service_name": "Admin SDK",
     "google_tier": "Restricted",
-    "admin_score": 13,
+    "admin_score": 5,
     "admin_color": "Red",
     "rationale": "User Security & 2SV Credential Manipulation",
     "threat_impact": "Manage user MFA/2-step verification, security keys, backup codes, and session cookies. High privilege takeover."
@@ -590,7 +590,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/admin.directory.device.mobile",
     "service_name": "Admin SDK",
     "google_tier": "Restricted",
-    "admin_score": 5,
+    "admin_score": 4,
     "admin_color": "Orange",
     "rationale": "Mobile Device Management & Remote Wipe",
     "threat_impact": "Enumerate, approve, block, or remotely wipe corporate mobile devices carrying enterprise email and files."
@@ -608,7 +608,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/admin.datatransfer",
     "service_name": "Admin SDK",
     "google_tier": "Restricted",
-    "admin_score": 13,
+    "admin_score": 5,
     "admin_color": "Red",
     "rationale": "Cross-Account Bulk Data Transfer",
     "threat_impact": "Transfer ownership of entire Drive files and Calendar events between domain users during de-provisioning. Extreme egress potential."
@@ -617,7 +617,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/admin.contact.delegation",
     "service_name": "Admin SDK",
     "google_tier": "Restricted",
-    "admin_score": 5,
+    "admin_score": 4,
     "admin_color": "Orange",
     "rationale": "Domain Contact Delegation Control",
     "threat_impact": "Manage shared external contacts and delegated address book access across tenant users."
@@ -635,7 +635,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/apps.groups.migration",
     "service_name": "Admin SDK",
     "google_tier": "Restricted",
-    "admin_score": 5,
+    "admin_score": 4,
     "admin_color": "Orange",
     "rationale": "Google Groups Message Ingestion / Migration",
     "threat_impact": "Inject and archive historical messages into Google Groups mailing lists."
@@ -644,7 +644,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/apps.groups.settings",
     "service_name": "Admin SDK",
     "google_tier": "Restricted",
-    "admin_score": 5,
+    "admin_score": 4,
     "admin_color": "Orange",
     "rationale": "Google Groups Security Configuration",
     "threat_impact": "Modify group security settings, including allowing external participants, public web postings, or collaborative inbox access."
@@ -653,7 +653,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/apps.licensing",
     "service_name": "Admin SDK",
     "google_tier": "Restricted",
-    "admin_score": 5,
+    "admin_score": 4,
     "admin_color": "Orange",
     "rationale": "Workspace SKU License Assignment",
     "threat_impact": "Assign or revoke Google Workspace and Google Cloud licenses for domain users."
@@ -671,7 +671,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/chrome.management.policy",
     "service_name": "Admin SDK",
     "google_tier": "Restricted",
-    "admin_score": 5,
+    "admin_score": 4,
     "admin_color": "Orange",
     "rationale": "Chrome Browser Policy Administration",
     "threat_impact": "Enforce or alter enterprise Chrome browser policies, extension blocklists, and network proxy rules."
@@ -716,7 +716,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/cloud-identity.groups",
     "service_name": "Admin SDK",
     "google_tier": "Restricted",
-    "admin_score": 5,
+    "admin_score": 4,
     "admin_color": "Orange",
     "rationale": "Cloud Identity Security Groups Management",
     "threat_impact": "Full CRUD control over Cloud Identity groups, security labels, dynamic memberships, and IAM group bindings."
@@ -725,7 +725,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/cloud-identity.inboundsso",
     "service_name": "Admin SDK",
     "google_tier": "Restricted",
-    "admin_score": 13,
+    "admin_score": 5,
     "admin_color": "Red",
     "rationale": "Inbound SAML/OIDC SSO Configuration",
     "threat_impact": "Modify third-party identity provider SSO profiles, SAML certificates, and redirect URLs. Massive authentication hijack vector."
@@ -734,7 +734,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/cloud-identity.orgunits",
     "service_name": "Admin SDK",
     "google_tier": "Restricted",
-    "admin_score": 5,
+    "admin_score": 4,
     "admin_color": "Orange",
     "rationale": "Cloud Identity Organizational Units Management",
     "threat_impact": "Create, move, and delete Cloud Identity organizational units and root domain hierarchy."
@@ -743,7 +743,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/cloud-identity.policies",
     "service_name": "Admin SDK",
     "google_tier": "Restricted",
-    "admin_score": 13,
+    "admin_score": 5,
     "admin_color": "Red",
     "rationale": "Cloud Identity Security Policies Administration",
     "threat_impact": "Define and enforce domain-wide identity policies, password complexity rules, and session controls."
@@ -770,7 +770,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/ediscovery",
     "service_name": "Admin SDK",
     "google_tier": "Restricted",
-    "admin_score": 13,
+    "admin_score": 5,
     "admin_color": "Red",
     "rationale": "Google Vault Legal Holds & eDiscovery Exfiltration",
     "threat_impact": "Access Google Vault matters, legal holds, export queries, and litigation audits covering all historical domain emails and files."
@@ -779,7 +779,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/cloud-platform",
     "service_name": "Admin SDK",
     "google_tier": "Restricted",
-    "admin_score": 13,
+    "admin_score": 5,
     "admin_color": "Red",
     "rationale": "Full Google Cloud Platform Infrastructure Control",
     "threat_impact": "Full administrative access to all GCP projects, IAM roles, compute instances, BigQuery databases, and storage buckets."
@@ -806,7 +806,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://spreadsheets.google.com/feeds",
     "service_name": "Google Drive & Docs",
     "google_tier": "Restricted",
-    "admin_score": 5,
+    "admin_score": 4,
     "admin_color": "Orange",
     "rationale": "Legacy Google Sheets GData Feed Access",
     "threat_impact": "Full read/write access to user Google Sheets via legacy XML feed protocol."
@@ -833,7 +833,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.google.com/m8/feeds",
     "service_name": "Google Contacts",
     "google_tier": "Sensitive",
-    "admin_score": 5,
+    "admin_score": 4,
     "admin_color": "Orange",
     "rationale": "Legacy Google Contacts GData Feed Access",
     "threat_impact": "Full read/write access to personal and shared domain contacts via legacy API."
@@ -851,7 +851,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.googleapis.com/auth/chat.messages.readonly",
     "service_name": "Google Chat & Classroom",
     "google_tier": "Restricted",
-    "admin_score": 5,
+    "admin_score": 4,
     "admin_color": "Orange",
     "rationale": "Bulk Chat Message Surveillance",
     "threat_impact": "Read-only access to all message histories, private discussions, and file attachments in Google Chat."
@@ -995,7 +995,7 @@ export const OAUTH_SCOPES_DATA = [
     "scope_url": "https://www.google.com/accounts/OAuthLogin",
     "service_name": "Identity & SSO",
     "google_tier": "Restricted",
-    "admin_score": 5,
+    "admin_score": 4,
     "admin_color": "Orange",
     "rationale": "Legacy Master ClientLogin / OAuth Session Login",
     "threat_impact": "Legacy full-account session login token for Google services with broad scope implications."
@@ -1005,13 +1005,13 @@ export const OAUTH_SCOPES_DATA = [
 export function initAndSeedScopeReference(dbPath = "./adminlens.db") {
   const db = new DatabaseSync(dbPath);
 
-  // 1. Create table DDL with Agile Fibonacci constraints
+  // 1. Create table DDL with Standard 1-5 Scale constraints
   db.exec(`
     CREATE TABLE IF NOT EXISTS oauth_scope_reference (
       scope_url TEXT PRIMARY KEY,
       service_name TEXT NOT NULL,
       google_tier TEXT NOT NULL CHECK (google_tier IN ('Restricted', 'Sensitive', 'Non-Sensitive')),
-      admin_score INTEGER NOT NULL CHECK (admin_score IN (1, 2, 3, 5, 13)),
+      admin_score INTEGER NOT NULL CHECK (admin_score IN (1, 2, 3, 4, 5)),
       admin_color TEXT NOT NULL CHECK (admin_color IN ('Blue', 'Green', 'Yellow', 'Orange', 'Red')),
       rationale TEXT NOT NULL,
       threat_impact TEXT NOT NULL,

@@ -42,22 +42,18 @@ AdminLens computes a composite risk score between **0 and 100** by evaluating fo
 +-------------------------+-------------------------+---------------+---------------+
 ```
 
-### Pillar 1: Scope Sensitivity (Weight: 0–35 Points)
-Evaluates **what data the token has technical authorization to access or manipulate**.
+### Pillar 1: Scope Sensitivity (Weight: 0–35 Points / 1.00–5.00 Base Scale)
+Evaluates **what data the token has technical authorization to access or manipulate**. Individual OAuth scopes are cataloged on an **Enterprise Threat Scale (1 to 5)** and aggregated using a **Non-Compensatory Floor Model (Option B)**:
 
-* **`CRITICAL` (35 pts)**: Administrative or Direct Mail Access.
-  * Direct Mailbox manipulation: `mail.google.com`, `gmail.modify`, `script.send_mail`.
-  * Administrative Directory modification: `admin.directory.user`, `admin.directory.group`.
-  * *Impact*: Total domain or account takeover, email forwarding rules creation, silent exfiltration.
-* **`HIGH` (25 pts)**: Full Google Drive Read/Write/Delete access.
-  * Drive scopes without readonly restrictions: `drive` (full), `drive.file`.
-  * *Impact*: Mass data exfiltration, ransomware encryption of cloud assets, bulk deletion.
-* **`MEDIUM` (15 pts)**: Directory metadata, calendar, and contacts.
-  * Scopes: `admin.directory.user.readonly`, `calendar`, `contacts`, `spreadsheets`.
-  * *Impact*: Internal reconnaissance, organizational chart harvesting, spear-phishing prep.
-* **`LOW` (5 pts)**: Basic authentication & profile scopes.
-  * Scopes: `openid`, `email`, `profile`.
-  * *Impact*: Standard SSO identity assertion with minimal exfiltration surface.
+* **Scope Threat Ratings (1–5)**:
+  * **Level 5 — Critical (35 pts)**: Administrative or Direct Mail Access (`mail.google.com`, `gmail.modify`, `admin.directory.user`).
+  * **Level 4 — High (25 pts)**: Full Google Drive Read/Write/Delete access (`drive`, `drive.file`).
+  * **Level 3 — Medium (15 pts)**: Directory metadata, calendar, and contacts (`calendar`, `contacts`, `spreadsheets`).
+  * **Level 2 — Minor (10 pts)**: Read-only educational or operational tools (`classroom.courses.readonly`).
+  * **Level 1 — Low (5 pts)**: Basic authentication & profile assertion (`openid`, `email`, `profile`).
+
+* **Option B Non-Compensatory Floor Aggregation**:
+  To prevent the "Dilution Paradox" (where adding benign scopes dilutes severe permissions), the application's **Peak Scope establishes a non-dilutable Base Floor** (Level 5 $\to$ 4.50, Level 4 $\to$ 3.50, Level 3 $\to$ 2.50, Level 2 $\to$ 1.50, Level 1 $\to$ 1.00). Secondary scopes contribute an additive **Attack Surface Breadth Surcharge** (capped within tier headroom), ensuring strict monotonicity and preventing severe risks from ever being averaged away.
 
 ---
 

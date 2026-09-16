@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS applications (
     risk_score REAL DEFAULT 1.0,
     risk_score_color TEXT DEFAULT 'Green',
     peak_scope_score INTEGER DEFAULT 1,
+    breadth_score REAL DEFAULT 0.0,
     avg_scope_score REAL DEFAULT 1.0,
     risk_reasons TEXT, -- JSON array of risk descriptions
     admin_access_level TEXT DEFAULT 'UNCONFIGURED' CHECK (admin_access_level IN ('TRUSTED', 'LIMITED', 'SPECIFIC_DATA', 'BLOCKED', 'UNCONFIGURED')),
@@ -118,7 +119,7 @@ CREATE TABLE IF NOT EXISTS oauth_scope_reference (
     scope_url TEXT PRIMARY KEY,
     service_name TEXT NOT NULL,
     google_tier TEXT NOT NULL CHECK (google_tier IN ('Restricted', 'Sensitive', 'Non-Sensitive')),
-    admin_score INTEGER NOT NULL CHECK (admin_score IN (1, 2, 3, 5, 13)),
+    admin_score INTEGER NOT NULL CHECK (admin_score IN (1, 2, 3, 4, 5)),
     admin_color TEXT NOT NULL CHECK (admin_color IN ('Blue', 'Green', 'Yellow', 'Orange', 'Red')),
     rationale TEXT NOT NULL,
     threat_impact TEXT NOT NULL,

@@ -57,10 +57,10 @@ const insertApp = db.prepare(`
   INSERT INTO applications (
     id, display_name, vendor, publisher_domain, category, is_verified,
     icon_url, store_url, risk_level, risk_score, risk_score_color,
-    peak_scope_score, avg_scope_score,
+    peak_scope_score, breadth_score, avg_scope_score,
     risk_reasons, admin_access_level,
     total_users_count, admin_users_count, first_seen_at, last_active_at
-  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 `);
 
 const insertClientId = db.prepare(`
@@ -96,6 +96,7 @@ for (const app of catalog) {
     app.riskScore ?? 1.0,
     app.riskScoreColor || 'Blue',
     app.peakScopeScore ?? 1,
+    app.breadthScore ?? 0.0,
     app.avgScopeScore ?? 1.0,
     JSON.stringify(app.riskReasons || []),
     app.adminAccessLevel || 'UNCONFIGURED',

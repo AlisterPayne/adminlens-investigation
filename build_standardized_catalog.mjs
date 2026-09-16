@@ -414,32 +414,57 @@ for (const [id, app] of catalog.entries()) {
     };
   });
 
-  // Calculate Application Risk Score: Option A Peak-Weighted Hybrid Model (70% Peak Scope + 30% Average Scope)
+  // Calculate Application Risk Score: Option B Non-Compensatory Floor Model
+  // Base Severity Floor (determined by Peak Scope) + Additive Attack Surface Breadth (secondary scopes)
   let calculatedRiskScore = 1.0;
   let peakScopeScore = 1;
+  let breadthScore = 0.0;
   let avgScopeScore = 1.0;
 
   if (scopesList.length > 0) {
     peakScopeScore = Math.max(...scopesList.map(s => s.adminScore || 1));
     const sumScores = scopesList.reduce((sum, s) => sum + (s.adminScore || 1), 0);
     avgScopeScore = sumScores / scopesList.length;
-    calculatedRiskScore = Number(((0.70 * peakScopeScore) + (0.30 * avgScopeScore)).toFixed(2));
+
+    // Base tier floor based on peak scope
+    const baseFloor = peakScopeScore === 5 ? 4.50 :
+                      peakScopeScore === 4 ? 3.50 :
+                      peakScopeScore === 3 ? 2.50 :
+                      peakScopeScore === 2 ? 1.50 : 1.00;
+
+    // Secondary scopes breadth surcharge
+    const allScores = scopesList.map(s => s.adminScore || 1);
+    const nonPeakScores = allScores.slice();
+    nonPeakScores.splice(nonPeakScores.indexOf(peakScopeScore), 1);
+
+    const surcharge = nonPeakScores.reduce((acc, score) => {
+      if (score === 5) return acc + 0.15;
+      if (score === 4) return acc + 0.08;
+      if (score === 3) return acc + 0.04;
+      if (score === 2) return acc + 0.02;
+      return acc + 0.01;
+    }, 0);
+
+    const maxHeadroom = peakScopeScore === 5 ? 0.50 :
+                        peakScopeScore === 1 ? 0.40 : 0.90;
+    breadthScore = Number(Math.min(maxHeadroom, surcharge).toFixed(2));
+    calculatedRiskScore = Number((baseFloor + breadthScore).toFixed(2));
   }
 
-  // Derive standardized riskLevel and riskScoreColor from Option A score
-  // Scale: 1 (Low/Blue), 1.5-2.4 (Minor/Green), 2.5-3.9 (Moderate/Yellow), 4.0-7.9 (High/Orange), 8.0-13.0 (Critical/Red)
+  // Derive standardized riskLevel and riskScoreColor from Option B score (1.00 - 5.00 Scale)
+  // Scale: 1.00-1.49 (Low/Blue), 1.50-2.49 (Minor/Green), 2.50-3.49 (Moderate/Yellow), 3.50-4.49 (High/Orange), 4.50-5.00 (Critical/Red)
   let calculatedRiskLevel = 'LOW';
   let calculatedRiskColor = 'Blue';
-  if (calculatedRiskScore >= 8.0) {
+  if (calculatedRiskScore >= 4.50) {
     calculatedRiskLevel = 'CRITICAL';
     calculatedRiskColor = 'Red';
-  } else if (calculatedRiskScore >= 4.0) {
+  } else if (calculatedRiskScore >= 3.50) {
     calculatedRiskLevel = 'HIGH';
     calculatedRiskColor = 'Orange';
-  } else if (calculatedRiskScore >= 2.5) {
+  } else if (calculatedRiskScore >= 2.50) {
     calculatedRiskLevel = 'MEDIUM'; // Moderate
     calculatedRiskColor = 'Yellow';
-  } else if (calculatedRiskScore >= 1.5) {
+  } else if (calculatedRiskScore >= 1.50) {
     calculatedRiskLevel = 'LOW'; // Minor
     calculatedRiskColor = 'Green';
   } else {
@@ -502,6 +527,7 @@ for (const [id, app] of catalog.entries()) {
     description: app.description,
     riskScore: calculatedRiskScore,
     peakScopeScore: peakScopeScore,
+    breadthScore: breadthScore,
     avgScopeScore: Number(avgScopeScore.toFixed(2)),
     riskLevel: calculatedRiskLevel,
     riskScoreColor: calculatedRiskColor,

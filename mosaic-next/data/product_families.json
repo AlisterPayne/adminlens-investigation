@@ -7,7 +7,7 @@
     "deploymentsCount": 10,
     "totalUsersCount": 12,
     "maxRisk": "CRITICAL",
-    "avgRiskScore": 5.11,
+    "avgRiskScore": 3.45,
     "deploymentIds": [
       "417521716396-sr8h84pflr3sro5i53r66hi76rco6bug.apps.googleusercontent.com",
       "892359244178-5umuheruf74ttkti2115q78gkei82s0s.apps.googleusercontent.com",
@@ -29,7 +29,7 @@
     "deploymentsCount": 9,
     "totalUsersCount": 7,
     "maxRisk": "CRITICAL",
-    "avgRiskScore": 6.58,
+    "avgRiskScore": 3.17,
     "deploymentIds": [
       "297408095146-fug707qsjv4ikron0hugpevbrjhkmsk7.apps.googleusercontent.com",
       "458969862783-1smfdj4v8qbnibgarka1a99400lhsa13.apps.googleusercontent.com",
@@ -69,7 +69,7 @@
     "deploymentsCount": 6,
     "totalUsersCount": 6,
     "maxRisk": "CRITICAL",
-    "avgRiskScore": 5.94,
+    "avgRiskScore": 2.87,
     "deploymentIds": [
       "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
       "823511539352-ojaretejk1s95sdvkic0te923pt7knpu.apps.googleusercontent.com",
@@ -87,7 +87,7 @@
     "deploymentsCount": 4,
     "totalUsersCount": 17,
     "maxRisk": "HIGH",
-    "avgRiskScore": 1.85,
+    "avgRiskScore": 1.64,
     "deploymentIds": [
       "779010036194-lf6spugv22vvj41pqjdj4d8k2tq7o5fd.apps.googleusercontent.com",
       "968320677628-ort3v6hao1mu08d1i4eg97it7rgo7e43.apps.googleusercontent.com",
@@ -103,7 +103,7 @@
     "deploymentsCount": 4,
     "totalUsersCount": 15,
     "maxRisk": "LOW",
-    "avgRiskScore": 1,
+    "avgRiskScore": 1.01,
     "deploymentIds": [
       "539614054292-v48fp11ou2nrhh7lb47qgqq4k5d1fd8u.apps.googleusercontent.com",
       "476257776955-t129f3c8h8tgq60g7rp4cmganf4n7dn7.apps.googleusercontent.com",
@@ -119,7 +119,7 @@
     "deploymentsCount": 4,
     "totalUsersCount": 7,
     "maxRisk": "CRITICAL",
-    "avgRiskScore": 4.7,
+    "avgRiskScore": 2.97,
     "deploymentIds": [
       "58172892053-6laet7k6ls3k5va0jija3b175sm3jjms.apps.googleusercontent.com",
       "58172892053-faol054co4k3tsmtbtuk41v4si41slq0.apps.googleusercontent.com",
@@ -135,7 +135,7 @@
     "deploymentsCount": 2,
     "totalUsersCount": 25,
     "maxRisk": "CRITICAL",
-    "avgRiskScore": 7.2,
+    "avgRiskScore": 4.09,
     "deploymentIds": [
       "936475272427.apps.googleusercontent.com",
       "946018238758-bi6ni53dfoddlgn97pk3b8i7nphige40.apps.googleusercontent.com"
@@ -149,7 +149,7 @@
     "deploymentsCount": 2,
     "totalUsersCount": 5,
     "maxRisk": "HIGH",
-    "avgRiskScore": 2.63,
+    "avgRiskScore": 2.38,
     "deploymentIds": [
       "961782772109-gr6rmo3pe7iibrmjifhhar5iu2mjin9r.apps.googleusercontent.com",
       "86031167857-hapr09njcucvm0jv3hbpd7p0t75qjnm5.apps.googleusercontent.com"
@@ -163,7 +163,7 @@
     "deploymentsCount": 2,
     "totalUsersCount": 2,
     "maxRisk": "LOW",
-    "avgRiskScore": 1,
+    "avgRiskScore": 1.02,
     "deploymentIds": [
       "382288895817-ktepnf9i7mmnpgcv1vhjqucrldsgutnd.apps.googleusercontent.com",
       "900360109870-ctveqiiu7np4uilcnphj4m42kv1njukq.apps.googleusercontent.com"
@@ -176,7 +176,7 @@
     "deploymentsCount": 2,
     "totalUsersCount": 4,
     "maxRisk": "LOW",
-    "avgRiskScore": 1,
+    "avgRiskScore": 1.02,
     "deploymentIds": [
       "657959631782-gig0qdc3vaieq93qtv1mubvj0c4mjdfl.apps.googleusercontent.com",
       "657959631782-i9cm367mk2m810gc99sp2lsie03vo4u3.apps.googleusercontent.com"
@@ -189,7 +189,7 @@
     "deploymentsCount": 2,
     "totalUsersCount": 2,
     "maxRisk": "LOW",
-    "avgRiskScore": 1,
+    "avgRiskScore": 1.02,
     "deploymentIds": [
       "609427711699-sq919k8t73af34500gr6vrfclaafcslb.apps.googleusercontent.com",
       "609427711699-8kgr4bj5hc7ip93n5erf04qjtr1c1tel.apps.googleusercontent.com"
@@ -216,7 +216,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 64,
     "maxRisk": "HIGH",
-    "avgRiskScore": 5,
+    "avgRiskScore": 3.5,
     "deploymentIds": [
       "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com"
     ]
@@ -228,7 +228,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 69,
     "maxRisk": "HIGH",
-    "avgRiskScore": 5,
+    "avgRiskScore": 3.5,
     "deploymentIds": [
       "77185425430.apps.googleusercontent.com"
     ]
@@ -240,7 +240,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 2,
     "maxRisk": "MEDIUM",
-    "avgRiskScore": 3,
+    "avgRiskScore": 2.5,
     "deploymentIds": [
       "947318989803-6bn6qk8qdgf4n4g3pfee6491hc0brc4i.apps.googleusercontent.com"
     ]
@@ -252,7 +252,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 1,
     "maxRisk": "LOW",
-    "avgRiskScore": 1,
+    "avgRiskScore": 1.02,
     "deploymentIds": [
       "98765955635-75tqcmksqbd6hb2ekmfp06guektk4odm.apps.googleusercontent.com"
     ]
@@ -264,7 +264,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 1,
     "maxRisk": "LOW",
-    "avgRiskScore": 1,
+    "avgRiskScore": 1.02,
     "deploymentIds": [
       "392340392943-70qd4bepckt70f50s169tj5ms16cflfk.apps.googleusercontent.com"
     ]
@@ -276,7 +276,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 1,
     "maxRisk": "CRITICAL",
-    "avgRiskScore": 10.38,
+    "avgRiskScore": 4.98,
     "deploymentIds": [
       "526554529059-emb2o69t2ri25uicvjkj444o71sku29p.apps.googleusercontent.com"
     ]
@@ -289,7 +289,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 2,
     "maxRisk": "HIGH",
-    "avgRiskScore": 4.2,
+    "avgRiskScore": 3.61,
     "deploymentIds": [
       "821073268825-uj405qcuu2pbpq5ab05rsupc98ldq2ou.apps.googleusercontent.com"
     ]
@@ -302,7 +302,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 1,
     "maxRisk": "CRITICAL",
-    "avgRiskScore": 10.54,
+    "avgRiskScore": 5,
     "deploymentIds": [
       "696916210722-n0mvdqjq01ebg21eeaeraggm9vb0jbr6.apps.googleusercontent.com"
     ]
@@ -315,7 +315,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 3,
     "maxRisk": "CRITICAL",
-    "avgRiskScore": 10.16,
+    "avgRiskScore": 4.86,
     "deploymentIds": [
       "871655740233-iad5enbpe9r7o18h2ajle4vdd51vhflp.apps.googleusercontent.com"
     ]
@@ -328,7 +328,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 1,
     "maxRisk": "CRITICAL",
-    "avgRiskScore": 10.3,
+    "avgRiskScore": 4.65,
     "deploymentIds": [
       "499298628135-btb03c1lpe4146utgj65me0pujfpri43.apps.googleusercontent.com"
     ]
@@ -340,7 +340,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 1,
     "maxRisk": "CRITICAL",
-    "avgRiskScore": 10.75,
+    "avgRiskScore": 4.92,
     "deploymentIds": [
       "718809722883-l2mt5r2m2omka59ahjm1js78slbubsd7.apps.googleusercontent.com"
     ]
@@ -353,7 +353,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 1,
     "maxRisk": "MEDIUM",
-    "avgRiskScore": 2.7,
+    "avgRiskScore": 2.61,
     "deploymentIds": [
       "188883250313-8nmnraov1542echfae84q33gmdi5k54g.apps.googleusercontent.com"
     ]
@@ -366,7 +366,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 1,
     "maxRisk": "LOW",
-    "avgRiskScore": 1,
+    "avgRiskScore": 1.02,
     "deploymentIds": [
       "777045243888-mrs2ah6saspk0q3tcd9650ptjbks7buh.apps.googleusercontent.com"
     ]
@@ -379,7 +379,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 1,
     "maxRisk": "LOW",
-    "avgRiskScore": 1,
+    "avgRiskScore": 1.02,
     "deploymentIds": [
       "1098397018324-aqmj80n4sfufvbn3cg4bd7ugkcfpu21o.apps.googleusercontent.com"
     ]
@@ -391,7 +391,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 1,
     "maxRisk": "CRITICAL",
-    "avgRiskScore": 10.4,
+    "avgRiskScore": 4.69,
     "deploymentIds": [
       "953348912797-h2fo9tmk42mnrkk0kc6gula9i8ipv3re.apps.googleusercontent.com"
     ]
@@ -404,7 +404,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 1,
     "maxRisk": "LOW",
-    "avgRiskScore": 1,
+    "avgRiskScore": 1.02,
     "deploymentIds": [
       "108309815588-d8c3litltbdoibd7vr078iu6njc2292u.apps.googleusercontent.com"
     ]
@@ -417,7 +417,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 1,
     "maxRisk": "LOW",
-    "avgRiskScore": 1,
+    "avgRiskScore": 1.02,
     "deploymentIds": [
       "64634722053-udlis9tvkf8tuh5r1r3jgbfsh1b29e00.apps.googleusercontent.com"
     ]
@@ -429,7 +429,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 1,
     "maxRisk": "CRITICAL",
-    "avgRiskScore": 10.3,
+    "avgRiskScore": 4.65,
     "deploymentIds": [
       "450232826690-0rm6bs9d2fps9tifvk2oodh3tasd7vl7.apps.googleusercontent.com"
     ]
@@ -442,7 +442,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 1,
     "maxRisk": "LOW",
-    "avgRiskScore": 1,
+    "avgRiskScore": 1.02,
     "deploymentIds": [
       "602224180431-4n16sppuiom7hqkn78hsnre3bt0pohd6.apps.googleusercontent.com"
     ]
@@ -455,7 +455,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 1,
     "maxRisk": "LOW",
-    "avgRiskScore": 1,
+    "avgRiskScore": 1.02,
     "deploymentIds": [
       "532352704633-6pkces9iboppp465idnovkcqtlsa8j7t.apps.googleusercontent.com"
     ]
@@ -468,7 +468,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 1,
     "maxRisk": "LOW",
-    "avgRiskScore": 1,
+    "avgRiskScore": 1.02,
     "deploymentIds": [
       "892091831180-vku8hlevbroittbncabe8gcqc79jf4qr.apps.googleusercontent.com"
     ]
@@ -481,7 +481,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 2,
     "maxRisk": "LOW",
-    "avgRiskScore": 1,
+    "avgRiskScore": 1.02,
     "deploymentIds": [
       "913728339568-tjccmfojammmqs9q0kunokb507mpjqum.apps.googleusercontent.com"
     ]
@@ -494,7 +494,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 1,
     "maxRisk": "LOW",
-    "avgRiskScore": 1,
+    "avgRiskScore": 1.02,
     "deploymentIds": [
       "489890094529-ueegekuf9mubvv4sc6bh57op2rkjok62.apps.googleusercontent.com"
     ]
@@ -506,7 +506,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 2,
     "maxRisk": "HIGH",
-    "avgRiskScore": 4.7,
+    "avgRiskScore": 3.54,
     "deploymentIds": [
       "469390422673-r0p2tar3lgjlnhtsv4t4uonq4bi2svf8.apps.googleusercontent.com"
     ]
@@ -519,7 +519,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 1,
     "maxRisk": "LOW",
-    "avgRiskScore": 1,
+    "avgRiskScore": 1.02,
     "deploymentIds": [
       "1062961139910-l2m55cb9h51u5cuc9c56eb3fevouidh9.apps.googleusercontent.com"
     ]
@@ -531,7 +531,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 1,
     "maxRisk": "LOW",
-    "avgRiskScore": 1,
+    "avgRiskScore": 1.02,
     "deploymentIds": [
       "104648517694-6cbvg9ida7ivm77gj2cbdee67o29vhe4.apps.googleusercontent.com"
     ]
@@ -543,7 +543,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 2,
     "maxRisk": "HIGH",
-    "avgRiskScore": 4.4,
+    "avgRiskScore": 3.7,
     "deploymentIds": [
       "873507009103-gi4ff8nkju6ggaurt6ebbiqrfmr0c79j.apps.googleusercontent.com"
     ]
@@ -556,7 +556,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 1,
     "maxRisk": "LOW",
-    "avgRiskScore": 1,
+    "avgRiskScore": 1.02,
     "deploymentIds": [
       "864619725951-na3uleaalbekeilaalb3ak9qdpuoddeo.apps.googleusercontent.com"
     ]
@@ -568,7 +568,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 1,
     "maxRisk": "HIGH",
-    "avgRiskScore": 5,
+    "avgRiskScore": 3.5,
     "deploymentIds": [
       "899041083010-d9l71rq1omp8sj53qo1v0sjb9n6aqpu8.apps.googleusercontent.com"
     ]
@@ -580,7 +580,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 1,
     "maxRisk": "LOW",
-    "avgRiskScore": 1,
+    "avgRiskScore": 1.02,
     "deploymentIds": [
       "99790332366-7jbqgn7andc12kui6o7810gk03le7asr.apps.googleusercontent.com"
     ]

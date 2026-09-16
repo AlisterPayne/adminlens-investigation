@@ -62,6 +62,7 @@ interface Application {
   description?: string;
   riskScore?: number;
   peakScopeScore?: number;
+  breadthScore?: number;
   avgScopeScore?: number;
   riskScoreColor?: string;
   rawMaxRisk?: string;
@@ -1633,17 +1634,17 @@ export default function OAuthDashboardClient({
                 </div>
               )}
 
-              {/* Option A Hybrid Risk Model Calculation Breakdown */}
+              {/* Option B Non-Compensatory Floor Risk Model Calculation Breakdown */}
               <div className="bg-gradient-to-br from-slate-50 to-blue-50/40 border border-slate-200 rounded-xl p-4 space-y-3">
                 <div className="flex items-center justify-between border-b border-slate-200 pb-2">
                   <div className="flex items-center gap-2">
                     <span className="text-base">📐</span>
                     <div>
                       <h4 className="text-xs font-bold text-gray-900">
-                        Risk Model Calculation (Option A: Peak-Weighted Hybrid)
+                        Risk Model Calculation (Option B: Non-Compensatory Floor)
                       </h4>
                       <p className="text-[11px] text-gray-500">
-                        70% Peak Scope Risk + 30% Average Scope Breadth
+                        Base Severity Floor (Peak Scope) + Additive Attack Surface Breadth
                       </p>
                     </div>
                   </div>
@@ -1652,22 +1653,25 @@ export default function OAuthDashboardClient({
 
                 <div className="grid grid-cols-3 gap-2.5 text-center text-xs pt-1">
                   <div className="bg-white border border-gray-200 rounded-lg p-2.5 shadow-2xs">
-                    <div className="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Peak Scope (70%)</div>
+                    <div className="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Base Floor (Peak)</div>
                     <div className="text-base font-bold text-red-700 mt-0.5">
-                      {selectedApp.peakScopeScore ?? (selectedApp.scopes?.length ? Math.max(...selectedApp.scopes.map(s => s.adminScore || 1)) : 1)}
+                      {(selectedApp.peakScopeScore === 5 ? 4.5 :
+                        selectedApp.peakScopeScore === 4 ? 3.5 :
+                        selectedApp.peakScopeScore === 3 ? 2.5 :
+                        selectedApp.peakScopeScore === 2 ? 1.5 : 1.0).toFixed(2)}
                     </div>
                     <div className="text-[10px] text-gray-400">
-                      +{(0.7 * (selectedApp.peakScopeScore ?? (selectedApp.scopes?.length ? Math.max(...selectedApp.scopes.map(s => s.adminScore || 1)) : 1))).toFixed(2)} pts
+                      Tier {selectedApp.peakScopeScore ?? 1} Floor
                     </div>
                   </div>
 
                   <div className="bg-white border border-gray-200 rounded-lg p-2.5 shadow-2xs">
-                    <div className="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Avg Scopes (30%)</div>
+                    <div className="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Breadth Surcharge</div>
                     <div className="text-base font-bold text-blue-700 mt-0.5">
-                      {selectedApp.avgScopeScore !== undefined ? selectedApp.avgScopeScore.toFixed(2) : (selectedApp.scopes?.length ? (selectedApp.scopes.reduce((a,b)=>a+(b.adminScore||1),0)/selectedApp.scopes.length).toFixed(2) : '1.00')}
+                      +{(selectedApp.breadthScore !== undefined ? selectedApp.breadthScore : Math.max(0, (selectedApp.riskScore || 1) - (selectedApp.peakScopeScore === 5 ? 4.5 : selectedApp.peakScopeScore === 4 ? 3.5 : selectedApp.peakScopeScore === 3 ? 2.5 : selectedApp.peakScopeScore === 2 ? 1.5 : 1.0))).toFixed(2)} pts
                     </div>
                     <div className="text-[10px] text-gray-400">
-                      +{(0.3 * (selectedApp.avgScopeScore ?? (selectedApp.scopes?.length ? (selectedApp.scopes.reduce((a,b)=>a+(b.adminScore||1),0)/selectedApp.scopes.length) : 1))).toFixed(2)} pts
+                      {Math.max(0, (selectedApp.scopes?.length || 1) - 1)} secondary scope(s)
                     </div>
                   </div>
 
@@ -1677,13 +1681,13 @@ export default function OAuthDashboardClient({
                       {selectedApp.riskScore !== undefined ? selectedApp.riskScore.toFixed(2) : '1.00'}
                     </div>
                     <div className="text-[10px] text-gray-500 font-medium">
-                      / 13 Scale
+                      / 5.00 Scale
                     </div>
                   </div>
                 </div>
 
                 <div className="text-[11px] text-gray-600 bg-white/70 rounded-md p-2 border border-gray-200/80 leading-snug">
-                  <strong>Risk Assessment Rationale:</strong> The peak score ensures that high-impact administrative or restricted scopes (such as full mailbox or user directory access) can never be diluted by benign identity scopes.
+                  <strong>Non-Compensatory Rationale:</strong> The peak scope sets an absolute, non-dilutable security floor (e.g. Critical access guarantees a minimum 4.50 base score). Secondary scopes act purely as an additive attack surface breadth modifier and can never dilute high-impact permissions.
                 </div>
               </div>
 
@@ -1801,14 +1805,14 @@ export default function OAuthDashboardClient({
                           )}
                           {s.adminScore !== undefined ? (
                             <span className={`inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-0.5 rounded-full border ${
-                              s.adminScore === 13 ? 'bg-red-50 text-red-700 border-red-200' :
-                              s.adminScore === 5 ? 'bg-amber-50 text-amber-800 border-amber-200' :
+                              s.adminScore === 5 ? 'bg-red-50 text-red-700 border-red-200' :
+                              s.adminScore === 4 ? 'bg-amber-50 text-amber-800 border-amber-200' :
                               s.adminScore === 3 ? 'bg-yellow-50 text-yellow-850 border-yellow-200' :
                               s.adminScore === 2 ? 'bg-emerald-50 text-emerald-800 border-emerald-200' :
                               'bg-blue-50 text-blue-800 border-blue-200'
                             }`}>
-                              {s.adminScore === 13 ? '🔴 13 Critical' :
-                               s.adminScore === 5 ? '🟠 5 High' :
+                              {s.adminScore === 5 ? '🔴 5 Critical' :
+                               s.adminScore === 4 ? '🟠 4 High' :
                                s.adminScore === 3 ? '🟡 3 Moderate' :
                                s.adminScore === 2 ? '🟢 2 Minor' :
                                '🔵 1 Low'}

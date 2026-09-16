@@ -106,7 +106,7 @@ export default function ScopeMatrixView({
       const sumScores = items.reduce((acc, curr) => acc + curr.admin_score, 0);
       const avgScore = total > 0 ? (sumScores / total).toFixed(1) : "0.0";
       const maxScore = Math.max(...items.map((i) => i.admin_score), 1);
-      const criticalCount = items.filter((i) => i.admin_score === 13).length;
+      const criticalCount = items.filter((i) => i.admin_score === 5).length;
       const restricted = items.filter((i) => i.google_tier === "Restricted").length;
       const sensitive = items.filter((i) => i.google_tier === "Sensitive").length;
       const nonSensitive = items.filter((i) => i.google_tier === "Non-Sensitive").length;
@@ -191,16 +191,16 @@ export default function ScopeMatrixView({
 
   const getScoreBadge = (score: number) => {
     switch (score) {
-      case 13:
-        return (
-          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-bold bg-red-100 text-red-800 border border-red-200 shadow-2xs whitespace-nowrap">
-            🔴 13 (Critical)
-          </span>
-        );
       case 5:
         return (
+          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-bold bg-red-100 text-red-800 border border-red-200 shadow-2xs whitespace-nowrap">
+            🔴 5 (Critical)
+          </span>
+        );
+      case 4:
+        return (
           <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-bold bg-amber-100 text-amber-900 border border-amber-200 shadow-2xs whitespace-nowrap">
-            🟠 5 (High)
+            🟠 4 (High)
           </span>
         );
       case 3:
@@ -250,7 +250,7 @@ export default function ScopeMatrixView({
               permissions mapped to Google's official{" "}
               <strong className="text-gray-900">API User Data Policy Tiers</strong>{" "}
               (Restricted, Sensitive, Non-Sensitive) and the{" "}
-              <strong className="text-gray-900">Agile Fibonacci Threat Scale (1, 2, 3, 5, 13)</strong>.
+              <strong className="text-gray-900">Enterprise Threat Scale (1 to 5: Low to Critical)</strong>.
               Scopes can be viewed grouped by Google Service or as an exhaustive flat table.
             </p>
           </div>
@@ -283,7 +283,7 @@ export default function ScopeMatrixView({
                 Restricted Scopes (Google Tier)
               </span>
               <p className="text-red-700/80 text-[11px] mt-0.5 leading-snug">
-                Scores 5 or 13. Requires mandatory annual CASA Tier 2 independent audits
+                Scores 4 or 5. Requires mandatory annual CASA Tier 2 independent audits
                 ($3k–$15k/yr). Full mailbox or cloud drive control.
               </p>
             </div>
@@ -295,7 +295,7 @@ export default function ScopeMatrixView({
                 Sensitive Scopes (Google Tier)
               </span>
               <p className="text-amber-700/80 text-[11px] mt-0.5 leading-snug">
-                Scores 2, 3, or 5. Accesses private personal/corporate data (calendars, contacts,
+                Scores 2, 3, or 4. Accesses private personal/corporate data (calendars, contacts,
                 drive.file). Requires Google Trust & Safety verification.
               </p>
             </div>
@@ -360,13 +360,13 @@ export default function ScopeMatrixView({
 
         <div className="bg-red-50/40 border border-red-200 rounded-xl p-4 shadow-2xs">
           <div className="text-red-700 text-xs font-semibold flex items-center gap-1">
-            <span>🔥</span> Critical (13)
+            <span>🔥</span> Critical (5)
           </div>
           <div className="text-2xl font-bold text-red-900 mt-1">
             {metrics?.scores?.critical ??
-              scopes.filter((s) => s.admin_score === 13).length}
+              scopes.filter((s) => s.admin_score === 5).length}
           </div>
-          <div className="text-[11px] text-red-600 mt-0.5">Score 13 (Critical)</div>
+          <div className="text-[11px] text-red-600 mt-0.5">Score 5 (Critical)</div>
         </div>
 
         <div className="bg-emerald-50/40 border border-emerald-200 rounded-xl p-4 shadow-2xs">
@@ -463,8 +463,8 @@ export default function ScopeMatrixView({
               className="bg-gray-50 border border-gray-300 rounded-lg px-2.5 py-1.5 text-xs text-gray-800 focus:outline-none focus:border-blue-500"
             >
               <option value="ALL">All Scores</option>
-              <option value="13">🔴 13 — Critical</option>
-              <option value="5">🟠 5 — High</option>
+              <option value="5">🔴 5 — Critical</option>
+              <option value="4">🟠 4 — High</option>
               <option value="3">🟡 3 — Moderate</option>
               <option value="2">🟢 2 — Minor</option>
               <option value="1">🔵 1 — Low</option>
@@ -535,11 +535,11 @@ export default function ScopeMatrixView({
                         </div>
                       </div>
 
-                      {/* Critical Scopes Count (Score 13) */}
+                      {/* Critical Scopes Count (Score 5) */}
                       {grp.criticalCount > 0 && (
                         <div className="px-3 py-1.5 rounded-lg bg-red-50 border border-red-200 text-center">
                           <div className="text-[10px] text-red-700 font-medium">
-                            Critical (13)
+                            Critical (5)
                           </div>
                           <div className="text-xs font-bold text-red-900">
                             {grp.criticalCount} Scopes
