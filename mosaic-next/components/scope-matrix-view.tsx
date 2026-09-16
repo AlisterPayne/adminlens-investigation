@@ -194,31 +194,31 @@ export default function ScopeMatrixView({
       case 13:
         return (
           <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-bold bg-red-100 text-red-800 border border-red-200 shadow-2xs whitespace-nowrap">
-            🔴 13 (Red - Critical)
+            🔴 13 (Critical)
           </span>
         );
       case 5:
         return (
           <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-bold bg-amber-100 text-amber-900 border border-amber-200 shadow-2xs whitespace-nowrap">
-            🟠 5 (Orange - High)
+            🟠 5 (High)
           </span>
         );
       case 3:
         return (
           <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-bold bg-yellow-100 text-yellow-900 border border-yellow-200 shadow-2xs whitespace-nowrap">
-            🟡 3 (Yellow - Moderate)
+            🟡 3 (Moderate)
           </span>
         );
       case 2:
         return (
           <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-200 shadow-2xs whitespace-nowrap">
-            🟢 2 (Green - Minor)
+            🟢 2 (Minor)
           </span>
         );
       default:
         return (
           <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-bold bg-blue-100 text-blue-800 border border-blue-200 shadow-2xs whitespace-nowrap">
-            🔵 1 (Blue - Low)
+            🔵 1 (Low)
           </span>
         );
     }
@@ -366,7 +366,7 @@ export default function ScopeMatrixView({
             {metrics?.scores?.critical ??
               scopes.filter((s) => s.admin_score === 13).length}
           </div>
-          <div className="text-[11px] text-red-600 mt-0.5">Score 13 (Red)</div>
+          <div className="text-[11px] text-red-600 mt-0.5">Score 13 (Critical)</div>
         </div>
 
         <div className="bg-emerald-50/40 border border-emerald-200 rounded-xl p-4 shadow-2xs">
@@ -463,11 +463,11 @@ export default function ScopeMatrixView({
               className="bg-gray-50 border border-gray-300 rounded-lg px-2.5 py-1.5 text-xs text-gray-800 focus:outline-none focus:border-blue-500"
             >
               <option value="ALL">All Scores</option>
-              <option value="13">🔴 13 — Critical (Red)</option>
-              <option value="5">🟠 5 — High (Orange)</option>
-              <option value="3">🟡 3 — Moderate (Yellow)</option>
-              <option value="2">🟢 2 — Minor (Green)</option>
-              <option value="1">🔵 1 — Low (Blue)</option>
+              <option value="13">🔴 13 — Critical</option>
+              <option value="5">🟠 5 — High</option>
+              <option value="3">🟡 3 — Moderate</option>
+              <option value="2">🟢 2 — Minor</option>
+              <option value="1">🔵 1 — Low</option>
             </select>
           </div>
 
@@ -584,16 +584,16 @@ export default function ScopeMatrixView({
                       <table className="w-full text-left text-sm text-gray-700 table-fixed min-w-[960px]">
                         <colgroup>
                           <col style={{ width: "35%" }} />
-                          <col style={{ width: "150px" }} />
-                          <col style={{ width: "200px" }} />
+                          <col style={{ width: "140px" }} />
+                          <col style={{ width: "160px" }} />
                           <col />
                           <col style={{ width: "120px" }} />
                         </colgroup>
                         <thead className="bg-gray-50/60 text-[11px] uppercase tracking-wider text-gray-500 border-b border-gray-200 font-semibold">
                           <tr>
                             <th className="py-2.5 px-4" style={{ width: "35%" }}>OAuth Scope URI</th>
-                            <th className="py-2.5 px-4" style={{ width: "150px" }}>Google Tier</th>
-                            <th className="py-2.5 px-4" style={{ width: "200px" }}>Admin Score</th>
+                            <th className="py-2.5 px-4" style={{ width: "140px" }}>Google Tier</th>
+                            <th className="py-2.5 px-4" style={{ width: "160px" }}>Admin Score</th>
                             <th className="py-2.5 px-4">Threat Rationale & Exploit Impact</th>
                             <th className="py-2.5 px-4 text-center" style={{ width: "120px" }}>Tenant Apps</th>
                           </tr>

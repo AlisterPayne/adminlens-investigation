@@ -343,7 +343,7 @@
             <i data-lucide="flame" class="w-3.5 h-3.5"></i> Critical Threats
           </div>
           <div class="text-xl font-bold text-purple-300 mt-1" id="stat-scope-critical">-</div>
-          <div class="text-[10px] text-purple-400/70 mt-0.5">Score 5 (Red)</div>
+          <div class="text-[10px] text-purple-400/70 mt-0.5">Score 5 (Critical)</div>
         </div>
         <div class="bg-slate-950/60 border border-emerald-900/30 bg-emerald-950/10 rounded-xl p-3.5">
           <div class="text-emerald-400 text-xs font-medium flex items-center gap-1">
@@ -392,11 +392,11 @@
             <label class="text-xs text-slate-400 font-medium">Threat Score:</label>
             <select id="scope-score-filter" onchange="renderScopeReferenceTable()" class="bg-slate-900 border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-blue-500">
               <option value="ALL">All Scores</option>
-              <option value="5">🔴 5 — Critical (Red)</option>
-              <option value="4">🟠 4 — High (Orange)</option>
-              <option value="3">🟡 3 — Medium (Yellow)</option>
-              <option value="2">🟢 2 — Low (Green)</option>
-              <option value="1">🔵 1 — Minimal (Blue)</option>
+              <option value="5">🔴 5 — Critical</option>
+              <option value="4">🟠 4 — High</option>
+              <option value="3">🟡 3 — Moderate</option>
+              <option value="2">🟢 2 — Minor</option>
+              <option value="1">🔵 1 — Low</option>
             </select>
           </div>
 
@@ -738,19 +738,19 @@
         let scoreBadge = '';
         switch(s.admin_score) {
           case 5:
-            scoreBadge = '<span class="px-2.5 py-1 rounded text-xs font-bold bg-red-500/20 text-red-400 border border-red-500/30 shadow-xs whitespace-nowrap inline-flex items-center gap-1">🔴 5 (Red)</span>';
+            scoreBadge = '<span class="px-2.5 py-1 rounded text-xs font-bold bg-red-500/20 text-red-400 border border-red-500/30 shadow-xs whitespace-nowrap inline-flex items-center gap-1">🔴 5 (Critical)</span>';
             break;
           case 4:
-            scoreBadge = '<span class="px-2.5 py-1 rounded text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30 shadow-xs whitespace-nowrap inline-flex items-center gap-1">🟠 4 (Orange)</span>';
+            scoreBadge = '<span class="px-2.5 py-1 rounded text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30 shadow-xs whitespace-nowrap inline-flex items-center gap-1">🟠 4 (High)</span>';
             break;
           case 3:
-            scoreBadge = '<span class="px-2.5 py-1 rounded text-xs font-bold bg-yellow-500/20 text-yellow-300 border border-yellow-500/30 shadow-xs whitespace-nowrap inline-flex items-center gap-1">🟡 3 (Yellow)</span>';
+            scoreBadge = '<span class="px-2.5 py-1 rounded text-xs font-bold bg-yellow-500/20 text-yellow-300 border border-yellow-500/30 shadow-xs whitespace-nowrap inline-flex items-center gap-1">🟡 3 (Moderate)</span>';
             break;
           case 2:
-            scoreBadge = '<span class="px-2.5 py-1 rounded text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 shadow-xs whitespace-nowrap inline-flex items-center gap-1">🟢 2 (Green)</span>';
+            scoreBadge = '<span class="px-2.5 py-1 rounded text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 shadow-xs whitespace-nowrap inline-flex items-center gap-1">🟢 2 (Minor)</span>';
             break;
           default:
-            scoreBadge = '<span class="px-2.5 py-1 rounded text-xs font-bold bg-blue-500/20 text-blue-300 border border-blue-500/30 shadow-xs whitespace-nowrap inline-flex items-center gap-1">🔵 1 (Blue)</span>';
+            scoreBadge = '<span class="px-2.5 py-1 rounded text-xs font-bold bg-blue-500/20 text-blue-300 border border-blue-500/30 shadow-xs whitespace-nowrap inline-flex items-center gap-1">🔵 1 (Low)</span>';
         }
 
         // Active Apps in Tenant Badge
