@@ -16,7 +16,7 @@ export interface ScopeReferenceItem {
   service_name: string;
   google_tier: "Restricted" | "Sensitive" | "Non-Sensitive" | string;
   admin_score: number;
-  admin_color: "Red" | "Orange" | "Yellow" | "Green" | "Blue" | string;
+  admin_color: "Purple" | "Red" | "Orange" | "Yellow" | "Green" | "Blue" | string;
   rationale: string;
   threat_impact: string;
   active_apps_count?: number;
@@ -36,42 +36,6 @@ export interface ScopeMetrics {
   };
   services: string[];
 }
-
-// Threat Event Frequency (TEF) mapping for Google Workspace services
-const SERVICE_TEF_MAP: Record<string, { tef: number; description: string }> = {
-  Gmail: {
-    tef: 5,
-    description: "Primary attack vector (phishing, spoofing, BEC, and silent message routing rules).",
-  },
-  "Google Drive & Docs": {
-    tef: 4,
-    description: "Central repository of organizational IP, customer spreadsheets, and confidential documents.",
-  },
-  "Admin SDK": {
-    tef: 5,
-    description: "Super Admin and Directory control plane. Compromise grants full domain takeover.",
-  },
-  "Google Apps Script": {
-    tef: 4,
-    description: "Programmatic execution environment with direct outbound webhook and email trigger capabilities.",
-  },
-  "Google Calendar": {
-    tef: 3,
-    description: "Contains executive agendas, internal meeting links, attendee rosters, and attachment data.",
-  },
-  "Google Contacts": {
-    tef: 3,
-    description: "Global address book and auto-saved external partner relationship metadata.",
-  },
-  "Google Chat & Classroom": {
-    tef: 3,
-    description: "Real-time communication channels, teacher/student rosters, and FERPA/COPPA educational data.",
-  },
-  "Identity & SSO": {
-    tef: 1,
-    description: "Authentication assertions and basic identity tokens with minimal egress surface.",
-  },
-};
 
 export default function ScopeMatrixView({
   scopes = [],
@@ -142,21 +106,11 @@ export default function ScopeMatrixView({
       const sumScores = items.reduce((acc, curr) => acc + curr.admin_score, 0);
       const avgScore = total > 0 ? (sumScores / total).toFixed(1) : "0.0";
       const maxScore = Math.max(...items.map((i) => i.admin_score), 1);
+      const criticalCount = items.filter((i) => i.admin_score === 13).length;
       const restricted = items.filter((i) => i.google_tier === "Restricted").length;
       const sensitive = items.filter((i) => i.google_tier === "Sensitive").length;
       const nonSensitive = items.filter((i) => i.google_tier === "Non-Sensitive").length;
       const activeApps = items.reduce((acc, curr) => acc + (curr.active_apps_count || 0), 0);
-
-      const tefInfo = SERVICE_TEF_MAP[serviceName] || {
-        tef: 3,
-        description: "Google Workspace API Service",
-      };
-
-      const weightedScore = (parseFloat(avgScore) * tefInfo.tef).toFixed(1);
-      const maxPossibleWeighted = (5 * tefInfo.tef).toFixed(1);
-      const percentage = Math.round(
-        (parseFloat(weightedScore) / parseFloat(maxPossibleWeighted)) * 100
-      );
 
       return {
         serviceName,
@@ -164,17 +118,13 @@ export default function ScopeMatrixView({
         total,
         avgScore,
         maxScore,
+        criticalCount,
         restricted,
         sensitive,
         nonSensitive,
         activeApps,
-        tef: tefInfo.tef,
-        tefDescription: tefInfo.description,
-        weightedScore,
-        maxPossibleWeighted,
-        percentage,
       };
-    }).sort((a, b) => parseFloat(b.weightedScore) - parseFloat(a.weightedScore));
+    }).sort((a, b) => parseFloat(b.avgScore) - parseFloat(a.avgScore));
   }, [filteredScopes]);
 
   const toggleServiceCollapse = (service: string) => {
@@ -241,22 +191,22 @@ export default function ScopeMatrixView({
 
   const getScoreBadge = (score: number) => {
     switch (score) {
+      case 13:
+        return (
+          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-bold bg-purple-100 text-purple-900 border border-purple-200 shadow-2xs whitespace-nowrap">
+            🟣 13 (Purple - Extreme)
+          </span>
+        );
       case 5:
         return (
           <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-bold bg-red-100 text-red-800 border border-red-200 shadow-2xs whitespace-nowrap">
             🔴 5 (Red - Critical)
           </span>
         );
-      case 4:
-        return (
-          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-bold bg-amber-100 text-amber-900 border border-amber-200 shadow-2xs whitespace-nowrap">
-            🟠 4 (Orange - High)
-          </span>
-        );
       case 3:
         return (
           <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-bold bg-yellow-100 text-yellow-900 border border-yellow-200 shadow-2xs whitespace-nowrap">
-            🟡 3 (Yellow - Med)
+            🟡 3 (Yellow - Elevated)
           </span>
         );
       case 2:
@@ -300,9 +250,8 @@ export default function ScopeMatrixView({
               permissions mapped to Google's official{" "}
               <strong className="text-gray-900">API User Data Policy Tiers</strong>{" "}
               (Restricted, Sensitive, Non-Sensitive) and the{" "}
-              <strong className="text-gray-900">AdminLens 5-Point Threat Scale</strong>.
-              Scopes can be viewed grouped by Google Service (with Threat Event
-              Frequency weighting) or as an exhaustive flat table.
+              <strong className="text-gray-900">Agile Fibonacci Threat Scale (1, 2, 3, 5, 13)</strong>.
+              Scopes can be viewed grouped by Google Service or as an exhaustive flat table.
             </p>
           </div>
           <div className="flex items-center gap-2 flex-wrap">
@@ -334,7 +283,7 @@ export default function ScopeMatrixView({
                 Restricted Scopes (Google Tier)
               </span>
               <p className="text-red-700/80 text-[11px] mt-0.5 leading-snug">
-                Requires mandatory annual CASA Tier 2 independent audits
+                Scores 5 or 13. Requires mandatory annual CASA Tier 2 independent audits
                 ($3k–$15k/yr). Full mailbox or cloud drive control.
               </p>
             </div>
@@ -346,7 +295,7 @@ export default function ScopeMatrixView({
                 Sensitive Scopes (Google Tier)
               </span>
               <p className="text-amber-700/80 text-[11px] mt-0.5 leading-snug">
-                Accesses private personal/corporate data (calendars, contacts,
+                Scores 2, 3, or 5. Accesses private personal/corporate data (calendars, contacts,
                 drive.file). Requires Google Trust & Safety verification.
               </p>
             </div>
@@ -358,7 +307,7 @@ export default function ScopeMatrixView({
                 Non-Sensitive Scopes (Google Tier)
               </span>
               <p className="text-blue-700/80 text-[11px] mt-0.5 leading-snug">
-                Basic identity (openid, email, profile) or read-only operational
+                Scores 1 or 2. Basic identity (openid, email, profile) or read-only operational
                 metadata with minimal exfiltration surface.
               </p>
             </div>
@@ -416,9 +365,9 @@ export default function ScopeMatrixView({
           <div className="text-2xl font-bold text-purple-900 mt-1">
             {metrics?.scores
               ? metrics.scores.critical + metrics.scores.high
-              : scopes.filter((s) => s.admin_score >= 4).length}
+              : scopes.filter((s) => s.admin_score >= 5).length}
           </div>
-          <div className="text-[11px] text-purple-600 mt-0.5">Score 4 & 5</div>
+          <div className="text-[11px] text-purple-600 mt-0.5">Score 5 & 13</div>
         </div>
 
         <div className="bg-emerald-50/40 border border-emerald-200 rounded-xl p-4 shadow-2xs">
@@ -515,9 +464,9 @@ export default function ScopeMatrixView({
               className="bg-gray-50 border border-gray-300 rounded-lg px-2.5 py-1.5 text-xs text-gray-800 focus:outline-none focus:border-blue-500"
             >
               <option value="ALL">All Scores</option>
+              <option value="13">🟣 13 — Extreme (Purple)</option>
               <option value="5">🔴 5 — Critical (Red)</option>
-              <option value="4">🟠 4 — High (Orange)</option>
-              <option value="3">🟡 3 — Medium (Yellow)</option>
+              <option value="3">🟡 3 — Elevated (Yellow)</option>
               <option value="2">🟢 2 — Low (Green)</option>
               <option value="1">🔵 1 — Minimal (Blue)</option>
             </select>
@@ -570,7 +519,7 @@ export default function ScopeMatrixView({
                           </span>
                         </div>
                         <p className="text-xs text-gray-500 mt-0.5 max-w-xl">
-                          {grp.tefDescription}
+                          Google Workspace {grp.serviceName} API and permissions
                         </p>
                       </div>
                     </div>
@@ -578,32 +527,34 @@ export default function ScopeMatrixView({
                     {/* Service Metric Badges & Risk Exposure */}
                     <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap">
                       {/* Average Threat Score */}
-                      <div className="px-3 py-1.5 rounded-lg bg-gray-50 border border-gray-200 text-center">
+                      <div className="px-3.5 py-1.5 rounded-lg bg-gray-50 border border-gray-200 text-center">
                         <div className="text-[10px] text-gray-500 font-medium">
-                          Avg Scope Threat
+                          Avg Service Threat
                         </div>
                         <div className="text-xs font-bold text-gray-900">
-                          {grp.avgScore} / 5.0
+                          {grp.avgScore} pts
                         </div>
                       </div>
 
-                      {/* Threat Event Frequency (TEF) */}
-                      <div className="px-3 py-1.5 rounded-lg bg-blue-50/60 border border-blue-200 text-center">
-                        <div className="text-[10px] text-blue-700 font-medium">
-                          Service TEF
+                      {/* Extreme Scopes Count (Score 13) */}
+                      {grp.criticalCount > 0 && (
+                        <div className="px-3 py-1.5 rounded-lg bg-purple-50 border border-purple-200 text-center">
+                          <div className="text-[10px] text-purple-700 font-medium">
+                            Extreme (13)
+                          </div>
+                          <div className="text-xs font-bold text-purple-900">
+                            {grp.criticalCount} Scopes
+                          </div>
                         </div>
-                        <div className="text-xs font-bold text-blue-900">
-                          {grp.tef} / 5
-                        </div>
-                      </div>
+                      )}
 
-                      {/* Weighted Exposure (Avg × TEF) */}
-                      <div className="px-3.5 py-1.5 rounded-lg bg-indigo-50 border border-indigo-200 text-center">
+                      {/* Max Severity */}
+                      <div className="px-3 py-1.5 rounded-lg bg-indigo-50 border border-indigo-200 text-center">
                         <div className="text-[10px] text-indigo-700 font-medium">
-                          Weighted Risk
+                          Peak Scope
                         </div>
                         <div className="text-xs font-bold text-indigo-900">
-                          {grp.weightedScore} pts ({grp.percentage}%)
+                          Score {grp.maxScore}
                         </div>
                       </div>
 

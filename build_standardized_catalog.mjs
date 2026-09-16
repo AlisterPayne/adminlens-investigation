@@ -422,7 +422,7 @@ for (const [id, app] of catalog.entries()) {
   // Derive standardized riskLevel and riskScoreColor from average score
   let calculatedRiskLevel = 'LOW';
   let calculatedRiskColor = 'Green';
-  if (calculatedRiskScore >= 4.0) {
+  if (calculatedRiskScore >= 5.0) {
     calculatedRiskLevel = 'CRITICAL';
     calculatedRiskColor = 'Red';
   } else if (calculatedRiskScore >= 3.0) {

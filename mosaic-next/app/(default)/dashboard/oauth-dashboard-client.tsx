@@ -433,7 +433,7 @@ export default function OAuthDashboardClient({
   };
 
   const getRiskBadge = (level: string, score?: number) => {
-    const formattedScore = score !== undefined ? `${score.toFixed(1)}/5` : null;
+    const formattedScore = score !== undefined ? `${score.toFixed(1)}` : null;
     switch (level) {
       case "CRITICAL":
         return (
