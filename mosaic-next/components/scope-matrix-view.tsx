@@ -16,7 +16,7 @@ export interface ScopeReferenceItem {
   service_name: string;
   google_tier: "Restricted" | "Sensitive" | "Non-Sensitive" | string;
   admin_score: number;
-  admin_color: "Purple" | "Red" | "Orange" | "Yellow" | "Green" | "Blue" | string;
+  admin_color: "Red" | "Orange" | "Yellow" | "Green" | "Blue" | string;
   rationale: string;
   threat_impact: string;
   active_apps_count?: number;
@@ -193,32 +193,32 @@ export default function ScopeMatrixView({
     switch (score) {
       case 13:
         return (
-          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-bold bg-purple-100 text-purple-900 border border-purple-200 shadow-2xs whitespace-nowrap">
-            🟣 13 (Purple - Extreme)
+          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-bold bg-red-100 text-red-800 border border-red-200 shadow-2xs whitespace-nowrap">
+            🔴 13 (Red - Critical)
           </span>
         );
       case 5:
         return (
-          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-bold bg-red-100 text-red-800 border border-red-200 shadow-2xs whitespace-nowrap">
-            🔴 5 (Red - Critical)
+          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-bold bg-amber-100 text-amber-900 border border-amber-200 shadow-2xs whitespace-nowrap">
+            🟠 5 (Orange - High)
           </span>
         );
       case 3:
         return (
           <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-bold bg-yellow-100 text-yellow-900 border border-yellow-200 shadow-2xs whitespace-nowrap">
-            🟡 3 (Yellow - Elevated)
+            🟡 3 (Yellow - Moderate)
           </span>
         );
       case 2:
         return (
           <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-200 shadow-2xs whitespace-nowrap">
-            🟢 2 (Green - Low)
+            🟢 2 (Green - Minor)
           </span>
         );
       default:
         return (
           <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-bold bg-blue-100 text-blue-800 border border-blue-200 shadow-2xs whitespace-nowrap">
-            🔵 1 (Blue - Minimal)
+            🔵 1 (Blue - Low)
           </span>
         );
     }
@@ -358,16 +358,15 @@ export default function ScopeMatrixView({
           <div className="text-[11px] text-blue-600 mt-0.5">Basic identity / SSO</div>
         </div>
 
-        <div className="bg-purple-50/40 border border-purple-200 rounded-xl p-4 shadow-2xs">
-          <div className="text-purple-700 text-xs font-semibold flex items-center gap-1">
-            <span>🔥</span> Critical Threats
+        <div className="bg-red-50/40 border border-red-200 rounded-xl p-4 shadow-2xs">
+          <div className="text-red-700 text-xs font-semibold flex items-center gap-1">
+            <span>🔥</span> Critical (13)
           </div>
-          <div className="text-2xl font-bold text-purple-900 mt-1">
-            {metrics?.scores
-              ? metrics.scores.critical + metrics.scores.high
-              : scopes.filter((s) => s.admin_score >= 5).length}
+          <div className="text-2xl font-bold text-red-900 mt-1">
+            {metrics?.scores?.critical ??
+              scopes.filter((s) => s.admin_score === 13).length}
           </div>
-          <div className="text-[11px] text-purple-600 mt-0.5">Score 5 & 13</div>
+          <div className="text-[11px] text-red-600 mt-0.5">Score 13 (Red)</div>
         </div>
 
         <div className="bg-emerald-50/40 border border-emerald-200 rounded-xl p-4 shadow-2xs">
@@ -464,11 +463,11 @@ export default function ScopeMatrixView({
               className="bg-gray-50 border border-gray-300 rounded-lg px-2.5 py-1.5 text-xs text-gray-800 focus:outline-none focus:border-blue-500"
             >
               <option value="ALL">All Scores</option>
-              <option value="13">🟣 13 — Extreme (Purple)</option>
-              <option value="5">🔴 5 — Critical (Red)</option>
-              <option value="3">🟡 3 — Elevated (Yellow)</option>
-              <option value="2">🟢 2 — Low (Green)</option>
-              <option value="1">🔵 1 — Minimal (Blue)</option>
+              <option value="13">🔴 13 — Critical (Red)</option>
+              <option value="5">🟠 5 — High (Orange)</option>
+              <option value="3">🟡 3 — Moderate (Yellow)</option>
+              <option value="2">🟢 2 — Minor (Green)</option>
+              <option value="1">🔵 1 — Low (Blue)</option>
             </select>
           </div>
 
@@ -536,13 +535,13 @@ export default function ScopeMatrixView({
                         </div>
                       </div>
 
-                      {/* Extreme Scopes Count (Score 13) */}
+                      {/* Critical Scopes Count (Score 13) */}
                       {grp.criticalCount > 0 && (
-                        <div className="px-3 py-1.5 rounded-lg bg-purple-50 border border-purple-200 text-center">
-                          <div className="text-[10px] text-purple-700 font-medium">
-                            Extreme (13)
+                        <div className="px-3 py-1.5 rounded-lg bg-red-50 border border-red-200 text-center">
+                          <div className="text-[10px] text-red-700 font-medium">
+                            Critical (13)
                           </div>
-                          <div className="text-xs font-bold text-purple-900">
+                          <div className="text-xs font-bold text-red-900">
                             {grp.criticalCount} Scopes
                           </div>
                         </div>

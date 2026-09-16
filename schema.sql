@@ -115,7 +115,7 @@ CREATE TABLE IF NOT EXISTS oauth_scope_reference (
     service_name TEXT NOT NULL,
     google_tier TEXT NOT NULL CHECK (google_tier IN ('Restricted', 'Sensitive', 'Non-Sensitive')),
     admin_score INTEGER NOT NULL CHECK (admin_score IN (1, 2, 3, 5, 13)),
-    admin_color TEXT NOT NULL CHECK (admin_color IN ('Blue', 'Green', 'Yellow', 'Orange', 'Red', 'Purple')),
+    admin_color TEXT NOT NULL CHECK (admin_color IN ('Blue', 'Green', 'Yellow', 'Orange', 'Red')),
     rationale TEXT NOT NULL,
     threat_impact TEXT NOT NULL,
     created_at TEXT DEFAULT (datetime('now')),

@@ -68,7 +68,7 @@
     "iconUrl": "https://www.google.com/s2/favicons?domain=google.com&sz=128",
     "deploymentsCount": 6,
     "totalUsersCount": 6,
-    "maxRisk": "CRITICAL",
+    "maxRisk": "HIGH",
     "avgRiskScore": 3.46,
     "deploymentIds": [
       "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
@@ -86,7 +86,7 @@
     "iconUrl": "https://www.google.com/s2/favicons?domain=canva.com&sz=128",
     "deploymentsCount": 4,
     "totalUsersCount": 17,
-    "maxRisk": "HIGH",
+    "maxRisk": "MEDIUM",
     "avgRiskScore": 1.5,
     "deploymentIds": [
       "779010036194-lf6spugv22vvj41pqjdj4d8k2tq7o5fd.apps.googleusercontent.com",
@@ -118,7 +118,7 @@
     "iconUrl": "https://www.google.com/s2/favicons?domain=wayground.com&sz=128",
     "deploymentsCount": 4,
     "totalUsersCount": 7,
-    "maxRisk": "HIGH",
+    "maxRisk": "MEDIUM",
     "avgRiskScore": 2.83,
     "deploymentIds": [
       "58172892053-6laet7k6ls3k5va0jija3b175sm3jjms.apps.googleusercontent.com",
@@ -134,7 +134,7 @@
     "iconUrl": "https://www.google.com/s2/favicons?domain=apple.com&sz=128",
     "deploymentsCount": 2,
     "totalUsersCount": 25,
-    "maxRisk": "HIGH",
+    "maxRisk": "MEDIUM",
     "avgRiskScore": 3,
     "deploymentIds": [
       "936475272427.apps.googleusercontent.com",
@@ -148,7 +148,7 @@
     "iconUrl": "https://www.google.com/s2/favicons?domain=lusha.com&sz=128",
     "deploymentsCount": 2,
     "totalUsersCount": 5,
-    "maxRisk": "MEDIUM",
+    "maxRisk": "LOW",
     "avgRiskScore": 1.78,
     "deploymentIds": [
       "961782772109-gr6rmo3pe7iibrmjifhhar5iu2mjin9r.apps.googleusercontent.com",
@@ -215,7 +215,7 @@
     "iconUrl": "https://ui-avatars.com/api/?name=Android%20device&background=3B82F6&color=fff&size=128&rounded=true",
     "deploymentsCount": 1,
     "totalUsersCount": 64,
-    "maxRisk": "CRITICAL",
+    "maxRisk": "HIGH",
     "avgRiskScore": 5,
     "deploymentIds": [
       "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com"
@@ -227,7 +227,7 @@
     "iconUrl": "https://ui-avatars.com/api/?name=Google%20Chrome&background=3B82F6&color=fff&size=128&rounded=true",
     "deploymentsCount": 1,
     "totalUsersCount": 69,
-    "maxRisk": "CRITICAL",
+    "maxRisk": "HIGH",
     "avgRiskScore": 5,
     "deploymentIds": [
       "77185425430.apps.googleusercontent.com"
@@ -239,7 +239,7 @@
     "iconUrl": "https://ui-avatars.com/api/?name=Google%20Drive%20for%20desktop&background=3B82F6&color=fff&size=128&rounded=true",
     "deploymentsCount": 1,
     "totalUsersCount": 2,
-    "maxRisk": "HIGH",
+    "maxRisk": "MEDIUM",
     "avgRiskScore": 3,
     "deploymentIds": [
       "947318989803-6bn6qk8qdgf4n4g3pfee6491hc0brc4i.apps.googleusercontent.com"
@@ -275,7 +275,7 @@
     "iconUrl": "https://ui-avatars.com/api/?name=526554529059-emb2o69t2ri25uicvjkj444o71sku29p.apps.googleusercontent.com&background=3B82F6&color=fff&size=128&rounded=true",
     "deploymentsCount": 1,
     "totalUsersCount": 1,
-    "maxRisk": "HIGH",
+    "maxRisk": "MEDIUM",
     "avgRiskScore": 4.25,
     "deploymentIds": [
       "526554529059-emb2o69t2ri25uicvjkj444o71sku29p.apps.googleusercontent.com"
@@ -288,7 +288,7 @@
     "iconUrl": "https://www.google.com/s2/favicons?domain=apple.com&sz=128",
     "deploymentsCount": 1,
     "totalUsersCount": 2,
-    "maxRisk": "MEDIUM",
+    "maxRisk": "LOW",
     "avgRiskScore": 2.33,
     "deploymentIds": [
       "821073268825-uj405qcuu2pbpq5ab05rsupc98ldq2ou.apps.googleusercontent.com"
@@ -301,7 +301,7 @@
     "iconUrl": "https://ui-avatars.com/api/?name=GA7-demo2&background=3B82F6&color=fff&size=128&rounded=true",
     "deploymentsCount": 1,
     "totalUsersCount": 1,
-    "maxRisk": "HIGH",
+    "maxRisk": "MEDIUM",
     "avgRiskScore": 4.81,
     "deploymentIds": [
       "696916210722-n0mvdqjq01ebg21eeaeraggm9vb0jbr6.apps.googleusercontent.com"
@@ -314,7 +314,7 @@
     "iconUrl": "https://www.google.com/s2/favicons?domain=chromebookgetter.com&sz=128",
     "deploymentsCount": 1,
     "totalUsersCount": 3,
-    "maxRisk": "HIGH",
+    "maxRisk": "MEDIUM",
     "avgRiskScore": 3.55,
     "deploymentIds": [
       "871655740233-iad5enbpe9r7o18h2ajle4vdd51vhflp.apps.googleusercontent.com"
@@ -327,7 +327,7 @@
     "iconUrl": "https://www.google.com/s2/favicons?domain=apollo.io&sz=128",
     "deploymentsCount": 1,
     "totalUsersCount": 1,
-    "maxRisk": "HIGH",
+    "maxRisk": "MEDIUM",
     "avgRiskScore": 4,
     "deploymentIds": [
       "499298628135-btb03c1lpe4146utgj65me0pujfpri43.apps.googleusercontent.com"
@@ -339,7 +339,7 @@
     "iconUrl": "https://ui-avatars.com/api/?name=InactiveUserInventory&background=3B82F6&color=fff&size=128&rounded=true",
     "deploymentsCount": 1,
     "totalUsersCount": 1,
-    "maxRisk": "CRITICAL",
+    "maxRisk": "HIGH",
     "avgRiskScore": 5.5,
     "deploymentIds": [
       "718809722883-l2mt5r2m2omka59ahjm1js78slbubsd7.apps.googleusercontent.com"
@@ -352,7 +352,7 @@
     "iconUrl": "https://www.google.com/s2/favicons?domain=mylogin.com&sz=128",
     "deploymentsCount": 1,
     "totalUsersCount": 1,
-    "maxRisk": "MEDIUM",
+    "maxRisk": "LOW",
     "avgRiskScore": 2,
     "deploymentIds": [
       "188883250313-8nmnraov1542echfae84q33gmdi5k54g.apps.googleusercontent.com"
@@ -390,7 +390,7 @@
     "iconUrl": "https://ui-avatars.com/api/?name=Google%20AppSheet&background=3B82F6&color=fff&size=128&rounded=true",
     "deploymentsCount": 1,
     "totalUsersCount": 1,
-    "maxRisk": "HIGH",
+    "maxRisk": "MEDIUM",
     "avgRiskScore": 4.33,
     "deploymentIds": [
       "953348912797-h2fo9tmk42mnrkk0kc6gula9i8ipv3re.apps.googleusercontent.com"
@@ -428,7 +428,7 @@
     "iconUrl": "https://ui-avatars.com/api/?name=iOS&background=3B82F6&color=fff&size=128&rounded=true",
     "deploymentsCount": 1,
     "totalUsersCount": 1,
-    "maxRisk": "HIGH",
+    "maxRisk": "MEDIUM",
     "avgRiskScore": 4,
     "deploymentIds": [
       "450232826690-0rm6bs9d2fps9tifvk2oodh3tasd7vl7.apps.googleusercontent.com"
@@ -505,7 +505,7 @@
     "iconUrl": "https://ui-avatars.com/api/?name=Google%20Calendar%20for%20Workspace%20Studio&background=3B82F6&color=fff&size=128&rounded=true",
     "deploymentsCount": 1,
     "totalUsersCount": 2,
-    "maxRisk": "HIGH",
+    "maxRisk": "MEDIUM",
     "avgRiskScore": 4,
     "deploymentIds": [
       "469390422673-r0p2tar3lgjlnhtsv4t4uonq4bi2svf8.apps.googleusercontent.com"
@@ -542,7 +542,7 @@
     "iconUrl": "https://ui-avatars.com/api/?name=Google%20Chat%20for%20Workspace%20Studio&background=3B82F6&color=fff&size=128&rounded=true",
     "deploymentsCount": 1,
     "totalUsersCount": 2,
-    "maxRisk": "HIGH",
+    "maxRisk": "MEDIUM",
     "avgRiskScore": 3,
     "deploymentIds": [
       "873507009103-gi4ff8nkju6ggaurt6ebbiqrfmr0c79j.apps.googleusercontent.com"
@@ -567,7 +567,7 @@
     "iconUrl": "https://ui-avatars.com/api/?name=CloudReady%20Home%20Edition&background=3B82F6&color=fff&size=128&rounded=true",
     "deploymentsCount": 1,
     "totalUsersCount": 1,
-    "maxRisk": "CRITICAL",
+    "maxRisk": "HIGH",
     "avgRiskScore": 5,
     "deploymentIds": [
       "899041083010-d9l71rq1omp8sj53qo1v0sjb9n6aqpu8.apps.googleusercontent.com"

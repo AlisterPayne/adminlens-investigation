@@ -421,19 +421,25 @@ for (const [id, app] of catalog.entries()) {
 
   // Derive standardized riskLevel and riskScoreColor from average score
   let calculatedRiskLevel = 'LOW';
-  let calculatedRiskColor = 'Green';
+  let calculatedRiskColor = 'Blue';
   if (calculatedRiskScore >= 5.0) {
-    calculatedRiskLevel = 'CRITICAL';
-    calculatedRiskColor = 'Red';
+    // 5.0 to 13.0
+    if (calculatedRiskScore >= 9.0) {
+      calculatedRiskLevel = 'CRITICAL';
+      calculatedRiskColor = 'Red';
+    } else {
+      calculatedRiskLevel = 'HIGH';
+      calculatedRiskColor = 'Orange';
+    }
   } else if (calculatedRiskScore >= 3.0) {
-    calculatedRiskLevel = 'HIGH';
-    calculatedRiskColor = 'Orange';
-  } else if (calculatedRiskScore >= 2.0) {
-    calculatedRiskLevel = 'MEDIUM';
+    calculatedRiskLevel = 'MEDIUM'; // Moderate
     calculatedRiskColor = 'Yellow';
-  } else {
-    calculatedRiskLevel = 'LOW';
+  } else if (calculatedRiskScore >= 2.0) {
+    calculatedRiskLevel = 'LOW'; // Minor
     calculatedRiskColor = 'Green';
+  } else {
+    calculatedRiskLevel = 'LOW'; // Low
+    calculatedRiskColor = 'Blue';
   }
 
   const isStale = app.totalActivityEvents === 0;

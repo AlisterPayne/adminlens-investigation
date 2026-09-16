@@ -19,8 +19,8 @@
     "storeUrl": null,
     "description": "",
     "riskScore": 4.25,
-    "riskLevel": "HIGH",
-    "riskScoreColor": "Orange",
+    "riskLevel": "MEDIUM",
+    "riskScoreColor": "Yellow",
     "rawMaxRisk": "HIGH",
     "riskReasons": [
       "Access to Domain Directory, Files, or Calendars",
@@ -59,7 +59,7 @@
         "description": "Bulk Email Exfiltration",
         "threatImpact": "Read all historical messages, sensitive corporate contracts, passwords, and reset links without edit rights.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Gmail"
       },
@@ -149,7 +149,7 @@
         "description": "Full Cloud Storage Compromise",
         "threatImpact": "Read, edit, create, and permanently delete all files in My Drive and Shared Drives. Severe ransomware and wipeout risk.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Google Drive & Docs"
       },
@@ -159,7 +159,7 @@
         "description": "Message Manipulation & Exfiltration",
         "threatImpact": "Read, compose, modify labels, and move messages to trash. Enables silent email interception and manipulation.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Gmail"
       }
@@ -220,7 +220,7 @@
     "description": "",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
@@ -317,7 +317,7 @@
     "description": "Google Workspace security auditing, posture management, and recommendation platform.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
@@ -508,7 +508,7 @@
     "description": "Google Workspace security auditing, posture management, and recommendation platform.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
@@ -688,7 +688,7 @@
     "description": "Google Workspace security auditing, posture management, and recommendation platform.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [],
     "adminAccessLevel": "UNCONFIGURED",
@@ -776,7 +776,7 @@
     "description": "Google Workspace security auditing, posture management, and recommendation platform.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [],
     "adminAccessLevel": "UNCONFIGURED",
@@ -860,8 +860,8 @@
     "storeUrl": null,
     "description": "",
     "riskScore": 5,
-    "riskLevel": "CRITICAL",
-    "riskScoreColor": "Red",
+    "riskLevel": "HIGH",
+    "riskScoreColor": "Orange",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
@@ -888,7 +888,7 @@
         "description": "Legacy Master ClientLogin / OAuth Session Login",
         "threatImpact": "Legacy full-account session login token for Google services with broad scope implications.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Identity & SSO"
       }
@@ -1503,7 +1503,7 @@
     "description": "Next-generation AI assistant built by Anthropic.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
@@ -1599,8 +1599,8 @@
     "storeUrl": "https://apollo.io",
     "description": "B2B sales intelligence and email sequence automation platform.",
     "riskScore": 4,
-    "riskLevel": "HIGH",
-    "riskScoreColor": "Orange",
+    "riskLevel": "MEDIUM",
+    "riskScoreColor": "Yellow",
     "rawMaxRisk": "CRITICAL",
     "riskReasons": [
       "Basic Authentication / Profile Scopes",
@@ -1659,7 +1659,7 @@
         "description": "Full Calendar Compromise",
         "threatImpact": "Full read/write to all calendars. Can delete schedules, plant fraudulent meeting invites, and read meeting attachments.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Google Calendar"
       },
@@ -1669,7 +1669,7 @@
         "description": "Full Mailbox Takeover",
         "threatImpact": "Read, compose, permanently delete emails, and modify forwarding/POP/IMAP settings. Total communication takeover.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Gmail"
       },
@@ -1736,8 +1736,8 @@
     "storeUrl": "https://business.apple.com",
     "description": "Apple device enrollment and volume app distribution service.",
     "riskScore": 2.33,
-    "riskLevel": "MEDIUM",
-    "riskScoreColor": "Yellow",
+    "riskLevel": "LOW",
+    "riskScoreColor": "Green",
     "rawMaxRisk": "CRITICAL",
     "riskReasons": [
       "Basic Authentication / Profile Scopes",
@@ -1817,7 +1817,7 @@
         "description": "Security Audit Log Surveillance",
         "threatImpact": "Read tenant security audit logs, monitoring detection mechanisms and tracking admin investigation activities.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Admin SDK"
       },
@@ -1891,8 +1891,8 @@
     "storeUrl": "https://apple.com",
     "description": "Native Apple macOS account sync for Google Mail, Calendar, and Contacts.",
     "riskScore": 4,
-    "riskLevel": "HIGH",
-    "riskScoreColor": "Orange",
+    "riskLevel": "MEDIUM",
+    "riskScoreColor": "Yellow",
     "rawMaxRisk": "CRITICAL",
     "riskReasons": [
       "Access to Domain Directory, Files, or Calendars",
@@ -1971,7 +1971,7 @@
         "description": "Full Calendar Compromise",
         "threatImpact": "Full read/write to all calendars. Can delete schedules, plant fraudulent meeting invites, and read meeting attachments.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Google Calendar"
       },
@@ -1981,7 +1981,7 @@
         "description": "Full Mailbox Takeover",
         "threatImpact": "Read, compose, permanently delete emails, and modify forwarding/POP/IMAP settings. Total communication takeover.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Gmail"
       }
@@ -2036,8 +2036,8 @@
     "storeUrl": "https://apple.com",
     "description": "Native Apple iOS account sync for Google Mail, Calendar, and Contacts.",
     "riskScore": 2,
-    "riskLevel": "MEDIUM",
-    "riskScoreColor": "Yellow",
+    "riskLevel": "LOW",
+    "riskScoreColor": "Green",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
@@ -2094,7 +2094,7 @@
         "description": "Legacy Master ClientLogin / OAuth Session Login",
         "threatImpact": "Legacy full-account session login token for Google services with broad scope implications.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Identity & SSO"
       },
@@ -2409,7 +2409,7 @@
     "description": "AI-powered student safety monitoring and content filtering for Google Workspace accounts.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
@@ -2505,7 +2505,7 @@
     "description": "Link management and URL shortening service.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
@@ -2600,7 +2600,7 @@
     "description": "Centralized Gmail email signature management tool.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
@@ -2696,8 +2696,8 @@
     "storeUrl": "https://canva.com",
     "description": "Online graphic design platform for presentations, documents, and social graphics.",
     "riskScore": 3,
-    "riskLevel": "HIGH",
-    "riskScoreColor": "Orange",
+    "riskLevel": "MEDIUM",
+    "riskScoreColor": "Yellow",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
@@ -2772,7 +2772,7 @@
         "description": "Mass Document Exfiltration",
         "threatImpact": "Bulk read and download of all corporate documents, spreadsheets, presentations, and stored assets.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Google Drive & Docs"
       }
@@ -2824,7 +2824,7 @@
     "description": "Online graphic design platform for presentations, documents, and social graphics.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
@@ -3125,7 +3125,7 @@
     "description": "Online graphic design platform for presentations, documents, and social graphics.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [],
     "adminAccessLevel": "TRUSTED",
@@ -3214,7 +3214,7 @@
     "description": "Online graphic design platform for presentations, documents, and social graphics.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [],
     "adminAccessLevel": "TRUSTED",
@@ -3300,7 +3300,7 @@
     "description": "",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
@@ -3396,8 +3396,8 @@
     "storeUrl": "https://chromebookgetter.com",
     "description": "Bulk Chromebook inventory management and ChromeOS provisioning tool for Google Sheets.",
     "riskScore": 3.55,
-    "riskLevel": "HIGH",
-    "riskScoreColor": "Orange",
+    "riskLevel": "MEDIUM",
+    "riskScoreColor": "Yellow",
     "rawMaxRisk": "CRITICAL",
     "riskReasons": [
       "Basic Authentication / Profile Scopes",
@@ -3436,7 +3436,7 @@
         "description": "OU Policy Bypass",
         "threatImpact": "Move users between Organizational Units, potentially bypassing 2SV mandates or restricted app policies.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Admin SDK"
       },
@@ -3446,7 +3446,7 @@
         "description": "Arbitrary Data Egress / Webhooks",
         "threatImpact": "Script can issue external HTTP/REST calls (UrlFetchApp) to transmit internal company data to external servers.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Google Apps Script"
       },
@@ -3466,7 +3466,7 @@
         "description": "Financial & Tabular Data Access",
         "threatImpact": "Read and write access to all Google Sheets (financial models, customer lists, HR payroll, and analytics).",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Google Drive & Docs"
       },
@@ -3496,7 +3496,7 @@
         "description": "Total Account Administration",
         "threatImpact": "Create, reset passwords, suspend, or delete any domain user account, including administrators.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -3618,8 +3618,8 @@
     "storeUrl": null,
     "description": "",
     "riskScore": 5,
-    "riskLevel": "CRITICAL",
-    "riskScoreColor": "Red",
+    "riskLevel": "HIGH",
+    "riskScoreColor": "Orange",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
@@ -3646,7 +3646,7 @@
         "description": "Legacy Master ClientLogin / OAuth Session Login",
         "threatImpact": "Legacy full-account session login token for Google services with broad scope implications.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Identity & SSO"
       }
@@ -3691,7 +3691,7 @@
     "description": "",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
@@ -3806,7 +3806,7 @@
     "description": "",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
@@ -3921,7 +3921,7 @@
     "description": "",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
@@ -4019,7 +4019,7 @@
     "description": "Collaborative web-based interface design and prototyping tool.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
@@ -4113,8 +4113,8 @@
     "storeUrl": null,
     "description": "",
     "riskScore": 4.81,
-    "riskLevel": "HIGH",
-    "riskScoreColor": "Orange",
+    "riskLevel": "MEDIUM",
+    "riskScoreColor": "Yellow",
     "rawMaxRisk": "CRITICAL",
     "riskReasons": [
       "Basic Authentication / Profile Scopes",
@@ -4170,7 +4170,7 @@
         "description": "OU Policy Bypass",
         "threatImpact": "Move users between Organizational Units, potentially bypassing 2SV mandates or restricted app policies.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Admin SDK"
       },
@@ -4180,7 +4180,7 @@
         "description": "Google Groups Security Configuration",
         "threatImpact": "Modify group security settings, including allowing external participants, public web postings, or collaborative inbox access.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -4200,7 +4200,7 @@
         "description": "Custom Directory Schema Tampering",
         "threatImpact": "Define and modify custom attributes for domain user accounts (often storing internal employee IDs or clearance levels).",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -4220,7 +4220,7 @@
         "description": "Domain Contact Delegation Control",
         "threatImpact": "Manage shared external contacts and delegated address book access across tenant users.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -4250,7 +4250,7 @@
         "description": "Cloud Identity Security Groups Management",
         "threatImpact": "Full CRUD control over Cloud Identity groups, security labels, dynamic memberships, and IAM group bindings.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -4270,7 +4270,7 @@
         "description": "Full Address Book Tampering",
         "threatImpact": "Full read/write to personal and corporate contact lists. Can overwrite or poison phone numbers and addresses.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Google Contacts"
       },
@@ -4280,7 +4280,7 @@
         "description": "Legacy Google Contacts GData Feed Access",
         "threatImpact": "Full read/write access to personal and shared domain contacts via legacy API.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Google Contacts"
       },
@@ -4290,7 +4290,7 @@
         "description": "Mobile Device Management & Remote Wipe",
         "threatImpact": "Enumerate, approve, block, or remotely wipe corporate mobile devices carrying enterprise email and files.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -4330,7 +4330,7 @@
         "description": "Google Groups Message Ingestion / Migration",
         "threatImpact": "Inject and archive historical messages into Google Groups mailing lists.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -4360,7 +4360,7 @@
         "description": "Google Vault Legal Holds & eDiscovery Exfiltration",
         "threatImpact": "Access Google Vault matters, legal holds, export queries, and litigation audits covering all historical domain emails and files.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -4370,7 +4370,7 @@
         "description": "User Security & 2SV Credential Manipulation",
         "threatImpact": "Manage user MFA/2-step verification, security keys, backup codes, and session cookies. High privilege takeover.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -4380,7 +4380,7 @@
         "description": "Security Audit Log Surveillance",
         "threatImpact": "Read tenant security audit logs, monitoring detection mechanisms and tracking admin investigation activities.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Admin SDK"
       },
@@ -4390,7 +4390,7 @@
         "description": "Total Account Administration",
         "threatImpact": "Create, reset passwords, suspend, or delete any domain user account, including administrators.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -4400,7 +4400,7 @@
         "description": "Group Membership Tampering",
         "threatImpact": "Add accounts to high-privilege distribution groups, security groups, or restricted mailing lists.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Admin SDK"
       },
@@ -4420,7 +4420,7 @@
         "description": "Workspace SKU License Assignment",
         "threatImpact": "Assign or revoke Google Workspace and Google Cloud licenses for domain users.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -4460,7 +4460,7 @@
         "description": "Domain Architecture Control",
         "threatImpact": "Modify DNS, secondary domain aliases, and domain ownership configurations.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -4470,7 +4470,7 @@
         "description": "Chrome Browser Policy Administration",
         "threatImpact": "Enforce or alter enterprise Chrome browser policies, extension blocklists, and network proxy rules.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -4500,7 +4500,7 @@
         "description": "Domain Privilege Escalation",
         "threatImpact": "Can create and assign Super Admin roles to rogue accounts. Ultimate domain takeover vector.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -4530,7 +4530,7 @@
         "description": "Inbound SAML/OIDC SSO Configuration",
         "threatImpact": "Modify third-party identity provider SSO profiles, SAML certificates, and redirect URLs. Massive authentication hijack vector.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -4570,7 +4570,7 @@
         "description": "Full Calendar Compromise",
         "threatImpact": "Full read/write to all calendars. Can delete schedules, plant fraudulent meeting invites, and read meeting attachments.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Google Calendar"
       },
@@ -4590,7 +4590,7 @@
         "description": "Cross-Account Bulk Data Transfer",
         "threatImpact": "Transfer ownership of entire Drive files and Calendar events between domain users during de-provisioning. Extreme egress potential.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -4600,7 +4600,7 @@
         "description": "Customer Account Profile Administration",
         "threatImpact": "Manage customer domain account details, technical contacts, and postal addresses.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -4620,7 +4620,7 @@
         "description": "Cloud Identity Organizational Units Management",
         "threatImpact": "Create, move, and delete Cloud Identity organizational units and root domain hierarchy.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       }
@@ -4828,7 +4828,7 @@
         "description": "Full Google Cloud Platform Infrastructure Control",
         "threatImpact": "Full administrative access to all GCP projects, IAM roles, compute instances, BigQuery databases, and storage buckets.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       }
@@ -4882,8 +4882,8 @@
     "storeUrl": "https://github.com/GAM-team/GAM",
     "description": "Command-line management tool for Google Workspace domain administration.",
     "riskScore": 5.02,
-    "riskLevel": "CRITICAL",
-    "riskScoreColor": "Red",
+    "riskLevel": "HIGH",
+    "riskScoreColor": "Orange",
     "rawMaxRisk": "CRITICAL",
     "riskReasons": [
       "Basic Authentication / Profile Scopes",
@@ -5012,7 +5012,7 @@
         "description": "OU Policy Bypass",
         "threatImpact": "Move users between Organizational Units, potentially bypassing 2SV mandates or restricted app policies.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Admin SDK"
       },
@@ -5022,7 +5022,7 @@
         "description": "Google Groups Security Configuration",
         "threatImpact": "Modify group security settings, including allowing external participants, public web postings, or collaborative inbox access.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -5042,7 +5042,7 @@
         "description": "Custom Directory Schema Tampering",
         "threatImpact": "Define and modify custom attributes for domain user accounts (often storing internal employee IDs or clearance levels).",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -5062,7 +5062,7 @@
         "description": "Cloud Identity Security Policies Administration",
         "threatImpact": "Define and enforce domain-wide identity policies, password complexity rules, and session controls.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -5072,7 +5072,7 @@
         "description": "Domain Contact Delegation Control",
         "threatImpact": "Manage shared external contacts and delegated address book access across tenant users.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -5102,7 +5102,7 @@
         "description": "Cloud Identity Security Groups Management",
         "threatImpact": "Full CRUD control over Cloud Identity groups, security labels, dynamic memberships, and IAM group bindings.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -5122,7 +5122,7 @@
         "description": "Full Address Book Tampering",
         "threatImpact": "Full read/write to personal and corporate contact lists. Can overwrite or poison phone numbers and addresses.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Google Contacts"
       },
@@ -5132,7 +5132,7 @@
         "description": "Legacy Google Contacts GData Feed Access",
         "threatImpact": "Full read/write access to personal and shared domain contacts via legacy API.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Google Contacts"
       },
@@ -5142,7 +5142,7 @@
         "description": "Mobile Device Management & Remote Wipe",
         "threatImpact": "Enumerate, approve, block, or remotely wipe corporate mobile devices carrying enterprise email and files.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -5182,7 +5182,7 @@
         "description": "Google Groups Message Ingestion / Migration",
         "threatImpact": "Inject and archive historical messages into Google Groups mailing lists.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -5212,7 +5212,7 @@
         "description": "Google Vault Legal Holds & eDiscovery Exfiltration",
         "threatImpact": "Access Google Vault matters, legal holds, export queries, and litigation audits covering all historical domain emails and files.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -5222,7 +5222,7 @@
         "description": "User Security & 2SV Credential Manipulation",
         "threatImpact": "Manage user MFA/2-step verification, security keys, backup codes, and session cookies. High privilege takeover.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -5232,7 +5232,7 @@
         "description": "Security Audit Log Surveillance",
         "threatImpact": "Read tenant security audit logs, monitoring detection mechanisms and tracking admin investigation activities.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Admin SDK"
       },
@@ -5242,7 +5242,7 @@
         "description": "Total Account Administration",
         "threatImpact": "Create, reset passwords, suspend, or delete any domain user account, including administrators.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -5252,7 +5252,7 @@
         "description": "Group Membership Tampering",
         "threatImpact": "Add accounts to high-privilege distribution groups, security groups, or restricted mailing lists.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Admin SDK"
       },
@@ -5272,7 +5272,7 @@
         "description": "Workspace SKU License Assignment",
         "threatImpact": "Assign or revoke Google Workspace and Google Cloud licenses for domain users.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -5312,7 +5312,7 @@
         "description": "Domain Architecture Control",
         "threatImpact": "Modify DNS, secondary domain aliases, and domain ownership configurations.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -5322,7 +5322,7 @@
         "description": "Chrome Browser Policy Administration",
         "threatImpact": "Enforce or alter enterprise Chrome browser policies, extension blocklists, and network proxy rules.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -5342,7 +5342,7 @@
         "description": "Domain Privilege Escalation",
         "threatImpact": "Can create and assign Super Admin roles to rogue accounts. Ultimate domain takeover vector.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -5372,7 +5372,7 @@
         "description": "Inbound SAML/OIDC SSO Configuration",
         "threatImpact": "Modify third-party identity provider SSO profiles, SAML certificates, and redirect URLs. Massive authentication hijack vector.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -5412,7 +5412,7 @@
         "description": "Full Calendar Compromise",
         "threatImpact": "Full read/write to all calendars. Can delete schedules, plant fraudulent meeting invites, and read meeting attachments.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Google Calendar"
       },
@@ -5432,7 +5432,7 @@
         "description": "Cross-Account Bulk Data Transfer",
         "threatImpact": "Transfer ownership of entire Drive files and Calendar events between domain users during de-provisioning. Extreme egress potential.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -5442,7 +5442,7 @@
         "description": "Customer Account Profile Administration",
         "threatImpact": "Manage customer domain account details, technical contacts, and postal addresses.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -5462,7 +5462,7 @@
         "description": "Cloud Identity Organizational Units Management",
         "threatImpact": "Create, move, and delete Cloud Identity organizational units and root domain hierarchy.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       }
@@ -5558,8 +5558,8 @@
     "storeUrl": "https://github.com/GAM-team/GAM",
     "description": "Command-line management tool for Google Workspace domain administration.",
     "riskScore": 4.81,
-    "riskLevel": "HIGH",
-    "riskScoreColor": "Orange",
+    "riskLevel": "MEDIUM",
+    "riskScoreColor": "Yellow",
     "rawMaxRisk": "CRITICAL",
     "riskReasons": [
       "Basic Authentication / Profile Scopes",
@@ -5688,7 +5688,7 @@
         "description": "OU Policy Bypass",
         "threatImpact": "Move users between Organizational Units, potentially bypassing 2SV mandates or restricted app policies.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Admin SDK"
       },
@@ -5698,7 +5698,7 @@
         "description": "Google Groups Security Configuration",
         "threatImpact": "Modify group security settings, including allowing external participants, public web postings, or collaborative inbox access.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -5718,7 +5718,7 @@
         "description": "Custom Directory Schema Tampering",
         "threatImpact": "Define and modify custom attributes for domain user accounts (often storing internal employee IDs or clearance levels).",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -5738,7 +5738,7 @@
         "description": "Domain Contact Delegation Control",
         "threatImpact": "Manage shared external contacts and delegated address book access across tenant users.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -5768,7 +5768,7 @@
         "description": "Cloud Identity Security Groups Management",
         "threatImpact": "Full CRUD control over Cloud Identity groups, security labels, dynamic memberships, and IAM group bindings.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -5788,7 +5788,7 @@
         "description": "Full Address Book Tampering",
         "threatImpact": "Full read/write to personal and corporate contact lists. Can overwrite or poison phone numbers and addresses.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Google Contacts"
       },
@@ -5798,7 +5798,7 @@
         "description": "Legacy Google Contacts GData Feed Access",
         "threatImpact": "Full read/write access to personal and shared domain contacts via legacy API.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Google Contacts"
       },
@@ -5808,7 +5808,7 @@
         "description": "Mobile Device Management & Remote Wipe",
         "threatImpact": "Enumerate, approve, block, or remotely wipe corporate mobile devices carrying enterprise email and files.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -5848,7 +5848,7 @@
         "description": "Google Groups Message Ingestion / Migration",
         "threatImpact": "Inject and archive historical messages into Google Groups mailing lists.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -5878,7 +5878,7 @@
         "description": "Google Vault Legal Holds & eDiscovery Exfiltration",
         "threatImpact": "Access Google Vault matters, legal holds, export queries, and litigation audits covering all historical domain emails and files.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -5888,7 +5888,7 @@
         "description": "User Security & 2SV Credential Manipulation",
         "threatImpact": "Manage user MFA/2-step verification, security keys, backup codes, and session cookies. High privilege takeover.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -5898,7 +5898,7 @@
         "description": "Security Audit Log Surveillance",
         "threatImpact": "Read tenant security audit logs, monitoring detection mechanisms and tracking admin investigation activities.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Admin SDK"
       },
@@ -5908,7 +5908,7 @@
         "description": "Total Account Administration",
         "threatImpact": "Create, reset passwords, suspend, or delete any domain user account, including administrators.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -5918,7 +5918,7 @@
         "description": "Group Membership Tampering",
         "threatImpact": "Add accounts to high-privilege distribution groups, security groups, or restricted mailing lists.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Admin SDK"
       },
@@ -5938,7 +5938,7 @@
         "description": "Workspace SKU License Assignment",
         "threatImpact": "Assign or revoke Google Workspace and Google Cloud licenses for domain users.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -5978,7 +5978,7 @@
         "description": "Domain Architecture Control",
         "threatImpact": "Modify DNS, secondary domain aliases, and domain ownership configurations.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -5988,7 +5988,7 @@
         "description": "Chrome Browser Policy Administration",
         "threatImpact": "Enforce or alter enterprise Chrome browser policies, extension blocklists, and network proxy rules.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -6018,7 +6018,7 @@
         "description": "Domain Privilege Escalation",
         "threatImpact": "Can create and assign Super Admin roles to rogue accounts. Ultimate domain takeover vector.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -6048,7 +6048,7 @@
         "description": "Inbound SAML/OIDC SSO Configuration",
         "threatImpact": "Modify third-party identity provider SSO profiles, SAML certificates, and redirect URLs. Massive authentication hijack vector.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -6088,7 +6088,7 @@
         "description": "Full Calendar Compromise",
         "threatImpact": "Full read/write to all calendars. Can delete schedules, plant fraudulent meeting invites, and read meeting attachments.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Google Calendar"
       },
@@ -6108,7 +6108,7 @@
         "description": "Cross-Account Bulk Data Transfer",
         "threatImpact": "Transfer ownership of entire Drive files and Calendar events between domain users during de-provisioning. Extreme egress potential.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -6118,7 +6118,7 @@
         "description": "Customer Account Profile Administration",
         "threatImpact": "Manage customer domain account details, technical contacts, and postal addresses.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -6138,7 +6138,7 @@
         "description": "Cloud Identity Organizational Units Management",
         "threatImpact": "Create, move, and delete Cloud Identity organizational units and root domain hierarchy.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       }
@@ -6234,8 +6234,8 @@
     "storeUrl": "https://github.com/GAM-team/GAM",
     "description": "Command-line management tool for Google Workspace domain administration.",
     "riskScore": 4.81,
-    "riskLevel": "HIGH",
-    "riskScoreColor": "Orange",
+    "riskLevel": "MEDIUM",
+    "riskScoreColor": "Yellow",
     "rawMaxRisk": "CRITICAL",
     "riskReasons": [
       "Basic Authentication / Profile Scopes",
@@ -6364,7 +6364,7 @@
         "description": "OU Policy Bypass",
         "threatImpact": "Move users between Organizational Units, potentially bypassing 2SV mandates or restricted app policies.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Admin SDK"
       },
@@ -6374,7 +6374,7 @@
         "description": "Google Groups Security Configuration",
         "threatImpact": "Modify group security settings, including allowing external participants, public web postings, or collaborative inbox access.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -6394,7 +6394,7 @@
         "description": "Custom Directory Schema Tampering",
         "threatImpact": "Define and modify custom attributes for domain user accounts (often storing internal employee IDs or clearance levels).",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -6414,7 +6414,7 @@
         "description": "Domain Contact Delegation Control",
         "threatImpact": "Manage shared external contacts and delegated address book access across tenant users.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -6444,7 +6444,7 @@
         "description": "Cloud Identity Security Groups Management",
         "threatImpact": "Full CRUD control over Cloud Identity groups, security labels, dynamic memberships, and IAM group bindings.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -6464,7 +6464,7 @@
         "description": "Full Address Book Tampering",
         "threatImpact": "Full read/write to personal and corporate contact lists. Can overwrite or poison phone numbers and addresses.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Google Contacts"
       },
@@ -6474,7 +6474,7 @@
         "description": "Legacy Google Contacts GData Feed Access",
         "threatImpact": "Full read/write access to personal and shared domain contacts via legacy API.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Google Contacts"
       },
@@ -6484,7 +6484,7 @@
         "description": "Mobile Device Management & Remote Wipe",
         "threatImpact": "Enumerate, approve, block, or remotely wipe corporate mobile devices carrying enterprise email and files.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -6524,7 +6524,7 @@
         "description": "Google Groups Message Ingestion / Migration",
         "threatImpact": "Inject and archive historical messages into Google Groups mailing lists.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -6554,7 +6554,7 @@
         "description": "Google Vault Legal Holds & eDiscovery Exfiltration",
         "threatImpact": "Access Google Vault matters, legal holds, export queries, and litigation audits covering all historical domain emails and files.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -6564,7 +6564,7 @@
         "description": "User Security & 2SV Credential Manipulation",
         "threatImpact": "Manage user MFA/2-step verification, security keys, backup codes, and session cookies. High privilege takeover.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -6574,7 +6574,7 @@
         "description": "Security Audit Log Surveillance",
         "threatImpact": "Read tenant security audit logs, monitoring detection mechanisms and tracking admin investigation activities.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Admin SDK"
       },
@@ -6584,7 +6584,7 @@
         "description": "Total Account Administration",
         "threatImpact": "Create, reset passwords, suspend, or delete any domain user account, including administrators.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -6594,7 +6594,7 @@
         "description": "Group Membership Tampering",
         "threatImpact": "Add accounts to high-privilege distribution groups, security groups, or restricted mailing lists.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Admin SDK"
       },
@@ -6614,7 +6614,7 @@
         "description": "Workspace SKU License Assignment",
         "threatImpact": "Assign or revoke Google Workspace and Google Cloud licenses for domain users.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -6654,7 +6654,7 @@
         "description": "Domain Architecture Control",
         "threatImpact": "Modify DNS, secondary domain aliases, and domain ownership configurations.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -6664,7 +6664,7 @@
         "description": "Chrome Browser Policy Administration",
         "threatImpact": "Enforce or alter enterprise Chrome browser policies, extension blocklists, and network proxy rules.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -6694,7 +6694,7 @@
         "description": "Domain Privilege Escalation",
         "threatImpact": "Can create and assign Super Admin roles to rogue accounts. Ultimate domain takeover vector.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -6724,7 +6724,7 @@
         "description": "Inbound SAML/OIDC SSO Configuration",
         "threatImpact": "Modify third-party identity provider SSO profiles, SAML certificates, and redirect URLs. Massive authentication hijack vector.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -6764,7 +6764,7 @@
         "description": "Full Calendar Compromise",
         "threatImpact": "Full read/write to all calendars. Can delete schedules, plant fraudulent meeting invites, and read meeting attachments.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Google Calendar"
       },
@@ -6784,7 +6784,7 @@
         "description": "Cross-Account Bulk Data Transfer",
         "threatImpact": "Transfer ownership of entire Drive files and Calendar events between domain users during de-provisioning. Extreme egress potential.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -6794,7 +6794,7 @@
         "description": "Customer Account Profile Administration",
         "threatImpact": "Manage customer domain account details, technical contacts, and postal addresses.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -6814,7 +6814,7 @@
         "description": "Cloud Identity Organizational Units Management",
         "threatImpact": "Create, move, and delete Cloud Identity organizational units and root domain hierarchy.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       }
@@ -6910,8 +6910,8 @@
     "storeUrl": "https://github.com/GAM-team/GAM",
     "description": "Command-line management tool for Google Workspace domain administration.",
     "riskScore": 4.81,
-    "riskLevel": "HIGH",
-    "riskScoreColor": "Orange",
+    "riskLevel": "MEDIUM",
+    "riskScoreColor": "Yellow",
     "rawMaxRisk": "CRITICAL",
     "riskReasons": [
       "Basic Authentication / Profile Scopes",
@@ -7040,7 +7040,7 @@
         "description": "OU Policy Bypass",
         "threatImpact": "Move users between Organizational Units, potentially bypassing 2SV mandates or restricted app policies.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Admin SDK"
       },
@@ -7050,7 +7050,7 @@
         "description": "Google Groups Security Configuration",
         "threatImpact": "Modify group security settings, including allowing external participants, public web postings, or collaborative inbox access.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -7070,7 +7070,7 @@
         "description": "Custom Directory Schema Tampering",
         "threatImpact": "Define and modify custom attributes for domain user accounts (often storing internal employee IDs or clearance levels).",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -7090,7 +7090,7 @@
         "description": "Domain Contact Delegation Control",
         "threatImpact": "Manage shared external contacts and delegated address book access across tenant users.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -7120,7 +7120,7 @@
         "description": "Cloud Identity Security Groups Management",
         "threatImpact": "Full CRUD control over Cloud Identity groups, security labels, dynamic memberships, and IAM group bindings.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -7140,7 +7140,7 @@
         "description": "Full Address Book Tampering",
         "threatImpact": "Full read/write to personal and corporate contact lists. Can overwrite or poison phone numbers and addresses.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Google Contacts"
       },
@@ -7150,7 +7150,7 @@
         "description": "Legacy Google Contacts GData Feed Access",
         "threatImpact": "Full read/write access to personal and shared domain contacts via legacy API.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Google Contacts"
       },
@@ -7160,7 +7160,7 @@
         "description": "Mobile Device Management & Remote Wipe",
         "threatImpact": "Enumerate, approve, block, or remotely wipe corporate mobile devices carrying enterprise email and files.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -7200,7 +7200,7 @@
         "description": "Google Groups Message Ingestion / Migration",
         "threatImpact": "Inject and archive historical messages into Google Groups mailing lists.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -7230,7 +7230,7 @@
         "description": "Google Vault Legal Holds & eDiscovery Exfiltration",
         "threatImpact": "Access Google Vault matters, legal holds, export queries, and litigation audits covering all historical domain emails and files.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -7240,7 +7240,7 @@
         "description": "User Security & 2SV Credential Manipulation",
         "threatImpact": "Manage user MFA/2-step verification, security keys, backup codes, and session cookies. High privilege takeover.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -7250,7 +7250,7 @@
         "description": "Security Audit Log Surveillance",
         "threatImpact": "Read tenant security audit logs, monitoring detection mechanisms and tracking admin investigation activities.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Admin SDK"
       },
@@ -7260,7 +7260,7 @@
         "description": "Total Account Administration",
         "threatImpact": "Create, reset passwords, suspend, or delete any domain user account, including administrators.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -7270,7 +7270,7 @@
         "description": "Group Membership Tampering",
         "threatImpact": "Add accounts to high-privilege distribution groups, security groups, or restricted mailing lists.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Admin SDK"
       },
@@ -7290,7 +7290,7 @@
         "description": "Workspace SKU License Assignment",
         "threatImpact": "Assign or revoke Google Workspace and Google Cloud licenses for domain users.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -7330,7 +7330,7 @@
         "description": "Domain Architecture Control",
         "threatImpact": "Modify DNS, secondary domain aliases, and domain ownership configurations.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -7340,7 +7340,7 @@
         "description": "Chrome Browser Policy Administration",
         "threatImpact": "Enforce or alter enterprise Chrome browser policies, extension blocklists, and network proxy rules.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -7370,7 +7370,7 @@
         "description": "Domain Privilege Escalation",
         "threatImpact": "Can create and assign Super Admin roles to rogue accounts. Ultimate domain takeover vector.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -7400,7 +7400,7 @@
         "description": "Inbound SAML/OIDC SSO Configuration",
         "threatImpact": "Modify third-party identity provider SSO profiles, SAML certificates, and redirect URLs. Massive authentication hijack vector.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -7440,7 +7440,7 @@
         "description": "Full Calendar Compromise",
         "threatImpact": "Full read/write to all calendars. Can delete schedules, plant fraudulent meeting invites, and read meeting attachments.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Google Calendar"
       },
@@ -7460,7 +7460,7 @@
         "description": "Cross-Account Bulk Data Transfer",
         "threatImpact": "Transfer ownership of entire Drive files and Calendar events between domain users during de-provisioning. Extreme egress potential.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -7470,7 +7470,7 @@
         "description": "Customer Account Profile Administration",
         "threatImpact": "Manage customer domain account details, technical contacts, and postal addresses.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -7490,7 +7490,7 @@
         "description": "Cloud Identity Organizational Units Management",
         "threatImpact": "Create, move, and delete Cloud Identity organizational units and root domain hierarchy.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       }
@@ -7587,7 +7587,7 @@
     "description": "Command-line management tool for Google Workspace domain administration.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [],
     "adminAccessLevel": "UNCONFIGURED",
@@ -7718,7 +7718,7 @@
     "description": "Command-line management tool for Google Workspace domain administration.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [],
     "adminAccessLevel": "TRUSTED",
@@ -7850,7 +7850,7 @@
     "description": "Command-line management tool for Google Workspace domain administration.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [],
     "adminAccessLevel": "TRUSTED",
@@ -7982,7 +7982,7 @@
     "description": "Command-line management tool for Google Workspace domain administration.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [],
     "adminAccessLevel": "TRUSTED",
@@ -8112,8 +8112,8 @@
     "storeUrl": null,
     "description": "",
     "riskScore": 4.33,
-    "riskLevel": "HIGH",
-    "riskScoreColor": "Orange",
+    "riskLevel": "MEDIUM",
+    "riskScoreColor": "Yellow",
     "rawMaxRisk": "HIGH",
     "riskReasons": [
       "Basic Authentication / Profile Scopes",
@@ -8162,7 +8162,7 @@
         "description": "Financial & Tabular Data Access",
         "threatImpact": "Read and write access to all Google Sheets (financial models, customer lists, HR payroll, and analytics).",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Google Drive & Docs"
       },
@@ -8182,7 +8182,7 @@
         "description": "Full Cloud Storage Compromise",
         "threatImpact": "Read, edit, create, and permanently delete all files in My Drive and Shared Drives. Severe ransomware and wipeout risk.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Google Drive & Docs"
       },
@@ -8192,7 +8192,7 @@
         "description": "Legacy Google Sheets GData Feed Access",
         "threatImpact": "Full read/write access to user Google Sheets via legacy XML feed protocol.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Google Drive & Docs"
       }
@@ -8244,8 +8244,8 @@
     "storeUrl": null,
     "description": "",
     "riskScore": 4,
-    "riskLevel": "HIGH",
-    "riskScoreColor": "Orange",
+    "riskLevel": "MEDIUM",
+    "riskScoreColor": "Yellow",
     "rawMaxRisk": "MEDIUM",
     "riskReasons": [
       "Access to Domain Directory, Files, or Calendars",
@@ -8273,7 +8273,7 @@
         "description": "Full Calendar Compromise",
         "threatImpact": "Full read/write to all calendars. Can delete schedules, plant fraudulent meeting invites, and read meeting attachments.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Google Calendar"
       },
@@ -8340,8 +8340,8 @@
     "storeUrl": null,
     "description": "",
     "riskScore": 3,
-    "riskLevel": "HIGH",
-    "riskScoreColor": "Orange",
+    "riskLevel": "MEDIUM",
+    "riskScoreColor": "Yellow",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
@@ -8378,7 +8378,7 @@
         "description": "Bulk Chat Message Surveillance",
         "threatImpact": "Read-only access to all message histories, private discussions, and file attachments in Google Chat.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Google Chat & Classroom"
       },
@@ -8493,8 +8493,8 @@
     "storeUrl": null,
     "description": "",
     "riskScore": 5,
-    "riskLevel": "CRITICAL",
-    "riskScoreColor": "Red",
+    "riskLevel": "HIGH",
+    "riskScoreColor": "Orange",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
@@ -8521,7 +8521,7 @@
         "description": "Legacy Master ClientLogin / OAuth Session Login",
         "threatImpact": "Legacy full-account session login token for Google services with broad scope implications.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Identity & SSO"
       }
@@ -9177,8 +9177,8 @@
     "storeUrl": null,
     "description": "",
     "riskScore": 3,
-    "riskLevel": "HIGH",
-    "riskScoreColor": "Orange",
+    "riskLevel": "MEDIUM",
+    "riskScoreColor": "Yellow",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
@@ -9263,8 +9263,8 @@
     "storeUrl": "https://workspace.google.com",
     "description": "Google Workspace generative AI integration for Docs, Sheets, and Gmail.",
     "riskScore": 6.5,
-    "riskLevel": "CRITICAL",
-    "riskScoreColor": "Red",
+    "riskLevel": "HIGH",
+    "riskScoreColor": "Orange",
     "rawMaxRisk": "HIGH",
     "riskReasons": [
       "Basic Authentication / Profile Scopes",
@@ -9339,7 +9339,7 @@
         "description": "Document Manipulation & Espionage",
         "threatImpact": "Read and write access to all Google Docs files (confidential reports, policies, legal contracts).",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Google Drive & Docs"
       },
@@ -9349,7 +9349,7 @@
         "description": "Financial & Tabular Data Access",
         "threatImpact": "Read and write access to all Google Sheets (financial models, customer lists, HR payroll, and analytics).",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Google Drive & Docs"
       },
@@ -9369,7 +9369,7 @@
         "description": "Full Cloud Storage Compromise",
         "threatImpact": "Read, edit, create, and permanently delete all files in My Drive and Shared Drives. Severe ransomware and wipeout risk.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Google Drive & Docs"
       }
@@ -9448,8 +9448,8 @@
     "storeUrl": "https://aistudio.google.com",
     "description": "Fast prototyping environment for Gemini models and generative AI APIs.",
     "riskScore": 7,
-    "riskLevel": "CRITICAL",
-    "riskScoreColor": "Red",
+    "riskLevel": "HIGH",
+    "riskScoreColor": "Orange",
     "rawMaxRisk": "HIGH",
     "riskReasons": [
       "Full Google Drive Read/Write Access"
@@ -9532,7 +9532,7 @@
         "description": "Full Cloud Storage Compromise",
         "threatImpact": "Read, edit, create, and permanently delete all files in My Drive and Shared Drives. Severe ransomware and wipeout risk.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Google Drive & Docs"
       }
@@ -9582,8 +9582,8 @@
     "storeUrl": "https://cloud.google.com",
     "description": "Google Cloud Gemini Enterprise AI deployment and management.",
     "riskScore": 4.25,
-    "riskLevel": "HIGH",
-    "riskScoreColor": "Orange",
+    "riskLevel": "MEDIUM",
+    "riskScoreColor": "Yellow",
     "rawMaxRisk": "HIGH",
     "riskReasons": [
       "Access to Domain Directory, Files, or Calendars",
@@ -9668,7 +9668,7 @@
         "description": "Bulk Email Exfiltration",
         "threatImpact": "Read all historical messages, sensitive corporate contracts, passwords, and reset links without edit rights.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Gmail"
       },
@@ -9758,7 +9758,7 @@
         "description": "Message Manipulation & Exfiltration",
         "threatImpact": "Read, compose, modify labels, and move messages to trash. Enables silent email interception and manipulation.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Gmail"
       },
@@ -9768,7 +9768,7 @@
         "description": "Full Cloud Storage Compromise",
         "threatImpact": "Read, edit, create, and permanently delete all files in My Drive and Shared Drives. Severe ransomware and wipeout risk.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Google Drive & Docs"
       }
@@ -9832,7 +9832,7 @@
     "description": "Google Cloud official technical learning and certification portal.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
@@ -9976,7 +9976,7 @@
     "description": "Enforces security policies and management on mobile devices accessing domain data.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [],
     "adminAccessLevel": "UNCONFIGURED",
@@ -10081,7 +10081,7 @@
     "description": "Coding and beginner JavaScript learning platform by Google.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [],
     "adminAccessLevel": "TRUSTED",
@@ -10189,7 +10189,7 @@
     "description": "Cloud-based typing assistant and generative writing enhancement platform.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
@@ -10294,7 +10294,7 @@
     "description": "",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
@@ -10387,8 +10387,8 @@
     "storeUrl": null,
     "description": "",
     "riskScore": 5.5,
-    "riskLevel": "CRITICAL",
-    "riskScoreColor": "Red",
+    "riskLevel": "HIGH",
+    "riskScoreColor": "Orange",
     "rawMaxRisk": "CRITICAL",
     "riskReasons": [
       "Administrative or Direct Mail Access",
@@ -10418,7 +10418,7 @@
         "description": "OU Policy Bypass",
         "threatImpact": "Move users between Organizational Units, potentially bypassing 2SV mandates or restricted app policies.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Admin SDK"
       },
@@ -10428,7 +10428,7 @@
         "description": "Arbitrary Data Egress / Webhooks",
         "threatImpact": "Script can issue external HTTP/REST calls (UrlFetchApp) to transmit internal company data to external servers.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Google Apps Script"
       },
@@ -10448,7 +10448,7 @@
         "description": "Financial & Tabular Data Access",
         "threatImpact": "Read and write access to all Google Sheets (financial models, customer lists, HR payroll, and analytics).",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Google Drive & Docs"
       },
@@ -10478,7 +10478,7 @@
         "description": "Total Account Administration",
         "threatImpact": "Create, reset passwords, suspend, or delete any domain user account, including administrators.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       },
@@ -10488,7 +10488,7 @@
         "description": "Full Cloud Storage Compromise",
         "threatImpact": "Read, edit, create, and permanently delete all files in My Drive and Shared Drives. Severe ransomware and wipeout risk.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Google Drive & Docs"
       }
@@ -10546,7 +10546,7 @@
     "description": "Enterprise and customer education learning management system.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
@@ -10641,7 +10641,7 @@
     "description": "Custom Google Apps Script or Cloud Project automation.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
@@ -10746,7 +10746,7 @@
     "description": "Custom Google Apps Script or Cloud Project automation.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
@@ -10819,686 +10819,6 @@
           "https://www.googleapis.com/auth/userinfo.profile",
           "https://www.googleapis.com/auth/userinfo.email",
           "openid"
-        ]
-      }
-    ],
-    "firstSeen": null,
-    "lastActive": null,
-    "lastActiveFormatted": "12/09/2026",
-    "isStale": true,
-    "isNew": false,
-    "totalActivityEvents": 0
-  },
-  {
-    "id": "417521716396-sr8h84pflr3sro5i53r66hi76rco6bug.apps.googleusercontent.com",
-    "clientId": "417521716396-sr8h84pflr3sro5i53r66hi76rco6bug.apps.googleusercontent.com",
-    "familyId": "internal-google-apps-script",
-    "familyName": "Internal / Google Apps Script",
-    "displayName": "Untitled project (Google Apps Script)",
-    "vendor": "Internal / Google Apps Script",
-    "publisherDomain": "script.google.com",
-    "category": "Internal Custom Automation",
-    "appType": "Google Apps Script",
-    "deploymentType": "Google Apps Script",
-    "compliance": [
-      "Internal Tenant Only"
-    ],
-    "dataHosting": "Google Cloud (Tenant)",
-    "breachHistory": null,
-    "isVerified": false,
-    "iconUrl": "https://www.google.com/s2/favicons?domain=script.google.com&sz=128",
-    "storeUrl": "https://script.google.com",
-    "description": "Custom Google Apps Script or Cloud Project automation.",
-    "riskScore": 5,
-    "riskLevel": "CRITICAL",
-    "riskScoreColor": "Red",
-    "rawMaxRisk": "CRITICAL",
-    "riskReasons": [
-      "Access to Domain Directory, Files, or Calendars",
-      "Administrative or Direct Mail Access"
-    ],
-    "adminAccessLevel": "UNCONFIGURED",
-    "accessPolicy": null,
-    "multiClientMapped": true,
-    "familyDeploymentsCount": 10,
-    "siblingDeployments": [
-      {
-        "id": "892359244178-5umuheruf74ttkti2115q78gkei82s0s.apps.googleusercontent.com",
-        "displayName": "Untitled project (Google Apps Script)",
-        "deploymentType": "Google Apps Script",
-        "clientId": "892359244178-5umuheruf74ttkti2115q78gkei82s0s.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "CRITICAL"
-      },
-      {
-        "id": "172700529642-48obmiqhk5joviftkt87d0po0bnbunbu.apps.googleusercontent.com",
-        "displayName": "project-172700529642 (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "172700529642-48obmiqhk5joviftkt87d0po0bnbunbu.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 3,
-        "maxRisk": "CRITICAL"
-      },
-      {
-        "id": "74140984847-ev97f2i1adth1ivc40prputvbv8auunq.apps.googleusercontent.com",
-        "displayName": "Untitled project (Google Apps Script)",
-        "deploymentType": "Google Apps Script",
-        "clientId": "74140984847-ev97f2i1adth1ivc40prputvbv8auunq.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "CRITICAL"
-      },
-      {
-        "id": "807481657183-jdmu3o6ahn0m8efks7nrghqpe4mpst3g.apps.googleusercontent.com",
-        "displayName": "Untitled project (Google Apps Script)",
-        "deploymentType": "Google Apps Script",
-        "clientId": "807481657183-jdmu3o6ahn0m8efks7nrghqpe4mpst3g.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "MEDIUM"
-      },
-      {
-        "id": "1051074958188-u3h5tcv96sm52jubv7cqnp1squird12f.apps.googleusercontent.com",
-        "displayName": "project-1051074958188 (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "1051074958188-u3h5tcv96sm52jubv7cqnp1squird12f.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "LOW"
-      },
-      {
-        "id": "97402216672-ho80qpeolqdr24nltc29n6krpebk9ss3.apps.googleusercontent.com",
-        "displayName": "Untitled project (Google Apps Script)",
-        "deploymentType": "Google Apps Script",
-        "clientId": "97402216672-ho80qpeolqdr24nltc29n6krpebk9ss3.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "MEDIUM"
-      },
-      {
-        "id": "705539309036-4ej1ri9jplb9a4791jsppcchjbvk74fp.apps.googleusercontent.com",
-        "displayName": "Untitled project (Google Apps Script)",
-        "deploymentType": "Google Apps Script",
-        "clientId": "705539309036-4ej1ri9jplb9a4791jsppcchjbvk74fp.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "CRITICAL"
-      },
-      {
-        "id": "579706874471-v1v2akhe8lqriu4hhrm58rb1e1tpo6fn.apps.googleusercontent.com",
-        "displayName": "Annual Leave  (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "579706874471-v1v2akhe8lqriu4hhrm58rb1e1tpo6fn.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "MEDIUM"
-      },
-      {
-        "id": "742713087391-4otjds6c701o8q958uhcku0c40r48vjk.apps.googleusercontent.com",
-        "displayName": "Untitled project (Google Apps Script)",
-        "deploymentType": "Google Apps Script",
-        "clientId": "742713087391-4otjds6c701o8q958uhcku0c40r48vjk.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "CRITICAL"
-      }
-    ],
-    "clientIdsCount": 1,
-    "clientIds": [
-      "417521716396-sr8h84pflr3sro5i53r66hi76rco6bug.apps.googleusercontent.com"
-    ],
-    "projectNumbers": [
-      "417521716396"
-    ],
-    "totalUsersCount": 1,
-    "adminUsersCount": 1,
-    "scopesCount": 2,
-    "scopes": [
-      {
-        "scope": "https://www.googleapis.com/auth/spreadsheets",
-        "riskLevel": "MEDIUM",
-        "description": "Financial & Tabular Data Access",
-        "threatImpact": "Read and write access to all Google Sheets (financial models, customer lists, HR payroll, and analytics).",
-        "adminScore": 5,
-        "adminColor": "Red",
-        "googleTier": "Sensitive",
-        "service": "Google Drive & Docs"
-      },
-      {
-        "scope": "https://www.googleapis.com/auth/admin.reports.audit.readonly",
-        "riskLevel": "CRITICAL",
-        "description": "Security Audit Log Surveillance",
-        "threatImpact": "Read tenant security audit logs, monitoring detection mechanisms and tracking admin investigation activities.",
-        "adminScore": 5,
-        "adminColor": "Red",
-        "googleTier": "Sensitive",
-        "service": "Admin SDK"
-      }
-    ],
-    "servicesTouched": [
-      "Spreadsheets",
-      "Admin SDK"
-    ],
-    "users": [
-      {
-        "email": "alister@gafe.co.za",
-        "name": "Alister Payne",
-        "orgUnit": "/CloudEDU Technical",
-        "isAdmin": true,
-        "grantedScopes": [
-          "https://www.googleapis.com/auth/spreadsheets",
-          "https://www.googleapis.com/auth/admin.reports.audit.readonly"
-        ]
-      }
-    ],
-    "firstSeen": null,
-    "lastActive": null,
-    "lastActiveFormatted": "12/09/2026",
-    "isStale": true,
-    "isNew": false,
-    "totalActivityEvents": 0
-  },
-  {
-    "id": "892359244178-5umuheruf74ttkti2115q78gkei82s0s.apps.googleusercontent.com",
-    "clientId": "892359244178-5umuheruf74ttkti2115q78gkei82s0s.apps.googleusercontent.com",
-    "familyId": "internal-google-apps-script",
-    "familyName": "Internal / Google Apps Script",
-    "displayName": "Untitled project (Google Apps Script)",
-    "vendor": "Internal / Google Apps Script",
-    "publisherDomain": "script.google.com",
-    "category": "Internal Custom Automation",
-    "appType": "Google Apps Script",
-    "deploymentType": "Google Apps Script",
-    "compliance": [
-      "Internal Tenant Only"
-    ],
-    "dataHosting": "Google Cloud (Tenant)",
-    "breachHistory": null,
-    "isVerified": false,
-    "iconUrl": "https://www.google.com/s2/favicons?domain=script.google.com&sz=128",
-    "storeUrl": "https://script.google.com",
-    "description": "Custom Google Apps Script or Cloud Project automation.",
-    "riskScore": 5,
-    "riskLevel": "CRITICAL",
-    "riskScoreColor": "Red",
-    "rawMaxRisk": "CRITICAL",
-    "riskReasons": [
-      "Access to Domain Directory, Files, or Calendars",
-      "Administrative or Direct Mail Access"
-    ],
-    "adminAccessLevel": "UNCONFIGURED",
-    "accessPolicy": null,
-    "multiClientMapped": true,
-    "familyDeploymentsCount": 10,
-    "siblingDeployments": [
-      {
-        "id": "417521716396-sr8h84pflr3sro5i53r66hi76rco6bug.apps.googleusercontent.com",
-        "displayName": "Untitled project (Google Apps Script)",
-        "deploymentType": "Google Apps Script",
-        "clientId": "417521716396-sr8h84pflr3sro5i53r66hi76rco6bug.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "CRITICAL"
-      },
-      {
-        "id": "172700529642-48obmiqhk5joviftkt87d0po0bnbunbu.apps.googleusercontent.com",
-        "displayName": "project-172700529642 (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "172700529642-48obmiqhk5joviftkt87d0po0bnbunbu.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 3,
-        "maxRisk": "CRITICAL"
-      },
-      {
-        "id": "74140984847-ev97f2i1adth1ivc40prputvbv8auunq.apps.googleusercontent.com",
-        "displayName": "Untitled project (Google Apps Script)",
-        "deploymentType": "Google Apps Script",
-        "clientId": "74140984847-ev97f2i1adth1ivc40prputvbv8auunq.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "CRITICAL"
-      },
-      {
-        "id": "807481657183-jdmu3o6ahn0m8efks7nrghqpe4mpst3g.apps.googleusercontent.com",
-        "displayName": "Untitled project (Google Apps Script)",
-        "deploymentType": "Google Apps Script",
-        "clientId": "807481657183-jdmu3o6ahn0m8efks7nrghqpe4mpst3g.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "MEDIUM"
-      },
-      {
-        "id": "1051074958188-u3h5tcv96sm52jubv7cqnp1squird12f.apps.googleusercontent.com",
-        "displayName": "project-1051074958188 (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "1051074958188-u3h5tcv96sm52jubv7cqnp1squird12f.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "LOW"
-      },
-      {
-        "id": "97402216672-ho80qpeolqdr24nltc29n6krpebk9ss3.apps.googleusercontent.com",
-        "displayName": "Untitled project (Google Apps Script)",
-        "deploymentType": "Google Apps Script",
-        "clientId": "97402216672-ho80qpeolqdr24nltc29n6krpebk9ss3.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "MEDIUM"
-      },
-      {
-        "id": "705539309036-4ej1ri9jplb9a4791jsppcchjbvk74fp.apps.googleusercontent.com",
-        "displayName": "Untitled project (Google Apps Script)",
-        "deploymentType": "Google Apps Script",
-        "clientId": "705539309036-4ej1ri9jplb9a4791jsppcchjbvk74fp.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "CRITICAL"
-      },
-      {
-        "id": "579706874471-v1v2akhe8lqriu4hhrm58rb1e1tpo6fn.apps.googleusercontent.com",
-        "displayName": "Annual Leave  (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "579706874471-v1v2akhe8lqriu4hhrm58rb1e1tpo6fn.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "MEDIUM"
-      },
-      {
-        "id": "742713087391-4otjds6c701o8q958uhcku0c40r48vjk.apps.googleusercontent.com",
-        "displayName": "Untitled project (Google Apps Script)",
-        "deploymentType": "Google Apps Script",
-        "clientId": "742713087391-4otjds6c701o8q958uhcku0c40r48vjk.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "CRITICAL"
-      }
-    ],
-    "clientIdsCount": 1,
-    "clientIds": [
-      "892359244178-5umuheruf74ttkti2115q78gkei82s0s.apps.googleusercontent.com"
-    ],
-    "projectNumbers": [
-      "892359244178"
-    ],
-    "totalUsersCount": 1,
-    "adminUsersCount": 1,
-    "scopesCount": 2,
-    "scopes": [
-      {
-        "scope": "https://www.googleapis.com/auth/spreadsheets",
-        "riskLevel": "MEDIUM",
-        "description": "Financial & Tabular Data Access",
-        "threatImpact": "Read and write access to all Google Sheets (financial models, customer lists, HR payroll, and analytics).",
-        "adminScore": 5,
-        "adminColor": "Red",
-        "googleTier": "Sensitive",
-        "service": "Google Drive & Docs"
-      },
-      {
-        "scope": "https://www.googleapis.com/auth/admin.reports.audit.readonly",
-        "riskLevel": "CRITICAL",
-        "description": "Security Audit Log Surveillance",
-        "threatImpact": "Read tenant security audit logs, monitoring detection mechanisms and tracking admin investigation activities.",
-        "adminScore": 5,
-        "adminColor": "Red",
-        "googleTier": "Sensitive",
-        "service": "Admin SDK"
-      }
-    ],
-    "servicesTouched": [
-      "Spreadsheets",
-      "Admin SDK"
-    ],
-    "users": [
-      {
-        "email": "alister@gafe.co.za",
-        "name": "Alister Payne",
-        "orgUnit": "/CloudEDU Technical",
-        "isAdmin": true,
-        "grantedScopes": [
-          "https://www.googleapis.com/auth/spreadsheets",
-          "https://www.googleapis.com/auth/admin.reports.audit.readonly"
-        ]
-      }
-    ],
-    "firstSeen": null,
-    "lastActive": null,
-    "lastActiveFormatted": "12/09/2026",
-    "isStale": true,
-    "isNew": false,
-    "totalActivityEvents": 0
-  },
-  {
-    "id": "807481657183-jdmu3o6ahn0m8efks7nrghqpe4mpst3g.apps.googleusercontent.com",
-    "clientId": "807481657183-jdmu3o6ahn0m8efks7nrghqpe4mpst3g.apps.googleusercontent.com",
-    "familyId": "internal-google-apps-script",
-    "familyName": "Internal / Google Apps Script",
-    "displayName": "Untitled project (Google Apps Script)",
-    "vendor": "Internal / Google Apps Script",
-    "publisherDomain": "script.google.com",
-    "category": "Internal Custom Automation",
-    "appType": "Google Apps Script",
-    "deploymentType": "Google Apps Script",
-    "compliance": [
-      "Internal Tenant Only"
-    ],
-    "dataHosting": "Google Cloud (Tenant)",
-    "breachHistory": null,
-    "isVerified": false,
-    "iconUrl": "https://www.google.com/s2/favicons?domain=script.google.com&sz=128",
-    "storeUrl": "https://script.google.com",
-    "description": "Custom Google Apps Script or Cloud Project automation.",
-    "riskScore": 5,
-    "riskLevel": "CRITICAL",
-    "riskScoreColor": "Red",
-    "rawMaxRisk": "MEDIUM",
-    "riskReasons": [
-      "Access to Domain Directory, Files, or Calendars",
-      "Basic Authentication / Profile Scopes"
-    ],
-    "adminAccessLevel": "UNCONFIGURED",
-    "accessPolicy": null,
-    "multiClientMapped": true,
-    "familyDeploymentsCount": 10,
-    "siblingDeployments": [
-      {
-        "id": "417521716396-sr8h84pflr3sro5i53r66hi76rco6bug.apps.googleusercontent.com",
-        "displayName": "Untitled project (Google Apps Script)",
-        "deploymentType": "Google Apps Script",
-        "clientId": "417521716396-sr8h84pflr3sro5i53r66hi76rco6bug.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "CRITICAL"
-      },
-      {
-        "id": "892359244178-5umuheruf74ttkti2115q78gkei82s0s.apps.googleusercontent.com",
-        "displayName": "Untitled project (Google Apps Script)",
-        "deploymentType": "Google Apps Script",
-        "clientId": "892359244178-5umuheruf74ttkti2115q78gkei82s0s.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "CRITICAL"
-      },
-      {
-        "id": "172700529642-48obmiqhk5joviftkt87d0po0bnbunbu.apps.googleusercontent.com",
-        "displayName": "project-172700529642 (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "172700529642-48obmiqhk5joviftkt87d0po0bnbunbu.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 3,
-        "maxRisk": "CRITICAL"
-      },
-      {
-        "id": "74140984847-ev97f2i1adth1ivc40prputvbv8auunq.apps.googleusercontent.com",
-        "displayName": "Untitled project (Google Apps Script)",
-        "deploymentType": "Google Apps Script",
-        "clientId": "74140984847-ev97f2i1adth1ivc40prputvbv8auunq.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "CRITICAL"
-      },
-      {
-        "id": "1051074958188-u3h5tcv96sm52jubv7cqnp1squird12f.apps.googleusercontent.com",
-        "displayName": "project-1051074958188 (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "1051074958188-u3h5tcv96sm52jubv7cqnp1squird12f.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "LOW"
-      },
-      {
-        "id": "97402216672-ho80qpeolqdr24nltc29n6krpebk9ss3.apps.googleusercontent.com",
-        "displayName": "Untitled project (Google Apps Script)",
-        "deploymentType": "Google Apps Script",
-        "clientId": "97402216672-ho80qpeolqdr24nltc29n6krpebk9ss3.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "MEDIUM"
-      },
-      {
-        "id": "705539309036-4ej1ri9jplb9a4791jsppcchjbvk74fp.apps.googleusercontent.com",
-        "displayName": "Untitled project (Google Apps Script)",
-        "deploymentType": "Google Apps Script",
-        "clientId": "705539309036-4ej1ri9jplb9a4791jsppcchjbvk74fp.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "CRITICAL"
-      },
-      {
-        "id": "579706874471-v1v2akhe8lqriu4hhrm58rb1e1tpo6fn.apps.googleusercontent.com",
-        "displayName": "Annual Leave  (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "579706874471-v1v2akhe8lqriu4hhrm58rb1e1tpo6fn.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "MEDIUM"
-      },
-      {
-        "id": "742713087391-4otjds6c701o8q958uhcku0c40r48vjk.apps.googleusercontent.com",
-        "displayName": "Untitled project (Google Apps Script)",
-        "deploymentType": "Google Apps Script",
-        "clientId": "742713087391-4otjds6c701o8q958uhcku0c40r48vjk.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "CRITICAL"
-      }
-    ],
-    "clientIdsCount": 1,
-    "clientIds": [
-      "807481657183-jdmu3o6ahn0m8efks7nrghqpe4mpst3g.apps.googleusercontent.com"
-    ],
-    "projectNumbers": [
-      "807481657183"
-    ],
-    "totalUsersCount": 1,
-    "adminUsersCount": 1,
-    "scopesCount": 2,
-    "scopes": [
-      {
-        "scope": "https://www.googleapis.com/auth/spreadsheets",
-        "riskLevel": "MEDIUM",
-        "description": "Financial & Tabular Data Access",
-        "threatImpact": "Read and write access to all Google Sheets (financial models, customer lists, HR payroll, and analytics).",
-        "adminScore": 5,
-        "adminColor": "Red",
-        "googleTier": "Sensitive",
-        "service": "Google Drive & Docs"
-      },
-      {
-        "scope": "https://www.googleapis.com/auth/drive.readonly",
-        "riskLevel": "LOW",
-        "description": "Mass Document Exfiltration",
-        "threatImpact": "Bulk read and download of all corporate documents, spreadsheets, presentations, and stored assets.",
-        "adminScore": 5,
-        "adminColor": "Red",
-        "googleTier": "Restricted",
-        "service": "Google Drive & Docs"
-      }
-    ],
-    "servicesTouched": [
-      "Spreadsheets",
-      "Google Drive"
-    ],
-    "users": [
-      {
-        "email": "alister@gafe.co.za",
-        "name": "Alister Payne",
-        "orgUnit": "/CloudEDU Technical",
-        "isAdmin": true,
-        "grantedScopes": [
-          "https://www.googleapis.com/auth/spreadsheets",
-          "https://www.googleapis.com/auth/drive.readonly"
-        ]
-      }
-    ],
-    "firstSeen": null,
-    "lastActive": null,
-    "lastActiveFormatted": "12/09/2026",
-    "isStale": true,
-    "isNew": false,
-    "totalActivityEvents": 0
-  },
-  {
-    "id": "705539309036-4ej1ri9jplb9a4791jsppcchjbvk74fp.apps.googleusercontent.com",
-    "clientId": "705539309036-4ej1ri9jplb9a4791jsppcchjbvk74fp.apps.googleusercontent.com",
-    "familyId": "internal-google-apps-script",
-    "familyName": "Internal / Google Apps Script",
-    "displayName": "Untitled project (Google Apps Script)",
-    "vendor": "Internal / Google Apps Script",
-    "publisherDomain": "script.google.com",
-    "category": "Internal Custom Automation",
-    "appType": "Google Apps Script",
-    "deploymentType": "Google Apps Script",
-    "compliance": [
-      "Internal Tenant Only"
-    ],
-    "dataHosting": "Google Cloud (Tenant)",
-    "breachHistory": null,
-    "isVerified": false,
-    "iconUrl": "https://www.google.com/s2/favicons?domain=script.google.com&sz=128",
-    "storeUrl": "https://script.google.com",
-    "description": "Custom Google Apps Script or Cloud Project automation.",
-    "riskScore": 5,
-    "riskLevel": "CRITICAL",
-    "riskScoreColor": "Red",
-    "rawMaxRisk": "CRITICAL",
-    "riskReasons": [
-      "Access to Domain Directory, Files, or Calendars",
-      "Administrative or Direct Mail Access"
-    ],
-    "adminAccessLevel": "UNCONFIGURED",
-    "accessPolicy": null,
-    "multiClientMapped": true,
-    "familyDeploymentsCount": 10,
-    "siblingDeployments": [
-      {
-        "id": "417521716396-sr8h84pflr3sro5i53r66hi76rco6bug.apps.googleusercontent.com",
-        "displayName": "Untitled project (Google Apps Script)",
-        "deploymentType": "Google Apps Script",
-        "clientId": "417521716396-sr8h84pflr3sro5i53r66hi76rco6bug.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "CRITICAL"
-      },
-      {
-        "id": "892359244178-5umuheruf74ttkti2115q78gkei82s0s.apps.googleusercontent.com",
-        "displayName": "Untitled project (Google Apps Script)",
-        "deploymentType": "Google Apps Script",
-        "clientId": "892359244178-5umuheruf74ttkti2115q78gkei82s0s.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "CRITICAL"
-      },
-      {
-        "id": "172700529642-48obmiqhk5joviftkt87d0po0bnbunbu.apps.googleusercontent.com",
-        "displayName": "project-172700529642 (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "172700529642-48obmiqhk5joviftkt87d0po0bnbunbu.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 3,
-        "maxRisk": "CRITICAL"
-      },
-      {
-        "id": "74140984847-ev97f2i1adth1ivc40prputvbv8auunq.apps.googleusercontent.com",
-        "displayName": "Untitled project (Google Apps Script)",
-        "deploymentType": "Google Apps Script",
-        "clientId": "74140984847-ev97f2i1adth1ivc40prputvbv8auunq.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "CRITICAL"
-      },
-      {
-        "id": "807481657183-jdmu3o6ahn0m8efks7nrghqpe4mpst3g.apps.googleusercontent.com",
-        "displayName": "Untitled project (Google Apps Script)",
-        "deploymentType": "Google Apps Script",
-        "clientId": "807481657183-jdmu3o6ahn0m8efks7nrghqpe4mpst3g.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "MEDIUM"
-      },
-      {
-        "id": "1051074958188-u3h5tcv96sm52jubv7cqnp1squird12f.apps.googleusercontent.com",
-        "displayName": "project-1051074958188 (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "1051074958188-u3h5tcv96sm52jubv7cqnp1squird12f.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "LOW"
-      },
-      {
-        "id": "97402216672-ho80qpeolqdr24nltc29n6krpebk9ss3.apps.googleusercontent.com",
-        "displayName": "Untitled project (Google Apps Script)",
-        "deploymentType": "Google Apps Script",
-        "clientId": "97402216672-ho80qpeolqdr24nltc29n6krpebk9ss3.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "MEDIUM"
-      },
-      {
-        "id": "579706874471-v1v2akhe8lqriu4hhrm58rb1e1tpo6fn.apps.googleusercontent.com",
-        "displayName": "Annual Leave  (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "579706874471-v1v2akhe8lqriu4hhrm58rb1e1tpo6fn.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "MEDIUM"
-      },
-      {
-        "id": "742713087391-4otjds6c701o8q958uhcku0c40r48vjk.apps.googleusercontent.com",
-        "displayName": "Untitled project (Google Apps Script)",
-        "deploymentType": "Google Apps Script",
-        "clientId": "742713087391-4otjds6c701o8q958uhcku0c40r48vjk.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "CRITICAL"
-      }
-    ],
-    "clientIdsCount": 1,
-    "clientIds": [
-      "705539309036-4ej1ri9jplb9a4791jsppcchjbvk74fp.apps.googleusercontent.com"
-    ],
-    "projectNumbers": [
-      "705539309036"
-    ],
-    "totalUsersCount": 1,
-    "adminUsersCount": 1,
-    "scopesCount": 2,
-    "scopes": [
-      {
-        "scope": "https://www.googleapis.com/auth/spreadsheets",
-        "riskLevel": "MEDIUM",
-        "description": "Financial & Tabular Data Access",
-        "threatImpact": "Read and write access to all Google Sheets (financial models, customer lists, HR payroll, and analytics).",
-        "adminScore": 5,
-        "adminColor": "Red",
-        "googleTier": "Sensitive",
-        "service": "Google Drive & Docs"
-      },
-      {
-        "scope": "https://www.googleapis.com/auth/admin.reports.audit.readonly",
-        "riskLevel": "CRITICAL",
-        "description": "Security Audit Log Surveillance",
-        "threatImpact": "Read tenant security audit logs, monitoring detection mechanisms and tracking admin investigation activities.",
-        "adminScore": 5,
-        "adminColor": "Red",
-        "googleTier": "Sensitive",
-        "service": "Admin SDK"
-      }
-    ],
-    "servicesTouched": [
-      "Spreadsheets",
-      "Admin SDK"
-    ],
-    "users": [
-      {
-        "email": "alister@gafe.co.za",
-        "name": "Alister Payne",
-        "orgUnit": "/CloudEDU Technical",
-        "isAdmin": true,
-        "grantedScopes": [
-          "https://www.googleapis.com/auth/spreadsheets",
-          "https://www.googleapis.com/auth/admin.reports.audit.readonly"
         ]
       }
     ],
@@ -11641,7 +10961,7 @@
         "description": "Programmatic Email Exfiltration & Phishing",
         "threatImpact": "Direct background programmatic email sending from Apps Script. Top vector for automated internal spear-phishing.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Google Apps Script"
       },
@@ -11651,7 +10971,7 @@
         "description": "Financial & Tabular Data Access",
         "threatImpact": "Read and write access to all Google Sheets (financial models, customer lists, HR payroll, and analytics).",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Google Drive & Docs"
       },
@@ -11661,7 +10981,7 @@
         "description": "Total Account Administration",
         "threatImpact": "Create, reset passwords, suspend, or delete any domain user account, including administrators.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Admin SDK"
       }
@@ -11681,6 +11001,686 @@
           "https://www.googleapis.com/auth/script.send_mail",
           "https://www.googleapis.com/auth/spreadsheets",
           "https://www.googleapis.com/auth/admin.directory.user"
+        ]
+      }
+    ],
+    "firstSeen": null,
+    "lastActive": null,
+    "lastActiveFormatted": "12/09/2026",
+    "isStale": true,
+    "isNew": false,
+    "totalActivityEvents": 0
+  },
+  {
+    "id": "417521716396-sr8h84pflr3sro5i53r66hi76rco6bug.apps.googleusercontent.com",
+    "clientId": "417521716396-sr8h84pflr3sro5i53r66hi76rco6bug.apps.googleusercontent.com",
+    "familyId": "internal-google-apps-script",
+    "familyName": "Internal / Google Apps Script",
+    "displayName": "Untitled project (Google Apps Script)",
+    "vendor": "Internal / Google Apps Script",
+    "publisherDomain": "script.google.com",
+    "category": "Internal Custom Automation",
+    "appType": "Google Apps Script",
+    "deploymentType": "Google Apps Script",
+    "compliance": [
+      "Internal Tenant Only"
+    ],
+    "dataHosting": "Google Cloud (Tenant)",
+    "breachHistory": null,
+    "isVerified": false,
+    "iconUrl": "https://www.google.com/s2/favicons?domain=script.google.com&sz=128",
+    "storeUrl": "https://script.google.com",
+    "description": "Custom Google Apps Script or Cloud Project automation.",
+    "riskScore": 5,
+    "riskLevel": "HIGH",
+    "riskScoreColor": "Orange",
+    "rawMaxRisk": "CRITICAL",
+    "riskReasons": [
+      "Access to Domain Directory, Files, or Calendars",
+      "Administrative or Direct Mail Access"
+    ],
+    "adminAccessLevel": "UNCONFIGURED",
+    "accessPolicy": null,
+    "multiClientMapped": true,
+    "familyDeploymentsCount": 10,
+    "siblingDeployments": [
+      {
+        "id": "892359244178-5umuheruf74ttkti2115q78gkei82s0s.apps.googleusercontent.com",
+        "displayName": "Untitled project (Google Apps Script)",
+        "deploymentType": "Google Apps Script",
+        "clientId": "892359244178-5umuheruf74ttkti2115q78gkei82s0s.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "172700529642-48obmiqhk5joviftkt87d0po0bnbunbu.apps.googleusercontent.com",
+        "displayName": "project-172700529642 (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "172700529642-48obmiqhk5joviftkt87d0po0bnbunbu.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 3,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "74140984847-ev97f2i1adth1ivc40prputvbv8auunq.apps.googleusercontent.com",
+        "displayName": "Untitled project (Google Apps Script)",
+        "deploymentType": "Google Apps Script",
+        "clientId": "74140984847-ev97f2i1adth1ivc40prputvbv8auunq.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "807481657183-jdmu3o6ahn0m8efks7nrghqpe4mpst3g.apps.googleusercontent.com",
+        "displayName": "Untitled project (Google Apps Script)",
+        "deploymentType": "Google Apps Script",
+        "clientId": "807481657183-jdmu3o6ahn0m8efks7nrghqpe4mpst3g.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "MEDIUM"
+      },
+      {
+        "id": "1051074958188-u3h5tcv96sm52jubv7cqnp1squird12f.apps.googleusercontent.com",
+        "displayName": "project-1051074958188 (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "1051074958188-u3h5tcv96sm52jubv7cqnp1squird12f.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "97402216672-ho80qpeolqdr24nltc29n6krpebk9ss3.apps.googleusercontent.com",
+        "displayName": "Untitled project (Google Apps Script)",
+        "deploymentType": "Google Apps Script",
+        "clientId": "97402216672-ho80qpeolqdr24nltc29n6krpebk9ss3.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "MEDIUM"
+      },
+      {
+        "id": "705539309036-4ej1ri9jplb9a4791jsppcchjbvk74fp.apps.googleusercontent.com",
+        "displayName": "Untitled project (Google Apps Script)",
+        "deploymentType": "Google Apps Script",
+        "clientId": "705539309036-4ej1ri9jplb9a4791jsppcchjbvk74fp.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "579706874471-v1v2akhe8lqriu4hhrm58rb1e1tpo6fn.apps.googleusercontent.com",
+        "displayName": "Annual Leave  (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "579706874471-v1v2akhe8lqriu4hhrm58rb1e1tpo6fn.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "MEDIUM"
+      },
+      {
+        "id": "742713087391-4otjds6c701o8q958uhcku0c40r48vjk.apps.googleusercontent.com",
+        "displayName": "Untitled project (Google Apps Script)",
+        "deploymentType": "Google Apps Script",
+        "clientId": "742713087391-4otjds6c701o8q958uhcku0c40r48vjk.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      }
+    ],
+    "clientIdsCount": 1,
+    "clientIds": [
+      "417521716396-sr8h84pflr3sro5i53r66hi76rco6bug.apps.googleusercontent.com"
+    ],
+    "projectNumbers": [
+      "417521716396"
+    ],
+    "totalUsersCount": 1,
+    "adminUsersCount": 1,
+    "scopesCount": 2,
+    "scopes": [
+      {
+        "scope": "https://www.googleapis.com/auth/spreadsheets",
+        "riskLevel": "MEDIUM",
+        "description": "Financial & Tabular Data Access",
+        "threatImpact": "Read and write access to all Google Sheets (financial models, customer lists, HR payroll, and analytics).",
+        "adminScore": 5,
+        "adminColor": "Orange",
+        "googleTier": "Sensitive",
+        "service": "Google Drive & Docs"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.reports.audit.readonly",
+        "riskLevel": "CRITICAL",
+        "description": "Security Audit Log Surveillance",
+        "threatImpact": "Read tenant security audit logs, monitoring detection mechanisms and tracking admin investigation activities.",
+        "adminScore": 5,
+        "adminColor": "Orange",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      }
+    ],
+    "servicesTouched": [
+      "Spreadsheets",
+      "Admin SDK"
+    ],
+    "users": [
+      {
+        "email": "alister@gafe.co.za",
+        "name": "Alister Payne",
+        "orgUnit": "/CloudEDU Technical",
+        "isAdmin": true,
+        "grantedScopes": [
+          "https://www.googleapis.com/auth/spreadsheets",
+          "https://www.googleapis.com/auth/admin.reports.audit.readonly"
+        ]
+      }
+    ],
+    "firstSeen": null,
+    "lastActive": null,
+    "lastActiveFormatted": "12/09/2026",
+    "isStale": true,
+    "isNew": false,
+    "totalActivityEvents": 0
+  },
+  {
+    "id": "892359244178-5umuheruf74ttkti2115q78gkei82s0s.apps.googleusercontent.com",
+    "clientId": "892359244178-5umuheruf74ttkti2115q78gkei82s0s.apps.googleusercontent.com",
+    "familyId": "internal-google-apps-script",
+    "familyName": "Internal / Google Apps Script",
+    "displayName": "Untitled project (Google Apps Script)",
+    "vendor": "Internal / Google Apps Script",
+    "publisherDomain": "script.google.com",
+    "category": "Internal Custom Automation",
+    "appType": "Google Apps Script",
+    "deploymentType": "Google Apps Script",
+    "compliance": [
+      "Internal Tenant Only"
+    ],
+    "dataHosting": "Google Cloud (Tenant)",
+    "breachHistory": null,
+    "isVerified": false,
+    "iconUrl": "https://www.google.com/s2/favicons?domain=script.google.com&sz=128",
+    "storeUrl": "https://script.google.com",
+    "description": "Custom Google Apps Script or Cloud Project automation.",
+    "riskScore": 5,
+    "riskLevel": "HIGH",
+    "riskScoreColor": "Orange",
+    "rawMaxRisk": "CRITICAL",
+    "riskReasons": [
+      "Access to Domain Directory, Files, or Calendars",
+      "Administrative or Direct Mail Access"
+    ],
+    "adminAccessLevel": "UNCONFIGURED",
+    "accessPolicy": null,
+    "multiClientMapped": true,
+    "familyDeploymentsCount": 10,
+    "siblingDeployments": [
+      {
+        "id": "417521716396-sr8h84pflr3sro5i53r66hi76rco6bug.apps.googleusercontent.com",
+        "displayName": "Untitled project (Google Apps Script)",
+        "deploymentType": "Google Apps Script",
+        "clientId": "417521716396-sr8h84pflr3sro5i53r66hi76rco6bug.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "172700529642-48obmiqhk5joviftkt87d0po0bnbunbu.apps.googleusercontent.com",
+        "displayName": "project-172700529642 (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "172700529642-48obmiqhk5joviftkt87d0po0bnbunbu.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 3,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "74140984847-ev97f2i1adth1ivc40prputvbv8auunq.apps.googleusercontent.com",
+        "displayName": "Untitled project (Google Apps Script)",
+        "deploymentType": "Google Apps Script",
+        "clientId": "74140984847-ev97f2i1adth1ivc40prputvbv8auunq.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "807481657183-jdmu3o6ahn0m8efks7nrghqpe4mpst3g.apps.googleusercontent.com",
+        "displayName": "Untitled project (Google Apps Script)",
+        "deploymentType": "Google Apps Script",
+        "clientId": "807481657183-jdmu3o6ahn0m8efks7nrghqpe4mpst3g.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "MEDIUM"
+      },
+      {
+        "id": "1051074958188-u3h5tcv96sm52jubv7cqnp1squird12f.apps.googleusercontent.com",
+        "displayName": "project-1051074958188 (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "1051074958188-u3h5tcv96sm52jubv7cqnp1squird12f.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "97402216672-ho80qpeolqdr24nltc29n6krpebk9ss3.apps.googleusercontent.com",
+        "displayName": "Untitled project (Google Apps Script)",
+        "deploymentType": "Google Apps Script",
+        "clientId": "97402216672-ho80qpeolqdr24nltc29n6krpebk9ss3.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "MEDIUM"
+      },
+      {
+        "id": "705539309036-4ej1ri9jplb9a4791jsppcchjbvk74fp.apps.googleusercontent.com",
+        "displayName": "Untitled project (Google Apps Script)",
+        "deploymentType": "Google Apps Script",
+        "clientId": "705539309036-4ej1ri9jplb9a4791jsppcchjbvk74fp.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "579706874471-v1v2akhe8lqriu4hhrm58rb1e1tpo6fn.apps.googleusercontent.com",
+        "displayName": "Annual Leave  (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "579706874471-v1v2akhe8lqriu4hhrm58rb1e1tpo6fn.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "MEDIUM"
+      },
+      {
+        "id": "742713087391-4otjds6c701o8q958uhcku0c40r48vjk.apps.googleusercontent.com",
+        "displayName": "Untitled project (Google Apps Script)",
+        "deploymentType": "Google Apps Script",
+        "clientId": "742713087391-4otjds6c701o8q958uhcku0c40r48vjk.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      }
+    ],
+    "clientIdsCount": 1,
+    "clientIds": [
+      "892359244178-5umuheruf74ttkti2115q78gkei82s0s.apps.googleusercontent.com"
+    ],
+    "projectNumbers": [
+      "892359244178"
+    ],
+    "totalUsersCount": 1,
+    "adminUsersCount": 1,
+    "scopesCount": 2,
+    "scopes": [
+      {
+        "scope": "https://www.googleapis.com/auth/spreadsheets",
+        "riskLevel": "MEDIUM",
+        "description": "Financial & Tabular Data Access",
+        "threatImpact": "Read and write access to all Google Sheets (financial models, customer lists, HR payroll, and analytics).",
+        "adminScore": 5,
+        "adminColor": "Orange",
+        "googleTier": "Sensitive",
+        "service": "Google Drive & Docs"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.reports.audit.readonly",
+        "riskLevel": "CRITICAL",
+        "description": "Security Audit Log Surveillance",
+        "threatImpact": "Read tenant security audit logs, monitoring detection mechanisms and tracking admin investigation activities.",
+        "adminScore": 5,
+        "adminColor": "Orange",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      }
+    ],
+    "servicesTouched": [
+      "Spreadsheets",
+      "Admin SDK"
+    ],
+    "users": [
+      {
+        "email": "alister@gafe.co.za",
+        "name": "Alister Payne",
+        "orgUnit": "/CloudEDU Technical",
+        "isAdmin": true,
+        "grantedScopes": [
+          "https://www.googleapis.com/auth/spreadsheets",
+          "https://www.googleapis.com/auth/admin.reports.audit.readonly"
+        ]
+      }
+    ],
+    "firstSeen": null,
+    "lastActive": null,
+    "lastActiveFormatted": "12/09/2026",
+    "isStale": true,
+    "isNew": false,
+    "totalActivityEvents": 0
+  },
+  {
+    "id": "807481657183-jdmu3o6ahn0m8efks7nrghqpe4mpst3g.apps.googleusercontent.com",
+    "clientId": "807481657183-jdmu3o6ahn0m8efks7nrghqpe4mpst3g.apps.googleusercontent.com",
+    "familyId": "internal-google-apps-script",
+    "familyName": "Internal / Google Apps Script",
+    "displayName": "Untitled project (Google Apps Script)",
+    "vendor": "Internal / Google Apps Script",
+    "publisherDomain": "script.google.com",
+    "category": "Internal Custom Automation",
+    "appType": "Google Apps Script",
+    "deploymentType": "Google Apps Script",
+    "compliance": [
+      "Internal Tenant Only"
+    ],
+    "dataHosting": "Google Cloud (Tenant)",
+    "breachHistory": null,
+    "isVerified": false,
+    "iconUrl": "https://www.google.com/s2/favicons?domain=script.google.com&sz=128",
+    "storeUrl": "https://script.google.com",
+    "description": "Custom Google Apps Script or Cloud Project automation.",
+    "riskScore": 5,
+    "riskLevel": "HIGH",
+    "riskScoreColor": "Orange",
+    "rawMaxRisk": "MEDIUM",
+    "riskReasons": [
+      "Access to Domain Directory, Files, or Calendars",
+      "Basic Authentication / Profile Scopes"
+    ],
+    "adminAccessLevel": "UNCONFIGURED",
+    "accessPolicy": null,
+    "multiClientMapped": true,
+    "familyDeploymentsCount": 10,
+    "siblingDeployments": [
+      {
+        "id": "417521716396-sr8h84pflr3sro5i53r66hi76rco6bug.apps.googleusercontent.com",
+        "displayName": "Untitled project (Google Apps Script)",
+        "deploymentType": "Google Apps Script",
+        "clientId": "417521716396-sr8h84pflr3sro5i53r66hi76rco6bug.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "892359244178-5umuheruf74ttkti2115q78gkei82s0s.apps.googleusercontent.com",
+        "displayName": "Untitled project (Google Apps Script)",
+        "deploymentType": "Google Apps Script",
+        "clientId": "892359244178-5umuheruf74ttkti2115q78gkei82s0s.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "172700529642-48obmiqhk5joviftkt87d0po0bnbunbu.apps.googleusercontent.com",
+        "displayName": "project-172700529642 (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "172700529642-48obmiqhk5joviftkt87d0po0bnbunbu.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 3,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "74140984847-ev97f2i1adth1ivc40prputvbv8auunq.apps.googleusercontent.com",
+        "displayName": "Untitled project (Google Apps Script)",
+        "deploymentType": "Google Apps Script",
+        "clientId": "74140984847-ev97f2i1adth1ivc40prputvbv8auunq.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "1051074958188-u3h5tcv96sm52jubv7cqnp1squird12f.apps.googleusercontent.com",
+        "displayName": "project-1051074958188 (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "1051074958188-u3h5tcv96sm52jubv7cqnp1squird12f.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "97402216672-ho80qpeolqdr24nltc29n6krpebk9ss3.apps.googleusercontent.com",
+        "displayName": "Untitled project (Google Apps Script)",
+        "deploymentType": "Google Apps Script",
+        "clientId": "97402216672-ho80qpeolqdr24nltc29n6krpebk9ss3.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "MEDIUM"
+      },
+      {
+        "id": "705539309036-4ej1ri9jplb9a4791jsppcchjbvk74fp.apps.googleusercontent.com",
+        "displayName": "Untitled project (Google Apps Script)",
+        "deploymentType": "Google Apps Script",
+        "clientId": "705539309036-4ej1ri9jplb9a4791jsppcchjbvk74fp.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "579706874471-v1v2akhe8lqriu4hhrm58rb1e1tpo6fn.apps.googleusercontent.com",
+        "displayName": "Annual Leave  (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "579706874471-v1v2akhe8lqriu4hhrm58rb1e1tpo6fn.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "MEDIUM"
+      },
+      {
+        "id": "742713087391-4otjds6c701o8q958uhcku0c40r48vjk.apps.googleusercontent.com",
+        "displayName": "Untitled project (Google Apps Script)",
+        "deploymentType": "Google Apps Script",
+        "clientId": "742713087391-4otjds6c701o8q958uhcku0c40r48vjk.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      }
+    ],
+    "clientIdsCount": 1,
+    "clientIds": [
+      "807481657183-jdmu3o6ahn0m8efks7nrghqpe4mpst3g.apps.googleusercontent.com"
+    ],
+    "projectNumbers": [
+      "807481657183"
+    ],
+    "totalUsersCount": 1,
+    "adminUsersCount": 1,
+    "scopesCount": 2,
+    "scopes": [
+      {
+        "scope": "https://www.googleapis.com/auth/spreadsheets",
+        "riskLevel": "MEDIUM",
+        "description": "Financial & Tabular Data Access",
+        "threatImpact": "Read and write access to all Google Sheets (financial models, customer lists, HR payroll, and analytics).",
+        "adminScore": 5,
+        "adminColor": "Orange",
+        "googleTier": "Sensitive",
+        "service": "Google Drive & Docs"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/drive.readonly",
+        "riskLevel": "LOW",
+        "description": "Mass Document Exfiltration",
+        "threatImpact": "Bulk read and download of all corporate documents, spreadsheets, presentations, and stored assets.",
+        "adminScore": 5,
+        "adminColor": "Orange",
+        "googleTier": "Restricted",
+        "service": "Google Drive & Docs"
+      }
+    ],
+    "servicesTouched": [
+      "Spreadsheets",
+      "Google Drive"
+    ],
+    "users": [
+      {
+        "email": "alister@gafe.co.za",
+        "name": "Alister Payne",
+        "orgUnit": "/CloudEDU Technical",
+        "isAdmin": true,
+        "grantedScopes": [
+          "https://www.googleapis.com/auth/spreadsheets",
+          "https://www.googleapis.com/auth/drive.readonly"
+        ]
+      }
+    ],
+    "firstSeen": null,
+    "lastActive": null,
+    "lastActiveFormatted": "12/09/2026",
+    "isStale": true,
+    "isNew": false,
+    "totalActivityEvents": 0
+  },
+  {
+    "id": "705539309036-4ej1ri9jplb9a4791jsppcchjbvk74fp.apps.googleusercontent.com",
+    "clientId": "705539309036-4ej1ri9jplb9a4791jsppcchjbvk74fp.apps.googleusercontent.com",
+    "familyId": "internal-google-apps-script",
+    "familyName": "Internal / Google Apps Script",
+    "displayName": "Untitled project (Google Apps Script)",
+    "vendor": "Internal / Google Apps Script",
+    "publisherDomain": "script.google.com",
+    "category": "Internal Custom Automation",
+    "appType": "Google Apps Script",
+    "deploymentType": "Google Apps Script",
+    "compliance": [
+      "Internal Tenant Only"
+    ],
+    "dataHosting": "Google Cloud (Tenant)",
+    "breachHistory": null,
+    "isVerified": false,
+    "iconUrl": "https://www.google.com/s2/favicons?domain=script.google.com&sz=128",
+    "storeUrl": "https://script.google.com",
+    "description": "Custom Google Apps Script or Cloud Project automation.",
+    "riskScore": 5,
+    "riskLevel": "HIGH",
+    "riskScoreColor": "Orange",
+    "rawMaxRisk": "CRITICAL",
+    "riskReasons": [
+      "Access to Domain Directory, Files, or Calendars",
+      "Administrative or Direct Mail Access"
+    ],
+    "adminAccessLevel": "UNCONFIGURED",
+    "accessPolicy": null,
+    "multiClientMapped": true,
+    "familyDeploymentsCount": 10,
+    "siblingDeployments": [
+      {
+        "id": "417521716396-sr8h84pflr3sro5i53r66hi76rco6bug.apps.googleusercontent.com",
+        "displayName": "Untitled project (Google Apps Script)",
+        "deploymentType": "Google Apps Script",
+        "clientId": "417521716396-sr8h84pflr3sro5i53r66hi76rco6bug.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "892359244178-5umuheruf74ttkti2115q78gkei82s0s.apps.googleusercontent.com",
+        "displayName": "Untitled project (Google Apps Script)",
+        "deploymentType": "Google Apps Script",
+        "clientId": "892359244178-5umuheruf74ttkti2115q78gkei82s0s.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "172700529642-48obmiqhk5joviftkt87d0po0bnbunbu.apps.googleusercontent.com",
+        "displayName": "project-172700529642 (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "172700529642-48obmiqhk5joviftkt87d0po0bnbunbu.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 3,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "74140984847-ev97f2i1adth1ivc40prputvbv8auunq.apps.googleusercontent.com",
+        "displayName": "Untitled project (Google Apps Script)",
+        "deploymentType": "Google Apps Script",
+        "clientId": "74140984847-ev97f2i1adth1ivc40prputvbv8auunq.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "807481657183-jdmu3o6ahn0m8efks7nrghqpe4mpst3g.apps.googleusercontent.com",
+        "displayName": "Untitled project (Google Apps Script)",
+        "deploymentType": "Google Apps Script",
+        "clientId": "807481657183-jdmu3o6ahn0m8efks7nrghqpe4mpst3g.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "MEDIUM"
+      },
+      {
+        "id": "1051074958188-u3h5tcv96sm52jubv7cqnp1squird12f.apps.googleusercontent.com",
+        "displayName": "project-1051074958188 (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "1051074958188-u3h5tcv96sm52jubv7cqnp1squird12f.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "97402216672-ho80qpeolqdr24nltc29n6krpebk9ss3.apps.googleusercontent.com",
+        "displayName": "Untitled project (Google Apps Script)",
+        "deploymentType": "Google Apps Script",
+        "clientId": "97402216672-ho80qpeolqdr24nltc29n6krpebk9ss3.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "MEDIUM"
+      },
+      {
+        "id": "579706874471-v1v2akhe8lqriu4hhrm58rb1e1tpo6fn.apps.googleusercontent.com",
+        "displayName": "Annual Leave  (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "579706874471-v1v2akhe8lqriu4hhrm58rb1e1tpo6fn.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "MEDIUM"
+      },
+      {
+        "id": "742713087391-4otjds6c701o8q958uhcku0c40r48vjk.apps.googleusercontent.com",
+        "displayName": "Untitled project (Google Apps Script)",
+        "deploymentType": "Google Apps Script",
+        "clientId": "742713087391-4otjds6c701o8q958uhcku0c40r48vjk.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      }
+    ],
+    "clientIdsCount": 1,
+    "clientIds": [
+      "705539309036-4ej1ri9jplb9a4791jsppcchjbvk74fp.apps.googleusercontent.com"
+    ],
+    "projectNumbers": [
+      "705539309036"
+    ],
+    "totalUsersCount": 1,
+    "adminUsersCount": 1,
+    "scopesCount": 2,
+    "scopes": [
+      {
+        "scope": "https://www.googleapis.com/auth/spreadsheets",
+        "riskLevel": "MEDIUM",
+        "description": "Financial & Tabular Data Access",
+        "threatImpact": "Read and write access to all Google Sheets (financial models, customer lists, HR payroll, and analytics).",
+        "adminScore": 5,
+        "adminColor": "Orange",
+        "googleTier": "Sensitive",
+        "service": "Google Drive & Docs"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.reports.audit.readonly",
+        "riskLevel": "CRITICAL",
+        "description": "Security Audit Log Surveillance",
+        "threatImpact": "Read tenant security audit logs, monitoring detection mechanisms and tracking admin investigation activities.",
+        "adminScore": 5,
+        "adminColor": "Orange",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      }
+    ],
+    "servicesTouched": [
+      "Spreadsheets",
+      "Admin SDK"
+    ],
+    "users": [
+      {
+        "email": "alister@gafe.co.za",
+        "name": "Alister Payne",
+        "orgUnit": "/CloudEDU Technical",
+        "isAdmin": true,
+        "grantedScopes": [
+          "https://www.googleapis.com/auth/spreadsheets",
+          "https://www.googleapis.com/auth/admin.reports.audit.readonly"
         ]
       }
     ],
@@ -11712,8 +11712,8 @@
     "storeUrl": "https://script.google.com",
     "description": "Custom Google Apps Script or Cloud Project automation.",
     "riskScore": 4,
-    "riskLevel": "HIGH",
-    "riskScoreColor": "Orange",
+    "riskLevel": "MEDIUM",
+    "riskScoreColor": "Yellow",
     "rawMaxRisk": "CRITICAL",
     "riskReasons": [
       "Access to Domain Directory, Files, or Calendars",
@@ -11823,7 +11823,7 @@
         "description": "Financial & Tabular Data Access",
         "threatImpact": "Read and write access to all Google Sheets (financial models, customer lists, HR payroll, and analytics).",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Google Drive & Docs"
       },
@@ -11882,8 +11882,8 @@
     "storeUrl": "https://script.google.com",
     "description": "Custom Google Apps Script or Cloud Project automation.",
     "riskScore": 4.33,
-    "riskLevel": "HIGH",
-    "riskScoreColor": "Orange",
+    "riskLevel": "MEDIUM",
+    "riskScoreColor": "Yellow",
     "rawMaxRisk": "MEDIUM",
     "riskReasons": [
       "Access to Domain Directory, Files, or Calendars",
@@ -11993,7 +11993,7 @@
         "description": "Financial & Tabular Data Access",
         "threatImpact": "Read and write access to all Google Sheets (financial models, customer lists, HR payroll, and analytics).",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Google Drive & Docs"
       },
@@ -12003,7 +12003,7 @@
         "description": "Full Calendar Compromise",
         "threatImpact": "Full read/write to all calendars. Can delete schedules, plant fraudulent meeting invites, and read meeting attachments.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Google Calendar"
       },
@@ -12063,8 +12063,8 @@
     "storeUrl": "https://script.google.com",
     "description": "Custom Google Apps Script or Cloud Project automation.",
     "riskScore": 2.22,
-    "riskLevel": "MEDIUM",
-    "riskScoreColor": "Yellow",
+    "riskLevel": "LOW",
+    "riskScoreColor": "Green",
     "rawMaxRisk": "CRITICAL",
     "riskReasons": [
       "Basic Authentication / Profile Scopes",
@@ -12214,7 +12214,7 @@
         "description": "Mail Routing & Signature Tampering",
         "threatImpact": "Manage vacation responder, signatures, and filters. Frequently weaponized in business email compromise (BEC) and phishing.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Gmail"
       },
@@ -12320,209 +12320,6 @@
     "totalActivityEvents": 0
   },
   {
-    "id": "97402216672-ho80qpeolqdr24nltc29n6krpebk9ss3.apps.googleusercontent.com",
-    "clientId": "97402216672-ho80qpeolqdr24nltc29n6krpebk9ss3.apps.googleusercontent.com",
-    "familyId": "internal-google-apps-script",
-    "familyName": "Internal / Google Apps Script",
-    "displayName": "Untitled project (Google Apps Script)",
-    "vendor": "Internal / Google Apps Script",
-    "publisherDomain": "script.google.com",
-    "category": "Internal Custom Automation",
-    "appType": "Google Apps Script",
-    "deploymentType": "Google Apps Script",
-    "compliance": [
-      "Internal Tenant Only"
-    ],
-    "dataHosting": "Google Cloud (Tenant)",
-    "breachHistory": null,
-    "isVerified": false,
-    "iconUrl": "https://www.google.com/s2/favicons?domain=script.google.com&sz=128",
-    "storeUrl": "https://script.google.com",
-    "description": "Custom Google Apps Script or Cloud Project automation.",
-    "riskScore": 2.6,
-    "riskLevel": "MEDIUM",
-    "riskScoreColor": "Yellow",
-    "rawMaxRisk": "MEDIUM",
-    "riskReasons": [
-      "Basic Authentication / Profile Scopes",
-      "Access to Domain Directory, Files, or Calendars"
-    ],
-    "adminAccessLevel": "UNCONFIGURED",
-    "accessPolicy": null,
-    "multiClientMapped": true,
-    "familyDeploymentsCount": 10,
-    "siblingDeployments": [
-      {
-        "id": "417521716396-sr8h84pflr3sro5i53r66hi76rco6bug.apps.googleusercontent.com",
-        "displayName": "Untitled project (Google Apps Script)",
-        "deploymentType": "Google Apps Script",
-        "clientId": "417521716396-sr8h84pflr3sro5i53r66hi76rco6bug.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "CRITICAL"
-      },
-      {
-        "id": "892359244178-5umuheruf74ttkti2115q78gkei82s0s.apps.googleusercontent.com",
-        "displayName": "Untitled project (Google Apps Script)",
-        "deploymentType": "Google Apps Script",
-        "clientId": "892359244178-5umuheruf74ttkti2115q78gkei82s0s.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "CRITICAL"
-      },
-      {
-        "id": "172700529642-48obmiqhk5joviftkt87d0po0bnbunbu.apps.googleusercontent.com",
-        "displayName": "project-172700529642 (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "172700529642-48obmiqhk5joviftkt87d0po0bnbunbu.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 3,
-        "maxRisk": "CRITICAL"
-      },
-      {
-        "id": "74140984847-ev97f2i1adth1ivc40prputvbv8auunq.apps.googleusercontent.com",
-        "displayName": "Untitled project (Google Apps Script)",
-        "deploymentType": "Google Apps Script",
-        "clientId": "74140984847-ev97f2i1adth1ivc40prputvbv8auunq.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "CRITICAL"
-      },
-      {
-        "id": "807481657183-jdmu3o6ahn0m8efks7nrghqpe4mpst3g.apps.googleusercontent.com",
-        "displayName": "Untitled project (Google Apps Script)",
-        "deploymentType": "Google Apps Script",
-        "clientId": "807481657183-jdmu3o6ahn0m8efks7nrghqpe4mpst3g.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "MEDIUM"
-      },
-      {
-        "id": "1051074958188-u3h5tcv96sm52jubv7cqnp1squird12f.apps.googleusercontent.com",
-        "displayName": "project-1051074958188 (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "1051074958188-u3h5tcv96sm52jubv7cqnp1squird12f.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "LOW"
-      },
-      {
-        "id": "705539309036-4ej1ri9jplb9a4791jsppcchjbvk74fp.apps.googleusercontent.com",
-        "displayName": "Untitled project (Google Apps Script)",
-        "deploymentType": "Google Apps Script",
-        "clientId": "705539309036-4ej1ri9jplb9a4791jsppcchjbvk74fp.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "CRITICAL"
-      },
-      {
-        "id": "579706874471-v1v2akhe8lqriu4hhrm58rb1e1tpo6fn.apps.googleusercontent.com",
-        "displayName": "Annual Leave  (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "579706874471-v1v2akhe8lqriu4hhrm58rb1e1tpo6fn.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "MEDIUM"
-      },
-      {
-        "id": "742713087391-4otjds6c701o8q958uhcku0c40r48vjk.apps.googleusercontent.com",
-        "displayName": "Untitled project (Google Apps Script)",
-        "deploymentType": "Google Apps Script",
-        "clientId": "742713087391-4otjds6c701o8q958uhcku0c40r48vjk.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "CRITICAL"
-      }
-    ],
-    "clientIdsCount": 1,
-    "clientIds": [
-      "97402216672-ho80qpeolqdr24nltc29n6krpebk9ss3.apps.googleusercontent.com"
-    ],
-    "projectNumbers": [
-      "97402216672"
-    ],
-    "totalUsersCount": 1,
-    "adminUsersCount": 1,
-    "scopesCount": 5,
-    "scopes": [
-      {
-        "scope": "https://www.googleapis.com/auth/classroom.rosters",
-        "riskLevel": "LOW",
-        "description": "Student & Teacher Roster Exposure",
-        "threatImpact": "Access teacher and student roster directories (FERPA/COPPA student privacy compliance exposure).",
-        "adminScore": 3,
-        "adminColor": "Yellow",
-        "googleTier": "Sensitive",
-        "service": "Google Chat & Classroom"
-      },
-      {
-        "scope": "https://www.googleapis.com/auth/classroom.courses",
-        "riskLevel": "LOW",
-        "description": "Course Directory Listing",
-        "threatImpact": "View course titles, descriptions, and schedules.",
-        "adminScore": 2,
-        "adminColor": "Green",
-        "googleTier": "Sensitive",
-        "service": "Google Chat & Classroom"
-      },
-      {
-        "scope": "https://www.googleapis.com/auth/classroom.profile.emails",
-        "riskLevel": "LOW",
-        "description": "Student & Teacher Email Lookup",
-        "threatImpact": "View the email addresses of people in Google Classroom classes.",
-        "adminScore": 2,
-        "adminColor": "Green",
-        "googleTier": "Non-Sensitive",
-        "service": "Google Chat & Classroom"
-      },
-      {
-        "scope": "https://www.googleapis.com/auth/spreadsheets",
-        "riskLevel": "MEDIUM",
-        "description": "Financial & Tabular Data Access",
-        "threatImpact": "Read and write access to all Google Sheets (financial models, customer lists, HR payroll, and analytics).",
-        "adminScore": 5,
-        "adminColor": "Red",
-        "googleTier": "Sensitive",
-        "service": "Google Drive & Docs"
-      },
-      {
-        "scope": "https://www.googleapis.com/auth/classroom.profile.photos",
-        "riskLevel": "LOW",
-        "description": "Classroom User Profile Photos",
-        "threatImpact": "View profile photos of teachers and students in Google Classroom.",
-        "adminScore": 1,
-        "adminColor": "Blue",
-        "googleTier": "Non-Sensitive",
-        "service": "Google Chat & Classroom"
-      }
-    ],
-    "servicesTouched": [
-      "Classroom",
-      "Spreadsheets"
-    ],
-    "users": [
-      {
-        "email": "alister@gafe.co.za",
-        "name": "Alister Payne",
-        "orgUnit": "/CloudEDU Technical",
-        "isAdmin": true,
-        "grantedScopes": [
-          "https://www.googleapis.com/auth/classroom.rosters",
-          "https://www.googleapis.com/auth/classroom.courses",
-          "https://www.googleapis.com/auth/classroom.profile.emails",
-          "https://www.googleapis.com/auth/spreadsheets",
-          "https://www.googleapis.com/auth/classroom.profile.photos"
-        ]
-      }
-    ],
-    "firstSeen": null,
-    "lastActive": null,
-    "lastActiveFormatted": "12/09/2026",
-    "isStale": true,
-    "isNew": false,
-    "totalActivityEvents": 0
-  },
-  {
     "id": "1051074958188-u3h5tcv96sm52jubv7cqnp1squird12f.apps.googleusercontent.com",
     "clientId": "1051074958188-u3h5tcv96sm52jubv7cqnp1squird12f.apps.googleusercontent.com",
     "familyId": "internal-google-apps-script",
@@ -12544,7 +12341,7 @@
     "description": "Custom Google Apps Script or Cloud Project automation.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
@@ -12700,6 +12497,209 @@
     "totalActivityEvents": 0
   },
   {
+    "id": "97402216672-ho80qpeolqdr24nltc29n6krpebk9ss3.apps.googleusercontent.com",
+    "clientId": "97402216672-ho80qpeolqdr24nltc29n6krpebk9ss3.apps.googleusercontent.com",
+    "familyId": "internal-google-apps-script",
+    "familyName": "Internal / Google Apps Script",
+    "displayName": "Untitled project (Google Apps Script)",
+    "vendor": "Internal / Google Apps Script",
+    "publisherDomain": "script.google.com",
+    "category": "Internal Custom Automation",
+    "appType": "Google Apps Script",
+    "deploymentType": "Google Apps Script",
+    "compliance": [
+      "Internal Tenant Only"
+    ],
+    "dataHosting": "Google Cloud (Tenant)",
+    "breachHistory": null,
+    "isVerified": false,
+    "iconUrl": "https://www.google.com/s2/favicons?domain=script.google.com&sz=128",
+    "storeUrl": "https://script.google.com",
+    "description": "Custom Google Apps Script or Cloud Project automation.",
+    "riskScore": 2.6,
+    "riskLevel": "LOW",
+    "riskScoreColor": "Green",
+    "rawMaxRisk": "MEDIUM",
+    "riskReasons": [
+      "Basic Authentication / Profile Scopes",
+      "Access to Domain Directory, Files, or Calendars"
+    ],
+    "adminAccessLevel": "UNCONFIGURED",
+    "accessPolicy": null,
+    "multiClientMapped": true,
+    "familyDeploymentsCount": 10,
+    "siblingDeployments": [
+      {
+        "id": "417521716396-sr8h84pflr3sro5i53r66hi76rco6bug.apps.googleusercontent.com",
+        "displayName": "Untitled project (Google Apps Script)",
+        "deploymentType": "Google Apps Script",
+        "clientId": "417521716396-sr8h84pflr3sro5i53r66hi76rco6bug.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "892359244178-5umuheruf74ttkti2115q78gkei82s0s.apps.googleusercontent.com",
+        "displayName": "Untitled project (Google Apps Script)",
+        "deploymentType": "Google Apps Script",
+        "clientId": "892359244178-5umuheruf74ttkti2115q78gkei82s0s.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "172700529642-48obmiqhk5joviftkt87d0po0bnbunbu.apps.googleusercontent.com",
+        "displayName": "project-172700529642 (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "172700529642-48obmiqhk5joviftkt87d0po0bnbunbu.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 3,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "74140984847-ev97f2i1adth1ivc40prputvbv8auunq.apps.googleusercontent.com",
+        "displayName": "Untitled project (Google Apps Script)",
+        "deploymentType": "Google Apps Script",
+        "clientId": "74140984847-ev97f2i1adth1ivc40prputvbv8auunq.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "807481657183-jdmu3o6ahn0m8efks7nrghqpe4mpst3g.apps.googleusercontent.com",
+        "displayName": "Untitled project (Google Apps Script)",
+        "deploymentType": "Google Apps Script",
+        "clientId": "807481657183-jdmu3o6ahn0m8efks7nrghqpe4mpst3g.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "MEDIUM"
+      },
+      {
+        "id": "1051074958188-u3h5tcv96sm52jubv7cqnp1squird12f.apps.googleusercontent.com",
+        "displayName": "project-1051074958188 (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "1051074958188-u3h5tcv96sm52jubv7cqnp1squird12f.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "705539309036-4ej1ri9jplb9a4791jsppcchjbvk74fp.apps.googleusercontent.com",
+        "displayName": "Untitled project (Google Apps Script)",
+        "deploymentType": "Google Apps Script",
+        "clientId": "705539309036-4ej1ri9jplb9a4791jsppcchjbvk74fp.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "579706874471-v1v2akhe8lqriu4hhrm58rb1e1tpo6fn.apps.googleusercontent.com",
+        "displayName": "Annual Leave  (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "579706874471-v1v2akhe8lqriu4hhrm58rb1e1tpo6fn.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "MEDIUM"
+      },
+      {
+        "id": "742713087391-4otjds6c701o8q958uhcku0c40r48vjk.apps.googleusercontent.com",
+        "displayName": "Untitled project (Google Apps Script)",
+        "deploymentType": "Google Apps Script",
+        "clientId": "742713087391-4otjds6c701o8q958uhcku0c40r48vjk.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      }
+    ],
+    "clientIdsCount": 1,
+    "clientIds": [
+      "97402216672-ho80qpeolqdr24nltc29n6krpebk9ss3.apps.googleusercontent.com"
+    ],
+    "projectNumbers": [
+      "97402216672"
+    ],
+    "totalUsersCount": 1,
+    "adminUsersCount": 1,
+    "scopesCount": 5,
+    "scopes": [
+      {
+        "scope": "https://www.googleapis.com/auth/classroom.rosters",
+        "riskLevel": "LOW",
+        "description": "Student & Teacher Roster Exposure",
+        "threatImpact": "Access teacher and student roster directories (FERPA/COPPA student privacy compliance exposure).",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Google Chat & Classroom"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/classroom.courses",
+        "riskLevel": "LOW",
+        "description": "Course Directory Listing",
+        "threatImpact": "View course titles, descriptions, and schedules.",
+        "adminScore": 2,
+        "adminColor": "Green",
+        "googleTier": "Sensitive",
+        "service": "Google Chat & Classroom"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/classroom.profile.emails",
+        "riskLevel": "LOW",
+        "description": "Student & Teacher Email Lookup",
+        "threatImpact": "View the email addresses of people in Google Classroom classes.",
+        "adminScore": 2,
+        "adminColor": "Green",
+        "googleTier": "Non-Sensitive",
+        "service": "Google Chat & Classroom"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/spreadsheets",
+        "riskLevel": "MEDIUM",
+        "description": "Financial & Tabular Data Access",
+        "threatImpact": "Read and write access to all Google Sheets (financial models, customer lists, HR payroll, and analytics).",
+        "adminScore": 5,
+        "adminColor": "Orange",
+        "googleTier": "Sensitive",
+        "service": "Google Drive & Docs"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/classroom.profile.photos",
+        "riskLevel": "LOW",
+        "description": "Classroom User Profile Photos",
+        "threatImpact": "View profile photos of teachers and students in Google Classroom.",
+        "adminScore": 1,
+        "adminColor": "Blue",
+        "googleTier": "Non-Sensitive",
+        "service": "Google Chat & Classroom"
+      }
+    ],
+    "servicesTouched": [
+      "Classroom",
+      "Spreadsheets"
+    ],
+    "users": [
+      {
+        "email": "alister@gafe.co.za",
+        "name": "Alister Payne",
+        "orgUnit": "/CloudEDU Technical",
+        "isAdmin": true,
+        "grantedScopes": [
+          "https://www.googleapis.com/auth/classroom.rosters",
+          "https://www.googleapis.com/auth/classroom.courses",
+          "https://www.googleapis.com/auth/classroom.profile.emails",
+          "https://www.googleapis.com/auth/spreadsheets",
+          "https://www.googleapis.com/auth/classroom.profile.photos"
+        ]
+      }
+    ],
+    "firstSeen": null,
+    "lastActive": null,
+    "lastActiveFormatted": "12/09/2026",
+    "isStale": true,
+    "isNew": false,
+    "totalActivityEvents": 0
+  },
+  {
     "id": "450232826690-0rm6bs9d2fps9tifvk2oodh3tasd7vl7.apps.googleusercontent.com",
     "clientId": "450232826690-0rm6bs9d2fps9tifvk2oodh3tasd7vl7.apps.googleusercontent.com",
     "familyId": "gcp_proj_450232826690",
@@ -12719,8 +12719,8 @@
     "storeUrl": null,
     "description": "",
     "riskScore": 4,
-    "riskLevel": "HIGH",
-    "riskScoreColor": "Orange",
+    "riskLevel": "MEDIUM",
+    "riskScoreColor": "Yellow",
     "rawMaxRisk": "CRITICAL",
     "riskReasons": [
       "Access to Domain Directory, Files, or Calendars",
@@ -12789,7 +12789,7 @@
         "description": "Full Calendar Compromise",
         "threatImpact": "Full read/write to all calendars. Can delete schedules, plant fraudulent meeting invites, and read meeting attachments.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Sensitive",
         "service": "Google Calendar"
       },
@@ -12799,7 +12799,7 @@
         "description": "Full Mailbox Takeover",
         "threatImpact": "Read, compose, permanently delete emails, and modify forwarding/POP/IMAP settings. Total communication takeover.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Gmail"
       }
@@ -12855,7 +12855,7 @@
     "description": "Robotics and coding software for LEGO Education WeDo 2.0 classroom kits.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [],
     "adminAccessLevel": "TRUSTED",
@@ -12925,7 +12925,7 @@
     "description": "STEAM learning app for LEGO Education SPIKE Prime and Essential.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [],
     "adminAccessLevel": "TRUSTED",
@@ -12993,7 +12993,7 @@
     "description": "",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
@@ -13097,7 +13097,7 @@
     "description": "",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
@@ -13204,8 +13204,8 @@
     "storeUrl": "https://lusha.com",
     "description": "B2B data enrichment and prospect contact information tool.",
     "riskScore": 2.56,
-    "riskLevel": "MEDIUM",
-    "riskScoreColor": "Yellow",
+    "riskLevel": "LOW",
+    "riskScoreColor": "Green",
     "rawMaxRisk": "MEDIUM",
     "riskReasons": [
       "Access to Domain Directory, Files, or Calendars",
@@ -13253,7 +13253,7 @@
         "description": "Bulk Email Exfiltration",
         "threatImpact": "Read all historical messages, sensitive corporate contracts, passwords, and reset links without edit rights.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Gmail"
       },
@@ -13414,7 +13414,7 @@
     "description": "B2B data enrichment and prospect contact information tool.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
@@ -13531,7 +13531,7 @@
     "description": "Email read tracking and document analytics for Gmail.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [],
     "adminAccessLevel": "TRUSTED",
@@ -13593,7 +13593,7 @@
     "description": "PDF reader and digital annotation toolbar for Google Drive and Classroom.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [],
     "adminAccessLevel": "TRUSTED",
@@ -13710,7 +13710,7 @@
     "description": "PDF reader and digital annotation toolbar for Google Drive and Classroom.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [],
     "adminAccessLevel": "TRUSTED",
@@ -13827,7 +13827,7 @@
     "description": "PDF reader and digital annotation toolbar for Google Drive and Classroom.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [],
     "adminAccessLevel": "TRUSTED",
@@ -13944,7 +13944,7 @@
     "description": "PDF reader and digital annotation toolbar for Google Drive and Classroom.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [],
     "adminAccessLevel": "TRUSTED",
@@ -14061,7 +14061,7 @@
     "description": "PDF reader and digital annotation toolbar for Google Drive and Classroom.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [],
     "adminAccessLevel": "TRUSTED",
@@ -14178,7 +14178,7 @@
     "description": "PDF reader and digital annotation toolbar for Google Drive and Classroom.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [],
     "adminAccessLevel": "TRUSTED",
@@ -14295,7 +14295,7 @@
     "description": "PDF reader and digital annotation toolbar for Google Drive and Classroom.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [],
     "adminAccessLevel": "TRUSTED",
@@ -14411,8 +14411,8 @@
     "storeUrl": "https://wayground.com",
     "description": "Interactive gamified student assessment platform.",
     "riskScore": 4,
-    "riskLevel": "HIGH",
-    "riskScoreColor": "Orange",
+    "riskLevel": "MEDIUM",
+    "riskScoreColor": "Yellow",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
@@ -14477,7 +14477,7 @@
         "description": "Mass Document Exfiltration",
         "threatImpact": "Bulk read and download of all corporate documents, spreadsheets, presentations, and stored assets.",
         "adminScore": 5,
-        "adminColor": "Red",
+        "adminColor": "Orange",
         "googleTier": "Restricted",
         "service": "Google Drive & Docs"
       }
@@ -14538,8 +14538,8 @@
     "storeUrl": "https://wayground.com",
     "description": "Interactive gamified student assessment platform.",
     "riskScore": 4,
-    "riskLevel": "HIGH",
-    "riskScoreColor": "Orange",
+    "riskLevel": "MEDIUM",
+    "riskScoreColor": "Yellow",
     "rawMaxRisk": "HIGH",
     "riskReasons": [
       "Basic Authentication / Profile Scopes",
@@ -14625,7 +14625,7 @@
         "description": "Full Cloud Storage Compromise",
         "threatImpact": "Read, edit, create, and permanently delete all files in My Drive and Shared Drives. Severe ransomware and wipeout risk.",
         "adminScore": 13,
-        "adminColor": "Purple",
+        "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Google Drive & Docs"
       }
@@ -14678,8 +14678,8 @@
     "storeUrl": "https://wayground.com",
     "description": "Interactive gamified student assessment platform.",
     "riskScore": 2.33,
-    "riskLevel": "MEDIUM",
-    "riskScoreColor": "Yellow",
+    "riskLevel": "LOW",
+    "riskScoreColor": "Green",
     "rawMaxRisk": "CRITICAL",
     "riskReasons": [
       "Basic Authentication / Profile Scopes",
@@ -14956,7 +14956,7 @@
     "description": "Student quiz and engagement learning software.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [],
     "adminAccessLevel": "TRUSTED",
@@ -15043,7 +15043,7 @@
     "description": "AI-powered music and audio generation platform.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
@@ -15141,7 +15141,7 @@
     "description": "Online collaborative noticeboard and classroom curation tool.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
@@ -15238,7 +15238,7 @@
     "description": "Single sign-on and student information system (SIS) data synchronization portal.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
@@ -15334,8 +15334,8 @@
     "storeUrl": "https://mylogin.com",
     "description": "K-12 Single Sign-On and QR badge login system for classroom devices.",
     "riskScore": 2,
-    "riskLevel": "MEDIUM",
-    "riskScoreColor": "Yellow",
+    "riskLevel": "LOW",
+    "riskScoreColor": "Green",
     "rawMaxRisk": "CRITICAL",
     "riskReasons": [
       "Basic Authentication / Profile Scopes",
@@ -15478,7 +15478,7 @@
     "description": "Online PDF editor and document conversion SaaS.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
@@ -15576,7 +15576,7 @@
     "description": "Calendar synchronization between Google Workspace and Zoho apps.",
     "riskScore": 1,
     "riskLevel": "LOW",
-    "riskScoreColor": "Green",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [],
     "adminAccessLevel": "TRUSTED",
