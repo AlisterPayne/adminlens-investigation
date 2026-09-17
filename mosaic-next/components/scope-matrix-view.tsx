@@ -53,6 +53,7 @@ export default function ScopeMatrixView({
   const [activeOnly, setActiveOnly] = useState(false);
   const [copiedScope, setCopiedScope] = useState<string | null>(null);
   const [collapsedServices, setCollapsedServices] = useState<Record<string, boolean>>({});
+  const [showInfoBanner, setShowInfoBanner] = useState(false);
 
   // Derive distinct services if not provided
   const availableServices = useMemo(() => {
@@ -234,15 +235,15 @@ export default function ScopeMatrixView({
 
   return (
     <div className="space-y-6">
-      {/* Header & Overview Card */}
-      <div className="bg-gradient-to-r from-blue-900/10 via-indigo-900/5 to-white border border-blue-200 rounded-xl p-6 shadow-xs">
+      {/* Header & Overview Card (Collapsible, Collapsed by Default) */}
+      <div className="bg-gradient-to-r from-blue-900/10 via-indigo-900/5 to-white border border-blue-200 rounded-xl p-5 shadow-xs transition-all">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-          <div className="space-y-1.5">
-            <div className="flex items-center gap-2.5">
-              <span className="p-2 rounded-lg bg-blue-600 text-white shadow-xs">
+          <div className="space-y-1.5 flex-1 cursor-pointer select-none" onClick={() => setShowInfoBanner(!showInfoBanner)}>
+            <div className="flex items-center gap-2.5 flex-wrap">
+              <span className="p-2 rounded-lg bg-blue-600 text-white shadow-xs text-sm">
                 🛡️
               </span>
-              <h2 className="text-lg font-bold text-gray-900 tracking-tight">
+              <h2 className="text-base sm:text-lg font-bold text-gray-900 tracking-tight">
                 Google Workspace OAuth Scope Threat Matrix
               </h2>
               <span className="text-xs px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200 font-semibold">
@@ -253,17 +254,23 @@ export default function ScopeMatrixView({
               Ground-truth reference catalog of Google Workspace OAuth
               permissions mapped to Google's official{" "}
               <strong className="text-gray-900">API User Data Policy Tiers</strong>{" "}
-              (Restricted, Sensitive, Non-Sensitive) and the{" "}
-              <strong className="text-gray-900">Enterprise Threat Scale (1 to 5: Low to Critical)</strong>.
-              Scopes can be viewed grouped by Google Service or as an exhaustive flat table.
+              and the <strong className="text-gray-900">Enterprise Threat Scale (1 to 5)</strong>.
             </p>
           </div>
-          <div className="flex items-center gap-2 flex-wrap">
+
+          <div className="flex items-center gap-2 flex-wrap flex-shrink-0">
+            <button
+              type="button"
+              onClick={() => setShowInfoBanner(!showInfoBanner)}
+              className="px-3.5 py-2 rounded-lg bg-white hover:bg-gray-50 border border-blue-200 text-xs font-bold text-blue-700 transition-colors shadow-2xs flex items-center gap-1.5"
+            >
+              <span>{showInfoBanner ? "▲ Collapse Details" : "▼ Learn More & FAQs"}</span>
+            </button>
             <a
               href="https://support.google.com/cloud/answer/9110914"
               target="_blank"
               rel="noreferrer"
-              className="px-3.5 py-2 rounded-lg bg-white border border-gray-300 text-xs font-semibold text-gray-700 hover:text-blue-600 hover:border-blue-300 transition-colors shadow-2xs flex items-center gap-1.5"
+              className="px-3 py-2 rounded-lg bg-white border border-gray-300 text-xs font-semibold text-gray-700 hover:text-blue-600 hover:border-blue-300 transition-colors shadow-2xs flex items-center gap-1.5"
             >
               <span>📄</span> Google OAuth FAQ ↗
             </a>
@@ -271,52 +278,54 @@ export default function ScopeMatrixView({
               href="https://developers.google.com/terms/api-services-user-data-policy"
               target="_blank"
               rel="noreferrer"
-              className="px-3.5 py-2 rounded-lg bg-white border border-gray-300 text-xs font-semibold text-gray-700 hover:text-blue-600 hover:border-blue-300 transition-colors shadow-2xs flex items-center gap-1.5"
+              className="px-3 py-2 rounded-lg bg-white border border-gray-300 text-xs font-semibold text-gray-700 hover:text-blue-600 hover:border-blue-300 transition-colors shadow-2xs flex items-center gap-1.5"
             >
               <span>⚖️</span> User Data Policy ↗
             </a>
           </div>
         </div>
 
-        {/* Scope Classification Legend Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-5 pt-4 border-t border-gray-200 text-xs">
-          <div className="flex items-start gap-2.5 p-3 rounded-lg bg-red-50/70 border border-red-200">
-            <span className="w-2 h-2 rounded-full bg-red-500 mt-1 flex-shrink-0"></span>
-            <div>
-              <span className="font-bold text-red-900">
-                Restricted Scopes (Google Tier)
-              </span>
-              <p className="text-red-700/80 text-[11px] mt-0.5 leading-snug">
-                Scores 4 or 5. Requires mandatory annual CASA Tier 2 independent audits
-                ($3k–$15k/yr). Full mailbox or cloud drive control.
-              </p>
+        {/* Scope Classification Legend Cards (Expanded on Click) */}
+        {showInfoBanner && (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-5 pt-4 border-t border-blue-200/80 text-xs animate-fade-in">
+            <div className="flex items-start gap-2.5 p-3 rounded-lg bg-red-50/70 border border-red-200">
+              <span className="w-2 h-2 rounded-full bg-red-500 mt-1 flex-shrink-0"></span>
+              <div>
+                <span className="font-bold text-red-900">
+                  Restricted Scopes (Google Tier)
+                </span>
+                <p className="text-red-700/80 text-[11px] mt-0.5 leading-snug">
+                  Scores 4 or 5. Requires mandatory annual CASA Tier 2 independent audits
+                  ($3k–$15k/yr). Full mailbox or cloud drive control.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start gap-2.5 p-3 rounded-lg bg-amber-50/70 border border-amber-200">
+              <span className="w-2 h-2 rounded-full bg-amber-500 mt-1 flex-shrink-0"></span>
+              <div>
+                <span className="font-bold text-amber-900">
+                  Sensitive Scopes (Google Tier)
+                </span>
+                <p className="text-amber-700/80 text-[11px] mt-0.5 leading-snug">
+                  Scores 2, 3, or 4. Accesses private personal/corporate data (calendars, contacts,
+                  drive.file). Requires Google Trust & Safety verification.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start gap-2.5 p-3 rounded-lg bg-blue-50/70 border border-blue-200">
+              <span className="w-2 h-2 rounded-full bg-blue-500 mt-1 flex-shrink-0"></span>
+              <div>
+                <span className="font-bold text-blue-900">
+                  Non-Sensitive Scopes (Google Tier)
+                </span>
+                <p className="text-blue-700/80 text-[11px] mt-0.5 leading-snug">
+                  Scores 1 or 2. Basic identity (openid, email, profile) or read-only operational
+                  metadata with minimal exfiltration surface.
+                </p>
+              </div>
             </div>
           </div>
-          <div className="flex items-start gap-2.5 p-3 rounded-lg bg-amber-50/70 border border-amber-200">
-            <span className="w-2 h-2 rounded-full bg-amber-500 mt-1 flex-shrink-0"></span>
-            <div>
-              <span className="font-bold text-amber-900">
-                Sensitive Scopes (Google Tier)
-              </span>
-              <p className="text-amber-700/80 text-[11px] mt-0.5 leading-snug">
-                Scores 2, 3, or 4. Accesses private personal/corporate data (calendars, contacts,
-                drive.file). Requires Google Trust & Safety verification.
-              </p>
-            </div>
-          </div>
-          <div className="flex items-start gap-2.5 p-3 rounded-lg bg-blue-50/70 border border-blue-200">
-            <span className="w-2 h-2 rounded-full bg-blue-500 mt-1 flex-shrink-0"></span>
-            <div>
-              <span className="font-bold text-blue-900">
-                Non-Sensitive Scopes (Google Tier)
-              </span>
-              <p className="text-blue-700/80 text-[11px] mt-0.5 leading-snug">
-                Scores 1 or 2. Basic identity (openid, email, profile) or read-only operational
-                metadata with minimal exfiltration surface.
-              </p>
-            </div>
-          </div>
-        </div>
+        )}
       </div>
 
       {/* KPI Cards */}
