@@ -163,6 +163,7 @@ export default function OAuthDashboardClient({
   const [uploadToast, setUploadToast] = useState<string | null>(null);
   const [groupByFamily, setGroupByFamily] = useState(true);
   const [showBaselineBanner, setShowBaselineBanner] = useState(false);
+  const [showRiskCalc, setShowRiskCalc] = useState(false);
 
   const getDeploymentTypeBadge = (type: string = "Web Application") => {
     switch (type) {
@@ -1953,58 +1954,80 @@ export default function OAuthDashboardClient({
                 </div>
               )}
 
-              {/* Option B Non-Compensatory Floor Risk Model Calculation Breakdown */}
-              <div className="bg-gradient-to-br from-slate-50 to-blue-50/40 border border-slate-200 rounded-xl p-4 space-y-3">
-                <div className="flex items-center justify-between border-b border-slate-200 pb-2">
+              {/* Option B Non-Compensatory Floor Risk Model Calculation Breakdown (Collapsible & Hidden by Default) */}
+              <div className="border border-slate-200/80 bg-slate-50/60 rounded-xl overflow-hidden">
+                <button
+                  type="button"
+                  onClick={() => setShowRiskCalc(!showRiskCalc)}
+                  className="w-full flex items-center justify-between px-3.5 py-2 text-left hover:bg-slate-100/70 transition-colors"
+                >
+                  <div className="flex items-center gap-2 text-xs">
+                    <span className="text-gray-400 text-xs">📐</span>
+                    <span className="font-semibold text-gray-700 text-xs">
+                      Risk Model Calculation Details
+                    </span>
+                    <span className="text-[10px] text-gray-400 font-normal">
+                      (Peak Scope Base Floor + Breadth Surcharge)
+                    </span>
+                  </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-base">📐</span>
-                    <div>
-                      <h4 className="text-xs font-bold text-gray-900">
-                        Risk Model Calculation (Option B: Non-Compensatory Floor)
-                      </h4>
-                      <p className="text-[11px] text-gray-500">
-                        Base Severity Floor (Peak Scope) + Additive Attack Surface Breadth
-                      </p>
+                    <span className="text-[11px] font-medium text-blue-600 hover:text-blue-800">
+                      {showRiskCalc ? "Hide ▲" : "Show details ▼"}
+                    </span>
+                  </div>
+                </button>
+
+                {showRiskCalc && (
+                  <div className="p-4 pt-3 border-t border-slate-200/80 space-y-3 bg-white/70">
+                    <div className="flex items-center justify-between border-b border-slate-200/60 pb-2">
+                      <div>
+                        <h4 className="text-xs font-bold text-gray-900">
+                          Non-Compensatory Floor Model (Option B)
+                        </h4>
+                        <p className="text-[11px] text-gray-500">
+                          Base Severity Floor (Peak Scope − 1) + Additive Attack Surface Breadth
+                        </p>
+                      </div>
+                      {getRiskBadge(selectedApp.riskLevel, selectedApp.riskScore)}
+                    </div>
+
+                    <div className="grid grid-cols-3 gap-2.5 text-center text-xs pt-1">
+                      <div className="bg-white border border-gray-200 rounded-lg p-2.5 shadow-2xs">
+                        <div className="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Base Floor (Peak)</div>
+                        <div className="text-base font-bold text-red-700 mt-0.5">
+                          {Math.max(0, (selectedApp.peakScopeScore ?? 1) - 1).toFixed(2)}
+                        </div>
+                        <div className="text-[10px] text-gray-400">
+                          Tier {selectedApp.peakScopeScore ?? 1} Floor (Peak − 1)
+                        </div>
+                      </div>
+
+                      <div className="bg-white border border-gray-200 rounded-lg p-2.5 shadow-2xs">
+                        <div className="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Breadth Surcharge</div>
+                        <div className="text-base font-bold text-blue-700 mt-0.5">
+                          +{(selectedApp.breadthScore !== undefined ? selectedApp.breadthScore : Math.max(0, (selectedApp.riskScore || 0) - Math.max(0, (selectedApp.peakScopeScore ?? 1) - 1))).toFixed(2)} pts
+                        </div>
+                        <div className="text-[10px] text-gray-400">
+                          {Math.max(0, (selectedApp.scopes?.length || 1) - 1)} secondary scope(s)
+                        </div>
+                      </div>
+
+                      <div className="bg-white border border-gray-200 rounded-lg p-2.5 shadow-2xs">
+                        <div className="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Final Risk Score</div>
+                        <div className="text-base font-bold text-gray-900 mt-0.5">
+                          {selectedApp.riskScore !== undefined ? selectedApp.riskScore.toFixed(2) : '0.00'}
+                        </div>
+                        <div className="text-[10px] text-gray-500 font-medium">
+                          / 5.00 Scale
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="text-[11px] text-gray-600 bg-slate-50 rounded-md p-2 border border-gray-200/80 leading-snug">
+                      <strong>Non-Compensatory Rationale:</strong> The peak scope sets an absolute, non-dilutable security floor (Peak Score − 1: Level 5 → 4.00, Level 4 → 3.00, Level 3 → 2.00, Level 2 → 1.00, Level 1 → 0.00). Secondary scopes add breadth surcharge points within tier headroom (0–1 Low, 1–2 Minor, 2–3 Medium, 3–4 High, 4–5 Critical) without diluting peak permissions.
                     </div>
                   </div>
-                  {getRiskBadge(selectedApp.riskLevel, selectedApp.riskScore)}
-                </div>
-
-                <div className="grid grid-cols-3 gap-2.5 text-center text-xs pt-1">
-                  <div className="bg-white border border-gray-200 rounded-lg p-2.5 shadow-2xs">
-                    <div className="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Base Floor (Peak)</div>
-                    <div className="text-base font-bold text-red-700 mt-0.5">
-                      {Math.max(0, (selectedApp.peakScopeScore ?? 1) - 1).toFixed(2)}
-                    </div>
-                    <div className="text-[10px] text-gray-400">
-                      Tier {selectedApp.peakScopeScore ?? 1} Floor (Peak − 1)
-                    </div>
-                  </div>
-
-                  <div className="bg-white border border-gray-200 rounded-lg p-2.5 shadow-2xs">
-                    <div className="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Breadth Surcharge</div>
-                    <div className="text-base font-bold text-blue-700 mt-0.5">
-                      +{(selectedApp.breadthScore !== undefined ? selectedApp.breadthScore : Math.max(0, (selectedApp.riskScore || 0) - Math.max(0, (selectedApp.peakScopeScore ?? 1) - 1))).toFixed(2)} pts
-                    </div>
-                    <div className="text-[10px] text-gray-400">
-                      {Math.max(0, (selectedApp.scopes?.length || 1) - 1)} secondary scope(s)
-                    </div>
-                  </div>
-
-                  <div className="bg-white border border-gray-200 rounded-lg p-2.5 shadow-2xs">
-                    <div className="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Final Risk Score</div>
-                    <div className="text-base font-bold text-gray-900 mt-0.5">
-                      {selectedApp.riskScore !== undefined ? selectedApp.riskScore.toFixed(2) : '0.00'}
-                    </div>
-                    <div className="text-[10px] text-gray-500 font-medium">
-                      / 5.00 Scale
-                    </div>
-                  </div>
-                </div>
-
-                <div className="text-[11px] text-gray-600 bg-white/70 rounded-md p-2 border border-gray-200/80 leading-snug">
-                  <strong>Non-Compensatory Rationale:</strong> The peak scope sets an absolute, non-dilutable security floor (Peak Score − 1: Level 5 → 4.00, Level 4 → 3.00, Level 3 → 2.00, Level 2 → 1.00, Level 1 → 0.00). Secondary scopes add breadth surcharge points within tier headroom (0–1 Low, 1–2 Minor, 2–3 Medium, 3–4 High, 4–5 Critical) without diluting peak permissions.
-                </div>
+                )}
               </div>
 
               {/* Risk Evaluation */}
