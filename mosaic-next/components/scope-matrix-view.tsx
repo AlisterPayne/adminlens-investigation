@@ -321,15 +321,41 @@ export default function ScopeMatrixView({
 
       {/* KPI Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-        <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-2xs">
+        {/* All Scopes */}
+        <button
+          type="button"
+          onClick={() => {
+            setTierFilter("ALL");
+            setScoreFilter("ALL");
+            setActiveOnly(false);
+          }}
+          className={`text-left p-4 rounded-xl border transition-all cursor-pointer ${
+            tierFilter === "ALL" && scoreFilter === "ALL" && !activeOnly
+              ? "bg-blue-50/70 border-blue-400 shadow-xs ring-2 ring-blue-400/20"
+              : "bg-white border-gray-200 shadow-2xs hover:border-gray-300 hover:bg-gray-50/60"
+          }`}
+        >
           <div className="text-gray-500 text-xs font-semibold">Cataloged Scopes</div>
           <div className="text-2xl font-bold text-gray-900 mt-1">
             {metrics?.total || scopes.length}
           </div>
           <div className="text-[11px] text-gray-500 mt-0.5">Verified definitions</div>
-        </div>
+        </button>
 
-        <div className="bg-red-50/40 border border-red-200 rounded-xl p-4 shadow-2xs">
+        {/* Restricted Tiers */}
+        <button
+          type="button"
+          onClick={() => {
+            setTierFilter(tierFilter === "Restricted" ? "ALL" : "Restricted");
+            setScoreFilter("ALL");
+            setActiveOnly(false);
+          }}
+          className={`text-left p-4 rounded-xl border transition-all cursor-pointer ${
+            tierFilter === "Restricted"
+              ? "bg-red-100/70 border-red-500 shadow-xs ring-2 ring-red-500/20"
+              : "bg-red-50/40 border-red-200 shadow-2xs hover:border-red-300 hover:bg-red-50/80"
+          }`}
+        >
           <div className="text-red-700 text-xs font-semibold flex items-center gap-1">
             <span>🛡️</span> Restricted Tiers
           </div>
@@ -338,9 +364,22 @@ export default function ScopeMatrixView({
               scopes.filter((s) => s.google_tier === "Restricted").length}
           </div>
           <div className="text-[11px] text-red-600 mt-0.5">CASA Tier 2 audit</div>
-        </div>
+        </button>
 
-        <div className="bg-amber-50/40 border border-amber-200 rounded-xl p-4 shadow-2xs">
+        {/* Sensitive Tiers */}
+        <button
+          type="button"
+          onClick={() => {
+            setTierFilter(tierFilter === "Sensitive" ? "ALL" : "Sensitive");
+            setScoreFilter("ALL");
+            setActiveOnly(false);
+          }}
+          className={`text-left p-4 rounded-xl border transition-all cursor-pointer ${
+            tierFilter === "Sensitive"
+              ? "bg-amber-100/70 border-amber-500 shadow-xs ring-2 ring-amber-500/20"
+              : "bg-amber-50/40 border-amber-200 shadow-2xs hover:border-amber-300 hover:bg-amber-50/80"
+          }`}
+        >
           <div className="text-amber-700 text-xs font-semibold flex items-center gap-1">
             <span>👁️</span> Sensitive Tiers
           </div>
@@ -349,9 +388,22 @@ export default function ScopeMatrixView({
               scopes.filter((s) => s.google_tier === "Sensitive").length}
           </div>
           <div className="text-[11px] text-amber-600 mt-0.5">Google reviewed</div>
-        </div>
+        </button>
 
-        <div className="bg-blue-50/40 border border-blue-200 rounded-xl p-4 shadow-2xs">
+        {/* Non-Sensitive */}
+        <button
+          type="button"
+          onClick={() => {
+            setTierFilter(tierFilter === "Non-Sensitive" ? "ALL" : "Non-Sensitive");
+            setScoreFilter("ALL");
+            setActiveOnly(false);
+          }}
+          className={`text-left p-4 rounded-xl border transition-all cursor-pointer ${
+            tierFilter === "Non-Sensitive"
+              ? "bg-blue-100/70 border-blue-500 shadow-xs ring-2 ring-blue-500/20"
+              : "bg-blue-50/40 border-blue-200 shadow-2xs hover:border-blue-300 hover:bg-blue-50/80"
+          }`}
+        >
           <div className="text-blue-700 text-xs font-semibold flex items-center gap-1">
             <span>✓</span> Non-Sensitive
           </div>
@@ -360,9 +412,22 @@ export default function ScopeMatrixView({
               scopes.filter((s) => s.google_tier === "Non-Sensitive").length}
           </div>
           <div className="text-[11px] text-blue-600 mt-0.5">Basic identity / SSO</div>
-        </div>
+        </button>
 
-        <div className="bg-red-50/40 border border-red-200 rounded-xl p-4 shadow-2xs">
+        {/* Critical (5) */}
+        <button
+          type="button"
+          onClick={() => {
+            setScoreFilter(scoreFilter === "5" ? "ALL" : "5");
+            setTierFilter("ALL");
+            setActiveOnly(false);
+          }}
+          className={`text-left p-4 rounded-xl border transition-all cursor-pointer ${
+            scoreFilter === "5"
+              ? "bg-red-100/80 border-red-600 shadow-xs ring-2 ring-red-600/20"
+              : "bg-red-50/40 border-red-200 shadow-2xs hover:border-red-300 hover:bg-red-50/80"
+          }`}
+        >
           <div className="text-red-700 text-xs font-semibold flex items-center gap-1">
             <span>🔥</span> Critical (5)
           </div>
@@ -371,9 +436,20 @@ export default function ScopeMatrixView({
               scopes.filter((s) => s.admin_score === 5).length}
           </div>
           <div className="text-[11px] text-red-600 mt-0.5">Score 5 (Critical)</div>
-        </div>
+        </button>
 
-        <div className="bg-emerald-50/40 border border-emerald-200 rounded-xl p-4 shadow-2xs">
+        {/* Active in Domain */}
+        <button
+          type="button"
+          onClick={() => {
+            setActiveOnly(!activeOnly);
+          }}
+          className={`text-left p-4 rounded-xl border transition-all cursor-pointer ${
+            activeOnly
+              ? "bg-emerald-100/70 border-emerald-500 shadow-xs ring-2 ring-emerald-500/20"
+              : "bg-emerald-50/40 border-emerald-200 shadow-2xs hover:border-emerald-300 hover:bg-emerald-50/80"
+          }`}
+        >
           <div className="text-emerald-700 text-xs font-semibold flex items-center gap-1">
             <span>📡</span> Active in Domain
           </div>
@@ -381,7 +457,7 @@ export default function ScopeMatrixView({
             {activeInDomainCount}
           </div>
           <div className="text-[11px] text-emerald-600 mt-0.5">Granted to apps</div>
-        </div>
+        </button>
       </div>
 
       {/* Filter & View Mode Toolbar */}
