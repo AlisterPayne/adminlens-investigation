@@ -372,7 +372,7 @@ export default function ScopeMatrixView({
       )}
 
       {/* KPI Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
         {/* All Scopes */}
         <button
           type="button"
@@ -464,30 +464,6 @@ export default function ScopeMatrixView({
               scopes.filter((s) => s.google_tier === "Non-Sensitive").length}
           </div>
           <div className="text-[11px] text-blue-600 mt-0.5">Basic identity / SSO</div>
-        </button>
-
-        {/* Critical (5) */}
-        <button
-          type="button"
-          onClick={() => {
-            setScoreFilter(scoreFilter === "5" ? "ALL" : "5");
-            setTierFilter("ALL");
-            setActiveOnly(false);
-          }}
-          className={`text-left p-4 rounded-xl border transition-all cursor-pointer ${
-            scoreFilter === "5"
-              ? "bg-red-100/80 border-red-600 shadow-xs ring-2 ring-red-600/20"
-              : "bg-red-50/40 border-red-200 shadow-2xs hover:border-red-300 hover:bg-red-50/80"
-          }`}
-        >
-          <div className="text-red-700 text-xs font-semibold flex items-center gap-1">
-            <span>🔥</span> Critical (5)
-          </div>
-          <div className="text-2xl font-bold text-red-900 mt-1">
-            {metrics?.scores?.critical ??
-              scopes.filter((s) => s.admin_score === 5).length}
-          </div>
-          <div className="text-[11px] text-red-600 mt-0.5">Score 5 (Critical)</div>
         </button>
 
         {/* Active in Domain */}
