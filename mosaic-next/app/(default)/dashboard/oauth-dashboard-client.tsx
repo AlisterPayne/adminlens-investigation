@@ -255,7 +255,7 @@ export default function OAuthDashboardClient({
 
   // Derived Calculations
   const totalAppsCount = currentApps.length;
-  const highRiskAppsCount = currentApps.filter(a => a.riskLevel === 'CRITICAL' || a.riskLevel === 'HIGH').length;
+  const highRiskAppsCount = currentApps.filter(a => (a.riskScore !== undefined ? a.riskScore >= 4.0 : a.riskLevel === 'CRITICAL')).length;
   const staleAppsCount = currentApps.filter(a => a.isStale).length;
   const newAppsCount = currentApps.filter(a => a.isNew).length;
   const configuredAppsCount = currentMetrics.configuredAppsCount ?? currentApps.filter(a => a.adminAccessLevel && a.adminAccessLevel !== 'UNCONFIGURED').length;
@@ -263,13 +263,15 @@ export default function OAuthDashboardClient({
 
   // Sensitive Services Hotspots
   const serviceHotspots = {
-    Gmail: currentApps.filter(a => a.servicesTouched?.includes('Gmail')).length,
-    Drive: currentApps.filter(a => a.servicesTouched?.includes('Google Drive')).length,
-    AdminSDK: currentApps.filter(a => a.servicesTouched?.includes('Admin SDK')).length,
-    Calendar: currentApps.filter(a => a.servicesTouched?.includes('Calendar')).length,
-    Classroom: currentApps.filter(a => a.servicesTouched?.includes('Classroom')).length,
-    Contacts: currentApps.filter(a => a.servicesTouched?.includes('Contacts')).length,
+    Gmail: currentApps.filter(a => (a.servicesTouched || []).includes('Gmail')).length,
+    Drive: currentApps.filter(a => (a.servicesTouched || []).includes('Google Drive')).length,
+    AdminSDK: currentApps.filter(a => (a.servicesTouched || []).some(s => s.includes('Admin'))).length,
+    Calendar: currentApps.filter(a => (a.servicesTouched || []).includes('Calendar')).length,
+    Classroom: currentApps.filter(a => (a.servicesTouched || []).includes('Classroom')).length,
   };
+
+  // Quick Action stats
+  const pendingConfigCount = currentApps.filter(a => a.adminAccessLevel === 'UNCONFIGURED').length;
 
   // Click-through to filtered apps list
   const filterByServiceAndNavigate = (serviceName: string) => {
@@ -297,12 +299,13 @@ export default function OAuthDashboardClient({
   // Top New Apps
   const topNewApps = currentApps.filter(a => a.isNew).slice(0, 4);
 
-  // Most Frequent Risky Scopes
+  // Most Frequent Risky Scopes (Rated 3-4)
   const scopeMap = new Map<string, number>();
   currentApps.forEach(a => {
-    a.scopes.forEach(s => {
-      if (s.riskLevel === 'CRITICAL' || s.riskLevel === 'HIGH') {
-        scopeMap.set(s.description, (scopeMap.get(s.description) || 0) + 1);
+    (a.scopes || []).forEach(s => {
+      const score = s.adminScore ?? (s.riskLevel === 'CRITICAL' ? 5 : s.riskLevel === 'HIGH' ? 4 : s.riskLevel === 'MEDIUM' ? 3 : 1);
+      if (score === 3 || score === 4) {
+        scopeMap.set(s.description || s.scope, (scopeMap.get(s.description || s.scope) || 0) + 1);
       }
     });
   });
@@ -329,7 +332,9 @@ export default function OAuthDashboardClient({
         (s.scope && s.scope.toLowerCase().includes(query))
       ));
     const matchesRisk = riskFilter === "ALL" || 
-      (riskFilter === "HIGH_RISK" ? (app.riskLevel === "CRITICAL" || app.riskLevel === "HIGH") : app.riskLevel === riskFilter);
+      (riskFilter === "HIGH_RISK" 
+        ? (app.riskScore !== undefined ? app.riskScore >= 4.0 : app.riskLevel === "CRITICAL") 
+        : app.riskLevel === riskFilter);
     const policyLevel = app.adminAccessLevel || "UNCONFIGURED";
     const matchesPolicy = policyFilter === "ALL" || 
       (policyFilter === "CONFIGURED" ? policyLevel !== "UNCONFIGURED" : policyLevel === policyFilter);
@@ -340,7 +345,7 @@ export default function OAuthDashboardClient({
         : (app.servicesTouched || []).includes(serviceFilter));
     const matchesMulti = !multiOnly || app.multiClientMapped;
     const matchesRiskyScopes = !riskyScopesOnly || 
-      (app.scopes || []).some(s => (s.adminScore && s.adminScore >= 4) || s.riskLevel === 'CRITICAL' || s.riskLevel === 'HIGH');
+      (app.scopes || []).some(s => s.adminScore === 3 || s.adminScore === 4);
     return matchesSearch && matchesRisk && matchesPolicy && matchesCat && matchesService && matchesMulti && matchesRiskyScopes;
   });
 
@@ -1150,7 +1155,7 @@ export default function OAuthDashboardClient({
           </div>
 
           {/* Top KPI Header Cards for All Applications (All Clickable) */}
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {/* Total Apps */}
             <div 
               onClick={() => {
@@ -1194,10 +1199,10 @@ export default function OAuthDashboardClient({
               <div className="text-xs text-emerald-600/80 mt-0.5">Console configured & governed</div>
             </div>
 
-            {/* High-Risk Apps */}
+            {/* High-Risk Apps (Score 4-5) */}
             <div 
               onClick={() => setRiskFilter(riskFilter === "HIGH_RISK" ? "ALL" : "HIGH_RISK")}
-              title="Click to filter by Critical & High risk applications"
+              title="Click to filter by High-Risk applications (Score 4–5)"
               className={`border rounded-xl p-4 shadow-sm cursor-pointer transition-all ${
                 riskFilter === "HIGH_RISK" 
                   ? "bg-red-100/70 border-red-500 ring-2 ring-red-500/20 shadow-md" 
@@ -1209,62 +1214,13 @@ export default function OAuthDashboardClient({
                 <span className="text-red-500 text-[10px]">{riskFilter === "HIGH_RISK" ? "Active" : "Filter"}</span>
               </div>
               <div className="text-2xl font-bold text-red-700 mt-1">{highRiskAppsCount}</div>
-              <div className="text-xs text-red-600/80 mt-0.5">Require immediate review</div>
+              <div className="text-xs text-red-600/80 mt-0.5">Score 4.0 – 5.0 (Critical)</div>
             </div>
 
-            {/* Sensitive Access */}
-            <div 
-              onClick={() => setServiceFilter(serviceFilter === "SENSITIVE" ? "ALL" : "SENSITIVE")}
-              title="Click to filter by applications accessing Gmail or Google Drive"
-              className={`border rounded-xl p-4 shadow-sm cursor-pointer transition-all ${
-                serviceFilter === "SENSITIVE" || serviceFilter === "Gmail" || serviceFilter === "Google Drive"
-                  ? "bg-blue-100/60 border-blue-500 ring-2 ring-blue-500/20 shadow-md"
-                  : "bg-white border-gray-200 hover:border-blue-300 hover:bg-blue-50/30"
-              }`}
-            >
-              <div className="flex items-center justify-between text-xs font-bold text-gray-500 uppercase tracking-wider">
-                <span>SENSITIVE ACCESS</span>
-                <span className="text-blue-500 text-[10px]">{serviceFilter !== "ALL" ? "Active" : "Filter"}</span>
-              </div>
-              <div className="flex items-center gap-2 mt-2 text-xs">
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setServiceFilter(serviceFilter === "Gmail" ? "ALL" : "Gmail");
-                  }}
-                  title="Filter to Gmail apps"
-                  className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md font-semibold transition-all ${
-                    serviceFilter === "Gmail"
-                      ? "bg-blue-600 text-white shadow-xs ring-1 ring-blue-700"
-                      : "bg-gray-100/80 text-gray-800 hover:bg-blue-100 hover:text-blue-800"
-                  }`}
-                >
-                  <GmailIcon className="w-3.5 h-3.5" /> Gmail: <span className={serviceFilter === "Gmail" ? "font-bold text-white" : "text-blue-600 font-bold"}>{serviceHotspots.Gmail}</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setServiceFilter(serviceFilter === "Google Drive" ? "ALL" : "Google Drive");
-                  }}
-                  title="Filter to Google Drive apps"
-                  className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md font-semibold transition-all ${
-                    serviceFilter === "Google Drive"
-                      ? "bg-emerald-600 text-white shadow-xs ring-1 ring-emerald-700"
-                      : "bg-gray-100/80 text-gray-800 hover:bg-emerald-100 hover:text-emerald-800"
-                  }`}
-                >
-                  <GoogleDriveIcon className="w-3.5 h-3.5" /> Drive: <span className={serviceFilter === "Google Drive" ? "font-bold text-white" : "text-emerald-600 font-bold"}>{serviceHotspots.Drive}</span>
-                </button>
-              </div>
-              <div className="text-xs text-gray-500 mt-1">Data egress risks</div>
-            </div>
-
-            {/* Risky Scopes */}
+            {/* Risky Scopes (Score 3-4) */}
             <div 
               onClick={() => setRiskyScopesOnly(!riskyScopesOnly)}
-              title="Click to filter by applications requesting dangerous scopes"
+              title="Click to filter by applications requesting scopes rated 3–4"
               className={`border rounded-xl p-4 shadow-sm cursor-pointer transition-all ${
                 riskyScopesOnly 
                   ? "bg-amber-100/70 border-amber-500 ring-2 ring-amber-500/20 shadow-md" 
@@ -1276,7 +1232,7 @@ export default function OAuthDashboardClient({
                 <span className="text-amber-600 text-[10px]">{riskyScopesOnly ? "Active" : "Filter"}</span>
               </div>
               <div className="text-2xl font-bold text-amber-800 mt-1">{scopeMap.size}</div>
-              <div className="text-xs text-amber-700/80 mt-0.5">Unique dangerous permissions</div>
+              <div className="text-xs text-amber-700/80 mt-0.5">Unique permissions rated 3–4</div>
             </div>
           </div>
 
