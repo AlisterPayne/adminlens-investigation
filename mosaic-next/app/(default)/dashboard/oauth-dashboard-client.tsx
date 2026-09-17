@@ -1557,30 +1557,13 @@ export default function OAuthDashboardClient({
 
                             {/* Action Column */}
                             <td className="py-3 px-4 text-right">
-                              <div className="flex items-center justify-end gap-1.5">
-                                <a
-                                  href={getAdminConsoleLink(app).url}
-                                  target="_blank"
-                                  rel="noreferrer"
-                                  onClick={(e) => e.stopPropagation()}
-                                  title={`Open in Google Admin Console → ${getAdminConsoleLink(app).tabName}`}
-                                  className={`inline-flex items-center gap-1 px-2 py-1 text-[11px] font-semibold rounded-md border transition-all shadow-2xs ${
-                                    getAdminConsoleLink(app).isConfigured
-                                      ? "bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border-emerald-300"
-                                      : "bg-blue-50 hover:bg-blue-100 text-blue-800 border-blue-300"
-                                  }`}
-                                >
-                                  <GoogleAdminIcon className="w-3.5 h-3.5 flex-shrink-0" />
-                                  <span>{getAdminConsoleLink(app).isDirect ? "Admin (Direct) ↗" : getAdminConsoleLink(app).isConfigured ? "Configured ↗" : "Accessed ↗"}</span>
-                                </a>
-                                <button
-                                  type="button"
-                                  onClick={() => setSelectedApp(app)}
-                                  className="px-2.5 py-1 bg-white hover:bg-gray-100 text-[11px] font-semibold text-gray-700 border border-gray-300 rounded-md transition-colors shadow-2xs"
-                                >
-                                  Inspect
-                                </button>
-                              </div>
+                              <button
+                                type="button"
+                                onClick={() => setSelectedApp(app)}
+                                className="px-2.5 py-1 bg-white hover:bg-gray-100 text-[11px] font-semibold text-gray-700 border border-gray-300 rounded-md transition-colors shadow-2xs"
+                              >
+                                Inspect
+                              </button>
                             </td>
                           </tr>
                         ))}
@@ -1687,30 +1670,13 @@ export default function OAuthDashboardClient({
 
                         {/* Action Column */}
                         <td className="py-3 px-4 text-right">
-                          <div className="flex items-center justify-end gap-1.5">
-                            <a
-                              href={getAdminConsoleLink(app).url}
-                              target="_blank"
-                              rel="noreferrer"
-                              onClick={(e) => e.stopPropagation()}
-                              title={`Open in Google Admin Console → ${getAdminConsoleLink(app).tabName}`}
-                              className={`inline-flex items-center gap-1 px-2 py-1 text-[11px] font-semibold rounded-md border transition-all shadow-2xs ${
-                                getAdminConsoleLink(app).isConfigured
-                                  ? "bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border-emerald-300"
-                                  : "bg-blue-50 hover:bg-blue-100 text-blue-800 border-blue-300"
-                              }`}
-                            >
-                              <GoogleAdminIcon className="w-3.5 h-3.5 flex-shrink-0" />
-                              <span>{getAdminConsoleLink(app).isDirect ? "Admin (Direct) ↗" : getAdminConsoleLink(app).isConfigured ? "Configured ↗" : "Accessed ↗"}</span>
-                            </a>
-                            <button
-                              type="button"
-                              onClick={() => setSelectedApp(app)}
-                              className="px-2.5 py-1 bg-white hover:bg-gray-100 text-[11px] font-semibold text-gray-700 border border-gray-300 rounded-md transition-colors shadow-2xs"
-                            >
-                              Inspect
-                            </button>
-                          </div>
+                          <button
+                            type="button"
+                            onClick={() => setSelectedApp(app)}
+                            className="px-2.5 py-1 bg-white hover:bg-gray-100 text-[11px] font-semibold text-gray-700 border border-gray-300 rounded-md transition-colors shadow-2xs"
+                          >
+                            Inspect
+                          </button>
                         </td>
                       </tr>
                     ))
@@ -1925,16 +1891,6 @@ export default function OAuthDashboardClient({
                   </div>
                   <div className="flex items-center gap-2">
                     {getPolicyBadge(selectedApp.adminAccessLevel)}
-                    <a
-                      href={getAdminConsoleLink(selectedApp).url}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-[11px] text-blue-700 hover:text-blue-900 font-semibold flex items-center gap-1 bg-white px-2 py-1 rounded border border-gray-200 hover:border-blue-300 shadow-2xs transition-colors"
-                      title={`Open ${getAdminConsoleLink(selectedApp).tabName} in Google Admin`}
-                    >
-                      <GoogleAdminIcon className="w-3.5 h-3.5" />
-                      <span>Console ↗</span>
-                    </a>
                   </div>
                 </div>
 
@@ -2246,19 +2202,6 @@ export default function OAuthDashboardClient({
             <div className="p-4 border-t border-gray-200 bg-gray-50 flex flex-wrap gap-2 justify-between items-center text-xs text-gray-500">
               <div>Total Activity Events: <span className="font-bold text-gray-800">{selectedApp.totalActivityEvents}</span></div>
               <div className="flex items-center gap-2">
-                <a
-                  href={getAdminConsoleLink(selectedApp).url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-colors border shadow-2xs ${
-                    getAdminConsoleLink(selectedApp).isConfigured
-                      ? "bg-emerald-50 text-emerald-800 border-emerald-300 hover:bg-emerald-100"
-                      : "bg-blue-50 text-blue-800 border-blue-300 hover:bg-blue-100"
-                  }`}
-                >
-                  <GoogleAdminIcon className="w-3.5 h-3.5" />
-                  <span>Open in {getAdminConsoleLink(selectedApp).tabName} ↗</span>
-                </a>
                 <button
                   onClick={() => setSelectedApp(null)}
                   className="px-4 py-1.5 bg-gray-800 hover:bg-gray-900 text-white rounded-lg font-medium transition-colors"
