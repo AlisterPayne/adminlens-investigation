@@ -545,25 +545,26 @@ export default function OAuthDashboardClient({
             )}
           </span>
         );
-      case "LOW":
-      default:
-        if (score !== undefined && score < 1.5) {
-          return (
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-semibold text-blue-700 border border-blue-200">
-              <span className="h-1.5 w-1.5 rounded-full bg-blue-600"></span>
-              <span>Low</span>
-              <span className="bg-blue-200/60 text-blue-800 text-[10px] font-mono px-1 py-0.2 rounded font-bold">
-                {formattedScore}
-              </span>
-            </span>
-          );
-        }
+      case "MINOR":
         return (
           <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-semibold text-emerald-700 border border-emerald-200">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-600"></span>
-            <span>{score !== undefined && score < 2.5 ? "Minor" : "Low"}</span>
+            <span>Minor</span>
             {formattedScore && (
               <span className="bg-emerald-200/60 text-emerald-800 text-[10px] font-mono px-1 py-0.2 rounded font-bold">
+                {formattedScore}
+              </span>
+            )}
+          </span>
+        );
+      case "LOW":
+      default:
+        return (
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-semibold text-blue-700 border border-blue-200">
+            <span className="h-1.5 w-1.5 rounded-full bg-blue-600"></span>
+            <span>Low</span>
+            {formattedScore && (
+              <span className="bg-blue-200/60 text-blue-800 text-[10px] font-mono px-1 py-0.2 rounded font-bold">
                 {formattedScore}
               </span>
             )}
@@ -1328,10 +1329,11 @@ export default function OAuthDashboardClient({
               >
                 <option value="ALL">Risk: All</option>
                 <option value="HIGH_RISK">⚠️ High Risk (Critical & High)</option>
-                <option value="CRITICAL">🔴 Critical</option>
-                <option value="HIGH">🟠 High</option>
-                <option value="MEDIUM">🟡 Medium</option>
-                <option value="LOW">🟢 Low</option>
+                <option value="CRITICAL">🔴 Critical (4–5)</option>
+                <option value="HIGH">🟠 High (3–4)</option>
+                <option value="MEDIUM">🟡 Medium (2–3)</option>
+                <option value="MINOR">🟢 Minor (1–2)</option>
+                <option value="LOW">🔵 Low (0–1)</option>
               </select>
 
               <select
@@ -2039,20 +2041,17 @@ export default function OAuthDashboardClient({
                   <div className="bg-white border border-gray-200 rounded-lg p-2.5 shadow-2xs">
                     <div className="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Base Floor (Peak)</div>
                     <div className="text-base font-bold text-red-700 mt-0.5">
-                      {(selectedApp.peakScopeScore === 5 ? 4.5 :
-                        selectedApp.peakScopeScore === 4 ? 3.5 :
-                        selectedApp.peakScopeScore === 3 ? 2.5 :
-                        selectedApp.peakScopeScore === 2 ? 1.5 : 1.0).toFixed(2)}
+                      {Math.max(0, (selectedApp.peakScopeScore ?? 1) - 1).toFixed(2)}
                     </div>
                     <div className="text-[10px] text-gray-400">
-                      Tier {selectedApp.peakScopeScore ?? 1} Floor
+                      Tier {selectedApp.peakScopeScore ?? 1} Floor (Peak − 1)
                     </div>
                   </div>
 
                   <div className="bg-white border border-gray-200 rounded-lg p-2.5 shadow-2xs">
                     <div className="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Breadth Surcharge</div>
                     <div className="text-base font-bold text-blue-700 mt-0.5">
-                      +{(selectedApp.breadthScore !== undefined ? selectedApp.breadthScore : Math.max(0, (selectedApp.riskScore || 1) - (selectedApp.peakScopeScore === 5 ? 4.5 : selectedApp.peakScopeScore === 4 ? 3.5 : selectedApp.peakScopeScore === 3 ? 2.5 : selectedApp.peakScopeScore === 2 ? 1.5 : 1.0))).toFixed(2)} pts
+                      +{(selectedApp.breadthScore !== undefined ? selectedApp.breadthScore : Math.max(0, (selectedApp.riskScore || 0) - Math.max(0, (selectedApp.peakScopeScore ?? 1) - 1))).toFixed(2)} pts
                     </div>
                     <div className="text-[10px] text-gray-400">
                       {Math.max(0, (selectedApp.scopes?.length || 1) - 1)} secondary scope(s)
@@ -2062,7 +2061,7 @@ export default function OAuthDashboardClient({
                   <div className="bg-white border border-gray-200 rounded-lg p-2.5 shadow-2xs">
                     <div className="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Final Risk Score</div>
                     <div className="text-base font-bold text-gray-900 mt-0.5">
-                      {selectedApp.riskScore !== undefined ? selectedApp.riskScore.toFixed(2) : '1.00'}
+                      {selectedApp.riskScore !== undefined ? selectedApp.riskScore.toFixed(2) : '0.00'}
                     </div>
                     <div className="text-[10px] text-gray-500 font-medium">
                       / 5.00 Scale
@@ -2071,7 +2070,7 @@ export default function OAuthDashboardClient({
                 </div>
 
                 <div className="text-[11px] text-gray-600 bg-white/70 rounded-md p-2 border border-gray-200/80 leading-snug">
-                  <strong>Non-Compensatory Rationale:</strong> The peak scope sets an absolute, non-dilutable security floor (e.g. Critical access guarantees a minimum 4.50 base score). Secondary scopes act purely as an additive attack surface breadth modifier and can never dilute high-impact permissions.
+                  <strong>Non-Compensatory Rationale:</strong> The peak scope sets an absolute, non-dilutable security floor (Peak Score − 1: Level 5 → 4.00, Level 4 → 3.00, Level 3 → 2.00, Level 2 → 1.00, Level 1 → 0.00). Secondary scopes add breadth surcharge points within tier headroom (0–1 Low, 1–2 Minor, 2–3 Medium, 3–4 High, 4–5 Critical) without diluting peak permissions.
                 </div>
               </div>
 

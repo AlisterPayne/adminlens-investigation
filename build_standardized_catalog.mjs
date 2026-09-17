@@ -420,21 +420,19 @@ for (const [id, app] of catalog.entries()) {
 
   // Calculate Application Risk Score: Option B Non-Compensatory Floor Model
   // Base Severity Floor (determined by Peak Scope) + Additive Attack Surface Breadth (secondary scopes)
-  let calculatedRiskScore = 1.0;
-  let peakScopeScore = 1;
+  let calculatedRiskScore = 0.0;
+  let peakScopeScore = 0;
   let breadthScore = 0.0;
-  let avgScopeScore = 1.0;
+  let avgScopeScore = 0.0;
 
   if (scopesList.length > 0) {
     peakScopeScore = Math.max(...scopesList.map(s => s.adminScore || 1));
     const sumScores = scopesList.reduce((sum, s) => sum + (s.adminScore || 1), 0);
     avgScopeScore = sumScores / scopesList.length;
 
-    // Base tier floor based on peak scope
-    const baseFloor = peakScopeScore === 5 ? 4.50 :
-                      peakScopeScore === 4 ? 3.50 :
-                      peakScopeScore === 3 ? 2.50 :
-                      peakScopeScore === 2 ? 1.50 : 1.00;
+    // Base tier floor based on peak scope:
+    // Peak 5 -> 4.00, Peak 4 -> 3.00, Peak 3 -> 2.00, Peak 2 -> 1.00, Peak 1 -> 0.00
+    const baseFloor = Math.max(0, peakScopeScore - 1);
 
     // Secondary scopes breadth surcharge
     const allScores = scopesList.map(s => s.adminScore || 1);
@@ -449,30 +447,29 @@ for (const [id, app] of catalog.entries()) {
       return acc + 0.01;
     }, 0);
 
-    const maxHeadroom = peakScopeScore === 5 ? 0.50 :
-                        peakScopeScore === 1 ? 0.40 : 0.90;
+    const maxHeadroom = peakScopeScore === 5 ? 1.00 : 0.99;
     breadthScore = Number(Math.min(maxHeadroom, surcharge).toFixed(2));
     calculatedRiskScore = Number((baseFloor + breadthScore).toFixed(2));
   }
 
-  // Derive standardized riskLevel and riskScoreColor from Option B score (1.00 - 5.00 Scale)
-  // Scale: 1.00-1.49 (Low/Blue), 1.50-2.49 (Minor/Green), 2.50-3.49 (Moderate/Yellow), 3.50-4.49 (High/Orange), 4.50-5.00 (Critical/Red)
+  // Derive standardized riskLevel and riskScoreColor from Option B score (0.00 - 5.00 Scale)
+  // Scale: 0.00-0.99 (Low/Blue), 1.00-1.99 (Minor/Green), 2.00-2.99 (Medium/Yellow), 3.00-3.99 (High/Orange), 4.00-5.00 (Critical/Red)
   let calculatedRiskLevel = 'LOW';
   let calculatedRiskColor = 'Blue';
-  if (calculatedRiskScore >= 4.50) {
+  if (calculatedRiskScore >= 4.00) {
     calculatedRiskLevel = 'CRITICAL';
     calculatedRiskColor = 'Red';
-  } else if (calculatedRiskScore >= 3.50) {
+  } else if (calculatedRiskScore >= 3.00) {
     calculatedRiskLevel = 'HIGH';
     calculatedRiskColor = 'Orange';
-  } else if (calculatedRiskScore >= 2.50) {
-    calculatedRiskLevel = 'MEDIUM'; // Moderate
+  } else if (calculatedRiskScore >= 2.00) {
+    calculatedRiskLevel = 'MEDIUM';
     calculatedRiskColor = 'Yellow';
-  } else if (calculatedRiskScore >= 1.50) {
-    calculatedRiskLevel = 'LOW'; // Minor
+  } else if (calculatedRiskScore >= 1.00) {
+    calculatedRiskLevel = 'MINOR';
     calculatedRiskColor = 'Green';
   } else {
-    calculatedRiskLevel = 'LOW'; // Low
+    calculatedRiskLevel = 'LOW';
     calculatedRiskColor = 'Blue';
   }
 
@@ -563,7 +560,7 @@ for (const [id, app] of catalog.entries()) {
 }
 
 // Sort by Family Name, then Risk Level, then total users
-const riskWeights = { CRITICAL: 4, HIGH: 3, MEDIUM: 2, LOW: 1 };
+const riskWeights = { CRITICAL: 5, HIGH: 4, MEDIUM: 3, MINOR: 2, LOW: 1 };
 finalizedApps.sort((a, b) => {
   if (a.familyName !== b.familyName) {
     return a.familyName.localeCompare(b.familyName);
@@ -581,8 +578,8 @@ const productFamiliesSummary = Array.from(familyMap.values()).map(f => {
     return (riskWeights[d.riskLevel] > riskWeights[max]) ? d.riskLevel : max;
   }, 'LOW');
   const avgRiskScore = familyDeployments.length > 0
-    ? Number((familyDeployments.reduce((sum, d) => sum + (d.riskScore || 1.0), 0) / familyDeployments.length).toFixed(2))
-    : 1.0;
+    ? Number((familyDeployments.reduce((sum, d) => sum + (d.riskScore || 0.0), 0) / familyDeployments.length).toFixed(2))
+    : 0.0;
 
   return {
     familyId: f.familyId,
@@ -606,6 +603,9 @@ const metrics = {
   totalActiveGrants: activeTokens.length,
   criticalRiskApps: finalizedApps.filter(a => a.riskLevel === 'CRITICAL').length,
   highRiskApps: finalizedApps.filter(a => a.riskLevel === 'HIGH').length,
+  mediumRiskApps: finalizedApps.filter(a => a.riskLevel === 'MEDIUM').length,
+  minorRiskApps: finalizedApps.filter(a => a.riskLevel === 'MINOR').length,
+  lowRiskApps: finalizedApps.filter(a => a.riskLevel === 'LOW').length,
   configuredAppsCount: finalizedApps.filter(a => a.adminAccessLevel && a.adminAccessLevel !== 'UNCONFIGURED').length,
   trustedAppsCount: finalizedApps.filter(a => a.adminAccessLevel === 'TRUSTED').length,
   blockedAppsCount: finalizedApps.filter(a => a.adminAccessLevel === 'BLOCKED').length,

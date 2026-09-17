@@ -142,6 +142,7 @@ export default function OAuthDashboardV2Client({
       if (app.riskLevel === "CRITICAL") scopeScore = 35;
       else if (app.riskLevel === "HIGH") scopeScore = 25;
       else if (app.riskLevel === "MEDIUM") scopeScore = 15;
+      else if (app.riskLevel === "MINOR") scopeScore = 10;
       else scopeScore = 5;
 
       // 2. Vendor Trust & Posture (0-25)
@@ -636,10 +637,11 @@ export default function OAuthDashboardV2Client({
                 className="bg-gray-50 border border-gray-300 rounded-lg px-2.5 py-1.5 text-gray-700 focus:outline-none"
               >
                 <option value="ALL">Risk: All</option>
-                <option value="CRITICAL">🔴 Critical</option>
-                <option value="HIGH">🟠 High</option>
-                <option value="MEDIUM">🟡 Medium</option>
-                <option value="LOW">🟢 Low</option>
+                <option value="CRITICAL">🔴 Critical (4–5)</option>
+                <option value="HIGH">🟠 High (3–4)</option>
+                <option value="MEDIUM">🟡 Medium (2–3)</option>
+                <option value="MINOR">🟢 Minor (1–2)</option>
+                <option value="LOW">🔵 Low (0–1)</option>
               </select>
 
               <select

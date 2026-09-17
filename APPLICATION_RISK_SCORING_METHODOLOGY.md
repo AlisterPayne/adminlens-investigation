@@ -42,7 +42,7 @@ AdminLens computes a composite risk score between **0 and 100** by evaluating fo
 +-------------------------+-------------------------+---------------+---------------+
 ```
 
-### Pillar 1: Scope Sensitivity (Weight: 0–35 Points / 1.00–5.00 Base Scale)
+### Pillar 1: Scope Sensitivity (Weight: 0–35 Points / 0.00–5.00 Standardized Scale)
 Evaluates **what data the token has technical authorization to access or manipulate**. Individual OAuth scopes are cataloged on an **Enterprise Threat Scale (1 to 5)** and aggregated using a **Non-Compensatory Floor Model (Option B)**:
 
 * **Scope Threat Ratings (1–5)**:
@@ -52,8 +52,16 @@ Evaluates **what data the token has technical authorization to access or manipul
   * **Level 2 — Minor (10 pts)**: Read-only educational or operational tools (`classroom.courses.readonly`).
   * **Level 1 — Low (5 pts)**: Basic authentication & profile assertion (`openid`, `email`, `profile`).
 
-* **Option B Non-Compensatory Floor Aggregation**:
-  To prevent the "Dilution Paradox" (where adding benign scopes dilutes severe permissions), the application's **Peak Scope establishes a non-dilutable Base Floor** (Level 5 $\to$ 4.50, Level 4 $\to$ 3.50, Level 3 $\to$ 2.50, Level 2 $\to$ 1.50, Level 1 $\to$ 1.00). Secondary scopes contribute an additive **Attack Surface Breadth Surcharge** (capped within tier headroom), ensuring strict monotonicity and preventing severe risks from ever being averaged away.
+* **Option B Non-Compensatory Floor Aggregation (0.00 – 5.00 Scale)**:
+  To prevent the "Dilution Paradox" (where adding benign scopes dilutes severe permissions), the application's **Peak Scope establishes a non-dilutable Base Floor**:
+  $$\text{BaseFloor} = \max(0, \text{PeakScopeScore} - 1)$$
+  - **Level 5 Peak** $\to$ Base Floor **4.00** $\implies$ Final Tier: **CRITICAL [4.00 – 5.00]** (Red)
+  - **Level 4 Peak** $\to$ Base Floor **3.00** $\implies$ Final Tier: **HIGH [3.00 – 3.99]** (Orange)
+  - **Level 3 Peak** $\to$ Base Floor **2.00** $\implies$ Final Tier: **MEDIUM [2.00 – 2.99]** (Yellow)
+  - **Level 2 Peak** $\to$ Base Floor **1.00** $\implies$ Final Tier: **MINOR [1.00 – 1.99]** (Green)
+  - **Level 1 Peak** $\to$ Base Floor **0.00** $\implies$ Final Tier: **LOW [0.00 – 0.99]** (Blue)
+
+  Secondary scopes contribute an additive **Attack Surface Breadth Surcharge** (Extra Scope 5: +0.15, Extra Scope 4: +0.08, Extra Scope 3: +0.04, Extra Scope 2: +0.02, Extra Scope 1: +0.01; capped within tier headroom), ensuring strict monotonicity and preventing severe risks from ever being averaged away.
 
 ---
 
