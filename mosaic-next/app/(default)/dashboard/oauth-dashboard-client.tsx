@@ -119,6 +119,7 @@ interface Metrics {
   totalActiveGrants: number;
   criticalRiskApps: number;
   highRiskApps: number;
+  configuredAppsCount?: number;
   trustedAppsCount?: number;
   blockedAppsCount?: number;
   specificDataAppsCount?: number;
@@ -208,6 +209,7 @@ export default function OAuthDashboardClient({
   const highRiskAppsCount = currentApps.filter(a => a.riskLevel === 'CRITICAL' || a.riskLevel === 'HIGH').length;
   const staleAppsCount = currentApps.filter(a => a.isStale).length;
   const newAppsCount = currentApps.filter(a => a.isNew).length;
+  const configuredAppsCount = currentMetrics.configuredAppsCount ?? currentApps.filter(a => a.adminAccessLevel && a.adminAccessLevel !== 'UNCONFIGURED').length;
   const trustedAppsCount = currentMetrics.trustedAppsCount || currentApps.filter(a => a.adminAccessLevel === 'TRUSTED').length;
 
   // Sensitive Services Hotspots
@@ -268,7 +270,8 @@ export default function OAuthDashboardClient({
       app.clientIds.some((cid) => cid.toLowerCase().includes(search.toLowerCase()));
     const matchesRisk = riskFilter === "ALL" || app.riskLevel === riskFilter;
     const policyLevel = app.adminAccessLevel || "UNCONFIGURED";
-    const matchesPolicy = policyFilter === "ALL" || policyLevel === policyFilter;
+    const matchesPolicy = policyFilter === "ALL" || 
+      (policyFilter === "CONFIGURED" ? policyLevel !== "UNCONFIGURED" : policyLevel === policyFilter);
     const matchesCat = categoryFilter === "ALL" || app.category === categoryFilter;
     const matchesType = typeFilter === "ALL" || app.appType === typeFilter;
     const matchesService = serviceFilter === "ALL" || (app.servicesTouched || []).includes(serviceFilter);
@@ -385,14 +388,16 @@ export default function OAuthDashboardClient({
 
         setCurrentApps(newApps);
         const trusted = newApps.filter(a => a.adminAccessLevel === 'TRUSTED').length;
+        const configured = newApps.filter(a => a.adminAccessLevel && a.adminAccessLevel !== 'UNCONFIGURED').length;
         setCurrentMetrics(prev => ({
           ...prev,
+          configuredAppsCount: configured,
           trustedAppsCount: trusted,
           baselineSource: file.name,
           baselinePolicyCount: policyMap.size,
           baselineLoadedAt: new Date().toISOString()
         }));
-        setUploadToast(`✓ Ingested ${policyMap.size} policies from "${file.name}"! Updated domain trust baseline (${trusted} Trusted apps).`);
+        setUploadToast(`✓ Ingested ${policyMap.size} policies from "${file.name}"! Updated domain trust baseline (${configured} Configured apps).`);
         setShowSetupModal(false);
         setTimeout(() => setUploadToast(null), 6000);
       } catch (err: any) {
@@ -686,19 +691,19 @@ export default function OAuthDashboardClient({
               <div className="text-xs text-gray-500 mt-1">Unique apps authorized</div>
             </div>
 
-            {/* Trusted by Admin */}
+            {/* Configured by Admin */}
             <div 
-              onClick={() => { setActiveTab("apps"); setPolicyFilter("TRUSTED"); setRiskFilter("ALL"); setServiceFilter("ALL"); }}
+              onClick={() => { setActiveTab("apps"); setPolicyFilter("CONFIGURED"); setRiskFilter("ALL"); setServiceFilter("ALL"); }}
               className="bg-white border border-emerald-200 rounded-xl p-5 shadow-sm relative overflow-hidden bg-gradient-to-br from-emerald-50/40 to-white hover:shadow-md transition-all cursor-pointer"
             >
               <div className="flex items-center justify-between text-xs font-bold text-emerald-700 uppercase tracking-wider">
                 <span className="flex items-center gap-1.5">
-                  <span className="text-emerald-600 text-sm">🛡️</span> TRUSTED BY ADMIN
+                  <span className="text-emerald-600 text-sm">⚙️</span> CONFIGURED BY ADMIN
                 </span>
                 <span className="text-emerald-400">›</span>
               </div>
-              <div className="text-3xl font-extrabold text-emerald-700 mt-2">{trustedAppsCount}</div>
-              <div className="text-xs text-emerald-600/80 mt-1">Admin sanctioned in Console</div>
+              <div className="text-3xl font-extrabold text-emerald-700 mt-2">{configuredAppsCount}</div>
+              <div className="text-xs text-emerald-600/80 mt-1">Admin configured in Console</div>
             </div>
 
             {/* High Risk Apps */}
@@ -1003,14 +1008,14 @@ export default function OAuthDashboardClient({
               <div className="text-xs text-gray-500 mt-0.5">Unique apps authorized</div>
             </div>
             <div 
-              onClick={() => setPolicyFilter(policyFilter === "TRUSTED" ? "ALL" : "TRUSTED")}
+              onClick={() => setPolicyFilter(policyFilter === "CONFIGURED" ? "ALL" : "CONFIGURED")}
               className={`border rounded-xl p-4 shadow-sm cursor-pointer transition-all ${
-                policyFilter === "TRUSTED" ? "bg-emerald-100/70 border-emerald-500 ring-2 ring-emerald-500/20" : "bg-emerald-50/50 border-emerald-200 hover:bg-emerald-50"
+                policyFilter === "CONFIGURED" ? "bg-emerald-100/70 border-emerald-500 ring-2 ring-emerald-500/20" : "bg-emerald-50/50 border-emerald-200 hover:bg-emerald-50"
               }`}
             >
-              <div className="text-xs font-bold text-emerald-700 uppercase tracking-wider">TRUSTED BY ADMIN</div>
-              <div className="text-2xl font-bold text-emerald-700 mt-1">{trustedAppsCount}</div>
-              <div className="text-xs text-emerald-600/80 mt-0.5">Console allowlisted</div>
+              <div className="text-xs font-bold text-emerald-700 uppercase tracking-wider">CONFIGURED BY ADMIN</div>
+              <div className="text-2xl font-bold text-emerald-700 mt-1">{configuredAppsCount}</div>
+              <div className="text-xs text-emerald-600/80 mt-0.5">Console configured & governed</div>
             </div>
             <div className="bg-red-50/50 border border-red-200 rounded-xl p-4 shadow-sm">
               <div className="text-xs font-bold text-red-600 uppercase tracking-wider">HIGH-RISK APPS</div>
@@ -1059,6 +1064,7 @@ export default function OAuthDashboardClient({
                 className="bg-gray-50 border border-gray-300 rounded-lg px-2.5 py-1.5 text-gray-700 focus:outline-none font-medium"
               >
                 <option value="ALL">Policy: All</option>
+                <option value="CONFIGURED">⚙️ Configured by Admin</option>
                 <option value="TRUSTED">🛡️ Trusted</option>
                 <option value="LIMITED">🔹 Limited</option>
                 <option value="SPECIFIC_DATA">🔸 Specific Data</option>

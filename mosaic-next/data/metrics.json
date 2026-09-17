@@ -5,6 +5,7 @@
   "totalActiveGrants": 267,
   "criticalRiskApps": 18,
   "highRiskApps": 18,
+  "configuredAppsCount": 28,
   "trustedAppsCount": 28,
   "blockedAppsCount": 0,
   "specificDataAppsCount": 0,
