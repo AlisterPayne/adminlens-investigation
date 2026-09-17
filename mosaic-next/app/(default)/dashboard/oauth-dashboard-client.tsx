@@ -60,6 +60,7 @@ interface Application {
   isVerified: boolean;
   iconUrl: string;
   storeUrl: string | null;
+  adminConsoleUrl?: string;
   description?: string;
   riskScore?: number;
   peakScopeScore?: number;
@@ -202,6 +203,53 @@ export default function OAuthDashboardClient({
           </span>
         );
     }
+  };
+
+  // Google Workspace Admin Console Deep-Linking Resolver
+  const getAdminConsoleLink = (app: Application) => {
+    // 1. Direct deep link if available on the app record
+    if (app.adminConsoleUrl) {
+      return {
+        url: app.adminConsoleUrl,
+        label: "Open in Google Admin (Direct)",
+        tabName: "Direct Application Settings",
+        isDirect: true,
+        isConfigured: true,
+      };
+    }
+    // 2. Canva direct link provided by administrator
+    if (
+      app.familyId === "canva" ||
+      app.id?.includes("779010036194") ||
+      app.displayName?.toLowerCase().includes("canva")
+    ) {
+      return {
+        url: "https://admin.google.com/ac/owl/list/hVrYyRghrieM9HomrljskXNClraS54Jv5m7GJc1xdn7zBsUIDYT6HKFkNAAvzZm-pcOMsVDHItchukWBaoKt1GmjmG1XBia22rOL8wmcr3o",
+        label: "Open in Google Admin (Canva Direct)",
+        tabName: "Canva App Settings",
+        isDirect: true,
+        isConfigured: true,
+      };
+    }
+    // 3. Configured apps vs Unconfigured apps
+    const isConfigured = Boolean(app.adminAccessLevel && app.adminAccessLevel !== "UNCONFIGURED");
+    if (isConfigured) {
+      return {
+        url: "https://admin.google.com/ac/owl/list?tab=configuredApps",
+        label: "Open in Google Admin (Configured Apps)",
+        tabName: "Configured Apps",
+        isDirect: false,
+        isConfigured: true,
+      };
+    }
+    // 4. Unconfigured apps -> Accessed apps
+    return {
+      url: "https://admin.google.com/ac/owl/list?tab=apps",
+      label: "Open in Google Admin (Accessed Apps)",
+      tabName: "Accessed Apps",
+      isDirect: false,
+      isConfigured: false,
+    };
   };
 
   // Derived Calculations
@@ -693,6 +741,45 @@ export default function OAuthDashboardClient({
               <span>Domain Scope: <strong className="text-gray-800">All Organizational Units</strong></span>
               <span>•</span>
               <span>Total Rules: <strong className="text-gray-800">{currentMetrics.baselinePolicyCount || 32} policies</strong></span>
+            </div>
+
+            {/* Quick Deep-Links to Google Admin Console */}
+            <div className="pt-2 border-t border-blue-200/50 flex flex-wrap items-center gap-2 text-xs">
+              <span className="font-bold text-gray-700 flex items-center gap-1.5">
+                <GoogleAdminIcon className="w-3.5 h-3.5" /> Console Deep Links:
+              </span>
+              <a
+                href="https://admin.google.com/ac/owl/list?tab=apps"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1 px-2.5 py-1 bg-white hover:bg-blue-50 text-blue-700 font-semibold rounded-md border border-gray-200 hover:border-blue-300 transition-colors shadow-2xs"
+              >
+                <span>Accessed Apps ↗</span>
+              </a>
+              <a
+                href="https://admin.google.com/ac/owl/list?tab=configuredApps"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1 px-2.5 py-1 bg-white hover:bg-emerald-50 text-emerald-700 font-semibold rounded-md border border-gray-200 hover:border-emerald-300 transition-colors shadow-2xs"
+              >
+                <span>Configured Apps ↗</span>
+              </a>
+              <a
+                href="https://admin.google.com/ac/owl/list?tab=pendingReviewApps"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1 px-2.5 py-1 bg-white hover:bg-amber-50 text-amber-700 font-semibold rounded-md border border-gray-200 hover:border-amber-300 transition-colors shadow-2xs"
+              >
+                <span>Apps Pending Review ↗</span>
+              </a>
+              <a
+                href="https://admin.google.com/ac/owl/list?tab=services"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1 px-2.5 py-1 bg-white hover:bg-purple-50 text-purple-700 font-semibold rounded-md border border-gray-200 hover:border-purple-300 transition-colors shadow-2xs"
+              >
+                <span>Google Services ↗</span>
+              </a>
             </div>
           </div>
         </div>
@@ -1468,9 +1555,30 @@ export default function OAuthDashboardClient({
 
                             {/* Action Column */}
                             <td className="py-3 px-4 text-right">
-                              <button className="px-3 py-1 bg-white hover:bg-gray-100 text-xs font-semibold text-gray-700 border border-gray-300 rounded-md transition-colors shadow-sm">
-                                Inspect
-                              </button>
+                              <div className="flex items-center justify-end gap-1.5">
+                                <a
+                                  href={getAdminConsoleLink(app).url}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  onClick={(e) => e.stopPropagation()}
+                                  title={`Open in Google Admin Console → ${getAdminConsoleLink(app).tabName}`}
+                                  className={`inline-flex items-center gap-1 px-2 py-1 text-[11px] font-semibold rounded-md border transition-all shadow-2xs ${
+                                    getAdminConsoleLink(app).isConfigured
+                                      ? "bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border-emerald-300"
+                                      : "bg-blue-50 hover:bg-blue-100 text-blue-800 border-blue-300"
+                                  }`}
+                                >
+                                  <GoogleAdminIcon className="w-3.5 h-3.5 flex-shrink-0" />
+                                  <span>{getAdminConsoleLink(app).isDirect ? "Admin (Direct) ↗" : getAdminConsoleLink(app).isConfigured ? "Configured ↗" : "Accessed ↗"}</span>
+                                </a>
+                                <button
+                                  type="button"
+                                  onClick={() => setSelectedApp(app)}
+                                  className="px-2.5 py-1 bg-white hover:bg-gray-100 text-[11px] font-semibold text-gray-700 border border-gray-300 rounded-md transition-colors shadow-2xs"
+                                >
+                                  Inspect
+                                </button>
+                              </div>
                             </td>
                           </tr>
                         ))}
@@ -1577,9 +1685,30 @@ export default function OAuthDashboardClient({
 
                         {/* Action Column */}
                         <td className="py-3 px-4 text-right">
-                          <button className="px-3 py-1 bg-white hover:bg-gray-100 text-xs font-semibold text-gray-700 border border-gray-300 rounded-md transition-colors shadow-sm">
-                            Inspect
-                          </button>
+                          <div className="flex items-center justify-end gap-1.5">
+                            <a
+                              href={getAdminConsoleLink(app).url}
+                              target="_blank"
+                              rel="noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              title={`Open in Google Admin Console → ${getAdminConsoleLink(app).tabName}`}
+                              className={`inline-flex items-center gap-1 px-2 py-1 text-[11px] font-semibold rounded-md border transition-all shadow-2xs ${
+                                getAdminConsoleLink(app).isConfigured
+                                  ? "bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border-emerald-300"
+                                  : "bg-blue-50 hover:bg-blue-100 text-blue-800 border-blue-300"
+                              }`}
+                            >
+                              <GoogleAdminIcon className="w-3.5 h-3.5 flex-shrink-0" />
+                              <span>{getAdminConsoleLink(app).isDirect ? "Admin (Direct) ↗" : getAdminConsoleLink(app).isConfigured ? "Configured ↗" : "Accessed ↗"}</span>
+                            </a>
+                            <button
+                              type="button"
+                              onClick={() => setSelectedApp(app)}
+                              className="px-2.5 py-1 bg-white hover:bg-gray-100 text-[11px] font-semibold text-gray-700 border border-gray-300 rounded-md transition-colors shadow-2xs"
+                            >
+                              Inspect
+                            </button>
+                          </div>
                         </td>
                       </tr>
                     ))
@@ -1712,6 +1841,42 @@ export default function OAuthDashboardClient({
                       </>
                     )}
                   </div>
+                  
+                  {/* Direct Google Admin Console Action Bar */}
+                  <div className="mt-3 flex flex-wrap items-center gap-2">
+                    <a
+                      href={getAdminConsoleLink(selectedApp).url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-lg border shadow-xs transition-all ${
+                        getAdminConsoleLink(selectedApp).isConfigured
+                          ? "bg-emerald-600 hover:bg-emerald-700 text-white border-emerald-700 ring-2 ring-emerald-500/20"
+                          : "bg-blue-600 hover:bg-blue-700 text-white border-blue-700 ring-2 ring-blue-500/20"
+                      }`}
+                      title={getAdminConsoleLink(selectedApp).label}
+                    >
+                      <GoogleAdminIcon className="w-4 h-4 text-white" />
+                      <span>{getAdminConsoleLink(selectedApp).label} ↗</span>
+                    </a>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const targetId = selectedApp.clientId || selectedApp.id;
+                        if (targetId) {
+                          navigator.clipboard.writeText(targetId);
+                          setCopiedId(selectedApp.id);
+                          setTimeout(() => setCopiedId(null), 2000);
+                        }
+                      }}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-300 transition-colors shadow-2xs"
+                      title="Copy Client ID to clipboard"
+                    >
+                      <span>{copiedId === selectedApp.id ? "✓ Copied Client ID!" : "📋 Copy Client ID"}</span>
+                    </button>
+                    <span className="text-[11px] text-gray-500 font-medium">
+                      Console tab: <strong className="text-gray-800">{getAdminConsoleLink(selectedApp).tabName}</strong>
+                    </span>
+                  </div>
                 </div>
               </div>
               <button
@@ -1756,8 +1921,18 @@ export default function OAuthDashboardClient({
                       <p className="text-[11px] text-gray-500">Google Admin Console API Access Control</p>
                     </div>
                   </div>
-                  <div>
+                  <div className="flex items-center gap-2">
                     {getPolicyBadge(selectedApp.adminAccessLevel)}
+                    <a
+                      href={getAdminConsoleLink(selectedApp).url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-[11px] text-blue-700 hover:text-blue-900 font-semibold flex items-center gap-1 bg-white px-2 py-1 rounded border border-gray-200 hover:border-blue-300 shadow-2xs transition-colors"
+                      title={`Open ${getAdminConsoleLink(selectedApp).tabName} in Google Admin`}
+                    >
+                      <GoogleAdminIcon className="w-3.5 h-3.5" />
+                      <span>Console ↗</span>
+                    </a>
                   </div>
                 </div>
 
@@ -2069,14 +2244,29 @@ export default function OAuthDashboardClient({
             </div>
 
             {/* Modal Footer */}
-            <div className="p-4 border-t border-gray-200 bg-gray-50 flex justify-between items-center text-xs text-gray-500">
+            <div className="p-4 border-t border-gray-200 bg-gray-50 flex flex-wrap gap-2 justify-between items-center text-xs text-gray-500">
               <div>Total Activity Events: <span className="font-bold text-gray-800">{selectedApp.totalActivityEvents}</span></div>
-              <button
-                onClick={() => setSelectedApp(null)}
-                className="px-4 py-2 bg-gray-800 hover:bg-gray-900 text-white rounded-lg font-medium transition-colors"
-              >
-                Close
-              </button>
+              <div className="flex items-center gap-2">
+                <a
+                  href={getAdminConsoleLink(selectedApp).url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-colors border shadow-2xs ${
+                    getAdminConsoleLink(selectedApp).isConfigured
+                      ? "bg-emerald-50 text-emerald-800 border-emerald-300 hover:bg-emerald-100"
+                      : "bg-blue-50 text-blue-800 border-blue-300 hover:bg-blue-100"
+                  }`}
+                >
+                  <GoogleAdminIcon className="w-3.5 h-3.5" />
+                  <span>Open in {getAdminConsoleLink(selectedApp).tabName} ↗</span>
+                </a>
+                <button
+                  onClick={() => setSelectedApp(null)}
+                  className="px-4 py-1.5 bg-gray-800 hover:bg-gray-900 text-white rounded-lg font-medium transition-colors"
+                >
+                  Close
+                </button>
+              </div>
             </div>
 
           </div>
@@ -2148,23 +2338,50 @@ export default function OAuthDashboardClient({
                   <div className="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs flex-shrink-0">
                     1
                   </div>
-                  <div className="space-y-1 flex-1">
+                  <div className="space-y-1.5 flex-1">
                     <div className="font-semibold text-gray-900 flex items-center justify-between">
                       <span>Navigate to App Access Control in Google Admin Console</span>
+                      <span className="text-[11px] text-gray-400">Direct deep links:</span>
+                    </div>
+                    <div className="flex flex-wrap items-center gap-1.5 pt-0.5">
                       <a
                         href="https://admin.google.com/ac/owl/list?tab=apps"
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-1 text-xs text-blue-600 hover:text-blue-800 hover:underline font-semibold"
+                        className="inline-flex items-center gap-1 px-2.5 py-1 text-xs text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded-md font-semibold"
                       >
-                        Open Console ↗
+                        Accessed Apps ↗
+                      </a>
+                      <a
+                        href="https://admin.google.com/ac/owl/list?tab=configuredApps"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1 px-2.5 py-1 text-xs text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-md font-semibold"
+                      >
+                        Configured Apps ↗
+                      </a>
+                      <a
+                        href="https://admin.google.com/ac/owl/list?tab=pendingReviewApps"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1 px-2.5 py-1 text-xs text-amber-700 bg-amber-50 hover:bg-amber-100 border border-amber-200 rounded-md font-semibold"
+                      >
+                        Pending Review ↗
+                      </a>
+                      <a
+                        href="https://admin.google.com/ac/owl/list?tab=services"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1 px-2.5 py-1 text-xs text-purple-700 bg-purple-50 hover:bg-purple-100 border border-purple-200 rounded-md font-semibold"
+                      >
+                        Google Services ↗
                       </a>
                     </div>
-                    <p className="text-gray-500 text-xs">
+                    <p className="text-gray-500 text-xs mt-1">
                       Sign in to <span className="font-mono font-medium text-gray-700">admin.google.com</span> as Super Admin. In the left navigation, go to:
                     </p>
-                    <div className="font-mono text-[11px] bg-white px-2.5 py-1 rounded border border-gray-200 text-gray-700 inline-block mt-1">
-                      Security &gt; Access and data control &gt; API controls &gt; App access control &gt; Apps tab
+                    <div className="font-mono text-[11px] bg-white px-2.5 py-1 rounded border border-gray-200 text-gray-700 inline-block mt-0.5">
+                      Security &gt; Access and data control &gt; API controls &gt; App access control
                     </div>
                   </div>
                 </div>
