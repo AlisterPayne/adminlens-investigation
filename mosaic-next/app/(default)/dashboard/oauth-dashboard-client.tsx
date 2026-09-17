@@ -1399,13 +1399,12 @@ export default function OAuthDashboardClient({
                     <th className="py-3 px-4">Trust &amp; Compliance ⓘ</th>
                     <th className="py-3 px-4">Risk Level ⓘ</th>
                     <th className="py-3 px-4 text-center">Users ▼</th>
-                    <th className="py-3 px-4 text-right">Actions</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
                   {filteredApps.length === 0 ? (
                     <tr>
-                      <td colSpan={7} className="py-12 text-center text-gray-500">
+                      <td colSpan={6} className="py-12 text-center text-gray-500">
                         <div className="flex flex-col items-center justify-center gap-2">
                           <span className="text-sm font-medium text-gray-700">No applications matched the criteria{search ? ` for "${search}"` : ""}.</span>
                           <span className="text-xs text-gray-400">Try adjusting your search terms or clearing active filters.</span>
@@ -1433,7 +1432,7 @@ export default function OAuthDashboardClient({
                       <React.Fragment key={group.familyId}>
                         {/* Family Section Header */}
                         <tr className="bg-gradient-to-r from-slate-100/90 to-slate-50 border-t-2 border-slate-300">
-                          <td colSpan={7} className="py-2.5 px-4">
+                          <td colSpan={6} className="py-2.5 px-4">
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-2.5">
                                 <img
@@ -1554,17 +1553,6 @@ export default function OAuthDashboardClient({
                                 </span>
                               )}
                             </td>
-
-                            {/* Action Column */}
-                            <td className="py-3 px-4 text-right">
-                              <button
-                                type="button"
-                                onClick={() => setSelectedApp(app)}
-                                className="px-2.5 py-1 bg-white hover:bg-gray-100 text-[11px] font-semibold text-gray-700 border border-gray-300 rounded-md transition-colors shadow-2xs"
-                              >
-                                Inspect
-                              </button>
-                            </td>
                           </tr>
                         ))}
                       </React.Fragment>
@@ -1666,17 +1654,6 @@ export default function OAuthDashboardClient({
                               ⚠️ {app.adminUsersCount} admin
                             </span>
                           )}
-                        </td>
-
-                        {/* Action Column */}
-                        <td className="py-3 px-4 text-right">
-                          <button
-                            type="button"
-                            onClick={() => setSelectedApp(app)}
-                            className="px-2.5 py-1 bg-white hover:bg-gray-100 text-[11px] font-semibold text-gray-700 border border-gray-300 rounded-md transition-colors shadow-2xs"
-                          >
-                            Inspect
-                          </button>
                         </td>
                       </tr>
                     ))
