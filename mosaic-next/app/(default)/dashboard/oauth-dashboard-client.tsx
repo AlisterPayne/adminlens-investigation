@@ -152,7 +152,6 @@ export default function OAuthDashboardClient({
   const [riskFilter, setRiskFilter] = useState("ALL");
   const [policyFilter, setPolicyFilter] = useState("ALL");
   const [categoryFilter, setCategoryFilter] = useState("ALL");
-  const [typeFilter, setTypeFilter] = useState("ALL");
   const [serviceFilter, setServiceFilter] = useState("ALL");
   const [riskyScopesOnly, setRiskyScopesOnly] = useState(false);
   const [multiOnly, setMultiOnly] = useState(false);
@@ -229,7 +228,7 @@ export default function OAuthDashboardClient({
     setRiskFilter("ALL");
     setPolicyFilter("ALL");
     setCategoryFilter("ALL");
-    setTypeFilter("ALL");
+    setRiskyScopesOnly(false);
     setSearch("");
     setActiveTab("apps");
   };
@@ -258,24 +257,34 @@ export default function OAuthDashboardClient({
       }
     });
   });
-  const frequentScopes = Array.from(scopeMap.entries()).sort((a, b) => b[1] - a[1]).slice(0, 5);
+  const frequentScopes = Array.from(scopeMap.entries()).sort((b, a) => a[1] - b[1]).slice(0, 5);
 
   const categories = Array.from(new Set(currentApps.map((a) => a.category))).sort();
-  const appTypes = Array.from(new Set(currentApps.map((a) => a.appType || 'Web Application'))).sort();
 
   const filteredApps = currentApps.filter((app) => {
-    const matchesSearch =
-      app.displayName.toLowerCase().includes(search.toLowerCase()) ||
-      app.vendor.toLowerCase().includes(search.toLowerCase()) ||
-      (app.familyName && app.familyName.toLowerCase().includes(search.toLowerCase())) ||
-      app.clientIds.some((cid) => cid.toLowerCase().includes(search.toLowerCase()));
+    const query = search.trim().toLowerCase();
+    const matchesSearch = !query ||
+      (app.displayName && app.displayName.toLowerCase().includes(query)) ||
+      (app.vendor && app.vendor.toLowerCase().includes(query)) ||
+      (app.familyName && app.familyName.toLowerCase().includes(query)) ||
+      (app.category && app.category.toLowerCase().includes(query)) ||
+      (app.id && app.id.toLowerCase().includes(query)) ||
+      (app.publisherDomain && app.publisherDomain.toLowerCase().includes(query)) ||
+      (app.description && app.description.toLowerCase().includes(query)) ||
+      (app.appType && app.appType.toLowerCase().includes(query)) ||
+      (app.deploymentType && app.deploymentType.toLowerCase().includes(query)) ||
+      (app.clientIds && app.clientIds.some((cid) => cid.toLowerCase().includes(query))) ||
+      (app.servicesTouched && app.servicesTouched.some((srv) => srv.toLowerCase().includes(query))) ||
+      (app.scopes && app.scopes.some((s) => 
+        (s.description && s.description.toLowerCase().includes(query)) || 
+        (s.scope && s.scope.toLowerCase().includes(query))
+      ));
     const matchesRisk = riskFilter === "ALL" || 
       (riskFilter === "HIGH_RISK" ? (app.riskLevel === "CRITICAL" || app.riskLevel === "HIGH") : app.riskLevel === riskFilter);
     const policyLevel = app.adminAccessLevel || "UNCONFIGURED";
     const matchesPolicy = policyFilter === "ALL" || 
       (policyFilter === "CONFIGURED" ? policyLevel !== "UNCONFIGURED" : policyLevel === policyFilter);
     const matchesCat = categoryFilter === "ALL" || app.category === categoryFilter;
-    const matchesType = typeFilter === "ALL" || app.appType === typeFilter;
     const matchesService = serviceFilter === "ALL" || 
       (serviceFilter === "SENSITIVE" 
         ? (app.servicesTouched || []).some(s => s === 'Gmail' || s === 'Google Drive')
@@ -283,7 +292,7 @@ export default function OAuthDashboardClient({
     const matchesMulti = !multiOnly || app.multiClientMapped;
     const matchesRiskyScopes = !riskyScopesOnly || 
       (app.scopes || []).some(s => (s.adminScore && s.adminScore >= 4) || s.riskLevel === 'CRITICAL' || s.riskLevel === 'HIGH');
-    return matchesSearch && matchesRisk && matchesPolicy && matchesCat && matchesType && matchesService && matchesMulti && matchesRiskyScopes;
+    return matchesSearch && matchesRisk && matchesPolicy && matchesCat && matchesService && matchesMulti && matchesRiskyScopes;
   });
 
   // Group filtered apps by Product Family
@@ -1061,12 +1070,11 @@ export default function OAuthDashboardClient({
                 setServiceFilter("ALL");
                 setRiskyScopesOnly(false);
                 setCategoryFilter("ALL");
-                setTypeFilter("ALL");
                 setSearch("");
               }}
               title="Click to reset all filters and show all applications"
               className={`border rounded-xl p-4 shadow-sm cursor-pointer transition-all ${
-                policyFilter === "ALL" && riskFilter === "ALL" && serviceFilter === "ALL" && !riskyScopesOnly && categoryFilter === "ALL" && typeFilter === "ALL" && !search
+                policyFilter === "ALL" && riskFilter === "ALL" && serviceFilter === "ALL" && !riskyScopesOnly && categoryFilter === "ALL" && !search
                   ? "bg-blue-50/70 border-blue-400 ring-2 ring-blue-500/20 shadow-md"
                   : "bg-white border-gray-200 hover:border-blue-300 hover:bg-gray-50/80"
               }`}
@@ -1185,20 +1193,32 @@ export default function OAuthDashboardClient({
 
           {/* Filter Bar */}
           <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm flex flex-col md:flex-row gap-3 items-center justify-between">
-            <div className="relative w-full md:w-80">
+            <div className="relative w-full md:w-80 flex-shrink-0">
               <input
                 type="text"
-                placeholder="Search apps, vendors, client IDs..."
+                placeholder="Search apps, vendors, client IDs, scopes..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full bg-gray-50 border border-gray-300 rounded-lg pl-9 pr-4 py-2 text-xs text-gray-800 placeholder-gray-400 focus:bg-white focus:outline-none focus:border-blue-500"
+                className="w-full bg-gray-50 border border-gray-300 rounded-lg pl-9 pr-8 py-2 text-xs text-gray-800 placeholder-gray-400 focus:bg-white focus:outline-none focus:border-blue-500 transition-colors"
               />
               <svg className="w-3.5 h-3.5 text-gray-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
+              {search && (
+                <button
+                  type="button"
+                  onClick={() => setSearch("")}
+                  className="absolute right-2.5 top-2 text-gray-400 hover:text-gray-600 p-0.5 rounded-full hover:bg-gray-200 transition-colors"
+                  title="Clear search"
+                >
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              )}
             </div>
 
-            <div className="flex items-center gap-2 w-full md:w-auto overflow-x-auto text-xs">
+            <div className="flex flex-wrap items-center gap-2 w-full md:w-auto text-xs">
               {/* Access Policy Filter */}
               <select
                 value={policyFilter}
@@ -1235,17 +1255,6 @@ export default function OAuthDashboardClient({
                 <option value="ALL">Category: All</option>
                 {categories.map((c) => (
                   <option key={c} value={c}>{c}</option>
-                ))}
-              </select>
-
-              <select
-                value={typeFilter}
-                onChange={(e) => setTypeFilter(e.target.value)}
-                className="bg-gray-50 border border-gray-300 rounded-lg px-2.5 py-1.5 text-gray-700 focus:outline-none"
-              >
-                <option value="ALL">Type: All</option>
-                {appTypes.map((t) => (
-                  <option key={t} value={t}>{t}</option>
                 ))}
               </select>
 
@@ -1307,8 +1316,27 @@ export default function OAuthDashboardClient({
                 <tbody className="divide-y divide-gray-200">
                   {filteredApps.length === 0 ? (
                     <tr>
-                      <td colSpan={7} className="py-8 text-center text-gray-500">
-                        No applications matched the filter criteria.
+                      <td colSpan={7} className="py-12 text-center text-gray-500">
+                        <div className="flex flex-col items-center justify-center gap-2">
+                          <span className="text-sm font-medium text-gray-700">No applications matched the criteria{search ? ` for "${search}"` : ""}.</span>
+                          <span className="text-xs text-gray-400">Try adjusting your search terms or clearing active filters.</span>
+                          {(search || policyFilter !== "ALL" || riskFilter !== "ALL" || serviceFilter !== "ALL" || categoryFilter !== "ALL" || riskyScopesOnly || multiOnly) && (
+                            <button
+                              onClick={() => {
+                                setSearch("");
+                                setPolicyFilter("ALL");
+                                setRiskFilter("ALL");
+                                setServiceFilter("ALL");
+                                setCategoryFilter("ALL");
+                                setRiskyScopesOnly(false);
+                                setMultiOnly(false);
+                              }}
+                              className="inline-flex items-center gap-1.5 px-3 py-1.5 mt-2 bg-blue-50 text-blue-700 border border-blue-200 rounded-lg hover:bg-blue-100 font-semibold text-xs transition-colors"
+                            >
+                              <span>✕</span> Reset all filters
+                            </button>
+                          )}
+                        </div>
                       </td>
                     </tr>
                   ) : groupByFamily ? (
