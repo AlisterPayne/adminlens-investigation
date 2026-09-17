@@ -8,6 +8,7 @@ import {
   GoogleCalendarIcon,
   GoogleClassroomIcon,
   GoogleContactsIcon,
+  GoogleAppsScriptIcon,
   GoogleProductIcon,
 } from "@/components/google-icons";
 
@@ -159,6 +160,9 @@ export default function ScopeMatrixView({
     }
     if (service.includes("Classroom") || service.includes("Chat")) {
       return <GoogleClassroomIcon className="w-5 h-5 flex-shrink-0" />;
+    }
+    if (service.includes("Script") || service.includes("Apps Script")) {
+      return <GoogleAppsScriptIcon className="w-5 h-5 flex-shrink-0" />;
     }
     return <GoogleProductIcon service={service} className="w-5 h-5 flex-shrink-0" />;
   };

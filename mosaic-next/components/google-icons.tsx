@@ -74,6 +74,22 @@ export function GoogleContactsIcon({ className = "w-5 h-5" }: { className?: stri
   );
 }
 
+export function GoogleAppsScriptIcon({ className = "w-5 h-5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect fill="#EA4335" x="27.53" y="328.9" width="373" height="107" rx="53.5" />
+      <rect fill="#FBBC04" x="53.33" y="250.94" width="373" height="107" rx="53.5" transform="translate(254.91 691.72) rotate(-144)" />
+      <rect fill="#34A853" x="120.53" y="201.9" width="373" height="107" rx="53.5" transform="translate(455.05 -115.53) rotate(72)" />
+      <rect fill="#4285F4" x="202.53" y="201.9" width="373" height="107" rx="53.5" transform="translate(25.92 546.46) rotate(-72)" />
+      <circle cx="265.84" cy="129.28" r="26.7" fill="#FFFFFF" />
+      <circle cx="131.44" cy="225.44" r="26.7" fill="#FFFFFF" />
+      <circle cx="81.36" cy="382.6" r="26.7" fill="#FFFFFF" />
+      <circle cx="348.22" cy="381.64" r="26.7" fill="#FFFFFF" />
+      <circle cx="430.67" cy="127.89" r="26.7" fill="#FFFFFF" />
+    </svg>
+  );
+}
+
 export function GoogleProductIcon({
   service,
   className = "w-5 h-5",
@@ -99,6 +115,9 @@ export function GoogleProductIcon({
   }
   if (s.includes("contact") || s.includes("people")) {
     return <GoogleContactsIcon className={className} />;
+  }
+  if (s.includes("script") || s.includes("apps script") || s.includes("workflows") || s.includes("flexible-api")) {
+    return <GoogleAppsScriptIcon className={className} />;
   }
   return null;
 }

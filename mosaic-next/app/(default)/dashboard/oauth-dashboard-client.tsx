@@ -9,6 +9,7 @@ import {
   GoogleCalendarIcon,
   GoogleClassroomIcon,
   GoogleContactsIcon,
+  GoogleAppsScriptIcon,
   GoogleProductIcon,
 } from "@/components/google-icons";
 import ScopeMatrixView, { ScopeReferenceItem, ScopeMetrics } from "@/components/scope-matrix-view";
@@ -188,8 +189,8 @@ export default function OAuthDashboardClient({
         );
       case "Google Apps Script":
         return (
-          <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 border border-slate-200 shadow-2xs">
-            <span>⚙️</span> Apps Script
+          <span className="inline-flex items-center gap-1.5 text-[10px] font-bold px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 border border-slate-200 shadow-2xs">
+            <GoogleAppsScriptIcon className="w-3.5 h-3.5 flex-shrink-0" /> Apps Script
           </span>
         );
       default:

@@ -9,6 +9,7 @@ import {
   GoogleCalendarIcon,
   GoogleClassroomIcon,
   GoogleContactsIcon,
+  GoogleAppsScriptIcon,
   GoogleProductIcon,
 } from "@/components/google-icons";
 
