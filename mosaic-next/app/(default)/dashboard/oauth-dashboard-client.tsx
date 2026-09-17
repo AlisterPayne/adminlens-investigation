@@ -154,6 +154,7 @@ export default function OAuthDashboardClient({
   const [categoryFilter, setCategoryFilter] = useState("ALL");
   const [typeFilter, setTypeFilter] = useState("ALL");
   const [serviceFilter, setServiceFilter] = useState("ALL");
+  const [riskyScopesOnly, setRiskyScopesOnly] = useState(false);
   const [multiOnly, setMultiOnly] = useState(false);
   const [recSeverityFilter, setRecSeverityFilter] = useState("ALL");
   const [selectedApp, setSelectedApp] = useState<Application | null>(null);
@@ -268,15 +269,21 @@ export default function OAuthDashboardClient({
       app.vendor.toLowerCase().includes(search.toLowerCase()) ||
       (app.familyName && app.familyName.toLowerCase().includes(search.toLowerCase())) ||
       app.clientIds.some((cid) => cid.toLowerCase().includes(search.toLowerCase()));
-    const matchesRisk = riskFilter === "ALL" || app.riskLevel === riskFilter;
+    const matchesRisk = riskFilter === "ALL" || 
+      (riskFilter === "HIGH_RISK" ? (app.riskLevel === "CRITICAL" || app.riskLevel === "HIGH") : app.riskLevel === riskFilter);
     const policyLevel = app.adminAccessLevel || "UNCONFIGURED";
     const matchesPolicy = policyFilter === "ALL" || 
       (policyFilter === "CONFIGURED" ? policyLevel !== "UNCONFIGURED" : policyLevel === policyFilter);
     const matchesCat = categoryFilter === "ALL" || app.category === categoryFilter;
     const matchesType = typeFilter === "ALL" || app.appType === typeFilter;
-    const matchesService = serviceFilter === "ALL" || (app.servicesTouched || []).includes(serviceFilter);
+    const matchesService = serviceFilter === "ALL" || 
+      (serviceFilter === "SENSITIVE" 
+        ? (app.servicesTouched || []).some(s => s === 'Gmail' || s === 'Google Drive')
+        : (app.servicesTouched || []).includes(serviceFilter));
     const matchesMulti = !multiOnly || app.multiClientMapped;
-    return matchesSearch && matchesRisk && matchesPolicy && matchesCat && matchesType && matchesService && matchesMulti;
+    const matchesRiskyScopes = !riskyScopesOnly || 
+      (app.scopes || []).some(s => (s.adminScore && s.adminScore >= 4) || s.riskLevel === 'CRITICAL' || s.riskLevel === 'HIGH');
+    return matchesSearch && matchesRisk && matchesPolicy && matchesCat && matchesType && matchesService && matchesMulti && matchesRiskyScopes;
   });
 
   // Group filtered apps by Product Family
@@ -723,7 +730,7 @@ export default function OAuthDashboardClient({
 
             {/* High Risk Apps */}
             <div 
-              onClick={() => { setActiveTab("apps"); setRiskFilter("CRITICAL"); setPolicyFilter("ALL"); setServiceFilter("ALL"); }}
+              onClick={() => { setActiveTab("apps"); setRiskFilter("HIGH_RISK"); setPolicyFilter("ALL"); setServiceFilter("ALL"); setRiskyScopesOnly(false); }}
               className="bg-white border border-red-200 rounded-xl p-5 shadow-sm relative overflow-hidden bg-gradient-to-br from-red-50/40 to-white hover:shadow-md transition-all cursor-pointer"
             >
               <div className="flex items-center justify-between text-xs font-bold text-red-600 uppercase tracking-wider">
@@ -993,64 +1000,184 @@ export default function OAuthDashboardClient({
       {activeTab === "apps" && (
         <div className="space-y-4">
           
-          {/* Active Filter Pill (if coming from Hotspot click) */}
-          {serviceFilter !== "ALL" && (
-            <div className="flex items-center justify-between bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 text-xs text-blue-800">
-              <div className="flex items-center gap-2">
-                <span className="font-bold">Filtering by Service:</span>
-                <span className="inline-flex items-center gap-1.5 bg-blue-600 text-white px-2.5 py-1 rounded font-bold">
-                  <div className="w-4 h-4 bg-white rounded-xs p-0.5 flex items-center justify-center">
-                    <GoogleProductIcon service={serviceFilter} className="w-3.5 h-3.5" />
-                  </div>
-                  {serviceFilter}
-                </span>
-                <span>({filteredApps.length} matching applications)</span>
+          {/* Active Filter Indicators */}
+          <div className="space-y-2">
+            {riskFilter === "HIGH_RISK" && (
+              <div className="flex items-center justify-between bg-red-50 border border-red-200 rounded-lg px-4 py-2 text-xs text-red-900 animate-fade-in">
+                <div className="flex items-center gap-2">
+                  <span className="font-bold">⚠️ Filtering by High Risk:</span>
+                  <span>Critical & High Severity Applications ({filteredApps.length} matching)</span>
+                </div>
+                <button
+                  onClick={() => setRiskFilter("ALL")}
+                  className="text-red-600 hover:text-red-900 font-bold underline text-xs"
+                >
+                  Clear Risk Filter ✕
+                </button>
               </div>
-              <button
-                onClick={() => setServiceFilter("ALL")}
-                className="text-blue-600 hover:text-blue-900 font-bold underline text-xs"
-              >
-                Clear Service Filter ✕
-              </button>
-            </div>
-          )}
+            )}
 
-          {/* Top KPI Header Cards for All Applications */}
+            {riskyScopesOnly && (
+              <div className="flex items-center justify-between bg-amber-50 border border-amber-200 rounded-lg px-4 py-2 text-xs text-amber-900 animate-fade-in">
+                <div className="flex items-center gap-2">
+                  <span className="font-bold">🔒 Filtering by Risky Scopes:</span>
+                  <span>Apps with Critical or High Permissions ({filteredApps.length} matching)</span>
+                </div>
+                <button
+                  onClick={() => setRiskyScopesOnly(false)}
+                  className="text-amber-700 hover:text-amber-950 font-bold underline text-xs"
+                >
+                  Clear Scope Filter ✕
+                </button>
+              </div>
+            )}
+
+            {serviceFilter !== "ALL" && (
+              <div className="flex items-center justify-between bg-blue-50 border border-blue-200 rounded-lg px-4 py-2 text-xs text-blue-800 animate-fade-in">
+                <div className="flex items-center gap-2">
+                  <span className="font-bold">Filtering by Service:</span>
+                  <span className="inline-flex items-center gap-1.5 bg-blue-600 text-white px-2 py-0.5 rounded font-bold text-xs">
+                    {serviceFilter}
+                  </span>
+                  <span>({filteredApps.length} matching applications)</span>
+                </div>
+                <button
+                  onClick={() => setServiceFilter("ALL")}
+                  className="text-blue-600 hover:text-blue-900 font-bold underline text-xs"
+                >
+                  Clear Service Filter ✕
+                </button>
+              </div>
+            )}
+          </div>
+
+          {/* Top KPI Header Cards for All Applications (All Clickable) */}
           <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
-            <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
-              <div className="text-xs font-bold text-gray-400 uppercase tracking-wider">TOTAL APPS</div>
+            {/* Total Apps */}
+            <div 
+              onClick={() => {
+                setPolicyFilter("ALL");
+                setRiskFilter("ALL");
+                setServiceFilter("ALL");
+                setRiskyScopesOnly(false);
+                setCategoryFilter("ALL");
+                setTypeFilter("ALL");
+                setSearch("");
+              }}
+              title="Click to reset all filters and show all applications"
+              className={`border rounded-xl p-4 shadow-sm cursor-pointer transition-all ${
+                policyFilter === "ALL" && riskFilter === "ALL" && serviceFilter === "ALL" && !riskyScopesOnly && categoryFilter === "ALL" && typeFilter === "ALL" && !search
+                  ? "bg-blue-50/70 border-blue-400 ring-2 ring-blue-500/20 shadow-md"
+                  : "bg-white border-gray-200 hover:border-blue-300 hover:bg-gray-50/80"
+              }`}
+            >
+              <div className="flex items-center justify-between text-xs font-bold text-gray-500 uppercase tracking-wider">
+                <span>TOTAL APPS</span>
+                <span className="text-gray-400 text-[10px]">All</span>
+              </div>
               <div className="text-2xl font-bold text-gray-900 mt-1">{totalAppsCount}</div>
               <div className="text-xs text-gray-500 mt-0.5">Unique apps authorized</div>
             </div>
+
+            {/* Configured by Admin */}
             <div 
               onClick={() => setPolicyFilter(policyFilter === "CONFIGURED" ? "ALL" : "CONFIGURED")}
+              title="Click to filter to admin-configured applications"
               className={`border rounded-xl p-4 shadow-sm cursor-pointer transition-all ${
-                policyFilter === "CONFIGURED" ? "bg-emerald-100/70 border-emerald-500 ring-2 ring-emerald-500/20" : "bg-emerald-50/50 border-emerald-200 hover:bg-emerald-50"
+                policyFilter === "CONFIGURED" 
+                  ? "bg-emerald-100/70 border-emerald-500 ring-2 ring-emerald-500/20 shadow-md" 
+                  : "bg-emerald-50/50 border-emerald-200 hover:bg-emerald-100/40"
               }`}
             >
-              <div className="text-xs font-bold text-emerald-700 uppercase tracking-wider">CONFIGURED BY ADMIN</div>
+              <div className="flex items-center justify-between text-xs font-bold text-emerald-700 uppercase tracking-wider">
+                <span>CONFIGURED BY ADMIN</span>
+                <span className="text-emerald-600 text-[10px]">{policyFilter === "CONFIGURED" ? "Active" : "Filter"}</span>
+              </div>
               <div className="text-2xl font-bold text-emerald-700 mt-1">{configuredAppsCount}</div>
               <div className="text-xs text-emerald-600/80 mt-0.5">Console configured & governed</div>
             </div>
-            <div className="bg-red-50/50 border border-red-200 rounded-xl p-4 shadow-sm">
-              <div className="text-xs font-bold text-red-600 uppercase tracking-wider">HIGH-RISK APPS</div>
+
+            {/* High-Risk Apps */}
+            <div 
+              onClick={() => setRiskFilter(riskFilter === "HIGH_RISK" ? "ALL" : "HIGH_RISK")}
+              title="Click to filter by Critical & High risk applications"
+              className={`border rounded-xl p-4 shadow-sm cursor-pointer transition-all ${
+                riskFilter === "HIGH_RISK" 
+                  ? "bg-red-100/70 border-red-500 ring-2 ring-red-500/20 shadow-md" 
+                  : "bg-red-50/50 border-red-200 hover:bg-red-100/40"
+              }`}
+            >
+              <div className="flex items-center justify-between text-xs font-bold text-red-600 uppercase tracking-wider">
+                <span>HIGH-RISK APPS</span>
+                <span className="text-red-500 text-[10px]">{riskFilter === "HIGH_RISK" ? "Active" : "Filter"}</span>
+              </div>
               <div className="text-2xl font-bold text-red-700 mt-1">{highRiskAppsCount}</div>
               <div className="text-xs text-red-600/80 mt-0.5">Require immediate review</div>
             </div>
-            <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
-              <div className="text-xs font-bold text-gray-400 uppercase tracking-wider">SENSITIVE ACCESS</div>
-              <div className="flex items-center gap-4 mt-2 text-xs">
-                <span className="inline-flex items-center gap-1.5 text-gray-800 font-semibold">
-                  <GmailIcon className="w-4 h-4" /> Gmail: <span className="text-blue-600 font-bold">{serviceHotspots.Gmail}</span>
-                </span>
-                <span className="inline-flex items-center gap-1.5 text-gray-800 font-semibold">
-                  <GoogleDriveIcon className="w-4 h-4" /> Drive: <span className="text-emerald-600 font-bold">{serviceHotspots.Drive}</span>
-                </span>
+
+            {/* Sensitive Access */}
+            <div 
+              onClick={() => setServiceFilter(serviceFilter === "SENSITIVE" ? "ALL" : "SENSITIVE")}
+              title="Click to filter by applications accessing Gmail or Google Drive"
+              className={`border rounded-xl p-4 shadow-sm cursor-pointer transition-all ${
+                serviceFilter === "SENSITIVE" || serviceFilter === "Gmail" || serviceFilter === "Google Drive"
+                  ? "bg-blue-100/60 border-blue-500 ring-2 ring-blue-500/20 shadow-md"
+                  : "bg-white border-gray-200 hover:border-blue-300 hover:bg-blue-50/30"
+              }`}
+            >
+              <div className="flex items-center justify-between text-xs font-bold text-gray-500 uppercase tracking-wider">
+                <span>SENSITIVE ACCESS</span>
+                <span className="text-blue-500 text-[10px]">{serviceFilter !== "ALL" ? "Active" : "Filter"}</span>
+              </div>
+              <div className="flex items-center gap-2 mt-2 text-xs">
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setServiceFilter(serviceFilter === "Gmail" ? "ALL" : "Gmail");
+                  }}
+                  title="Filter to Gmail apps"
+                  className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md font-semibold transition-all ${
+                    serviceFilter === "Gmail"
+                      ? "bg-blue-600 text-white shadow-xs ring-1 ring-blue-700"
+                      : "bg-gray-100/80 text-gray-800 hover:bg-blue-100 hover:text-blue-800"
+                  }`}
+                >
+                  <GmailIcon className="w-3.5 h-3.5" /> Gmail: <span className={serviceFilter === "Gmail" ? "font-bold text-white" : "text-blue-600 font-bold"}>{serviceHotspots.Gmail}</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setServiceFilter(serviceFilter === "Google Drive" ? "ALL" : "Google Drive");
+                  }}
+                  title="Filter to Google Drive apps"
+                  className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md font-semibold transition-all ${
+                    serviceFilter === "Google Drive"
+                      ? "bg-emerald-600 text-white shadow-xs ring-1 ring-emerald-700"
+                      : "bg-gray-100/80 text-gray-800 hover:bg-emerald-100 hover:text-emerald-800"
+                  }`}
+                >
+                  <GoogleDriveIcon className="w-3.5 h-3.5" /> Drive: <span className={serviceFilter === "Google Drive" ? "font-bold text-white" : "text-emerald-600 font-bold"}>{serviceHotspots.Drive}</span>
+                </button>
               </div>
               <div className="text-xs text-gray-500 mt-1">Data egress risks</div>
             </div>
-            <div className="bg-amber-50/50 border border-amber-200 rounded-xl p-4 shadow-sm">
-              <div className="text-xs font-bold text-amber-700 uppercase tracking-wider">RISKY SCOPES</div>
+
+            {/* Risky Scopes */}
+            <div 
+              onClick={() => setRiskyScopesOnly(!riskyScopesOnly)}
+              title="Click to filter by applications requesting dangerous scopes"
+              className={`border rounded-xl p-4 shadow-sm cursor-pointer transition-all ${
+                riskyScopesOnly 
+                  ? "bg-amber-100/70 border-amber-500 ring-2 ring-amber-500/20 shadow-md" 
+                  : "bg-amber-50/50 border-amber-200 hover:bg-amber-100/40"
+              }`}
+            >
+              <div className="flex items-center justify-between text-xs font-bold text-amber-700 uppercase tracking-wider">
+                <span>RISKY SCOPES</span>
+                <span className="text-amber-600 text-[10px]">{riskyScopesOnly ? "Active" : "Filter"}</span>
+              </div>
               <div className="text-2xl font-bold text-amber-800 mt-1">{scopeMap.size}</div>
               <div className="text-xs text-amber-700/80 mt-0.5">Unique dangerous permissions</div>
             </div>
@@ -1093,6 +1220,7 @@ export default function OAuthDashboardClient({
                 className="bg-gray-50 border border-gray-300 rounded-lg px-2.5 py-1.5 text-gray-700 focus:outline-none"
               >
                 <option value="ALL">Risk: All</option>
+                <option value="HIGH_RISK">⚠️ High Risk (Critical & High)</option>
                 <option value="CRITICAL">🔴 Critical</option>
                 <option value="HIGH">🟠 High</option>
                 <option value="MEDIUM">🟡 Medium</option>
@@ -1127,6 +1255,7 @@ export default function OAuthDashboardClient({
                 className="bg-gray-50 border border-gray-300 rounded-lg px-2.5 py-1.5 text-gray-700 focus:outline-none"
               >
                 <option value="ALL">Service: All</option>
+                <option value="SENSITIVE">🛡️ Sensitive (Gmail & Drive)</option>
                 <option value="Gmail">Gmail</option>
                 <option value="Google Drive">Google Drive</option>
                 <option value="Admin SDK">Admin SDK</option>
