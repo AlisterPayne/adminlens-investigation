@@ -235,24 +235,49 @@ export default function ScopeMatrixView({
 
   return (
     <div className="space-y-6">
-      {/* Header & Overview Card (Almost completely hidden by default) */}
+      {/* Header & Overview Card (Note to Developers - Kept Collapsed by Default) */}
       {!showInfoBanner ? (
         <div 
           onClick={() => setShowInfoBanner(true)}
-          className="flex items-center justify-between py-1.5 px-3 bg-gray-50/70 hover:bg-blue-50/60 border border-gray-200/80 hover:border-blue-300 rounded-lg text-xs text-gray-500 hover:text-gray-700 cursor-pointer transition-all select-none shadow-2xs"
+          className="flex items-center justify-between py-1.5 px-3 bg-amber-50/50 hover:bg-amber-100/60 border border-amber-200/80 hover:border-amber-300 rounded-lg text-xs text-amber-900 cursor-pointer transition-all select-none shadow-2xs"
+          title="Click to expand Note to Developers (Internal specification, not for end users)"
         >
-          <div className="flex items-center gap-2">
-            <span className="text-[10px] text-gray-400">▶</span>
-            <span className="font-semibold text-gray-700 text-xs">Google Workspace OAuth Scope Threat Matrix</span>
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="text-[10px] text-amber-600 font-bold">▶</span>
+            <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-300 shadow-2xs">
+              <span>🛠️</span> NOTE TO DEVELOPERS
+            </span>
+            <span className="font-bold text-gray-800 text-xs">
+              Google Workspace OAuth Scope Threat Matrix Specification
+            </span>
             <span className="text-gray-400">•</span>
-            <span className="text-[11px] text-blue-600 font-medium">Service-Grouped Risk Intelligence</span>
+            <span className="text-[11px] text-amber-800/80 italic font-medium">Internal Reference (Not for End Users)</span>
           </div>
-          <span className="text-[11px] text-blue-600 font-semibold hover:underline flex items-center gap-1">
-            Show threat matrix info & guides ▾
+          <span className="text-[11px] text-amber-800 font-semibold hover:underline flex items-center gap-1">
+            Show developer note ▾
           </span>
         </div>
       ) : (
-        <div className="bg-gradient-to-r from-blue-900/10 via-indigo-900/5 to-white border border-blue-200 rounded-xl p-5 shadow-xs transition-all animate-fade-in">
+        <div className="bg-gradient-to-r from-amber-500/10 via-slate-50 to-white border-2 border-dashed border-amber-300 rounded-xl p-5 shadow-xs transition-all animate-fade-in">
+          {/* Note to Developers Banner */}
+          <div className="flex items-center justify-between gap-2 mb-3.5 pb-2.5 border-b border-amber-200 text-xs">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="inline-flex items-center gap-1 text-[11px] font-extrabold px-2.5 py-0.5 rounded bg-amber-200 text-amber-900 border border-amber-400 tracking-wide shadow-2xs">
+                <span>🛠️</span> NOTE TO DEVELOPERS
+              </span>
+              <span className="text-amber-900 font-semibold text-xs">
+                Internal reference &amp; design specification — <strong>not to be included in the application to users</strong>
+              </span>
+            </div>
+            <button
+              type="button"
+              onClick={() => setShowInfoBanner(false)}
+              className="text-xs font-bold text-amber-900 hover:text-amber-950 underline px-2 py-0.5"
+            >
+              ▲ Collapse Developer Note
+            </button>
+          </div>
+
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
             <div className="space-y-1.5 flex-1 cursor-pointer select-none" onClick={() => setShowInfoBanner(false)}>
               <div className="flex items-center gap-2.5 flex-wrap">
@@ -264,6 +289,9 @@ export default function ScopeMatrixView({
                 </h2>
                 <span className="text-xs px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200 font-semibold">
                   Service-Grouped Risk Intelligence
+                </span>
+                <span className="text-[10px] px-2 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-300 font-bold">
+                  Internal Reference
                 </span>
               </div>
               <p className="text-xs text-gray-600 max-w-3xl leading-relaxed">
@@ -278,7 +306,7 @@ export default function ScopeMatrixView({
               <button
                 type="button"
                 onClick={() => setShowInfoBanner(false)}
-                className="px-3.5 py-2 rounded-lg bg-white hover:bg-gray-50 border border-blue-200 text-xs font-bold text-blue-700 transition-colors shadow-2xs flex items-center gap-1.5"
+                className="px-3.5 py-2 rounded-lg bg-white hover:bg-gray-50 border border-amber-300 text-xs font-bold text-amber-900 transition-colors shadow-2xs flex items-center gap-1.5"
               >
                 <span>▲ Hide / Collapse</span>
               </button>
