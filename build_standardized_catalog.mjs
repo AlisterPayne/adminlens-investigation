@@ -279,8 +279,12 @@ function parseServicesWithScopes(rawStr) {
   return { services, scopes: Array.from(new Set(allScopes)) };
 }
 
-if (fs.existsSync('./owl_apps.csv')) {
-  const owlText = fs.readFileSync('./owl_apps.csv', 'utf8');
+const baselineCsvPath = fs.existsSync('./owl_apps_configured_apps.csv') 
+  ? './owl_apps_configured_apps.csv' 
+  : (fs.existsSync('./owl_apps.csv') ? './owl_apps.csv' : null);
+
+if (baselineCsvPath) {
+  const owlText = fs.readFileSync(baselineCsvPath, 'utf8');
   const lines = owlText.trim().split(/\r?\n/);
   if (lines.length > 1) {
     baselineCsvLoaded = true;
@@ -338,7 +342,7 @@ if (fs.existsSync('./owl_apps.csv')) {
           isOverridden: row['Org Unit'] && row['Org Unit'] !== '/',
           exemptFromContextAwareAccess: accessLevel === 'TRUSTED',
           allowedServices: services,
-          configuredBy: 'Admin Console Baseline (owl_apps.csv)',
+          configuredBy: `Admin Console Baseline (${path.basename(baselineCsvPath)})`,
           lastPolicyUpdate: '2026-09-13T18:00:00Z'
         };
 
@@ -602,14 +606,15 @@ const metrics = {
   totalActiveGrants: activeTokens.length,
   criticalRiskApps: finalizedApps.filter(a => a.riskLevel === 'CRITICAL').length,
   highRiskApps: finalizedApps.filter(a => a.riskLevel === 'HIGH').length,
+  configuredAppsCount: finalizedApps.filter(a => a.adminAccessLevel && a.adminAccessLevel !== 'UNCONFIGURED').length,
   trustedAppsCount: finalizedApps.filter(a => a.adminAccessLevel === 'TRUSTED').length,
   blockedAppsCount: finalizedApps.filter(a => a.adminAccessLevel === 'BLOCKED').length,
   specificDataAppsCount: finalizedApps.filter(a => a.adminAccessLevel === 'SPECIFIC_DATA').length,
   unconfiguredAppsCount: finalizedApps.filter(a => a.adminAccessLevel === 'UNCONFIGURED').length,
   multiClientFamiliesCount: productFamiliesSummary.filter(f => f.deploymentsCount > 1).length,
-  baselineSource: baselineCsvLoaded ? 'owl_apps.csv' : null,
+  baselineSource: baselineCsvLoaded && baselineCsvPath ? path.basename(baselineCsvPath) : null,
   baselinePolicyCount: baselinePolicyCount,
-  baselineLoadedAt: baselineCsvLoaded ? '2026-09-13T18:00:00Z' : null,
+  baselineLoadedAt: baselineCsvLoaded ? new Date().toISOString() : null,
 };
 
 const outputDir = './standardized_catalog';

@@ -1784,7 +1784,7 @@
         "GSuite Admin": 3,
         "Google Sign-in": 3
       },
-      "configuredBy": "Admin Console Baseline (owl_apps.csv)",
+      "configuredBy": "Admin Console Baseline (owl_apps_configured_apps.csv)",
       "lastPolicyUpdate": "2026-09-13T18:00:00Z"
     },
     "multiClientMapped": false,
@@ -2890,7 +2890,7 @@
       "allowedServices": {
         "Google Sign-in": 3
       },
-      "configuredBy": "Admin Console Baseline (owl_apps.csv)",
+      "configuredBy": "Admin Console Baseline (owl_apps_configured_apps.csv)",
       "lastPolicyUpdate": "2026-09-13T18:00:00Z"
     },
     "multiClientMapped": true,
@@ -3190,7 +3190,7 @@
       "isOverridden": false,
       "exemptFromContextAwareAccess": true,
       "allowedServices": {},
-      "configuredBy": "Admin Console Baseline (owl_apps.csv)",
+      "configuredBy": "Admin Console Baseline (owl_apps_configured_apps.csv)",
       "lastPolicyUpdate": "2026-09-13T18:00:00Z"
     },
     "multiClientMapped": true,
@@ -3282,7 +3282,7 @@
       "isOverridden": true,
       "exemptFromContextAwareAccess": true,
       "allowedServices": {},
-      "configuredBy": "Admin Console Baseline (owl_apps.csv)",
+      "configuredBy": "Admin Console Baseline (owl_apps_configured_apps.csv)",
       "lastPolicyUpdate": "2026-09-13T18:00:00Z"
     },
     "multiClientMapped": true,
@@ -4218,7 +4218,7 @@
         "Other": 5,
         "Vault": 1
       },
-      "configuredBy": "Admin Console Baseline (owl_apps.csv)",
+      "configuredBy": "Admin Console Baseline (owl_apps_configured_apps.csv)",
       "lastPolicyUpdate": "2026-09-13T18:00:00Z"
     },
     "multiClientMapped": false,
@@ -4816,7 +4816,7 @@
       "allowedServices": {
         "Cloud Platform": 1
       },
-      "configuredBy": "Admin Console Baseline (owl_apps.csv)",
+      "configuredBy": "Admin Console Baseline (owl_apps_configured_apps.csv)",
       "lastPolicyUpdate": "2026-09-13T18:00:00Z"
     },
     "multiClientMapped": true,
@@ -4836,7 +4836,7 @@
         "displayName": "GAM7-demo (Staging / Dev)",
         "deploymentType": "Staging / Dev",
         "clientId": "72867247940-n969jo6c29qg22m8sodb2hftn6dck1mk.apps.googleusercontent.com",
-        "adminAccessLevel": "TRUSTED",
+        "adminAccessLevel": "BLOCKED",
         "totalUsersCount": 1,
         "maxRisk": "CRITICAL"
       },
@@ -4993,7 +4993,7 @@
         "Other": 5,
         "Vault": 1
       },
-      "configuredBy": "Admin Console Baseline (owl_apps.csv)",
+      "configuredBy": "Admin Console Baseline (owl_apps_configured_apps.csv)",
       "lastPolicyUpdate": "2026-09-13T18:00:00Z"
     },
     "multiClientMapped": true,
@@ -5013,7 +5013,7 @@
         "displayName": "GAM7-demo (Staging / Dev)",
         "deploymentType": "Staging / Dev",
         "clientId": "72867247940-n969jo6c29qg22m8sodb2hftn6dck1mk.apps.googleusercontent.com",
-        "adminAccessLevel": "TRUSTED",
+        "adminAccessLevel": "BLOCKED",
         "totalUsersCount": 1,
         "maxRisk": "CRITICAL"
       },
@@ -5656,13 +5656,13 @@
       "Administrative or Direct Mail Access",
       "Access to Domain Directory, Files, or Calendars"
     ],
-    "adminAccessLevel": "TRUSTED",
+    "adminAccessLevel": "BLOCKED",
     "accessPolicy": {
-      "accessLevel": "TRUSTED",
+      "accessLevel": "BLOCKED",
       "orgUnitPath": "/",
       "domainName": "gafe.co.za",
       "isOverridden": false,
-      "exemptFromContextAwareAccess": true,
+      "exemptFromContextAwareAccess": false,
       "allowedServices": {
         "Calendar": 1,
         "Classroom": 9,
@@ -5672,7 +5672,7 @@
         "Other": 5,
         "Vault": 1
       },
-      "configuredBy": "Admin Console Baseline (owl_apps.csv)",
+      "configuredBy": "Admin Console Baseline (owl_apps_configured_apps.csv)",
       "lastPolicyUpdate": "2026-09-13T18:00:00Z"
     },
     "multiClientMapped": true,
@@ -6351,7 +6351,7 @@
         "Other": 5,
         "Vault": 1
       },
-      "configuredBy": "Admin Console Baseline (owl_apps.csv)",
+      "configuredBy": "Admin Console Baseline (owl_apps_configured_apps.csv)",
       "lastPolicyUpdate": "2026-09-13T18:00:00Z"
     },
     "multiClientMapped": true,
@@ -6380,7 +6380,7 @@
         "displayName": "GAM7-demo (Staging / Dev)",
         "deploymentType": "Staging / Dev",
         "clientId": "72867247940-n969jo6c29qg22m8sodb2hftn6dck1mk.apps.googleusercontent.com",
-        "adminAccessLevel": "TRUSTED",
+        "adminAccessLevel": "BLOCKED",
         "totalUsersCount": 1,
         "maxRisk": "CRITICAL"
       },
@@ -7030,7 +7030,7 @@
         "Other": 5,
         "Vault": 1
       },
-      "configuredBy": "Admin Console Baseline (owl_apps.csv)",
+      "configuredBy": "Admin Console Baseline (owl_apps_configured_apps.csv)",
       "lastPolicyUpdate": "2026-09-13T18:00:00Z"
     },
     "multiClientMapped": true,
@@ -7059,7 +7059,7 @@
         "displayName": "GAM7-demo (Staging / Dev)",
         "deploymentType": "Staging / Dev",
         "clientId": "72867247940-n969jo6c29qg22m8sodb2hftn6dck1mk.apps.googleusercontent.com",
-        "adminAccessLevel": "TRUSTED",
+        "adminAccessLevel": "BLOCKED",
         "totalUsersCount": 1,
         "maxRisk": "CRITICAL"
       },
@@ -7717,7 +7717,7 @@
         "displayName": "GAM7-demo (Staging / Dev)",
         "deploymentType": "Staging / Dev",
         "clientId": "72867247940-n969jo6c29qg22m8sodb2hftn6dck1mk.apps.googleusercontent.com",
-        "adminAccessLevel": "TRUSTED",
+        "adminAccessLevel": "BLOCKED",
         "totalUsersCount": 1,
         "maxRisk": "CRITICAL"
       },
@@ -7831,7 +7831,7 @@
       "isOverridden": true,
       "exemptFromContextAwareAccess": true,
       "allowedServices": {},
-      "configuredBy": "Admin Console Baseline (owl_apps.csv)",
+      "configuredBy": "Admin Console Baseline (owl_apps_configured_apps.csv)",
       "lastPolicyUpdate": "2026-09-13T18:00:00Z"
     },
     "multiClientMapped": true,
@@ -7860,7 +7860,7 @@
         "displayName": "GAM7-demo (Staging / Dev)",
         "deploymentType": "Staging / Dev",
         "clientId": "72867247940-n969jo6c29qg22m8sodb2hftn6dck1mk.apps.googleusercontent.com",
-        "adminAccessLevel": "TRUSTED",
+        "adminAccessLevel": "BLOCKED",
         "totalUsersCount": 1,
         "maxRisk": "CRITICAL"
       },
@@ -7966,7 +7966,7 @@
       "isOverridden": false,
       "exemptFromContextAwareAccess": true,
       "allowedServices": {},
-      "configuredBy": "Admin Console Baseline (owl_apps.csv)",
+      "configuredBy": "Admin Console Baseline (owl_apps_configured_apps.csv)",
       "lastPolicyUpdate": "2026-09-13T18:00:00Z"
     },
     "multiClientMapped": true,
@@ -7995,7 +7995,7 @@
         "displayName": "GAM7-demo (Staging / Dev)",
         "deploymentType": "Staging / Dev",
         "clientId": "72867247940-n969jo6c29qg22m8sodb2hftn6dck1mk.apps.googleusercontent.com",
-        "adminAccessLevel": "TRUSTED",
+        "adminAccessLevel": "BLOCKED",
         "totalUsersCount": 1,
         "maxRisk": "CRITICAL"
       },
@@ -8101,7 +8101,7 @@
       "isOverridden": false,
       "exemptFromContextAwareAccess": true,
       "allowedServices": {},
-      "configuredBy": "Admin Console Baseline (owl_apps.csv)",
+      "configuredBy": "Admin Console Baseline (owl_apps_configured_apps.csv)",
       "lastPolicyUpdate": "2026-09-13T18:00:00Z"
     },
     "multiClientMapped": true,
@@ -8130,7 +8130,7 @@
         "displayName": "GAM7-demo (Staging / Dev)",
         "deploymentType": "Staging / Dev",
         "clientId": "72867247940-n969jo6c29qg22m8sodb2hftn6dck1mk.apps.googleusercontent.com",
-        "adminAccessLevel": "TRUSTED",
+        "adminAccessLevel": "BLOCKED",
         "totalUsersCount": 1,
         "maxRisk": "CRITICAL"
       },
@@ -10125,7 +10125,7 @@
       "isOverridden": "",
       "exemptFromContextAwareAccess": false,
       "allowedServices": {},
-      "configuredBy": "Admin Console Baseline (owl_apps.csv)",
+      "configuredBy": "Admin Console Baseline (owl_apps_configured_apps.csv)",
       "lastPolicyUpdate": "2026-09-13T18:00:00Z"
     },
     "multiClientMapped": true,
@@ -10233,7 +10233,7 @@
       "isOverridden": false,
       "exemptFromContextAwareAccess": true,
       "allowedServices": {},
-      "configuredBy": "Admin Console Baseline (owl_apps.csv)",
+      "configuredBy": "Admin Console Baseline (owl_apps_configured_apps.csv)",
       "lastPolicyUpdate": "2026-09-13T18:00:00Z"
     },
     "multiClientMapped": true,
@@ -13061,7 +13061,7 @@
       "isOverridden": false,
       "exemptFromContextAwareAccess": true,
       "allowedServices": {},
-      "configuredBy": "Admin Console Baseline (owl_apps.csv)",
+      "configuredBy": "Admin Console Baseline (owl_apps_configured_apps.csv)",
       "lastPolicyUpdate": "2026-09-13T18:00:00Z"
     },
     "multiClientMapped": true,
@@ -13134,7 +13134,7 @@
       "isOverridden": false,
       "exemptFromContextAwareAccess": true,
       "allowedServices": {},
-      "configuredBy": "Admin Console Baseline (owl_apps.csv)",
+      "configuredBy": "Admin Console Baseline (owl_apps_configured_apps.csv)",
       "lastPolicyUpdate": "2026-09-13T18:00:00Z"
     },
     "multiClientMapped": true,
@@ -13755,7 +13755,7 @@
       "isOverridden": false,
       "exemptFromContextAwareAccess": true,
       "allowedServices": {},
-      "configuredBy": "Admin Console Baseline (owl_apps.csv)",
+      "configuredBy": "Admin Console Baseline (owl_apps_configured_apps.csv)",
       "lastPolicyUpdate": "2026-09-13T18:00:00Z"
     },
     "multiClientMapped": false,
@@ -13812,15 +13812,15 @@
     "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [],
-    "adminAccessLevel": "TRUSTED",
+    "adminAccessLevel": "SPECIFIC_DATA",
     "accessPolicy": {
-      "accessLevel": "TRUSTED",
+      "accessLevel": "SPECIFIC_DATA",
       "orgUnitPath": "/",
       "domainName": "gafe.co.za",
       "isOverridden": false,
-      "exemptFromContextAwareAccess": true,
+      "exemptFromContextAwareAccess": false,
       "allowedServices": {},
-      "configuredBy": "Admin Console Baseline (owl_apps.csv)",
+      "configuredBy": "Admin Console Baseline (owl_apps_configured_apps.csv)",
       "lastPolicyUpdate": "2026-09-13T18:00:00Z"
     },
     "multiClientMapped": true,
@@ -13940,7 +13940,7 @@
       "isOverridden": false,
       "exemptFromContextAwareAccess": true,
       "allowedServices": {},
-      "configuredBy": "Admin Console Baseline (owl_apps.csv)",
+      "configuredBy": "Admin Console Baseline (owl_apps_configured_apps.csv)",
       "lastPolicyUpdate": "2026-09-13T18:00:00Z"
     },
     "multiClientMapped": true,
@@ -13951,7 +13951,7 @@
         "displayName": "OrbitNote (Web Application)",
         "deploymentType": "Web Application",
         "clientId": "243341882805-sqhe1f8jq8t8i5ha4nqbv50gk0iteup7.apps.googleusercontent.com",
-        "adminAccessLevel": "TRUSTED",
+        "adminAccessLevel": "SPECIFIC_DATA",
         "totalUsersCount": 0,
         "maxRisk": "LOW"
       },
@@ -14060,7 +14060,7 @@
       "isOverridden": false,
       "exemptFromContextAwareAccess": true,
       "allowedServices": {},
-      "configuredBy": "Admin Console Baseline (owl_apps.csv)",
+      "configuredBy": "Admin Console Baseline (owl_apps_configured_apps.csv)",
       "lastPolicyUpdate": "2026-09-13T18:00:00Z"
     },
     "multiClientMapped": true,
@@ -14071,7 +14071,7 @@
         "displayName": "OrbitNote (Web Application)",
         "deploymentType": "Web Application",
         "clientId": "243341882805-sqhe1f8jq8t8i5ha4nqbv50gk0iteup7.apps.googleusercontent.com",
-        "adminAccessLevel": "TRUSTED",
+        "adminAccessLevel": "SPECIFIC_DATA",
         "totalUsersCount": 0,
         "maxRisk": "LOW"
       },
@@ -14180,7 +14180,7 @@
       "isOverridden": false,
       "exemptFromContextAwareAccess": true,
       "allowedServices": {},
-      "configuredBy": "Admin Console Baseline (owl_apps.csv)",
+      "configuredBy": "Admin Console Baseline (owl_apps_configured_apps.csv)",
       "lastPolicyUpdate": "2026-09-13T18:00:00Z"
     },
     "multiClientMapped": true,
@@ -14191,7 +14191,7 @@
         "displayName": "OrbitNote (Web Application)",
         "deploymentType": "Web Application",
         "clientId": "243341882805-sqhe1f8jq8t8i5ha4nqbv50gk0iteup7.apps.googleusercontent.com",
-        "adminAccessLevel": "TRUSTED",
+        "adminAccessLevel": "SPECIFIC_DATA",
         "totalUsersCount": 0,
         "maxRisk": "LOW"
       },
@@ -14300,7 +14300,7 @@
       "isOverridden": false,
       "exemptFromContextAwareAccess": true,
       "allowedServices": {},
-      "configuredBy": "Admin Console Baseline (owl_apps.csv)",
+      "configuredBy": "Admin Console Baseline (owl_apps_configured_apps.csv)",
       "lastPolicyUpdate": "2026-09-13T18:00:00Z"
     },
     "multiClientMapped": true,
@@ -14311,7 +14311,7 @@
         "displayName": "OrbitNote (Web Application)",
         "deploymentType": "Web Application",
         "clientId": "243341882805-sqhe1f8jq8t8i5ha4nqbv50gk0iteup7.apps.googleusercontent.com",
-        "adminAccessLevel": "TRUSTED",
+        "adminAccessLevel": "SPECIFIC_DATA",
         "totalUsersCount": 0,
         "maxRisk": "LOW"
       },
@@ -14420,7 +14420,7 @@
       "isOverridden": false,
       "exemptFromContextAwareAccess": true,
       "allowedServices": {},
-      "configuredBy": "Admin Console Baseline (owl_apps.csv)",
+      "configuredBy": "Admin Console Baseline (owl_apps_configured_apps.csv)",
       "lastPolicyUpdate": "2026-09-13T18:00:00Z"
     },
     "multiClientMapped": true,
@@ -14431,7 +14431,7 @@
         "displayName": "OrbitNote (Web Application)",
         "deploymentType": "Web Application",
         "clientId": "243341882805-sqhe1f8jq8t8i5ha4nqbv50gk0iteup7.apps.googleusercontent.com",
-        "adminAccessLevel": "TRUSTED",
+        "adminAccessLevel": "SPECIFIC_DATA",
         "totalUsersCount": 0,
         "maxRisk": "LOW"
       },
@@ -14540,7 +14540,7 @@
       "isOverridden": false,
       "exemptFromContextAwareAccess": true,
       "allowedServices": {},
-      "configuredBy": "Admin Console Baseline (owl_apps.csv)",
+      "configuredBy": "Admin Console Baseline (owl_apps_configured_apps.csv)",
       "lastPolicyUpdate": "2026-09-13T18:00:00Z"
     },
     "multiClientMapped": true,
@@ -14551,7 +14551,7 @@
         "displayName": "OrbitNote (Web Application)",
         "deploymentType": "Web Application",
         "clientId": "243341882805-sqhe1f8jq8t8i5ha4nqbv50gk0iteup7.apps.googleusercontent.com",
-        "adminAccessLevel": "TRUSTED",
+        "adminAccessLevel": "SPECIFIC_DATA",
         "totalUsersCount": 0,
         "maxRisk": "LOW"
       },
@@ -14941,7 +14941,7 @@
         "GSuite Admin": 2,
         "Google Sign-in": 3
       },
-      "configuredBy": "Admin Console Baseline (owl_apps.csv)",
+      "configuredBy": "Admin Console Baseline (owl_apps_configured_apps.csv)",
       "lastPolicyUpdate": "2026-09-13T18:00:00Z"
     },
     "multiClientMapped": true,
@@ -15213,7 +15213,7 @@
       "isOverridden": false,
       "exemptFromContextAwareAccess": true,
       "allowedServices": {},
-      "configuredBy": "Admin Console Baseline (owl_apps.csv)",
+      "configuredBy": "Admin Console Baseline (owl_apps_configured_apps.csv)",
       "lastPolicyUpdate": "2026-09-13T18:00:00Z"
     },
     "multiClientMapped": true,
@@ -15610,7 +15610,7 @@
         "GSuite Admin": 3,
         "Google Sign-in": 3
       },
-      "configuredBy": "Admin Console Baseline (owl_apps.csv)",
+      "configuredBy": "Admin Console Baseline (owl_apps_configured_apps.csv)",
       "lastPolicyUpdate": "2026-09-13T18:00:00Z"
     },
     "multiClientMapped": false,
@@ -15851,7 +15851,7 @@
       "isOverridden": false,
       "exemptFromContextAwareAccess": true,
       "allowedServices": {},
-      "configuredBy": "Admin Console Baseline (owl_apps.csv)",
+      "configuredBy": "Admin Console Baseline (owl_apps_configured_apps.csv)",
       "lastPolicyUpdate": "2026-09-13T18:00:00Z"
     },
     "multiClientMapped": false,

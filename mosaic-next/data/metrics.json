@@ -6,12 +6,12 @@
   "criticalRiskApps": 18,
   "highRiskApps": 18,
   "configuredAppsCount": 28,
-  "trustedAppsCount": 28,
-  "blockedAppsCount": 0,
-  "specificDataAppsCount": 0,
+  "trustedAppsCount": 26,
+  "blockedAppsCount": 1,
+  "specificDataAppsCount": 1,
   "unconfiguredAppsCount": 60,
   "multiClientFamiliesCount": 13,
-  "baselineSource": "owl_apps.csv",
+  "baselineSource": "owl_apps_configured_apps.csv",
   "baselinePolicyCount": 32,
-  "baselineLoadedAt": "2026-09-13T18:00:00Z"
+  "baselineLoadedAt": "2026-09-17T06:50:00.844Z"
 }

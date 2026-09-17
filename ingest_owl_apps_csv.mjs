@@ -2,7 +2,9 @@ import fs from 'fs';
 import path from 'path';
 import { DatabaseSync } from 'node:sqlite';
 
-const CSV_PATH = './owl_apps.csv';
+const CSV_PATH = fs.existsSync('./owl_apps_configured_apps.csv') 
+  ? './owl_apps_configured_apps.csv' 
+  : './owl_apps.csv';
 const DB_PATH = './adminlens.db';
 
 export function parseCSV(text) {
@@ -193,7 +195,7 @@ export function ingestOwlAppsCsv(csvPath = CSV_PATH, dbPath = DB_PATH) {
       isOverridden ? 1 : 0,
       0,
       JSON.stringify(services),
-      'Google Admin Console Export (owl_apps.csv)',
+      `Google Admin Console Export (${path.basename(csvPath)})`,
       new Date().toISOString()
     );
     policiesCount++;
