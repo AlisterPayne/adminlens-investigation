@@ -79,21 +79,40 @@ export function parseRequestedServicesWithScopes(rawStr) {
   return { services, scopes: Array.from(new Set(allScopes)) };
 }
 
-export function ingestOwlAppsCsv(csvPath = CSV_PATH, dbPath = DB_PATH) {
-  if (!fs.existsSync(csvPath)) {
-    console.error(`File not found: ${csvPath}`);
-    return null;
+function checkIsVerified(status) {
+  if (!status) return false;
+  const s = status.trim().toLowerCase();
+  return s === 'verified' || (s.includes('verified') && !s.includes('not verified') && !s.includes('unverified'));
+}
+
+export function ingestOwlAppsCsv(customPath = null) {
+  const accessedCsv = fs.existsSync('./owl_apps_accessed_apps.csv') ? './owl_apps_accessed_apps.csv' : null;
+  const configuredCsv = fs.existsSync('./owl_apps_configured_apps.csv')
+    ? './owl_apps_configured_apps.csv'
+    : (fs.existsSync('./owl_apps.csv') ? './owl_apps.csv' : null);
+
+  const filesToIngest = [];
+  if (customPath) {
+    filesToIngest.push(customPath);
+  } else {
+    if (accessedCsv) filesToIngest.push(accessedCsv);
+    if (configuredCsv) filesToIngest.push(configuredCsv);
   }
 
-  console.log(`[1] Parsing ${csvPath}...`);
-  const rawText = fs.readFileSync(csvPath, 'utf8');
-  const rows = parseCSV(rawText);
-  console.log(`✓ Parsed ${rows.length} policy rows from CSV.`);
+  if (filesToIngest.length === 0) {
+    console.error('No Owl Apps CSV file found.');
+    return;
+  }
 
-  const db = new DatabaseSync(dbPath);
+  const db = new DatabaseSync(DB_PATH);
 
-  const checkApp = db.prepare('SELECT * FROM applications WHERE id = ?');
-  const checkClientId = db.prepare('SELECT application_id FROM application_client_ids WHERE client_id = ?');
+  const checkClientId = db.prepare(`
+    SELECT application_id FROM application_client_ids WHERE client_id = ?
+  `);
+
+  const checkApp = db.prepare(`
+    SELECT id FROM applications WHERE id = ? OR display_name = ?
+  `);
 
   const insertApp = db.prepare(`
     INSERT INTO applications (
@@ -104,7 +123,7 @@ export function ingestOwlAppsCsv(csvPath = CSV_PATH, dbPath = DB_PATH) {
   `);
 
   const updateAppAccess = db.prepare(`
-    UPDATE applications SET admin_access_level = ? WHERE id = ?
+    UPDATE applications SET admin_access_level = ?, is_verified = MAX(is_verified, ?) WHERE id = ?
   `);
 
   const insertClientId = db.prepare(`
@@ -129,76 +148,87 @@ export function ingestOwlAppsCsv(csvPath = CSV_PATH, dbPath = DB_PATH) {
 
   db.exec('BEGIN TRANSACTION');
 
-  for (const r of rows) {
-    const appName = r['App Name'] || 'Unnamed App';
-    const clientId = r['Id'];
-    if (!clientId) continue;
+  for (const csvPath of filesToIngest) {
+    const isConfiguredFile = csvPath.includes('configured') || (!accessedCsv && csvPath.includes('owl_apps.csv'));
+    const rows = parseCSV(fs.readFileSync(csvPath, 'utf8'));
 
-    const accessRaw = r['Access'] || 'UNCONFIGURED';
-    const accessLevel = accessRaw.toUpperCase() === 'TRUSTED' ? 'TRUSTED' :
-                       (accessRaw.toUpperCase() === 'LIMITED' ? 'LIMITED' :
-                       (accessRaw.toUpperCase() === 'BLOCKED' ? 'BLOCKED' :
-                       (accessRaw.toUpperCase().includes('SPECIFIC') ? 'SPECIFIC_DATA' : 'UNCONFIGURED')));
+    for (const r of rows) {
+      const appName = r['App Name'] || 'Unnamed App';
+      const clientId = r['Id'];
+      if (!clientId) continue;
 
-    const orgUnit = r['Org Unit'] || '/';
-    const isOverridden = orgUnit !== '/';
-    const usersCount = parseInt(r['Users'] || '0', 10);
-    const isVerified = (r['Verification Status'] || '').toLowerCase().includes('verified') ? 1 : 0;
-    const ownership = r['Ownership'] || 'Third party';
+      const accessRaw = r['Access'] || 'UNCONFIGURED';
+      const accessLevel = accessRaw.toUpperCase() === 'TRUSTED' ? 'TRUSTED' :
+                         (accessRaw.toUpperCase() === 'LIMITED' ? 'LIMITED' :
+                         (accessRaw.toUpperCase() === 'BLOCKED' ? 'BLOCKED' :
+                         (accessRaw.toUpperCase().includes('SPECIFIC') ? 'SPECIFIC_DATA' : 'UNCONFIGURED')));
 
-    const { services, scopes } = parseRequestedServicesWithScopes(r['Requested Services with Scopes']);
+      const orgUnit = r['Org Unit'] || '/';
+      const isOverridden = orgUnit !== '/';
+      const usersCount = parseInt(r['Users'] || '0', 10);
+      const isVerified = checkIsVerified(r['Verification Status']) ? 1 : 0;
+      const ownership = r['Ownership'] || 'Third party';
 
-    const existingMapping = checkClientId.get(clientId);
-    let targetAppId = existingMapping ? existingMapping.application_id : null;
+      const { services, scopes } = parseRequestedServicesWithScopes(r['Requested Services with Scopes']);
 
-    if (!targetAppId) {
-      const byId = checkApp.get(appName);
-      if (byId) {
-        targetAppId = byId.id;
+      const existingMapping = checkClientId.get(clientId);
+      let targetAppId = existingMapping ? existingMapping.application_id : null;
+
+      if (!targetAppId) {
+        const byId = checkApp.get(appName);
+        if (byId) {
+          targetAppId = byId.id;
+        }
+      }
+
+      if (targetAppId) {
+        if (isConfiguredFile) {
+          updateAppAccess.run(accessLevel, isVerified, targetAppId);
+        } else {
+          db.prepare('UPDATE applications SET is_verified = ? WHERE id = ?').run(isVerified, targetAppId);
+        }
+        updatedAppsCount++;
+      } else {
+        targetAppId = appName || clientId;
+        const match = clientId.match(/^(\d+)-/);
+        const projNum = match ? match[1] : null;
+
+        insertApp.run(
+          targetAppId,
+          appName,
+          ownership === 'Internal' ? 'Internal Domain Tool' : (ownership === 'Google owned' ? 'Google LLC' : (appName || 'Third-Party Developer')),
+          null,
+          ownership === 'Internal' ? 'Admin & Automation' : (ownership === 'Google owned' ? 'Google Workspace Core' : 'Configured SaaS'),
+          isVerified,
+          'https://ui-avatars.com/api/?name=' + encodeURIComponent(appName) + '&background=3B82F6&color=fff',
+          scopes.length > 5 ? 'MEDIUM' : 'LOW',
+          JSON.stringify(['Configured via Google Admin Console App Access Control']),
+          accessLevel,
+          usersCount,
+          0,
+          null,
+          null
+        );
+
+        insertClientId.run(clientId, targetAppId, projNum);
+        newAppsCount++;
+      }
+
+      if (isConfiguredFile) {
+        insertPolicy.run(
+          targetAppId,
+          clientId,
+          orgUnit,
+          accessLevel,
+          isOverridden ? 1 : 0,
+          0,
+          JSON.stringify(services),
+          `Google Admin Console Export (${path.basename(csvPath)})`,
+          new Date().toISOString()
+        );
+        policiesCount++;
       }
     }
-
-    if (targetAppId) {
-      updateAppAccess.run(accessLevel, targetAppId);
-      updatedAppsCount++;
-    } else {
-      targetAppId = appName || clientId;
-      const match = clientId.match(/^(\d+)-/);
-      const projNum = match ? match[1] : null;
-
-      insertApp.run(
-        targetAppId,
-        appName,
-        ownership === 'Internal' ? 'Internal Domain Tool' : (appName || 'Third-Party Developer'),
-        null,
-        ownership === 'Internal' ? 'Admin & Automation' : 'Configured SaaS',
-        isVerified,
-        'https://ui-avatars.com/api/?name=' + encodeURIComponent(appName) + '&background=3B82F6&color=fff',
-        scopes.length > 5 ? 'MEDIUM' : 'LOW',
-        JSON.stringify(['Configured via Google Admin Console App Access Control']),
-        accessLevel,
-        usersCount,
-        0,
-        null,
-        null
-      );
-
-      insertClientId.run(clientId, targetAppId, projNum);
-      newAppsCount++;
-    }
-
-    insertPolicy.run(
-      targetAppId,
-      clientId,
-      orgUnit,
-      accessLevel,
-      isOverridden ? 1 : 0,
-      0,
-      JSON.stringify(services),
-      `Google Admin Console Export (${path.basename(csvPath)})`,
-      new Date().toISOString()
-    );
-    policiesCount++;
   }
 
   db.exec('COMMIT');

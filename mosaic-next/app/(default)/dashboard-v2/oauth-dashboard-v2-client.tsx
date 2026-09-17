@@ -1070,11 +1070,19 @@ export default function OAuthDashboardV2Client({
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="space-y-1">
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 flex-wrap">
                       <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-red-100 text-red-800 border border-red-200">
                         {rec.severity}
                       </span>
                       <h3 className="font-bold text-sm text-gray-900">{rec.title}</h3>
+                      {rec.clientId && (
+                        <span 
+                          title={`Client ID: ${rec.clientId}`}
+                          className="font-mono text-[10px] px-2 py-0.5 rounded bg-slate-100 text-slate-600 border border-slate-200 truncate max-w-[280px]"
+                        >
+                          Client ID: {rec.clientId.length > 25 ? `${rec.clientId.slice(0, 12)}...${rec.clientId.slice(-10)}` : rec.clientId}
+                        </span>
+                      )}
                     </div>
                     <p className="text-xs text-gray-600">{rec.details}</p>
                   </div>

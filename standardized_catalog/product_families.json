@@ -2,7 +2,7 @@
   {
     "familyId": "internal-google-apps-script",
     "familyName": "Internal / Google Apps Script",
-    "vendor": "Internal / Google Apps Script",
+    "vendor": "Internal Domain Tool",
     "iconUrl": "https://www.google.com/s2/favicons?domain=script.google.com&sz=128",
     "deploymentsCount": 10,
     "totalUsersCount": 12,
@@ -158,7 +158,7 @@
   {
     "familyId": "internal-domain-developer",
     "familyName": "Internal / Domain Developer",
-    "vendor": "Internal / Domain Developer",
+    "vendor": "Internal Domain Tool",
     "iconUrl": "https://www.google.com/s2/favicons?domain=script.google.com&sz=128",
     "deploymentsCount": 2,
     "totalUsersCount": 2,
@@ -276,7 +276,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 1,
     "maxRisk": "CRITICAL",
-    "avgRiskScore": 4.48,
+    "avgRiskScore": 4.5,
     "deploymentIds": [
       "526554529059-emb2o69t2ri25uicvjkj444o71sku29p.apps.googleusercontent.com"
     ]
@@ -387,6 +387,7 @@
   {
     "familyId": "gcp_proj_953348912797",
     "familyName": "Google AppSheet",
+    "vendor": "Google LLC",
     "iconUrl": "https://ui-avatars.com/api/?name=Google%20AppSheet&background=3B82F6&color=fff&size=128&rounded=true",
     "deploymentsCount": 1,
     "totalUsersCount": 1,
@@ -502,6 +503,7 @@
   {
     "familyId": "gcp_proj_469390422673",
     "familyName": "Google Calendar for Workspace Studio",
+    "vendor": "Google LLC",
     "iconUrl": "https://ui-avatars.com/api/?name=Google%20Calendar%20for%20Workspace%20Studio&background=3B82F6&color=fff&size=128&rounded=true",
     "deploymentsCount": 1,
     "totalUsersCount": 2,
@@ -539,6 +541,7 @@
   {
     "familyId": "gcp_proj_873507009103",
     "familyName": "Google Chat for Workspace Studio",
+    "vendor": "Google LLC",
     "iconUrl": "https://ui-avatars.com/api/?name=Google%20Chat%20for%20Workspace%20Studio&background=3B82F6&color=fff&size=128&rounded=true",
     "deploymentsCount": 1,
     "totalUsersCount": 2,
@@ -564,6 +567,7 @@
   {
     "familyId": "gcp_proj_899041083010",
     "familyName": "CloudReady Home Edition",
+    "vendor": "Google LLC",
     "iconUrl": "https://ui-avatars.com/api/?name=CloudReady%20Home%20Edition&background=3B82F6&color=fff&size=128&rounded=true",
     "deploymentsCount": 1,
     "totalUsersCount": 1,
@@ -576,6 +580,7 @@
   {
     "familyId": "gcp_proj_99790332366",
     "familyName": "Edu Launchpad",
+    "vendor": "Google LLC",
     "iconUrl": "https://ui-avatars.com/api/?name=Edu%20Launchpad&background=3B82F6&color=fff&size=128&rounded=true",
     "deploymentsCount": 1,
     "totalUsersCount": 1,
@@ -583,6 +588,19 @@
     "avgRiskScore": 0.02,
     "deploymentIds": [
       "99790332366-7jbqgn7andc12kui6o7810gk03le7asr.apps.googleusercontent.com"
+    ]
+  },
+  {
+    "familyId": "gcp_proj_472234446753",
+    "familyName": "Google Device Management",
+    "vendor": "Google LLC",
+    "iconUrl": "https://ui-avatars.com/api/?name=Google%20Device%20Management&background=3B82F6&color=fff&size=128&rounded=true",
+    "deploymentsCount": 1,
+    "totalUsersCount": 0,
+    "maxRisk": "LOW",
+    "avgRiskScore": 0,
+    "deploymentIds": [
+      "472234446753-42vl6rishfssq4peb9oq1utn7e09lstl.apps.googleusercontent.com"
     ]
   },
   {

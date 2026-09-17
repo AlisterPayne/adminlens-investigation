@@ -44,6 +44,12 @@ function detectServiceBucket(scope) {
   return null;
 }
 
+function checkIsVerified(status) {
+  if (!status) return false;
+  const s = status.trim().toLowerCase();
+  return s === 'verified' || (s.includes('verified') && !s.includes('not verified') && !s.includes('unverified'));
+}
+
 function assessScopeRisk(scope) {
   const s = scope.toLowerCase();
   if (s.includes('admin.') || s.includes('mail.google.com') || s.includes('script.send_mail')) {
@@ -152,7 +158,7 @@ function getOrCreateDeploymentRecord(appName, clientId, owlType = null, verified
       compliance: enriched.compliance || ['Standard Terms'],
       dataHosting: enriched.dataHosting || 'USA',
       breachHistory: enriched.breachHistory || null,
-      isVerified: Boolean(enriched.isVerified || (verifiedStatus && verifiedStatus.toLowerCase().includes('verified'))),
+      isVerified: Boolean(checkIsVerified(verifiedStatus) || (verifiedStatus === null && enriched.isVerified)),
       iconUrl: enriched.iconUrl,
       storeUrl: enriched.storeUrl || null,
       description: enriched.description || '',
@@ -174,7 +180,7 @@ function getOrCreateDeploymentRecord(appName, clientId, owlType = null, verified
   const record = catalog.get(deploymentKey);
   if (clientId) record.clientIds.add(clientId);
   if (projNum !== 'unknown') record.projectNumbers.add(projNum);
-  if (verifiedStatus && verifiedStatus.toLowerCase().includes('verified')) {
+  if (checkIsVerified(verifiedStatus)) {
     record.isVerified = true;
   }
   return record;
@@ -279,41 +285,99 @@ function parseServicesWithScopes(rawStr) {
   return { services, scopes: Array.from(new Set(allScopes)) };
 }
 
-const baselineCsvPath = fs.existsSync('./owl_apps_configured_apps.csv') 
+const accessedCsvPath = fs.existsSync('./owl_apps_accessed_apps.csv') ? './owl_apps_accessed_apps.csv' : null;
+const configuredCsvPath = fs.existsSync('./owl_apps_configured_apps.csv') 
   ? './owl_apps_configured_apps.csv' 
   : (fs.existsSync('./owl_apps.csv') ? './owl_apps.csv' : null);
 
-if (baselineCsvPath) {
-  const owlText = fs.readFileSync(baselineCsvPath, 'utf8');
+const parseCsvLines = (csvPath) => {
+  if (!csvPath || !fs.existsSync(csvPath)) return [];
+  const owlText = fs.readFileSync(csvPath, 'utf8');
   const lines = owlText.trim().split(/\r?\n/);
-  if (lines.length > 1) {
-    baselineCsvLoaded = true;
-    const parseLine = (line) => {
-      const res = [];
-      let cur = '';
-      let q = false;
-      for (let i = 0; i < line.length; i++) {
-        const c = line[i];
-        if (c === '"') {
-          if (q && line[i+1] === '"') { cur += '"'; i++; }
-          else { q = !q; }
-        } else if (c === ',' && !q) {
-          res.push(cur);
-          cur = '';
-        } else {
-          cur += c;
+  if (lines.length < 2) return [];
+
+  const parseLine = (line) => {
+    const res = [];
+    let cur = '';
+    let q = false;
+    for (let i = 0; i < line.length; i++) {
+      const c = line[i];
+      if (c === '"') {
+        if (q && line[i+1] === '"') { cur += '"'; i++; }
+        else { q = !q; }
+      } else if (c === ',' && !q) {
+        res.push(cur);
+        cur = '';
+      } else {
+        cur += c;
+      }
+    }
+    res.push(cur);
+    return res;
+  };
+
+  const headers = parseLine(lines[0]).map(h => h.trim());
+  const rows = [];
+  for (let i = 1; i < lines.length; i++) {
+    if (!lines[i].trim()) continue;
+    const vals = parseLine(lines[i]);
+    const row = {};
+    headers.forEach((h, idx) => row[h] = vals[idx] ? vals[idx].trim() : '');
+    rows.push(row);
+  }
+  return rows;
+};
+
+// 3a. Ingest Accessed Apps Baseline (if available) to capture baseline verification and scopes
+if (accessedCsvPath) {
+  const accessedRows = parseCsvLines(accessedCsvPath);
+  for (const row of accessedRows) {
+    let appName = row['App Name'] ? row['App Name'].trim() : '';
+    const cid = row['Id'];
+    const rawType = row['Type'] || 'Web Application';
+
+    if (!appName && cid) {
+      if (cid.startsWith('779010036194-')) appName = 'Canva';
+      else if (cid.startsWith('585538275436-')) appName = 'GAM';
+      else if (cid.includes('DevicePolicy')) appName = 'Google Device Policy';
+      else appName = 'Accessed Third-Party App';
+    }
+
+    if (cid) {
+      const { services, scopes } = parseServicesWithScopes(row['Requested Services with Scopes']);
+      const record = getOrCreateDeploymentRecord(appName, cid, rawType, row['Verification Status']);
+      if (checkIsVerified(row['Verification Status'])) {
+        record.isVerified = true;
+      }
+      if (row['Ownership'] === 'Internal' || row['Ownership'] === 'Google owned') {
+        record.vendor = row['Ownership'] === 'Google owned' ? 'Google LLC' : 'Internal Domain Tool';
+        record.category = row['Ownership'] === 'Google owned' ? 'Google Workspace Core' : 'Admin & Automation';
+      }
+
+      for (const s of scopes) {
+        if (!record.scopes.has(s)) {
+          const risk = assessScopeRisk(s);
+          record.scopes.set(s, risk);
+          record.riskReasons.add(risk.reason);
+          const srv = detectServiceBucket(s);
+          if (srv) record.servicesTouched.add(srv);
+          const order = { CRITICAL: 4, HIGH: 3, MEDIUM: 2, LOW: 1 };
+          if (order[risk.level] > order[record.maxRisk]) {
+            record.maxRisk = risk.level;
+          }
         }
       }
-      res.push(cur);
-      return res;
-    };
+    }
+  }
+}
 
-    const headers = parseLine(lines[0]).map(h => h.trim());
-    for (let i = 1; i < lines.length; i++) {
-      if (!lines[i].trim()) continue;
-      const vals = parseLine(lines[i]);
-      const row = {};
-      headers.forEach((h, idx) => row[h] = vals[idx] ? vals[idx].trim() : '');
+// 3b. Ingest Configured Apps Baseline (Admin Console policies take precedence)
+const baselineCsvPath = configuredCsvPath || accessedCsvPath;
+if (configuredCsvPath) {
+  const configuredRows = parseCsvLines(configuredCsvPath);
+  if (configuredRows.length > 0) {
+    baselineCsvLoaded = true;
+    for (const row of configuredRows) {
       let appName = row['App Name'] ? row['App Name'].trim() : '';
       const cid = row['Id'];
       const rawType = row['Type'] || 'Web Application';
@@ -342,17 +406,17 @@ if (baselineCsvPath) {
           isOverridden: row['Org Unit'] && row['Org Unit'] !== '/',
           exemptFromContextAwareAccess: accessLevel === 'TRUSTED',
           allowedServices: services,
-          configuredBy: `Admin Console Baseline (${path.basename(baselineCsvPath)})`,
+          configuredBy: `Admin Console Baseline (${path.basename(configuredCsvPath)})`,
           lastPolicyUpdate: '2026-09-13T18:00:00Z'
         };
 
         const record = getOrCreateDeploymentRecord(appName, cid, rawType, row['Verification Status']);
-        if (row['Verification Status'] && row['Verification Status'].toLowerCase().includes('verified')) {
+        if (checkIsVerified(row['Verification Status'])) {
           record.isVerified = true;
         }
-        if (row['Ownership'] === 'Internal') {
-          record.vendor = 'Internal Domain Tool';
-          record.category = 'Admin & Automation';
+        if (row['Ownership'] === 'Internal' || row['Ownership'] === 'Google owned') {
+          record.vendor = row['Ownership'] === 'Google owned' ? 'Google LLC' : 'Internal Domain Tool';
+          record.category = row['Ownership'] === 'Google owned' ? 'Google Workspace Core' : 'Admin & Automation';
         }
 
         for (const s of scopes) {

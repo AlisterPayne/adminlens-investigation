@@ -1,20 +1,20 @@
 {
-  "totalApplications": 88,
-  "totalProductFamilies": 45,
+  "totalApplications": 89,
+  "totalProductFamilies": 46,
   "totalDomainUsers": 296,
   "totalActiveGrants": 267,
   "criticalRiskApps": 18,
   "highRiskApps": 18,
   "mediumRiskApps": 3,
   "minorRiskApps": 0,
-  "lowRiskApps": 49,
+  "lowRiskApps": 50,
   "configuredAppsCount": 28,
   "trustedAppsCount": 26,
   "blockedAppsCount": 1,
   "specificDataAppsCount": 1,
-  "unconfiguredAppsCount": 60,
+  "unconfiguredAppsCount": 61,
   "multiClientFamiliesCount": 13,
   "baselineSource": "owl_apps_configured_apps.csv",
   "baselinePolicyCount": 32,
-  "baselineLoadedAt": "2026-09-17T10:59:49.633Z"
+  "baselineLoadedAt": "2026-09-17T11:58:18.067Z"
 }

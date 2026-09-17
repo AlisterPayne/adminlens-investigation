@@ -289,7 +289,7 @@ export const ENRICHED_VENDOR_REGISTRY = {
     appType: 'Security Application',
     compliance: ['SOC 2 (In-Progress)', 'GDPR', 'POPIA'],
     dataHosting: 'South Africa / EU',
-    verified: true,
+    verified: false,
     description: 'Google Workspace security auditing, posture management, and recommendation platform.',
     iconUrl: 'https://www.google.com/s2/favicons?domain=adminlens.io&sz=128'
   },
