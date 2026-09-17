@@ -73,6 +73,7 @@ interface Recommendation {
   remediation: string;
   actionType: string;
   gamCommand?: string;
+  adminConsolePath?: string;
 }
 
 interface Metrics {

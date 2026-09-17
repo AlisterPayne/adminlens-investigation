@@ -112,6 +112,7 @@ interface Recommendation {
   remediation: string;
   actionType: string;
   gamCommand?: string;
+  adminConsolePath?: string;
 }
 
 interface Metrics {
@@ -639,7 +640,7 @@ export default function OAuthDashboardClient({
               activeTab === "recs" ? "bg-white text-blue-600 shadow-sm" : "text-gray-600 hover:text-gray-900"
             }`}
           >
-            🚨 Recommendations ({initialRecs.totalFindings || 73})
+            🚨 Recommendations ({initialRecs.totalFindings || initialRecs.findings?.length || 91})
           </button>
           <button
             onClick={() => setActiveTab("scopes")}
@@ -1673,7 +1674,7 @@ export default function OAuthDashboardClient({
                   <div className="text-gray-700">
                     <span className="font-semibold text-blue-700">Remediation:</span> {rec.remediation}
                   </div>
-                  {rec.gamCommand && (
+                  {rec.gamCommand ? (
                     <div className="flex items-center justify-between bg-white px-3 py-1.5 rounded font-mono text-[11px] text-gray-800 border border-gray-300 shadow-inner">
                       <span className="truncate">{rec.gamCommand}</span>
                       <button
@@ -1682,6 +1683,19 @@ export default function OAuthDashboardClient({
                       >
                         {copiedId === rec.id ? "Copied! ✓" : "Copy Command"}
                       </button>
+                    </div>
+                  ) : (
+                    <div className="flex items-center justify-between bg-white px-3 py-1.5 rounded text-[11px] text-gray-700 border border-gray-200 shadow-2xs">
+                      <span className="text-gray-600">Console Action: <strong className="text-gray-900">{rec.adminConsolePath || "Security > API controls > App access control"}</strong></span>
+                      <a
+                        href="https://admin.google.com/ac/owl/list?tab=apps"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1 text-xs text-blue-600 hover:text-blue-800 font-bold ml-3 flex-shrink-0"
+                      >
+                        <GoogleAdminIcon className="w-3.5 h-3.5" />
+                        Open Google Admin Console ↗
+                      </a>
                     </div>
                   )}
                 </div>
@@ -1810,6 +1824,55 @@ export default function OAuthDashboardClient({
                   </div>
                 </div>
               </div>
+
+              {/* Critical Governance Recommendation Banner for Unverified & Unconfigured High/Critical Apps */}
+              {((selectedApp.riskLevel === 'CRITICAL' || selectedApp.riskLevel === 'HIGH' || (selectedApp.riskScore !== undefined && selectedApp.riskScore >= 3.0)) && !selectedApp.isVerified && (!selectedApp.adminAccessLevel || selectedApp.adminAccessLevel === 'UNCONFIGURED')) && (
+                <div className="bg-red-50/80 border-2 border-red-300 rounded-xl p-4.5 space-y-3 shadow-xs">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2 text-red-950 font-bold text-sm">
+                      <span className="text-base">🚨</span>
+                      <span>CRITICAL GOVERNANCE ACTION REQUIRED</span>
+                    </div>
+                    <span className="bg-red-600 text-white font-extrabold text-[10px] px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-2xs">
+                      Critical Review
+                    </span>
+                  </div>
+
+                  <p className="text-xs text-red-950 font-medium leading-relaxed">
+                    This application holds high-privilege access ({selectedApp.riskLevel} risk), is <strong>unverified by Google</strong>, and has <strong>not been configured or reviewed by an administrator</strong> in Google Workspace.
+                  </p>
+
+                  <div className="p-3.5 bg-white/90 rounded-lg border border-red-200/90 space-y-2.5 text-xs">
+                    <div>
+                      <span className="font-bold text-red-900">Urgent Remediation:</span> Urgently review this application and contact the active user(s) utilizing it (<strong>{selectedApp.users?.map(u => u.email).join(', ') || 'Domain Users'}</strong>) to confirm if this access was intended, and ensure they build or establish a legitimate, documented business use case.
+                    </div>
+                    <div className="pt-2 border-t border-red-100 space-y-1.5">
+                      <div className="font-bold text-gray-900">Security Recommendation based on Risk:</div>
+                      <div className="flex items-start gap-2 text-gray-800">
+                        <span className="text-emerald-700 font-bold">✓</span>
+                        <span><strong>If the user has a strong, validated use case:</strong> Do not grant broad trust. In Google Admin Console API Controls, configure the policy to only allow <strong>&quot;Specific Google data&quot;</strong>.</span>
+                      </div>
+                      <div className="flex items-start gap-2 text-gray-800">
+                        <span className="text-red-700 font-bold">✗</span>
+                        <span><strong>If there is no good or approved use case:</strong> Immediately set the application policy to <strong>&quot;Blocked&quot;</strong>.</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="pt-1 flex items-center justify-between text-xs">
+                    <a
+                      href={getAdminConsoleLink(selectedApp).url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 font-bold text-red-800 hover:text-red-950 underline"
+                    >
+                      <GoogleAdminIcon className="w-3.5 h-3.5" />
+                      Configure Access Policy in Google Admin Console ↗
+                    </a>
+                    <span className="text-[11px] text-gray-500 font-mono">Status: Unconfigured Shadow IT</span>
+                  </div>
+                </div>
+              )}
 
               {/* Google Admin Access Control Policy Visualizer */}
               <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-3">

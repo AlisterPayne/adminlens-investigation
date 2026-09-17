@@ -11,7 +11,55 @@ export class AdminLensRiskEngine {
     const findings = [];
 
     // -------------------------------------------------------------
-    // RULE 1: Admin Account Exposure to Critical/High-Risk Apps
+    // RULE 1: Unverified + Unconfigured + High/Critical Risk (CRITICAL - NO GAM COMMAND)
+    // "If an application is a risk - Critical or High - and the application is unverified
+    // by Google - And the application has not been configured by the administrator.
+    // Then this is a critical. Do not include a gam command for the remediation.
+    // The remediation: urgently review the app and contact users to build/verify use case.
+    // Recommendation: if strong use case -> only allow specific data; if not -> block."
+    // -------------------------------------------------------------
+    const unverifiedUnconfigured = this.db.prepare(`
+      SELECT 
+        a.id as app_id,
+        a.display_name,
+        a.vendor,
+        a.risk_level,
+        a.total_users_count,
+        GROUP_CONCAT(DISTINCT g.user_email) as user_emails,
+        g.client_id
+      FROM applications a
+      JOIN grants g ON a.id = g.application_id
+      WHERE a.risk_level IN ('CRITICAL', 'HIGH')
+        AND a.is_verified = 0
+        AND a.admin_access_level = 'UNCONFIGURED'
+      GROUP BY a.id
+    `).all();
+
+    for (const u of unverifiedUnconfigured) {
+      const users = (u.user_emails || '').split(',');
+      const userDisplay = users.length <= 3 
+        ? users.join(', ') 
+        : `${u.total_users_count} users (including ${users.slice(0, 3).join(', ')}...)`;
+
+      findings.push({
+        id: `REC-UNVERIFIED-UNCONFIGURED-${u.app_id}`,
+        rule: 'UNVERIFIED_UNCONFIGURED_HIGH_RISK',
+        title: `Critical Governance Review: "${u.display_name}" (Unverified & Unconfigured)`,
+        severity: 'CRITICAL',
+        application: u.display_name,
+        vendor: u.vendor,
+        affectedAccount: userDisplay,
+        clientId: u.client_id || u.app_id,
+        details: `"${u.display_name}" carries a ${u.risk_level} risk rating, is unverified by Google, and has not been configured or reviewed by an administrator in Google Workspace API Access Control.`,
+        remediation: `Urgently review this application and contact the user(s) using the application (${userDisplay}) to confirm if access was intended and ensure they build or establish a legitimate business use case. Recommendation: If the user has a strong, validated use case, configure the application in Google Admin Console (Security > Access and data control > API controls > App access control) to only allow "Specific Google data". If there is no good or approved use case, block the application immediately.`,
+        actionType: 'SPECIFIC_DATA_OR_BLOCK',
+        adminConsolePath: 'Security > Access and data control > API controls > App access control',
+        // Note: No GAM command is included for unverified unconfigured high/critical apps
+      });
+    }
+
+    // -------------------------------------------------------------
+    // RULE 2: Super Admin Account Exposure (Verified / Configured Apps)
     // -------------------------------------------------------------
     const adminRisks = this.db.prepare(`
       SELECT 
@@ -26,6 +74,7 @@ export class AdminLensRiskEngine {
       JOIN grants g ON a.id = g.application_id
       JOIN users u ON g.user_email = u.primary_email
       WHERE u.is_admin = 1 AND a.risk_level IN ('CRITICAL', 'HIGH')
+        AND NOT (a.is_verified = 0 AND a.admin_access_level = 'UNCONFIGURED')
     `).all();
 
     for (const r of adminRisks) {
@@ -47,41 +96,7 @@ export class AdminLensRiskEngine {
     }
 
     // -------------------------------------------------------------
-    // RULE 2: Unmanaged / "Untitled" Google Apps Scripts with High Privileges
-    // -------------------------------------------------------------
-    const untitledScripts = this.db.prepare(`
-      SELECT 
-        a.id as app_id,
-        a.display_name,
-        g.user_email,
-        g.client_id,
-        g.scopes_json
-      FROM applications a
-      JOIN grants g ON a.id = g.application_id
-      WHERE (a.display_name LIKE '%untitled%' OR a.vendor LIKE '%Apps Script%')
-        AND a.risk_level IN ('CRITICAL', 'HIGH')
-    `).all();
-
-    for (const s of untitledScripts) {
-      const scopes = JSON.parse(s.scopes_json || '[]');
-      findings.push({
-        id: `REC-ORPHAN-SCRIPT-${s.app_id}-${s.user_email.split('@')[0]}`,
-        rule: 'UNMANAGED_APPS_SCRIPT',
-        title: `Unmanaged Custom Script with Elevated Rights: "${s.display_name}"`,
-        severity: 'CRITICAL',
-        application: s.display_name,
-        vendor: 'Internal / Google Apps Script',
-        affectedAccount: s.user_email,
-        clientId: s.client_id,
-        details: `Custom Apps Script authorized by "${s.user_email}" has sensitive capabilities: ${scopes.join(', ')}. Unmanaged scripts lack auditing and CI/CD controls.`,
-        remediation: `Audit the underlying Apps Script project. If obsolete, revoke the grant. If legitimate, rename the project, review the source code, and ensure it complies with internal security policy.`,
-        actionType: 'AUDIT_OR_DELETE',
-        gamCommand: `gam user ${s.user_email} delete token clientid ${s.client_id}`,
-      });
-    }
-
-    // -------------------------------------------------------------
-    // RULE 3: Excessive / Broad Full Google Drive Scopes
+    // RULE 3: Overprivileged Full Google Drive Scopes (Excluding unverified unconfigured apps)
     // -------------------------------------------------------------
     const broadDriveApps = this.db.prepare(`
       SELECT 
@@ -89,23 +104,27 @@ export class AdminLensRiskEngine {
         a.display_name,
         a.vendor,
         a.total_users_count,
-        g.user_email,
+        GROUP_CONCAT(DISTINCT g.user_email) as user_emails,
         g.client_id
       FROM applications a
       JOIN grants g ON a.id = g.application_id
       JOIN application_scopes s ON a.id = s.application_id
       WHERE s.scope_url = 'https://www.googleapis.com/auth/drive'
+        AND NOT (a.is_verified = 0 AND a.admin_access_level = 'UNCONFIGURED')
+      GROUP BY a.id
     `).all();
 
     for (const d of broadDriveApps) {
+      const users = (d.user_emails || '').split(',');
+      const userDisplay = users.length <= 3 ? users.join(', ') : `${d.total_users_count} users (${users.slice(0, 2).join(', ')}...)`;
       findings.push({
-        id: `REC-BROAD-DRIVE-${d.app_id}-${d.user_email.split('@')[0]}`,
+        id: `REC-BROAD-DRIVE-${d.app_id}`,
         rule: 'OVERPRIVILEGED_DRIVE_ACCESS',
         title: `Overprivileged Full Google Drive Access: "${d.display_name}"`,
         severity: 'HIGH',
         application: d.display_name,
         vendor: d.vendor,
-        affectedAccount: d.user_email,
+        affectedAccount: userDisplay,
         clientId: d.client_id,
         details: `"${d.display_name}" holds the full Drive scope ('.../auth/drive'), allowing complete read, write, and deletion access to all files in the user's Google Drive and Shared Drives.`,
         remediation: `Evaluate if the application can function with restricted scopes (such as 'drive.file' for user-selected files or 'drive.readonly'). In Google Admin Console, set this app to 'Limited' or 'Blocked' in API Controls.`,
@@ -115,7 +134,7 @@ export class AdminLensRiskEngine {
     }
 
     // -------------------------------------------------------------
-    // RULE 4: Unverified Third-Party Shadow IT Apps
+    // RULE 4: Unverified Third-Party Publisher Apps (Low/Medium Risk or Configured)
     // -------------------------------------------------------------
     const unverifiedApps = this.db.prepare(`
       SELECT 
@@ -124,26 +143,30 @@ export class AdminLensRiskEngine {
         a.vendor,
         a.category,
         a.total_users_count,
-        g.user_email,
+        GROUP_CONCAT(DISTINCT g.user_email) as user_emails,
         g.client_id,
         a.risk_level
       FROM applications a
       JOIN grants g ON a.id = g.application_id
-      WHERE a.is_verified = 0 AND a.risk_level IN ('MEDIUM', 'HIGH', 'CRITICAL')
+      WHERE a.is_verified = 0
+        AND NOT (a.risk_level IN ('CRITICAL', 'HIGH') AND a.admin_access_level = 'UNCONFIGURED')
         AND a.vendor NOT LIKE '%Apps Script%'
+      GROUP BY a.id
     `).all();
 
     for (const u of unverifiedApps) {
+      const users = (u.user_emails || '').split(',');
+      const userDisplay = users.length <= 3 ? users.join(', ') : `${u.total_users_count} users (${users.slice(0, 2).join(', ')}...)`;
       findings.push({
-        id: `REC-UNVERIFIED-APP-${u.app_id}-${u.user_email.split('@')[0]}`,
+        id: `REC-UNVERIFIED-APP-${u.app_id}`,
         rule: 'UNVERIFIED_PUBLISHER_APP',
         title: `Unverified Third-Party Publisher: "${u.display_name}"`,
-        severity: u.risk_level === 'CRITICAL' ? 'HIGH' : 'MEDIUM',
+        severity: 'MEDIUM',
         application: u.display_name,
         vendor: u.vendor,
-        affectedAccount: u.user_email,
+        affectedAccount: userDisplay,
         clientId: u.client_id,
-        details: `"${u.display_name}" is an unverified third-party app with data access scopes granted by "${u.user_email}". Unverified apps have not completed Google's OAuth verification process.`,
+        details: `"${u.display_name}" is an unverified third-party app with data access scopes granted in your domain. Unverified apps have not completed Google's OAuth verification process.`,
         remediation: `Block or place this unverified app into Restricted status in Workspace API Controls until vendor due diligence is complete.`,
         actionType: 'BLOCK_OR_ALLOWLIST',
         adminConsolePath: 'Security > Access and data control > API controls > App access control',
@@ -151,7 +174,7 @@ export class AdminLensRiskEngine {
     }
 
     // -------------------------------------------------------------
-    // RULE 5: Trusted Low-Adoption / Over-Privileged App (Least Privilege Review)
+    // RULE 5: Trusted Policy Least Privilege Review
     // -------------------------------------------------------------
     const trustedLowAdoption = this.db.prepare(`
       SELECT 
@@ -160,9 +183,7 @@ export class AdminLensRiskEngine {
         a.vendor,
         a.total_users_count,
         a.admin_access_level,
-        p.org_unit_path,
-        p.is_overridden,
-        p.configured_by
+        p.org_unit_path
       FROM applications a
       JOIN app_access_policies p ON a.id = p.application_id
       WHERE a.admin_access_level = 'TRUSTED' AND a.total_users_count <= 1
@@ -186,31 +207,36 @@ export class AdminLensRiskEngine {
     }
 
     // -------------------------------------------------------------
-    // RULE 6: High-Risk Unconfigured Shadow IT App
+    // RULE 6: Verified Shadow IT Apps with High-Risk that remain Unconfigured
     // -------------------------------------------------------------
-    const unconfiguredHighRisk = this.db.prepare(`
+    const verifiedUnconfigured = this.db.prepare(`
       SELECT 
         a.id as app_id,
         a.display_name,
         a.vendor,
         a.risk_level,
         a.total_users_count,
-        g.user_email,
+        GROUP_CONCAT(DISTINCT g.user_email) as user_emails,
         g.client_id
       FROM applications a
       JOIN grants g ON a.id = g.application_id
-      WHERE a.admin_access_level = 'UNCONFIGURED' AND a.risk_level IN ('CRITICAL', 'HIGH')
+      WHERE a.admin_access_level = 'UNCONFIGURED' 
+        AND a.risk_level IN ('CRITICAL', 'HIGH')
+        AND a.is_verified = 1
+      GROUP BY a.id
     `).all();
 
-    for (const u of unconfiguredHighRisk) {
+    for (const u of verifiedUnconfigured) {
+      const users = (u.user_emails || '').split(',');
+      const userDisplay = users.length <= 3 ? users.join(', ') : `${u.total_users_count} users (${users.slice(0, 2).join(', ')}...)`;
       findings.push({
-        id: `REC-UNCONFIGURED-HIGH-RISK-${u.app_id}-${u.user_email.split('@')[0]}`,
+        id: `REC-UNCONFIGURED-HIGH-RISK-${u.app_id}`,
         rule: 'UNCONFIGURED_SHADOW_IT_RISK',
         title: `Unreviewed High-Risk App: "${u.display_name}"`,
         severity: u.risk_level === 'CRITICAL' ? 'HIGH' : 'MEDIUM',
         application: u.display_name,
         vendor: u.vendor,
-        affectedAccount: u.user_email,
+        affectedAccount: userDisplay,
         clientId: u.client_id,
         details: `"${u.display_name}" holds ${u.risk_level} privilege scopes but has no explicit policy set in Google Workspace API Access Control (Status: Unconfigured / Default).`,
         remediation: `Audit this application in Google Admin Console. Explicitly configure its access policy to "Limited", "Specific data", or "Blocked" to prevent unauthorized escalation.`,
