@@ -74,6 +74,9 @@ interface Recommendation {
   actionType: string;
   gamCommand?: string;
   adminConsolePath?: string;
+  familyId?: string;
+  familyName?: string;
+  actionChannel?: string;
 }
 
 interface Metrics {
@@ -94,7 +97,7 @@ export default function OAuthDashboardV2Client({
   users,
 }: {
   initialApps: Application[];
-  initialRecs: { totalFindings: number; findings: Recommendation[] };
+  initialRecs: any;
   metrics: Metrics;
   users: any[];
 }) {
@@ -106,6 +109,12 @@ export default function OAuthDashboardV2Client({
   const [serviceFilter, setServiceFilter] = useState("ALL");
   const [selectedApp, setSelectedApp] = useState<Application | null>(null);
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [copiedScriptId, setCopiedScriptId] = useState<string | null>(null);
+  const [recViewMode, setRecViewMode] = useState<"playbooks" | "all">("playbooks");
+  const [expandedPlaybooks, setExpandedPlaybooks] = useState<Record<string, boolean>>({
+    "PLAYBOOK-SUPER-ADMIN-EXPOSURE": true,
+    "PLAYBOOK-UNVERIFIED-UNCONFIGURED": true,
+  });
   const [nudgeModalApp, setNudgeModalApp] = useState<Application | null>(null);
   const [nudgeSent, setNudgeSent] = useState(false);
 
@@ -1047,71 +1056,212 @@ export default function OAuthDashboardV2Client({
       )}
 
       {/* ============================================================== */}
-      {/* V2 TAB 5: ACTIONABLE REMEDIATIONS                              */}
+      {/* V2 TAB 5: ACTIONABLE REMEDIATIONS & PLAYBOOKS                  */}
       {/* ============================================================== */}
-      {activeTab === "recs" && (
-        <div className="space-y-3">
-          <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
-            <h2 className="text-base font-bold text-gray-900">Actionable Security Recommendations</h2>
-            <p className="text-xs text-gray-500">Direct GAM CLI commands and remediation steps for administrator review.</p>
-          </div>
+      {activeTab === "recs" && (() => {
+        const playbooks = initialRecs.playbooks || [];
+        const findings = initialRecs.findings || [];
 
-          <div className="space-y-3">
-            {(initialRecs.findings || []).map((rec) => (
-              <div
-                key={rec.id}
-                className={`bg-white border rounded-xl p-5 shadow-sm space-y-3 ${
-                  rec.severity === "CRITICAL"
-                    ? "border-red-300 bg-red-50/20"
-                    : rec.severity === "HIGH"
-                    ? "border-amber-300 bg-amber-50/20"
-                    : "border-gray-200"
-                }`}
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <div className="space-y-1">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-red-100 text-red-800 border border-red-200">
-                        {rec.severity}
-                      </span>
-                      <h3 className="font-bold text-sm text-gray-900">{rec.title}</h3>
-                      {rec.clientId && (
-                        <span 
-                          title={`Client ID: ${rec.clientId}`}
-                          className="font-mono text-[10px] px-2 py-0.5 rounded bg-slate-100 text-slate-600 border border-slate-200 truncate max-w-[280px]"
-                        >
-                          Client ID: {rec.clientId.length > 25 ? `${rec.clientId.slice(0, 12)}...${rec.clientId.slice(-10)}` : rec.clientId}
-                        </span>
+        const copyScriptToClipboard = (script: string, id: string) => {
+          navigator.clipboard.writeText(script);
+          setCopiedScriptId(id);
+          setTimeout(() => setCopiedScriptId(null), 2500);
+        };
+
+        const togglePlaybook = (id: string) => {
+          setExpandedPlaybooks(prev => ({ ...prev, [id]: !prev[id] }));
+        };
+
+        return (
+          <div className="space-y-4">
+            <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div>
+                <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-purple-100 text-purple-800 text-[11px] font-bold mb-1 border border-purple-200">
+                  <span>🛡️</span> Prioritized Remediation Campaigns
+                </div>
+                <h2 className="text-base font-bold text-gray-900">Actionable Security Recommendations</h2>
+                <p className="text-xs text-gray-500">Grouped into {playbooks.length} actionable campaigns with pre-computed batch GAM scripts.</p>
+              </div>
+
+              <div className="inline-flex p-1 bg-gray-100 rounded-xl border border-gray-200 self-start">
+                <button
+                  onClick={() => setRecViewMode("playbooks")}
+                  className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all ${
+                    recViewMode === "playbooks" ? "bg-white text-purple-600 shadow-sm" : "text-gray-600 hover:text-gray-900"
+                  }`}
+                >
+                  Action Campaigns ({playbooks.length})
+                </button>
+                <button
+                  onClick={() => setRecViewMode("all")}
+                  className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all ${
+                    recViewMode === "all" ? "bg-white text-purple-600 shadow-sm" : "text-gray-600 hover:text-gray-900"
+                  }`}
+                >
+                  Raw Findings ({findings.length})
+                </button>
+              </div>
+            </div>
+
+            {recViewMode === "playbooks" && (
+              <div className="space-y-4">
+                {playbooks.map((pb: any) => {
+                  const isExpanded = !!expandedPlaybooks[pb.id];
+                  const isCritical = pb.severity === "CRITICAL";
+                  return (
+                    <div
+                      key={pb.id}
+                      className={`bg-white border rounded-2xl overflow-hidden shadow-sm transition-all ${
+                        isCritical ? "border-red-300 bg-red-50/10" : "border-gray-200"
+                      }`}
+                    >
+                      <div
+                        onClick={() => togglePlaybook(pb.id)}
+                        className="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 cursor-pointer hover:bg-gray-50/70 transition-colors"
+                      >
+                        <div className="space-y-1">
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-red-100 text-red-800 border border-red-200">
+                              {pb.severity}
+                            </span>
+                            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-purple-100 text-purple-800 border border-purple-200">
+                              {pb.actionChannel === "GAM_CLI" ? "⚡ CLI Batch Script" : "🛡️ Admin Console"}
+                            </span>
+                            <span className="text-xs text-gray-500 font-semibold">
+                              {pb.metrics?.totalFindings} Findings across {pb.metrics?.distinctFamilies} App Families
+                            </span>
+                          </div>
+                          <h3 className="font-bold text-sm text-gray-900">{pb.title}</h3>
+                          <p className="text-xs text-gray-500">{pb.subtitle}</p>
+                        </div>
+
+                        <div className="flex items-center gap-2 flex-shrink-0" onClick={(e) => e.stopPropagation()}>
+                          {pb.batchGamScript && (
+                            <button
+                              onClick={() => copyScriptToClipboard(pb.batchGamScript, pb.id)}
+                              className="px-3 py-1.5 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-xs font-bold shadow-sm transition-colors"
+                            >
+                              {copiedScriptId === pb.id ? "Copied Script! ✓" : `⚡ Copy (${pb.metrics?.totalFindings}) GAM Commands`}
+                            </button>
+                          )}
+                          <button
+                            onClick={() => togglePlaybook(pb.id)}
+                            className="p-1.5 text-gray-400 hover:text-gray-600 text-xs font-bold"
+                          >
+                            {isExpanded ? "▲" : "▼"}
+                          </button>
+                        </div>
+                      </div>
+
+                      {isExpanded && (
+                        <div className="border-t border-gray-200 p-5 space-y-4 bg-white">
+                          <div className="bg-purple-50/60 border border-purple-200 rounded-xl p-3.5 text-xs text-purple-950 space-y-1">
+                            <div className="font-bold">Campaign Objective:</div>
+                            <p className="text-purple-900">{pb.remediationSummary}</p>
+                          </div>
+
+                          <div className="space-y-2">
+                            <h4 className="text-xs font-bold uppercase tracking-wider text-gray-700">Target Applications:</h4>
+                            <div className="divide-y divide-gray-100 border border-gray-200 rounded-xl overflow-hidden">
+                              {(pb.familyTargets || []).map((t: any) => (
+                                <div key={t.familyId} className="p-3 bg-white flex items-center justify-between gap-3 text-xs hover:bg-gray-50/80">
+                                  <div>
+                                    <div className="font-bold text-gray-900">{t.familyName}</div>
+                                    <div className="text-[11px] text-gray-500 font-mono">
+                                      Accounts: {t.affectedAccounts?.slice(0, 2).join(", ")}
+                                      {t.affectedAccounts?.length > 2 ? ` +${t.affectedAccounts.length - 2} more` : ""}
+                                    </div>
+                                  </div>
+                                  <div className="flex items-center gap-2">
+                                    {t.gamCommands && t.gamCommands.length > 0 ? (
+                                      <button
+                                        onClick={() => copyScriptToClipboard(t.gamCommands.join('\n'), `fam-${t.familyId}`)}
+                                        className="text-xs font-bold text-purple-600 hover:text-purple-800 bg-purple-50 border border-purple-200 px-2.5 py-1 rounded"
+                                      >
+                                        {copiedScriptId === `fam-${t.familyId}` ? "Copied! ✓" : `Copy (${t.gamCommands.length}) GAM`}
+                                      </button>
+                                    ) : (
+                                      <a
+                                        href="https://admin.google.com/ac/owl/list?tab=apps"
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="text-xs font-bold text-blue-600 hover:text-blue-800 bg-blue-50 border border-blue-200 px-2.5 py-1 rounded"
+                                      >
+                                        Admin Console ↗
+                                      </a>
+                                    )}
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
                       )}
                     </div>
-                    <p className="text-xs text-gray-600">{rec.details}</p>
-                  </div>
-                  <div className="text-right text-xs text-gray-500 flex-shrink-0">
-                    User: <span className="font-mono font-medium text-gray-800">{rec.affectedAccount}</span>
-                  </div>
-                </div>
-
-                <div className="bg-gray-50 rounded-lg p-3 border border-gray-200 space-y-2 text-xs">
-                  <div className="text-gray-700">
-                    <span className="font-semibold text-purple-700">Remediation:</span> {rec.remediation}
-                  </div>
-                  {rec.gamCommand && (
-                    <div className="flex items-center justify-between bg-white px-3 py-1.5 rounded font-mono text-[11px] text-gray-800 border border-gray-300 shadow-inner">
-                      <span className="truncate">{rec.gamCommand}</span>
-                      <button
-                        onClick={() => copyToClipboard(rec.gamCommand!, rec.id)}
-                        className="text-xs text-purple-600 hover:text-purple-800 font-semibold ml-3 flex-shrink-0"
-                      >
-                        {copiedId === rec.id ? "Copied! ✓" : "Copy Command"}
-                      </button>
-                    </div>
-                  )}
-                </div>
+                  );
+                })}
               </div>
-            ))}
+            )}
+
+            {recViewMode === "all" && (
+              <div className="space-y-3">
+                {findings.map((rec: any) => (
+                  <div
+                    key={rec.id}
+                    className={`bg-white border rounded-xl p-5 shadow-sm space-y-3 ${
+                      rec.severity === "CRITICAL"
+                        ? "border-red-300 bg-red-50/20"
+                        : rec.severity === "HIGH"
+                        ? "border-amber-300 bg-amber-50/20"
+                        : "border-gray-200"
+                    }`}
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="space-y-1">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-red-100 text-red-800 border border-red-200">
+                            {rec.severity}
+                          </span>
+                          <h3 className="font-bold text-sm text-gray-900">{rec.title}</h3>
+                          {rec.clientId && (
+                            <span 
+                              title={`Client ID: ${rec.clientId}`}
+                              className="font-mono text-[10px] px-2 py-0.5 rounded bg-slate-100 text-slate-600 border border-slate-200 truncate max-w-[280px]"
+                            >
+                              Client ID: {rec.clientId.length > 25 ? `${rec.clientId.slice(0, 12)}...${rec.clientId.slice(-10)}` : rec.clientId}
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-xs text-gray-600">{rec.details}</p>
+                      </div>
+                      <div className="text-right text-xs text-gray-500 flex-shrink-0">
+                        User: <span className="font-mono font-medium text-gray-800">{rec.affectedAccount}</span>
+                      </div>
+                    </div>
+
+                    <div className="bg-gray-50 rounded-lg p-3 border border-gray-200 space-y-2 text-xs">
+                      <div className="text-gray-700">
+                        <span className="font-semibold text-purple-700">Remediation:</span> {rec.remediation}
+                      </div>
+                      {rec.gamCommand && (
+                        <div className="flex items-center justify-between bg-white px-3 py-1.5 rounded font-mono text-[11px] text-gray-800 border border-gray-300 shadow-inner">
+                          <span className="truncate">{rec.gamCommand}</span>
+                          <button
+                            onClick={() => copyToClipboard(rec.gamCommand!, rec.id)}
+                            className="text-xs text-purple-600 hover:text-purple-800 font-semibold ml-3 flex-shrink-0"
+                          >
+                            {copiedId === rec.id ? "Copied! ✓" : "Copy Command"}
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
-        </div>
-      )}
+        );
+      })()}
 
       {/* ============================================================== */}
       {/* V2 DETAIL MODAL WITH LARGE ICON & RISK SCORE BREAKDOWN          */}

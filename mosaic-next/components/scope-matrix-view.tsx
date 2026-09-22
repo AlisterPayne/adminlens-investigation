@@ -233,9 +233,16 @@ export default function ScopeMatrixView({
     }
   };
 
-  const activeInDomainCount = useMemo(() => {
-    return scopes.filter((s) => (s.active_apps_count || 0) > 0).length;
-  }, [scopes]);
+  // KPI counts dynamically reflecting dropdown menu and search filters
+  const kpiCounts = useMemo(() => {
+    return {
+      total: filteredScopes.length,
+      restricted: filteredScopes.filter((s) => s.google_tier === "Restricted").length,
+      sensitive: filteredScopes.filter((s) => s.google_tier === "Sensitive").length,
+      nonSensitive: filteredScopes.filter((s) => s.google_tier === "Non-Sensitive").length,
+      activeInDomain: filteredScopes.filter((s) => (s.active_apps_count || 0) > 0).length,
+    };
+  }, [filteredScopes]);
 
   return (
     <div className="space-y-6">
@@ -375,121 +382,60 @@ export default function ScopeMatrixView({
         </div>
       )}
 
-      {/* KPI Cards */}
+      {/* KPI Cards (Non-clickable stat displays) */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
         {/* All Scopes */}
-        <button
-          type="button"
-          onClick={() => {
-            setTierFilter("ALL");
-            setScoreFilter("ALL");
-            setActiveOnly(false);
-          }}
-          className={`text-left p-4 rounded-xl border transition-all cursor-pointer ${
-            tierFilter === "ALL" && scoreFilter === "ALL" && !activeOnly
-              ? "bg-blue-50/70 border-blue-400 shadow-xs ring-2 ring-blue-400/20"
-              : "bg-white border-gray-200 shadow-2xs hover:border-gray-300 hover:bg-gray-50/60"
-          }`}
-        >
+        <div className="text-left p-4 rounded-xl border bg-blue-50/40 border-blue-200 shadow-2xs">
           <div className="text-gray-500 text-xs font-semibold">Cataloged Scopes</div>
           <div className="text-2xl font-bold text-gray-900 mt-1">
-            {metrics?.total || scopes.length}
+            {kpiCounts.total}
           </div>
           <div className="text-[11px] text-gray-500 mt-0.5">Verified definitions</div>
-        </button>
+        </div>
 
         {/* Restricted Tiers */}
-        <button
-          type="button"
-          onClick={() => {
-            setTierFilter(tierFilter === "Restricted" ? "ALL" : "Restricted");
-            setScoreFilter("ALL");
-            setActiveOnly(false);
-          }}
-          className={`text-left p-4 rounded-xl border transition-all cursor-pointer ${
-            tierFilter === "Restricted"
-              ? "bg-red-100/70 border-red-500 shadow-xs ring-2 ring-red-500/20"
-              : "bg-red-50/40 border-red-200 shadow-2xs hover:border-red-300 hover:bg-red-50/80"
-          }`}
-        >
+        <div className="text-left p-4 rounded-xl border bg-red-50/40 border-red-200 shadow-2xs">
           <div className="text-red-700 text-xs font-semibold flex items-center gap-1">
             <span>🛡️</span> Restricted Tiers
           </div>
           <div className="text-2xl font-bold text-red-900 mt-1">
-            {metrics?.restricted ??
-              scopes.filter((s) => s.google_tier === "Restricted").length}
+            {kpiCounts.restricted}
           </div>
           <div className="text-[11px] text-red-600 mt-0.5">CASA Tier 2 audit</div>
-        </button>
+        </div>
 
         {/* Sensitive Tiers */}
-        <button
-          type="button"
-          onClick={() => {
-            setTierFilter(tierFilter === "Sensitive" ? "ALL" : "Sensitive");
-            setScoreFilter("ALL");
-            setActiveOnly(false);
-          }}
-          className={`text-left p-4 rounded-xl border transition-all cursor-pointer ${
-            tierFilter === "Sensitive"
-              ? "bg-amber-100/70 border-amber-500 shadow-xs ring-2 ring-amber-500/20"
-              : "bg-amber-50/40 border-amber-200 shadow-2xs hover:border-amber-300 hover:bg-amber-50/80"
-          }`}
-        >
+        <div className="text-left p-4 rounded-xl border bg-amber-50/40 border-amber-200 shadow-2xs">
           <div className="text-amber-700 text-xs font-semibold flex items-center gap-1">
             <span>👁️</span> Sensitive Tiers
           </div>
           <div className="text-2xl font-bold text-amber-900 mt-1">
-            {metrics?.sensitive ??
-              scopes.filter((s) => s.google_tier === "Sensitive").length}
+            {kpiCounts.sensitive}
           </div>
           <div className="text-[11px] text-amber-600 mt-0.5">Google reviewed</div>
-        </button>
+        </div>
 
         {/* Non-Sensitive */}
-        <button
-          type="button"
-          onClick={() => {
-            setTierFilter(tierFilter === "Non-Sensitive" ? "ALL" : "Non-Sensitive");
-            setScoreFilter("ALL");
-            setActiveOnly(false);
-          }}
-          className={`text-left p-4 rounded-xl border transition-all cursor-pointer ${
-            tierFilter === "Non-Sensitive"
-              ? "bg-blue-100/70 border-blue-500 shadow-xs ring-2 ring-blue-500/20"
-              : "bg-blue-50/40 border-blue-200 shadow-2xs hover:border-blue-300 hover:bg-blue-50/80"
-          }`}
-        >
+        <div className="text-left p-4 rounded-xl border bg-blue-50/40 border-blue-200 shadow-2xs">
           <div className="text-blue-700 text-xs font-semibold flex items-center gap-1">
             <span>✓</span> Non-Sensitive
           </div>
           <div className="text-2xl font-bold text-blue-900 mt-1">
-            {metrics?.nonSensitive ??
-              scopes.filter((s) => s.google_tier === "Non-Sensitive").length}
+            {kpiCounts.nonSensitive}
           </div>
           <div className="text-[11px] text-blue-600 mt-0.5">Basic identity / SSO</div>
-        </button>
+        </div>
 
         {/* Active in Domain */}
-        <button
-          type="button"
-          onClick={() => {
-            setActiveOnly(!activeOnly);
-          }}
-          className={`text-left p-4 rounded-xl border transition-all cursor-pointer ${
-            activeOnly
-              ? "bg-emerald-100/70 border-emerald-500 shadow-xs ring-2 ring-emerald-500/20"
-              : "bg-emerald-50/40 border-emerald-200 shadow-2xs hover:border-emerald-300 hover:bg-emerald-50/80"
-          }`}
-        >
+        <div className="text-left p-4 rounded-xl border bg-emerald-50/40 border-emerald-200 shadow-2xs">
           <div className="text-emerald-700 text-xs font-semibold flex items-center gap-1">
             <span>📡</span> Active in Domain
           </div>
           <div className="text-2xl font-bold text-emerald-900 mt-1">
-            {activeInDomainCount}
+            {kpiCounts.activeInDomain}
           </div>
           <div className="text-[11px] text-emerald-600 mt-0.5">Granted to apps</div>
-        </button>
+        </div>
       </div>
 
       {/* Filter & View Mode Toolbar */}
@@ -593,6 +539,22 @@ export default function ScopeMatrixView({
             />
             <span>In Domain Only</span>
           </label>
+
+          {(serviceFilter !== "ALL" || tierFilter !== "ALL" || scoreFilter !== "ALL" || activeOnly || search.trim() !== "") && (
+            <button
+              type="button"
+              onClick={() => {
+                setServiceFilter("ALL");
+                setTierFilter("ALL");
+                setScoreFilter("ALL");
+                setActiveOnly(false);
+                setSearch("");
+              }}
+              className="text-xs font-semibold text-blue-600 hover:text-blue-800 hover:underline cursor-pointer ml-2"
+            >
+              Reset filters
+            </button>
+          )}
         </div>
       </div>
 
