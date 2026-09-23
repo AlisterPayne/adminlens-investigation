@@ -572,6 +572,22 @@ export default function ScopeMatrixView({
 
         {/* Right: Granular Filters */}
         <div className="flex items-center gap-2.5 flex-wrap w-full md:w-auto">
+          {(serviceFilter !== "ALL" || tierFilter !== "ALL" || scoreFilter !== "ALL" || activeOnly || search.trim() !== "") && (
+            <button
+              type="button"
+              onClick={() => {
+                setServiceFilter("ALL");
+                setTierFilter("ALL");
+                setScoreFilter("ALL");
+                setActiveOnly(false);
+                setSearch("");
+              }}
+              className="text-xs font-semibold text-blue-600 hover:text-blue-800 hover:underline cursor-pointer mr-1"
+            >
+              Reset filters
+            </button>
+          )}
+
           {/* Service Filter */}
           <div className="flex items-center gap-1.5">
             <label className="text-xs text-gray-500 font-semibold">Service:</label>
@@ -631,22 +647,6 @@ export default function ScopeMatrixView({
             />
             <span>Active Apps</span>
           </label>
-
-          {(serviceFilter !== "ALL" || tierFilter !== "ALL" || scoreFilter !== "ALL" || activeOnly || search.trim() !== "") && (
-            <button
-              type="button"
-              onClick={() => {
-                setServiceFilter("ALL");
-                setTierFilter("ALL");
-                setScoreFilter("ALL");
-                setActiveOnly(false);
-                setSearch("");
-              }}
-              className="text-xs font-semibold text-blue-600 hover:text-blue-800 hover:underline cursor-pointer ml-2"
-            >
-              Reset filters
-            </button>
-          )}
         </div>
       </div>
 
