@@ -98,7 +98,7 @@ function ServiceThreatInfoPopover({
                 criticalCount > 0 ? "text-red-700" : "text-gray-500"
               }`}
             >
-              Critical (5)
+              Critical
             </div>
             <div
               className={`text-xs font-bold mt-0.5 ${
@@ -306,31 +306,31 @@ export default function ScopeMatrixView({
       case 5:
         return (
           <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-bold bg-red-100 text-red-800 border border-red-200 shadow-2xs whitespace-nowrap">
-            🔴 5 (Critical)
+            🔴 Critical
           </span>
         );
       case 4:
         return (
           <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-bold bg-amber-100 text-amber-900 border border-amber-200 shadow-2xs whitespace-nowrap">
-            🟠 4 (High)
+            🟠 High
           </span>
         );
       case 3:
         return (
           <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-bold bg-yellow-100 text-yellow-900 border border-yellow-200 shadow-2xs whitespace-nowrap">
-            🟡 3 (Moderate)
+            🟡 Moderate
           </span>
         );
       case 2:
         return (
           <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-200 shadow-2xs whitespace-nowrap">
-            🟢 2 (Minor)
+            🟢 Minor
           </span>
         );
       default:
         return (
           <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-bold bg-blue-100 text-blue-800 border border-blue-200 shadow-2xs whitespace-nowrap">
-            🔵 1 (Low)
+            🔵 Low
           </span>
         );
     }
@@ -613,11 +613,11 @@ export default function ScopeMatrixView({
               className="bg-gray-50 border border-gray-300 rounded-lg px-2.5 py-1.5 text-xs text-gray-800 focus:outline-none focus:border-blue-500"
             >
               <option value="ALL">All Scores</option>
-              <option value="5">🔴 5 — Critical</option>
-              <option value="4">🟠 4 — High</option>
-              <option value="3">🟡 3 — Moderate</option>
-              <option value="2">🟢 2 — Minor</option>
-              <option value="1">🔵 1 — Low</option>
+              <option value="5">🔴 Critical</option>
+              <option value="4">🟠 High</option>
+              <option value="3">🟡 Moderate</option>
+              <option value="2">🟢 Minor</option>
+              <option value="1">🔵 Low</option>
             </select>
           </div>
 
