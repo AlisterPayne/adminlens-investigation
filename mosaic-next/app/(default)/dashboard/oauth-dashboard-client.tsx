@@ -1339,29 +1339,59 @@ export default function OAuthDashboardClient({
 
           {/* Filter Bar */}
           <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm flex flex-col md:flex-row gap-3 items-center justify-between">
-            <div className="relative w-full md:w-80 flex-shrink-0">
-              <input
-                type="text"
-                placeholder="Search apps, vendors, client IDs, scopes..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="w-full bg-gray-50 border border-gray-300 rounded-lg pl-9 pr-8 py-2 text-xs text-gray-800 placeholder-gray-400 focus:bg-white focus:outline-none focus:border-blue-500 transition-colors"
-              />
-              <svg className="w-3.5 h-3.5 text-gray-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-              {search && (
+            {/* Left: View Mode Switcher & Search */}
+            <div className="flex items-center gap-3 w-full md:w-auto">
+              {/* View Mode Switcher */}
+              <div className="flex items-center bg-gray-100 p-1 rounded-lg border border-gray-200 flex-shrink-0">
                 <button
                   type="button"
-                  onClick={() => setSearch("")}
-                  className="absolute right-2.5 top-2 text-gray-400 hover:text-gray-600 p-0.5 rounded-full hover:bg-gray-200 transition-colors"
-                  title="Clear search"
+                  onClick={() => setGroupByFamily(true)}
+                  className={`px-3 py-1.5 text-xs font-bold rounded-md transition-colors flex items-center gap-1.5 ${
+                    groupByFamily
+                      ? "bg-white text-blue-600 shadow-xs"
+                      : "text-gray-600 hover:text-gray-900"
+                  }`}
                 >
-                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
+                  <span>📁</span> Group by Service
                 </button>
-              )}
+                <button
+                  type="button"
+                  onClick={() => setGroupByFamily(false)}
+                  className={`px-3 py-1.5 text-xs font-bold rounded-md transition-colors flex items-center gap-1.5 ${
+                    !groupByFamily
+                      ? "bg-white text-blue-600 shadow-xs"
+                      : "text-gray-600 hover:text-gray-900"
+                  }`}
+                >
+                  <span>📋</span> List View
+                </button>
+              </div>
+
+              {/* Search Box */}
+              <div className="relative w-full md:w-72 flex-shrink-0">
+                <input
+                  type="text"
+                  placeholder="Search apps, vendors, client IDs, scopes..."
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  className="w-full bg-gray-50 border border-gray-300 rounded-lg pl-9 pr-8 py-2 text-xs text-gray-800 placeholder-gray-400 focus:bg-white focus:outline-none focus:border-blue-500 transition-colors"
+                />
+                <svg className="w-3.5 h-3.5 text-gray-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                {search && (
+                  <button
+                    type="button"
+                    onClick={() => setSearch("")}
+                    className="absolute right-2.5 top-2 text-gray-400 hover:text-gray-600 p-0.5 rounded-full hover:bg-gray-200 transition-colors"
+                    title="Clear search"
+                  >
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                )}
+              </div>
             </div>
 
             <div className="flex flex-wrap items-center gap-2 w-full md:w-auto text-xs">
@@ -1429,19 +1459,6 @@ export default function OAuthDashboardClient({
                 />
                 Multi-Deployment Only
               </label>
-
-              <button
-                onClick={() => setGroupByFamily(!groupByFamily)}
-                className={`flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg border transition-all ${
-                  groupByFamily
-                    ? "bg-indigo-50 border-indigo-300 text-indigo-700 shadow-2xs font-bold"
-                    : "bg-gray-50 border-gray-300 text-gray-700 hover:bg-gray-100"
-                }`}
-                title="Toggle between hierarchical Product Family view and flat deployments list"
-              >
-                <span>🏢</span>
-                <span>{groupByFamily ? "Grouped by Product Family" : "Flat View (All Deployments)"}</span>
-              </button>
             </div>
           </div>
 
