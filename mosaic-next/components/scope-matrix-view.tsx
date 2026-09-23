@@ -1,17 +1,128 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useMemo,useState } from "react";
+
 import {
   GmailIcon,
-  GoogleDriveIcon,
+  GoogleAccountIcon,
   GoogleAdminIcon,
+  GoogleAppsScriptIcon,
   GoogleCalendarIcon,
   GoogleClassroomIcon,
   GoogleContactsIcon,
-  GoogleAppsScriptIcon,
-  GoogleAccountIcon,
+  GoogleDriveIcon,
   GoogleProductIcon,
 } from "@/components/google-icons";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+
+function ServiceThreatInfoPopover({
+  serviceName,
+  avgScore,
+  criticalCount,
+  maxScore,
+}: {
+  serviceName: string;
+  avgScore: string;
+  criticalCount: number;
+  maxScore: number;
+}) {
+  const [open, setOpen] = useState(false);
+  const timeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleMouseEnter = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+    setOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setOpen(false);
+    }, 180);
+  };
+
+  return (
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
+        <button
+          type="button"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          className="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-gray-200 bg-white hover:bg-gray-50 text-gray-500 hover:text-gray-800 shadow-2xs transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+          aria-label={`Threat metrics for ${serviceName}`}
+          title="Service Threat Metrics"
+        >
+          <svg className="w-4 h-4 fill-current" viewBox="0 0 16 16">
+            <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm1 12H7V7h2v5zM8 6c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1z" />
+          </svg>
+        </button>
+      </PopoverTrigger>
+      <PopoverContent
+        align="end"
+        side="top"
+        sideOffset={6}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className="w-auto min-w-[280px] p-3.5 bg-white border border-gray-200 rounded-xl shadow-xl z-50 pointer-events-auto"
+      >
+        <div className="flex items-center gap-1.5 text-xs font-bold text-gray-900 pb-2 mb-2.5 border-b border-gray-100">
+          <svg className="w-3.5 h-3.5 fill-current text-blue-500" viewBox="0 0 16 16">
+            <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm1 12H7V7h2v5zM8 6c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1z" />
+          </svg>
+          <span>{serviceName} Threat Metrics</span>
+        </div>
+
+        <div className="flex items-center gap-2">
+          {/* Average Threat Score */}
+          <div className="px-3 py-1.5 rounded-lg bg-gray-50 border border-gray-200 text-center min-w-[85px]">
+            <div className="text-[10px] text-gray-500 font-medium">
+              Avg Service Threat
+            </div>
+            <div className="text-xs font-bold text-gray-900 mt-0.5">
+              {avgScore} pts
+            </div>
+          </div>
+
+          {/* Critical Scopes Count (Score 5) */}
+          <div
+            className={`px-3 py-1.5 rounded-lg border text-center min-w-[85px] ${
+              criticalCount > 0
+                ? "bg-red-50 border-red-200 text-red-900"
+                : "bg-gray-50 border-gray-200 text-gray-400"
+            }`}
+          >
+            <div
+              className={`text-[10px] font-medium ${
+                criticalCount > 0 ? "text-red-700" : "text-gray-500"
+              }`}
+            >
+              Critical (5)
+            </div>
+            <div
+              className={`text-xs font-bold mt-0.5 ${
+                criticalCount > 0 ? "text-red-900" : "text-gray-600"
+              }`}
+            >
+              {criticalCount} Scope{criticalCount === 1 ? "" : "s"}
+            </div>
+          </div>
+
+          {/* Peak Scope */}
+          <div className="px-3 py-1.5 rounded-lg bg-indigo-50 border border-indigo-200 text-center min-w-[85px]">
+            <div className="text-[10px] text-indigo-700 font-medium">
+              Peak Scope
+            </div>
+            <div className="text-xs font-bold text-indigo-900 mt-0.5">
+              Score {maxScore}
+            </div>
+          </div>
+        </div>
+      </PopoverContent>
+    </Popover>
+  );
+}
 
 export interface ScopeReferenceItem {
   scope_url: string;
@@ -383,7 +494,7 @@ export default function ScopeMatrixView({
       )}
 
       {/* KPI Cards (Non-clickable stat displays) */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {/* All Scopes */}
         <div className="text-left p-4 rounded-xl border bg-blue-50/40 border-blue-200 shadow-2xs">
           <div className="text-gray-500 text-xs font-semibold">Cataloged Scopes</div>
@@ -424,17 +535,6 @@ export default function ScopeMatrixView({
             {kpiCounts.nonSensitive}
           </div>
           <div className="text-[11px] text-blue-600 mt-0.5">Basic identity / SSO</div>
-        </div>
-
-        {/* Active in Domain */}
-        <div className="text-left p-4 rounded-xl border bg-emerald-50/40 border-emerald-200 shadow-2xs">
-          <div className="text-emerald-700 text-xs font-semibold flex items-center gap-1">
-            <span>📡</span> Active in Domain
-          </div>
-          <div className="text-2xl font-bold text-emerald-900 mt-1">
-            {kpiCounts.activeInDomain}
-          </div>
-          <div className="text-[11px] text-emerald-600 mt-0.5">Granted to apps</div>
         </div>
       </div>
 
@@ -597,54 +697,19 @@ export default function ScopeMatrixView({
                       </div>
                     </div>
 
-                    {/* Service Metric Badges & Risk Exposure */}
-                    <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap">
-                      {/* Average Threat Score */}
-                      <div className="px-3.5 py-1.5 rounded-lg bg-gray-50 border border-gray-200 text-center">
-                        <div className="text-[10px] text-gray-500 font-medium">
-                          Avg Service Threat
-                        </div>
-                        <div className="text-xs font-bold text-gray-900">
-                          {grp.avgScore} pts
-                        </div>
-                      </div>
-
-                      {/* Critical Scopes Count (Score 5) */}
-                      {grp.criticalCount > 0 && (
-                        <div className="px-3 py-1.5 rounded-lg bg-red-50 border border-red-200 text-center">
-                          <div className="text-[10px] text-red-700 font-medium">
-                            Critical (5)
-                          </div>
-                          <div className="text-xs font-bold text-red-900">
-                            {grp.criticalCount} Scopes
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Max Severity */}
-                      <div className="px-3 py-1.5 rounded-lg bg-indigo-50 border border-indigo-200 text-center">
-                        <div className="text-[10px] text-indigo-700 font-medium">
-                          Peak Scope
-                        </div>
-                        <div className="text-xs font-bold text-indigo-900">
-                          Score {grp.maxScore}
-                        </div>
-                      </div>
-
-                      {/* Domain Footprint */}
-                      <div className="px-3 py-1.5 rounded-lg bg-emerald-50/80 border border-emerald-200 text-center">
-                        <div className="text-[10px] text-emerald-700 font-medium">
-                          Tenant Footprint
-                        </div>
-                        <div className="text-xs font-bold text-emerald-800">
-                          {grp.activeApps > 0 ? `${grp.activeApps} Active` : "0 Active"}
-                        </div>
-                      </div>
+                    {/* Service Controls: Threat Info Popover & Collapse/Expand Button */}
+                    <div className="flex items-center gap-2">
+                      <ServiceThreatInfoPopover
+                        serviceName={grp.serviceName}
+                        avgScore={grp.avgScore}
+                        criticalCount={grp.criticalCount}
+                        maxScore={grp.maxScore}
+                      />
 
                       {/* Collapse/Expand Toggle Button */}
                       <button
                         onClick={() => toggleServiceCollapse(grp.serviceName)}
-                        className="px-3 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-bold transition-colors ml-1"
+                        className="px-3 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-bold transition-colors"
                         title={isCollapsed ? "Expand Service" : "Collapse Service"}
                       >
                         {isCollapsed ? "▼ Show Scopes" : "▲ Hide Scopes"}
