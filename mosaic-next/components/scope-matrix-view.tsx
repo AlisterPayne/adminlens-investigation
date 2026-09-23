@@ -545,7 +545,7 @@ export default function ScopeMatrixView({
                   : "text-gray-600 hover:text-gray-900"
               }`}
             >
-              <span>📁</span> Grouped
+              <span>📁</span> Group by Service
             </button>
             <button
               onClick={() => setViewMode("table")}
