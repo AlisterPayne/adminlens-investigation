@@ -1,18 +1,19 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
 import Link from "next/link";
+import React, { useMemo,useState } from "react";
+
 import {
   GmailIcon,
-  GoogleDriveIcon,
   GoogleAdminIcon,
+  GoogleAppsScriptIcon,
   GoogleCalendarIcon,
   GoogleClassroomIcon,
   GoogleContactsIcon,
-  GoogleAppsScriptIcon,
+  GoogleDriveIcon,
   GoogleProductIcon,
 } from "@/components/google-icons";
-import ScopeMatrixView, { ScopeReferenceItem, ScopeMetrics } from "@/components/scope-matrix-view";
+import ScopeMatrixView, { ScopeMetrics,ScopeReferenceItem } from "@/components/scope-matrix-view";
 
 interface ScopeItem {
   scope: string;
@@ -766,138 +767,137 @@ export default function OAuthDashboardClient({
         </div>
       )}
 
-      {/* App Access Control Baseline Banner (Almost completely hidden by default) */}
-      {!showBaselineBanner ? (
-        <div 
-          onClick={() => setShowBaselineBanner(true)}
-          className="flex items-center justify-between py-1.5 px-3 bg-gray-50/70 hover:bg-blue-50/60 border border-gray-200/80 hover:border-blue-300 rounded-lg text-xs text-gray-500 hover:text-gray-700 cursor-pointer transition-all select-none shadow-2xs"
-        >
-          <div className="flex items-center gap-2">
-            <span className="text-[10px] text-gray-400">▶</span>
-            <span className="font-semibold text-gray-700 text-xs">Google Workspace App Access Control Baseline</span>
-            <span className="text-gray-400">•</span>
-            <span className="text-[11px] text-emerald-600 font-medium">Ground-Truth Active ({currentMetrics.baselinePolicyCount || 32} domain policies synchronized)</span>
-          </div>
-          <span className="text-[11px] text-blue-600 font-semibold hover:underline flex items-center gap-1">
-            Show baseline & tools ▾
-          </span>
-        </div>
-      ) : (
-        <div className="bg-gradient-to-r from-blue-900/10 via-indigo-900/5 to-white border border-blue-200 rounded-xl p-4 shadow-sm transition-all animate-fade-in">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
-            <div
-              className="flex items-center gap-3.5 cursor-pointer select-none flex-1"
-              onClick={() => setShowBaselineBanner(false)}
-            >
-              <div className="w-9 h-9 rounded-xl bg-blue-600/10 border border-blue-500/20 flex items-center justify-center text-blue-600 flex-shrink-0 shadow-xs">
-                <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-              </div>
-              <div>
-                <div className="flex items-center gap-2 flex-wrap">
-                  <h2 className="font-bold text-xs sm:text-sm text-gray-900 tracking-tight">
-                    Google Workspace App Access Control Baseline
-                  </h2>
-                  <span className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold shadow-2xs">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Ground-Truth Active ({currentMetrics.baselineSource || 'owl_apps.csv'})
-                  </span>
-                  <span className="text-[11px] text-gray-500">
-                    • <strong className="text-emerald-700 font-semibold">{currentMetrics.baselinePolicyCount || 32} domain policies synchronized</strong>
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-2 flex-shrink-0 w-full md:w-auto justify-end">
-              <button
-                type="button"
-                onClick={() => setShowBaselineBanner(false)}
-                className="px-3 py-1.5 rounded-lg bg-white hover:bg-gray-50 border border-blue-200 text-xs font-bold text-blue-700 transition-colors shadow-2xs flex items-center gap-1"
-              >
-                <span>▲ Hide / Collapse</span>
-              </button>
-              <button
-                onClick={() => setShowSetupModal(true)}
-                className="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-semibold flex items-center gap-1 transition-all shadow-sm shadow-blue-500/20"
-              >
-                <span>📖</span> Instructions
-              </button>
-              <label className="px-3 py-1.5 bg-white hover:bg-gray-50 text-gray-700 rounded-lg text-xs font-semibold flex items-center gap-1 transition-colors border border-gray-300 cursor-pointer shadow-2xs">
-                <span>📥</span> Update CSV
-                <input
-                  type="file"
-                  accept=".csv"
-                  className="hidden"
-                  onChange={(e) => {
-                    const f = e.target.files?.[0];
-                    if (f) handleCsvUpload(f);
-                  }}
-                />
-              </label>
-            </div>
-          </div>
-
-          {/* Expanded Explanation Section */}
-          <div className="mt-3 pt-3 border-t border-blue-200/80 text-xs text-gray-600 leading-relaxed space-y-2">
-            <p>
-              <strong className="text-gray-900 font-semibold">Why this baseline is required:</strong> Google Workspace only stores OAuth authorization tokens for active users within a 180-day window. By importing your <code className="text-blue-700 bg-blue-50 px-1 py-0.5 rounded font-mono text-[11px]">owl_apps.csv</code> export, AdminLens gains permanent ground truth of all admin-configured policies across Organizational Units—surfacing dormant, pre-sanctioned, or restricted third-party applications even when they produce zero recent telemetry.
-            </p>
-            <div className="flex items-center gap-4 text-[11px] text-gray-500 pt-1">
-              <span>Status: <strong className="text-emerald-700">Synchronized</strong></span>
-              <span>•</span>
-              <span>Domain Scope: <strong className="text-gray-800">All Organizational Units</strong></span>
-              <span>•</span>
-              <span>Total Rules: <strong className="text-gray-800">{currentMetrics.baselinePolicyCount || 32} policies</strong></span>
-            </div>
-
-            {/* Quick Deep-Links to Google Admin Console */}
-            <div className="pt-2 border-t border-blue-200/50 flex flex-wrap items-center gap-2 text-xs">
-              <span className="font-bold text-gray-700 flex items-center gap-1.5">
-                <GoogleAdminIcon className="w-3.5 h-3.5" /> Console Deep Links:
-              </span>
-              <a
-                href="https://admin.google.com/ac/owl/list?tab=apps"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-1 px-2.5 py-1 bg-white hover:bg-blue-50 text-blue-700 font-semibold rounded-md border border-gray-200 hover:border-blue-300 transition-colors shadow-2xs"
-              >
-                <span>Accessed Apps ↗</span>
-              </a>
-              <a
-                href="https://admin.google.com/ac/owl/list?tab=configuredApps"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-1 px-2.5 py-1 bg-white hover:bg-emerald-50 text-emerald-700 font-semibold rounded-md border border-gray-200 hover:border-emerald-300 transition-colors shadow-2xs"
-              >
-                <span>Configured Apps ↗</span>
-              </a>
-              <a
-                href="https://admin.google.com/ac/owl/list?tab=pendingReviewApps"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-1 px-2.5 py-1 bg-white hover:bg-amber-50 text-amber-700 font-semibold rounded-md border border-gray-200 hover:border-amber-300 transition-colors shadow-2xs"
-              >
-                <span>Apps Pending Review ↗</span>
-              </a>
-              <a
-                href="https://admin.google.com/ac/owl/list?tab=services"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-1 px-2.5 py-1 bg-white hover:bg-purple-50 text-purple-700 font-semibold rounded-md border border-gray-200 hover:border-purple-300 transition-colors shadow-2xs"
-              >
-                <span>Google Services ↗</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* ============================================================== */}
       {/* VIEW 1: EXECUTIVE DASHBOARD VIEW                               */}
       {/* ============================================================== */}
       {activeTab === "dashboard" && (
         <div className="space-y-6">
+          {/* App Access Control Baseline Banner (Shown on main dashboard only) */}
+          {!showBaselineBanner ? (
+            <div 
+              onClick={() => setShowBaselineBanner(true)}
+              className="flex items-center justify-between py-1.5 px-3 bg-gray-50/70 hover:bg-blue-50/60 border border-gray-200/80 hover:border-blue-300 rounded-lg text-xs text-gray-500 hover:text-gray-700 cursor-pointer transition-all select-none shadow-2xs"
+            >
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] text-gray-400">▶</span>
+                <span className="font-semibold text-gray-700 text-xs">Google Workspace App Access Control Baseline</span>
+                <span className="text-gray-400">•</span>
+                <span className="text-[11px] text-emerald-600 font-medium">Ground-Truth Active ({currentMetrics.baselinePolicyCount || 32} domain policies synchronized)</span>
+              </div>
+              <span className="text-[11px] text-blue-600 font-semibold hover:underline flex items-center gap-1">
+                Show baseline & tools ▾
+              </span>
+            </div>
+          ) : (
+            <div className="bg-gradient-to-r from-blue-900/10 via-indigo-900/5 to-white border border-blue-200 rounded-xl p-4 shadow-sm transition-all animate-fade-in">
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
+                <div
+                  className="flex items-center gap-3.5 cursor-pointer select-none flex-1"
+                  onClick={() => setShowBaselineBanner(false)}
+                >
+                  <div className="w-9 h-9 rounded-xl bg-blue-600/10 border border-blue-500/20 flex items-center justify-center text-blue-600 flex-shrink-0 shadow-xs">
+                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <h2 className="font-bold text-xs sm:text-sm text-gray-900 tracking-tight">
+                        Google Workspace App Access Control Baseline
+                      </h2>
+                      <span className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold shadow-2xs">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Ground-Truth Active ({currentMetrics.baselineSource || 'owl_apps.csv'})
+                      </span>
+                      <span className="text-[11px] text-gray-500">
+                        • <strong className="text-emerald-700 font-semibold">{currentMetrics.baselinePolicyCount || 32} domain policies synchronized</strong>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 flex-shrink-0 w-full md:w-auto justify-end">
+                  <button
+                    type="button"
+                    onClick={() => setShowBaselineBanner(false)}
+                    className="px-3 py-1.5 rounded-lg bg-white hover:bg-gray-50 border border-blue-200 text-xs font-bold text-blue-700 transition-colors shadow-2xs flex items-center gap-1"
+                  >
+                    <span>▲ Hide / Collapse</span>
+                  </button>
+                  <button
+                    onClick={() => setShowSetupModal(true)}
+                    className="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-semibold flex items-center gap-1 transition-all shadow-sm shadow-blue-500/20"
+                  >
+                    <span>📖</span> Instructions
+                  </button>
+                  <label className="px-3 py-1.5 bg-white hover:bg-gray-50 text-gray-700 rounded-lg text-xs font-semibold flex items-center gap-1 transition-colors border border-gray-300 cursor-pointer shadow-2xs">
+                    <span>📥</span> Update CSV
+                    <input
+                      type="file"
+                      accept=".csv"
+                      className="hidden"
+                      onChange={(e) => {
+                        const f = e.target.files?.[0];
+                        if (f) handleCsvUpload(f);
+                      }}
+                    />
+                  </label>
+                </div>
+              </div>
+
+              {/* Expanded Explanation Section */}
+              <div className="mt-3 pt-3 border-t border-blue-200/80 text-xs text-gray-600 leading-relaxed space-y-2">
+                <p>
+                  <strong className="text-gray-900 font-semibold">Why this baseline is required:</strong> Google Workspace only stores OAuth authorization tokens for active users within a 180-day window. By importing your <code className="text-blue-700 bg-blue-50 px-1 py-0.5 rounded font-mono text-[11px]">owl_apps.csv</code> export, AdminLens gains permanent ground truth of all admin-configured policies across Organizational Units—surfacing dormant, pre-sanctioned, or restricted third-party applications even when they produce zero recent telemetry.
+                </p>
+                <div className="flex items-center gap-4 text-[11px] text-gray-500 pt-1">
+                  <span>Status: <strong className="text-emerald-700">Synchronized</strong></span>
+                  <span>•</span>
+                  <span>Domain Scope: <strong className="text-gray-800">All Organizational Units</strong></span>
+                  <span>•</span>
+                  <span>Total Rules: <strong className="text-gray-800">{currentMetrics.baselinePolicyCount || 32} policies</strong></span>
+                </div>
+
+                {/* Quick Deep-Links to Google Admin Console */}
+                <div className="pt-2 border-t border-blue-200/50 flex flex-wrap items-center gap-2 text-xs">
+                  <span className="font-bold text-gray-700 flex items-center gap-1.5">
+                    <GoogleAdminIcon className="w-3.5 h-3.5" /> Console Deep Links:
+                  </span>
+                  <a
+                    href="https://admin.google.com/ac/owl/list?tab=apps"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1 px-2.5 py-1 bg-white hover:bg-blue-50 text-blue-700 font-semibold rounded-md border border-gray-200 hover:border-blue-300 transition-colors shadow-2xs"
+                  >
+                    <span>Accessed Apps ↗</span>
+                  </a>
+                  <a
+                    href="https://admin.google.com/ac/owl/list?tab=configuredApps"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1 px-2.5 py-1 bg-white hover:bg-emerald-50 text-emerald-700 font-semibold rounded-md border border-gray-200 hover:border-emerald-300 transition-colors shadow-2xs"
+                  >
+                    <span>Configured Apps ↗</span>
+                  </a>
+                  <a
+                    href="https://admin.google.com/ac/owl/list?tab=pendingReviewApps"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1 px-2.5 py-1 bg-white hover:bg-amber-50 text-amber-700 font-semibold rounded-md border border-gray-200 hover:border-amber-300 transition-colors shadow-2xs"
+                  >
+                    <span>Apps Pending Review ↗</span>
+                  </a>
+                  <a
+                    href="https://admin.google.com/ac/owl/list?tab=services"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1 px-2.5 py-1 bg-white hover:bg-purple-50 text-purple-700 font-semibold rounded-md border border-gray-200 hover:border-purple-300 transition-colors shadow-2xs"
+                  >
+                    <span>Google Services ↗</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          )}
           
           {/* Top 5 KPI Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
