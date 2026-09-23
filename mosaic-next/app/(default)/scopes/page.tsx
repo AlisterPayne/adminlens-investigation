@@ -11,14 +11,20 @@ export const metadata = {
 export default function ScopesPage() {
   const dataDir = path.join(process.cwd(), "data");
   const scopeDataPath = path.join(dataDir, "scope_reference.json");
+  const appsDataPath = path.join(dataDir, "applications_catalog.json");
 
   let scopes = [];
   let metrics = null;
+  let apps = [];
 
   if (fs.existsSync(scopeDataPath)) {
     const data = JSON.parse(fs.readFileSync(scopeDataPath, "utf8"));
     scopes = data.scopes || [];
     metrics = data.metrics || null;
+  }
+
+  if (fs.existsSync(appsDataPath)) {
+    apps = JSON.parse(fs.readFileSync(appsDataPath, "utf8"));
   }
 
   return (
@@ -41,7 +47,7 @@ export default function ScopesPage() {
       </div>
 
       {/* Embedded Full Scope Matrix Component */}
-      <ScopeMatrixView scopes={scopes} metrics={metrics} />
+      <ScopeMatrixView scopes={scopes} metrics={metrics} apps={apps} />
     </div>
   );
 }

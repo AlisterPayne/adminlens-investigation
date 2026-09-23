@@ -124,6 +124,21 @@ function ServiceThreatInfoPopover({
   );
 }
 
+export interface ScopeAppInfo {
+  id: string;
+  clientId?: string;
+  displayName: string;
+  iconUrl?: string;
+  publisherDomain?: string;
+  category?: string;
+  appType?: string;
+  riskLevel?: string;
+  riskScore?: number;
+  totalUsersCount?: number;
+  adminAccessLevel?: string;
+  rawApp?: any;
+}
+
 export interface ScopeReferenceItem {
   scope_url: string;
   service_name: string;
@@ -133,6 +148,7 @@ export interface ScopeReferenceItem {
   rationale: string;
   threat_impact: string;
   active_apps_count?: number;
+  active_apps?: ScopeAppInfo[];
 }
 
 export interface ScopeMetrics {
@@ -150,12 +166,275 @@ export interface ScopeMetrics {
   services: string[];
 }
 
+function TenantAppsBadgePopover({
+  scopeUrl,
+  apps,
+  count,
+  onSelectApp,
+}: {
+  scopeUrl: string;
+  apps: ScopeAppInfo[];
+  count: number;
+  onSelectApp?: (app: any) => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const filteredApps = useMemo(() => {
+    if (!searchQuery.trim()) return apps;
+    const q = searchQuery.toLowerCase().trim();
+    return apps.filter(
+      (a) =>
+        a.displayName.toLowerCase().includes(q) ||
+        (a.category && a.category.toLowerCase().includes(q)) ||
+        (a.publisherDomain && a.publisherDomain.toLowerCase().includes(q))
+    );
+  }, [apps, searchQuery]);
+
+  const getRiskBadgeMini = (level?: string, score?: number) => {
+    const formattedScore = score !== undefined ? `${score.toFixed(1)}` : null;
+    switch (level?.toUpperCase()) {
+      case "CRITICAL":
+        return (
+          <span className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-bold bg-red-50 text-red-700 border border-red-200">
+            <span className="w-1 h-1 rounded-full bg-red-600"></span>
+            <span>Critical</span>
+            {formattedScore && <span className="font-mono text-[9px] bg-red-200/60 px-1 rounded">{formattedScore}</span>}
+          </span>
+        );
+      case "HIGH":
+        return (
+          <span className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200">
+            <span className="w-1 h-1 rounded-full bg-amber-600"></span>
+            <span>High</span>
+            {formattedScore && <span className="font-mono text-[9px] bg-amber-200/60 px-1 rounded">{formattedScore}</span>}
+          </span>
+        );
+      case "MEDIUM":
+        return (
+          <span className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-bold bg-yellow-50 text-yellow-800 border border-yellow-200">
+            <span className="w-1 h-1 rounded-full bg-yellow-500"></span>
+            <span>Med</span>
+            {formattedScore && <span className="font-mono text-[9px] bg-yellow-200/60 px-1 rounded">{formattedScore}</span>}
+          </span>
+        );
+      case "LOW":
+      default:
+        return (
+          <span className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200">
+            <span className="w-1 h-1 rounded-full bg-blue-500"></span>
+            <span>Low</span>
+            {formattedScore && <span className="font-mono text-[9px] bg-blue-200/60 px-1 rounded">{formattedScore}</span>}
+          </span>
+        );
+    }
+  };
+
+  return (
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
+        <button
+          type="button"
+          onClick={(e) => e.stopPropagation()}
+          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100/90 hover:border-emerald-300 hover:shadow-2xs active:scale-95 transition-all cursor-pointer group focus:outline-none focus:ring-2 focus:ring-emerald-500/25 select-none"
+          title={`Click to view ${count} application${count > 1 ? "s" : ""} utilizing this scope`}
+        >
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 group-hover:scale-125 transition-transform" />
+          <span>
+            {count} App{count > 1 ? "s" : ""}
+          </span>
+          <svg
+            className={`w-3 h-3 text-emerald-600/70 group-hover:text-emerald-800 transition-transform duration-150 ${
+              open ? "rotate-180" : ""
+            }`}
+            viewBox="0 0 12 12"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
+            <path
+              d="M2.5 4.5l3.5 3.5 3.5-3.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
+      </PopoverTrigger>
+      <PopoverContent
+        align="end"
+        side="bottom"
+        sideOffset={6}
+        className="w-84 sm:w-96 p-0 bg-white border border-gray-200 rounded-xl shadow-xl z-50 overflow-hidden outline-none pointer-events-auto"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div className="p-3.5 bg-gradient-to-r from-gray-50 via-white to-gray-50 border-b border-gray-100">
+          <div className="flex items-center justify-between gap-2">
+            <div className="flex items-center gap-2 min-w-0">
+              <div className="w-6 h-6 rounded-md bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs font-bold shrink-0">
+                🏢
+              </div>
+              <div className="min-w-0">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-xs font-bold text-gray-900">
+                    Tenant Applications
+                  </span>
+                  <span className="px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                    {count}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <span className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider shrink-0">
+              OAuth Access
+            </span>
+          </div>
+
+          <div
+            className="mt-2 px-2.5 py-1 rounded-md bg-gray-100/80 border border-gray-200/60 font-mono text-[11px] text-gray-700 truncate select-all"
+            title={scopeUrl}
+          >
+            {scopeUrl}
+          </div>
+        </div>
+
+        {/* Optional Search if more than 3 apps */}
+        {apps.length > 3 && (
+          <div className="px-3 py-2 border-b border-gray-100 bg-gray-50/50">
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search apps in list..."
+              className="w-full text-xs px-2.5 py-1.5 rounded-lg border border-gray-200 bg-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
+            />
+          </div>
+        )}
+
+        {/* App List */}
+        <div className="max-h-72 overflow-y-auto divide-y divide-gray-100 p-1.5">
+          {apps.length === 0 ? (
+            <div className="py-6 text-center text-xs text-gray-500 px-4">
+              <div className="font-semibold text-gray-700">Audit telemetry detected {count} app{count > 1 ? "s" : ""}</div>
+              <p className="text-[11px] text-gray-400 mt-1">Detailed application profiles are being indexed.</p>
+            </div>
+          ) : filteredApps.length === 0 ? (
+            <div className="py-6 text-center text-xs text-gray-400">
+              No matching applications found.
+            </div>
+          ) : (
+            filteredApps.map((app) => (
+              <div
+                key={app.id}
+                onClick={() => {
+                  if (onSelectApp) {
+                    onSelectApp(app.rawApp || app);
+                    setOpen(false);
+                  }
+                }}
+                className={`w-full text-left p-2.5 rounded-lg transition-colors flex items-center justify-between gap-3 ${
+                  onSelectApp
+                    ? "hover:bg-blue-50/60 cursor-pointer group"
+                    : "hover:bg-gray-50/60"
+                }`}
+              >
+                <div className="flex items-center gap-2.5 min-w-0 flex-1">
+                  {/* App Icon or Avatar */}
+                  <div className="w-8 h-8 rounded-lg border border-gray-200 bg-white p-0.5 flex items-center justify-center shrink-0 overflow-hidden shadow-2xs">
+                    {app.iconUrl ? (
+                      <img
+                        src={app.iconUrl}
+                        alt={app.displayName}
+                        className="w-full h-full object-contain rounded"
+                        onError={(e) => {
+                          const target = e.target as HTMLElement;
+                          target.style.display = "none";
+                          if (target.parentElement) {
+                            target.parentElement.innerHTML = `<span class="text-xs font-bold text-gray-600">${app.displayName.charAt(0).toUpperCase()}</span>`;
+                          }
+                        }}
+                      />
+                    ) : (
+                      <span className="text-xs font-bold text-gray-600">
+                        {app.displayName.charAt(0).toUpperCase()}
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-1.5">
+                      <span className="font-bold text-xs text-gray-900 group-hover:text-blue-600 transition-colors truncate">
+                        {app.displayName}
+                      </span>
+                    </div>
+                    <div className="text-[11px] text-gray-500 truncate flex items-center gap-1.5 mt-0.5">
+                      {app.publisherDomain ? (
+                        <>
+                          <span className="text-gray-600 font-medium">{app.publisherDomain}</span>
+                          <span className="text-gray-300">•</span>
+                        </>
+                      ) : null}
+                      <span className="text-gray-500 truncate">
+                        {app.category || app.appType || "Application"}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right: Risk Badge & Users Count & Inspect icon */}
+                <div className="flex items-center gap-2 shrink-0">
+                  <div className="flex flex-col items-end gap-1">
+                    {getRiskBadgeMini(app.riskLevel, app.riskScore)}
+                    <span className="text-[10px] text-gray-400 font-medium">
+                      {app.totalUsersCount ?? 1} user{(app.totalUsersCount ?? 1) === 1 ? "" : "s"}
+                    </span>
+                  </div>
+                  {onSelectApp && (
+                    <svg
+                      className="w-3.5 h-3.5 text-gray-300 group-hover:text-blue-600 group-hover:translate-x-0.5 transition-all"
+                      viewBox="0 0 16 16"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M6.22 4.22a.75.75 0 0 1 1.06 0l3.25 3.25a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06L8.94 8 6.22 5.28a.75.75 0 0 1 0-1.06z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  )}
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+
+        {/* Footer */}
+        <div className="px-3.5 py-2 bg-gray-50/80 border-t border-gray-100 flex items-center justify-between text-[11px] text-gray-500">
+          <span className="flex items-center gap-1.5 text-[10px] text-gray-500 font-medium">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+            <span>Active tenant authorization</span>
+          </span>
+          {onSelectApp && (
+            <span className="text-[10px] font-semibold text-blue-600 hover:text-blue-700">
+              Click app to inspect →
+            </span>
+          )}
+        </div>
+      </PopoverContent>
+    </Popover>
+  );
+}
+
 export default function ScopeMatrixView({
   scopes = [],
   metrics,
+  apps = [],
+  onSelectApp,
 }: {
   scopes: ScopeReferenceItem[];
   metrics?: ScopeMetrics | null;
+  apps?: any[];
+  onSelectApp?: (app: any) => void;
 }) {
   const [viewMode, setViewMode] = useState<"grouped" | "table">("grouped");
   const [search, setSearch] = useState("");
@@ -165,6 +444,7 @@ export default function ScopeMatrixView({
   const [activeOnly, setActiveOnly] = useState(false);
   const [copiedScope, setCopiedScope] = useState<string | null>(null);
   const [showInfoBanner, setShowInfoBanner] = useState(false);
+  const [inspectingApp, setInspectingApp] = useState<any | null>(null);
 
   // Derive distinct services if not provided
   const availableServices = useMemo(() => {
@@ -239,6 +519,57 @@ export default function ScopeMatrixView({
       };
     }).sort((a, b) => parseFloat(b.avgScore) - parseFloat(a.avgScore));
   }, [filteredScopes]);
+
+  // Pre-index apps by scope URL
+  const appsByScope = useMemo(() => {
+    const map = new Map<string, ScopeAppInfo[]>();
+    if (apps && apps.length > 0) {
+      for (const app of apps) {
+        for (const s of (app.scopes || [])) {
+          const url = s.scope || s.scope_url;
+          if (!url) continue;
+          if (!map.has(url)) map.set(url, []);
+          map.get(url)!.push({
+            id: app.id,
+            clientId: app.clientId || app.id,
+            displayName: app.displayName,
+            iconUrl: app.iconUrl,
+            publisherDomain: app.publisherDomain,
+            category: app.category,
+            appType: app.appType,
+            riskLevel: app.riskLevel,
+            riskScore: app.riskScore,
+            totalUsersCount: app.totalUsersCount,
+            adminAccessLevel: app.adminAccessLevel,
+            rawApp: app,
+          });
+        }
+      }
+    }
+    return map;
+  }, [apps]);
+
+  // Helper to resolve apps for a given scope
+  const getScopeApps = (s: ScopeReferenceItem): ScopeAppInfo[] => {
+    if (s.active_apps && s.active_apps.length > 0) {
+      if (apps && apps.length > 0) {
+        return s.active_apps.map((item) => {
+          const fullApp = apps.find((a) => a.id === item.id);
+          return fullApp ? { ...item, rawApp: fullApp } : item;
+        });
+      }
+      return s.active_apps;
+    }
+    return appsByScope.get(s.scope_url) || [];
+  };
+
+  const handleAppClick = (app: any) => {
+    if (onSelectApp) {
+      onSelectApp(app.rawApp || app);
+    } else {
+      setInspectingApp(app.rawApp || app);
+    }
+  };
 
   const copyToClipboard = (url: string) => {
     navigator.clipboard.writeText(url).then(() => {
@@ -768,11 +1099,12 @@ export default function ScopeMatrixView({
                                 {/* Tenant Footprint */}
                                 <td className="py-3 px-4 text-center whitespace-nowrap">
                                   {isActive ? (
-                                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 shadow-2xs">
-                                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                                      {s.active_apps_count} App
-                                      {(s.active_apps_count || 0) > 1 ? "s" : ""}
-                                    </span>
+                                    <TenantAppsBadgePopover
+                                      scopeUrl={s.scope_url}
+                                      apps={getScopeApps(s)}
+                                      count={s.active_apps_count || getScopeApps(s).length}
+                                      onSelectApp={handleAppClick}
+                                    />
                                   ) : (
                                     <span className="text-xs text-gray-400 font-mono">
                                       0 apps
@@ -877,11 +1209,12 @@ export default function ScopeMatrixView({
                       {/* Tenant Footprint */}
                       <td className="py-3.5 px-4 text-center whitespace-nowrap">
                         {isActive ? (
-                          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 shadow-2xs">
-                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                            {s.active_apps_count} App
-                            {(s.active_apps_count || 0) > 1 ? "s" : ""}
-                          </span>
+                          <TenantAppsBadgePopover
+                            scopeUrl={s.scope_url}
+                            apps={getScopeApps(s)}
+                            count={s.active_apps_count || getScopeApps(s).length}
+                            onSelectApp={handleAppClick}
+                          />
                         ) : (
                           <span className="text-xs text-gray-400 font-mono">
                             0 apps
@@ -894,6 +1227,138 @@ export default function ScopeMatrixView({
               )}
             </tbody>
           </table>
+        </div>
+      )}
+
+      {/* Application Quick Inspection Modal (Fallback when standalone / onSelectApp not wired) */}
+      {inspectingApp && (
+        <div
+          className="fixed inset-0 z-50 bg-gray-900/50 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in duration-150"
+          onClick={() => setInspectingApp(null)}
+        >
+          <div
+            className="bg-white border border-gray-200 rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden animate-in zoom-in-95 duration-150"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="p-5 border-b border-gray-100 flex items-start justify-between bg-gradient-to-r from-gray-50 via-white to-gray-50">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-xl border border-gray-200 bg-white p-1 flex items-center justify-center shrink-0 shadow-2xs overflow-hidden">
+                  {inspectingApp.iconUrl ? (
+                    <img
+                      src={inspectingApp.iconUrl}
+                      alt={inspectingApp.displayName}
+                      className="w-full h-full object-contain rounded-lg"
+                      onError={(e) => {
+                        const target = e.target as HTMLElement;
+                        target.style.display = "none";
+                        if (target.parentElement) {
+                          target.parentElement.innerHTML = `<span class="text-base font-bold text-gray-700">${inspectingApp.displayName?.charAt(0) || "A"}</span>`;
+                        }
+                      }}
+                    />
+                  ) : (
+                    <span className="text-base font-bold text-gray-700">
+                      {inspectingApp.displayName?.charAt(0) || "A"}
+                    </span>
+                  )}
+                </div>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <h3 className="text-base font-bold text-gray-900">
+                      {inspectingApp.displayName}
+                    </h3>
+                  </div>
+                  <div className="flex items-center gap-2 mt-0.5 text-xs text-gray-500">
+                    {inspectingApp.publisherDomain && (
+                      <span className="text-gray-600 font-medium">🌐 {inspectingApp.publisherDomain}</span>
+                    )}
+                    {inspectingApp.publisherDomain && <span>•</span>}
+                    <span>{inspectingApp.category || inspectingApp.appType || "Application"}</span>
+                  </div>
+                </div>
+              </div>
+
+              <button
+                onClick={() => setInspectingApp(null)}
+                className="text-gray-400 hover:text-gray-600 p-1.5 rounded-lg hover:bg-gray-100 transition-colors"
+                title="Close"
+              >
+                <svg className="w-4 h-4 fill-current" viewBox="0 0 16 16">
+                  <path d="M7.95 6.536l4.242-4.243a1 1 0 111.415 1.414L9.364 7.95l4.243 4.242a1 1 0 11-1.415 1.415L7.95 9.364l-4.243 4.243a1 1 0 01-1.414-1.415L6.536 7.95 2.293 3.707a1 1 0 011.414-1.414L7.95 6.536z" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Content */}
+            <div className="p-5 space-y-4 text-xs text-gray-700 max-h-[60vh] overflow-y-auto">
+              {/* Stat Grid */}
+              <div className="grid grid-cols-3 gap-2.5 text-center">
+                <div className="p-2.5 rounded-xl bg-gray-50 border border-gray-200">
+                  <div className="text-[10px] text-gray-500 font-semibold uppercase">Risk Level</div>
+                  <div className="mt-1 font-bold text-gray-900">{inspectingApp.riskLevel || "MODERATE"}</div>
+                </div>
+                <div className="p-2.5 rounded-xl bg-gray-50 border border-gray-200">
+                  <div className="text-[10px] text-gray-500 font-semibold uppercase">Risk Score</div>
+                  <div className="mt-1 font-bold text-gray-900">
+                    {inspectingApp.riskScore !== undefined ? `${Number(inspectingApp.riskScore).toFixed(1)} / 5.0` : "N/A"}
+                  </div>
+                </div>
+                <div className="p-2.5 rounded-xl bg-gray-50 border border-gray-200">
+                  <div className="text-[10px] text-gray-500 font-semibold uppercase">Active Users</div>
+                  <div className="mt-1 font-bold text-gray-900">
+                    {inspectingApp.totalUsersCount ?? 1} User{(inspectingApp.totalUsersCount ?? 1) === 1 ? "" : "s"}
+                  </div>
+                </div>
+              </div>
+
+              {/* Client ID */}
+              {inspectingApp.clientId && (
+                <div className="p-3 rounded-xl bg-gray-50 border border-gray-200">
+                  <div className="text-[10px] text-gray-500 font-semibold uppercase mb-1">OAuth Client ID</div>
+                  <div className="font-mono text-[11px] text-gray-800 break-all select-all">
+                    {inspectingApp.clientId}
+                  </div>
+                </div>
+              )}
+
+              {/* Access Policy */}
+              <div className="p-3 rounded-xl bg-blue-50/60 border border-blue-100">
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-[10px] text-blue-700 font-semibold uppercase">Workspace Access Policy</span>
+                  <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-white text-blue-800 border border-blue-200">
+                    {inspectingApp.adminAccessLevel || "UNCONFIGURED"}
+                  </span>
+                </div>
+                <p className="text-[11px] text-blue-950/80 leading-relaxed">
+                  {inspectingApp.adminAccessLevel === "TRUSTED"
+                    ? "This app is explicitly trusted by domain administrators and has access to requested Google Workspace APIs."
+                    : inspectingApp.adminAccessLevel === "BLOCKED"
+                    ? "This application is blocked from authenticating or accessing workspace resources."
+                    : inspectingApp.adminAccessLevel === "LIMITED"
+                    ? "Limited access policy applied to restrict access strictly to non-sensitive scopes."
+                    : "This application has not yet been configured or reviewed in Google Workspace Admin Console."}
+                </p>
+              </div>
+            </div>
+
+            {/* Footer */}
+            <div className="p-4 bg-gray-50 border-t border-gray-200 flex items-center justify-between">
+              <a
+                href="/?tab=apps"
+                className="text-xs text-blue-600 hover:text-blue-800 font-semibold hover:underline"
+              >
+                View in Application Catalog →
+              </a>
+              <button
+                type="button"
+                onClick={() => setInspectingApp(null)}
+                className="px-4 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-900 text-white font-semibold text-xs shadow-2xs transition-colors cursor-pointer"
+              >
+                Close
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>

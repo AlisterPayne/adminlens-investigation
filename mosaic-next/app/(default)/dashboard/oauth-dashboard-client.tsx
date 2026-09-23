@@ -2451,7 +2451,12 @@ export default function OAuthDashboardClient({
 
       {/* Scope Threat Matrix Tab View */}
       {activeTab === "scopes" && (
-        <ScopeMatrixView scopes={initialScopes} metrics={scopeMetrics} />
+        <ScopeMatrixView
+          scopes={initialScopes}
+          metrics={scopeMetrics}
+          apps={currentApps}
+          onSelectApp={(app) => setSelectedApp(app)}
+        />
       )}
 
       {/* ============================================================== */}
