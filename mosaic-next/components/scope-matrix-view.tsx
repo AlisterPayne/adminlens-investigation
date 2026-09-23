@@ -164,7 +164,6 @@ export default function ScopeMatrixView({
   const [scoreFilter, setScoreFilter] = useState("ALL");
   const [activeOnly, setActiveOnly] = useState(false);
   const [copiedScope, setCopiedScope] = useState<string | null>(null);
-  const [collapsedServices, setCollapsedServices] = useState<Record<string, boolean>>({});
   const [showInfoBanner, setShowInfoBanner] = useState(false);
 
   // Derive distinct services if not provided
@@ -240,13 +239,6 @@ export default function ScopeMatrixView({
       };
     }).sort((a, b) => parseFloat(b.avgScore) - parseFloat(a.avgScore));
   }, [filteredScopes]);
-
-  const toggleServiceCollapse = (service: string) => {
-    setCollapsedServices((prev) => ({
-      ...prev,
-      [service]: !prev[service],
-    }));
-  };
 
   const copyToClipboard = (url: string) => {
     navigator.clipboard.writeText(url).then(() => {
@@ -669,8 +661,6 @@ export default function ScopeMatrixView({
             </div>
           ) : (
             groupedByService.map((grp) => {
-              const isCollapsed = collapsedServices[grp.serviceName];
-
               return (
                 <div
                   key={grp.serviceName}
@@ -697,7 +687,7 @@ export default function ScopeMatrixView({
                       </div>
                     </div>
 
-                    {/* Service Controls: Threat Info Popover & Collapse/Expand Button */}
+                    {/* Service Controls: Threat Info Popover */}
                     <div className="flex items-center gap-2">
                       <ServiceThreatInfoPopover
                         serviceName={grp.serviceName}
@@ -705,21 +695,11 @@ export default function ScopeMatrixView({
                         criticalCount={grp.criticalCount}
                         maxScore={grp.maxScore}
                       />
-
-                      {/* Collapse/Expand Toggle Button */}
-                      <button
-                        onClick={() => toggleServiceCollapse(grp.serviceName)}
-                        className="px-3 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-bold transition-colors"
-                        title={isCollapsed ? "Expand Service" : "Collapse Service"}
-                      >
-                        {isCollapsed ? "▼ Show Scopes" : "▲ Hide Scopes"}
-                      </button>
                     </div>
                   </div>
 
                   {/* Service Scope Table */}
-                  {!isCollapsed && (
-                    <div className="overflow-x-auto">
+                  <div className="overflow-x-auto">
                       <table className="w-full text-left text-sm text-gray-700 table-fixed min-w-[960px]">
                         <colgroup>
                           <col style={{ width: "35%" }} />
@@ -805,7 +785,6 @@ export default function ScopeMatrixView({
                         </tbody>
                       </table>
                     </div>
-                  )}
                 </div>
               );
             })
