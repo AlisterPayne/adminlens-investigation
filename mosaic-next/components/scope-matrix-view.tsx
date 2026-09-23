@@ -621,7 +621,7 @@ export default function ScopeMatrixView({
             </select>
           </div>
 
-          {/* Active in Domain Only */}
+          {/* Active Apps Only */}
           <label className="flex items-center gap-1.5 text-xs text-gray-700 cursor-pointer ml-1 select-none font-medium">
             <input
               type="checkbox"
@@ -629,7 +629,7 @@ export default function ScopeMatrixView({
               onChange={(e) => setActiveOnly(e.target.checked)}
               className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
             />
-            <span>In Domain Only</span>
+            <span>Active Apps</span>
           </label>
 
           {(serviceFilter !== "ALL" || tierFilter !== "ALL" || scoreFilter !== "ALL" || activeOnly || search.trim() !== "") && (
