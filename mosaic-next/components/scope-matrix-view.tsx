@@ -445,6 +445,25 @@ export default function ScopeMatrixView({
   const [copiedScope, setCopiedScope] = useState<string | null>(null);
   const [showInfoBanner, setShowInfoBanner] = useState(false);
   const [inspectingApp, setInspectingApp] = useState<any | null>(null);
+  const [collapsedServices, setCollapsedServices] = useState<Set<string>>(new Set());
+
+  const toggleServiceCollapse = (serviceName: string) => {
+    setCollapsedServices((prev) => {
+      const next = new Set(prev);
+      if (next.has(serviceName)) {
+        next.delete(serviceName);
+      } else {
+        next.add(serviceName);
+      }
+      return next;
+    });
+  };
+
+  const expandAll = () => setCollapsedServices(new Set());
+  const collapseAll = () => {
+    const all = new Set(groupedByService.map((g) => g.serviceName));
+    setCollapsedServices(all);
+  };
 
   // Derive distinct services if not provided
   // Pre-index apps by scope URL
@@ -1035,25 +1054,66 @@ export default function ScopeMatrixView({
       {/* ================================================================ */}
       {viewMode === "grouped" && (
         <div className="space-y-4">
+          {/* Grouped View Global Toolbar */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 px-1">
+            <div className="text-xs text-gray-500 font-medium flex items-center gap-2">
+              <span>Showing <strong className="text-gray-900">{groupedByService.length}</strong> Google Services</span>
+              <span>•</span>
+              <span className="text-gray-500">Ranked by active tenant applications</span>
+            </div>
+            <div className="flex items-center gap-2 self-end sm:self-auto">
+              <button
+                type="button"
+                onClick={expandAll}
+                className="text-xs font-semibold text-gray-600 hover:text-blue-600 px-2.5 py-1 rounded-lg bg-white hover:bg-gray-50 border border-gray-200 shadow-2xs transition-colors flex items-center gap-1.5"
+                title="Expand all service groups"
+              >
+                <span>➕</span> Expand All
+              </button>
+              <button
+                type="button"
+                onClick={collapseAll}
+                className="text-xs font-semibold text-gray-600 hover:text-blue-600 px-2.5 py-1 rounded-lg bg-white hover:bg-gray-50 border border-gray-200 shadow-2xs transition-colors flex items-center gap-1.5"
+                title="Collapse all service groups"
+              >
+                <span>➖</span> Collapse All
+              </button>
+            </div>
+          </div>
+
           {groupedByService.length === 0 ? (
             <div className="bg-white border border-gray-200 rounded-xl p-12 text-center text-gray-400 font-medium">
               No services match the selected filter criteria.
             </div>
           ) : (
             groupedByService.map((grp) => {
+              const isCollapsed = collapsedServices.has(grp.serviceName);
               return (
                 <div
                   key={grp.serviceName}
                   className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-2xs transition-all"
                 >
-                  {/* Service Header Strip */}
-                  <div className="p-4 sm:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-gradient-to-r from-gray-50/80 via-white to-gray-50/40 border-b border-gray-200">
+                  {/* Service Header Strip (Collapsible) */}
+                  <div
+                    onClick={() => toggleServiceCollapse(grp.serviceName)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        toggleServiceCollapse(grp.serviceName);
+                      }
+                    }}
+                    className={`p-4 sm:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-gradient-to-r from-gray-50/80 via-white to-gray-50/40 cursor-pointer hover:bg-gray-50/90 transition-colors select-none ${
+                      !isCollapsed ? "border-b border-gray-200" : ""
+                    }`}
+                  >
                     <div className="flex items-center gap-3.5">
-                      <div className="w-10 h-10 rounded-xl bg-white border border-gray-200 flex items-center justify-center shadow-2xs">
+                      <div className="w-10 h-10 rounded-xl bg-white border border-gray-200 flex items-center justify-center shadow-2xs flex-shrink-0">
                         {getServiceIcon(grp.serviceName)}
                       </div>
                       <div>
-                        <div className="flex items-center gap-2.5">
+                        <div className="flex items-center gap-2.5 flex-wrap">
                           <h3 className="text-base font-bold text-gray-900">
                             {grp.serviceName}
                           </h3>
@@ -1076,19 +1136,36 @@ export default function ScopeMatrixView({
                       </div>
                     </div>
 
-                    {/* Service Controls: Threat Info Popover */}
-                    <div className="flex items-center gap-2">
-                      <ServiceThreatInfoPopover
-                        serviceName={grp.serviceName}
-                        avgScore={grp.avgScore}
-                        criticalCount={grp.criticalCount}
-                        maxScore={grp.maxScore}
-                      />
+                    {/* Service Controls: Threat Info Popover & Chevron */}
+                    <div className="flex items-center gap-2 self-end md:self-auto">
+                      <div onClick={(e) => e.stopPropagation()}>
+                        <ServiceThreatInfoPopover
+                          serviceName={grp.serviceName}
+                          avgScore={grp.avgScore}
+                          criticalCount={grp.criticalCount}
+                          maxScore={grp.maxScore}
+                        />
+                      </div>
+
+                      <div
+                        className="w-8 h-8 rounded-lg border border-gray-200 bg-white flex items-center justify-center text-gray-500 shadow-2xs hover:bg-gray-50 transition-colors"
+                        title={isCollapsed ? `Expand ${grp.serviceName} scopes` : `Collapse ${grp.serviceName} scopes`}
+                      >
+                        <svg
+                          className={`w-4 h-4 fill-current transform transition-transform duration-200 ${
+                            isCollapsed ? "-rotate-90 text-gray-400" : "rotate-0 text-gray-700"
+                          }`}
+                          viewBox="0 0 16 16"
+                        >
+                          <path d="M4.293 5.293a1 1 0 011.414 0L8 7.586l2.293-2.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" />
+                        </svg>
+                      </div>
                     </div>
                   </div>
 
                   {/* Service Scope Table */}
-                  <div className="overflow-x-auto">
+                  {!isCollapsed && (
+                    <div className="overflow-x-auto">
                       <table className="w-full text-left text-sm text-gray-700 table-fixed min-w-[960px]">
                         <colgroup>
                           <col style={{ width: "35%" }} />
@@ -1175,6 +1252,7 @@ export default function ScopeMatrixView({
                         </tbody>
                       </table>
                     </div>
+                  )}
                 </div>
               );
             })
