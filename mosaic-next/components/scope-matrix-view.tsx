@@ -430,11 +430,13 @@ export default function ScopeMatrixView({
   metrics,
   apps = [],
   onSelectApp,
+  isBackend = false,
 }: {
   scopes: ScopeReferenceItem[];
   metrics?: ScopeMetrics | null;
   apps?: any[];
   onSelectApp?: (app: any) => void;
+  isBackend?: boolean;
 }) {
   const [viewMode, setViewMode] = useState<"grouped" | "table">("grouped");
   const [search, setSearch] = useState("");
@@ -466,10 +468,10 @@ export default function ScopeMatrixView({
   };
 
   // Derive distinct services if not provided
-  // Pre-index apps by scope URL
+  // Pre-index apps by scope URL (only in client mode)
   const appsByScope = useMemo(() => {
     const map = new Map<string, ScopeAppInfo[]>();
-    if (apps && apps.length > 0) {
+    if (!isBackend && apps && apps.length > 0) {
       for (const app of apps) {
         for (const s of (app.scopes || [])) {
           const url = s.scope || s.scope_url;
@@ -493,10 +495,12 @@ export default function ScopeMatrixView({
       }
     }
     return map;
-  }, [apps]);
+  }, [apps, isBackend]);
 
-  // Compute active unique apps count per Google Service
+  // Compute active unique apps count per Google Service (zero in backend mode)
   const serviceActiveAppCounts = useMemo(() => {
+    if (isBackend) return new Map<string, number>();
+
     const serviceMap = new Map<string, Set<string>>();
     scopes.forEach((s) => {
       if (!serviceMap.has(s.service_name)) {
@@ -515,13 +519,17 @@ export default function ScopeMatrixView({
       counts.set(srv, appSet.size);
     });
     return counts;
-  }, [scopes, appsByScope]);
+  }, [scopes, appsByScope, isBackend]);
 
-  // Available Services ranked by active domain footprint
+  // Available Services
   const availableServices = useMemo(() => {
     const rawServices = metrics?.services && metrics.services.length > 0
       ? metrics.services
       : Array.from(new Set(scopes.map((s) => s.service_name)));
+
+    if (isBackend) {
+      return [...rawServices].sort((a, b) => a.localeCompare(b));
+    }
 
     return [...rawServices].sort((a, b) => {
       const countA = serviceActiveAppCounts.get(a) || 0;
@@ -529,7 +537,7 @@ export default function ScopeMatrixView({
       if (countB !== countA) return countB - countA;
       return a.localeCompare(b);
     });
-  }, [scopes, metrics, serviceActiveAppCounts]);
+  }, [scopes, metrics, serviceActiveAppCounts, isBackend]);
 
   // Filtering
   const filteredScopes = useMemo(() => {
@@ -548,7 +556,7 @@ export default function ScopeMatrixView({
         tierFilter === "ALL" || s.google_tier === tierFilter;
       const matchesScore =
         scoreFilter === "ALL" || s.admin_score.toString() === scoreFilter;
-      const matchesActive = !activeOnly || (s.active_apps_count || 0) > 0;
+      const matchesActive = isBackend || !activeOnly || (s.active_apps_count || 0) > 0;
 
       return (
         matchesQuery &&
@@ -559,6 +567,16 @@ export default function ScopeMatrixView({
       );
     });
 
+    if (isBackend) {
+      // In backend mode, sort alphabetically by service name then scope URL
+      return result.sort((a, b) => {
+        if (a.service_name !== b.service_name) {
+          return a.service_name.localeCompare(b.service_name);
+        }
+        return a.scope_url.localeCompare(b.scope_url);
+      });
+    }
+
     // Rank by service active applications count descending, then scope URL alphabetically
     return result.sort((a, b) => {
       const serviceDiff = (serviceActiveAppCounts.get(b.service_name) || 0) - (serviceActiveAppCounts.get(a.service_name) || 0);
@@ -568,9 +586,9 @@ export default function ScopeMatrixView({
       }
       return a.scope_url.localeCompare(b.scope_url);
     });
-  }, [scopes, search, serviceFilter, tierFilter, scoreFilter, activeOnly, serviceActiveAppCounts]);
+  }, [scopes, search, serviceFilter, tierFilter, scoreFilter, activeOnly, serviceActiveAppCounts, isBackend]);
 
-  // Group filtered scopes by Service Name (Ranked by most active apps, scopes alphabetical inside)
+  // Group filtered scopes by Service Name
   const groupedByService = useMemo(() => {
     const groups = new Map<string, ScopeReferenceItem[]>();
 
@@ -591,7 +609,7 @@ export default function ScopeMatrixView({
       const sensitive = items.filter((i) => i.google_tier === "Sensitive").length;
       const nonSensitive = items.filter((i) => i.google_tier === "Non-Sensitive").length;
       
-      const activeApps = serviceActiveAppCounts.get(serviceName) || 0;
+      const activeApps = isBackend ? 0 : (serviceActiveAppCounts.get(serviceName) || 0);
 
       // Scopes inside the service group are sorted alphabetically
       const sortedItems = [...items].sort((a, b) => a.scope_url.localeCompare(b.scope_url));
@@ -609,13 +627,16 @@ export default function ScopeMatrixView({
         activeApps,
       };
     }).sort((a, b) => {
+      if (isBackend) {
+        return a.serviceName.localeCompare(b.serviceName);
+      }
       // Rank service with the most applications active on it to the top
       if (b.activeApps !== a.activeApps) {
         return b.activeApps - a.activeApps;
       }
       return a.serviceName.localeCompare(b.serviceName);
     });
-  }, [filteredScopes, serviceActiveAppCounts]);
+  }, [filteredScopes, serviceActiveAppCounts, isBackend]);
 
   // Helper to resolve apps for a given scope
   const getScopeApps = (s: ScopeReferenceItem): ScopeAppInfo[] => {
@@ -863,12 +884,14 @@ export default function ScopeMatrixView({
       {/* KPI Cards (Non-clickable stat displays) */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {/* All Scopes */}
-        <div className="text-left p-4 rounded-xl border bg-blue-50/40 border-blue-200 shadow-2xs">
-          <div className="text-gray-500 text-xs font-semibold">Cataloged Scopes</div>
+        <div className={`text-left p-4 rounded-xl border shadow-2xs ${isBackend ? "bg-emerald-50/40 border-emerald-200" : "bg-blue-50/40 border-blue-200"}`}>
+          <div className={`text-xs font-semibold ${isBackend ? "text-emerald-800" : "text-gray-500"}`}>Cataloged Scopes</div>
           <div className="text-2xl font-bold text-gray-900 mt-1">
             {kpiCounts.total}
           </div>
-          <div className="text-[11px] text-gray-500 mt-0.5">Verified definitions</div>
+          <div className={`text-[11px] mt-0.5 ${isBackend ? "text-emerald-700 font-medium" : "text-gray-500"}`}>
+            {isBackend ? "Master reference catalog" : "Verified definitions"}
+          </div>
         </div>
 
         {/* Restricted Tiers */}
@@ -916,7 +939,7 @@ export default function ScopeMatrixView({
               onClick={() => setViewMode("grouped")}
               className={`px-3 py-1.5 text-xs font-bold rounded-md transition-colors flex items-center gap-1.5 ${
                 viewMode === "grouped"
-                  ? "bg-white text-blue-600 shadow-xs"
+                  ? isBackend ? "bg-white text-emerald-800 shadow-xs border border-emerald-200" : "bg-white text-blue-600 shadow-xs"
                   : "text-gray-600 hover:text-gray-900"
               }`}
             >
@@ -926,7 +949,7 @@ export default function ScopeMatrixView({
               onClick={() => setViewMode("table")}
               className={`px-3 py-1.5 text-xs font-bold rounded-md transition-colors flex items-center gap-1.5 ${
                 viewMode === "table"
-                  ? "bg-white text-blue-600 shadow-xs"
+                  ? isBackend ? "bg-white text-emerald-800 shadow-xs border border-emerald-200" : "bg-white text-blue-600 shadow-xs"
                   : "text-gray-600 hover:text-gray-900"
               }`}
             >
@@ -937,17 +960,19 @@ export default function ScopeMatrixView({
           <div className="relative w-full md:w-64">
             <input
               type="text"
-              placeholder="Search scope, rationale, or impact..."
+              placeholder={isBackend ? "Search 158 global scopes..." : "Search scope, rationale, or impact..."}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full bg-gray-50 border border-gray-300 rounded-lg pl-3 pr-3 py-1.5 text-xs text-gray-800 placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:bg-white transition-colors"
+              className={`w-full bg-gray-50 border border-gray-300 rounded-lg pl-3 pr-3 py-1.5 text-xs text-gray-800 placeholder-gray-400 focus:outline-none ${
+                isBackend ? "focus:border-emerald-500" : "focus:border-blue-500"
+              } focus:bg-white transition-colors`}
             />
           </div>
         </div>
 
         {/* Right: Granular Filters */}
         <div className="flex items-center gap-2.5 flex-wrap w-full md:w-auto">
-          {(serviceFilter !== "ALL" || tierFilter !== "ALL" || scoreFilter !== "ALL" || activeOnly || search.trim() !== "") && (
+          {(serviceFilter !== "ALL" || tierFilter !== "ALL" || scoreFilter !== "ALL" || (!isBackend && activeOnly) || search.trim() !== "") && (
             <button
               type="button"
               onClick={() => {
@@ -957,7 +982,7 @@ export default function ScopeMatrixView({
                 setActiveOnly(false);
                 setSearch("");
               }}
-              className="text-xs font-semibold text-blue-600 hover:text-blue-800 hover:underline cursor-pointer mr-1"
+              className={`text-xs font-semibold ${isBackend ? "text-emerald-700 hover:text-emerald-900" : "text-blue-600 hover:text-blue-800"} hover:underline cursor-pointer mr-1`}
             >
               Reset filters
             </button>
@@ -969,7 +994,9 @@ export default function ScopeMatrixView({
             <select
               value={serviceFilter}
               onChange={(e) => setServiceFilter(e.target.value)}
-              className="bg-gray-50 border border-gray-300 rounded-lg px-2.5 py-1.5 text-xs text-gray-800 focus:outline-none focus:border-blue-500"
+              className={`bg-gray-50 border border-gray-300 rounded-lg px-2.5 py-1.5 text-xs text-gray-800 focus:outline-none ${
+                isBackend ? "focus:border-emerald-500" : "focus:border-blue-500"
+              }`}
             >
               <option value="ALL">All Services</option>
               {availableServices.map((svc) => (
@@ -986,7 +1013,9 @@ export default function ScopeMatrixView({
             <select
               value={tierFilter}
               onChange={(e) => setTierFilter(e.target.value)}
-              className="bg-gray-50 border border-gray-300 rounded-lg px-2.5 py-1.5 text-xs text-gray-800 focus:outline-none focus:border-blue-500"
+              className={`bg-gray-50 border border-gray-300 rounded-lg px-2.5 py-1.5 text-xs text-gray-800 focus:outline-none ${
+                isBackend ? "focus:border-emerald-500" : "focus:border-blue-500"
+              }`}
             >
               <option value="ALL">All Tiers</option>
               <option value="Restricted">Restricted</option>
@@ -1001,7 +1030,9 @@ export default function ScopeMatrixView({
             <select
               value={scoreFilter}
               onChange={(e) => setScoreFilter(e.target.value)}
-              className="bg-gray-50 border border-gray-300 rounded-lg px-2.5 py-1.5 text-xs text-gray-800 focus:outline-none focus:border-blue-500"
+              className={`bg-gray-50 border border-gray-300 rounded-lg px-2.5 py-1.5 text-xs text-gray-800 focus:outline-none ${
+                isBackend ? "focus:border-emerald-500" : "focus:border-blue-500"
+              }`}
             >
               <option value="ALL">All Scores</option>
               <option value="5">🔴 Critical</option>
@@ -1012,16 +1043,18 @@ export default function ScopeMatrixView({
             </select>
           </div>
 
-          {/* Active Apps Only */}
-          <label className="flex items-center gap-1.5 text-xs text-gray-700 cursor-pointer ml-1 select-none font-medium">
-            <input
-              type="checkbox"
-              checked={activeOnly}
-              onChange={(e) => setActiveOnly(e.target.checked)}
-              className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-            />
-            <span>Active Apps</span>
-          </label>
+          {/* Active Apps Only (Tenant specific - only shown in client mode) */}
+          {!isBackend && (
+            <label className="flex items-center gap-1.5 text-xs text-gray-700 cursor-pointer ml-1 select-none font-medium">
+              <input
+                type="checkbox"
+                checked={activeOnly}
+                onChange={(e) => setActiveOnly(e.target.checked)}
+                className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+              />
+              <span>Active Apps</span>
+            </label>
+          )}
         </div>
       </div>
 
@@ -1035,7 +1068,9 @@ export default function ScopeMatrixView({
             <div className="text-xs text-gray-500 font-medium flex items-center gap-2">
               <span>Showing <strong className="text-gray-900">{groupedByService.length}</strong> Google Services</span>
               <span>•</span>
-              <span className="text-gray-500">Ranked by active tenant applications</span>
+              <span className="text-gray-500">
+                {isBackend ? "Master Google Workspace OAuth Catalog" : "Ranked by active tenant applications"}
+              </span>
             </div>
             <div className="flex items-center gap-2 self-end sm:self-auto">
               <button
@@ -1093,18 +1128,20 @@ export default function ScopeMatrixView({
                           <h3 className="text-base font-bold text-gray-900">
                             {grp.serviceName}
                           </h3>
-                          <span className="text-xs px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-700 font-bold border border-gray-200">
+                          <span className={`text-xs px-2.5 py-0.5 rounded-full font-bold border ${isBackend ? "bg-emerald-50 text-emerald-800 border-emerald-200" : "bg-gray-100 text-gray-700 border-gray-200"}`}>
                             {grp.total} Scope{grp.total > 1 ? "s" : ""}
                           </span>
-                          <span
-                            className={`text-xs px-2.5 py-0.5 rounded-full font-bold border ${
-                              grp.activeApps > 0
-                                ? "bg-blue-50 text-blue-700 border-blue-200"
-                                : "bg-gray-50 text-gray-400 border-gray-200"
-                            }`}
-                          >
-                            {grp.activeApps} Active App{grp.activeApps === 1 ? "" : "s"}
-                          </span>
+                          {!isBackend && (
+                            <span
+                              className={`text-xs px-2.5 py-0.5 rounded-full font-bold border ${
+                                grp.activeApps > 0
+                                  ? "bg-blue-50 text-blue-700 border-blue-200"
+                                  : "bg-gray-50 text-gray-400 border-gray-200"
+                              }`}
+                            >
+                              {grp.activeApps} Active App{grp.activeApps === 1 ? "" : "s"}
+                            </span>
+                          )}
                         </div>
                         <p className="text-xs text-gray-500 mt-0.5 max-w-xl">
                           Google Workspace {grp.serviceName} Service
@@ -1144,24 +1181,24 @@ export default function ScopeMatrixView({
                     <div className="overflow-x-auto">
                       <table className="w-full text-left text-sm text-gray-700 table-fixed min-w-[960px]">
                         <colgroup>
-                          <col style={{ width: "35%" }} />
+                          <col style={{ width: isBackend ? "40%" : "35%" }} />
                           <col style={{ width: "140px" }} />
                           <col style={{ width: "160px" }} />
                           <col />
-                          <col style={{ width: "120px" }} />
+                          {!isBackend && <col style={{ width: "120px" }} />}
                         </colgroup>
                         <thead className="bg-gray-50/60 text-[11px] uppercase tracking-wider text-gray-500 border-b border-gray-200 font-semibold">
                           <tr>
-                            <th className="py-2.5 px-4" style={{ width: "35%" }}>OAuth Scope URI</th>
+                            <th className="py-2.5 px-4" style={{ width: isBackend ? "40%" : "35%" }}>OAuth Scope URI</th>
                             <th className="py-2.5 px-4" style={{ width: "140px" }}>Google Tier</th>
                             <th className="py-2.5 px-4" style={{ width: "160px" }}>Admin Score</th>
-                            <th className="py-2.5 px-4">Threat Rationale & Exploit Impact</th>
-                            <th className="py-2.5 px-4 text-center" style={{ width: "120px" }}>Tenant Apps</th>
+                            <th className="py-2.5 px-4">Threat Rationale &amp; Exploit Impact</th>
+                            {!isBackend && <th className="py-2.5 px-4 text-center" style={{ width: "120px" }}>Tenant Apps</th>}
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-100">
                           {grp.items.map((s) => {
-                            const isActive = (s.active_apps_count || 0) > 0;
+                            const isActive = !isBackend && (s.active_apps_count || 0) > 0;
                             return (
                               <tr
                                 key={s.scope_url}
@@ -1176,7 +1213,7 @@ export default function ScopeMatrixView({
                                     <button
                                       onClick={() => copyToClipboard(s.scope_url)}
                                       title="Copy Scope URI"
-                                      className="p-1 text-gray-400 hover:text-blue-600 rounded hover:bg-gray-100 transition-colors flex-shrink-0 text-xs"
+                                      className={`p-1 text-gray-400 ${isBackend ? "hover:text-emerald-600" : "hover:text-blue-600"} rounded hover:bg-gray-100 transition-colors flex-shrink-0 text-xs`}
                                     >
                                       {copiedScope === s.scope_url ? (
                                         <span className="text-emerald-600 font-bold">✓</span>
@@ -1207,21 +1244,23 @@ export default function ScopeMatrixView({
                                   </div>
                                 </td>
 
-                                {/* Tenant Footprint */}
-                                <td className="py-3 px-4 text-center whitespace-nowrap">
-                                  {isActive ? (
-                                    <TenantAppsBadgePopover
-                                      scopeUrl={s.scope_url}
-                                      apps={getScopeApps(s)}
-                                      count={s.active_apps_count || getScopeApps(s).length}
-                                      onSelectApp={handleAppClick}
-                                    />
-                                  ) : (
-                                    <span className="text-xs text-gray-400 font-mono">
-                                      0 apps
-                                    </span>
-                                  )}
-                                </td>
+                                {/* Tenant Footprint (Client mode only) */}
+                                {!isBackend && (
+                                  <td className="py-3 px-4 text-center whitespace-nowrap">
+                                    {isActive ? (
+                                      <TenantAppsBadgePopover
+                                        scopeUrl={s.scope_url}
+                                        apps={getScopeApps(s)}
+                                        count={s.active_apps_count || getScopeApps(s).length}
+                                        onSelectApp={handleAppClick}
+                                      />
+                                    ) : (
+                                      <span className="text-xs text-gray-400 font-mono">
+                                        0 apps
+                                      </span>
+                                    )}
+                                  </td>
+                                )}
                               </tr>
                             );
                           })}
@@ -1248,15 +1287,15 @@ export default function ScopeMatrixView({
                 <th className="py-3 px-4">Service</th>
                 <th className="py-3 px-4">Google Tier</th>
                 <th className="py-3 px-4">Admin Score</th>
-                <th className="py-3 px-4">Threat Rationale & Technical Impact</th>
-                <th className="py-3 px-4 text-center">Tenant Footprint</th>
+                <th className="py-3 px-4">Threat Rationale &amp; Technical Impact</th>
+                {!isBackend && <th className="py-3 px-4 text-center">Tenant Footprint</th>}
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
               {filteredScopes.length === 0 ? (
                 <tr>
                   <td
-                    colSpan={6}
+                    colSpan={isBackend ? 5 : 6}
                     className="py-12 text-center text-gray-400 font-medium"
                   >
                     No OAuth scopes match the selected filters.
@@ -1264,7 +1303,7 @@ export default function ScopeMatrixView({
                 </tr>
               ) : (
                 filteredScopes.map((s) => {
-                  const isActive = (s.active_apps_count || 0) > 0;
+                  const isActive = !isBackend && (s.active_apps_count || 0) > 0;
                   return (
                     <tr
                       key={s.scope_url}
@@ -1279,7 +1318,7 @@ export default function ScopeMatrixView({
                           <button
                             onClick={() => copyToClipboard(s.scope_url)}
                             title="Copy Scope URI"
-                            className="p-1 text-gray-400 hover:text-blue-600 rounded hover:bg-gray-100 transition-colors flex-shrink-0 text-xs"
+                            className={`p-1 text-gray-400 ${isBackend ? "hover:text-emerald-600" : "hover:text-blue-600"} rounded hover:bg-gray-100 transition-colors flex-shrink-0 text-xs`}
                           >
                             {copiedScope === s.scope_url ? (
                               <span className="text-emerald-600 font-bold">✓</span>
@@ -1318,21 +1357,23 @@ export default function ScopeMatrixView({
                         </div>
                       </td>
 
-                      {/* Tenant Footprint */}
-                      <td className="py-3.5 px-4 text-center whitespace-nowrap">
-                        {isActive ? (
-                          <TenantAppsBadgePopover
-                            scopeUrl={s.scope_url}
-                            apps={getScopeApps(s)}
-                            count={s.active_apps_count || getScopeApps(s).length}
-                            onSelectApp={handleAppClick}
-                          />
-                        ) : (
-                          <span className="text-xs text-gray-400 font-mono">
-                            0 apps
-                          </span>
-                        )}
-                      </td>
+                      {/* Tenant Footprint (Client mode only) */}
+                      {!isBackend && (
+                        <td className="py-3.5 px-4 text-center whitespace-nowrap">
+                          {isActive ? (
+                            <TenantAppsBadgePopover
+                              scopeUrl={s.scope_url}
+                              apps={getScopeApps(s)}
+                              count={s.active_apps_count || getScopeApps(s).length}
+                              onSelectApp={handleAppClick}
+                            />
+                          ) : (
+                            <span className="text-xs text-gray-400 font-mono">
+                              0 apps
+                            </span>
+                          )}
+                        </td>
+                      )}
                     </tr>
                   );
                 })
@@ -1342,8 +1383,8 @@ export default function ScopeMatrixView({
         </div>
       )}
 
-      {/* Application Quick Inspection Modal (Fallback when standalone / onSelectApp not wired) */}
-      {inspectingApp && (
+      {/* Application Quick Inspection Modal (Fallback when client mode & standalone / onSelectApp not wired) */}
+      {!isBackend && inspectingApp && (
         <div
           className="fixed inset-0 z-50 bg-gray-900/50 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in duration-150"
           onClick={() => setInspectingApp(null)}

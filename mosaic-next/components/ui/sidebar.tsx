@@ -222,18 +222,6 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
             </ul>
           </div>
 
-          <div>
-            <h3 className="text-xs uppercase text-gray-400 font-semibold pl-3">
-              Domain Context
-            </h3>
-            <div className="mt-3 px-3 py-3 bg-gray-50 border border-gray-200 rounded-lg">
-              <div className="text-xs font-semibold text-gray-800">Target Workspace</div>
-              <div className="text-xs font-mono text-blue-600 truncate mt-0.5">gafe.co.za</div>
-              <div className="mt-2 text-[11px] text-gray-500 flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-500"></span> Connected & Synced
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* Expand / collapse button */}
