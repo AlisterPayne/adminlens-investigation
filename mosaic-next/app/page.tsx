@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { Suspense } from "react";
+import DefaultLayout from "./(default)/layout";
 import OAuthDashboardClient from "./(default)/dashboard/oauth-dashboard-client";
 
 export const metadata = {
@@ -33,15 +34,17 @@ export default function Home() {
   }
 
   return (
-    <Suspense fallback={<div className="p-8 text-gray-400">Loading Client Workspace...</div>}>
-      <OAuthDashboardClient
-        initialApps={apps}
-        initialRecs={recs}
-        metrics={metrics}
-        users={users}
-        initialScopes={scopes}
-        scopeMetrics={scopeMetrics}
-      />
-    </Suspense>
+    <DefaultLayout>
+      <Suspense fallback={<div className="p-8 text-gray-400">Loading Client Workspace...</div>}>
+        <OAuthDashboardClient
+          initialApps={apps}
+          initialRecs={recs}
+          metrics={metrics}
+          users={users}
+          initialScopes={scopes}
+          scopeMetrics={scopeMetrics}
+        />
+      </Suspense>
+    </DefaultLayout>
   );
 }

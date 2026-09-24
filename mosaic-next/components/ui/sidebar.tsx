@@ -80,7 +80,7 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
       <div
         id="sidebar"
         ref={sidebar}
-        className={`fixed left-0 top-0 z-40 flex h-[100dvh] w-64 shrink-0 flex-col overflow-y-auto bg-white border-r border-gray-200 p-4 transition-all duration-200 ease-in-out lg:static lg:left-auto lg:top-auto lg:h-[100dvh] lg:w-20 lg:sidebar-expanded:!w-64 2xl:!w-64 ${
+        className={`fixed left-0 top-0 z-40 flex h-[100dvh] w-64 shrink-0 flex-col overflow-y-auto bg-white border-r border-gray-200 p-4 transition-all duration-200 ease-in-out lg:static lg:left-auto lg:top-auto lg:h-[100dvh] lg:w-64 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-64 lg:translate-x-0"
         }`}
       >
@@ -108,10 +108,9 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
           <div>
             <div className="flex items-center justify-between pl-3 pr-2 mb-2">
               <h3 className="text-xs uppercase text-gray-500 font-bold tracking-wider">
-                <span className="hidden lg:block lg:sidebar-expanded:hidden 2xl:hidden text-center">•••</span>
-                <span className="lg:hidden lg:sidebar-expanded:block 2xl:block">Client Workspace</span>
+                Client Workspace
               </h3>
-              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200 lg:hidden lg:sidebar-expanded:block 2xl:block">
+              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">
                 gafe.co.za
               </span>
             </div>
@@ -125,7 +124,7 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
                       <svg className={`shrink-0 h-4.5 w-4.5 ${isApplicationsActive ? "text-blue-600" : "text-gray-500"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
                       </svg>
-                      <span className="text-sm ml-2.5 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                      <span className="text-sm ml-2.5 font-medium">
                         Applications
                       </span>
                     </div>
@@ -141,7 +140,7 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
                       <svg className={`shrink-0 h-4.5 w-4.5 ${isClientScopesActive ? "text-blue-600" : "text-gray-500"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
                       </svg>
-                      <span className="text-sm ml-2.5 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                      <span className="text-sm ml-2.5 font-medium">
                         Services and Scopes
                       </span>
                     </div>
@@ -157,7 +156,7 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
                       <svg className={`shrink-0 h-4.5 w-4.5 ${isClientRecsActive ? "text-blue-600" : "text-gray-500"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                       </svg>
-                      <span className="text-sm ml-2.5 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                      <span className="text-sm ml-2.5 font-medium">
                         Policy Recommendation
                       </span>
                     </div>
@@ -172,10 +171,9 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
           <div className="pt-2 border-t border-gray-200">
             <div className="flex items-center justify-between pl-3 pr-2 mb-2">
               <h3 className="text-xs uppercase text-emerald-800 font-bold tracking-wider">
-                <span className="hidden lg:block lg:sidebar-expanded:hidden 2xl:hidden text-center">⚙️</span>
-                <span className="lg:hidden lg:sidebar-expanded:block 2xl:block">Admin Backend</span>
+                Admin Backend
               </h3>
-              <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-300 lg:hidden lg:sidebar-expanded:block 2xl:block">
+              <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-300">
                 Global DB
               </span>
             </div>
@@ -191,11 +189,11 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
                       <svg className={`shrink-0 h-4.5 w-4.5 ${isAdminScopesActive ? "text-emerald-700" : "text-emerald-600"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                       </svg>
-                      <span className="text-sm ml-2.5 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                      <span className="text-sm ml-2.5 font-medium">
                         Services and Scopes
                       </span>
                     </div>
-                    <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
+                    <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-200">
                       158
                     </span>
                   </div>
@@ -210,11 +208,11 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
                       <svg className={`shrink-0 h-4.5 w-4.5 ${isAdminRepoActive ? "text-emerald-700" : "text-emerald-600"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
                       </svg>
-                      <span className="text-sm ml-2.5 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                      <span className="text-sm ml-2.5 font-medium">
                         Application Repository
                       </span>
                     </div>
-                    <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
+                    <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-200">
                       2,076
                     </span>
                   </div>
@@ -226,10 +224,9 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
 
           <div>
             <h3 className="text-xs uppercase text-gray-400 font-semibold pl-3">
-              <span className="hidden lg:block lg:sidebar-expanded:hidden 2xl:hidden text-center">•••</span>
-              <span className="lg:hidden lg:sidebar-expanded:block 2xl:block">Domain Context</span>
+              Domain Context
             </h3>
-            <div className="mt-3 px-3 py-3 bg-gray-50 border border-gray-200 rounded-lg lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+            <div className="mt-3 px-3 py-3 bg-gray-50 border border-gray-200 rounded-lg">
               <div className="text-xs font-semibold text-gray-800">Target Workspace</div>
               <div className="text-xs font-mono text-blue-600 truncate mt-0.5">gafe.co.za</div>
               <div className="mt-2 text-[11px] text-gray-500 flex items-center gap-1.5">
