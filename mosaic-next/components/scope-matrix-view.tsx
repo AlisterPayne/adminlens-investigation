@@ -447,79 +447,6 @@ export default function ScopeMatrixView({
   const [inspectingApp, setInspectingApp] = useState<any | null>(null);
 
   // Derive distinct services if not provided
-  const availableServices = useMemo(() => {
-    if (metrics?.services && metrics.services.length > 0) {
-      return metrics.services;
-    }
-    return Array.from(new Set(scopes.map((s) => s.service_name))).sort();
-  }, [scopes, metrics]);
-
-  // Filtering
-  const filteredScopes = useMemo(() => {
-    const q = search.toLowerCase().trim();
-    return scopes.filter((s) => {
-      const matchesQuery =
-        !q ||
-        s.scope_url.toLowerCase().includes(q) ||
-        s.rationale.toLowerCase().includes(q) ||
-        s.threat_impact.toLowerCase().includes(q) ||
-        s.service_name.toLowerCase().includes(q);
-
-      const matchesService =
-        serviceFilter === "ALL" || s.service_name === serviceFilter;
-      const matchesTier =
-        tierFilter === "ALL" || s.google_tier === tierFilter;
-      const matchesScore =
-        scoreFilter === "ALL" || s.admin_score.toString() === scoreFilter;
-      const matchesActive = !activeOnly || (s.active_apps_count || 0) > 0;
-
-      return (
-        matchesQuery &&
-        matchesService &&
-        matchesTier &&
-        matchesScore &&
-        matchesActive
-      );
-    });
-  }, [scopes, search, serviceFilter, tierFilter, scoreFilter, activeOnly]);
-
-  // Group filtered scopes by Service Name
-  const groupedByService = useMemo(() => {
-    const groups = new Map<string, ScopeReferenceItem[]>();
-
-    filteredScopes.forEach((s) => {
-      if (!groups.has(s.service_name)) {
-        groups.set(s.service_name, []);
-      }
-      groups.get(s.service_name)!.push(s);
-    });
-
-    return Array.from(groups.entries()).map(([serviceName, items]) => {
-      const total = items.length;
-      const sumScores = items.reduce((acc, curr) => acc + curr.admin_score, 0);
-      const avgScore = total > 0 ? (sumScores / total).toFixed(1) : "0.0";
-      const maxScore = Math.max(...items.map((i) => i.admin_score), 1);
-      const criticalCount = items.filter((i) => i.admin_score === 5).length;
-      const restricted = items.filter((i) => i.google_tier === "Restricted").length;
-      const sensitive = items.filter((i) => i.google_tier === "Sensitive").length;
-      const nonSensitive = items.filter((i) => i.google_tier === "Non-Sensitive").length;
-      const activeApps = items.reduce((acc, curr) => acc + (curr.active_apps_count || 0), 0);
-
-      return {
-        serviceName,
-        items,
-        total,
-        avgScore,
-        maxScore,
-        criticalCount,
-        restricted,
-        sensitive,
-        nonSensitive,
-        activeApps,
-      };
-    }).sort((a, b) => parseFloat(b.avgScore) - parseFloat(a.avgScore));
-  }, [filteredScopes]);
-
   // Pre-index apps by scope URL
   const appsByScope = useMemo(() => {
     const map = new Map<string, ScopeAppInfo[]>();
@@ -548,6 +475,128 @@ export default function ScopeMatrixView({
     }
     return map;
   }, [apps]);
+
+  // Compute active unique apps count per Google Service
+  const serviceActiveAppCounts = useMemo(() => {
+    const serviceMap = new Map<string, Set<string>>();
+    scopes.forEach((s) => {
+      if (!serviceMap.has(s.service_name)) {
+        serviceMap.set(s.service_name, new Set<string>());
+      }
+      const set = serviceMap.get(s.service_name)!;
+      const appList = appsByScope.get(s.scope_url) || [];
+      appList.forEach((a) => set.add(a.id));
+      (s.active_apps || []).forEach((a) => {
+        set.add(typeof a === "string" ? a : a.id);
+      });
+    });
+
+    const counts = new Map<string, number>();
+    serviceMap.forEach((appSet, srv) => {
+      counts.set(srv, appSet.size);
+    });
+    return counts;
+  }, [scopes, appsByScope]);
+
+  // Available Services ranked by active domain footprint
+  const availableServices = useMemo(() => {
+    const rawServices = metrics?.services && metrics.services.length > 0
+      ? metrics.services
+      : Array.from(new Set(scopes.map((s) => s.service_name)));
+
+    return [...rawServices].sort((a, b) => {
+      const countA = serviceActiveAppCounts.get(a) || 0;
+      const countB = serviceActiveAppCounts.get(b) || 0;
+      if (countB !== countA) return countB - countA;
+      return a.localeCompare(b);
+    });
+  }, [scopes, metrics, serviceActiveAppCounts]);
+
+  // Filtering
+  const filteredScopes = useMemo(() => {
+    const q = search.toLowerCase().trim();
+    const result = scopes.filter((s) => {
+      const matchesQuery =
+        !q ||
+        s.scope_url.toLowerCase().includes(q) ||
+        s.rationale.toLowerCase().includes(q) ||
+        s.threat_impact.toLowerCase().includes(q) ||
+        s.service_name.toLowerCase().includes(q);
+
+      const matchesService =
+        serviceFilter === "ALL" || s.service_name === serviceFilter;
+      const matchesTier =
+        tierFilter === "ALL" || s.google_tier === tierFilter;
+      const matchesScore =
+        scoreFilter === "ALL" || s.admin_score.toString() === scoreFilter;
+      const matchesActive = !activeOnly || (s.active_apps_count || 0) > 0;
+
+      return (
+        matchesQuery &&
+        matchesService &&
+        matchesTier &&
+        matchesScore &&
+        matchesActive
+      );
+    });
+
+    // Rank by service active applications count descending, then scope URL alphabetically
+    return result.sort((a, b) => {
+      const serviceDiff = (serviceActiveAppCounts.get(b.service_name) || 0) - (serviceActiveAppCounts.get(a.service_name) || 0);
+      if (serviceDiff !== 0) return serviceDiff;
+      if (a.service_name !== b.service_name) {
+        return a.service_name.localeCompare(b.service_name);
+      }
+      return a.scope_url.localeCompare(b.scope_url);
+    });
+  }, [scopes, search, serviceFilter, tierFilter, scoreFilter, activeOnly, serviceActiveAppCounts]);
+
+  // Group filtered scopes by Service Name (Ranked by most active apps, scopes alphabetical inside)
+  const groupedByService = useMemo(() => {
+    const groups = new Map<string, ScopeReferenceItem[]>();
+
+    filteredScopes.forEach((s) => {
+      if (!groups.has(s.service_name)) {
+        groups.set(s.service_name, []);
+      }
+      groups.get(s.service_name)!.push(s);
+    });
+
+    return Array.from(groups.entries()).map(([serviceName, items]) => {
+      const total = items.length;
+      const sumScores = items.reduce((acc, curr) => acc + curr.admin_score, 0);
+      const avgScore = total > 0 ? (sumScores / total).toFixed(1) : "0.0";
+      const maxScore = Math.max(...items.map((i) => i.admin_score), 1);
+      const criticalCount = items.filter((i) => i.admin_score === 5).length;
+      const restricted = items.filter((i) => i.google_tier === "Restricted").length;
+      const sensitive = items.filter((i) => i.google_tier === "Sensitive").length;
+      const nonSensitive = items.filter((i) => i.google_tier === "Non-Sensitive").length;
+      
+      const activeApps = serviceActiveAppCounts.get(serviceName) || 0;
+
+      // Scopes inside the service group are sorted alphabetically
+      const sortedItems = [...items].sort((a, b) => a.scope_url.localeCompare(b.scope_url));
+
+      return {
+        serviceName,
+        items: sortedItems,
+        total,
+        avgScore,
+        maxScore,
+        criticalCount,
+        restricted,
+        sensitive,
+        nonSensitive,
+        activeApps,
+      };
+    }).sort((a, b) => {
+      // Rank service with the most applications active on it to the top
+      if (b.activeApps !== a.activeApps) {
+        return b.activeApps - a.activeApps;
+      }
+      return a.serviceName.localeCompare(b.serviceName);
+    });
+  }, [filteredScopes, serviceActiveAppCounts]);
 
   // Helper to resolve apps for a given scope
   const getScopeApps = (s: ScopeReferenceItem): ScopeAppInfo[] => {
@@ -1011,9 +1060,18 @@ export default function ScopeMatrixView({
                           <span className="text-xs px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-700 font-bold border border-gray-200">
                             {grp.total} Scope{grp.total > 1 ? "s" : ""}
                           </span>
+                          <span
+                            className={`text-xs px-2.5 py-0.5 rounded-full font-bold border ${
+                              grp.activeApps > 0
+                                ? "bg-blue-50 text-blue-700 border-blue-200"
+                                : "bg-gray-50 text-gray-400 border-gray-200"
+                            }`}
+                          >
+                            {grp.activeApps} Active App{grp.activeApps === 1 ? "" : "s"}
+                          </span>
                         </div>
                         <p className="text-xs text-gray-500 mt-0.5 max-w-xl">
-                          Google Workspace {grp.serviceName} API and permissions
+                          Google Workspace {grp.serviceName} Service • Scopes ordered alphabetically
                         </p>
                       </div>
                     </div>

@@ -1,0 +1,131 @@
+{
+  "services": [
+    {
+      "id": "drive",
+      "name": "Drive",
+      "access": "Unrestricted",
+      "isRestricted": false,
+      "description": "Google Drive cloud storage, Docs, Sheets, and file management."
+    },
+    {
+      "id": "gmail",
+      "name": "Gmail",
+      "access": "Unrestricted",
+      "isRestricted": false,
+      "description": "Google Mail inbox, message routing, sending, and filters."
+    },
+    {
+      "id": "calendar",
+      "name": "Calendar",
+      "access": "Unrestricted",
+      "isRestricted": false,
+      "description": "Google Calendar scheduling, events, and meeting invites."
+    },
+    {
+      "id": "contacts",
+      "name": "Contacts",
+      "access": "Unrestricted",
+      "isRestricted": false,
+      "description": "Google Contacts address book and directory."
+    },
+    {
+      "id": "google_workspace_admin",
+      "name": "Google Workspace Admin",
+      "access": "Unrestricted",
+      "isRestricted": false,
+      "description": "Google Workspace Admin SDK, user provisioning, and settings."
+    },
+    {
+      "id": "vault",
+      "name": "Vault",
+      "access": "Unrestricted",
+      "isRestricted": false,
+      "description": "Google Vault eDiscovery, legal retention holds, and audits."
+    },
+    {
+      "id": "cloud_platform",
+      "name": "Cloud Platform",
+      "access": "Unrestricted",
+      "isRestricted": false,
+      "description": "Google Cloud Platform (GCP) resources, APIs, and infrastructure."
+    },
+    {
+      "id": "cloud_billing",
+      "name": "Cloud Billing",
+      "access": "Unrestricted",
+      "isRestricted": false,
+      "description": "Google Cloud Billing accounts and cost management."
+    },
+    {
+      "id": "cloud_machine_learning",
+      "name": "Cloud Machine Learning",
+      "access": "Unrestricted",
+      "isRestricted": false,
+      "description": "Google Cloud Vertex AI and Machine Learning services."
+    },
+    {
+      "id": "apps_script_runtime",
+      "name": "Apps Script Runtime",
+      "access": "Unrestricted",
+      "isRestricted": false,
+      "description": "Google Apps Script project execution runtime."
+    },
+    {
+      "id": "apps_script_api",
+      "name": "Apps Script API",
+      "access": "Unrestricted",
+      "isRestricted": false,
+      "description": "Google Apps Script programmatic project management."
+    },
+    {
+      "id": "classroom",
+      "name": "Classroom",
+      "access": "Unrestricted",
+      "isRestricted": false,
+      "description": "Google Classroom coursework, student rosters, and grades."
+    },
+    {
+      "id": "tasks",
+      "name": "Tasks",
+      "access": "Unrestricted",
+      "isRestricted": false,
+      "description": "Google Tasks assignments and personal to-do lists."
+    },
+    {
+      "id": "groups",
+      "name": "Groups",
+      "access": "Unrestricted",
+      "isRestricted": false,
+      "description": "Google Groups mailing lists and collaboration forums."
+    },
+    {
+      "id": "cloud_search",
+      "name": "Cloud Search",
+      "access": "Unrestricted",
+      "isRestricted": false,
+      "description": "Google Cloud Search enterprise search index."
+    },
+    {
+      "id": "chat",
+      "name": "Chat",
+      "access": "Unrestricted",
+      "isRestricted": false,
+      "description": "Google Chat spaces, direct messaging, and webhooks."
+    },
+    {
+      "id": "google_sign_in",
+      "name": "Google sign-in",
+      "access": "Unrestricted",
+      "isRestricted": false,
+      "description": "Google Identity authentication assertion (OpenID / profile)."
+    },
+    {
+      "id": "meet",
+      "name": "Meet",
+      "access": "Unrestricted",
+      "isRestricted": false,
+      "description": "Google Meet video conferences, recordings, and transcripts."
+    }
+  ],
+  "total": 18
+}

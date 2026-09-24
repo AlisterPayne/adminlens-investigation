@@ -6,31 +6,31 @@
     "familyName": "526554529059-emb2o69t2ri25uicvjkj444o71sku29p.apps.googleusercontent.com",
     "displayName": "526554529059-emb2o69t2ri25uicvjkj444o71sku29p.apps.googleusercontent.com (Web Application)",
     "publisherDomain": "",
-    "category": "Unclassified SaaS",
-    "appType": "Web Application",
+    "category": "Google Services",
+    "appType": "Google Service",
     "deploymentType": "Web Application",
     "compliance": [
       "Standard Terms"
     ],
     "dataHosting": "USA",
     "breachHistory": null,
-    "isVerified": false,
+    "isVerified": true,
     "iconUrl": "https://ui-avatars.com/api/?name=526554529059-emb2o69t2ri25uicvjkj444o71sku29p.apps.googleusercontent.com&background=3B82F6&color=fff&size=128&rounded=true",
     "storeUrl": null,
     "description": "",
-    "riskScore": 4.5,
+    "riskScore": 1,
     "peakScopeScore": 5,
     "breadthScore": 0.5,
     "avgScopeScore": 2.77,
-    "riskLevel": "CRITICAL",
-    "riskScoreColor": "Red",
+    "riskLevel": "LOW",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "HIGH",
     "riskReasons": [
       "Access to Domain Directory, Files, or Calendars",
       "Basic Authentication / Profile Scopes",
       "Full Google Drive Read/Write Access"
     ],
-    "adminAccessLevel": "UNCONFIGURED",
+    "adminAccessLevel": "TRUSTED",
     "accessPolicy": null,
     "multiClientMapped": false,
     "familyDeploymentsCount": 1,
@@ -210,7 +210,9 @@
     "lastActiveFormatted": "12/09/2026",
     "isStale": true,
     "isNew": false,
-    "totalActivityEvents": 0
+    "totalActivityEvents": 0,
+    "isGoogleService": true,
+    "vendor": "Google LLC"
   },
   {
     "id": "98765955635-75tqcmksqbd6hb2ekmfp06guektk4odm.apps.googleusercontent.com",
@@ -219,19 +221,19 @@
     "familyName": "98765955635-75tqcmksqbd6hb2ekmfp06guektk4odm.apps.googleusercontent.com",
     "displayName": "98765955635-75tqcmksqbd6hb2ekmfp06guektk4odm.apps.googleusercontent.com (Web Application)",
     "publisherDomain": "",
-    "category": "Unclassified SaaS",
-    "appType": "Web Application",
+    "category": "Google Services",
+    "appType": "Google Service",
     "deploymentType": "Web Application",
     "compliance": [
       "Standard Terms"
     ],
     "dataHosting": "USA",
     "breachHistory": null,
-    "isVerified": false,
+    "isVerified": true,
     "iconUrl": "https://ui-avatars.com/api/?name=98765955635-75tqcmksqbd6hb2ekmfp06guektk4odm.apps.googleusercontent.com&background=3B82F6&color=fff&size=128&rounded=true",
     "storeUrl": null,
     "description": "",
-    "riskScore": 0.02,
+    "riskScore": 1,
     "peakScopeScore": 1,
     "breadthScore": 0.02,
     "avgScopeScore": 1,
@@ -241,7 +243,7 @@
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
     ],
-    "adminAccessLevel": "UNCONFIGURED",
+    "adminAccessLevel": "TRUSTED",
     "accessPolicy": null,
     "multiClientMapped": false,
     "familyDeploymentsCount": 1,
@@ -307,7 +309,9 @@
     "lastActiveFormatted": "12/09/2026",
     "isStale": true,
     "isNew": false,
-    "totalActivityEvents": 0
+    "totalActivityEvents": 0,
+    "isGoogleService": true,
+    "vendor": "Google LLC"
   },
   {
     "id": "539614054292-v48fp11ou2nrhh7lb47qgqq4k5d1fd8u.apps.googleusercontent.com",
@@ -3679,29 +3683,29 @@
     "displayName": "CloudReady Home Edition (Web Application)",
     "vendor": "Google LLC",
     "publisherDomain": "",
-    "category": "Google Workspace Core",
-    "appType": "Web Application",
+    "category": "Google Services",
+    "appType": "Google Service",
     "deploymentType": "Web Application",
     "compliance": [
       "Standard Terms"
     ],
     "dataHosting": "USA",
     "breachHistory": null,
-    "isVerified": false,
+    "isVerified": true,
     "iconUrl": "https://ui-avatars.com/api/?name=CloudReady%20Home%20Edition&background=3B82F6&color=fff&size=128&rounded=true",
     "storeUrl": null,
     "description": "",
-    "riskScore": 3,
+    "riskScore": 1,
     "peakScopeScore": 4,
     "breadthScore": 0,
     "avgScopeScore": 4,
-    "riskLevel": "HIGH",
-    "riskScoreColor": "Orange",
+    "riskLevel": "LOW",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
     ],
-    "adminAccessLevel": "UNCONFIGURED",
+    "adminAccessLevel": "TRUSTED",
     "accessPolicy": null,
     "multiClientMapped": false,
     "familyDeploymentsCount": 1,
@@ -3745,7 +3749,8 @@
     "lastActiveFormatted": "12/09/2026",
     "isStale": true,
     "isNew": false,
-    "totalActivityEvents": 0
+    "totalActivityEvents": 0,
+    "isGoogleService": true
   },
   {
     "id": "657959631782-gig0qdc3vaieq93qtv1mubvj0c4mjdfl.apps.googleusercontent.com",
@@ -3991,19 +3996,19 @@
     "displayName": "Edu Launchpad (Web Application)",
     "vendor": "Google LLC",
     "publisherDomain": "",
-    "category": "Google Workspace Core",
-    "appType": "Web Application",
+    "category": "Google Services",
+    "appType": "Google Service",
     "deploymentType": "Web Application",
     "compliance": [
       "Standard Terms"
     ],
     "dataHosting": "USA",
     "breachHistory": null,
-    "isVerified": false,
+    "isVerified": true,
     "iconUrl": "https://ui-avatars.com/api/?name=Edu%20Launchpad&background=3B82F6&color=fff&size=128&rounded=true",
     "storeUrl": null,
     "description": "",
-    "riskScore": 0.02,
+    "riskScore": 1,
     "peakScopeScore": 1,
     "breadthScore": 0.02,
     "avgScopeScore": 1,
@@ -4013,7 +4018,7 @@
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
     ],
-    "adminAccessLevel": "UNCONFIGURED",
+    "adminAccessLevel": "TRUSTED",
     "accessPolicy": null,
     "multiClientMapped": false,
     "familyDeploymentsCount": 1,
@@ -4079,7 +4084,8 @@
     "lastActiveFormatted": "12/09/2026",
     "isStale": true,
     "isNew": false,
-    "totalActivityEvents": 0
+    "totalActivityEvents": 0,
+    "isGoogleService": true
   },
   {
     "id": "532352704633-6pkces9iboppp465idnovkcqtlsa8j7t.apps.googleusercontent.com",
@@ -8220,8 +8226,8 @@
     "displayName": "Google AppSheet (Web Application)",
     "vendor": "Google LLC",
     "publisherDomain": "",
-    "category": "Google Workspace Core",
-    "appType": "Web Application",
+    "category": "Google Services",
+    "appType": "Google Service",
     "deploymentType": "Web Application",
     "compliance": [
       "Standard Terms"
@@ -8232,19 +8238,19 @@
     "iconUrl": "https://ui-avatars.com/api/?name=Google%20AppSheet&background=3B82F6&color=fff&size=128&rounded=true",
     "storeUrl": null,
     "description": "",
-    "riskScore": 4.19,
+    "riskScore": 1,
     "peakScopeScore": 5,
     "breadthScore": 0.19,
     "avgScopeScore": 2.67,
-    "riskLevel": "CRITICAL",
-    "riskScoreColor": "Red",
+    "riskLevel": "LOW",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "HIGH",
     "riskReasons": [
       "Basic Authentication / Profile Scopes",
       "Access to Domain Directory, Files, or Calendars",
       "Full Google Drive Read/Write Access"
     ],
-    "adminAccessLevel": "UNCONFIGURED",
+    "adminAccessLevel": "TRUSTED",
     "accessPolicy": null,
     "multiClientMapped": false,
     "familyDeploymentsCount": 1,
@@ -8346,7 +8352,8 @@
     "lastActiveFormatted": "12/09/2026",
     "isStale": true,
     "isNew": false,
-    "totalActivityEvents": 0
+    "totalActivityEvents": 0,
+    "isGoogleService": true
   },
   {
     "id": "469390422673-r0p2tar3lgjlnhtsv4t4uonq4bi2svf8.apps.googleusercontent.com",
@@ -8356,8 +8363,8 @@
     "displayName": "Google Calendar for Workspace Studio (Web Application)",
     "vendor": "Google LLC",
     "publisherDomain": "",
-    "category": "Google Workspace Core",
-    "appType": "Web Application",
+    "category": "Google Services",
+    "appType": "Google Service",
     "deploymentType": "Web Application",
     "compliance": [
       "Standard Terms"
@@ -8368,18 +8375,18 @@
     "iconUrl": "https://ui-avatars.com/api/?name=Google%20Calendar%20for%20Workspace%20Studio&background=3B82F6&color=fff&size=128&rounded=true",
     "storeUrl": null,
     "description": "",
-    "riskScore": 3.04,
+    "riskScore": 1,
     "peakScopeScore": 4,
     "breadthScore": 0.04,
     "avgScopeScore": 3.5,
-    "riskLevel": "HIGH",
-    "riskScoreColor": "Orange",
+    "riskLevel": "LOW",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "MEDIUM",
     "riskReasons": [
       "Access to Domain Directory, Files, or Calendars",
       "Basic Authentication / Profile Scopes"
     ],
-    "adminAccessLevel": "UNCONFIGURED",
+    "adminAccessLevel": "TRUSTED",
     "accessPolicy": null,
     "multiClientMapped": false,
     "familyDeploymentsCount": 1,
@@ -8446,7 +8453,8 @@
     "lastActiveFormatted": "12/09/2026",
     "isStale": true,
     "isNew": false,
-    "totalActivityEvents": 0
+    "totalActivityEvents": 0,
+    "isGoogleService": true
   },
   {
     "id": "873507009103-gi4ff8nkju6ggaurt6ebbiqrfmr0c79j.apps.googleusercontent.com",
@@ -8456,8 +8464,8 @@
     "displayName": "Google Chat for Workspace Studio (Web Application)",
     "vendor": "Google LLC",
     "publisherDomain": "",
-    "category": "Google Workspace Core",
-    "appType": "Web Application",
+    "category": "Google Services",
+    "appType": "Google Service",
     "deploymentType": "Web Application",
     "compliance": [
       "Standard Terms"
@@ -8468,17 +8476,17 @@
     "iconUrl": "https://ui-avatars.com/api/?name=Google%20Chat%20for%20Workspace%20Studio&background=3B82F6&color=fff&size=128&rounded=true",
     "storeUrl": null,
     "description": "",
-    "riskScore": 3.2,
+    "riskScore": 1,
     "peakScopeScore": 4,
     "breadthScore": 0.2,
     "avgScopeScore": 2.86,
-    "riskLevel": "HIGH",
-    "riskScoreColor": "Orange",
+    "riskLevel": "LOW",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
     ],
-    "adminAccessLevel": "UNCONFIGURED",
+    "adminAccessLevel": "TRUSTED",
     "accessPolicy": null,
     "multiClientMapped": false,
     "familyDeploymentsCount": 1,
@@ -8603,7 +8611,8 @@
     "lastActiveFormatted": "12/09/2026",
     "isStale": true,
     "isNew": false,
-    "totalActivityEvents": 0
+    "totalActivityEvents": 0,
+    "isGoogleService": true
   },
   {
     "id": "77185425430.apps.googleusercontent.com",
@@ -8612,29 +8621,29 @@
     "familyName": "Google Chrome",
     "displayName": "Google Chrome (Chrome Extension)",
     "publisherDomain": "",
-    "category": "Unclassified SaaS",
-    "appType": "Chrome Extension",
+    "category": "Google Services",
+    "appType": "Google Service",
     "deploymentType": "Chrome Extension",
     "compliance": [
       "Standard Terms"
     ],
     "dataHosting": "USA",
     "breachHistory": null,
-    "isVerified": false,
+    "isVerified": true,
     "iconUrl": "https://ui-avatars.com/api/?name=Google%20Chrome&background=3B82F6&color=fff&size=128&rounded=true",
     "storeUrl": null,
     "description": "",
-    "riskScore": 3,
+    "riskScore": 1,
     "peakScopeScore": 4,
     "breadthScore": 0,
     "avgScopeScore": 4,
-    "riskLevel": "HIGH",
-    "riskScoreColor": "Orange",
+    "riskLevel": "LOW",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
     ],
-    "adminAccessLevel": "UNCONFIGURED",
+    "adminAccessLevel": "TRUSTED",
     "accessPolicy": null,
     "multiClientMapped": false,
     "familyDeploymentsCount": 1,
@@ -9290,7 +9299,9 @@
     "lastActiveFormatted": "12/09/2026",
     "isStale": false,
     "isNew": false,
-    "totalActivityEvents": 9
+    "totalActivityEvents": 9,
+    "isGoogleService": true,
+    "vendor": "Google LLC"
   },
   {
     "id": "472234446753-42vl6rishfssq4peb9oq1utn7e09lstl.apps.googleusercontent.com",
@@ -9300,19 +9311,19 @@
     "displayName": "Google Device Management (Staging / Dev)",
     "vendor": "Google LLC",
     "publisherDomain": "",
-    "category": "Google Workspace Core",
-    "appType": "Staging / Dev",
+    "category": "Google Services",
+    "appType": "Google Service",
     "deploymentType": "Staging / Dev",
     "compliance": [
       "Standard Terms"
     ],
     "dataHosting": "USA",
     "breachHistory": null,
-    "isVerified": false,
+    "isVerified": true,
     "iconUrl": "https://ui-avatars.com/api/?name=Google%20Device%20Management&background=3B82F6&color=fff&size=128&rounded=true",
     "storeUrl": null,
     "description": "",
-    "riskScore": 0,
+    "riskScore": 1,
     "peakScopeScore": 0,
     "breadthScore": 0,
     "avgScopeScore": 0,
@@ -9320,7 +9331,7 @@
     "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [],
-    "adminAccessLevel": "UNCONFIGURED",
+    "adminAccessLevel": "TRUSTED",
     "accessPolicy": null,
     "multiClientMapped": false,
     "familyDeploymentsCount": 1,
@@ -9343,7 +9354,8 @@
     "lastActiveFormatted": "12/09/2026",
     "isStale": true,
     "isNew": false,
-    "totalActivityEvents": 0
+    "totalActivityEvents": 0,
+    "isGoogleService": true
   },
   {
     "id": "947318989803-6bn6qk8qdgf4n4g3pfee6491hc0brc4i.apps.googleusercontent.com",
@@ -9352,29 +9364,29 @@
     "familyName": "Google Drive for desktop",
     "displayName": "Google Drive for desktop (Web Application)",
     "publisherDomain": "",
-    "category": "Unclassified SaaS",
-    "appType": "Web Application",
+    "category": "Google Services",
+    "appType": "Google Service",
     "deploymentType": "Web Application",
     "compliance": [
       "Standard Terms"
     ],
     "dataHosting": "USA",
     "breachHistory": null,
-    "isVerified": false,
+    "isVerified": true,
     "iconUrl": "https://ui-avatars.com/api/?name=Google%20Drive%20for%20desktop&background=3B82F6&color=fff&size=128&rounded=true",
     "storeUrl": null,
     "description": "",
-    "riskScore": 2,
+    "riskScore": 1,
     "peakScopeScore": 3,
     "breadthScore": 0,
     "avgScopeScore": 3,
-    "riskLevel": "MEDIUM",
-    "riskScoreColor": "Yellow",
+    "riskLevel": "LOW",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
     ],
-    "adminAccessLevel": "UNCONFIGURED",
+    "adminAccessLevel": "TRUSTED",
     "accessPolicy": null,
     "multiClientMapped": false,
     "familyDeploymentsCount": 1,
@@ -9427,7 +9439,9 @@
     "lastActiveFormatted": "12/09/2026",
     "isStale": true,
     "isNew": false,
-    "totalActivityEvents": 0
+    "totalActivityEvents": 0,
+    "isGoogleService": true,
+    "vendor": "Google LLC"
   },
   {
     "id": "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
@@ -9437,8 +9451,8 @@
     "displayName": "Gemini for Workspace Studio (Web Application)",
     "vendor": "Google LLC",
     "publisherDomain": "workspace.google.com",
-    "category": "AI & Collaboration",
-    "appType": "Workspace Add-on",
+    "category": "Google Services",
+    "appType": "Google Service",
     "deploymentType": "Web Application",
     "compliance": [
       "SOC 2",
@@ -9453,19 +9467,19 @@
     "iconUrl": "https://www.google.com/s2/favicons?domain=google.com&sz=128",
     "storeUrl": "https://workspace.google.com",
     "description": "Google Workspace generative AI integration for Docs, Sheets, and Gmail.",
-    "riskScore": 4.2,
+    "riskScore": 1,
     "peakScopeScore": 5,
     "breadthScore": 0.2,
     "avgScopeScore": 4,
-    "riskLevel": "CRITICAL",
-    "riskScoreColor": "Red",
+    "riskLevel": "LOW",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "HIGH",
     "riskReasons": [
       "Basic Authentication / Profile Scopes",
       "Access to Domain Directory, Files, or Calendars",
       "Full Google Drive Read/Write Access"
     ],
-    "adminAccessLevel": "UNCONFIGURED",
+    "adminAccessLevel": "TRUSTED",
     "accessPolicy": null,
     "multiClientMapped": true,
     "familyDeploymentsCount": 6,
@@ -9615,7 +9629,8 @@
     "lastActiveFormatted": "12/09/2026",
     "isStale": true,
     "isNew": false,
-    "totalActivityEvents": 0
+    "totalActivityEvents": 0,
+    "isGoogleService": true
   },
   {
     "id": "823511539352-ojaretejk1s95sdvkic0te923pt7knpu.apps.googleusercontent.com",
@@ -9625,8 +9640,8 @@
     "displayName": "Google AI Studio (Web Application)",
     "vendor": "Google LLC",
     "publisherDomain": "aistudio.google.com",
-    "category": "AI & Developer Tools",
-    "appType": "Web Application",
+    "category": "Google Services",
+    "appType": "Google Service",
     "deploymentType": "Web Application",
     "compliance": [
       "SOC 2",
@@ -9641,17 +9656,17 @@
     "iconUrl": "https://www.google.com/s2/favicons?domain=google.com&sz=128",
     "storeUrl": "https://aistudio.google.com",
     "description": "Fast prototyping environment for Gemini models and generative AI APIs.",
-    "riskScore": 4.01,
+    "riskScore": 1,
     "peakScopeScore": 5,
     "breadthScore": 0.01,
     "avgScopeScore": 3,
-    "riskLevel": "CRITICAL",
-    "riskScoreColor": "Red",
+    "riskLevel": "LOW",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "HIGH",
     "riskReasons": [
       "Full Google Drive Read/Write Access"
     ],
-    "adminAccessLevel": "UNCONFIGURED",
+    "adminAccessLevel": "TRUSTED",
     "accessPolicy": null,
     "multiClientMapped": true,
     "familyDeploymentsCount": 6,
@@ -9754,7 +9769,8 @@
     "lastActiveFormatted": "12/09/2026",
     "isStale": true,
     "isNew": false,
-    "totalActivityEvents": 0
+    "totalActivityEvents": 0,
+    "isGoogleService": true
   },
   {
     "id": "526554529059-bpm1k15t6a60h9u79tjhmpnutblkmalu.apps.googleusercontent.com",
@@ -9764,8 +9780,8 @@
     "displayName": "gemini-enterprise (Web Application)",
     "vendor": "Google LLC",
     "publisherDomain": "cloud.google.com",
-    "category": "AI & Enterprise Cloud",
-    "appType": "Enterprise Cloud Service",
+    "category": "Google Services",
+    "appType": "Google Service",
     "deploymentType": "Web Application",
     "compliance": [
       "SOC 2",
@@ -9778,19 +9794,19 @@
     "iconUrl": "https://www.google.com/s2/favicons?domain=cloud.google.com&sz=128",
     "storeUrl": "https://cloud.google.com",
     "description": "Google Cloud Gemini Enterprise AI deployment and management.",
-    "riskScore": 4.5,
+    "riskScore": 1,
     "peakScopeScore": 5,
     "breadthScore": 0.5,
     "avgScopeScore": 2.77,
-    "riskLevel": "CRITICAL",
-    "riskScoreColor": "Red",
+    "riskLevel": "LOW",
+    "riskScoreColor": "Blue",
     "rawMaxRisk": "HIGH",
     "riskReasons": [
       "Access to Domain Directory, Files, or Calendars",
       "Basic Authentication / Profile Scopes",
       "Full Google Drive Read/Write Access"
     ],
-    "adminAccessLevel": "UNCONFIGURED",
+    "adminAccessLevel": "TRUSTED",
     "accessPolicy": null,
     "multiClientMapped": true,
     "familyDeploymentsCount": 6,
@@ -10016,7 +10032,8 @@
     "lastActiveFormatted": "12/09/2026",
     "isStale": true,
     "isNew": false,
-    "totalActivityEvents": 0
+    "totalActivityEvents": 0,
+    "isGoogleService": true
   },
   {
     "id": "1023251155897-tb54g624q9e77gtsrnemgv4c2ihekurv.apps.googleusercontent.com",
@@ -10026,8 +10043,8 @@
     "displayName": "Google Skills (Web Application)",
     "vendor": "Google LLC",
     "publisherDomain": "cloud.google.com",
-    "category": "Training & Certification",
-    "appType": "Web Application",
+    "category": "Google Services",
+    "appType": "Google Service",
     "deploymentType": "Web Application",
     "compliance": [
       "SOC 2",
@@ -10040,7 +10057,7 @@
     "iconUrl": "https://www.google.com/s2/favicons?domain=google.com&sz=128",
     "storeUrl": "https://cloud.google.com",
     "description": "Google Cloud official technical learning and certification portal.",
-    "riskScore": 0.02,
+    "riskScore": 1,
     "peakScopeScore": 1,
     "breadthScore": 0.02,
     "avgScopeScore": 1,
@@ -10050,7 +10067,7 @@
     "riskReasons": [
       "Basic Authentication / Profile Scopes"
     ],
-    "adminAccessLevel": "UNCONFIGURED",
+    "adminAccessLevel": "TRUSTED",
     "accessPolicy": null,
     "multiClientMapped": true,
     "familyDeploymentsCount": 6,
@@ -10162,7 +10179,8 @@
     "lastActiveFormatted": "12/09/2026",
     "isStale": true,
     "isNew": false,
-    "totalActivityEvents": 0
+    "totalActivityEvents": 0,
+    "isGoogleService": true
   },
   {
     "id": "com.google.DevicePolicy",
@@ -10172,8 +10190,8 @@
     "displayName": "Google Device Policy (Android App)",
     "vendor": "Google LLC",
     "publisherDomain": "google.com",
-    "category": "MDM & Endpoint Security",
-    "appType": "Mobile Device Agent",
+    "category": "Google Services",
+    "appType": "Google Service",
     "deploymentType": "Android App",
     "compliance": [
       "SOC 2",
@@ -10187,7 +10205,7 @@
     "iconUrl": "https://www.google.com/s2/favicons?domain=google.com&sz=128",
     "storeUrl": "https://google.com",
     "description": "Enforces security policies and management on mobile devices accessing domain data.",
-    "riskScore": 0,
+    "riskScore": 1,
     "peakScopeScore": 0,
     "breadthScore": 0,
     "avgScopeScore": 0,
@@ -10195,7 +10213,7 @@
     "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [],
-    "adminAccessLevel": "UNCONFIGURED",
+    "adminAccessLevel": "TRUSTED",
     "accessPolicy": {
       "accessLevel": "UNCONFIGURED",
       "orgUnitPath": "/",
@@ -10273,7 +10291,8 @@
     "lastActiveFormatted": "12/09/2026",
     "isStale": true,
     "isNew": false,
-    "totalActivityEvents": 0
+    "totalActivityEvents": 0,
+    "isGoogleService": true
   },
   {
     "id": "531246522847-cpii92d27guqb6mrvgtc8skipar03g1f.apps.googleusercontent.com",
@@ -10283,8 +10302,8 @@
     "displayName": "Grasshopper (Web Application)",
     "vendor": "Google LLC",
     "publisherDomain": "grasshopper.app",
-    "category": "Education & Coding",
-    "appType": "Web Application",
+    "category": "Google Services",
+    "appType": "Google Service",
     "deploymentType": "Web Application",
     "compliance": [
       "Google Privacy & Security"
@@ -10295,7 +10314,7 @@
     "iconUrl": "https://www.google.com/s2/favicons?domain=google.com&sz=128",
     "storeUrl": "https://grasshopper.app",
     "description": "Coding and beginner JavaScript learning platform by Google.",
-    "riskScore": 0,
+    "riskScore": 1,
     "peakScopeScore": 0,
     "breadthScore": 0,
     "avgScopeScore": 0,
@@ -10381,7 +10400,8 @@
     "lastActiveFormatted": "12/09/2026",
     "isStale": true,
     "isNew": false,
-    "totalActivityEvents": 0
+    "totalActivityEvents": 0,
+    "isGoogleService": true
   },
   {
     "id": "913728339568-tjccmfojammmqs9q0kunokb507mpjqum.apps.googleusercontent.com",

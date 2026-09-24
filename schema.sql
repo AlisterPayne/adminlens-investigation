@@ -19,6 +19,8 @@ CREATE TABLE IF NOT EXISTS applications (
     avg_scope_score REAL DEFAULT 1.0,
     risk_reasons TEXT, -- JSON array of risk descriptions
     admin_access_level TEXT DEFAULT 'UNCONFIGURED' CHECK (admin_access_level IN ('TRUSTED', 'LIMITED', 'SPECIFIC_DATA', 'BLOCKED', 'UNCONFIGURED')),
+    is_google_service INTEGER DEFAULT 0,
+    app_type TEXT DEFAULT 'Third-Party',
     total_users_count INTEGER DEFAULT 0,
     admin_users_count INTEGER DEFAULT 0,
     first_seen_at TEXT,
@@ -131,3 +133,20 @@ CREATE INDEX IF NOT EXISTS idx_scope_ref_service ON oauth_scope_reference(servic
 CREATE INDEX IF NOT EXISTS idx_scope_ref_score ON oauth_scope_reference(admin_score);
 CREATE INDEX IF NOT EXISTS idx_scope_ref_tier ON oauth_scope_reference(google_tier);
 
+-- ==========================================================
+-- Google Services (Canonical 18 Services in Google Admin Console)
+-- ==========================================================
+CREATE TABLE IF NOT EXISTS google_services (
+    id TEXT PRIMARY KEY,
+    service_name TEXT NOT NULL UNIQUE,
+    access_setting TEXT NOT NULL DEFAULT 'Unrestricted' CHECK (access_setting IN ('Unrestricted', 'Restricted')),
+    is_restricted INTEGER DEFAULT 0,
+    allow_non_high_risk_scopes INTEGER DEFAULT 0,
+    description TEXT,
+    icon_name TEXT,
+    created_at TEXT DEFAULT (datetime('now')),
+    updated_at TEXT DEFAULT (datetime('now'))
+);
+
+CREATE INDEX IF NOT EXISTS idx_google_services_name ON google_services(service_name);
+CREATE INDEX IF NOT EXISTS idx_google_services_access ON google_services(access_setting);

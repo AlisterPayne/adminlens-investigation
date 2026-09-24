@@ -22,8 +22,13 @@ export class AdminLensDatabase {
       HAVING COUNT(client_id) > 1
     `).all().length;
 
+    const googleApps = this.db.prepare("SELECT COUNT(*) as count FROM applications WHERE is_google_service = 1").get().count;
+    const thirdPartyApps = this.db.prepare("SELECT COUNT(*) as count FROM applications WHERE is_google_service = 0").get().count;
+
     return {
       totalApplications: totalApps,
+      googleServicesAppsCount: googleApps,
+      thirdPartyAppsCount: thirdPartyApps,
       totalDomainUsers: totalUsers,
       totalActiveGrants: totalGrants,
       criticalRiskApps: criticalApps,
@@ -36,7 +41,7 @@ export class AdminLensDatabase {
     };
   }
 
-  listApplications({ riskLevel, category, accessLevel, limit = 50, offset = 0 } = {}) {
+  listApplications({ riskLevel, category, accessLevel, appType, isGoogleService, limit = 50, offset = 0 } = {}) {
     let sql = 'SELECT * FROM applications WHERE 1=1';
     const params = [];
 
@@ -51,6 +56,14 @@ export class AdminLensDatabase {
     if (accessLevel) {
       sql += ' AND admin_access_level = ?';
       params.push(accessLevel);
+    }
+    if (appType) {
+      sql += ' AND app_type = ?';
+      params.push(appType);
+    }
+    if (typeof isGoogleService === 'boolean') {
+      sql += ' AND is_google_service = ?';
+      params.push(isGoogleService ? 1 : 0);
     }
 
     sql += ' ORDER BY CASE risk_level WHEN "CRITICAL" THEN 1 WHEN "HIGH" THEN 2 WHEN "MEDIUM" THEN 3 ELSE 4 END, total_users_count DESC LIMIT ? OFFSET ?';
@@ -192,6 +205,37 @@ export class AdminLensDatabase {
         minimal: minimalCount
       },
       services
+    };
+  }
+
+  getGoogleServices({ accessSetting } = {}) {
+    let sql = 'SELECT * FROM google_services WHERE 1=1';
+    const params = [];
+
+    if (accessSetting) {
+      sql += ' AND access_setting = ?';
+      params.push(accessSetting);
+    }
+
+    sql += ' ORDER BY service_name ASC';
+    return this.db.prepare(sql).all(...params).map(s => ({
+      ...s,
+      is_restricted: Boolean(s.is_restricted),
+      allow_non_high_risk_scopes: Boolean(s.allow_non_high_risk_scopes)
+    }));
+  }
+
+  getGoogleServicesSummary() {
+    const total = this.db.prepare('SELECT COUNT(*) as count FROM google_services').get().count;
+    const unrestricted = this.db.prepare("SELECT COUNT(*) as count FROM google_services WHERE access_setting = 'Unrestricted'").get().count;
+    const restricted = this.db.prepare("SELECT COUNT(*) as count FROM google_services WHERE access_setting = 'Restricted'").get().count;
+    const linkedAppsCount = this.db.prepare("SELECT COUNT(*) as count FROM applications WHERE is_google_service = 1").get().count;
+
+    return {
+      totalGoogleServices: total,
+      unrestrictedCount: unrestricted,
+      restrictedCount: restricted,
+      linkedGoogleAppsCount: linkedAppsCount,
     };
   }
 }

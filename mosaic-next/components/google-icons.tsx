@@ -100,6 +100,63 @@ export function GoogleAccountIcon({ className = "w-5 h-5" }: { className?: strin
   );
 }
 
+export function GoogleChatIcon({ className = "w-5 h-5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M400 48H112C76.7 48 48 76.7 48 112v224c0 35.3 28.7 64 64 64h224l96 64V112c0-35.3-28.7-64-64-64z" fill="#00AC47" />
+      <path d="M224 288c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm80 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm80 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z" fill="#FFFFFF" />
+    </svg>
+  );
+}
+
+export function GoogleTasksIcon({ className = "w-5 h-5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="256" cy="256" r="224" fill="#1A73E8" />
+      <path d="M208 344L128 264l32-32 48 48 144-144 32 32-176 176z" fill="#FFFFFF" />
+    </svg>
+  );
+}
+
+export function GoogleVaultIcon({ className = "w-5 h-5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M256 32L64 117.3v149.3c0 119.5 81.9 231.5 192 261.4 110.1-29.9 192-141.9 192-261.4V117.3L256 32z" fill="#4285F4" />
+      <path d="M256 213.3c-23.6 0-42.7 19.1-42.7 42.7 0 17.7 10.7 32.8 26 39.5L224 352h64l-15.3-56.5c15.3-6.7 26-21.8 26-39.5 0-23.6-19.1-42.7-42.7-42.7z" fill="#FFFFFF" />
+    </svg>
+  );
+}
+
+export function GoogleCloudIcon({ className = "w-5 h-5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M394.5 214.3c-7.9-52.9-53.5-93.3-108.5-93.3-43.2 0-80.8 24.8-99.3 61.1-6.9-3.2-14.7-5-22.7-5-30.9 0-56 25.1-56 56 0 4.1.4 8.1 1.3 11.9C64.9 253.9 32 291 32 336c0 53 43 96 96 96h256c44.2 0 80-35.8 80-80 0-40.4-30-73.8-69.5-77.7z" fill="#4285F4" />
+      <path d="M128 432h256c44.2 0 80-35.8 80-80 0-40.4-30-73.8-69.5-77.7-7.9-52.9-53.5-93.3-108.5-93.3-16 0-31.2 3.5-44.8 9.8l88.8 88.8v64H240l-48 48h-64z" fill="#34A853" opacity="0.3" />
+    </svg>
+  );
+}
+
+export function GoogleGroupsIcon({ className = "w-5 h-5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="192" cy="160" r="80" fill="#1A73E8" />
+      <path d="M192 272c-70.7 0-213.3 35.5-213.3 106.7V432H405.3v-53.3C405.3 307.5 262.7 272 192 272z" fill="#1A73E8" />
+      <circle cx="384" cy="160" r="53.3" fill="#4285F4" opacity="0.8" />
+      <path d="M384 272c-15.6 0-37.3 3-61.3 8.3 34.1 24.5 50.7 54.1 50.7 85V432H512v-66.7C512 307.5 440 272 384 272z" fill="#4285F4" opacity="0.8" />
+    </svg>
+  );
+}
+
+export function GoogleMeetIcon({ className = "w-5 h-5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M320 160v192l128 96V64L320 160z" fill="#00AC47" />
+      <rect x="64" y="96" width="256" height="320" rx="32" fill="#00832D" />
+      <path d="M320 352l-96 64H96c-17.7 0-32-14.3-32-32v-96l160-32 96 96z" fill="#EA4335" opacity="0.4" />
+    </svg>
+  );
+}
+
 export function GoogleProductIcon({
   service,
   className = "w-5 h-5",
@@ -111,10 +168,10 @@ export function GoogleProductIcon({
   if (s.includes("gmail") || s.includes("mail")) {
     return <GmailIcon className={className} />;
   }
-  if (s.includes("drive") || s.includes("docs") || s.includes("sheets") || s.includes("slides")) {
+  if (s.includes("drive") || s.includes("docs") || s.includes("sheets") || s.includes("slides") || s.includes("forms")) {
     return <GoogleDriveIcon className={className} />;
   }
-  if (s.includes("admin") || s.includes("directory") || s.includes("device") || s.includes("groups")) {
+  if (s.includes("admin") || s.includes("directory") || s.includes("workspace admin")) {
     return <GoogleAdminIcon className={className} />;
   }
   if (s.includes("calendar") || s.includes("schedule")) {
@@ -126,11 +183,30 @@ export function GoogleProductIcon({
   if (s.includes("contact") || s.includes("people")) {
     return <GoogleContactsIcon className={className} />;
   }
+  if (s.includes("chat")) {
+    return <GoogleChatIcon className={className} />;
+  }
+  if (s.includes("groups")) {
+    return <GoogleGroupsIcon className={className} />;
+  }
+  if (s.includes("vault") || s.includes("ediscovery")) {
+    return <GoogleVaultIcon className={className} />;
+  }
+  if (s.includes("tasks")) {
+    return <GoogleTasksIcon className={className} />;
+  }
+  if (s.includes("meet")) {
+    return <GoogleMeetIcon className={className} />;
+  }
+  if (s.includes("cloud") || s.includes("gcp") || s.includes("billing") || s.includes("machine learning") || s.includes("search")) {
+    return <GoogleCloudIcon className={className} />;
+  }
   if (s.includes("script") || s.includes("apps script") || s.includes("workflows") || s.includes("flexible-api")) {
     return <GoogleAppsScriptIcon className={className} />;
   }
-  if (s.includes("identity") || s.includes("sso") || s.includes("account") || s.includes("profile") || s.includes("userinfo") || s.includes("openid") || s.includes("auth")) {
+  if (s.includes("sign-in") || s.includes("signin") || s.includes("identity") || s.includes("sso") || s.includes("account") || s.includes("profile") || s.includes("userinfo") || s.includes("openid") || s.includes("auth")) {
     return <GoogleAccountIcon className={className} />;
   }
-  return null;
+  return <GoogleAdminIcon className={className} />;
 }
+
