@@ -75,14 +75,20 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
 
         {/* Links */}
         <div className="space-y-6">
+          {/* Section 1: Client Workspace Telemetry */}
           <div>
-            <h3 className="text-xs uppercase text-gray-400 font-semibold pl-3">
-              <span className="hidden lg:block lg:sidebar-expanded:hidden 2xl:hidden text-center">•••</span>
-              <span className="lg:hidden lg:sidebar-expanded:block 2xl:block">Security & Governance</span>
-            </h3>
-            <ul className="mt-3 space-y-1.5">
+            <div className="flex items-center justify-between pl-3 pr-2 mb-2">
+              <h3 className="text-xs uppercase text-gray-400 font-semibold tracking-wider">
+                <span className="hidden lg:block lg:sidebar-expanded:hidden 2xl:hidden text-center">•••</span>
+                <span className="lg:hidden lg:sidebar-expanded:block 2xl:block">Client Workspace</span>
+              </h3>
+              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200 lg:hidden lg:sidebar-expanded:block 2xl:block">
+                gafe.co.za
+              </span>
+            </div>
+            <ul className="space-y-1.5">
               
-              {/* Version 1: OAuth Classic */}
+              {/* Tenant OAuth Apps */}
               <li className={`px-3 py-2 rounded-lg transition-colors ${segments.includes("dashboard") && !segments.includes("dashboard-v2") ? "bg-blue-50 text-blue-700 font-semibold" : "hover:bg-gray-100 text-gray-700"}`}>
                 <SidebarLink href="/dashboard">
                   <div className="flex items-center justify-between w-full">
@@ -91,11 +97,11 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                       </svg>
                       <span className="text-sm ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                        OAuth Apps
+                        Tenant OAuth Apps
                       </span>
                     </div>
-                    <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-gray-100 text-gray-600 border border-gray-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
-                      V1
+                    <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-100 text-blue-800 border border-blue-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
+                      Active
                     </span>
                   </div>
                 </SidebarLink>
@@ -120,8 +126,43 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
                 </SidebarLink>
               </li>
 
+              {/* Scopes & Permissions */}
+              <li className={`px-3 py-2 rounded-lg transition-colors ${segments.includes("scopes") ? "bg-amber-50 text-amber-800 font-semibold border border-amber-200/60" : "hover:bg-gray-100 text-gray-700"}`}>
+                <SidebarLink href="/scopes">
+                  <div className="flex items-center justify-between w-full">
+                    <div className="flex items-center">
+                      <svg className={`shrink-0 h-5 w-5 ${segments.includes("scopes") ? "text-amber-600" : "text-gray-500"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                      </svg>
+                      <span className="text-sm ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                        Scope Threat Matrix
+                      </span>
+                    </div>
+                    <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
+                      158
+                    </span>
+                  </div>
+                </SidebarLink>
+              </li>
+
+            </ul>
+          </div>
+
+          {/* Section 2: Platform Admin (Global Knowledge Base) */}
+          <div>
+            <div className="flex items-center justify-between pl-3 pr-2 mb-2">
+              <h3 className="text-xs uppercase text-emerald-700 font-bold tracking-wider">
+                <span className="hidden lg:block lg:sidebar-expanded:hidden 2xl:hidden text-center">⚙️</span>
+                <span className="lg:hidden lg:sidebar-expanded:block 2xl:block">Platform Admin</span>
+              </h3>
+              <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-300 lg:hidden lg:sidebar-expanded:block 2xl:block">
+                Global DB
+              </span>
+            </div>
+            <ul className="space-y-1.5">
+
               {/* Central Master Database */}
-              <li className={`px-3 py-2 rounded-lg transition-colors ${segments.includes("central-database") ? "bg-emerald-50 text-emerald-700 font-semibold border border-emerald-200/60" : "hover:bg-gray-100 text-gray-700"}`}>
+              <li className={`px-3 py-2 rounded-lg transition-colors ${segments.includes("central-database") ? "bg-emerald-50 text-emerald-800 font-semibold border border-emerald-300" : "hover:bg-emerald-50/50 text-gray-700"}`}>
                 <SidebarLink href="/central-database">
                   <div className="flex items-center justify-between w-full">
                     <div className="flex items-center">
@@ -129,7 +170,7 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
                       </svg>
                       <span className="text-sm ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                        Central Database
+                        Central App Catalog
                       </span>
                     </div>
                     <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
