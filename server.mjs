@@ -14,7 +14,7 @@ const server = http.createServer(async (req, res) => {
 
   // CORS & Security Headers
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, PATCH, PUT, POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
   if (req.method === 'OPTIONS') {
@@ -44,6 +44,97 @@ const server = http.createServer(async (req, res) => {
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify(apps));
     }
+    return;
+  }
+
+  // 2b. API: Update Application
+  if (pathname === '/api/applications' && (req.method === 'PATCH' || req.method === 'PUT')) {
+    let body = '';
+    req.on('data', chunk => { body += chunk; });
+    req.on('end', () => {
+      try {
+        const payload = JSON.parse(body);
+        const { id, ...updates } = payload;
+        if (!id) {
+          res.writeHead(400, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ error: 'Missing application id' }));
+          return;
+        }
+
+        // Update DB
+        try {
+          db.db.prepare(`
+            UPDATE applications
+            SET display_name = COALESCE(?, display_name),
+                vendor = COALESCE(?, vendor),
+                publisher_domain = COALESCE(?, publisher_domain),
+                category = COALESCE(?, category),
+                is_verified = COALESCE(?, is_verified),
+                risk_level = COALESCE(?, risk_level),
+                icon_url = COALESCE(?, icon_url),
+                store_url = COALESCE(?, store_url),
+                app_type = COALESCE(?, app_type),
+                updated_at = datetime('now')
+            WHERE id = ?
+          `).run(
+            updates.displayName ?? null,
+            updates.vendor ?? null,
+            updates.publisherDomain ?? null,
+            updates.category ?? null,
+            updates.isVerified !== undefined ? (updates.isVerified ? 1 : 0) : null,
+            updates.riskLevel ?? null,
+            updates.iconUrl ?? null,
+            updates.storeUrl ?? null,
+            updates.appType ?? null,
+            id
+          );
+        } catch (e) {
+          console.warn('DB update warning:', e);
+        }
+
+        // Update catalogs
+        const catalogPaths = [
+          './standardized_catalog/applications_catalog.json',
+          './mosaic-next/data/applications_catalog.json',
+          './public/standardized_catalog.json'
+        ];
+
+        let updatedApp = null;
+        for (const catPath of catalogPaths) {
+          if (fs.existsSync(catPath)) {
+            const apps = JSON.parse(fs.readFileSync(catPath, 'utf8'));
+            const idx = apps.findIndex(a => a.id === id);
+            if (idx !== -1) {
+              apps[idx] = {
+                ...apps[idx],
+                ...updates,
+                displayName: updates.displayName ?? apps[idx].displayName,
+                vendor: updates.vendor ?? apps[idx].vendor,
+                publisherDomain: updates.publisherDomain ?? apps[idx].publisherDomain,
+                category: updates.category ?? apps[idx].category,
+                appType: updates.appType ?? apps[idx].appType,
+                deploymentType: updates.appType ?? apps[idx].deploymentType,
+                isVerified: updates.isVerified !== undefined ? updates.isVerified : apps[idx].isVerified,
+                riskLevel: updates.riskLevel ?? apps[idx].riskLevel,
+                iconUrl: updates.iconUrl ?? apps[idx].iconUrl,
+                storeUrl: updates.storeUrl ?? apps[idx].storeUrl,
+                description: updates.description ?? apps[idx].description,
+                dataHosting: updates.dataHosting ?? apps[idx].dataHosting,
+                compliance: updates.compliance ?? apps[idx].compliance,
+              };
+              updatedApp = apps[idx];
+              fs.writeFileSync(catPath, JSON.stringify(apps, null, 2), 'utf8');
+            }
+          }
+        }
+
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ success: true, application: updatedApp }));
+      } catch (err) {
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ success: false, error: err.message }));
+      }
+    });
     return;
   }
 

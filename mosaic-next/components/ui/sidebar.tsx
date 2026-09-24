@@ -120,6 +120,25 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
                 </SidebarLink>
               </li>
 
+              {/* Central Master Database */}
+              <li className={`px-3 py-2 rounded-lg transition-colors ${segments.includes("central-database") ? "bg-emerald-50 text-emerald-700 font-semibold border border-emerald-200/60" : "hover:bg-gray-100 text-gray-700"}`}>
+                <SidebarLink href="/central-database">
+                  <div className="flex items-center justify-between w-full">
+                    <div className="flex items-center">
+                      <svg className={`shrink-0 h-5 w-5 ${segments.includes("central-database") ? "text-emerald-600" : "text-gray-500"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+                      </svg>
+                      <span className="text-sm ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                        Central Database
+                      </span>
+                    </div>
+                    <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
+                      2,076
+                    </span>
+                  </div>
+                </SidebarLink>
+              </li>
+
             </ul>
           </div>
 
