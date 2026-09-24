@@ -646,32 +646,8 @@ export default function ScopeMatrixView({
     });
   };
 
-  const getServiceIcon = (service: string) => {
-    if (service.includes("Gmail")) {
-      return <GmailIcon className="w-5 h-5 flex-shrink-0" />;
-    }
-    if (service.includes("Drive")) {
-      return <GoogleDriveIcon className="w-5 h-5 flex-shrink-0" />;
-    }
-    if (service.includes("Admin")) {
-      return <GoogleAdminIcon className="w-5 h-5 flex-shrink-0" />;
-    }
-    if (service.includes("Calendar")) {
-      return <GoogleCalendarIcon className="w-5 h-5 flex-shrink-0" />;
-    }
-    if (service.includes("Contacts")) {
-      return <GoogleContactsIcon className="w-5 h-5 flex-shrink-0" />;
-    }
-    if (service.includes("Classroom") || service.includes("Chat")) {
-      return <GoogleClassroomIcon className="w-5 h-5 flex-shrink-0" />;
-    }
-    if (service.includes("Script") || service.includes("Apps Script")) {
-      return <GoogleAppsScriptIcon className="w-5 h-5 flex-shrink-0" />;
-    }
-    if (service.includes("Identity") || service.includes("SSO") || service.includes("Account")) {
-      return <GoogleAccountIcon className="w-5 h-5 flex-shrink-0" />;
-    }
-    return <GoogleProductIcon service={service} className="w-5 h-5 flex-shrink-0" />;
+  const getServiceIcon = (service: string, className = "w-5 h-5 flex-shrink-0") => {
+    return <GoogleProductIcon service={service} className={className} />;
   };
 
   const getTierBadge = (tier: string) => {
@@ -1110,7 +1086,7 @@ export default function ScopeMatrixView({
                   >
                     <div className="flex items-center gap-3.5">
                       <div className="w-10 h-10 rounded-xl bg-white border border-gray-200 flex items-center justify-center shadow-2xs flex-shrink-0">
-                        {getServiceIcon(grp.serviceName)}
+                        {getServiceIcon(grp.serviceName, "w-6 h-6 flex-shrink-0")}
                       </div>
                       <div>
                         <div className="flex items-center gap-2.5 flex-wrap">
@@ -1317,7 +1293,7 @@ export default function ScopeMatrixView({
                       {/* Service */}
                       <td className="py-3.5 px-4 whitespace-nowrap">
                         <div className="flex items-center gap-1.5 text-xs font-semibold text-gray-800">
-                          {getServiceIcon(s.service_name)}
+                          {getServiceIcon(s.service_name, "w-4 h-4 flex-shrink-0")}
                           <span>{s.service_name}</span>
                         </div>
                       </td>

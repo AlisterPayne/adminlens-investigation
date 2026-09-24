@@ -157,6 +157,98 @@ export function GoogleMeetIcon({ className = "w-5 h-5" }: { className?: string }
   );
 }
 
+export function getServiceIconPath(service: string): string {
+  const s = (service || "").trim();
+  const lower = s.toLowerCase();
+
+  // 1. Google Drive (https://commons.wikimedia.org/wiki/File:Google_Drive_Logo_05.2026.png)
+  if (s === "Drive" || lower.includes("drive") || lower.includes("docs") || lower.includes("sheets") || lower.includes("slides") || lower.includes("forms")) {
+    return "/images/services/drive.png";
+  }
+
+  // 2. Gmail
+  if (s === "Gmail" || lower.includes("gmail") || lower.includes("mail")) {
+    return "/images/services/gmail.svg";
+  }
+
+  // 3. Calendar
+  if (s === "Calendar" || lower.includes("calendar") || lower.includes("schedule")) {
+    return "/images/services/calendar.svg";
+  }
+
+  // 4. Contacts
+  if (s === "Contacts" || lower.includes("contact") || lower.includes("people")) {
+    return "/images/services/contacts.svg";
+  }
+
+  // 5. Google Workspace Admin / Admin SDK
+  if (s === "Google Workspace Admin" || lower.includes("workspace admin") || lower.includes("directory") || lower.includes("admin")) {
+    return "/images/services/admin.svg";
+  }
+
+  // 6. Vault
+  if (s === "Vault" || lower.includes("vault") || lower.includes("ediscovery")) {
+    return "/images/services/vault.png";
+  }
+
+  // 7. Cloud Search
+  if (s === "Cloud Search" || lower.includes("cloud search")) {
+    return "/images/services/cloud-search.svg";
+  }
+
+  // 8. Cloud Billing
+  if (s === "Cloud Billing" || lower.includes("billing")) {
+    return "/images/services/cloud.png";
+  }
+
+  // 9. Cloud Machine Learning
+  if (s === "Cloud Machine Learning" || lower.includes("machine learning")) {
+    return "/images/services/cloud.png";
+  }
+
+  // 10. Cloud Platform
+  if (s === "Cloud Platform" || lower.includes("cloud platform") || lower.includes("gcp") || lower.includes("cloud")) {
+    return "/images/services/cloud.png";
+  }
+
+  // 11 & 12. Apps Script Runtime & Apps Script API
+  if (s === "Apps Script Runtime" || s === "Apps Script API" || lower.includes("apps script") || lower.includes("script") || lower.includes("workflows") || lower.includes("flexible-api")) {
+    return "/images/services/apps-script.svg";
+  }
+
+  // 13. Classroom
+  if (s === "Classroom" || lower.includes("classroom") || lower.includes("course") || lower.includes("roster")) {
+    return "/images/services/classroom.svg";
+  }
+
+  // 14. Tasks
+  if (s === "Tasks" || lower.includes("tasks")) {
+    return "/images/services/tasks.png";
+  }
+
+  // 15. Groups
+  if (s === "Groups" || lower.includes("groups")) {
+    return "/images/services/groups.png";
+  }
+
+  // 16. Chat
+  if (s === "Chat" || lower.includes("chat")) {
+    return "/images/services/chat.svg";
+  }
+
+  // 17. Google sign-in
+  if (s === "Google sign-in" || lower.includes("sign-in") || lower.includes("signin") || lower.includes("identity") || lower.includes("sso") || lower.includes("account") || lower.includes("profile") || lower.includes("userinfo") || lower.includes("openid") || lower.includes("auth")) {
+    return "/images/services/google-signin.svg";
+  }
+
+  // 18. Meet
+  if (s === "Meet" || lower.includes("meet")) {
+    return "/images/services/meet-admin.svg";
+  }
+
+  return "/images/services/admin.svg";
+}
+
 export function GoogleProductIcon({
   service,
   className = "w-5 h-5",
@@ -164,49 +256,15 @@ export function GoogleProductIcon({
   service: string;
   className?: string;
 }) {
-  const s = (service || "").toLowerCase();
-  if (s.includes("gmail") || s.includes("mail")) {
-    return <GmailIcon className={className} />;
-  }
-  if (s.includes("drive") || s.includes("docs") || s.includes("sheets") || s.includes("slides") || s.includes("forms")) {
-    return <GoogleDriveIcon className={className} />;
-  }
-  if (s.includes("admin") || s.includes("directory") || s.includes("workspace admin")) {
-    return <GoogleAdminIcon className={className} />;
-  }
-  if (s.includes("calendar") || s.includes("schedule")) {
-    return <GoogleCalendarIcon className={className} />;
-  }
-  if (s.includes("classroom") || s.includes("course") || s.includes("roster")) {
-    return <GoogleClassroomIcon className={className} />;
-  }
-  if (s.includes("contact") || s.includes("people")) {
-    return <GoogleContactsIcon className={className} />;
-  }
-  if (s.includes("chat")) {
-    return <GoogleChatIcon className={className} />;
-  }
-  if (s.includes("groups")) {
-    return <GoogleGroupsIcon className={className} />;
-  }
-  if (s.includes("vault") || s.includes("ediscovery")) {
-    return <GoogleVaultIcon className={className} />;
-  }
-  if (s.includes("tasks")) {
-    return <GoogleTasksIcon className={className} />;
-  }
-  if (s.includes("meet")) {
-    return <GoogleMeetIcon className={className} />;
-  }
-  if (s.includes("cloud") || s.includes("gcp") || s.includes("billing") || s.includes("machine learning") || s.includes("search")) {
-    return <GoogleCloudIcon className={className} />;
-  }
-  if (s.includes("script") || s.includes("apps script") || s.includes("workflows") || s.includes("flexible-api")) {
-    return <GoogleAppsScriptIcon className={className} />;
-  }
-  if (s.includes("sign-in") || s.includes("signin") || s.includes("identity") || s.includes("sso") || s.includes("account") || s.includes("profile") || s.includes("userinfo") || s.includes("openid") || s.includes("auth")) {
-    return <GoogleAccountIcon className={className} />;
-  }
-  return <GoogleAdminIcon className={className} />;
+  const iconSrc = getServiceIconPath(service);
+  return (
+    <img
+      src={iconSrc}
+      alt={service || "Google Service"}
+      className={`${className} object-contain inline-block flex-shrink-0`}
+      loading="lazy"
+    />
+  );
 }
+
 
