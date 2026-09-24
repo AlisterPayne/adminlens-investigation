@@ -1131,7 +1131,7 @@ export default function ScopeMatrixView({
                           </span>
                         </div>
                         <p className="text-xs text-gray-500 mt-0.5 max-w-xl">
-                          Google Workspace {grp.serviceName} Service • Scopes ordered alphabetically
+                          Google Workspace {grp.serviceName} Service
                         </p>
                       </div>
                     </div>
