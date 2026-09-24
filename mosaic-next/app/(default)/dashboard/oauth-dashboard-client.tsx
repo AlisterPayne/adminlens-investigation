@@ -1255,82 +1255,39 @@ export default function OAuthDashboardClient({
             )}
           </div>
 
-          {/* Top KPI Header Cards for All Applications (All Clickable) */}
+          {/* Top KPI Header Cards for All Applications (Informational Only) */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {/* Total Apps */}
-            <div 
-              onClick={() => {
-                setPolicyFilter("ALL");
-                setRiskFilter("ALL");
-                setServiceFilter("ALL");
-                setRiskyScopesOnly(false);
-                setCategoryFilter("ALL");
-                setSearch("");
-              }}
-              title="Click to reset all filters and show all applications"
-              className={`border rounded-xl p-4 shadow-sm cursor-pointer transition-all ${
-                policyFilter === "ALL" && riskFilter === "ALL" && serviceFilter === "ALL" && !riskyScopesOnly && categoryFilter === "ALL" && !search
-                  ? "bg-blue-50/70 border-blue-400 ring-2 ring-blue-500/20 shadow-md"
-                  : "bg-white border-gray-200 hover:border-blue-300 hover:bg-gray-50/80"
-              }`}
-            >
-              <div className="flex items-center justify-between text-xs font-bold text-gray-500 uppercase tracking-wider">
-                <span>TOTAL APPS</span>
-                <span className="text-gray-400 text-[10px]">All</span>
+            <div className="border border-blue-200 bg-blue-50/40 rounded-xl p-4 shadow-2xs">
+              <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                Total Apps
               </div>
               <div className="text-2xl font-bold text-gray-900 mt-1">{totalAppsCount}</div>
               <div className="text-xs text-gray-500 mt-0.5">Unique apps authorized</div>
             </div>
 
             {/* Configured by Admin */}
-            <div 
-              onClick={() => setPolicyFilter(policyFilter === "CONFIGURED" ? "ALL" : "CONFIGURED")}
-              title="Click to filter to admin-configured applications"
-              className={`border rounded-xl p-4 shadow-sm cursor-pointer transition-all ${
-                policyFilter === "CONFIGURED" 
-                  ? "bg-emerald-100/70 border-emerald-500 ring-2 ring-emerald-500/20 shadow-md" 
-                  : "bg-emerald-50/50 border-emerald-200 hover:bg-emerald-100/40"
-              }`}
-            >
-              <div className="flex items-center justify-between text-xs font-bold text-emerald-700 uppercase tracking-wider">
-                <span>CONFIGURED BY ADMIN</span>
-                <span className="text-emerald-600 text-[10px]">{policyFilter === "CONFIGURED" ? "Active" : "Filter"}</span>
+            <div className="border border-emerald-200 bg-emerald-50/40 rounded-xl p-4 shadow-2xs">
+              <div className="text-xs font-semibold text-emerald-700 uppercase tracking-wider">
+                Configured by Admin
               </div>
               <div className="text-2xl font-bold text-emerald-700 mt-1">{configuredAppsCount}</div>
               <div className="text-xs text-emerald-600/80 mt-0.5">Console configured & governed</div>
             </div>
 
             {/* High-Risk Apps (Score 4-5) */}
-            <div 
-              onClick={() => setRiskFilter(riskFilter === "HIGH_RISK" ? "ALL" : "HIGH_RISK")}
-              title="Click to filter by High-Risk applications (Score 4–5)"
-              className={`border rounded-xl p-4 shadow-sm cursor-pointer transition-all ${
-                riskFilter === "HIGH_RISK" 
-                  ? "bg-red-100/70 border-red-500 ring-2 ring-red-500/20 shadow-md" 
-                  : "bg-red-50/50 border-red-200 hover:bg-red-100/40"
-              }`}
-            >
-              <div className="flex items-center justify-between text-xs font-bold text-red-600 uppercase tracking-wider">
-                <span>HIGH-RISK APPS</span>
-                <span className="text-red-500 text-[10px]">{riskFilter === "HIGH_RISK" ? "Active" : "Filter"}</span>
+            <div className="border border-red-200 bg-red-50/40 rounded-xl p-4 shadow-2xs">
+              <div className="text-xs font-semibold text-red-600 uppercase tracking-wider">
+                High-Risk Apps
               </div>
               <div className="text-2xl font-bold text-red-700 mt-1">{highRiskAppsCount}</div>
               <div className="text-xs text-red-600/80 mt-0.5">Score 4.0 – 5.0 (Critical)</div>
             </div>
 
             {/* Risky Scopes (Score 3-4) */}
-            <div 
-              onClick={() => setRiskyScopesOnly(!riskyScopesOnly)}
-              title="Click to filter by applications requesting scopes rated 3–4"
-              className={`border rounded-xl p-4 shadow-sm cursor-pointer transition-all ${
-                riskyScopesOnly 
-                  ? "bg-amber-100/70 border-amber-500 ring-2 ring-amber-500/20 shadow-md" 
-                  : "bg-amber-50/50 border-amber-200 hover:bg-amber-100/40"
-              }`}
-            >
-              <div className="flex items-center justify-between text-xs font-bold text-amber-700 uppercase tracking-wider">
-                <span>RISKY SCOPES</span>
-                <span className="text-amber-600 text-[10px]">{riskyScopesOnly ? "Active" : "Filter"}</span>
+            <div className="border border-amber-200 bg-amber-50/40 rounded-xl p-4 shadow-2xs">
+              <div className="text-xs font-semibold text-amber-700 uppercase tracking-wider">
+                Risky Scopes
               </div>
               <div className="text-2xl font-bold text-amber-800 mt-1">{scopeMap.size}</div>
               <div className="text-xs text-amber-700/80 mt-0.5">Unique permissions rated 3–4</div>
@@ -1449,6 +1406,16 @@ export default function OAuthDashboardClient({
                 <option value="Classroom">Classroom</option>
                 <option value="Contacts">Contacts</option>
               </select>
+
+              <label className="flex items-center gap-1.5 text-xs font-medium text-gray-700 cursor-pointer bg-gray-50 border border-gray-300 rounded-lg px-2.5 py-1.5 whitespace-nowrap">
+                <input
+                  type="checkbox"
+                  checked={riskyScopesOnly}
+                  onChange={(e) => setRiskyScopesOnly(e.target.checked)}
+                  className="rounded border-gray-300 text-amber-600 focus:ring-0"
+                />
+                Risky Scopes Only
+              </label>
 
               <label className="flex items-center gap-1.5 text-xs font-medium text-gray-700 cursor-pointer bg-gray-50 border border-gray-300 rounded-lg px-2.5 py-1.5 whitespace-nowrap">
                 <input
