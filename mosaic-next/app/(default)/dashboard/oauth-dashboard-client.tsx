@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React, { useMemo,useState } from "react";
+import React, { useMemo, useState } from "react";
 
 import {
   GmailIcon,
@@ -693,27 +693,26 @@ export default function OAuthDashboardClient({
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="text-2xl font-bold text-gray-900">Third-Party Apps</h1>
+                <h1 className="text-2xl font-bold text-gray-900">Tenant Applications & Activity</h1>
                 <span className="bg-blue-50 text-blue-700 border border-blue-200 text-xs font-semibold px-2.5 py-0.5 rounded-full">
-                  Admin Lens
+                  Client Workspace
                 </span>
-                {/* Version Switcher Pill */}
-                <div className="ml-2 inline-flex items-center bg-gray-100 p-0.5 rounded-lg border border-gray-200 text-xs">
-                  <span className="bg-white text-blue-600 font-bold px-2 py-0.5 rounded shadow-2xs">
-                    V1 Classic
-                  </span>
-                  <Link
-                    href="/dashboard-v2"
-                    className="text-gray-500 hover:text-purple-700 px-2 py-0.5 rounded hover:bg-white/80 transition-colors font-medium flex items-center gap-1"
-                  >
-                    <span>✨ Switch to V2</span>
-                  </Link>
-                </div>
               </div>
               <p className="text-xs text-gray-500 mt-0.5">
-                Workspace Domain: <span className="font-mono font-semibold text-gray-700">gafe.co.za</span> • Super Admin: <span className="font-mono text-gray-700">alister@gafe.co.za</span>
+                Workspace Domain: <span className="font-mono font-semibold text-gray-700">gafe.co.za</span> • Super Admin: <span className="font-mono text-gray-700">alister@gafe.co.za</span> • Real-time user consumption & policy state
               </p>
             </div>
+          </div>
+
+          {/* Quick link to Admin Back-End */}
+          <div className="hidden lg:flex items-center gap-2">
+            <Link
+              href="/central-database"
+              className="px-3.5 py-1.5 text-xs font-semibold rounded-lg text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 transition-colors flex items-center gap-1.5 shadow-2xs"
+            >
+              <span>⚙️</span>
+              <span>Admin Back-End →</span>
+            </Link>
           </div>
         </div>
 
@@ -725,7 +724,7 @@ export default function OAuthDashboardClient({
               activeTab === "dashboard" ? "bg-white text-blue-600 shadow-sm" : "text-gray-600 hover:text-gray-900"
             }`}
           >
-            📊 Dashboard
+            📊 Activity Overview
           </button>
           <button
             onClick={() => setActiveTab("apps")}
@@ -733,7 +732,7 @@ export default function OAuthDashboardClient({
               activeTab === "apps" ? "bg-white text-blue-600 shadow-sm" : "text-gray-600 hover:text-gray-900"
             }`}
           >
-            📑 All Applications ({initialApps.length})
+            📑 Applications & Users ({initialApps.length})
           </button>
           <button
             onClick={() => setActiveTab("recs")}
@@ -741,16 +740,16 @@ export default function OAuthDashboardClient({
               activeTab === "recs" ? "bg-white text-blue-600 shadow-sm" : "text-gray-600 hover:text-gray-900"
             }`}
           >
-            🚨 Recommendations ({initialRecs.playbooks?.length ? `${initialRecs.playbooks.length} Campaigns` : (initialRecs.totalFindings || 102)})
+            🚨 Policy Recommendations ({initialRecs.playbooks?.length ? `${initialRecs.playbooks.length} Campaigns` : (initialRecs.totalFindings || 102)})
           </button>
-          <button
-            onClick={() => setActiveTab("scopes")}
-            className={`px-4 py-2 text-xs font-semibold rounded-md transition-colors flex items-center gap-1.5 whitespace-nowrap ${
-              activeTab === "scopes" ? "bg-white text-blue-600 shadow-sm" : "text-gray-600 hover:text-gray-900"
-            }`}
+          <Link
+            href="/scopes"
+            className="px-3 py-1.5 text-xs font-medium text-emerald-800 hover:text-emerald-950 hover:bg-white/60 rounded-md transition-colors flex items-center gap-1 whitespace-nowrap ml-1"
+            title="Open Services & Scopes in Admin Back-End"
           >
-            🛡️ Scope Threat Matrix ({initialScopes.length || 111})
-          </button>
+            <span>🛡️</span>
+            <span>Services & Scopes (Admin) ↗</span>
+          </Link>
         </div>
       </div>
 

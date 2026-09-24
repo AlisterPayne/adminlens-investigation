@@ -39,7 +39,7 @@ export default function CentralDatabaseClient({ initialApps }: Props) {
   const [selectedRisk, setSelectedRisk] = useState("ALL");
   const [selectedType, setSelectedType] = useState("ALL");
   const [selectedVerified, setSelectedVerified] = useState("ALL");
-  const [tenantScopeFilter, setTenantScopeFilter] = useState<"ALL" | "INSTALLED" | "CATALOG_ONLY">("ALL");
+  const [catalogFilter, setCatalogFilter] = useState<"ALL" | "VERIFIED" | "COMPLIANT" | "HIGH_RISK">("ALL");
 
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
@@ -82,9 +82,8 @@ export default function CentralDatabaseClient({ initialApps }: Props) {
     const total = apps.length;
     const verified = apps.filter(a => a.isVerified).length;
     const highCritical = apps.filter(a => a.riskLevel === "CRITICAL" || a.riskLevel === "HIGH").length;
-    const installedInTenant = apps.filter(a => (a.totalUsersCount && a.totalUsersCount > 0) || (a.users && a.users.length > 0)).length;
-    const catalogOnly = total - installedInTenant;
-    return { total, verified, highCritical, installedInTenant, catalogOnly };
+    const compliant = apps.filter(a => a.compliance && (Array.isArray(a.compliance) ? a.compliance.length > 0 : Boolean(a.compliance))).length;
+    return { total, verified, highCritical, compliant };
   }, [apps]);
 
   // Filtering
@@ -107,15 +106,18 @@ export default function CentralDatabaseClient({ initialApps }: Props) {
         (selectedVerified === "VERIFIED" && app.isVerified) ||
         (selectedVerified === "UNVERIFIED" && !app.isVerified);
 
-      const isInstalled = (app.totalUsersCount && app.totalUsersCount > 0) || (app.users && app.users.length > 0);
-      const matchesScope =
-        tenantScopeFilter === "ALL" ||
-        (tenantScopeFilter === "INSTALLED" && isInstalled) ||
-        (tenantScopeFilter === "CATALOG_ONLY" && !isInstalled);
+      const hasCompliance = app.compliance && (Array.isArray(app.compliance) ? app.compliance.length > 0 : Boolean(app.compliance));
+      const isHighRisk = app.riskLevel === "CRITICAL" || app.riskLevel === "HIGH";
 
-      return matchesSearch && matchesCat && matchesRisk && matchesType && matchesVerified && matchesScope;
+      const matchesTab =
+        catalogFilter === "ALL" ||
+        (catalogFilter === "VERIFIED" && app.isVerified) ||
+        (catalogFilter === "COMPLIANT" && hasCompliance) ||
+        (catalogFilter === "HIGH_RISK" && isHighRisk);
+
+      return matchesSearch && matchesCat && matchesRisk && matchesType && matchesVerified && matchesTab;
     });
-  }, [apps, searchTerm, selectedCategory, selectedRisk, selectedType, selectedVerified, tenantScopeFilter]);
+  }, [apps, searchTerm, selectedCategory, selectedRisk, selectedType, selectedVerified, catalogFilter]);
 
   // Pagination calculation
   const totalPages = Math.ceil(filteredApps.length / pageSize) || 1;
@@ -292,7 +294,7 @@ export default function CentralDatabaseClient({ initialApps }: Props) {
       )}
 
       {/* Admin Mode Distinction Banner */}
-      <div className="bg-gradient-to-r from-emerald-900 via-gray-900 to-slate-900 text-white p-5 rounded-2xl mb-8 border border-emerald-500/30 shadow-lg relative overflow-hidden">
+      <div className="bg-gradient-to-r from-emerald-950 via-slate-900 to-gray-900 text-white p-5 rounded-2xl mb-8 border border-emerald-500/30 shadow-lg relative overflow-hidden">
         <div className="absolute right-0 top-0 translate-x-8 -translate-y-8 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 relative z-10">
@@ -300,12 +302,12 @@ export default function CentralDatabaseClient({ initialApps }: Props) {
             <div className="flex items-center gap-2 mb-2">
               <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-emerald-500 text-gray-950 flex items-center gap-1.5 shadow-xs">
                 <span className="w-1.5 h-1.5 rounded-full bg-gray-950 animate-pulse"></span>
-                Platform Admin Mode
+                Admin Back-End
               </span>
-              <span className="text-xs text-emerald-400 font-mono">Tenant-Agnostic Knowledge Base</span>
+              <span className="text-xs text-emerald-400 font-mono">Global Master Repository</span>
             </div>
             <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight text-white">
-              Central Application Database
+              Application Repository
             </h1>
             <p className="text-xs md:text-sm text-gray-300 mt-1 max-w-3xl leading-relaxed">
               Managing <strong>{apps.length.toLocaleString()} global SaaS & mobile applications</strong>.
@@ -325,6 +327,14 @@ export default function CentralDatabaseClient({ initialApps }: Props) {
               Add Global App
             </button>
 
+            <Link
+              href="/scopes"
+              className="px-3.5 py-2 bg-emerald-800/50 hover:bg-emerald-800/80 text-emerald-200 text-xs font-semibold rounded-xl border border-emerald-500/40 transition-all flex items-center gap-1.5"
+            >
+              <span>🗂️</span>
+              <span>Services & Scopes</span>
+            </Link>
+
             <button
               onClick={handleExportCSV}
               className="px-3.5 py-2 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold rounded-xl border border-white/20 transition-all flex items-center gap-1.5"
@@ -340,7 +350,7 @@ export default function CentralDatabaseClient({ initialApps }: Props) {
               className="px-3.5 py-2 bg-blue-600/30 hover:bg-blue-600/50 text-blue-300 text-xs font-semibold rounded-xl border border-blue-400/30 transition-all flex items-center gap-1.5"
             >
               <span>🏢</span>
-              <span>Client View (gafe.co.za)</span>
+              <span>Client Workspace (gafe.co.za)</span>
             </Link>
           </div>
         </div>
@@ -360,57 +370,69 @@ export default function CentralDatabaseClient({ initialApps }: Props) {
           <div className="text-xs font-semibold uppercase text-gray-400">Google Verified Apps</div>
           <div className="text-2xl font-bold text-blue-600 mt-1">{metrics.verified.toLocaleString()}</div>
           <div className="text-xs text-gray-500 mt-1">
-            {((metrics.verified / metrics.total) * 100).toFixed(1)}% of total catalog
+            {((metrics.verified / metrics.total) * 100).toFixed(1)}% marketplace certified
           </div>
         </div>
 
         <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-xs">
-          <div className="text-xs font-semibold uppercase text-gray-400">Active in gafe.co.za</div>
-          <div className="text-2xl font-bold text-indigo-600 mt-1">{metrics.installedInTenant.toLocaleString()}</div>
-          <div className="text-xs text-gray-500 mt-1">Apps authorized by domain users</div>
+          <div className="text-xs font-semibold uppercase text-gray-400">Enterprise Compliant</div>
+          <div className="text-2xl font-bold text-emerald-600 mt-1">{metrics.compliant.toLocaleString()}</div>
+          <div className="text-xs text-gray-500 mt-1">SOC 2, ISO 27001, GDPR audited</div>
         </div>
 
         <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-xs">
-          <div className="text-xs font-semibold uppercase text-gray-400">Pre-Vetted Global Catalog</div>
-          <div className="text-2xl font-bold text-purple-600 mt-1">{metrics.catalogOnly.toLocaleString()}</div>
-          <div className="text-xs text-gray-500 mt-1">Available for zero-trust evaluation</div>
+          <div className="text-xs font-semibold uppercase text-gray-400">High & Critical Threat</div>
+          <div className="text-2xl font-bold text-rose-600 mt-1">{metrics.highCritical.toLocaleString()}</div>
+          <div className="text-xs text-gray-500 mt-1">Global risk matrix assessment</div>
         </div>
       </div>
 
       {/* Controls & Filter Bar */}
       <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-xs mb-6 space-y-4">
         {/* Scope Tabs */}
-        <div className="flex border-b border-gray-200">
+        <div className="flex border-b border-gray-200 overflow-x-auto">
           <button
-            onClick={() => { setTenantScopeFilter("ALL"); setCurrentPage(1); }}
-            className={`pb-2.5 px-4 text-xs font-bold border-b-2 transition-colors ${
-              tenantScopeFilter === "ALL"
+            onClick={() => { setCatalogFilter("ALL"); setCurrentPage(1); }}
+            className={`pb-2.5 px-4 text-xs font-bold border-b-2 transition-colors whitespace-nowrap ${
+              catalogFilter === "ALL"
                 ? "border-emerald-600 text-emerald-700"
                 : "border-transparent text-gray-500 hover:text-gray-700"
             }`}
           >
-            All Global Applications ({metrics.total.toLocaleString()})
+            All Applications ({metrics.total.toLocaleString()})
           </button>
           <button
-            onClick={() => { setTenantScopeFilter("INSTALLED"); setCurrentPage(1); }}
-            className={`pb-2.5 px-4 text-xs font-bold border-b-2 transition-colors flex items-center gap-1.5 ${
-              tenantScopeFilter === "INSTALLED"
+            onClick={() => { setCatalogFilter("VERIFIED"); setCurrentPage(1); }}
+            className={`pb-2.5 px-4 text-xs font-bold border-b-2 transition-colors flex items-center gap-1.5 whitespace-nowrap ${
+              catalogFilter === "VERIFIED"
                 ? "border-blue-600 text-blue-700"
                 : "border-transparent text-gray-500 hover:text-gray-700"
             }`}
           >
             <span className="w-2 h-2 rounded-full bg-blue-500"></span>
-            Active in gafe.co.za ({metrics.installedInTenant})
+            Google Verified ({metrics.verified.toLocaleString()})
           </button>
           <button
-            onClick={() => { setTenantScopeFilter("CATALOG_ONLY"); setCurrentPage(1); }}
-            className={`pb-2.5 px-4 text-xs font-bold border-b-2 transition-colors ${
-              tenantScopeFilter === "CATALOG_ONLY"
-                ? "border-purple-600 text-purple-700"
+            onClick={() => { setCatalogFilter("COMPLIANT"); setCurrentPage(1); }}
+            className={`pb-2.5 px-4 text-xs font-bold border-b-2 transition-colors flex items-center gap-1.5 whitespace-nowrap ${
+              catalogFilter === "COMPLIANT"
+                ? "border-emerald-600 text-emerald-700"
                 : "border-transparent text-gray-500 hover:text-gray-700"
             }`}
           >
-            Catalog Only ({metrics.catalogOnly.toLocaleString()})
+            <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+            Enterprise Compliant ({metrics.compliant.toLocaleString()})
+          </button>
+          <button
+            onClick={() => { setCatalogFilter("HIGH_RISK"); setCurrentPage(1); }}
+            className={`pb-2.5 px-4 text-xs font-bold border-b-2 transition-colors flex items-center gap-1.5 whitespace-nowrap ${
+              catalogFilter === "HIGH_RISK"
+                ? "border-rose-600 text-rose-700"
+                : "border-transparent text-gray-500 hover:text-gray-700"
+            }`}
+          >
+            <span className="w-2 h-2 rounded-full bg-rose-500"></span>
+            High & Critical Risk ({metrics.highCritical.toLocaleString()})
           </button>
         </div>
 
@@ -514,7 +536,7 @@ export default function CentralDatabaseClient({ initialApps }: Props) {
             {searchTerm && ` for "${searchTerm}"`}
           </div>
 
-          {(searchTerm || selectedCategory !== "ALL" || selectedRisk !== "ALL" || selectedType !== "ALL" || selectedVerified !== "ALL" || tenantScopeFilter !== "ALL") && (
+          {(searchTerm || selectedCategory !== "ALL" || selectedRisk !== "ALL" || selectedType !== "ALL" || selectedVerified !== "ALL" || catalogFilter !== "ALL") && (
             <button
               onClick={() => {
                 setSearchTerm("");
@@ -522,7 +544,7 @@ export default function CentralDatabaseClient({ initialApps }: Props) {
                 setSelectedRisk("ALL");
                 setSelectedType("ALL");
                 setSelectedVerified("ALL");
-                setTenantScopeFilter("ALL");
+                setCatalogFilter("ALL");
                 setCurrentPage(1);
               }}
               className="text-emerald-600 hover:text-emerald-800 font-medium hover:underline"
@@ -543,7 +565,7 @@ export default function CentralDatabaseClient({ initialApps }: Props) {
                 <th className="py-3 px-4">Vendor & Domain</th>
                 <th className="py-3 px-4">Category</th>
                 <th className="py-3 px-4">Type</th>
-                <th className="py-3 px-4">Tenant Status</th>
+                <th className="py-3 px-4">Verification & Compliance</th>
                 <th className="py-3 px-4">Risk Level</th>
                 <th className="py-3 px-4 text-right">Actions</th>
               </tr>
@@ -628,18 +650,32 @@ export default function CentralDatabaseClient({ initialApps }: Props) {
                         </span>
                       </td>
 
-                      {/* Tenant Status */}
+                      {/* Verification & Compliance */}
                       <td className="py-3 px-4">
-                        {isInstalledInTenant ? (
-                          <span className="inline-flex items-center gap-1 text-xs font-semibold text-blue-700 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded-full">
-                            <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
-                            {app.totalUsersCount || app.users?.length || 1} User{((app.totalUsersCount || app.users?.length || 1) > 1) ? 's' : ''} (gafe.co.za)
-                          </span>
-                        ) : (
-                          <span className="inline-flex items-center text-xs text-gray-400 bg-gray-50 border border-gray-200 px-2 py-0.5 rounded-full">
-                            Catalog Only
-                          </span>
-                        )}
+                        <div className="flex flex-wrap items-center gap-1.5 max-w-[220px]">
+                          {app.isVerified ? (
+                            <span className="inline-flex items-center gap-1 text-[11px] font-bold text-blue-700 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded-full">
+                              <svg className="w-3 h-3 text-blue-600 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                              </svg>
+                              Verified
+                            </span>
+                          ) : (
+                            <span className="inline-flex items-center text-[11px] text-gray-500 bg-gray-50 border border-gray-200 px-2 py-0.5 rounded-full">
+                              Unverified
+                            </span>
+                          )}
+                          {app.compliance && (Array.isArray(app.compliance) ? app.compliance.length > 0 : Boolean(app.compliance)) && (
+                            <span className="inline-flex items-center text-[10px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded">
+                              {Array.isArray(app.compliance) ? app.compliance[0] : String(app.compliance).split(",")[0]}
+                            </span>
+                          )}
+                          {app.dataHosting && (
+                            <span className="text-[10px] text-gray-400 font-mono">
+                              {app.dataHosting}
+                            </span>
+                          )}
+                        </div>
                       </td>
 
                       {/* Risk Level */}
