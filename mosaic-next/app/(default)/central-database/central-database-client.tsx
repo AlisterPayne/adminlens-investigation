@@ -293,66 +293,43 @@ export default function CentralDatabaseClient({ initialApps }: Props) {
         </div>
       )}
 
-      {/* Admin Mode Distinction Banner */}
-      <div className="bg-gradient-to-r from-emerald-950 via-slate-900 to-gray-900 text-white p-5 rounded-2xl mb-8 border border-emerald-500/30 shadow-lg relative overflow-hidden">
-        <div className="absolute right-0 top-0 translate-x-8 -translate-y-8 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 relative z-10">
-          <div>
-            <div className="flex items-center gap-2 mb-2">
-              <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-emerald-500 text-gray-950 flex items-center gap-1.5 shadow-xs">
-                <span className="w-1.5 h-1.5 rounded-full bg-gray-950 animate-pulse"></span>
-                Admin Back-End
-              </span>
-              <span className="text-xs text-emerald-400 font-mono">Global Master Repository</span>
-            </div>
-            <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight text-white">
-              Application Repository
-            </h1>
-            <p className="text-xs md:text-sm text-gray-300 mt-1 max-w-3xl leading-relaxed">
-              Managing <strong>{apps.length.toLocaleString()} global SaaS & mobile applications</strong>.
-              This database serves as the master catalog across all tenants. Modifications here curate global software vendor profiles, compliance benchmarks, and threat levels without modifying private client workspace data.
-            </p>
+      {/* Page Header */}
+      <div className="sm:flex sm:justify-between sm:items-center mb-6">
+        {/* Left: Title & Breadcrumb */}
+        <div className="mb-4 sm:mb-0">
+          <div className="flex items-center gap-2 text-xs text-gray-500 font-medium mb-1">
+            <span className="text-emerald-700 font-semibold flex items-center gap-1">
+              <span>⚙️</span> Admin Back-End
+            </span>
+            <span>/</span>
+            <span className="text-gray-800 font-semibold">Application Repository</span>
           </div>
+          <h1 className="text-2xl md:text-3xl text-gray-800 font-bold">
+            Application Repository
+          </h1>
+        </div>
 
-          {/* Action Buttons */}
-          <div className="flex flex-wrap items-center gap-2.5 shrink-0">
-            <button
-              onClick={handleOpenAdd}
-              className="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-gray-950 text-xs font-bold rounded-xl shadow-md transition-all flex items-center gap-1.5"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 4v16m8-8H4" />
-              </svg>
-              Add Global App
-            </button>
+        {/* Right: Actions */}
+        <div className="flex items-center gap-2">
+          <button
+            onClick={handleOpenAdd}
+            className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold px-3.5 py-2 rounded-lg transition-colors flex items-center gap-1.5 shadow-2xs"
+          >
+            <svg className="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 16 16">
+              <path d="M15 7H9V1c0-.6-.4-1-1-1S7 .4 7 1v6H1c-.6 0-1 .4-1 1s.4 1 1 1h6v6c0 .6.4 1 1 1s1-.4 1-1V9h6c.6 0 1-.4 1-1s-.4-1-1-1z" />
+            </svg>
+            <span>Add Global App</span>
+          </button>
 
-            <Link
-              href="/scopes"
-              className="px-3.5 py-2 bg-emerald-800/50 hover:bg-emerald-800/80 text-emerald-200 text-xs font-semibold rounded-xl border border-emerald-500/40 transition-all flex items-center gap-1.5"
-            >
-              <span>🗂️</span>
-              <span>Services & Scopes</span>
-            </Link>
-
-            <button
-              onClick={handleExportCSV}
-              className="px-3.5 py-2 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold rounded-xl border border-white/20 transition-all flex items-center gap-1.5"
-            >
-              <svg className="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-              </svg>
-              Export CSV
-            </button>
-
-            <Link
-              href="/dashboard"
-              className="px-3.5 py-2 bg-blue-600/30 hover:bg-blue-600/50 text-blue-300 text-xs font-semibold rounded-xl border border-blue-400/30 transition-all flex items-center gap-1.5"
-            >
-              <span>🏢</span>
-              <span>Client Workspace (gafe.co.za)</span>
-            </Link>
-          </div>
+          <button
+            onClick={handleExportCSV}
+            className="bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 text-xs font-semibold px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 shadow-2xs"
+          >
+            <svg className="w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            <span>Export CSV</span>
+          </button>
         </div>
       </div>
 
