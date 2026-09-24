@@ -33,10 +33,10 @@ export default function ScopesPage() {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2 text-xs text-gray-500 font-medium">
           <span className="text-emerald-700 font-semibold flex items-center gap-1">
-            <span>⚙️</span> Admin Back-End
+            <span>⚙️</span> Admin Backend
           </span>
           <span>/</span>
-          <span className="text-gray-800 font-semibold">Services & Scopes</span>
+          <span className="text-gray-800 font-semibold">Services and Scopes</span>
         </div>
         <div className="flex items-center gap-2">
           <Link

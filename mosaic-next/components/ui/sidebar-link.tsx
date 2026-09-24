@@ -6,9 +6,10 @@ import { useAppProvider } from "@/app/app-provider";
 interface SidebarLinkProps {
   children: React.ReactNode;
   href: string;
+  onClick?: () => void;
 }
 
-export default function SidebarLink({ children, href }: SidebarLinkProps) {
+export default function SidebarLink({ children, href, onClick }: SidebarLinkProps) {
   const pathname = usePathname();
   const { setSidebarOpen } = useAppProvider();
 
@@ -16,7 +17,10 @@ export default function SidebarLink({ children, href }: SidebarLinkProps) {
     <Link
       className={`block truncate text-gray-800 transition dark:text-gray-100 ${pathname === href ? "group-[.is-link-group]:text-violet-500" : "group-[.is-link-group]:text-gray-500/90 hover:text-gray-900 hover:group-[.is-link-group]:text-gray-700 dark:group-[.is-link-group]:text-gray-400 dark:hover:text-white dark:hover:group-[.is-link-group]:text-gray-200"}`}
       href={href}
-      onClick={() => setSidebarOpen(false)}
+      onClick={() => {
+        setSidebarOpen(false);
+        if (onClick) onClick();
+      }}
     >
       {children}
     </Link>

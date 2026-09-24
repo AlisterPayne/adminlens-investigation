@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Header from "@/components/ui/header";
 import Sidebar from "@/components/ui/sidebar";
 
@@ -5,7 +6,9 @@ export default function DefaultLayout({ children }: { children: React.ReactNode 
   return (
     <div className="flex h-[100dvh] overflow-hidden">
       {/* Sidebar */}
-      <Sidebar />
+      <Suspense fallback={null}>
+        <Sidebar />
+      </Suspense>
 
       {/* Content area */}
       <div className="relative flex flex-1 flex-col overflow-x-hidden overflow-y-auto">

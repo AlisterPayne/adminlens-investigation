@@ -299,7 +299,7 @@ export default function CentralDatabaseClient({ initialApps }: Props) {
         <div className="mb-4 sm:mb-0">
           <div className="flex items-center gap-2 text-xs text-gray-500 font-medium mb-1">
             <span className="text-emerald-700 font-semibold flex items-center gap-1">
-              <span>⚙️</span> Admin Back-End
+              <span>⚙️</span> Admin Backend
             </span>
             <span>/</span>
             <span className="text-gray-800 font-semibold">Application Repository</span>

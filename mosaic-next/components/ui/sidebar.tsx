@@ -1,7 +1,7 @@
 "use client";
 
 import { useSelectedLayoutSegments } from "next/navigation";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { useAppProvider } from "@/app/app-provider";
 import { useWindowWidth } from "@/components/utils/use-window-width";
@@ -13,6 +13,35 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
   const sidebar = useRef<HTMLDivElement>(null);
   const { sidebarOpen, setSidebarOpen, sidebarExpanded, setSidebarExpanded } = useAppProvider();
   const segments = useSelectedLayoutSegments();
+  const [currentTab, setCurrentTab] = useState("apps");
+
+  useEffect(() => {
+    const syncTab = () => {
+      if (typeof window !== "undefined") {
+        const params = new URLSearchParams(window.location.search);
+        setCurrentTab(params.get("tab") || "apps");
+      }
+    };
+    syncTab();
+
+    window.addEventListener("popstate", syncTab);
+    return () => {
+      window.removeEventListener("popstate", syncTab);
+    };
+  }, [segments]);
+
+  const isClientWorkspace =
+    (segments.length === 0 || segments.includes("dashboard")) &&
+    !segments.includes("scopes") &&
+    !segments.includes("central-database");
+
+  const isApplicationsActive =
+    isClientWorkspace && (currentTab === "apps" || currentTab === "dashboard");
+  const isClientScopesActive = isClientWorkspace && currentTab === "scopes";
+  const isClientRecsActive = isClientWorkspace && currentTab === "recs";
+
+  const isAdminScopesActive = segments.includes("scopes");
+  const isAdminRepoActive = segments.includes("central-database");
   const breakpoint = useWindowWidth();
   const expandOnly = !sidebarExpanded && breakpoint && breakpoint >= 1024 && breakpoint < 1536;
 
@@ -75,10 +104,10 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
 
         {/* Links */}
         <div className="space-y-6">
-          {/* Section 1: Client Workspace Telemetry */}
+          {/* Section 1: Client Workspace */}
           <div>
             <div className="flex items-center justify-between pl-3 pr-2 mb-2">
-              <h3 className="text-xs uppercase text-gray-400 font-semibold tracking-wider">
+              <h3 className="text-xs uppercase text-gray-500 font-bold tracking-wider">
                 <span className="hidden lg:block lg:sidebar-expanded:hidden 2xl:hidden text-center">•••</span>
                 <span className="lg:hidden lg:sidebar-expanded:block 2xl:block">Client Workspace</span>
               </h3>
@@ -86,23 +115,52 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
                 gafe.co.za
               </span>
             </div>
-            <ul className="space-y-1.5">
+            <ul className="space-y-1">
               
-              {/* Tenant Applications & Activity */}
-              <li className={`px-3 py-2 rounded-lg transition-colors ${(segments.includes("dashboard") || segments.length === 0) && !segments.includes("scopes") && !segments.includes("central-database") ? "bg-blue-50 text-blue-700 font-semibold" : "hover:bg-gray-100 text-gray-700"}`}>
-                <SidebarLink href="/dashboard">
+              {/* Applications */}
+              <li className={`px-2.5 py-2 rounded-lg transition-colors ${isApplicationsActive ? "bg-blue-50 text-blue-700 font-semibold" : "hover:bg-gray-100 text-gray-700"}`}>
+                <SidebarLink href="/dashboard?tab=apps" onClick={() => setCurrentTab("apps")}>
                   <div className="flex items-center justify-between w-full">
                     <div className="flex items-center">
-                      <svg className={`shrink-0 h-5 w-5 ${segments.includes("dashboard") ? "text-blue-600" : "text-gray-500"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                      <svg className={`shrink-0 h-4.5 w-4.5 ${isApplicationsActive ? "text-blue-600" : "text-gray-500"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
                       </svg>
-                      <span className="text-sm ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                        Tenant Applications
+                      <span className="text-sm ml-2.5 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                        Applications
                       </span>
                     </div>
-                    <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-100 text-blue-800 border border-blue-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
-                      Activity
-                    </span>
+                  </div>
+                </SidebarLink>
+              </li>
+
+              {/* Services and Scopes */}
+              <li className={`px-2.5 py-2 rounded-lg transition-colors ${isClientScopesActive ? "bg-blue-50 text-blue-700 font-semibold" : "hover:bg-gray-100 text-gray-700"}`}>
+                <SidebarLink href="/dashboard?tab=scopes" onClick={() => setCurrentTab("scopes")}>
+                  <div className="flex items-center justify-between w-full">
+                    <div className="flex items-center">
+                      <svg className={`shrink-0 h-4.5 w-4.5 ${isClientScopesActive ? "text-blue-600" : "text-gray-500"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+                      </svg>
+                      <span className="text-sm ml-2.5 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                        Services and Scopes
+                      </span>
+                    </div>
+                  </div>
+                </SidebarLink>
+              </li>
+
+              {/* Policy Recommendation */}
+              <li className={`px-2.5 py-2 rounded-lg transition-colors ${isClientRecsActive ? "bg-blue-50 text-blue-700 font-semibold" : "hover:bg-gray-100 text-gray-700"}`}>
+                <SidebarLink href="/dashboard?tab=recs" onClick={() => setCurrentTab("recs")}>
+                  <div className="flex items-center justify-between w-full">
+                    <div className="flex items-center">
+                      <svg className={`shrink-0 h-4.5 w-4.5 ${isClientRecsActive ? "text-blue-600" : "text-gray-500"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                      </svg>
+                      <span className="text-sm ml-2.5 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                        Policy Recommendation
+                      </span>
+                    </div>
                   </div>
                 </SidebarLink>
               </li>
@@ -110,12 +168,12 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
             </ul>
           </div>
 
-          {/* Section 2: Admin Back-End (Global Master Database) */}
+          {/* Section 2: Admin Backend */}
           <div className="pt-2 border-t border-gray-200">
             <div className="flex items-center justify-between pl-3 pr-2 mb-2">
               <h3 className="text-xs uppercase text-emerald-800 font-bold tracking-wider">
                 <span className="hidden lg:block lg:sidebar-expanded:hidden 2xl:hidden text-center">⚙️</span>
-                <span className="lg:hidden lg:sidebar-expanded:block 2xl:block">Admin Back-End</span>
+                <span className="lg:hidden lg:sidebar-expanded:block 2xl:block">Admin Backend</span>
               </h3>
               <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-300 lg:hidden lg:sidebar-expanded:block 2xl:block">
                 Global DB
@@ -125,16 +183,16 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
             {/* Standalone Sub-menu Group */}
             <ul className="space-y-1 bg-emerald-50/40 p-1 rounded-xl border border-emerald-100/80">
 
-              {/* Sub-menu 1: Services & Scopes */}
-              <li className={`px-2.5 py-2 rounded-lg transition-colors ${segments.includes("scopes") ? "bg-white text-emerald-900 font-bold shadow-xs border border-emerald-200" : "hover:bg-white/80 text-gray-700"}`}>
+              {/* Sub-menu 1: Services and Scopes */}
+              <li className={`px-2.5 py-2 rounded-lg transition-colors ${isAdminScopesActive ? "bg-white text-emerald-900 font-bold shadow-xs border border-emerald-200" : "hover:bg-white/80 text-gray-700"}`}>
                 <SidebarLink href="/scopes">
                   <div className="flex items-center justify-between w-full">
                     <div className="flex items-center">
-                      <svg className={`shrink-0 h-4.5 w-4.5 ${segments.includes("scopes") ? "text-emerald-700" : "text-emerald-600"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className={`shrink-0 h-4.5 w-4.5 ${isAdminScopesActive ? "text-emerald-700" : "text-emerald-600"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                       </svg>
                       <span className="text-sm ml-2.5 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                        Services & Scopes
+                        Services and Scopes
                       </span>
                     </div>
                     <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
@@ -145,11 +203,11 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
               </li>
 
               {/* Sub-menu 2: Application Repository */}
-              <li className={`px-2.5 py-2 rounded-lg transition-colors ${segments.includes("central-database") ? "bg-white text-emerald-900 font-bold shadow-xs border border-emerald-200" : "hover:bg-white/80 text-gray-700"}`}>
+              <li className={`px-2.5 py-2 rounded-lg transition-colors ${isAdminRepoActive ? "bg-white text-emerald-900 font-bold shadow-xs border border-emerald-200" : "hover:bg-white/80 text-gray-700"}`}>
                 <SidebarLink href="/central-database">
                   <div className="flex items-center justify-between w-full">
                     <div className="flex items-center">
-                      <svg className={`shrink-0 h-4.5 w-4.5 ${segments.includes("central-database") ? "text-emerald-700" : "text-emerald-600"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className={`shrink-0 h-4.5 w-4.5 ${isAdminRepoActive ? "text-emerald-700" : "text-emerald-600"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
                       </svg>
                       <span className="text-sm ml-2.5 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">

@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import React, { useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import React, { useEffect, useMemo, useState } from "react";
 
 import {
   GmailIcon,
@@ -230,7 +231,26 @@ export default function OAuthDashboardClient({
 }) {
   const [currentApps, setCurrentApps] = useState<Application[]>(initialApps);
   const [currentMetrics, setCurrentMetrics] = useState<Metrics>(metrics);
-  const [activeTab, setActiveTab] = useState<"dashboard" | "apps" | "recs" | "scopes">("dashboard");
+  const [activeTab, setActiveTab] = useState<"dashboard" | "apps" | "recs" | "scopes">("apps");
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    if (searchParams) {
+      const tabParam = searchParams.get("tab");
+      if (tabParam === "apps" || tabParam === "recs" || tabParam === "scopes" || tabParam === "dashboard") {
+        setActiveTab(tabParam);
+      }
+    }
+  }, [searchParams]);
+
+  const handleTabChange = (tab: "dashboard" | "apps" | "recs" | "scopes") => {
+    setActiveTab(tab);
+    if (typeof window !== "undefined") {
+      const url = new URL(window.location.href);
+      url.searchParams.set("tab", tab);
+      window.history.pushState({}, "", url.toString());
+    }
+  };
   const [search, setSearch] = useState("");
   const [riskFilter, setRiskFilter] = useState("ALL");
   const [policyFilter, setPolicyFilter] = useState("ALL");
@@ -685,71 +705,45 @@ export default function OAuthDashboardClient({
     <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto space-y-6">
       
       {/* Top Header Banner */}
-      <div className="sm:flex sm:justify-between sm:items-center bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+      <div className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
+          <div className="flex items-center gap-2 text-xs text-gray-500 font-medium mb-1.5">
+            <span className="text-blue-700 font-semibold">Client Workspace</span>
+            <span>/</span>
+            <span className="text-gray-800 font-semibold">
+              {activeTab === "scopes"
+                ? "Services and Scopes"
+                : activeTab === "recs"
+                ? "Policy Recommendation"
+                : activeTab === "dashboard"
+                ? "Overview"
+                : "Applications"}
+            </span>
+          </div>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white font-bold shadow-md shadow-blue-500/20">
+            <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white font-bold shadow-md shadow-blue-500/20 shrink-0">
               AL
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="text-2xl font-bold text-gray-900">Tenant Applications & Activity</h1>
+                <h1 className="text-2xl font-bold text-gray-900">
+                  {activeTab === "scopes"
+                    ? "Services and Scopes"
+                    : activeTab === "recs"
+                    ? "Policy Recommendation"
+                    : activeTab === "dashboard"
+                    ? "Workspace Overview"
+                    : "Applications"}
+                </h1>
                 <span className="bg-blue-50 text-blue-700 border border-blue-200 text-xs font-semibold px-2.5 py-0.5 rounded-full">
-                  Client Workspace
+                  gafe.co.za
                 </span>
               </div>
               <p className="text-xs text-gray-500 mt-0.5">
-                Workspace Domain: <span className="font-mono font-semibold text-gray-700">gafe.co.za</span> • Super Admin: <span className="font-mono text-gray-700">alister@gafe.co.za</span> • Real-time user consumption & policy state
+                Target Workspace: <span className="font-mono font-semibold text-gray-700">gafe.co.za</span> • Super Admin: <span className="font-mono text-gray-700">alister@gafe.co.za</span>
               </p>
             </div>
           </div>
-
-          {/* Quick link to Admin Back-End */}
-          <div className="hidden lg:flex items-center gap-2">
-            <Link
-              href="/central-database"
-              className="px-3.5 py-1.5 text-xs font-semibold rounded-lg text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 transition-colors flex items-center gap-1.5 shadow-2xs"
-            >
-              <span>⚙️</span>
-              <span>Admin Back-End →</span>
-            </Link>
-          </div>
-        </div>
-
-        {/* Tab Switcher */}
-        <div className="mt-4 sm:mt-0 flex items-center bg-gray-100 p-1 rounded-lg border border-gray-200 overflow-x-auto">
-          <button
-            onClick={() => setActiveTab("dashboard")}
-            className={`px-4 py-2 text-xs font-semibold rounded-md transition-colors flex items-center gap-1.5 whitespace-nowrap ${
-              activeTab === "dashboard" ? "bg-white text-blue-600 shadow-sm" : "text-gray-600 hover:text-gray-900"
-            }`}
-          >
-            📊 Activity Overview
-          </button>
-          <button
-            onClick={() => setActiveTab("apps")}
-            className={`px-4 py-2 text-xs font-semibold rounded-md transition-colors flex items-center gap-1.5 whitespace-nowrap ${
-              activeTab === "apps" ? "bg-white text-blue-600 shadow-sm" : "text-gray-600 hover:text-gray-900"
-            }`}
-          >
-            📑 Applications & Users ({initialApps.length})
-          </button>
-          <button
-            onClick={() => setActiveTab("recs")}
-            className={`px-4 py-2 text-xs font-semibold rounded-md transition-colors flex items-center gap-1.5 whitespace-nowrap ${
-              activeTab === "recs" ? "bg-white text-blue-600 shadow-sm" : "text-gray-600 hover:text-gray-900"
-            }`}
-          >
-            🚨 Policy Recommendations ({initialRecs.playbooks?.length ? `${initialRecs.playbooks.length} Campaigns` : (initialRecs.totalFindings || 102)})
-          </button>
-          <Link
-            href="/scopes"
-            className="px-3 py-1.5 text-xs font-medium text-emerald-800 hover:text-emerald-950 hover:bg-white/60 rounded-md transition-colors flex items-center gap-1 whitespace-nowrap ml-1"
-            title="Open Services & Scopes in Admin Back-End"
-          >
-            <span>🛡️</span>
-            <span>Services & Scopes (Admin) ↗</span>
-          </Link>
         </div>
       </div>
 
