@@ -444,8 +444,6 @@ export default function ScopeMatrixView({
   const [tierFilter, setTierFilter] = useState("ALL");
   const [scoreFilter, setScoreFilter] = useState("ALL");
   const [activeOnly, setActiveOnly] = useState(false);
-  const [copiedScope, setCopiedScope] = useState<string | null>(null);
-  const [showInfoBanner, setShowInfoBanner] = useState(false);
   const [inspectingApp, setInspectingApp] = useState<any | null>(null);
   const [collapsedServices, setCollapsedServices] = useState<Set<string>>(new Set());
 
@@ -468,13 +466,13 @@ export default function ScopeMatrixView({
   };
 
   // Derive distinct services if not provided
-  // Pre-index apps by scope URL (only in client mode)
+  // Pre-index apps by scope URL
   const appsByScope = useMemo(() => {
     const map = new Map<string, ScopeAppInfo[]>();
-    if (!isBackend && apps && apps.length > 0) {
+    if (apps && apps.length > 0) {
       for (const app of apps) {
         for (const s of (app.scopes || [])) {
-          const url = s.scope || s.scope_url;
+          const url = typeof s === "string" ? s : (s.scope || s.scope_url);
           if (!url) continue;
           if (!map.has(url)) map.set(url, []);
           map.get(url)!.push({
@@ -495,12 +493,10 @@ export default function ScopeMatrixView({
       }
     }
     return map;
-  }, [apps, isBackend]);
+  }, [apps]);
 
-  // Compute active unique apps count per Google Service (zero in backend mode)
+  // Compute applications count per Google Service strictly from workspace apps
   const serviceActiveAppCounts = useMemo(() => {
-    if (isBackend) return new Map<string, number>();
-
     const serviceMap = new Map<string, Set<string>>();
     scopes.forEach((s) => {
       if (!serviceMap.has(s.service_name)) {
@@ -509,9 +505,6 @@ export default function ScopeMatrixView({
       const set = serviceMap.get(s.service_name)!;
       const appList = appsByScope.get(s.scope_url) || [];
       appList.forEach((a) => set.add(a.id));
-      (s.active_apps || []).forEach((a) => {
-        set.add(typeof a === "string" ? a : a.id);
-      });
     });
 
     const counts = new Map<string, number>();
@@ -519,25 +512,24 @@ export default function ScopeMatrixView({
       counts.set(srv, appSet.size);
     });
     return counts;
-  }, [scopes, appsByScope, isBackend]);
+  }, [scopes, appsByScope]);
 
-  // Available Services
+  // Available Services (ranked by most scopes/APIs to least)
   const availableServices = useMemo(() => {
     const rawServices = metrics?.services && metrics.services.length > 0
       ? metrics.services
       : Array.from(new Set(scopes.map((s) => s.service_name)));
 
-    if (isBackend) {
-      return [...rawServices].sort((a, b) => a.localeCompare(b));
-    }
-
+    const scopeCountMap = new Map<string, number>();
+    scopes.forEach((s) => {
+      scopeCountMap.set(s.service_name, (scopeCountMap.get(s.service_name) || 0) + 1);
+    });
     return [...rawServices].sort((a, b) => {
-      const countA = serviceActiveAppCounts.get(a) || 0;
-      const countB = serviceActiveAppCounts.get(b) || 0;
-      if (countB !== countA) return countB - countA;
+      const countDiff = (scopeCountMap.get(b) || 0) - (scopeCountMap.get(a) || 0);
+      if (countDiff !== 0) return countDiff;
       return a.localeCompare(b);
     });
-  }, [scopes, metrics, serviceActiveAppCounts, isBackend]);
+  }, [scopes, metrics]);
 
   // Filtering
   const filteredScopes = useMemo(() => {
@@ -556,7 +548,7 @@ export default function ScopeMatrixView({
         tierFilter === "ALL" || s.google_tier === tierFilter;
       const matchesScore =
         scoreFilter === "ALL" || s.admin_score.toString() === scoreFilter;
-      const matchesActive = isBackend || !activeOnly || (s.active_apps_count || 0) > 0;
+      const matchesActive = isBackend || !activeOnly || (appsByScope.get(s.scope_url) || []).length > 0;
 
       return (
         matchesQuery &&
@@ -567,26 +559,20 @@ export default function ScopeMatrixView({
       );
     });
 
-    if (isBackend) {
-      // In backend mode, sort alphabetically by service name then scope URL
-      return result.sort((a, b) => {
-        if (a.service_name !== b.service_name) {
-          return a.service_name.localeCompare(b.service_name);
-        }
-        return a.scope_url.localeCompare(b.scope_url);
-      });
-    }
-
-    // Rank by service active applications count descending, then scope URL alphabetically
+    // Rank by service with most scopes/APIs first, then service name, then scope URL
+    const scopeCountMap = new Map<string, number>();
+    scopes.forEach((s) => {
+      scopeCountMap.set(s.service_name, (scopeCountMap.get(s.service_name) || 0) + 1);
+    });
     return result.sort((a, b) => {
-      const serviceDiff = (serviceActiveAppCounts.get(b.service_name) || 0) - (serviceActiveAppCounts.get(a.service_name) || 0);
-      if (serviceDiff !== 0) return serviceDiff;
+      const countDiff = (scopeCountMap.get(b.service_name) || 0) - (scopeCountMap.get(a.service_name) || 0);
+      if (countDiff !== 0) return countDiff;
       if (a.service_name !== b.service_name) {
         return a.service_name.localeCompare(b.service_name);
       }
       return a.scope_url.localeCompare(b.scope_url);
     });
-  }, [scopes, search, serviceFilter, tierFilter, scoreFilter, activeOnly, serviceActiveAppCounts, isBackend]);
+  }, [scopes, search, serviceFilter, tierFilter, scoreFilter, activeOnly, appsByScope, isBackend]);
 
   // Group filtered scopes by Service Name
   const groupedByService = useMemo(() => {
@@ -609,7 +595,7 @@ export default function ScopeMatrixView({
       const sensitive = items.filter((i) => i.google_tier === "Sensitive").length;
       const nonSensitive = items.filter((i) => i.google_tier === "Non-Sensitive").length;
       
-      const activeApps = isBackend ? 0 : (serviceActiveAppCounts.get(serviceName) || 0);
+      const activeApps = serviceActiveAppCounts.get(serviceName) || 0;
 
       // Scopes inside the service group are sorted alphabetically
       const sortedItems = [...items].sort((a, b) => a.scope_url.localeCompare(b.scope_url));
@@ -627,28 +613,20 @@ export default function ScopeMatrixView({
         activeApps,
       };
     }).sort((a, b) => {
-      if (isBackend) {
-        return a.serviceName.localeCompare(b.serviceName);
+      // Rank from the service that has the most APIs/scopes to the least
+      if (b.total !== a.total) {
+        return b.total - a.total;
       }
-      // Rank service with the most applications active on it to the top
-      if (b.activeApps !== a.activeApps) {
-        return b.activeApps - a.activeApps;
+      const avgDiff = parseFloat(b.avgScore) - parseFloat(a.avgScore);
+      if (Math.abs(avgDiff) > 0.001) {
+        return avgDiff;
       }
       return a.serviceName.localeCompare(b.serviceName);
     });
-  }, [filteredScopes, serviceActiveAppCounts, isBackend]);
+  }, [filteredScopes, serviceActiveAppCounts]);
 
-  // Helper to resolve apps for a given scope
+  // Helper to resolve apps for a given scope strictly from client workspace applications
   const getScopeApps = (s: ScopeReferenceItem): ScopeAppInfo[] => {
-    if (s.active_apps && s.active_apps.length > 0) {
-      if (apps && apps.length > 0) {
-        return s.active_apps.map((item) => {
-          const fullApp = apps.find((a) => a.id === item.id);
-          return fullApp ? { ...item, rawApp: fullApp } : item;
-        });
-      }
-      return s.active_apps;
-    }
     return appsByScope.get(s.scope_url) || [];
   };
 
@@ -660,12 +638,6 @@ export default function ScopeMatrixView({
     }
   };
 
-  const copyToClipboard = (url: string) => {
-    navigator.clipboard.writeText(url).then(() => {
-      setCopiedScope(url);
-      setTimeout(() => setCopiedScope(null), 1800);
-    });
-  };
 
   const getServiceIcon = (service: string, className = "w-5 h-5 flex-shrink-0") => {
     return <GoogleProductIcon service={service} className={className} />;
@@ -739,148 +711,12 @@ export default function ScopeMatrixView({
       restricted: filteredScopes.filter((s) => s.google_tier === "Restricted").length,
       sensitive: filteredScopes.filter((s) => s.google_tier === "Sensitive").length,
       nonSensitive: filteredScopes.filter((s) => s.google_tier === "Non-Sensitive").length,
-      activeInDomain: filteredScopes.filter((s) => (s.active_apps_count || 0) > 0).length,
+      activeInDomain: filteredScopes.filter((s) => (appsByScope.get(s.scope_url) || []).length > 0).length,
     };
-  }, [filteredScopes]);
+  }, [filteredScopes, appsByScope]);
 
   return (
     <div className="space-y-6">
-      {/* Header & Overview Card (Note to Developers - Kept Collapsed by Default) */}
-      {!showInfoBanner ? (
-        <div 
-          onClick={() => setShowInfoBanner(true)}
-          className="flex items-center justify-between py-1.5 px-3 bg-amber-50/50 hover:bg-amber-100/60 border border-amber-200/80 hover:border-amber-300 rounded-lg text-xs text-amber-900 cursor-pointer transition-all select-none shadow-2xs"
-          title="Click to expand Note to Developers (Internal specification, not for end users)"
-        >
-          <div className="flex items-center gap-2 flex-wrap">
-            <span className="text-[10px] text-amber-600 font-bold">▶</span>
-            <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-300 shadow-2xs">
-              <span>🛠️</span> NOTE TO DEVELOPERS
-            </span>
-            <span className="font-bold text-gray-800 text-xs">
-              Google Workspace OAuth Scope Threat Matrix Specification
-            </span>
-            <span className="text-gray-400">•</span>
-            <span className="text-[11px] text-amber-800/80 italic font-medium">Internal Reference (Not for End Users)</span>
-          </div>
-          <span className="text-[11px] text-amber-800 font-semibold hover:underline flex items-center gap-1">
-            Show developer note ▾
-          </span>
-        </div>
-      ) : (
-        <div className="bg-gradient-to-r from-amber-500/10 via-slate-50 to-white border-2 border-dashed border-amber-300 rounded-xl p-5 shadow-xs transition-all animate-fade-in">
-          {/* Note to Developers Banner */}
-          <div className="flex items-center justify-between gap-2 mb-3.5 pb-2.5 border-b border-amber-200 text-xs">
-            <div className="flex items-center gap-2 flex-wrap">
-              <span className="inline-flex items-center gap-1 text-[11px] font-extrabold px-2.5 py-0.5 rounded bg-amber-200 text-amber-900 border border-amber-400 tracking-wide shadow-2xs">
-                <span>🛠️</span> NOTE TO DEVELOPERS
-              </span>
-              <span className="text-amber-900 font-semibold text-xs">
-                Internal reference &amp; design specification — <strong>not to be included in the application to users</strong>
-              </span>
-            </div>
-            <button
-              type="button"
-              onClick={() => setShowInfoBanner(false)}
-              className="text-xs font-bold text-amber-900 hover:text-amber-950 underline px-2 py-0.5"
-            >
-              ▲ Collapse Developer Note
-            </button>
-          </div>
-
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-            <div className="space-y-1.5 flex-1 cursor-pointer select-none" onClick={() => setShowInfoBanner(false)}>
-              <div className="flex items-center gap-2.5 flex-wrap">
-                <span className="p-2 rounded-lg bg-blue-600 text-white shadow-xs text-sm">
-                  🛡️
-                </span>
-                <h2 className="text-base sm:text-lg font-bold text-gray-900 tracking-tight">
-                  Google Workspace OAuth Scope Threat Matrix
-                </h2>
-                <span className="text-xs px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200 font-semibold">
-                  Service-Grouped Risk Intelligence
-                </span>
-                <span className="text-[10px] px-2 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-300 font-bold">
-                  Internal Reference
-                </span>
-              </div>
-              <p className="text-xs text-gray-600 max-w-3xl leading-relaxed">
-                Ground-truth reference catalog of Google Workspace OAuth
-                permissions mapped to Google's official{" "}
-                <strong className="text-gray-900">API User Data Policy Tiers</strong>{" "}
-                and the <strong className="text-gray-900">Enterprise Threat Scale (1 to 5)</strong>.
-              </p>
-            </div>
-
-            <div className="flex items-center gap-2 flex-wrap flex-shrink-0">
-              <button
-                type="button"
-                onClick={() => setShowInfoBanner(false)}
-                className="px-3.5 py-2 rounded-lg bg-white hover:bg-gray-50 border border-amber-300 text-xs font-bold text-amber-900 transition-colors shadow-2xs flex items-center gap-1.5"
-              >
-                <span>▲ Hide / Collapse</span>
-              </button>
-              <a
-                href="https://support.google.com/cloud/answer/9110914"
-                target="_blank"
-                rel="noreferrer"
-                className="px-3 py-2 rounded-lg bg-white border border-gray-300 text-xs font-semibold text-gray-700 hover:text-blue-600 hover:border-blue-300 transition-colors shadow-2xs flex items-center gap-1.5"
-              >
-                <span>📄</span> Google OAuth FAQ ↗
-              </a>
-              <a
-                href="https://developers.google.com/terms/api-services-user-data-policy"
-                target="_blank"
-                rel="noreferrer"
-                className="px-3 py-2 rounded-lg bg-white border border-gray-300 text-xs font-semibold text-gray-700 hover:text-blue-600 hover:border-blue-300 transition-colors shadow-2xs flex items-center gap-1.5"
-              >
-                <span>⚖️</span> User Data Policy ↗
-              </a>
-            </div>
-          </div>
-
-          {/* Scope Classification Legend Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-5 pt-4 border-t border-blue-200/80 text-xs">
-            <div className="flex items-start gap-2.5 p-3 rounded-lg bg-red-50/70 border border-red-200">
-              <span className="w-2 h-2 rounded-full bg-red-500 mt-1 flex-shrink-0"></span>
-              <div>
-                <span className="font-bold text-red-900">
-                  Restricted Scopes (Google Tier)
-                </span>
-                <p className="text-red-700/80 text-[11px] mt-0.5 leading-snug">
-                  Scores 4 or 5. Requires mandatory annual CASA Tier 2 independent audits
-                  ($3k–$15k/yr). Full mailbox or cloud drive control.
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start gap-2.5 p-3 rounded-lg bg-amber-50/70 border border-amber-200">
-              <span className="w-2 h-2 rounded-full bg-amber-500 mt-1 flex-shrink-0"></span>
-              <div>
-                <span className="font-bold text-amber-900">
-                  Sensitive Scopes (Google Tier)
-                </span>
-                <p className="text-amber-700/80 text-[11px] mt-0.5 leading-snug">
-                  Scores 2, 3, or 4. Accesses private personal/corporate data (calendars, contacts,
-                  drive.file). Requires Google Trust & Safety verification.
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start gap-2.5 p-3 rounded-lg bg-blue-50/70 border border-blue-200">
-              <span className="w-2 h-2 rounded-full bg-blue-500 mt-1 flex-shrink-0"></span>
-              <div>
-                <span className="font-bold text-blue-900">
-                  Non-Sensitive Scopes (Google Tier)
-                </span>
-                <p className="text-blue-700/80 text-[11px] mt-0.5 leading-snug">
-                  Scores 1 or 2. Basic identity (openid, email, profile) or read-only operational
-                  metadata with minimal exfiltration surface.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* KPI Cards (Non-clickable stat displays) */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {/* All Scopes */}
@@ -953,7 +789,10 @@ export default function ScopeMatrixView({
                   : "text-gray-600 hover:text-gray-900"
               }`}
             >
-              <span>📋</span> List View
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+              <span>List View</span>
             </button>
           </div>
 
@@ -1069,7 +908,7 @@ export default function ScopeMatrixView({
               <span>Showing <strong className="text-gray-900">{groupedByService.length}</strong> Google Services</span>
               <span>•</span>
               <span className="text-gray-500">
-                {isBackend ? "Master Google Workspace OAuth Catalog" : "Ranked by active tenant applications"}
+                Ranked by accessing applications &amp; average threat score
               </span>
             </div>
             <div className="flex items-center gap-2 self-end sm:self-auto">
@@ -1131,20 +970,17 @@ export default function ScopeMatrixView({
                           <span className={`text-xs px-2.5 py-0.5 rounded-full font-bold border ${isBackend ? "bg-emerald-50 text-emerald-800 border-emerald-200" : "bg-gray-100 text-gray-700 border-gray-200"}`}>
                             {grp.total} Scope{grp.total > 1 ? "s" : ""}
                           </span>
-                          {!isBackend && (
+                          {!isBackend && grp.activeApps > 0 && (
                             <span
-                              className={`text-xs px-2.5 py-0.5 rounded-full font-bold border ${
-                                grp.activeApps > 0
-                                  ? "bg-blue-50 text-blue-700 border-blue-200"
-                                  : "bg-gray-50 text-gray-400 border-gray-200"
-                              }`}
+                              className="text-xs px-2.5 py-0.5 rounded-full font-bold border bg-blue-50 text-blue-700 border-blue-200"
+                              title={`${grp.activeApps} applications currently request or access permissions in ${grp.serviceName}`}
                             >
-                              {grp.activeApps} Active App{grp.activeApps === 1 ? "" : "s"}
+                              {grp.activeApps} Accessing App{grp.activeApps === 1 ? "" : "s"}
                             </span>
                           )}
                         </div>
                         <p className="text-xs text-gray-500 mt-0.5 max-w-xl">
-                          Google Workspace {grp.serviceName} Service
+                          {grp.serviceName.includes("Google") ? grp.serviceName : `Google Workspace ${grp.serviceName}`} Service
                         </p>
                       </div>
                     </div>
@@ -1198,7 +1034,8 @@ export default function ScopeMatrixView({
                         </thead>
                         <tbody className="divide-y divide-gray-100">
                           {grp.items.map((s) => {
-                            const isActive = !isBackend && (s.active_apps_count || 0) > 0;
+                            const tenantApps = getScopeApps(s);
+                            const isActive = !isBackend && tenantApps.length > 0;
                             return (
                               <tr
                                 key={s.scope_url}
@@ -1206,22 +1043,9 @@ export default function ScopeMatrixView({
                               >
                                 {/* Scope URI */}
                                 <td className="py-3 px-4">
-                                  <div className="flex items-center gap-2">
-                                    <span className="font-mono text-xs text-gray-900 font-semibold break-all select-all">
-                                      {s.scope_url}
-                                    </span>
-                                    <button
-                                      onClick={() => copyToClipboard(s.scope_url)}
-                                      title="Copy Scope URI"
-                                      className={`p-1 text-gray-400 ${isBackend ? "hover:text-emerald-600" : "hover:text-blue-600"} rounded hover:bg-gray-100 transition-colors flex-shrink-0 text-xs`}
-                                    >
-                                      {copiedScope === s.scope_url ? (
-                                        <span className="text-emerald-600 font-bold">✓</span>
-                                      ) : (
-                                        <span>📋</span>
-                                      )}
-                                    </button>
-                                  </div>
+                                  <span className="font-mono text-xs text-gray-900 font-semibold break-all select-all">
+                                    {s.scope_url}
+                                  </span>
                                 </td>
 
                                 {/* Google Tier */}
@@ -1250,8 +1074,8 @@ export default function ScopeMatrixView({
                                     {isActive ? (
                                       <TenantAppsBadgePopover
                                         scopeUrl={s.scope_url}
-                                        apps={getScopeApps(s)}
-                                        count={s.active_apps_count || getScopeApps(s).length}
+                                        apps={tenantApps}
+                                        count={tenantApps.length}
                                         onSelectApp={handleAppClick}
                                       />
                                     ) : (
@@ -1303,7 +1127,8 @@ export default function ScopeMatrixView({
                 </tr>
               ) : (
                 filteredScopes.map((s) => {
-                  const isActive = !isBackend && (s.active_apps_count || 0) > 0;
+                  const tenantApps = getScopeApps(s);
+                  const isActive = !isBackend && tenantApps.length > 0;
                   return (
                     <tr
                       key={s.scope_url}
@@ -1311,22 +1136,9 @@ export default function ScopeMatrixView({
                     >
                       {/* Scope URI */}
                       <td className="py-3.5 px-4">
-                        <div className="flex items-center gap-2">
-                          <span className="font-mono text-xs text-gray-900 font-semibold break-all select-all">
-                            {s.scope_url}
-                          </span>
-                          <button
-                            onClick={() => copyToClipboard(s.scope_url)}
-                            title="Copy Scope URI"
-                            className={`p-1 text-gray-400 ${isBackend ? "hover:text-emerald-600" : "hover:text-blue-600"} rounded hover:bg-gray-100 transition-colors flex-shrink-0 text-xs`}
-                          >
-                            {copiedScope === s.scope_url ? (
-                              <span className="text-emerald-600 font-bold">✓</span>
-                            ) : (
-                              <span>📋</span>
-                            )}
-                          </button>
-                        </div>
+                        <span className="font-mono text-xs text-gray-900 font-semibold break-all select-all">
+                          {s.scope_url}
+                        </span>
                       </td>
 
                       {/* Service */}
@@ -1363,8 +1175,8 @@ export default function ScopeMatrixView({
                           {isActive ? (
                             <TenantAppsBadgePopover
                               scopeUrl={s.scope_url}
-                              apps={getScopeApps(s)}
-                              count={s.active_apps_count || getScopeApps(s).length}
+                              apps={tenantApps}
+                              count={tenantApps.length}
                               onSelectApp={handleAppClick}
                             />
                           ) : (

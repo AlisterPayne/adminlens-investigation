@@ -168,6 +168,9 @@ export function ingestOwlAppsCsv(customPath = null) {
       const usersCount = parseInt(r['Users'] || '0', 10);
       const isVerified = checkIsVerified(r['Verification Status']) ? 1 : 0;
       const ownership = r['Ownership'] || 'Third party';
+      if (ownership.toLowerCase() === 'internal') {
+        continue;
+      }
 
       const { services, scopes } = parseRequestedServicesWithScopes(r['Requested Services with Scopes']);
 

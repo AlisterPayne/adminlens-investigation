@@ -18,90 +18,93 @@
 
 ## 2. Architectural Philosophy: Why "Scope Only" Fails
 
-Traditional security assessments look at OAuth permissions in isolation:
-* **Flaw 1: Ignores User Context (Blast Radius)**  
-  A single OAuth token granted by a Super Admin can compromise the entire tenant, whereas the same scope granted by a standard student or temporary contractor is confined to individual data.
-* **Flaw 2: Ignores Vendor Posture & Provenance**  
-  An unverified publisher script created yesterday with Drive access presents a far higher risk than an enterprise vendor with SOC2 Type II, ISO 27001, and Google Partner verification.
-* **Flaw 3: Ignores Tenant Access Control State**  
-  An application marked `TRUSTED` in the Google Admin Console has an explicit bypass for API access restrictions. If that app is dormant or unmaintained, it represents a silent backdoor into corporate data.
+## 2. Architectural Philosophy: Inherent Risk vs. Tenant Context
+
+Traditional SaaS security tools conflate global knowledge with customer-specific telemetry:
+* **The Central Repository Principle**: In a global SaaS catalog, an application exists *in the abstract*. We cannot evaluate whether a Super Admin consented to it or how many users have installed it, nor does GDPR compliance matter to a US customer. Those factors only exist once client tenant telemetry is ingested.
+* **Separation of Layers**:
+  1. **Layer 1: Scope & Service Threat Scale (1–5)**: Technical authorization rating of individual OAuth scopes.
+  2. **Layer 2: Central Repository Inherent Application Risk (1.00–5.00 Scale)**: Inherent risk evaluated globally across Scope Sensitivity, Publisher Verification, and Time-Ring-fenced Breach History.
+  3. **Layer 3: Tenant Operational Risk & Contextual Exposure**: Calculated dynamically when ingested into a specific client tenant (incorporating Super Admin Privilege, Lateral Blast Radius, and Customer Jurisdictional Data Residency).
 
 ---
 
-## 3. The 4-Pillar Composite Risk Model (0–100 Scale)
+## 3. Layer 2: Central Repository Inherent Risk Model (1.00 – 5.00 Scale)
 
-AdminLens computes a composite risk score between **0 and 100** by evaluating four weighted vectors:
+In the central repository, every application receives an **Inherent Risk Score** on a **1.00 to 5.00 scale**, maintaining exact cognitive and visual symmetry with individual scopes and services:
 
 ```
 +-----------------------------------------------------------------------------------+
-|                        ADMINLENS COMPOSITE RISK SCORE (0 - 100)                   |
-+-------------------------+-------------------------+---------------+---------------+
-| 1. Scope Sensitivity    | 2. Blast Radius         | 3. Vendor     | 4. Data       |
-|    (0 - 35 pts)         |    (0 - 25 pts)         |    Posture    |    Residency  |
-|                         |                         |  (0 - 25 pts) |  (0 - 15 pts) |
-+-------------------------+-------------------------+---------------+---------------+
+|               CENTRAL REPOSITORY INHERENT APPLICATION RISK (1.00 - 5.00)          |
++------------------------------------+--------------------------+-------------------+
+| 1. Scope Sensitivity (Option B)    | 2. Publisher Verification| 3. Breach Recency |
+|    Base Floor + Breadth Surcharge  |    Additive (+0.00/+0.35)|    Ring-Fenced    |
+|    (1.00 - 5.00 Base)              |                          |    (+0.00 - +1.00)|
++------------------------------------+--------------------------+-------------------+
 ```
 
-### Pillar 1: Scope Sensitivity (Weight: 0–35 Points / 0.00–5.00 Standardized Scale)
+### Mathematical Formulation:
+$$R_{\text{inherent}} = \min\Big(5.00, \; \max\big(1.00, \; S_{\text{scope}} + \Delta_{\text{verification}} + \Delta_{\text{breach}}\big)\Big)$$
+
+### Factor 1: Scope Sensitivity ($S_{\text{scope}} \in [1.00, 5.00]$)
 Evaluates **what data the token has technical authorization to access or manipulate**. Individual OAuth scopes are cataloged on an **Enterprise Threat Scale (1 to 5)** and aggregated using a **Non-Compensatory Floor Model (Option B)**:
-
 * **Scope Threat Ratings (1–5)**:
-  * **Level 5 — Critical (35 pts)**: Administrative or Direct Mail Access (`mail.google.com`, `gmail.modify`, `admin.directory.user`).
-  * **Level 4 — High (25 pts)**: Full Google Drive Read/Write/Delete access (`drive`, `drive.file`).
-  * **Level 3 — Medium (15 pts)**: Directory metadata, calendar, and contacts (`calendar`, `contacts`, `spreadsheets`).
-  * **Level 2 — Minor (10 pts)**: Read-only educational or operational tools (`classroom.courses.readonly`).
-  * **Level 1 — Low (5 pts)**: Basic authentication & profile assertion (`openid`, `email`, `profile`).
+  * **Level 5 — Critical (Red)**: Administrative or Direct Mail Access (`mail.google.com`, `gmail.modify`, `admin.directory.user`).
+  * **Level 4 — High (Orange)**: Full Google Drive Read/Write/Delete access (`drive`, `drive.file`).
+  * **Level 3 — Medium (Yellow)**: Directory metadata, calendar, and contacts (`calendar`, `contacts`, `spreadsheets`).
+  * **Level 2 — Minor (Green)**: Read-only educational or operational tools (`classroom.courses.readonly`).
+  * **Level 1 — Low (Blue)**: Basic authentication & profile assertion (`openid`, `email`, `profile`).
 
-* **Option B Non-Compensatory Floor Aggregation (0.00 – 5.00 Scale)**:
+* **Option B Non-Compensatory Floor Aggregation**:
   To prevent the "Dilution Paradox" (where adding benign scopes dilutes severe permissions), the application's **Peak Scope establishes a non-dilutable Base Floor**:
   $$\text{BaseFloor} = \max(0, \text{PeakScopeScore} - 1)$$
-  - **Level 5 Peak** $\to$ Base Floor **4.00** $\implies$ Final Tier: **CRITICAL [4.00 – 5.00]** (Red)
+  - **Level 5 Peak** $\to$ Base Floor **4.00** $\implies$ Tier: **CRITICAL [4.00 – 5.00]** (Red)
   - **Level 4 Peak** $\to$ Base Floor **3.00** $\implies$ Final Tier: **HIGH [3.00 – 3.99]** (Orange)
   - **Level 3 Peak** $\to$ Base Floor **2.00** $\implies$ Final Tier: **MEDIUM [2.00 – 2.99]** (Yellow)
   - **Level 2 Peak** $\to$ Base Floor **1.00** $\implies$ Final Tier: **MINOR [1.00 – 1.99]** (Green)
   - **Level 1 Peak** $\to$ Base Floor **0.00** $\implies$ Final Tier: **LOW [0.00 – 0.99]** (Blue)
 
-  Secondary scopes contribute an additive **Attack Surface Breadth Surcharge** (Extra Scope 5: +0.15, Extra Scope 4: +0.08, Extra Scope 3: +0.04, Extra Scope 2: +0.02, Extra Scope 1: +0.01; capped within tier headroom), ensuring strict monotonicity and preventing severe risks from ever being averaged away.
+  Secondary scopes contribute an additive **Attack Surface Breadth Surcharge** (Extra Scope 5: +0.15, Extra Scope 4: +0.08, Extra Scope 3: +0.04, Extra Scope 2: +0.02, Extra Scope 1: +0.01; capped within tier headroom), ensuring strict monotonicity.
+
+### Factor 2: Publisher Verification Modifier ($\Delta_{\text{verification}}$)
+* **Verified Publisher (+0.00)**: Completed Google OAuth App Verification / CASA security assessment with verified domain ownership.
+* **Unverified Publisher (+0.35 additive)**: Has not completed Google verification, representing elevated risk of unvetted third-party code.
+* **Internal Domain Script (+0.15 additive)**: Internal Google Apps Script executing on tenant domain.
+
+### Factor 3: Time-Decayed Breach Recency Ring-Fencing ($\Delta_{\text{breach}}$)
+Rather than treating a decade-old incident identically to an active compromise, breach records are formalized as structured date objects and ring-fenced by time elapsed:
+* **$\le 90$ Days ($\le 3$ Months) — Active Crisis / High Alert**: **+1.00 additive penalty**. Uncontained tokens, actively circulating dark-web credentials, incomplete remediation.
+* **91 – 180 Days (3 – 6 Months) — Recent Compromise**: **+0.60 additive penalty**. Remediations deployed; ongoing credential rotation and audit probation.
+* **181 – 365 Days (6 – 12 Months) — Probationary Monitoring**: **+0.30 additive penalty**. Vendor post-mortems published; operational stability monitoring.
+* **$> 365$ Days ($> 12$ Months) — Historical / Remediated**: **+0.10 additive penalty**. Known legacy incident (e.g. Canva 2019, Bitly 2014); clean track record since.
+* **No Known Breach**: **+0.00**.
 
 ---
 
-### Pillar 2: Blast Radius & Privilege Exposure (Weight: 0–25 Points)
-Evaluates **whose credentials authorized the app and how widely it has spread**.
+## 4. 24-Hour Automated Breach Monitoring Engine
 
-* **Super Admin Privilege (+15 pts)**:
-  * Trigger: `adminUsersCount > 0`.
-  * *Rationale*: If a Super Admin authorizes an application, any vulnerability in that application (or leak of its client secrets/refresh tokens) allows an adversary to pivot into full domain administration.
-* **Organizational Reach (+10 pts)**:
-  * Calculated as $\min(10, \text{totalUsersCount} \times 2)$.
-  * Any application adopted by $> 5$ domain users automatically receives the maximum $+10$ points due to expanded lateral movement surface.
+AdminLens executes an automated breach monitoring engine (`breach_monitoring_service.mjs`) on a continuous **24-hour cycle**:
+* **Automated Daily Scan**: Evaluates the current calendar date against all vendor breach records.
+* **Dynamic Recency Decay**: As incidents age past 90, 180, or 365 days, penalties automatically decay, updating risk scores without manual intervention.
+* **Transition Logging & Catalog Sync**: Detects bracket transitions and synchronizes `adminlens.db` and frontend catalog JSON artifacts.
+* **Operational Modes**: Runs as a daily cron job or continuous background daemon (`--daemon`).
 
 ---
 
-### Pillar 3: Vendor Security Posture & Verification (Weight: 0–25 Points)
-Evaluates **who operates the software and their demonstrated security record**.
+## 5. Layer 3: Tenant Operational Risk & Contextual Overlay
 
-* **Public Breach History (+15 pts)**:
-  * Cross-referenced against CVE, security advisories, and breach records (e.g. historical token leaks or credential exposure).
-* **Unverified Publisher (+10 pts)**:
-  * The application has **not** completed Google OAuth App Verification (`isVerified === false`), or is an unvetted script masquerading under an arbitrary name.
-* **Verified Publisher (+2 pts baseline)**:
-  * Google Workspace Marketplace vetted vendor with published privacy policies and verified domain ownership.
-
----
-
-### Pillar 4: Data Residency & Jurisdictional Compliance (Weight: 0–15 Points)
-Evaluates **where customer data flows and legal exposure under POPIA / GDPR**.
-
-* **Undisclosed / Unknown Hosting (+15 pts)**:
-  * The vendor fails to declare infrastructure residency, creating compliance liability under privacy regulations.
-* **Foreign Cloud (+5 pts)**:
-  * Hosted outside domestic/sovereign boundaries (e.g., US-only hosting for South African or EU corporate data) without standard contractual clauses or DPA agreements.
-* **Local / Sovereign / Tenant-Internal (+3 pts)**:
-  * Hosted locally or executed entirely within Google's cloud perimeter (e.g., internal Apps Scripts restricted to domain execution).
+When client data is connected (via `users.json`, `active_tokens.json`, `token_audit_events.json`, `owl_apps.csv`), AdminLens calculates the dynamic tenant-specific operational exposure:
+* **Super Admin Privilege Exposure**: Triggered if `adminUsersCount > 0` (domain takeover path).
+* **Lateral Blast Radius**: Scaled by user count and cross-OU spread.
+* **Jurisdictional Data Alignment**: Evaluates **Customer Jurisdiction Profile vs. Vendor Data Hosting** (e.g. EU customer facing GDPR transfer exposure vs. US customer with zero GDPR liability).
+* **Policy Baseline Reconciliation**:
+  * **Dormant Trusted App**: Set to `TRUSTED` in Google Admin Console with $\le 1$ active user.
+  * **Shadow IT Discovery**: High/Critical scope apps authorized without central IT policy review.
+  * **Unmanaged Script Proliferation**: Custom Apps Scripts accessing sensitive services without source control.
 
 ---
 
-## 4. Contextual Policy Overlay (Google Admin Console Ground Truth)
+## 6. Contextual Policy Overlay (Google Admin Console Ground Truth)
 
 In addition to the raw 0–100 score, AdminLens correlates live API tokens with the **App Access Control baseline (`owl_apps.csv`)**:
 

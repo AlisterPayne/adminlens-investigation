@@ -32,6 +32,16 @@ export default function Dashboard() {
     scopeMetrics = data.metrics || null;
   }
 
+  const timelinePath = path.join(dataDir, "audit_timeline.json");
+  let timelineEvents = [];
+  if (fs.existsSync(timelinePath)) {
+    try {
+      timelineEvents = JSON.parse(fs.readFileSync(timelinePath, "utf8"));
+    } catch (e) {
+      console.error("Error reading audit_timeline.json:", e);
+    }
+  }
+
   return (
     <Suspense fallback={<div className="p-8 text-gray-400">Loading Client Workspace...</div>}>
       <OAuthDashboardClient
@@ -41,6 +51,7 @@ export default function Dashboard() {
         users={users}
         initialScopes={scopes}
         scopeMetrics={scopeMetrics}
+        initialTimelineEvents={timelineEvents}
       />
     </Suspense>
   );

@@ -1,7 +1,11 @@
 import fs from 'fs';
 import path from 'path';
 import { lookupChromeExtension } from './chrome_webstore_search.mjs';
-import { enrichApplicationRecord } from './app_enrichment_service.mjs';
+import { 
+  enrichApplicationRecord, 
+  calculateInherentRisk, 
+  calculateBreachPenalty 
+} from './app_enrichment_service.mjs';
 import { OAUTH_SCOPES_DATA } from './seed_scope_reference.mjs';
 
 // Build OAuth Scope Reference lookup map
@@ -158,6 +162,7 @@ function getOrCreateDeploymentRecord(appName, clientId, owlType = null, verified
       compliance: enriched.compliance || ['Standard Terms'],
       dataHosting: enriched.dataHosting || 'USA',
       breachHistory: enriched.breachHistory || null,
+      breaches: enriched.breaches || [],
       isVerified: Boolean(checkIsVerified(verifiedStatus) || (verifiedStatus === null && enriched.isVerified)),
       iconUrl: enriched.iconUrl,
       storeUrl: enriched.storeUrl || null,
@@ -332,6 +337,7 @@ const parseCsvLines = (csvPath) => {
 if (accessedCsvPath) {
   const accessedRows = parseCsvLines(accessedCsvPath);
   for (const row of accessedRows) {
+    if (row['Ownership']?.toLowerCase() === 'internal') continue;
     let appName = row['App Name'] ? row['App Name'].trim() : '';
     const cid = row['Id'];
     const rawType = row['Type'] || 'Web Application';
@@ -349,9 +355,9 @@ if (accessedCsvPath) {
       if (checkIsVerified(row['Verification Status'])) {
         record.isVerified = true;
       }
-      if (row['Ownership'] === 'Internal' || row['Ownership'] === 'Google owned') {
-        record.vendor = row['Ownership'] === 'Google owned' ? 'Google LLC' : 'Internal Domain Tool';
-        record.category = row['Ownership'] === 'Google owned' ? 'Google Workspace Core' : 'Admin & Automation';
+      if (row['Ownership'] === 'Google owned') {
+        record.vendor = 'Google LLC';
+        record.category = 'Google Workspace Core';
       }
 
       for (const s of scopes) {
@@ -378,6 +384,7 @@ if (configuredCsvPath) {
   if (configuredRows.length > 0) {
     baselineCsvLoaded = true;
     for (const row of configuredRows) {
+      if (row['Ownership']?.toLowerCase() === 'internal') continue;
       let appName = row['App Name'] ? row['App Name'].trim() : '';
       const cid = row['Id'];
       const rawType = row['Type'] || 'Web Application';
@@ -414,9 +421,9 @@ if (configuredCsvPath) {
         if (checkIsVerified(row['Verification Status'])) {
           record.isVerified = true;
         }
-        if (row['Ownership'] === 'Internal' || row['Ownership'] === 'Google owned') {
-          record.vendor = row['Ownership'] === 'Google owned' ? 'Google LLC' : 'Internal Domain Tool';
-          record.category = row['Ownership'] === 'Google owned' ? 'Google Workspace Core' : 'Admin & Automation';
+        if (row['Ownership'] === 'Google owned') {
+          record.vendor = 'Google LLC';
+          record.category = 'Google Workspace Core';
         }
 
         for (const s of scopes) {
@@ -482,60 +489,33 @@ for (const [id, app] of catalog.entries()) {
     };
   });
 
-  // Calculate Application Risk Score: Option B Non-Compensatory Floor Model
-  // Base Severity Floor (determined by Peak Scope) + Additive Attack Surface Breadth (secondary scopes)
-  let calculatedRiskScore = 0.0;
-  let peakScopeScore = 0;
-  let breadthScore = 0.0;
-  let avgScopeScore = 0.0;
+  // Pre-enrich application metadata for publisher verification & structured breaches
+  const enrichedMeta = enrichApplicationRecord({
+    displayName: app.displayName,
+    name: app.displayName,
+    isVerified: app.isVerified,
+    appType: app.deploymentType || app.appType
+  });
 
-  if (scopesList.length > 0) {
-    peakScopeScore = Math.max(...scopesList.map(s => s.adminScore || 1));
-    const sumScores = scopesList.reduce((sum, s) => sum + (s.adminScore || 1), 0);
-    avgScopeScore = sumScores / scopesList.length;
+  const effectiveVerified = Boolean(app.isVerified || enrichedMeta.isVerified);
+  const breaches = (app.breaches && app.breaches.length > 0) ? app.breaches : (enrichedMeta.breaches || []);
 
-    // Base tier floor based on peak scope:
-    // Peak 5 -> 4.00, Peak 4 -> 3.00, Peak 3 -> 2.00, Peak 2 -> 1.00, Peak 1 -> 0.00
-    const baseFloor = Math.max(0, peakScopeScore - 1);
+  // Calculate Inherent Risk Score: Layer 2 Model
+  // Scope Sensitivity (Option B Floor + Breadth) + Additive Verification Penalty + Additive Breach Penalty
+  const inherentRisk = calculateInherentRisk({
+    scopesList,
+    isVerified: effectiveVerified,
+    breaches,
+    appType: app.deploymentType || app.appType,
+    referenceDate: new Date()
+  });
 
-    // Secondary scopes breadth surcharge
-    const allScores = scopesList.map(s => s.adminScore || 1);
-    const nonPeakScores = allScores.slice();
-    nonPeakScores.splice(nonPeakScores.indexOf(peakScopeScore), 1);
-
-    const surcharge = nonPeakScores.reduce((acc, score) => {
-      if (score === 5) return acc + 0.15;
-      if (score === 4) return acc + 0.08;
-      if (score === 3) return acc + 0.04;
-      if (score === 2) return acc + 0.02;
-      return acc + 0.01;
-    }, 0);
-
-    const maxHeadroom = peakScopeScore === 5 ? 1.00 : 0.99;
-    breadthScore = Number(Math.min(maxHeadroom, surcharge).toFixed(2));
-    calculatedRiskScore = Number((baseFloor + breadthScore).toFixed(2));
-  }
-
-  // Derive standardized riskLevel and riskScoreColor from Option B score (0.00 - 5.00 Scale)
-  // Scale: 0.00-0.99 (Low/Blue), 1.00-1.99 (Minor/Green), 2.00-2.99 (Medium/Yellow), 3.00-3.99 (High/Orange), 4.00-5.00 (Critical/Red)
-  let calculatedRiskLevel = 'LOW';
-  let calculatedRiskColor = 'Blue';
-  if (calculatedRiskScore >= 4.00) {
-    calculatedRiskLevel = 'CRITICAL';
-    calculatedRiskColor = 'Red';
-  } else if (calculatedRiskScore >= 3.00) {
-    calculatedRiskLevel = 'HIGH';
-    calculatedRiskColor = 'Orange';
-  } else if (calculatedRiskScore >= 2.00) {
-    calculatedRiskLevel = 'MEDIUM';
-    calculatedRiskColor = 'Yellow';
-  } else if (calculatedRiskScore >= 1.00) {
-    calculatedRiskLevel = 'MINOR';
-    calculatedRiskColor = 'Green';
-  } else {
-    calculatedRiskLevel = 'LOW';
-    calculatedRiskColor = 'Blue';
-  }
+  const calculatedRiskScore = inherentRisk.riskScore;
+  const calculatedRiskLevel = inherentRisk.riskLevel;
+  const calculatedRiskColor = inherentRisk.riskScoreColor;
+  const peakScopeScore = inherentRisk.peakScopeScore;
+  const breadthScore = inherentRisk.breadthScore;
+  const avgScopeScore = inherentRisk.avgScopeScore;
 
   const isStale = app.totalActivityEvents === 0;
   const activityDateFormatted = app.lastActive 
@@ -572,6 +552,11 @@ for (const [id, app] of catalog.entries()) {
       maxRisk: d.maxRisk
     }));
 
+  const combinedRiskReasons = Array.from(new Set([
+    ...inherentRisk.riskReasons,
+    ...Array.from(app.riskReasons)
+  ]));
+
   const finalApp = enrichApplicationRecord({
     id: app.id,
     clientId: app.clientId,
@@ -585,8 +570,14 @@ for (const [id, app] of catalog.entries()) {
     deploymentType: app.deploymentType,
     compliance: app.compliance,
     dataHosting: app.dataHosting,
-    breachHistory: app.breachHistory,
-    isVerified: app.isVerified,
+    breachHistory: enrichedMeta.breachHistory || app.breachHistory,
+    breaches,
+    breachPenalty: inherentRisk.breachPenalty,
+    breachBracket: inherentRisk.breachBracket,
+    breachDaysElapsed: inherentRisk.breachDaysElapsed,
+    verificationPenalty: inherentRisk.verificationPenalty,
+    scopeRiskScore: inherentRisk.scopeRiskScore,
+    isVerified: effectiveVerified,
     iconUrl: app.iconUrl,
     storeUrl: app.storeUrl,
     description: app.description,
@@ -597,7 +588,7 @@ for (const [id, app] of catalog.entries()) {
     riskLevel: calculatedRiskLevel,
     riskScoreColor: calculatedRiskColor,
     rawMaxRisk: app.maxRisk,
-    riskReasons: Array.from(app.riskReasons),
+    riskReasons: combinedRiskReasons,
     adminAccessLevel: adminAccessLevel,
     accessPolicy: appPolicy,
     multiClientMapped: siblingDeployments.length > 0,

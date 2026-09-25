@@ -4776,7 +4776,7 @@
     "adminAccessLevel": "UNCONFIGURED",
     "accessPolicy": null,
     "multiClientMapped": true,
-    "familyDeploymentsCount": 2,
+    "familyDeploymentsCount": 6,
     "siblingDeployments": [
       {
         "id": "458969862783-1smfdj4v8qbnibgarka1a99400lhsa13.apps.googleusercontent.com",
@@ -4786,6 +4786,42 @@
         "adminAccessLevel": "UNCONFIGURED",
         "totalUsersCount": 1,
         "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "72867247940-n969jo6c29qg22m8sodb2hftn6dck1mk.apps.googleusercontent.com",
+        "displayName": "GAM7-demo (Staging / Dev)",
+        "deploymentType": "Staging / Dev",
+        "clientId": "72867247940-n969jo6c29qg22m8sodb2hftn6dck1mk.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "521549528509-f17hlgjd91nbi5sooc73ia3d4dqln10s.apps.googleusercontent.com",
+        "displayName": "GAM7-CGP-Training (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "521549528509-f17hlgjd91nbi5sooc73ia3d4dqln10s.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "585538275436-4lk6emnir2l22atsdk61fstd4nhkgbku.apps.googleusercontent.com",
+        "displayName": "GAM (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "585538275436-4lk6emnir2l22atsdk61fstd4nhkgbku.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "101367350966766396496",
+        "displayName": "GAM7-CGP-Training (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "101367350966766396496",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "LOW"
       }
     ],
     "clientIdsCount": 1,
@@ -4881,7 +4917,7 @@
     "adminAccessLevel": "UNCONFIGURED",
     "accessPolicy": null,
     "multiClientMapped": true,
-    "familyDeploymentsCount": 2,
+    "familyDeploymentsCount": 6,
     "siblingDeployments": [
       {
         "id": "297408095146-fug707qsjv4ikron0hugpevbrjhkmsk7.apps.googleusercontent.com",
@@ -4890,6 +4926,42 @@
         "clientId": "297408095146-fug707qsjv4ikron0hugpevbrjhkmsk7.apps.googleusercontent.com",
         "adminAccessLevel": "UNCONFIGURED",
         "totalUsersCount": 2,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "72867247940-n969jo6c29qg22m8sodb2hftn6dck1mk.apps.googleusercontent.com",
+        "displayName": "GAM7-demo (Staging / Dev)",
+        "deploymentType": "Staging / Dev",
+        "clientId": "72867247940-n969jo6c29qg22m8sodb2hftn6dck1mk.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "521549528509-f17hlgjd91nbi5sooc73ia3d4dqln10s.apps.googleusercontent.com",
+        "displayName": "GAM7-CGP-Training (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "521549528509-f17hlgjd91nbi5sooc73ia3d4dqln10s.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "585538275436-4lk6emnir2l22atsdk61fstd4nhkgbku.apps.googleusercontent.com",
+        "displayName": "GAM (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "585538275436-4lk6emnir2l22atsdk61fstd4nhkgbku.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "101367350966766396496",
+        "displayName": "GAM7-CGP-Training (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "101367350966766396496",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
         "maxRisk": "LOW"
       }
     ],
@@ -5444,6 +5516,2050 @@
     "isStale": true,
     "isNew": false,
     "totalActivityEvents": 0
+  },
+  {
+    "id": "72867247940-n969jo6c29qg22m8sodb2hftn6dck1mk.apps.googleusercontent.com",
+    "clientId": "72867247940-n969jo6c29qg22m8sodb2hftn6dck1mk.apps.googleusercontent.com",
+    "familyId": "gam",
+    "familyName": "GAM (Google Apps Manager)",
+    "displayName": "GAM7-demo (Staging / Dev)",
+    "vendor": "GAM Open Source",
+    "publisherDomain": "github.com/GAM-team/GAM",
+    "category": "IT Admin & Automation",
+    "appType": "Command-Line IT Tool",
+    "deploymentType": "Staging / Dev",
+    "compliance": [
+      "Open Source Audited"
+    ],
+    "dataHosting": "Local / Tenant Only",
+    "breachHistory": null,
+    "breaches": [],
+    "breachPenalty": 0,
+    "breachBracket": "NONE",
+    "breachDaysElapsed": null,
+    "verificationPenalty": 0,
+    "scopeRiskScore": 5,
+    "isVerified": true,
+    "iconUrl": "https://www.google.com/s2/favicons?domain=github.com&sz=128",
+    "storeUrl": "https://github.com/GAM-team/GAM",
+    "description": "Command-line management tool for Google Workspace domain administration.",
+    "riskScore": 5,
+    "peakScopeScore": 5,
+    "breadthScore": 1,
+    "avgScopeScore": 3.28,
+    "riskLevel": "CRITICAL",
+    "riskScoreColor": "Red",
+    "rawMaxRisk": "CRITICAL",
+    "riskReasons": [
+      "Critical Administrative or Direct Mail Access",
+      "Full Google Drive Read/Write Access or Mail Modification",
+      "Access to Domain Directory, Files, or Calendars",
+      "Basic Authentication / Profile Scopes",
+      "Administrative or Direct Mail Access"
+    ],
+    "adminAccessLevel": "UNCONFIGURED",
+    "accessPolicy": null,
+    "multiClientMapped": true,
+    "familyDeploymentsCount": 6,
+    "siblingDeployments": [
+      {
+        "id": "297408095146-fug707qsjv4ikron0hugpevbrjhkmsk7.apps.googleusercontent.com",
+        "displayName": "GAM Project Creation (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "297408095146-fug707qsjv4ikron0hugpevbrjhkmsk7.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 2,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "458969862783-1smfdj4v8qbnibgarka1a99400lhsa13.apps.googleusercontent.com",
+        "displayName": "GAM (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "458969862783-1smfdj4v8qbnibgarka1a99400lhsa13.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "521549528509-f17hlgjd91nbi5sooc73ia3d4dqln10s.apps.googleusercontent.com",
+        "displayName": "GAM7-CGP-Training (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "521549528509-f17hlgjd91nbi5sooc73ia3d4dqln10s.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "585538275436-4lk6emnir2l22atsdk61fstd4nhkgbku.apps.googleusercontent.com",
+        "displayName": "GAM (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "585538275436-4lk6emnir2l22atsdk61fstd4nhkgbku.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "101367350966766396496",
+        "displayName": "GAM7-CGP-Training (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "101367350966766396496",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "LOW"
+      }
+    ],
+    "clientIdsCount": 1,
+    "clientIds": [
+      "72867247940-n969jo6c29qg22m8sodb2hftn6dck1mk.apps.googleusercontent.com"
+    ],
+    "projectNumbers": [
+      "72867247940"
+    ],
+    "totalUsersCount": 1,
+    "adminUsersCount": 1,
+    "scopesCount": 47,
+    "scopes": [
+      {
+        "scope": "https://www.googleapis.com/auth/classroom.topics",
+        "riskLevel": "LOW",
+        "description": "Classroom Course Topics Management",
+        "threatImpact": "Create and organize subject module topics within Google Classroom.",
+        "adminScore": 2,
+        "adminColor": "Green",
+        "googleTier": "Sensitive",
+        "service": "Google Chat & Classroom"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.orgunit",
+        "riskLevel": "CRITICAL",
+        "description": "OU Policy Bypass",
+        "threatImpact": "Move users between Organizational Units, potentially bypassing 2SV mandates or restricted app policies.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/apps.groups.settings",
+        "riskLevel": "LOW",
+        "description": "Google Groups Security Configuration",
+        "threatImpact": "Modify group security settings, including allowing external participants, public web postings, or collaborative inbox access.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/classroom.courseworkmaterials",
+        "riskLevel": "LOW",
+        "description": "Coursework Teaching Materials Management",
+        "threatImpact": "Manage instructional documents, links, and study materials published to students.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Google Chat & Classroom"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.userschema",
+        "riskLevel": "CRITICAL",
+        "description": "Custom Directory Schema Tampering",
+        "threatImpact": "Define and modify custom attributes for domain user accounts (often storing internal employee IDs or clearance levels).",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.device.chromeos",
+        "riskLevel": "CRITICAL",
+        "description": "Fleet Device Management",
+        "threatImpact": "Remote control, wipe, reboot, or de-provision managed Chromebook devices across the fleet.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.contact.delegation",
+        "riskLevel": "CRITICAL",
+        "description": "Domain Contact Delegation Control",
+        "threatImpact": "Manage shared external contacts and delegated address book access across tenant users.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.device.chromebrowsers",
+        "riskLevel": "CRITICAL",
+        "description": "Enrolled Chrome Browser Fleet Inspection",
+        "threatImpact": "View enrolled Chrome browser instances, OS versions, and enterprise policies.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/chrome.management.telemetry.readonly",
+        "riskLevel": "LOW",
+        "description": "Chrome Device Telemetry Readout",
+        "threatImpact": "Read hardware diagnostic telemetry, network metrics, and CPU usage on ChromeOS devices.",
+        "adminScore": 2,
+        "adminColor": "Green",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/cloud-identity.groups",
+        "riskLevel": "LOW",
+        "description": "Cloud Identity Security Groups Management",
+        "threatImpact": "Full CRUD control over Cloud Identity groups, security labels, dynamic memberships, and IAM group bindings.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/classroom.coursework.students",
+        "riskLevel": "LOW",
+        "description": "Student Work & Grade Access",
+        "threatImpact": "View student grades, submissions, and assignment feedback.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Google Chat & Classroom"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/contacts",
+        "riskLevel": "MEDIUM",
+        "description": "Full Address Book Tampering",
+        "threatImpact": "Full read/write to personal and corporate contact lists. Can overwrite or poison phone numbers and addresses.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Sensitive",
+        "service": "Google Contacts"
+      },
+      {
+        "scope": "https://www.google.com/m8/feeds",
+        "riskLevel": "LOW",
+        "description": "Legacy Google Contacts GData Feed Access",
+        "threatImpact": "Full read/write access to personal and shared domain contacts via legacy API.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Sensitive",
+        "service": "Google Contacts"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.device.mobile",
+        "riskLevel": "CRITICAL",
+        "description": "Mobile Device Management & Remote Wipe",
+        "threatImpact": "Enumerate, approve, block, or remotely wipe corporate mobile devices carrying enterprise email and files.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.chrome.printers",
+        "riskLevel": "CRITICAL",
+        "description": "Enterprise Printer Infrastructure Administration",
+        "threatImpact": "Configure native printers and print server endpoints for ChromeOS devices.",
+        "adminScore": 2,
+        "adminColor": "Green",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/userinfo.email",
+        "riskLevel": "LOW",
+        "description": "Primary Email Verification",
+        "threatImpact": "View the user's primary email address for SSO sign-in.",
+        "adminScore": 1,
+        "adminColor": "Blue",
+        "googleTier": "Non-Sensitive",
+        "service": "Identity & SSO"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/chrome.management.appdetails.readonly",
+        "riskLevel": "LOW",
+        "description": "Chrome Web Store App Metadata Inspection",
+        "threatImpact": "Read public and private app details for Chrome extensions installed across the domain.",
+        "adminScore": 1,
+        "adminColor": "Blue",
+        "googleTier": "Non-Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/apps.groups.migration",
+        "riskLevel": "LOW",
+        "description": "Google Groups Message Ingestion / Migration",
+        "threatImpact": "Inject and archive historical messages into Google Groups mailing lists.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/classroom.announcements",
+        "riskLevel": "LOW",
+        "description": "Classroom Announcements Posting & Editing",
+        "threatImpact": "Create, view, and modify student announcements across all enrolled classes.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Google Chat & Classroom"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/cloud-identity.userinvitations",
+        "riskLevel": "LOW",
+        "description": "Unmanaged User Account Invitations",
+        "threatImpact": "Send and manage invitations to unmanaged personal Google accounts to migrate into the corporate domain.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/ediscovery",
+        "riskLevel": "LOW",
+        "description": "Google Vault Legal Holds & eDiscovery Exfiltration",
+        "threatImpact": "Access Google Vault matters, legal holds, export queries, and litigation audits covering all historical domain emails and files.",
+        "adminScore": 5,
+        "adminColor": "Red",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.user.security",
+        "riskLevel": "CRITICAL",
+        "description": "User Security & 2SV Credential Manipulation",
+        "threatImpact": "Manage user MFA/2-step verification, security keys, backup codes, and session cookies. High privilege takeover.",
+        "adminScore": 5,
+        "adminColor": "Red",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.reports.audit.readonly",
+        "riskLevel": "CRITICAL",
+        "description": "Security Audit Log Surveillance",
+        "threatImpact": "Read tenant security audit logs, monitoring detection mechanisms and tracking admin investigation activities.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.user",
+        "riskLevel": "CRITICAL",
+        "description": "Total Account Administration",
+        "threatImpact": "Create, reset passwords, suspend, or delete any domain user account, including administrators.",
+        "adminScore": 5,
+        "adminColor": "Red",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.group",
+        "riskLevel": "CRITICAL",
+        "description": "Group Membership Tampering",
+        "threatImpact": "Add accounts to high-privilege distribution groups, security groups, or restricted mailing lists.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/chrome.management.reports.readonly",
+        "riskLevel": "LOW",
+        "description": "Chrome Management Reporting",
+        "threatImpact": "View telemetry reports regarding browser versions, security events, and installed extensions.",
+        "adminScore": 2,
+        "adminColor": "Green",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/apps.licensing",
+        "riskLevel": "LOW",
+        "description": "Workspace SKU License Assignment",
+        "threatImpact": "Assign or revoke Google Workspace and Google Cloud licenses for domain users.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/classroom.courses",
+        "riskLevel": "LOW",
+        "description": "Course Directory Listing",
+        "threatImpact": "View course titles, descriptions, and schedules.",
+        "adminScore": 2,
+        "adminColor": "Green",
+        "googleTier": "Sensitive",
+        "service": "Google Chat & Classroom"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/chrome.management.profiles",
+        "riskLevel": "LOW",
+        "description": "Managed Chrome Browser Profile Administration",
+        "threatImpact": "View and manage enterprise-managed user profiles within Chrome browsers.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "openid",
+        "riskLevel": "LOW",
+        "description": "OpenID Identity Assertion",
+        "threatImpact": "Standard OpenID Connect token for user authentication assertion.",
+        "adminScore": 1,
+        "adminColor": "Blue",
+        "googleTier": "Non-Sensitive",
+        "service": "Identity & SSO"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.domain",
+        "riskLevel": "CRITICAL",
+        "description": "Domain Architecture Control",
+        "threatImpact": "Modify DNS, secondary domain aliases, and domain ownership configurations.",
+        "adminScore": 5,
+        "adminColor": "Red",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/chrome.management.policy",
+        "riskLevel": "LOW",
+        "description": "Chrome Browser Policy Administration",
+        "threatImpact": "Enforce or alter enterprise Chrome browser policies, extension blocklists, and network proxy rules.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/cloud-identity.policies.readonly",
+        "riskLevel": "LOW",
+        "description": "Cloud Identity Security Policies Inspection",
+        "threatImpact": "Audit security policies, 2SV enforcement rules, and context-aware session policies.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/directory.readonly",
+        "riskLevel": "MEDIUM",
+        "description": "Global Address List Harvesting",
+        "threatImpact": "View internal company Global Address List (GAL) directory.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Google Contacts"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.rolemanagement",
+        "riskLevel": "CRITICAL",
+        "description": "Domain Privilege Escalation",
+        "threatImpact": "Can create and assign Super Admin roles to rogue accounts. Ultimate domain takeover vector.",
+        "adminScore": 5,
+        "adminColor": "Red",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.resource.calendar",
+        "riskLevel": "CRITICAL",
+        "description": "Calendar Resource Administration",
+        "threatImpact": "Manage conference rooms, video hardware resources, and physical domain facilities.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/classroom.rosters",
+        "riskLevel": "LOW",
+        "description": "Student & Teacher Roster Exposure",
+        "threatImpact": "Access teacher and student roster directories (FERPA/COPPA student privacy compliance exposure).",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Google Chat & Classroom"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/cloud-identity.inboundsso",
+        "riskLevel": "LOW",
+        "description": "Inbound SAML/OIDC SSO Configuration",
+        "threatImpact": "Modify third-party identity provider SSO profiles, SAML certificates, and redirect URLs. Massive authentication hijack vector.",
+        "adminScore": 5,
+        "adminColor": "Red",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/userinfo.profile",
+        "riskLevel": "LOW",
+        "description": "Basic Profile Assertion",
+        "threatImpact": "View the user's display name and profile avatar URL.",
+        "adminScore": 1,
+        "adminColor": "Blue",
+        "googleTier": "Non-Sensitive",
+        "service": "Identity & SSO"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/classroom.profile.emails",
+        "riskLevel": "LOW",
+        "description": "Student & Teacher Email Lookup",
+        "threatImpact": "View the email addresses of people in Google Classroom classes.",
+        "adminScore": 2,
+        "adminColor": "Green",
+        "googleTier": "Non-Sensitive",
+        "service": "Google Chat & Classroom"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/classroom.guardianlinks.students",
+        "riskLevel": "LOW",
+        "description": "Parent & Guardian Student Linkage",
+        "threatImpact": "Access and modify parent/guardian email invitations and contact links for student accounts.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Google Chat & Classroom"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/calendar",
+        "riskLevel": "MEDIUM",
+        "description": "Full Calendar Compromise",
+        "threatImpact": "Full read/write to all calendars. Can delete schedules, plant fraudulent meeting invites, and read meeting attachments.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Sensitive",
+        "service": "Google Calendar"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/classroom.profile.photos",
+        "riskLevel": "LOW",
+        "description": "Classroom User Profile Photos",
+        "threatImpact": "View profile photos of teachers and students in Google Classroom.",
+        "adminScore": 1,
+        "adminColor": "Blue",
+        "googleTier": "Non-Sensitive",
+        "service": "Google Chat & Classroom"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.datatransfer",
+        "riskLevel": "CRITICAL",
+        "description": "Cross-Account Bulk Data Transfer",
+        "threatImpact": "Transfer ownership of entire Drive files and Calendar events between domain users during de-provisioning. Extreme egress potential.",
+        "adminScore": 5,
+        "adminColor": "Red",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.customer",
+        "riskLevel": "CRITICAL",
+        "description": "Customer Account Profile Administration",
+        "threatImpact": "Manage customer domain account details, technical contacts, and postal addresses.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.reports.usage.readonly",
+        "riskLevel": "CRITICAL",
+        "description": "Aggregate Usage Metrics",
+        "threatImpact": "Read aggregate domain usage reports and service adoption statistics without individual PII.",
+        "adminScore": 2,
+        "adminColor": "Green",
+        "googleTier": "Non-Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/cloud-identity.orgunits",
+        "riskLevel": "LOW",
+        "description": "Cloud Identity Organizational Units Management",
+        "threatImpact": "Create, move, and delete Cloud Identity organizational units and root domain hierarchy.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      }
+    ],
+    "servicesTouched": [
+      "Classroom",
+      "Admin SDK",
+      "Contacts",
+      "Calendar"
+    ],
+    "users": [
+      {
+        "email": "alister@gafe.co.za",
+        "name": "Alister Payne",
+        "orgUnit": "/CloudEDU Technical",
+        "isAdmin": true,
+        "grantedScopes": [
+          "https://www.googleapis.com/auth/classroom.topics",
+          "https://www.googleapis.com/auth/admin.directory.orgunit",
+          "https://www.googleapis.com/auth/apps.groups.settings",
+          "https://www.googleapis.com/auth/classroom.courseworkmaterials",
+          "https://www.googleapis.com/auth/admin.directory.userschema",
+          "https://www.googleapis.com/auth/admin.directory.device.chromeos",
+          "https://www.googleapis.com/auth/admin.contact.delegation",
+          "https://www.googleapis.com/auth/admin.directory.device.chromebrowsers",
+          "https://www.googleapis.com/auth/chrome.management.telemetry.readonly",
+          "https://www.googleapis.com/auth/cloud-identity.groups",
+          "https://www.googleapis.com/auth/classroom.coursework.students",
+          "https://www.googleapis.com/auth/contacts",
+          "https://www.google.com/m8/feeds",
+          "https://www.googleapis.com/auth/admin.directory.device.mobile",
+          "https://www.googleapis.com/auth/admin.chrome.printers",
+          "https://www.googleapis.com/auth/userinfo.email",
+          "https://www.googleapis.com/auth/chrome.management.appdetails.readonly",
+          "https://www.googleapis.com/auth/apps.groups.migration",
+          "https://www.googleapis.com/auth/classroom.announcements",
+          "https://www.googleapis.com/auth/cloud-identity.userinvitations",
+          "https://www.googleapis.com/auth/ediscovery",
+          "https://www.googleapis.com/auth/admin.directory.user.security",
+          "https://www.googleapis.com/auth/admin.reports.audit.readonly",
+          "https://www.googleapis.com/auth/admin.directory.user",
+          "https://www.googleapis.com/auth/admin.directory.group",
+          "https://www.googleapis.com/auth/chrome.management.reports.readonly",
+          "https://www.googleapis.com/auth/apps.licensing",
+          "https://www.googleapis.com/auth/classroom.courses",
+          "https://www.googleapis.com/auth/chrome.management.profiles",
+          "openid",
+          "https://www.googleapis.com/auth/admin.directory.domain",
+          "https://www.googleapis.com/auth/chrome.management.policy",
+          "https://www.googleapis.com/auth/cloud-identity.policies.readonly",
+          "https://www.googleapis.com/auth/directory.readonly",
+          "https://www.googleapis.com/auth/admin.directory.rolemanagement",
+          "https://www.googleapis.com/auth/admin.directory.resource.calendar",
+          "https://www.googleapis.com/auth/classroom.rosters",
+          "https://www.googleapis.com/auth/cloud-identity.inboundsso",
+          "https://www.googleapis.com/auth/userinfo.profile",
+          "https://www.googleapis.com/auth/classroom.profile.emails",
+          "https://www.googleapis.com/auth/classroom.guardianlinks.students",
+          "https://www.googleapis.com/auth/calendar",
+          "https://www.googleapis.com/auth/classroom.profile.photos",
+          "https://www.googleapis.com/auth/admin.datatransfer",
+          "https://www.googleapis.com/auth/admin.directory.customer",
+          "https://www.googleapis.com/auth/admin.reports.usage.readonly",
+          "https://www.googleapis.com/auth/cloud-identity.orgunits"
+        ]
+      }
+    ],
+    "firstSeen": null,
+    "lastActive": null,
+    "lastActiveFormatted": "12/09/2026",
+    "isStale": true,
+    "isNew": false,
+    "totalActivityEvents": 0
+  },
+  {
+    "id": "521549528509-f17hlgjd91nbi5sooc73ia3d4dqln10s.apps.googleusercontent.com",
+    "clientId": "521549528509-f17hlgjd91nbi5sooc73ia3d4dqln10s.apps.googleusercontent.com",
+    "familyId": "gam",
+    "familyName": "GAM (Google Apps Manager)",
+    "displayName": "GAM7-CGP-Training (Web Application)",
+    "vendor": "GAM Open Source",
+    "publisherDomain": "github.com/GAM-team/GAM",
+    "category": "IT Admin & Automation",
+    "appType": "Command-Line IT Tool",
+    "deploymentType": "Web Application",
+    "compliance": [
+      "Open Source Audited"
+    ],
+    "dataHosting": "Local / Tenant Only",
+    "breachHistory": null,
+    "breaches": [],
+    "breachPenalty": 0,
+    "breachBracket": "NONE",
+    "breachDaysElapsed": null,
+    "verificationPenalty": 0,
+    "scopeRiskScore": 5,
+    "isVerified": true,
+    "iconUrl": "https://www.google.com/s2/favicons?domain=github.com&sz=128",
+    "storeUrl": "https://github.com/GAM-team/GAM",
+    "description": "Command-line management tool for Google Workspace domain administration.",
+    "riskScore": 5,
+    "peakScopeScore": 5,
+    "breadthScore": 1,
+    "avgScopeScore": 3.28,
+    "riskLevel": "CRITICAL",
+    "riskScoreColor": "Red",
+    "rawMaxRisk": "CRITICAL",
+    "riskReasons": [
+      "Critical Administrative or Direct Mail Access",
+      "Full Google Drive Read/Write Access or Mail Modification",
+      "Access to Domain Directory, Files, or Calendars",
+      "Basic Authentication / Profile Scopes",
+      "Administrative or Direct Mail Access"
+    ],
+    "adminAccessLevel": "UNCONFIGURED",
+    "accessPolicy": null,
+    "multiClientMapped": true,
+    "familyDeploymentsCount": 6,
+    "siblingDeployments": [
+      {
+        "id": "297408095146-fug707qsjv4ikron0hugpevbrjhkmsk7.apps.googleusercontent.com",
+        "displayName": "GAM Project Creation (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "297408095146-fug707qsjv4ikron0hugpevbrjhkmsk7.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 2,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "458969862783-1smfdj4v8qbnibgarka1a99400lhsa13.apps.googleusercontent.com",
+        "displayName": "GAM (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "458969862783-1smfdj4v8qbnibgarka1a99400lhsa13.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "72867247940-n969jo6c29qg22m8sodb2hftn6dck1mk.apps.googleusercontent.com",
+        "displayName": "GAM7-demo (Staging / Dev)",
+        "deploymentType": "Staging / Dev",
+        "clientId": "72867247940-n969jo6c29qg22m8sodb2hftn6dck1mk.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "585538275436-4lk6emnir2l22atsdk61fstd4nhkgbku.apps.googleusercontent.com",
+        "displayName": "GAM (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "585538275436-4lk6emnir2l22atsdk61fstd4nhkgbku.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "101367350966766396496",
+        "displayName": "GAM7-CGP-Training (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "101367350966766396496",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "LOW"
+      }
+    ],
+    "clientIdsCount": 1,
+    "clientIds": [
+      "521549528509-f17hlgjd91nbi5sooc73ia3d4dqln10s.apps.googleusercontent.com"
+    ],
+    "projectNumbers": [
+      "521549528509"
+    ],
+    "totalUsersCount": 1,
+    "adminUsersCount": 1,
+    "scopesCount": 47,
+    "scopes": [
+      {
+        "scope": "https://www.googleapis.com/auth/classroom.topics",
+        "riskLevel": "LOW",
+        "description": "Classroom Course Topics Management",
+        "threatImpact": "Create and organize subject module topics within Google Classroom.",
+        "adminScore": 2,
+        "adminColor": "Green",
+        "googleTier": "Sensitive",
+        "service": "Google Chat & Classroom"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.orgunit",
+        "riskLevel": "CRITICAL",
+        "description": "OU Policy Bypass",
+        "threatImpact": "Move users between Organizational Units, potentially bypassing 2SV mandates or restricted app policies.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/apps.groups.settings",
+        "riskLevel": "LOW",
+        "description": "Google Groups Security Configuration",
+        "threatImpact": "Modify group security settings, including allowing external participants, public web postings, or collaborative inbox access.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/classroom.courseworkmaterials",
+        "riskLevel": "LOW",
+        "description": "Coursework Teaching Materials Management",
+        "threatImpact": "Manage instructional documents, links, and study materials published to students.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Google Chat & Classroom"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.userschema",
+        "riskLevel": "CRITICAL",
+        "description": "Custom Directory Schema Tampering",
+        "threatImpact": "Define and modify custom attributes for domain user accounts (often storing internal employee IDs or clearance levels).",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.device.chromeos",
+        "riskLevel": "CRITICAL",
+        "description": "Fleet Device Management",
+        "threatImpact": "Remote control, wipe, reboot, or de-provision managed Chromebook devices across the fleet.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.contact.delegation",
+        "riskLevel": "CRITICAL",
+        "description": "Domain Contact Delegation Control",
+        "threatImpact": "Manage shared external contacts and delegated address book access across tenant users.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.device.chromebrowsers",
+        "riskLevel": "CRITICAL",
+        "description": "Enrolled Chrome Browser Fleet Inspection",
+        "threatImpact": "View enrolled Chrome browser instances, OS versions, and enterprise policies.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/chrome.management.telemetry.readonly",
+        "riskLevel": "LOW",
+        "description": "Chrome Device Telemetry Readout",
+        "threatImpact": "Read hardware diagnostic telemetry, network metrics, and CPU usage on ChromeOS devices.",
+        "adminScore": 2,
+        "adminColor": "Green",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/cloud-identity.groups",
+        "riskLevel": "LOW",
+        "description": "Cloud Identity Security Groups Management",
+        "threatImpact": "Full CRUD control over Cloud Identity groups, security labels, dynamic memberships, and IAM group bindings.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/classroom.coursework.students",
+        "riskLevel": "LOW",
+        "description": "Student Work & Grade Access",
+        "threatImpact": "View student grades, submissions, and assignment feedback.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Google Chat & Classroom"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/contacts",
+        "riskLevel": "MEDIUM",
+        "description": "Full Address Book Tampering",
+        "threatImpact": "Full read/write to personal and corporate contact lists. Can overwrite or poison phone numbers and addresses.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Sensitive",
+        "service": "Google Contacts"
+      },
+      {
+        "scope": "https://www.google.com/m8/feeds",
+        "riskLevel": "LOW",
+        "description": "Legacy Google Contacts GData Feed Access",
+        "threatImpact": "Full read/write access to personal and shared domain contacts via legacy API.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Sensitive",
+        "service": "Google Contacts"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.device.mobile",
+        "riskLevel": "CRITICAL",
+        "description": "Mobile Device Management & Remote Wipe",
+        "threatImpact": "Enumerate, approve, block, or remotely wipe corporate mobile devices carrying enterprise email and files.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.chrome.printers",
+        "riskLevel": "CRITICAL",
+        "description": "Enterprise Printer Infrastructure Administration",
+        "threatImpact": "Configure native printers and print server endpoints for ChromeOS devices.",
+        "adminScore": 2,
+        "adminColor": "Green",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/userinfo.email",
+        "riskLevel": "LOW",
+        "description": "Primary Email Verification",
+        "threatImpact": "View the user's primary email address for SSO sign-in.",
+        "adminScore": 1,
+        "adminColor": "Blue",
+        "googleTier": "Non-Sensitive",
+        "service": "Identity & SSO"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/chrome.management.appdetails.readonly",
+        "riskLevel": "LOW",
+        "description": "Chrome Web Store App Metadata Inspection",
+        "threatImpact": "Read public and private app details for Chrome extensions installed across the domain.",
+        "adminScore": 1,
+        "adminColor": "Blue",
+        "googleTier": "Non-Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/apps.groups.migration",
+        "riskLevel": "LOW",
+        "description": "Google Groups Message Ingestion / Migration",
+        "threatImpact": "Inject and archive historical messages into Google Groups mailing lists.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/classroom.announcements",
+        "riskLevel": "LOW",
+        "description": "Classroom Announcements Posting & Editing",
+        "threatImpact": "Create, view, and modify student announcements across all enrolled classes.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Google Chat & Classroom"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/cloud-identity.userinvitations",
+        "riskLevel": "LOW",
+        "description": "Unmanaged User Account Invitations",
+        "threatImpact": "Send and manage invitations to unmanaged personal Google accounts to migrate into the corporate domain.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/ediscovery",
+        "riskLevel": "LOW",
+        "description": "Google Vault Legal Holds & eDiscovery Exfiltration",
+        "threatImpact": "Access Google Vault matters, legal holds, export queries, and litigation audits covering all historical domain emails and files.",
+        "adminScore": 5,
+        "adminColor": "Red",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.user.security",
+        "riskLevel": "CRITICAL",
+        "description": "User Security & 2SV Credential Manipulation",
+        "threatImpact": "Manage user MFA/2-step verification, security keys, backup codes, and session cookies. High privilege takeover.",
+        "adminScore": 5,
+        "adminColor": "Red",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.reports.audit.readonly",
+        "riskLevel": "CRITICAL",
+        "description": "Security Audit Log Surveillance",
+        "threatImpact": "Read tenant security audit logs, monitoring detection mechanisms and tracking admin investigation activities.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.user",
+        "riskLevel": "CRITICAL",
+        "description": "Total Account Administration",
+        "threatImpact": "Create, reset passwords, suspend, or delete any domain user account, including administrators.",
+        "adminScore": 5,
+        "adminColor": "Red",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.group",
+        "riskLevel": "CRITICAL",
+        "description": "Group Membership Tampering",
+        "threatImpact": "Add accounts to high-privilege distribution groups, security groups, or restricted mailing lists.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/chrome.management.reports.readonly",
+        "riskLevel": "LOW",
+        "description": "Chrome Management Reporting",
+        "threatImpact": "View telemetry reports regarding browser versions, security events, and installed extensions.",
+        "adminScore": 2,
+        "adminColor": "Green",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/apps.licensing",
+        "riskLevel": "LOW",
+        "description": "Workspace SKU License Assignment",
+        "threatImpact": "Assign or revoke Google Workspace and Google Cloud licenses for domain users.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/classroom.courses",
+        "riskLevel": "LOW",
+        "description": "Course Directory Listing",
+        "threatImpact": "View course titles, descriptions, and schedules.",
+        "adminScore": 2,
+        "adminColor": "Green",
+        "googleTier": "Sensitive",
+        "service": "Google Chat & Classroom"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/chrome.management.profiles",
+        "riskLevel": "LOW",
+        "description": "Managed Chrome Browser Profile Administration",
+        "threatImpact": "View and manage enterprise-managed user profiles within Chrome browsers.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "openid",
+        "riskLevel": "LOW",
+        "description": "OpenID Identity Assertion",
+        "threatImpact": "Standard OpenID Connect token for user authentication assertion.",
+        "adminScore": 1,
+        "adminColor": "Blue",
+        "googleTier": "Non-Sensitive",
+        "service": "Identity & SSO"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.domain",
+        "riskLevel": "CRITICAL",
+        "description": "Domain Architecture Control",
+        "threatImpact": "Modify DNS, secondary domain aliases, and domain ownership configurations.",
+        "adminScore": 5,
+        "adminColor": "Red",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/chrome.management.policy",
+        "riskLevel": "LOW",
+        "description": "Chrome Browser Policy Administration",
+        "threatImpact": "Enforce or alter enterprise Chrome browser policies, extension blocklists, and network proxy rules.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/cloud-identity.policies.readonly",
+        "riskLevel": "LOW",
+        "description": "Cloud Identity Security Policies Inspection",
+        "threatImpact": "Audit security policies, 2SV enforcement rules, and context-aware session policies.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/directory.readonly",
+        "riskLevel": "MEDIUM",
+        "description": "Global Address List Harvesting",
+        "threatImpact": "View internal company Global Address List (GAL) directory.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Google Contacts"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.rolemanagement",
+        "riskLevel": "CRITICAL",
+        "description": "Domain Privilege Escalation",
+        "threatImpact": "Can create and assign Super Admin roles to rogue accounts. Ultimate domain takeover vector.",
+        "adminScore": 5,
+        "adminColor": "Red",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.resource.calendar",
+        "riskLevel": "CRITICAL",
+        "description": "Calendar Resource Administration",
+        "threatImpact": "Manage conference rooms, video hardware resources, and physical domain facilities.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/classroom.rosters",
+        "riskLevel": "LOW",
+        "description": "Student & Teacher Roster Exposure",
+        "threatImpact": "Access teacher and student roster directories (FERPA/COPPA student privacy compliance exposure).",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Google Chat & Classroom"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/cloud-identity.inboundsso",
+        "riskLevel": "LOW",
+        "description": "Inbound SAML/OIDC SSO Configuration",
+        "threatImpact": "Modify third-party identity provider SSO profiles, SAML certificates, and redirect URLs. Massive authentication hijack vector.",
+        "adminScore": 5,
+        "adminColor": "Red",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/userinfo.profile",
+        "riskLevel": "LOW",
+        "description": "Basic Profile Assertion",
+        "threatImpact": "View the user's display name and profile avatar URL.",
+        "adminScore": 1,
+        "adminColor": "Blue",
+        "googleTier": "Non-Sensitive",
+        "service": "Identity & SSO"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/classroom.profile.emails",
+        "riskLevel": "LOW",
+        "description": "Student & Teacher Email Lookup",
+        "threatImpact": "View the email addresses of people in Google Classroom classes.",
+        "adminScore": 2,
+        "adminColor": "Green",
+        "googleTier": "Non-Sensitive",
+        "service": "Google Chat & Classroom"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/classroom.guardianlinks.students",
+        "riskLevel": "LOW",
+        "description": "Parent & Guardian Student Linkage",
+        "threatImpact": "Access and modify parent/guardian email invitations and contact links for student accounts.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Google Chat & Classroom"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/calendar",
+        "riskLevel": "MEDIUM",
+        "description": "Full Calendar Compromise",
+        "threatImpact": "Full read/write to all calendars. Can delete schedules, plant fraudulent meeting invites, and read meeting attachments.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Sensitive",
+        "service": "Google Calendar"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/classroom.profile.photos",
+        "riskLevel": "LOW",
+        "description": "Classroom User Profile Photos",
+        "threatImpact": "View profile photos of teachers and students in Google Classroom.",
+        "adminScore": 1,
+        "adminColor": "Blue",
+        "googleTier": "Non-Sensitive",
+        "service": "Google Chat & Classroom"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.datatransfer",
+        "riskLevel": "CRITICAL",
+        "description": "Cross-Account Bulk Data Transfer",
+        "threatImpact": "Transfer ownership of entire Drive files and Calendar events between domain users during de-provisioning. Extreme egress potential.",
+        "adminScore": 5,
+        "adminColor": "Red",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.customer",
+        "riskLevel": "CRITICAL",
+        "description": "Customer Account Profile Administration",
+        "threatImpact": "Manage customer domain account details, technical contacts, and postal addresses.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.reports.usage.readonly",
+        "riskLevel": "CRITICAL",
+        "description": "Aggregate Usage Metrics",
+        "threatImpact": "Read aggregate domain usage reports and service adoption statistics without individual PII.",
+        "adminScore": 2,
+        "adminColor": "Green",
+        "googleTier": "Non-Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/cloud-identity.orgunits",
+        "riskLevel": "LOW",
+        "description": "Cloud Identity Organizational Units Management",
+        "threatImpact": "Create, move, and delete Cloud Identity organizational units and root domain hierarchy.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      }
+    ],
+    "servicesTouched": [
+      "Classroom",
+      "Admin SDK",
+      "Contacts",
+      "Calendar"
+    ],
+    "users": [
+      {
+        "email": "alister@gafe.co.za",
+        "name": "Alister Payne",
+        "orgUnit": "/CloudEDU Technical",
+        "isAdmin": true,
+        "grantedScopes": [
+          "https://www.googleapis.com/auth/classroom.topics",
+          "https://www.googleapis.com/auth/admin.directory.orgunit",
+          "https://www.googleapis.com/auth/apps.groups.settings",
+          "https://www.googleapis.com/auth/classroom.courseworkmaterials",
+          "https://www.googleapis.com/auth/admin.directory.userschema",
+          "https://www.googleapis.com/auth/admin.directory.device.chromeos",
+          "https://www.googleapis.com/auth/admin.contact.delegation",
+          "https://www.googleapis.com/auth/admin.directory.device.chromebrowsers",
+          "https://www.googleapis.com/auth/chrome.management.telemetry.readonly",
+          "https://www.googleapis.com/auth/cloud-identity.groups",
+          "https://www.googleapis.com/auth/classroom.coursework.students",
+          "https://www.googleapis.com/auth/contacts",
+          "https://www.google.com/m8/feeds",
+          "https://www.googleapis.com/auth/admin.directory.device.mobile",
+          "https://www.googleapis.com/auth/admin.chrome.printers",
+          "https://www.googleapis.com/auth/userinfo.email",
+          "https://www.googleapis.com/auth/chrome.management.appdetails.readonly",
+          "https://www.googleapis.com/auth/apps.groups.migration",
+          "https://www.googleapis.com/auth/classroom.announcements",
+          "https://www.googleapis.com/auth/cloud-identity.userinvitations",
+          "https://www.googleapis.com/auth/ediscovery",
+          "https://www.googleapis.com/auth/admin.directory.user.security",
+          "https://www.googleapis.com/auth/admin.reports.audit.readonly",
+          "https://www.googleapis.com/auth/admin.directory.user",
+          "https://www.googleapis.com/auth/admin.directory.group",
+          "https://www.googleapis.com/auth/chrome.management.reports.readonly",
+          "https://www.googleapis.com/auth/apps.licensing",
+          "https://www.googleapis.com/auth/classroom.courses",
+          "https://www.googleapis.com/auth/chrome.management.profiles",
+          "openid",
+          "https://www.googleapis.com/auth/admin.directory.domain",
+          "https://www.googleapis.com/auth/chrome.management.policy",
+          "https://www.googleapis.com/auth/cloud-identity.policies.readonly",
+          "https://www.googleapis.com/auth/directory.readonly",
+          "https://www.googleapis.com/auth/admin.directory.rolemanagement",
+          "https://www.googleapis.com/auth/admin.directory.resource.calendar",
+          "https://www.googleapis.com/auth/classroom.rosters",
+          "https://www.googleapis.com/auth/cloud-identity.inboundsso",
+          "https://www.googleapis.com/auth/userinfo.profile",
+          "https://www.googleapis.com/auth/classroom.profile.emails",
+          "https://www.googleapis.com/auth/classroom.guardianlinks.students",
+          "https://www.googleapis.com/auth/calendar",
+          "https://www.googleapis.com/auth/classroom.profile.photos",
+          "https://www.googleapis.com/auth/admin.datatransfer",
+          "https://www.googleapis.com/auth/admin.directory.customer",
+          "https://www.googleapis.com/auth/admin.reports.usage.readonly",
+          "https://www.googleapis.com/auth/cloud-identity.orgunits"
+        ]
+      }
+    ],
+    "firstSeen": null,
+    "lastActive": null,
+    "lastActiveFormatted": "12/09/2026",
+    "isStale": true,
+    "isNew": false,
+    "totalActivityEvents": 0
+  },
+  {
+    "id": "585538275436-4lk6emnir2l22atsdk61fstd4nhkgbku.apps.googleusercontent.com",
+    "clientId": "585538275436-4lk6emnir2l22atsdk61fstd4nhkgbku.apps.googleusercontent.com",
+    "familyId": "gam",
+    "familyName": "GAM (Google Apps Manager)",
+    "displayName": "GAM (Web Application)",
+    "vendor": "GAM Open Source",
+    "publisherDomain": "github.com/GAM-team/GAM",
+    "category": "IT Admin & Automation",
+    "appType": "Command-Line IT Tool",
+    "deploymentType": "Web Application",
+    "compliance": [
+      "Open Source Audited"
+    ],
+    "dataHosting": "Local / Tenant Only",
+    "breachHistory": null,
+    "breaches": [],
+    "breachPenalty": 0,
+    "breachBracket": "NONE",
+    "breachDaysElapsed": null,
+    "verificationPenalty": 0,
+    "scopeRiskScore": 5,
+    "isVerified": true,
+    "iconUrl": "https://www.google.com/s2/favicons?domain=github.com&sz=128",
+    "storeUrl": "https://github.com/GAM-team/GAM",
+    "description": "Command-line management tool for Google Workspace domain administration.",
+    "riskScore": 5,
+    "peakScopeScore": 5,
+    "breadthScore": 1,
+    "avgScopeScore": 3.32,
+    "riskLevel": "CRITICAL",
+    "riskScoreColor": "Red",
+    "rawMaxRisk": "CRITICAL",
+    "riskReasons": [
+      "Critical Administrative or Direct Mail Access",
+      "Full Google Drive Read/Write Access or Mail Modification",
+      "Access to Domain Directory, Files, or Calendars",
+      "Basic Authentication / Profile Scopes",
+      "Administrative or Direct Mail Access"
+    ],
+    "adminAccessLevel": "UNCONFIGURED",
+    "accessPolicy": null,
+    "multiClientMapped": true,
+    "familyDeploymentsCount": 6,
+    "siblingDeployments": [
+      {
+        "id": "297408095146-fug707qsjv4ikron0hugpevbrjhkmsk7.apps.googleusercontent.com",
+        "displayName": "GAM Project Creation (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "297408095146-fug707qsjv4ikron0hugpevbrjhkmsk7.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 2,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "458969862783-1smfdj4v8qbnibgarka1a99400lhsa13.apps.googleusercontent.com",
+        "displayName": "GAM (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "458969862783-1smfdj4v8qbnibgarka1a99400lhsa13.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "72867247940-n969jo6c29qg22m8sodb2hftn6dck1mk.apps.googleusercontent.com",
+        "displayName": "GAM7-demo (Staging / Dev)",
+        "deploymentType": "Staging / Dev",
+        "clientId": "72867247940-n969jo6c29qg22m8sodb2hftn6dck1mk.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "521549528509-f17hlgjd91nbi5sooc73ia3d4dqln10s.apps.googleusercontent.com",
+        "displayName": "GAM7-CGP-Training (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "521549528509-f17hlgjd91nbi5sooc73ia3d4dqln10s.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "101367350966766396496",
+        "displayName": "GAM7-CGP-Training (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "101367350966766396496",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "LOW"
+      }
+    ],
+    "clientIdsCount": 1,
+    "clientIds": [
+      "585538275436-4lk6emnir2l22atsdk61fstd4nhkgbku.apps.googleusercontent.com"
+    ],
+    "projectNumbers": [
+      "585538275436"
+    ],
+    "totalUsersCount": 1,
+    "adminUsersCount": 1,
+    "scopesCount": 47,
+    "scopes": [
+      {
+        "scope": "https://www.googleapis.com/auth/classroom.topics",
+        "riskLevel": "LOW",
+        "description": "Classroom Course Topics Management",
+        "threatImpact": "Create and organize subject module topics within Google Classroom.",
+        "adminScore": 2,
+        "adminColor": "Green",
+        "googleTier": "Sensitive",
+        "service": "Google Chat & Classroom"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.orgunit",
+        "riskLevel": "CRITICAL",
+        "description": "OU Policy Bypass",
+        "threatImpact": "Move users between Organizational Units, potentially bypassing 2SV mandates or restricted app policies.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/apps.groups.settings",
+        "riskLevel": "LOW",
+        "description": "Google Groups Security Configuration",
+        "threatImpact": "Modify group security settings, including allowing external participants, public web postings, or collaborative inbox access.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/classroom.courseworkmaterials",
+        "riskLevel": "LOW",
+        "description": "Coursework Teaching Materials Management",
+        "threatImpact": "Manage instructional documents, links, and study materials published to students.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Google Chat & Classroom"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.userschema",
+        "riskLevel": "CRITICAL",
+        "description": "Custom Directory Schema Tampering",
+        "threatImpact": "Define and modify custom attributes for domain user accounts (often storing internal employee IDs or clearance levels).",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.device.chromeos",
+        "riskLevel": "CRITICAL",
+        "description": "Fleet Device Management",
+        "threatImpact": "Remote control, wipe, reboot, or de-provision managed Chromebook devices across the fleet.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/cloud-identity.policies",
+        "riskLevel": "LOW",
+        "description": "Cloud Identity Security Policies Administration",
+        "threatImpact": "Define and enforce domain-wide identity policies, password complexity rules, and session controls.",
+        "adminScore": 5,
+        "adminColor": "Red",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.contact.delegation",
+        "riskLevel": "CRITICAL",
+        "description": "Domain Contact Delegation Control",
+        "threatImpact": "Manage shared external contacts and delegated address book access across tenant users.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.device.chromebrowsers",
+        "riskLevel": "CRITICAL",
+        "description": "Enrolled Chrome Browser Fleet Inspection",
+        "threatImpact": "View enrolled Chrome browser instances, OS versions, and enterprise policies.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/chrome.management.telemetry.readonly",
+        "riskLevel": "LOW",
+        "description": "Chrome Device Telemetry Readout",
+        "threatImpact": "Read hardware diagnostic telemetry, network metrics, and CPU usage on ChromeOS devices.",
+        "adminScore": 2,
+        "adminColor": "Green",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/cloud-identity.groups",
+        "riskLevel": "LOW",
+        "description": "Cloud Identity Security Groups Management",
+        "threatImpact": "Full CRUD control over Cloud Identity groups, security labels, dynamic memberships, and IAM group bindings.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/classroom.coursework.students",
+        "riskLevel": "LOW",
+        "description": "Student Work & Grade Access",
+        "threatImpact": "View student grades, submissions, and assignment feedback.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Google Chat & Classroom"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/contacts",
+        "riskLevel": "MEDIUM",
+        "description": "Full Address Book Tampering",
+        "threatImpact": "Full read/write to personal and corporate contact lists. Can overwrite or poison phone numbers and addresses.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Sensitive",
+        "service": "Google Contacts"
+      },
+      {
+        "scope": "https://www.google.com/m8/feeds",
+        "riskLevel": "LOW",
+        "description": "Legacy Google Contacts GData Feed Access",
+        "threatImpact": "Full read/write access to personal and shared domain contacts via legacy API.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Sensitive",
+        "service": "Google Contacts"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.device.mobile",
+        "riskLevel": "CRITICAL",
+        "description": "Mobile Device Management & Remote Wipe",
+        "threatImpact": "Enumerate, approve, block, or remotely wipe corporate mobile devices carrying enterprise email and files.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.chrome.printers",
+        "riskLevel": "CRITICAL",
+        "description": "Enterprise Printer Infrastructure Administration",
+        "threatImpact": "Configure native printers and print server endpoints for ChromeOS devices.",
+        "adminScore": 2,
+        "adminColor": "Green",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/userinfo.email",
+        "riskLevel": "LOW",
+        "description": "Primary Email Verification",
+        "threatImpact": "View the user's primary email address for SSO sign-in.",
+        "adminScore": 1,
+        "adminColor": "Blue",
+        "googleTier": "Non-Sensitive",
+        "service": "Identity & SSO"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/chrome.management.appdetails.readonly",
+        "riskLevel": "LOW",
+        "description": "Chrome Web Store App Metadata Inspection",
+        "threatImpact": "Read public and private app details for Chrome extensions installed across the domain.",
+        "adminScore": 1,
+        "adminColor": "Blue",
+        "googleTier": "Non-Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/apps.groups.migration",
+        "riskLevel": "LOW",
+        "description": "Google Groups Message Ingestion / Migration",
+        "threatImpact": "Inject and archive historical messages into Google Groups mailing lists.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/classroom.announcements",
+        "riskLevel": "LOW",
+        "description": "Classroom Announcements Posting & Editing",
+        "threatImpact": "Create, view, and modify student announcements across all enrolled classes.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Google Chat & Classroom"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/cloud-identity.userinvitations",
+        "riskLevel": "LOW",
+        "description": "Unmanaged User Account Invitations",
+        "threatImpact": "Send and manage invitations to unmanaged personal Google accounts to migrate into the corporate domain.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/ediscovery",
+        "riskLevel": "LOW",
+        "description": "Google Vault Legal Holds & eDiscovery Exfiltration",
+        "threatImpact": "Access Google Vault matters, legal holds, export queries, and litigation audits covering all historical domain emails and files.",
+        "adminScore": 5,
+        "adminColor": "Red",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.user.security",
+        "riskLevel": "CRITICAL",
+        "description": "User Security & 2SV Credential Manipulation",
+        "threatImpact": "Manage user MFA/2-step verification, security keys, backup codes, and session cookies. High privilege takeover.",
+        "adminScore": 5,
+        "adminColor": "Red",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.reports.audit.readonly",
+        "riskLevel": "CRITICAL",
+        "description": "Security Audit Log Surveillance",
+        "threatImpact": "Read tenant security audit logs, monitoring detection mechanisms and tracking admin investigation activities.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.user",
+        "riskLevel": "CRITICAL",
+        "description": "Total Account Administration",
+        "threatImpact": "Create, reset passwords, suspend, or delete any domain user account, including administrators.",
+        "adminScore": 5,
+        "adminColor": "Red",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.group",
+        "riskLevel": "CRITICAL",
+        "description": "Group Membership Tampering",
+        "threatImpact": "Add accounts to high-privilege distribution groups, security groups, or restricted mailing lists.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/chrome.management.reports.readonly",
+        "riskLevel": "LOW",
+        "description": "Chrome Management Reporting",
+        "threatImpact": "View telemetry reports regarding browser versions, security events, and installed extensions.",
+        "adminScore": 2,
+        "adminColor": "Green",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/apps.licensing",
+        "riskLevel": "LOW",
+        "description": "Workspace SKU License Assignment",
+        "threatImpact": "Assign or revoke Google Workspace and Google Cloud licenses for domain users.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/classroom.courses",
+        "riskLevel": "LOW",
+        "description": "Course Directory Listing",
+        "threatImpact": "View course titles, descriptions, and schedules.",
+        "adminScore": 2,
+        "adminColor": "Green",
+        "googleTier": "Sensitive",
+        "service": "Google Chat & Classroom"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/chrome.management.profiles",
+        "riskLevel": "LOW",
+        "description": "Managed Chrome Browser Profile Administration",
+        "threatImpact": "View and manage enterprise-managed user profiles within Chrome browsers.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "openid",
+        "riskLevel": "LOW",
+        "description": "OpenID Identity Assertion",
+        "threatImpact": "Standard OpenID Connect token for user authentication assertion.",
+        "adminScore": 1,
+        "adminColor": "Blue",
+        "googleTier": "Non-Sensitive",
+        "service": "Identity & SSO"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.domain",
+        "riskLevel": "CRITICAL",
+        "description": "Domain Architecture Control",
+        "threatImpact": "Modify DNS, secondary domain aliases, and domain ownership configurations.",
+        "adminScore": 5,
+        "adminColor": "Red",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/chrome.management.policy",
+        "riskLevel": "LOW",
+        "description": "Chrome Browser Policy Administration",
+        "threatImpact": "Enforce or alter enterprise Chrome browser policies, extension blocklists, and network proxy rules.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/directory.readonly",
+        "riskLevel": "MEDIUM",
+        "description": "Global Address List Harvesting",
+        "threatImpact": "View internal company Global Address List (GAL) directory.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Google Contacts"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.rolemanagement",
+        "riskLevel": "CRITICAL",
+        "description": "Domain Privilege Escalation",
+        "threatImpact": "Can create and assign Super Admin roles to rogue accounts. Ultimate domain takeover vector.",
+        "adminScore": 5,
+        "adminColor": "Red",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.resource.calendar",
+        "riskLevel": "CRITICAL",
+        "description": "Calendar Resource Administration",
+        "threatImpact": "Manage conference rooms, video hardware resources, and physical domain facilities.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/classroom.rosters",
+        "riskLevel": "LOW",
+        "description": "Student & Teacher Roster Exposure",
+        "threatImpact": "Access teacher and student roster directories (FERPA/COPPA student privacy compliance exposure).",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Google Chat & Classroom"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/cloud-identity.inboundsso",
+        "riskLevel": "LOW",
+        "description": "Inbound SAML/OIDC SSO Configuration",
+        "threatImpact": "Modify third-party identity provider SSO profiles, SAML certificates, and redirect URLs. Massive authentication hijack vector.",
+        "adminScore": 5,
+        "adminColor": "Red",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/userinfo.profile",
+        "riskLevel": "LOW",
+        "description": "Basic Profile Assertion",
+        "threatImpact": "View the user's display name and profile avatar URL.",
+        "adminScore": 1,
+        "adminColor": "Blue",
+        "googleTier": "Non-Sensitive",
+        "service": "Identity & SSO"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/classroom.profile.emails",
+        "riskLevel": "LOW",
+        "description": "Student & Teacher Email Lookup",
+        "threatImpact": "View the email addresses of people in Google Classroom classes.",
+        "adminScore": 2,
+        "adminColor": "Green",
+        "googleTier": "Non-Sensitive",
+        "service": "Google Chat & Classroom"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/classroom.guardianlinks.students",
+        "riskLevel": "LOW",
+        "description": "Parent & Guardian Student Linkage",
+        "threatImpact": "Access and modify parent/guardian email invitations and contact links for student accounts.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Google Chat & Classroom"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/calendar",
+        "riskLevel": "MEDIUM",
+        "description": "Full Calendar Compromise",
+        "threatImpact": "Full read/write to all calendars. Can delete schedules, plant fraudulent meeting invites, and read meeting attachments.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Sensitive",
+        "service": "Google Calendar"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/classroom.profile.photos",
+        "riskLevel": "LOW",
+        "description": "Classroom User Profile Photos",
+        "threatImpact": "View profile photos of teachers and students in Google Classroom.",
+        "adminScore": 1,
+        "adminColor": "Blue",
+        "googleTier": "Non-Sensitive",
+        "service": "Google Chat & Classroom"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.datatransfer",
+        "riskLevel": "CRITICAL",
+        "description": "Cross-Account Bulk Data Transfer",
+        "threatImpact": "Transfer ownership of entire Drive files and Calendar events between domain users during de-provisioning. Extreme egress potential.",
+        "adminScore": 5,
+        "adminColor": "Red",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.directory.customer",
+        "riskLevel": "CRITICAL",
+        "description": "Customer Account Profile Administration",
+        "threatImpact": "Manage customer domain account details, technical contacts, and postal addresses.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/admin.reports.usage.readonly",
+        "riskLevel": "CRITICAL",
+        "description": "Aggregate Usage Metrics",
+        "threatImpact": "Read aggregate domain usage reports and service adoption statistics without individual PII.",
+        "adminScore": 2,
+        "adminColor": "Green",
+        "googleTier": "Non-Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/cloud-identity.orgunits",
+        "riskLevel": "LOW",
+        "description": "Cloud Identity Organizational Units Management",
+        "threatImpact": "Create, move, and delete Cloud Identity organizational units and root domain hierarchy.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Restricted",
+        "service": "Admin SDK"
+      }
+    ],
+    "servicesTouched": [
+      "Classroom",
+      "Admin SDK",
+      "Contacts",
+      "Calendar"
+    ],
+    "users": [
+      {
+        "email": "farrakhan@gafe.co.za",
+        "name": "Farrakhan Raborife",
+        "orgUnit": "/",
+        "isAdmin": true,
+        "grantedScopes": [
+          "https://www.googleapis.com/auth/classroom.topics",
+          "https://www.googleapis.com/auth/admin.directory.orgunit",
+          "https://www.googleapis.com/auth/apps.groups.settings",
+          "https://www.googleapis.com/auth/classroom.courseworkmaterials",
+          "https://www.googleapis.com/auth/admin.directory.userschema",
+          "https://www.googleapis.com/auth/admin.directory.device.chromeos",
+          "https://www.googleapis.com/auth/cloud-identity.policies",
+          "https://www.googleapis.com/auth/admin.contact.delegation",
+          "https://www.googleapis.com/auth/admin.directory.device.chromebrowsers",
+          "https://www.googleapis.com/auth/chrome.management.telemetry.readonly",
+          "https://www.googleapis.com/auth/cloud-identity.groups",
+          "https://www.googleapis.com/auth/classroom.coursework.students",
+          "https://www.googleapis.com/auth/contacts",
+          "https://www.google.com/m8/feeds",
+          "https://www.googleapis.com/auth/admin.directory.device.mobile",
+          "https://www.googleapis.com/auth/admin.chrome.printers",
+          "https://www.googleapis.com/auth/userinfo.email",
+          "https://www.googleapis.com/auth/chrome.management.appdetails.readonly",
+          "https://www.googleapis.com/auth/apps.groups.migration",
+          "https://www.googleapis.com/auth/classroom.announcements",
+          "https://www.googleapis.com/auth/cloud-identity.userinvitations",
+          "https://www.googleapis.com/auth/ediscovery",
+          "https://www.googleapis.com/auth/admin.directory.user.security",
+          "https://www.googleapis.com/auth/admin.reports.audit.readonly",
+          "https://www.googleapis.com/auth/admin.directory.user",
+          "https://www.googleapis.com/auth/admin.directory.group",
+          "https://www.googleapis.com/auth/chrome.management.reports.readonly",
+          "https://www.googleapis.com/auth/apps.licensing",
+          "https://www.googleapis.com/auth/classroom.courses",
+          "https://www.googleapis.com/auth/chrome.management.profiles",
+          "openid",
+          "https://www.googleapis.com/auth/admin.directory.domain",
+          "https://www.googleapis.com/auth/chrome.management.policy",
+          "https://www.googleapis.com/auth/directory.readonly",
+          "https://www.googleapis.com/auth/admin.directory.rolemanagement",
+          "https://www.googleapis.com/auth/admin.directory.resource.calendar",
+          "https://www.googleapis.com/auth/classroom.rosters",
+          "https://www.googleapis.com/auth/cloud-identity.inboundsso",
+          "https://www.googleapis.com/auth/userinfo.profile",
+          "https://www.googleapis.com/auth/classroom.profile.emails",
+          "https://www.googleapis.com/auth/classroom.guardianlinks.students",
+          "https://www.googleapis.com/auth/calendar",
+          "https://www.googleapis.com/auth/classroom.profile.photos",
+          "https://www.googleapis.com/auth/admin.datatransfer",
+          "https://www.googleapis.com/auth/admin.directory.customer",
+          "https://www.googleapis.com/auth/admin.reports.usage.readonly",
+          "https://www.googleapis.com/auth/cloud-identity.orgunits"
+        ]
+      }
+    ],
+    "firstSeen": null,
+    "lastActive": null,
+    "lastActiveFormatted": "12/09/2026",
+    "isStale": true,
+    "isNew": false,
+    "totalActivityEvents": 0
+  },
+  {
+    "id": "101367350966766396496",
+    "clientId": "101367350966766396496",
+    "familyId": "gam",
+    "familyName": "GAM (Google Apps Manager)",
+    "displayName": "GAM7-CGP-Training (Web Application)",
+    "vendor": "GAM Open Source",
+    "publisherDomain": "github.com/GAM-team/GAM",
+    "category": "IT Admin & Automation",
+    "appType": "Command-Line IT Tool",
+    "deploymentType": "Web Application",
+    "compliance": [
+      "Open Source Audited"
+    ],
+    "dataHosting": "Local / Tenant Only",
+    "breachHistory": null,
+    "breaches": [],
+    "breachPenalty": 0,
+    "breachBracket": "NONE",
+    "breachDaysElapsed": null,
+    "verificationPenalty": 0,
+    "scopeRiskScore": 1,
+    "isVerified": true,
+    "iconUrl": "https://www.google.com/s2/favicons?domain=github.com&sz=128",
+    "storeUrl": "https://github.com/GAM-team/GAM",
+    "description": "Command-line management tool for Google Workspace domain administration.",
+    "riskScore": 1,
+    "peakScopeScore": 1,
+    "breadthScore": 0,
+    "avgScopeScore": 1,
+    "riskLevel": "LOW",
+    "riskScoreColor": "Blue",
+    "rawMaxRisk": "LOW",
+    "riskReasons": [
+      "Standard SaaS Integration"
+    ],
+    "adminAccessLevel": "UNCONFIGURED",
+    "accessPolicy": null,
+    "multiClientMapped": true,
+    "familyDeploymentsCount": 6,
+    "siblingDeployments": [
+      {
+        "id": "297408095146-fug707qsjv4ikron0hugpevbrjhkmsk7.apps.googleusercontent.com",
+        "displayName": "GAM Project Creation (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "297408095146-fug707qsjv4ikron0hugpevbrjhkmsk7.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 2,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "458969862783-1smfdj4v8qbnibgarka1a99400lhsa13.apps.googleusercontent.com",
+        "displayName": "GAM (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "458969862783-1smfdj4v8qbnibgarka1a99400lhsa13.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "72867247940-n969jo6c29qg22m8sodb2hftn6dck1mk.apps.googleusercontent.com",
+        "displayName": "GAM7-demo (Staging / Dev)",
+        "deploymentType": "Staging / Dev",
+        "clientId": "72867247940-n969jo6c29qg22m8sodb2hftn6dck1mk.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "521549528509-f17hlgjd91nbi5sooc73ia3d4dqln10s.apps.googleusercontent.com",
+        "displayName": "GAM7-CGP-Training (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "521549528509-f17hlgjd91nbi5sooc73ia3d4dqln10s.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "585538275436-4lk6emnir2l22atsdk61fstd4nhkgbku.apps.googleusercontent.com",
+        "displayName": "GAM (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "585538275436-4lk6emnir2l22atsdk61fstd4nhkgbku.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      }
+    ],
+    "clientIdsCount": 1,
+    "clientIds": [
+      "101367350966766396496"
+    ],
+    "projectNumbers": [
+      "101367350966766396496"
+    ],
+    "totalUsersCount": 1,
+    "adminUsersCount": 1,
+    "scopesCount": 0,
+    "scopes": [],
+    "servicesTouched": [],
+    "users": [
+      {
+        "email": "alister@gafe.co.za",
+        "name": "Alister Payne",
+        "orgUnit": "/CloudEDU Technical",
+        "isAdmin": true,
+        "grantedScopes": []
+      }
+    ],
+    "firstSeen": "2026-09-12T05:16:45.083Z",
+    "lastActive": "2026-09-12T05:22:35.665Z",
+    "lastActiveFormatted": "12/09/2026",
+    "isStale": false,
+    "isNew": true,
+    "totalActivityEvents": 346
   },
   {
     "id": "953348912797-h2fo9tmk42mnrkk0kc6gula9i8ipv3re.apps.googleusercontent.com",

@@ -8,7 +8,8 @@ export const metadata = {
 };
 
 export default function CentralDatabasePage() {
-  const dataPath = path.join(process.cwd(), "data", "applications_catalog.json");
+  const masterPath = path.join(process.cwd(), "data", "master_applications_catalog.json");
+  const dataPath = fs.existsSync(masterPath) ? masterPath : path.join(process.cwd(), "data", "applications_catalog.json");
   let apps = [];
 
   if (fs.existsSync(dataPath)) {
@@ -19,5 +20,17 @@ export default function CentralDatabasePage() {
     }
   }
 
-  return <CentralDatabaseClient initialApps={apps} />;
+  // Defensively ensure only Google Owned, Third Party, and Unknown apps remain (exclude internal)
+  const sanitizedApps = apps.filter((a: any) => {
+    const isInternal =
+      a.ownership === "Internal" ||
+      (a.vendor && a.vendor.toLowerCase().includes("internal")) ||
+      (a.category && a.category.toLowerCase().includes("internal")) ||
+      (a.description && a.description.toLowerCase().includes("internal domain tool")) ||
+      (a.description && a.description.toLowerCase().includes("custom google apps script")) ||
+      (Array.isArray(a.compliance) && a.compliance.includes("Internal Tenant Only"));
+    return !isInternal;
+  });
+
+  return <CentralDatabaseClient initialApps={sanitizedApps} />;
 }

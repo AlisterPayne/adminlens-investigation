@@ -39,6 +39,7 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
     isClientWorkspace && (currentTab === "apps" || currentTab === "dashboard");
   const isClientScopesActive = isClientWorkspace && currentTab === "scopes";
   const isClientRecsActive = isClientWorkspace && currentTab === "recs";
+  const isClientTimelineActive = isClientWorkspace && currentTab === "timeline";
 
   const isAdminScopesActive = segments.includes("scopes");
   const isAdminRepoActive = segments.includes("central-database");
@@ -104,15 +105,12 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
 
         {/* Links */}
         <div className="space-y-6">
-          {/* Section 1: Client Workspace */}
+          {/* Section 1: Workspace */}
           <div>
-            <div className="flex items-center justify-between pl-3 pr-2 mb-2">
-              <h3 className="text-xs uppercase text-gray-500 font-bold tracking-wider">
-                Client Workspace
+            <div className="pl-3 pr-2 mb-2">
+              <h3 className="text-xs uppercase text-gray-400 font-bold tracking-wider">
+                Workspace
               </h3>
-              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">
-                gafe.co.za
-              </span>
             </div>
             <ul className="space-y-1">
               
@@ -132,7 +130,7 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
                 </SidebarLink>
               </li>
 
-              {/* Services and Scopes */}
+              {/* Services & Scopes */}
               <li className={`px-2.5 py-2 rounded-lg transition-colors ${isClientScopesActive ? "bg-blue-50 text-blue-700 font-semibold" : "hover:bg-gray-100 text-gray-700"}`}>
                 <SidebarLink href="/dashboard?tab=scopes" onClick={() => setCurrentTab("scopes")}>
                   <div className="flex items-center justify-between w-full">
@@ -141,14 +139,14 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
                       </svg>
                       <span className="text-sm ml-2.5 font-medium">
-                        Services and Scopes
+                        Services &amp; Scopes
                       </span>
                     </div>
                   </div>
                 </SidebarLink>
               </li>
 
-              {/* Policy Recommendation */}
+              {/* Recommendations */}
               <li className={`px-2.5 py-2 rounded-lg transition-colors ${isClientRecsActive ? "bg-blue-50 text-blue-700 font-semibold" : "hover:bg-gray-100 text-gray-700"}`}>
                 <SidebarLink href="/dashboard?tab=recs" onClick={() => setCurrentTab("recs")}>
                   <div className="flex items-center justify-between w-full">
@@ -157,7 +155,23 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                       </svg>
                       <span className="text-sm ml-2.5 font-medium">
-                        Policy Recommendation
+                        Recommendations
+                      </span>
+                    </div>
+                  </div>
+                </SidebarLink>
+              </li>
+
+              {/* Access Timeline (4th Item) */}
+              <li className={`px-2.5 py-2 rounded-lg transition-colors ${isClientTimelineActive ? "bg-blue-50 text-blue-700 font-semibold" : "hover:bg-gray-100 text-gray-700"}`}>
+                <SidebarLink href="/dashboard?tab=timeline" onClick={() => setCurrentTab("timeline")}>
+                  <div className="flex items-center justify-between w-full">
+                    <div className="flex items-center">
+                      <svg className={`shrink-0 h-4.5 w-4.5 ${isClientTimelineActive ? "text-blue-600" : "text-gray-500"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <span className="text-sm ml-2.5 font-medium">
+                        Access Timeline
                       </span>
                     </div>
                   </div>
@@ -167,40 +181,18 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
             </ul>
           </div>
 
-          {/* Section 2: Admin Backend */}
+          {/* Section 2: Central Catalog */}
           <div className="pt-2 border-t border-gray-200">
-            <div className="flex items-center justify-between pl-3 pr-2 mb-2">
-              <h3 className="text-xs uppercase text-emerald-800 font-bold tracking-wider">
-                Admin Backend
+            <div className="pl-3 pr-2 mb-2">
+              <h3 className="text-xs uppercase text-gray-400 font-bold tracking-wider">
+                Central Catalog
               </h3>
-              <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-300">
-                Global DB
-              </span>
             </div>
             
             {/* Standalone Sub-menu Group */}
             <ul className="space-y-1 bg-emerald-50/40 p-1 rounded-xl border border-emerald-100/80">
 
-              {/* Sub-menu 1: Services and Scopes */}
-              <li className={`px-2.5 py-2 rounded-lg transition-colors ${isAdminScopesActive ? "bg-white text-emerald-900 font-bold shadow-xs border border-emerald-200" : "hover:bg-white/80 text-gray-700"}`}>
-                <SidebarLink href="/scopes">
-                  <div className="flex items-center justify-between w-full">
-                    <div className="flex items-center">
-                      <svg className={`shrink-0 h-4.5 w-4.5 ${isAdminScopesActive ? "text-emerald-700" : "text-emerald-600"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                      </svg>
-                      <span className="text-sm ml-2.5 font-medium">
-                        Services and Scopes
-                      </span>
-                    </div>
-                    <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-200">
-                      158
-                    </span>
-                  </div>
-                </SidebarLink>
-              </li>
-
-              {/* Sub-menu 2: Application Repository */}
+              {/* Sub-menu 1: Application Repository */}
               <li className={`px-2.5 py-2 rounded-lg transition-colors ${isAdminRepoActive ? "bg-white text-emerald-900 font-bold shadow-xs border border-emerald-200" : "hover:bg-white/80 text-gray-700"}`}>
                 <SidebarLink href="/central-database">
                   <div className="flex items-center justify-between w-full">
@@ -212,9 +204,22 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
                         Application Repository
                       </span>
                     </div>
-                    <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-200">
-                      2,076
-                    </span>
+                  </div>
+                </SidebarLink>
+              </li>
+
+              {/* Sub-menu 2: Services & Scopes */}
+              <li className={`px-2.5 py-2 rounded-lg transition-colors ${isAdminScopesActive ? "bg-white text-emerald-900 font-bold shadow-xs border border-emerald-200" : "hover:bg-white/80 text-gray-700"}`}>
+                <SidebarLink href="/scopes">
+                  <div className="flex items-center justify-between w-full">
+                    <div className="flex items-center">
+                      <svg className={`shrink-0 h-4.5 w-4.5 ${isAdminScopesActive ? "text-emerald-700" : "text-emerald-600"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                      </svg>
+                      <span className="text-sm ml-2.5 font-medium">
+                        Services &amp; Scopes
+                      </span>
+                    </div>
                   </div>
                 </SidebarLink>
               </li>

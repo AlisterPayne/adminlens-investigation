@@ -2,8 +2,13 @@ import fs from 'fs';
 import path from 'path';
 import { DatabaseSync } from 'node:sqlite';
 import { OAUTH_SCOPES_DATA } from './seed_scope_reference.mjs';
+import { 
+  enrichApplicationRecord, 
+  calculateInherentRisk, 
+  calculateBreachPenalty 
+} from './app_enrichment_service.mjs';
 
-const MASTER_CSV_PATH = './master_apps.csv';
+const MASTER_CSV_PATH = fs.existsSync('./master_apps2.csv') ? './master_apps2.csv' : './master_apps.csv';
 const DB_PATH = './adminlens.db';
 const CATALOG_PATHS = [
   './standardized_catalog/applications_catalog.json',
@@ -211,84 +216,21 @@ export function resolveScopeMetadata(scopeUrl, serviceNameHint, scopeRefMap) {
   return meta;
 }
 
-export function calculateApplicationRisk(scopesList) {
-  if (!scopesList || scopesList.length === 0) {
-    return {
-      riskScore: 1.0,
-      riskLevel: 'LOW',
-      riskScoreColor: 'Blue',
-      peakScopeScore: 1,
-      breadthScore: 0.0,
-      avgScopeScore: 1.0,
-      riskReasons: ['No high-risk scopes detected']
-    };
-  }
+export function calculateApplicationRisk(scopesList, options = {}) {
+  const {
+    isVerified = true,
+    breaches = [],
+    appType = 'Web Application',
+    referenceDate = new Date()
+  } = options;
 
-  const scores = scopesList.map(s => s.admin_score || s.adminScore || 1);
-  const peakScopeScore = Math.max(...scores);
-  const sumScores = scores.reduce((sum, v) => sum + v, 0);
-  const avgScopeScore = Number((sumScores / scores.length).toFixed(2));
-
-  // Option B: Base severity floor
-  const baseFloor = Math.max(0, peakScopeScore - 1);
-
-  const nonPeakScores = scores.slice();
-  nonPeakScores.splice(nonPeakScores.indexOf(peakScopeScore), 1);
-
-  const surcharge = nonPeakScores.reduce((acc, score) => {
-    if (score === 5) return acc + 0.15;
-    if (score === 4) return acc + 0.08;
-    if (score === 3) return acc + 0.04;
-    if (score === 2) return acc + 0.02;
-    return acc + 0.01;
-  }, 0);
-
-  const maxHeadroom = peakScopeScore === 5 ? 1.00 : 0.99;
-  const breadthScore = Number(Math.min(maxHeadroom, surcharge).toFixed(2));
-  const riskScore = Number(Math.max(1.0, (baseFloor + breadthScore)).toFixed(2));
-
-  let riskLevel = 'LOW';
-  let riskScoreColor = 'Blue';
-  if (riskScore >= 4.00) {
-    riskLevel = 'CRITICAL';
-    riskScoreColor = 'Red';
-  } else if (riskScore >= 3.00) {
-    riskLevel = 'HIGH';
-    riskScoreColor = 'Orange';
-  } else if (riskScore >= 2.00) {
-    riskLevel = 'MEDIUM';
-    riskScoreColor = 'Yellow';
-  } else if (riskScore >= 1.00) {
-    riskLevel = 'LOW';
-    riskScoreColor = 'Green';
-  }
-
-  const riskReasons = [];
-  if (scores.some(s => s === 5)) {
-    riskReasons.push('Critical Administrative or Direct Mail Access');
-  }
-  if (scores.some(s => s === 4)) {
-    riskReasons.push('Full Google Drive Read/Write Access or Mail Modification');
-  }
-  if (scores.some(s => s === 3)) {
-    riskReasons.push('Access to Domain Directory, Files, or Calendars');
-  }
-  if (scores.some(s => s <= 2)) {
-    riskReasons.push('Basic Authentication / Profile Scopes');
-  }
-  if (riskReasons.length === 0) {
-    riskReasons.push('Standard SaaS Integration');
-  }
-
-  return {
-    riskScore,
-    riskLevel,
-    riskScoreColor,
-    peakScopeScore,
-    breadthScore,
-    avgScopeScore,
-    riskReasons
-  };
+  return calculateInherentRisk({
+    scopesList,
+    isVerified,
+    breaches,
+    appType,
+    referenceDate
+  });
 }
 
 export function ingestMasterApps() {
@@ -389,6 +331,11 @@ export function ingestMasterApps() {
         risk_score = ?,
         risk_level = ?,
         risk_score_color = ?,
+        scope_risk_score = ?,
+        verification_penalty = ?,
+        breach_penalty = ?,
+        breach_bracket = ?,
+        breaches_json = ?,
         peak_scope_score = ?,
         breadth_score = ?,
         avg_scope_score = ?,
@@ -401,12 +348,14 @@ export function ingestMasterApps() {
     INSERT INTO applications (
       id, display_name, vendor, publisher_domain, category, is_verified,
       icon_url, store_url, risk_level, risk_score, risk_score_color,
+      scope_risk_score, verification_penalty, breach_penalty, breach_bracket, breaches_json,
       peak_scope_score, breadth_score, avg_scope_score,
       risk_reasons, admin_access_level, is_google_service, app_type,
       total_users_count, admin_users_count, first_seen_at, last_active_at,
       created_at, updated_at
     ) VALUES (
       ?, ?, ?, ?, ?, ?,
+      ?, ?, ?, ?, ?,
       ?, ?, ?, ?, ?,
       ?, ?, ?,
       ?, ?, ?, ?,
@@ -444,10 +393,19 @@ export function ingestMasterApps() {
 
   for (const [id, item] of groupedApps) {
     const isGoogle = item.ownership.toLowerCase() === 'google owned';
-    const vendor = isGoogle ? 'Google LLC' : (item.appName || 'Third-Party Developer');
-    const category = isGoogle ? 'Google Services' : 'Configured SaaS';
-    const appType = isGoogle ? 'Google Service' : (item.clientType || 'Third-Party');
+    const enriched = enrichApplicationRecord({
+      displayName: item.appName,
+      name: item.appName,
+      isVerified: item.isVerified,
+      appType: item.clientType
+    });
+
+    const vendor = isGoogle ? 'Google LLC' : (enriched.vendor || item.appName || 'Third-Party Developer');
+    const category = isGoogle ? 'Productivity & Collaboration' : (enriched.category || 'Configured SaaS');
+    const appType = enriched.appType || item.clientType || 'Web Application';
     const projectNumber = getProjectNumber(id);
+    const publisherDomain = enriched.publisherDomain || '';
+    const breaches = enriched.breaches || [];
 
     // Resolve all scope metadata
     const resolvedScopes = Array.from(item.scopesSet).map(s => {
@@ -462,8 +420,13 @@ export function ingestMasterApps() {
       return meta;
     });
 
-    // Option B Risk Scoring
-    const risk = calculateApplicationRisk(resolvedScopes);
+    // Inherent Risk Scoring (Layer 2)
+    const isVerifiedEffective = item.isVerified || enriched.isVerified;
+    const risk = calculateApplicationRisk(resolvedScopes, {
+      isVerified: isVerifiedEffective,
+      breaches,
+      appType
+    });
 
     // Track statistics
     typeBreakdown[item.clientType] = (typeBreakdown[item.clientType] || 0) + 1;
@@ -476,10 +439,15 @@ export function ingestMasterApps() {
     if (existing) {
       // Update existing record without overwriting admin policies or custom metadata
       updateAppStmt.run(
-        item.isVerified ? 1 : 0,
+        isVerifiedEffective ? 1 : 0,
         risk.riskScore,
         risk.riskLevel,
         risk.riskScoreColor,
+        risk.scopeRiskScore,
+        risk.verificationPenalty,
+        risk.breachPenalty,
+        risk.breachBracket,
+        JSON.stringify(breaches),
         risk.peakScopeScore,
         risk.breadthScore,
         risk.avgScopeScore,
@@ -489,19 +457,24 @@ export function ingestMasterApps() {
       updatedAppsCount++;
     } else {
       // Insert new application
-      const iconUrl = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(item.appName) + '&background=3B82F6&color=fff&size=128&rounded=true';
+      const iconUrl = enriched.iconUrl || ('https://ui-avatars.com/api/?name=' + encodeURIComponent(item.appName) + '&background=3B82F6&color=fff&size=128&rounded=true');
       insertAppStmt.run(
         id,
         item.appName,
         vendor,
-        null,
+        publisherDomain,
         category,
-        item.isVerified ? 1 : 0,
+        isVerifiedEffective ? 1 : 0,
         iconUrl,
-        null,
+        enriched.storeUrl || null,
         risk.riskLevel,
         risk.riskScore,
         risk.riskScoreColor,
+        risk.scopeRiskScore,
+        risk.verificationPenalty,
+        risk.breachPenalty,
+        risk.breachBracket,
+        JSON.stringify(breaches),
         risk.peakScopeScore,
         risk.breadthScore,
         risk.avgScopeScore,
@@ -575,10 +548,18 @@ export function ingestMasterApps() {
 
   for (const [id, item] of groupedApps) {
     const isGoogle = item.ownership.toLowerCase() === 'google owned';
-    const vendor = isGoogle ? 'Google LLC' : (item.appName || 'Third-Party Developer');
-    const category = isGoogle ? 'Google Services' : 'Configured SaaS';
-    const appType = isGoogle ? 'Google Service' : (item.clientType || 'Third-Party');
+    const enriched = enrichApplicationRecord({
+      displayName: item.appName,
+      name: item.appName,
+      isVerified: item.isVerified,
+      appType: item.clientType
+    });
+
+    const vendor = isGoogle ? 'Google LLC' : (enriched.vendor || item.appName || 'Third-Party Developer');
+    const category = isGoogle ? 'Productivity & Collaboration' : (enriched.category || 'Configured SaaS');
+    const appType = enriched.appType || item.clientType || 'Web Application';
     const projectNumber = getProjectNumber(id);
+    const breaches = enriched.breaches || [];
 
     const resolvedScopes = Array.from(item.scopesSet).map(s => {
       let serviceHint = null;
@@ -591,11 +572,23 @@ export function ingestMasterApps() {
       return resolveScopeMetadata(s, serviceHint, scopeRefMap);
     });
 
-    const risk = calculateApplicationRisk(resolvedScopes);
+    const isVerifiedEffective = item.isVerified || enriched.isVerified;
+    const risk = calculateApplicationRisk(resolvedScopes, {
+      isVerified: isVerifiedEffective,
+      breaches,
+      appType
+    });
 
     if (catalogMap.has(id)) {
       const existing = catalogMap.get(id);
-      existing.isVerified = existing.isVerified || item.isVerified;
+      existing.isVerified = existing.isVerified || isVerifiedEffective;
+      existing.vendor = existing.vendor || vendor;
+      existing.breaches = breaches;
+      existing.breachPenalty = risk.breachPenalty;
+      existing.breachBracket = risk.breachBracket;
+      existing.verificationPenalty = risk.verificationPenalty;
+      existing.scopeRiskScore = risk.scopeRiskScore;
+
       if (resolvedScopes.length > (existing.scopes?.length || 0)) {
         existing.scopes = resolvedScopes.map(s => ({
           scope: s.scope_url,
@@ -623,18 +616,23 @@ export function ingestMasterApps() {
         familyId: projectNumber ? `gcp_proj_${projectNumber}` : `app_family_${id}`,
         familyName: item.appName,
         displayName: item.appName,
-        publisherDomain: '',
+        publisherDomain: enriched.publisherDomain || '',
         category,
         appType,
         deploymentType: item.clientType,
-        compliance: ['Standard SaaS'],
-        dataHosting: 'USA',
-        breachHistory: null,
-        isVerified: item.isVerified,
-        iconUrl: 'https://ui-avatars.com/api/?name=' + encodeURIComponent(item.appName) + '&background=3B82F6&color=fff&size=128&rounded=true',
-        storeUrl: null,
-        description: `Imported from Google Workspace Master Apps Catalog (${item.ownership}).`,
+        compliance: enriched.compliance || ['Standard SaaS'],
+        dataHosting: enriched.dataHosting || 'USA',
+        breachHistory: enriched.breachHistory || null,
+        breaches,
+        isVerified: isVerifiedEffective,
+        iconUrl: enriched.iconUrl || ('https://ui-avatars.com/api/?name=' + encodeURIComponent(item.appName) + '&background=3B82F6&color=fff&size=128&rounded=true'),
+        storeUrl: enriched.storeUrl || null,
+        description: enriched.description || `Imported from Google Workspace Master Apps Catalog (${item.ownership}).`,
         riskScore: risk.riskScore,
+        scopeRiskScore: risk.scopeRiskScore,
+        verificationPenalty: risk.verificationPenalty,
+        breachPenalty: risk.breachPenalty,
+        breachBracket: risk.breachBracket,
         peakScopeScore: risk.peakScopeScore,
         breadthScore: risk.breadthScore,
         avgScopeScore: risk.avgScopeScore,

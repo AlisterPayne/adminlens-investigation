@@ -380,10 +380,19 @@ export function resolveApplicationMetadata(app) {
     else if (lowerName.includes('chrome')) subService = 'Browser & Endpoint Management';
     else if (lowerName.includes('device') || lowerName.includes('mdm')) subService = 'MDM & Device Management';
 
+    let category = 'Productivity & Collaboration';
+    if (lowerName.includes('drive')) category = 'Productivity & Storage';
+    else if (lowerName.includes('calendar')) category = 'Productivity & Calendar Sync';
+    else if (lowerName.includes('chat') || lowerName.includes('meet')) category = 'Communication & Collaboration';
+    else if (lowerName.includes('classroom')) category = 'Education & EdTech';
+    else if (lowerName.includes('appsheet')) category = 'Developer & Cloud Infrastructure';
+    else if (lowerName.includes('chrome') || lowerName.includes('device') || lowerName.includes('mdm')) category = 'Endpoint & Device Management';
+    else if (lowerName.includes('tv') || lowerName.includes('cast') || lowerName.includes('youtube')) category = 'Media & Entertainment';
+
     return {
       vendor: 'Google LLC',
       publisherDomain: 'google.com',
-      category: 'Google Services',
+      category: category,
       compliance: ['SOC 2', 'SOC 3', 'ISO 27001', 'GDPR', 'FERPA', 'HIPAA'],
       dataHosting: 'Google Cloud / Global',
       breachHistory: null,

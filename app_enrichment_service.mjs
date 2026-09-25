@@ -71,6 +71,17 @@ export const ENRICHED_VENDOR_REGISTRY = {
     compliance: ['SOC 2', 'GDPR', 'ISO 27001', 'FERPA'],
     dataHosting: 'USA / Australia',
     verified: true,
+    breaches: [
+      {
+        incidentDate: '2019-05-24',
+        title: 'Canva Account Database Exposure',
+        recordsImpacted: '139M accounts',
+        severity: 'HIGH',
+        cve: null,
+        remediated: true,
+        details: 'Customer credentials compromised; salted and hashed passwords.'
+      }
+    ],
     breachHistory: '1 incident (May 2019 - 139M accounts)',
     description: 'Visual communication platform and graphic design suite.',
     iconUrl: 'https://www.google.com/s2/favicons?domain=canva.com&sz=128'
@@ -96,6 +107,17 @@ export const ENRICHED_VENDOR_REGISTRY = {
     compliance: ['SOC 2', 'GDPR'],
     dataHosting: 'USA',
     verified: true,
+    breaches: [
+      {
+        incidentDate: '2014-05-08',
+        title: 'Bitly Account Credential Compromise',
+        recordsImpacted: 'OAuth credentials and API tokens',
+        severity: 'HIGH',
+        cve: null,
+        remediated: true,
+        details: 'Adversary accessed credentials; Bitly revoked all Facebook/Twitter OAuth tokens.'
+      }
+    ],
     breachHistory: '1 incident (May 2014 - Account credentials)',
     description: 'Link management and URL shortening service.',
     iconUrl: 'https://www.google.com/s2/favicons?domain=bitly.com&sz=128'
@@ -352,17 +374,6 @@ export const ENRICHED_VENDOR_REGISTRY = {
     description: 'PDF reader and digital annotation toolbar for Google Drive and Classroom.',
     iconUrl: 'https://www.google.com/s2/favicons?domain=texthelp.com&sz=128'
   },
-  'canva': {
-    vendor: 'Canva Pty Ltd',
-    domain: 'canva.com',
-    category: 'Design & Collaboration',
-    appType: 'Web Application',
-    compliance: ['SOC 2', 'ISO 27001', 'GDPR'],
-    dataHosting: 'USA',
-    verified: true,
-    description: 'Online graphic design platform for presentations, documents, and social graphics.',
-    iconUrl: 'https://www.google.com/s2/favicons?domain=canva.com&sz=128'
-  },
   'mailsuite': {
     vendor: 'Mailtrack / Mailsuite, S.L.',
     domain: 'mailsuite.com',
@@ -450,6 +461,7 @@ export function enrichApplicationRecord(app) {
         compliance: info.compliance || ['GDPR'],
         dataHosting: info.dataHosting || 'USA',
         breachHistory: info.breachHistory || null,
+        breaches: info.breaches || [],
         isVerified: info.verified,
         iconUrl: info.iconUrl,
         storeUrl: `https://${info.domain}`,
@@ -470,6 +482,7 @@ export function enrichApplicationRecord(app) {
       compliance: ['Internal Tenant Only'],
       dataHosting: 'Google Cloud (Tenant)',
       breachHistory: null,
+      breaches: [],
       isVerified: false,
       iconUrl: 'https://www.google.com/s2/favicons?domain=script.google.com&sz=128',
       storeUrl: 'https://script.google.com',
@@ -486,6 +499,204 @@ export function enrichApplicationRecord(app) {
     compliance: app.compliance || ['Standard Terms'],
     dataHosting: app.dataHosting || 'USA',
     breachHistory: null,
+    breaches: [],
     iconUrl: app.iconUrl && !app.iconUrl.includes('avatar_square_grey') ? app.iconUrl : fallbackSvg,
   };
 }
+
+/**
+ * Evaluates dynamic breach recency brackets and returns additive penalty.
+ * Brackets:
+ *  - <= 90 days  (<= 3 months):  +1.00 pts (Active crisis)
+ *  - 91-180 days (3 - 6 months):  +0.60 pts (Recent compromise)
+ *  - 181-365 days (6 - 12 months): +0.30 pts (Probationary)
+ *  - > 365 days  (> 12 months):  +0.10 pts (Historical / Remediated)
+ */
+export function calculateBreachPenalty(breaches, referenceDate = new Date()) {
+  if (!breaches || !Array.isArray(breaches) || breaches.length === 0) {
+    return {
+      penalty: 0.0,
+      bracket: 'NONE',
+      mostRecentDate: null,
+      daysElapsed: null,
+      breachCount: 0
+    };
+  }
+
+  let minDays = Infinity;
+  let mostRecent = null;
+
+  for (const b of breaches) {
+    if (!b.incidentDate) continue;
+    const bDate = new Date(b.incidentDate);
+    const diffMs = referenceDate.getTime() - bDate.getTime();
+    const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+    if (days >= 0 && days < minDays) {
+      minDays = days;
+      mostRecent = b;
+    }
+  }
+
+  if (!mostRecent || minDays === Infinity) {
+    return {
+      penalty: 0.0,
+      bracket: 'NONE',
+      mostRecentDate: null,
+      daysElapsed: null,
+      breachCount: breaches.length
+    };
+  }
+
+  if (minDays <= 90) {
+    return {
+      penalty: 1.00,
+      bracket: 'ACTIVE_3M',
+      label: 'Active Breach (≤ 3 months)',
+      mostRecentDate: mostRecent.incidentDate,
+      daysElapsed: minDays,
+      breachCount: breaches.length
+    };
+  } else if (minDays <= 180) {
+    return {
+      penalty: 0.60,
+      bracket: 'RECENT_6M',
+      label: 'Recent Breach (3–6 months)',
+      mostRecentDate: mostRecent.incidentDate,
+      daysElapsed: minDays,
+      breachCount: breaches.length
+    };
+  } else if (minDays <= 365) {
+    return {
+      penalty: 0.30,
+      bracket: 'PROBATION_12M',
+      label: 'Probationary Breach (6–12 months)',
+      mostRecentDate: mostRecent.incidentDate,
+      daysElapsed: minDays,
+      breachCount: breaches.length
+    };
+  } else {
+    return {
+      penalty: 0.10,
+      bracket: 'HISTORICAL',
+      label: 'Historical Breach (> 12 months)',
+      mostRecentDate: mostRecent.incidentDate,
+      daysElapsed: minDays,
+      breachCount: breaches.length
+    };
+  }
+}
+
+/**
+ * Calculates Central Repository Inherent Application Risk (1.00 to 5.00 Scale).
+ *
+ * Formula:
+ *  InherentRisk = Clamp( ScopeScore + VerificationPenalty + BreachPenalty, 1.00, 5.00 )
+ */
+export function calculateInherentRisk({
+  scopesList = [],
+  isVerified = false,
+  breaches = [],
+  appType = 'Web Application',
+  referenceDate = new Date()
+}) {
+  // 1. Calculate Option B Scope Sensitivity
+  const scores = (scopesList || []).map(s => s.admin_score || s.adminScore || 1);
+  const peakScopeScore = scores.length > 0 ? Math.max(...scores) : 1;
+  const sumScores = scores.reduce((sum, v) => sum + v, 0);
+  const avgScopeScore = scores.length > 0 ? Number((sumScores / scores.length).toFixed(2)) : 1.0;
+
+  const baseFloor = Math.max(0, peakScopeScore - 1);
+  const nonPeakScores = scores.slice();
+  if (nonPeakScores.length > 0) {
+    nonPeakScores.splice(nonPeakScores.indexOf(peakScopeScore), 1);
+  }
+
+  const surcharge = nonPeakScores.reduce((acc, score) => {
+    if (score === 5) return acc + 0.15;
+    if (score === 4) return acc + 0.08;
+    if (score === 3) return acc + 0.04;
+    if (score === 2) return acc + 0.02;
+    return acc + 0.01;
+  }, 0);
+
+  const maxHeadroom = peakScopeScore === 5 ? 1.00 : 0.99;
+  const breadthScore = Number(Math.min(maxHeadroom, surcharge).toFixed(2));
+  const scopeRiskScore = Number(Math.max(1.0, (baseFloor + breadthScore)).toFixed(2));
+
+  // 2. Additive Verification Penalty (+0.35 if unverified, +0.15 if internal script)
+  let verificationPenalty = 0.0;
+  if (!isVerified) {
+    if (appType === 'Google Apps Script' || (appType && appType.toLowerCase().includes('script'))) {
+      verificationPenalty = 0.15;
+    } else {
+      verificationPenalty = 0.35;
+    }
+  }
+
+  // 3. Additive Breach Penalty (Dynamic recency decay)
+  const breachInfo = calculateBreachPenalty(breaches, referenceDate);
+  const breachPenalty = breachInfo.penalty;
+
+  // 4. Inherent Risk Score: Additive combination, clamped [1.00, 5.00]
+  const rawComposite = scopeRiskScore + verificationPenalty + breachPenalty;
+  const inherentRiskScore = Number(Math.min(5.00, Math.max(1.00, rawComposite)).toFixed(2));
+
+  // 5. Tier & Color Mapping (Symmetrical 1 - 5)
+  let riskLevel = 'LOW';
+  let riskScoreColor = 'Blue';
+
+  if (inherentRiskScore >= 4.00) {
+    riskLevel = 'CRITICAL';
+    riskScoreColor = 'Red';
+  } else if (inherentRiskScore >= 3.00) {
+    riskLevel = 'HIGH';
+    riskScoreColor = 'Orange';
+  } else if (inherentRiskScore >= 2.00) {
+    riskLevel = 'MEDIUM';
+    riskScoreColor = 'Yellow';
+  } else if (inherentRiskScore >= 1.50) {
+    riskLevel = 'LOW';
+    riskScoreColor = 'Green';
+  } else {
+    riskLevel = 'LOW';
+    riskScoreColor = 'Blue';
+  }
+
+  // 6. Descriptive Security Reasons
+  const riskReasons = [];
+  if (scores.some(s => s === 5)) {
+    riskReasons.push('Critical Administrative or Direct Mail Access');
+  }
+  if (scores.some(s => s === 4)) {
+    riskReasons.push('Full Google Drive Read/Write Access or Mail Modification');
+  }
+  if (scores.some(s => s === 3)) {
+    riskReasons.push('Access to Domain Directory, Files, or Calendars');
+  }
+  if (verificationPenalty > 0) {
+    riskReasons.push(`Unverified Publisher (+${verificationPenalty.toFixed(2)} Inherent Risk)`);
+  }
+  if (breachPenalty > 0) {
+    riskReasons.push(`Vendor Breach Exposure: ${breachInfo.label} (+${breachPenalty.toFixed(2)})`);
+  }
+  if (riskReasons.length === 0) {
+    riskReasons.push('Standard SaaS Integration');
+  }
+
+  return {
+    riskScore: inherentRiskScore,
+    riskLevel,
+    riskScoreColor,
+    scopeRiskScore,
+    peakScopeScore,
+    breadthScore,
+    avgScopeScore,
+    verificationPenalty,
+    breachPenalty,
+    breachBracket: breachInfo.bracket,
+    breachDaysElapsed: breachInfo.daysElapsed,
+    breaches: breaches || [],
+    riskReasons
+  };
+}
+

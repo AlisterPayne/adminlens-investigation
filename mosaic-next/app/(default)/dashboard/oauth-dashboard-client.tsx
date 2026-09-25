@@ -15,6 +15,8 @@ import {
   GoogleProductIcon,
 } from "@/components/google-icons";
 import ScopeMatrixView, { ScopeMetrics,ScopeReferenceItem } from "@/components/scope-matrix-view";
+import ApplicationsView from "@/components/applications-view";
+import AccessTimelineView, { TimelineEvent } from "@/components/access-timeline-view";
 
 interface ScopeItem {
   scope: string;
@@ -221,6 +223,7 @@ export default function OAuthDashboardClient({
   users,
   initialScopes = [],
   scopeMetrics = null,
+  initialTimelineEvents = [],
 }: {
   initialApps: Application[];
   initialRecs: InitialRecsData;
@@ -228,22 +231,23 @@ export default function OAuthDashboardClient({
   users: any[];
   initialScopes?: ScopeReferenceItem[];
   scopeMetrics?: ScopeMetrics | null;
+  initialTimelineEvents?: TimelineEvent[];
 }) {
   const [currentApps, setCurrentApps] = useState<Application[]>(initialApps);
   const [currentMetrics, setCurrentMetrics] = useState<Metrics>(metrics);
-  const [activeTab, setActiveTab] = useState<"dashboard" | "apps" | "recs" | "scopes">("apps");
+  const [activeTab, setActiveTab] = useState<"dashboard" | "apps" | "recs" | "scopes" | "timeline">("apps");
   const searchParams = useSearchParams();
 
   useEffect(() => {
     if (searchParams) {
       const tabParam = searchParams.get("tab");
-      if (tabParam === "apps" || tabParam === "recs" || tabParam === "scopes" || tabParam === "dashboard") {
-        setActiveTab(tabParam);
+      if (tabParam === "apps" || tabParam === "recs" || tabParam === "scopes" || tabParam === "dashboard" || tabParam === "timeline") {
+        setActiveTab(tabParam as any);
       }
     }
   }, [searchParams]);
 
-  const handleTabChange = (tab: "dashboard" | "apps" | "recs" | "scopes") => {
+  const handleTabChange = (tab: "dashboard" | "apps" | "recs" | "scopes" | "timeline") => {
     setActiveTab(tab);
     if (typeof window !== "undefined") {
       const url = new URL(window.location.href);
@@ -283,28 +287,24 @@ export default function OAuthDashboardClient({
 
   const getDeploymentTypeBadge = (type: string = "Web Application") => {
     switch (type) {
-      case "Chrome Extension":
-        return (
-          <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-md bg-purple-50 text-purple-700 border border-purple-200 shadow-2xs">
-            <span>🧩</span> Extension
-          </span>
-        );
+      case "Android":
       case "Android App":
         return (
           <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200 shadow-2xs">
             <span>📱</span> Android
           </span>
         );
+      case "iOS":
       case "iOS App":
         return (
           <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-md bg-indigo-50 text-indigo-700 border border-indigo-200 shadow-2xs">
             <span>🍎</span> iOS
           </span>
         );
-      case "Staging / Dev":
+      case "Unknown Application Type":
         return (
-          <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-md bg-amber-50 text-amber-700 border border-amber-200 shadow-2xs">
-            <span>⚠️</span> Staging/Dev
+          <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-md bg-gray-100 text-gray-700 border border-gray-200 shadow-2xs">
+            <span>❓</span> Unknown
           </span>
         );
       case "Google Apps Script":
@@ -313,10 +313,11 @@ export default function OAuthDashboardClient({
             <GoogleAppsScriptIcon className="w-3.5 h-3.5 flex-shrink-0" /> Apps Script
           </span>
         );
+      case "Web Application":
       default:
         return (
           <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 border border-blue-200 shadow-2xs">
-            <span>🌐</span> Web App
+            <span>🌐</span> Web Application
           </span>
         );
     }
@@ -704,47 +705,19 @@ export default function OAuthDashboardClient({
   return (
     <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto space-y-6">
       
-      {/* Top Header Banner */}
-      <div className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div>
-          <div className="flex items-center gap-2 text-xs text-gray-500 font-medium mb-1.5">
-            <span className="text-blue-700 font-semibold">Client Workspace</span>
-            <span>/</span>
-            <span className="text-gray-800 font-semibold">
-              {activeTab === "scopes"
-                ? "Services and Scopes"
-                : activeTab === "recs"
-                ? "Policy Recommendation"
-                : activeTab === "dashboard"
-                ? "Overview"
-                : "Applications"}
-            </span>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white font-bold shadow-md shadow-blue-500/20 shrink-0">
-              AL
-            </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <h1 className="text-2xl font-bold text-gray-900">
-                  {activeTab === "scopes"
-                    ? "Services and Scopes"
-                    : activeTab === "recs"
-                    ? "Policy Recommendation"
-                    : activeTab === "dashboard"
-                    ? "Workspace Overview"
-                    : "Applications"}
-                </h1>
-                <span className="bg-blue-50 text-blue-700 border border-blue-200 text-xs font-semibold px-2.5 py-0.5 rounded-full">
-                  gafe.co.za
-                </span>
-              </div>
-              <p className="text-xs text-gray-500 mt-0.5">
-                Target Workspace: <span className="font-mono font-semibold text-gray-700">gafe.co.za</span> • Super Admin: <span className="font-mono text-gray-700">alister@gafe.co.za</span>
-              </p>
-            </div>
-          </div>
-        </div>
+      {/* Page Heading */}
+      <div className="mb-2">
+        <h1 className="text-2xl font-bold text-gray-900">
+          {activeTab === "scopes"
+            ? "Services & Scopes"
+            : activeTab === "recs"
+            ? "Recommendations"
+            : activeTab === "timeline"
+            ? "Access Timeline"
+            : activeTab === "dashboard"
+            ? "Overview"
+            : "Applications"}
+        </h1>
       </div>
 
       {/* Upload Toast Alert */}
@@ -773,7 +746,7 @@ export default function OAuthDashboardClient({
             >
               <div className="flex items-center gap-2">
                 <span className="text-[10px] text-gray-400">▶</span>
-                <span className="font-semibold text-gray-700 text-xs">Google Workspace App Access Control Baseline</span>
+                <span className="font-semibold text-gray-700 text-xs">App Access Control Baseline</span>
                 <span className="text-gray-400">•</span>
                 <span className="text-[11px] text-emerald-600 font-medium">Ground-Truth Active ({currentMetrics.baselinePolicyCount || 32} domain policies synchronized)</span>
               </div>
@@ -796,7 +769,7 @@ export default function OAuthDashboardClient({
                   <div>
                     <div className="flex items-center gap-2 flex-wrap">
                       <h2 className="font-bold text-xs sm:text-sm text-gray-900 tracking-tight">
-                        Google Workspace App Access Control Baseline
+                        App Access Control Baseline
                       </h2>
                       <span className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold shadow-2xs">
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Ground-Truth Active ({currentMetrics.baselineSource || 'owl_apps.csv'})
@@ -980,7 +953,7 @@ export default function OAuthDashboardClient({
               <div className="flex justify-between items-center border-b border-gray-100 pb-3">
                 <div>
                   <h3 className="font-bold text-sm text-gray-900 flex items-center gap-2">
-                    <span>🔥</span> Sensitive Access Hotspots
+                    <span>🔥</span> Sensitive Access
                   </h3>
                   <p className="text-[11px] text-gray-400 mt-0.5">Click any service to view authorized apps</p>
                 </div>
@@ -1080,7 +1053,7 @@ export default function OAuthDashboardClient({
               <div className="flex justify-between items-center border-b border-gray-100 pb-3">
                 <div>
                   <h3 className="font-bold text-sm text-gray-900 flex items-center gap-2">
-                    <span>⚠️</span> Most Frequent Risky Scopes
+                    <span>⚠️</span> Risky Scopes
                   </h3>
                   <p className="text-[11px] text-gray-400 mt-0.5">Permissions requiring administrative oversight</p>
                 </div>
@@ -1088,20 +1061,24 @@ export default function OAuthDashboardClient({
               </div>
 
               <div className="space-y-2 text-xs">
-                {frequentScopes.map(([desc, count], i) => (
-                  <div 
-                    key={i} 
-                    onClick={() => { setActiveTab("apps"); setSearch(desc.split(" ")[0]); }}
-                    className="group flex items-center justify-between p-3 rounded-lg bg-gray-50/90 border border-gray-100 hover:bg-gray-100 transition-all cursor-pointer"
-                  >
-                    <div className="truncate font-semibold text-gray-800 pr-2 group-hover:text-blue-700">
-                      {desc}
+                {frequentScopes.length === 0 ? (
+                  <div className="text-gray-400 text-xs py-4 text-center italic">No risky scopes detected in workspace</div>
+                ) : (
+                  frequentScopes.map(([desc, count], i) => (
+                    <div 
+                      key={i} 
+                      onClick={() => { setActiveTab("apps"); setSearch(desc.split(" ")[0]); }}
+                      className="group flex items-center justify-between p-3 rounded-lg bg-gray-50/90 border border-gray-100 hover:bg-gray-100 transition-all cursor-pointer"
+                    >
+                      <div className="truncate font-semibold text-gray-800 pr-2 group-hover:text-blue-700">
+                        {desc}
+                      </div>
+                      <span className="bg-red-50 text-red-700 font-bold px-2.5 py-0.5 rounded-full text-xs border border-red-200 flex-shrink-0">
+                        {count} apps
+                      </span>
                     </div>
-                    <span className="bg-red-50 text-red-700 font-bold px-2.5 py-0.5 rounded-full text-xs border border-red-200 flex-shrink-0">
-                      {count} apps
-                    </span>
-                  </div>
-                ))}
+                  ))
+                )}
               </div>
             </div>
 
@@ -1115,7 +1092,7 @@ export default function OAuthDashboardClient({
               <div className="flex justify-between items-center border-b border-gray-100 pb-3">
                 <div>
                   <h3 className="font-bold text-sm text-gray-900 flex items-center gap-2">
-                    <span>🤖</span> Shadow AI &amp; Generative AI Tools
+                    <span>🤖</span> AI Tools
                   </h3>
                   <p className="text-[11px] text-gray-400 mt-0.5">Active AI platforms &amp; developer tools</p>
                 </div>
@@ -1125,26 +1102,30 @@ export default function OAuthDashboardClient({
               </div>
 
               <div className="space-y-2 text-xs">
-                {aiTools.map((ai) => (
-                  <div
-                    key={ai.id}
-                    onClick={() => setSelectedApp(ai)}
-                    className="flex items-center justify-between p-3 rounded-lg bg-gray-50 border border-gray-100 hover:bg-purple-50/40 hover:border-purple-200 transition-all cursor-pointer"
-                  >
-                    <div className="flex items-center gap-3">
-                      <img src={ai.iconUrl} alt="" className="w-8 h-8 rounded-lg bg-white border border-gray-200 object-contain p-0.5" />
-                      <div>
-                        <div className="font-bold text-gray-900">{ai.displayName}</div>
-                        <div className="text-[11px] text-gray-500">{ai.vendor} • {ai.category}</div>
+                {aiTools.length === 0 ? (
+                  <div className="text-gray-400 text-xs py-4 text-center italic">No active AI tools detected in workspace</div>
+                ) : (
+                  aiTools.map((ai) => (
+                    <div
+                      key={ai.id}
+                      onClick={() => setSelectedApp(ai)}
+                      className="flex items-center justify-between p-3 rounded-lg bg-gray-50 border border-gray-100 hover:bg-purple-50/40 hover:border-purple-200 transition-all cursor-pointer"
+                    >
+                      <div className="flex items-center gap-3">
+                        <img src={ai.iconUrl} alt="" className="w-8 h-8 rounded-lg bg-white border border-gray-200 object-contain p-0.5" />
+                        <div>
+                          <div className="font-bold text-gray-900">{ai.displayName}</div>
+                          <div className="text-[11px] text-gray-500">{ai.vendor} • {ai.category}</div>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-xs font-bold text-purple-700 bg-purple-50 border border-purple-200 px-2.5 py-1 rounded-md">
+                          {ai.totalUsersCount} user(s)
+                        </span>
                       </div>
                     </div>
-                    <div className="text-right">
-                      <span className="text-xs font-bold text-purple-700 bg-purple-50 border border-purple-200 px-2.5 py-1 rounded-md">
-                        {ai.totalUsersCount} user(s)
-                      </span>
-                    </div>
-                  </div>
-                ))}
+                  ))
+                )}
               </div>
             </div>
 
@@ -1153,7 +1134,7 @@ export default function OAuthDashboardClient({
               <div className="flex justify-between items-center border-b border-gray-100 pb-3">
                 <div>
                   <h3 className="font-bold text-sm text-gray-900 flex items-center gap-2">
-                    <span>🛡️</span> Apps with Vendor Breach History
+                    <span>🛡️</span> Breach History
                   </h3>
                   <p className="text-[11px] text-gray-400 mt-0.5">Public breach records for authorized vendors</p>
                 </div>
@@ -1163,26 +1144,30 @@ export default function OAuthDashboardClient({
               </div>
 
               <div className="space-y-2 text-xs">
-                {breachApps.map((app) => (
-                  <div
-                    key={app.id}
-                    onClick={() => setSelectedApp(app)}
-                    className="flex items-center justify-between p-3 rounded-lg bg-red-50/30 border border-red-200/60 hover:bg-red-50/80 transition-all cursor-pointer"
-                  >
-                    <div className="flex items-center gap-3">
-                      <img src={app.iconUrl} alt="" className="w-8 h-8 rounded-lg bg-white border border-gray-200 object-contain p-0.5" />
+                {breachApps.length === 0 ? (
+                  <div className="text-gray-400 text-xs py-4 text-center italic">No vendor breaches recorded</div>
+                ) : (
+                  breachApps.map((app) => (
+                    <div
+                      key={app.id}
+                      onClick={() => setSelectedApp(app)}
+                      className="flex items-center justify-between p-3 rounded-lg bg-red-50/30 border border-red-200/60 hover:bg-red-50/80 transition-all cursor-pointer"
+                    >
+                      <div className="flex items-center gap-3">
+                        <img src={app.iconUrl} alt="" className="w-8 h-8 rounded-lg bg-white border border-gray-200 object-contain p-0.5" />
+                        <div>
+                          <div className="font-bold text-gray-900">{app.displayName}</div>
+                          <div className="text-[11px] text-red-700 font-semibold">{app.breachHistory}</div>
+                        </div>
+                      </div>
                       <div>
-                        <div className="font-bold text-gray-900">{app.displayName}</div>
-                        <div className="text-[11px] text-red-700 font-semibold">{app.breachHistory}</div>
+                        <span className="text-xs font-bold text-red-700 bg-red-100 border border-red-200 px-2.5 py-1 rounded-full">
+                          {app.totalUsersCount} exposed user(s)
+                        </span>
                       </div>
                     </div>
-                    <div>
-                      <span className="text-xs font-bold text-red-700 bg-red-100 border border-red-200 px-2.5 py-1 rounded-full">
-                        {app.totalUsersCount} exposed user(s)
-                      </span>
-                    </div>
-                  </div>
-                ))}
+                  ))
+                )}
               </div>
             </div>
 
@@ -1192,512 +1177,14 @@ export default function OAuthDashboardClient({
       )}
 
       {/* ============================================================== */}
-      {/* VIEW 2: ALL APPLICATIONS CATALOG (PRESERVED & ENRICHED)         */}
+      {/* VIEW 2: CLIENT WORKSPACE APPLICATIONS                          */}
       {/* ============================================================== */}
       {activeTab === "apps" && (
-        <div className="space-y-4">
-          
-          {/* Active Filter Indicators */}
-          <div className="space-y-2">
-            {riskFilter === "HIGH_RISK" && (
-              <div className="flex items-center justify-between bg-red-50 border border-red-200 rounded-lg px-4 py-2 text-xs text-red-900 animate-fade-in">
-                <div className="flex items-center gap-2">
-                  <span className="font-bold">⚠️ Filtering by High Risk:</span>
-                  <span>Critical & High Severity Applications ({filteredApps.length} matching)</span>
-                </div>
-                <button
-                  onClick={() => setRiskFilter("ALL")}
-                  className="text-red-600 hover:text-red-900 font-bold underline text-xs"
-                >
-                  Clear Risk Filter ✕
-                </button>
-              </div>
-            )}
-
-            {riskyScopesOnly && (
-              <div className="flex items-center justify-between bg-amber-50 border border-amber-200 rounded-lg px-4 py-2 text-xs text-amber-900 animate-fade-in">
-                <div className="flex items-center gap-2">
-                  <span className="font-bold">🔒 Filtering by Risky Scopes:</span>
-                  <span>Apps with Critical or High Permissions ({filteredApps.length} matching)</span>
-                </div>
-                <button
-                  onClick={() => setRiskyScopesOnly(false)}
-                  className="text-amber-700 hover:text-amber-950 font-bold underline text-xs"
-                >
-                  Clear Scope Filter ✕
-                </button>
-              </div>
-            )}
-
-            {serviceFilter !== "ALL" && (
-              <div className="flex items-center justify-between bg-blue-50 border border-blue-200 rounded-lg px-4 py-2 text-xs text-blue-800 animate-fade-in">
-                <div className="flex items-center gap-2">
-                  <span className="font-bold">Filtering by Service:</span>
-                  <span className="inline-flex items-center gap-1.5 bg-blue-600 text-white px-2 py-0.5 rounded font-bold text-xs">
-                    {serviceFilter}
-                  </span>
-                  <span>({filteredApps.length} matching applications)</span>
-                </div>
-                <button
-                  onClick={() => setServiceFilter("ALL")}
-                  className="text-blue-600 hover:text-blue-900 font-bold underline text-xs"
-                >
-                  Clear Service Filter ✕
-                </button>
-              </div>
-            )}
-          </div>
-
-          {/* Top KPI Header Cards for All Applications (Informational Only) */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {/* Total Apps */}
-            <div className="border border-blue-200 bg-blue-50/40 rounded-xl p-4 shadow-2xs">
-              <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                Total Apps
-              </div>
-              <div className="text-2xl font-bold text-gray-900 mt-1">{totalAppsCount}</div>
-              <div className="text-xs text-gray-500 mt-0.5">Unique apps authorized</div>
-            </div>
-
-            {/* Configured by Admin */}
-            <div className="border border-emerald-200 bg-emerald-50/40 rounded-xl p-4 shadow-2xs">
-              <div className="text-xs font-semibold text-emerald-700 uppercase tracking-wider">
-                Configured by Admin
-              </div>
-              <div className="text-2xl font-bold text-emerald-700 mt-1">{configuredAppsCount}</div>
-              <div className="text-xs text-emerald-600/80 mt-0.5">Console configured & governed</div>
-            </div>
-
-            {/* High-Risk Apps (Score 4-5) */}
-            <div className="border border-red-200 bg-red-50/40 rounded-xl p-4 shadow-2xs">
-              <div className="text-xs font-semibold text-red-600 uppercase tracking-wider">
-                High-Risk Apps
-              </div>
-              <div className="text-2xl font-bold text-red-700 mt-1">{highRiskAppsCount}</div>
-              <div className="text-xs text-red-600/80 mt-0.5">Score 4.0 – 5.0 (Critical)</div>
-            </div>
-
-            {/* Risky Scopes (Score 3-4) */}
-            <div className="border border-amber-200 bg-amber-50/40 rounded-xl p-4 shadow-2xs">
-              <div className="text-xs font-semibold text-amber-700 uppercase tracking-wider">
-                Risky Scopes
-              </div>
-              <div className="text-2xl font-bold text-amber-800 mt-1">{scopeMap.size}</div>
-              <div className="text-xs text-amber-700/80 mt-0.5">Unique permissions rated 3–4</div>
-            </div>
-          </div>
-
-          {/* Filter Bar */}
-          <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm flex flex-col md:flex-row gap-3 items-center justify-between">
-            {/* Left: View Mode Switcher & Search */}
-            <div className="flex items-center gap-3 w-full md:w-auto">
-              {/* View Mode Switcher */}
-              <div className="flex items-center bg-gray-100 p-1 rounded-lg border border-gray-200 flex-shrink-0">
-                <button
-                  type="button"
-                  onClick={() => setGroupByFamily(true)}
-                  className={`px-3 py-1.5 text-xs font-bold rounded-md transition-colors flex items-center gap-1.5 ${
-                    groupByFamily
-                      ? "bg-white text-blue-600 shadow-xs"
-                      : "text-gray-600 hover:text-gray-900"
-                  }`}
-                >
-                  <span>📁</span> Group by Service
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setGroupByFamily(false)}
-                  className={`px-3 py-1.5 text-xs font-bold rounded-md transition-colors flex items-center gap-1.5 ${
-                    !groupByFamily
-                      ? "bg-white text-blue-600 shadow-xs"
-                      : "text-gray-600 hover:text-gray-900"
-                  }`}
-                >
-                  <span>📋</span> List View
-                </button>
-              </div>
-
-              {/* Search Box */}
-              <div className="relative w-full md:w-72 flex-shrink-0">
-                <input
-                  type="text"
-                  placeholder="Search apps, vendors, client IDs, scopes..."
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                  className="w-full bg-gray-50 border border-gray-300 rounded-lg pl-9 pr-8 py-2 text-xs text-gray-800 placeholder-gray-400 focus:bg-white focus:outline-none focus:border-blue-500 transition-colors"
-                />
-                <svg className="w-3.5 h-3.5 text-gray-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-                {search && (
-                  <button
-                    type="button"
-                    onClick={() => setSearch("")}
-                    className="absolute right-2.5 top-2 text-gray-400 hover:text-gray-600 p-0.5 rounded-full hover:bg-gray-200 transition-colors"
-                    title="Clear search"
-                  >
-                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  </button>
-                )}
-              </div>
-            </div>
-
-            <div className="flex flex-wrap items-center gap-2 w-full md:w-auto text-xs">
-              {/* Access Policy Filter */}
-              <select
-                value={policyFilter}
-                onChange={(e) => setPolicyFilter(e.target.value)}
-                className="bg-gray-50 border border-gray-300 rounded-lg px-2.5 py-1.5 text-gray-700 focus:outline-none font-medium"
-              >
-                <option value="ALL">Policy: All</option>
-                <option value="CONFIGURED">⚙️ Configured by Admin</option>
-                <option value="TRUSTED">🛡️ Trusted</option>
-                <option value="LIMITED">🔹 Limited</option>
-                <option value="SPECIFIC_DATA">🔸 Specific Data</option>
-                <option value="BLOCKED">🚫 Blocked</option>
-                <option value="UNCONFIGURED">⚪ Unconfigured</option>
-              </select>
-
-              <select
-                value={riskFilter}
-                onChange={(e) => setRiskFilter(e.target.value)}
-                className="bg-gray-50 border border-gray-300 rounded-lg px-2.5 py-1.5 text-gray-700 focus:outline-none"
-              >
-                <option value="ALL">Risk: All</option>
-                <option value="HIGH_RISK">⚠️ High Risk (Critical & High)</option>
-                <option value="CRITICAL">🔴 Critical (4–5)</option>
-                <option value="HIGH">🟠 High (3–4)</option>
-                <option value="MEDIUM">🟡 Medium (2–3)</option>
-                <option value="MINOR">🟢 Minor (1–2)</option>
-                <option value="LOW">🔵 Low (0–1)</option>
-              </select>
-
-              <select
-                value={categoryFilter}
-                onChange={(e) => setCategoryFilter(e.target.value)}
-                className="bg-gray-50 border border-gray-300 rounded-lg px-2.5 py-1.5 text-gray-700 focus:outline-none"
-              >
-                <option value="ALL">Category: All</option>
-                {categories.map((c) => (
-                  <option key={c} value={c}>{c}</option>
-                ))}
-              </select>
-
-              <select
-                value={serviceFilter}
-                onChange={(e) => setServiceFilter(e.target.value)}
-                className="bg-gray-50 border border-gray-300 rounded-lg px-2.5 py-1.5 text-gray-700 focus:outline-none"
-              >
-                <option value="ALL">Service: All</option>
-                <option value="SENSITIVE">🛡️ Sensitive (Gmail & Drive)</option>
-                <option value="Gmail">Gmail</option>
-                <option value="Google Drive">Google Drive</option>
-                <option value="Admin SDK">Admin SDK</option>
-                <option value="Calendar">Calendar</option>
-                <option value="Classroom">Classroom</option>
-                <option value="Contacts">Contacts</option>
-              </select>
-
-              <label className="flex items-center gap-1.5 text-xs font-medium text-gray-700 cursor-pointer bg-gray-50 border border-gray-300 rounded-lg px-2.5 py-1.5 whitespace-nowrap">
-                <input
-                  type="checkbox"
-                  checked={riskyScopesOnly}
-                  onChange={(e) => setRiskyScopesOnly(e.target.checked)}
-                  className="rounded border-gray-300 text-amber-600 focus:ring-0"
-                />
-                Risky Scopes Only
-              </label>
-
-              <label className="flex items-center gap-1.5 text-xs font-medium text-gray-700 cursor-pointer bg-gray-50 border border-gray-300 rounded-lg px-2.5 py-1.5 whitespace-nowrap">
-                <input
-                  type="checkbox"
-                  checked={multiOnly}
-                  onChange={(e) => setMultiOnly(e.target.checked)}
-                  className="rounded border-gray-300 text-blue-600 focus:ring-0"
-                />
-                Multi-Deployment Only
-              </label>
-            </div>
-          </div>
-
-          {/* Applications Table */}
-          <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs text-gray-600">
-                <thead className="bg-gray-50/80 text-[11px] uppercase font-bold text-gray-500 border-b border-gray-200">
-                  <tr>
-                    <th className="py-3 px-4">Application &amp; Platform Deployment</th>
-                    <th className="py-3 px-4">Activity ⓘ</th>
-                    <th className="py-3 px-4">Access Policy ⓘ</th>
-                    <th className="py-3 px-4">Trust &amp; Compliance ⓘ</th>
-                    <th className="py-3 px-4">Risk Level ⓘ</th>
-                    <th className="py-3 px-4 text-center">Users ▼</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-200">
-                  {filteredApps.length === 0 ? (
-                    <tr>
-                      <td colSpan={6} className="py-12 text-center text-gray-500">
-                        <div className="flex flex-col items-center justify-center gap-2">
-                          <span className="text-sm font-medium text-gray-700">No applications matched the criteria{search ? ` for "${search}"` : ""}.</span>
-                          <span className="text-xs text-gray-400">Try adjusting your search terms or clearing active filters.</span>
-                          {(search || policyFilter !== "ALL" || riskFilter !== "ALL" || serviceFilter !== "ALL" || categoryFilter !== "ALL" || riskyScopesOnly || multiOnly) && (
-                            <button
-                              onClick={() => {
-                                setSearch("");
-                                setPolicyFilter("ALL");
-                                setRiskFilter("ALL");
-                                setServiceFilter("ALL");
-                                setCategoryFilter("ALL");
-                                setRiskyScopesOnly(false);
-                                setMultiOnly(false);
-                              }}
-                              className="inline-flex items-center gap-1.5 px-3 py-1.5 mt-2 bg-blue-50 text-blue-700 border border-blue-200 rounded-lg hover:bg-blue-100 font-semibold text-xs transition-colors"
-                            >
-                              <span>✕</span> Reset all filters
-                            </button>
-                          )}
-                        </div>
-                      </td>
-                    </tr>
-                  ) : groupByFamily ? (
-                    groupedFamilies.map((group) => (
-                      <React.Fragment key={group.familyId}>
-                        {/* Family Section Header */}
-                        <tr className="bg-gradient-to-r from-slate-100/90 to-slate-50 border-t-2 border-slate-300">
-                          <td colSpan={6} className="py-2.5 px-4">
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-2.5">
-                                <img
-                                  src={group.iconUrl}
-                                  alt=""
-                                  className="w-5 h-5 rounded-md bg-white border border-slate-200 object-contain p-0.5"
-                                />
-                                <span className="font-extrabold text-slate-900 text-xs tracking-tight">
-                                  {group.familyName}
-                                </span>
-                                <span className="text-[11px] text-slate-500 font-medium">
-                                  by {group.vendor}
-                                </span>
-                              </div>
-                              <div className="flex items-center gap-2.5">
-                                <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-slate-200/80 text-slate-800 border border-slate-300/60">
-                                  {group.items.length} {group.items.length === 1 ? 'Distinct Deployment' : 'Distinct Deployments'}
-                                </span>
-                                <span className="text-[11px] text-slate-600 font-semibold">
-                                  {group.items.reduce((acc, it) => acc + it.totalUsersCount, 0)} total users
-                                </span>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-
-                        {/* Distinct Deployments in this Family */}
-                        {group.items.map((app) => (
-                          <tr
-                            key={app.id}
-                            className="hover:bg-indigo-50/20 transition-colors cursor-pointer bg-white"
-                            onClick={() => setSelectedApp(app)}
-                          >
-                            {/* Application & Variant Column */}
-                            <td className="py-3 px-4 pl-7">
-                              <div className="flex items-start gap-3">
-                                <div className="mt-0.5 flex-shrink-0">
-                                  {getDeploymentTypeBadge(app.deploymentType || app.appType)}
-                                </div>
-                                <div className="truncate max-w-[270px]">
-                                  <div className="flex items-center gap-1.5">
-                                    <span className="font-bold text-gray-900 truncate text-xs">{app.displayName}</span>
-                                    {app.isVerified && (
-                                      <span className="text-[9px] px-1.5 py-0.2 rounded bg-blue-100 text-blue-800 font-bold border border-blue-200">
-                                        Verified
-                                      </span>
-                                    )}
-                                  </div>
-                                  <div className="flex items-center gap-1.5 text-[10px] text-gray-400 font-mono mt-0.5">
-                                    <span className="truncate">{app.clientId || app.id}</span>
-                                  </div>
-                                  {app.servicesTouched && app.servicesTouched.length > 0 && (
-                                    <div className="flex items-center gap-1 mt-1.5">
-                                      {app.servicesTouched.map((svc) => (
-                                        <span 
-                                          key={svc} 
-                                          title={svc} 
-                                          className="inline-flex items-center p-0.5 rounded bg-gray-50 border border-gray-200/80 shadow-2xs hover:bg-gray-100"
-                                        >
-                                          <GoogleProductIcon service={svc} className="w-3.5 h-3.5" />
-                                        </span>
-                                      ))}
-                                    </div>
-                                  )}
-                                </div>
-                              </div>
-                            </td>
-
-                            {/* Activity Column */}
-                            <td className="py-3 px-4">
-                              {app.isStale ? (
-                                <div className="space-y-0.5">
-                                  <span className="inline-flex items-center rounded bg-gray-100 px-2 py-0.5 text-[11px] font-semibold text-gray-600 border border-gray-200">
-                                    ⏳ Stale (&gt;90d)
-                                  </span>
-                                  <div className="text-[10px] text-gray-400">No active calls</div>
-                                </div>
-                              ) : (
-                                <div className="space-y-0.5">
-                                  <span className="inline-flex items-center gap-1 rounded bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700 border border-emerald-200">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Active
-                                  </span>
-                                  <div className="text-[10px] font-mono text-gray-500">{app.lastActiveFormatted}</div>
-                                </div>
-                              )}
-                            </td>
-
-                            {/* Access Policy Column */}
-                            <td className="py-3 px-4">
-                              {getPolicyBadge(app.adminAccessLevel)}
-                            </td>
-
-                            {/* Trust & Compliance Column */}
-                            <td className="py-3 px-4">
-                              <div className="space-y-1">
-                                <div className="text-[11px] font-medium text-gray-700 flex items-center gap-1">
-                                  <span>📍</span> {app.dataHosting}
-                                </div>
-                                <div className="flex flex-wrap gap-1">
-                                  {(app.compliance || []).slice(0, 3).map((comp, idx) => (
-                                    <span key={idx} className="bg-gray-100 border border-gray-200 text-gray-600 text-[10px] font-mono px-1.5 py-0.2 rounded">
-                                      {comp}
-                                    </span>
-                                  ))}
-                                </div>
-                              </div>
-                            </td>
-
-                            {/* Risk Level Column */}
-                            <td className="py-3 px-4">{getRiskBadge(app.riskLevel, app.riskScore)}</td>
-
-                            {/* Users Column */}
-                            <td className="py-3 px-4 text-center">
-                              <div className="font-bold text-gray-900 text-sm">{app.totalUsersCount}</div>
-                              {app.adminUsersCount > 0 && (
-                                <span className="text-[10px] font-bold text-red-600 bg-red-50 border border-red-200 rounded px-1.5 py-0.2">
-                                  ⚠️ {app.adminUsersCount} admin
-                                </span>
-                              )}
-                            </td>
-                          </tr>
-                        ))}
-                      </React.Fragment>
-                    ))
-                  ) : (
-                    filteredApps.map((app) => (
-                      <tr
-                        key={app.id}
-                        className="hover:bg-gray-50/80 transition-colors cursor-pointer"
-                        onClick={() => setSelectedApp(app)}
-                      >
-                        {/* Application Column */}
-                        <td className="py-3 px-4">
-                          <div className="flex items-center gap-3">
-                            <img
-                              src={app.iconUrl}
-                              alt=""
-                              className="w-8 h-8 rounded-lg bg-gray-100 border border-gray-200 object-contain p-0.5 flex-shrink-0"
-                            />
-                            <div className="truncate max-w-[240px]">
-                              <div className="flex items-center gap-1.5">
-                                <span className="font-bold text-gray-900 truncate">{app.displayName}</span>
-                                {app.isVerified && (
-                                  <span className="text-[10px] px-1.5 py-0.2 rounded bg-blue-100 text-blue-800 font-bold border border-blue-200">
-                                    Verified
-                                  </span>
-                                )}
-                              </div>
-                              <div className="flex items-center gap-1.5 text-[11px] text-gray-500 mt-0.5">
-                                <span className="bg-gray-100 px-1.5 py-0.2 rounded text-gray-600">{app.category}</span>
-                                <span>•</span>
-                                <span>{getDeploymentTypeBadge(app.deploymentType || app.appType)}</span>
-                              </div>
-                              {app.servicesTouched && app.servicesTouched.length > 0 && (
-                                <div className="flex items-center gap-1 mt-1.5">
-                                  {app.servicesTouched.map((svc) => (
-                                    <span 
-                                      key={svc} 
-                                      title={svc} 
-                                      className="inline-flex items-center p-0.5 rounded bg-gray-50 border border-gray-200/80 shadow-2xs hover:bg-gray-100"
-                                    >
-                                      <GoogleProductIcon service={svc} className="w-3.5 h-3.5" />
-                                    </span>
-                                  ))}
-                                </div>
-                              )}
-                            </div>
-                          </div>
-                        </td>
-
-                        {/* Activity Column */}
-                        <td className="py-3 px-4">
-                          {app.isStale ? (
-                            <div className="space-y-0.5">
-                              <span className="inline-flex items-center rounded bg-gray-100 px-2 py-0.5 text-[11px] font-semibold text-gray-600 border border-gray-200">
-                                ⏳ Stale (&gt;90d)
-                              </span>
-                              <div className="text-[10px] text-gray-400">No active calls</div>
-                            </div>
-                          ) : (
-                            <div className="space-y-0.5">
-                              <span className="inline-flex items-center gap-1 rounded bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700 border border-emerald-200">
-                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Active
-                              </span>
-                              <div className="text-[10px] font-mono text-gray-500">{app.lastActiveFormatted}</div>
-                            </div>
-                          )}
-                        </td>
-
-                        {/* Access Policy Column */}
-                        <td className="py-3 px-4">
-                          {getPolicyBadge(app.adminAccessLevel)}
-                        </td>
-
-                        {/* Trust & Compliance Column */}
-                        <td className="py-3 px-4">
-                          <div className="space-y-1">
-                            <div className="text-[11px] font-medium text-gray-700 flex items-center gap-1">
-                              <span>📍</span> {app.dataHosting}
-                            </div>
-                            <div className="flex flex-wrap gap-1">
-                              {(app.compliance || []).slice(0, 3).map((comp, idx) => (
-                                <span key={idx} className="bg-gray-100 border border-gray-200 text-gray-600 text-[10px] font-mono px-1.5 py-0.2 rounded">
-                                  {comp}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-                        </td>
-
-                        {/* Risk Level Column */}
-                        <td className="py-3 px-4">{getRiskBadge(app.riskLevel, app.riskScore)}</td>
-
-                        {/* Users Column */}
-                        <td className="py-3 px-4 text-center">
-                          <div className="font-bold text-gray-900 text-sm">{app.totalUsersCount}</div>
-                          {app.adminUsersCount > 0 && (
-                            <span className="text-[10px] font-bold text-red-600 bg-red-50 border border-red-200 rounded px-1.5 py-0.2">
-                              ⚠️ {app.adminUsersCount} admin
-                            </span>
-                          )}
-                        </td>
-                      </tr>
-                    ))
-                  )}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
+        <ApplicationsView
+          initialApps={currentApps as any}
+          isBackend={false}
+          hideTitle={true}
+        />
       )}
 
       {/* ============================================================== */}
@@ -1778,9 +1265,9 @@ export default function OAuthDashboardClient({
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
                   <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-semibold mb-2 border border-blue-400/30">
-                    <span>🛡️</span> Security Posture & Playbook Engine
+                    <span>🛡️</span> Playbooks
                   </div>
-                  <h2 className="text-xl font-black tracking-tight text-white">Actionable Security Recommendations</h2>
+                  <h2 className="text-xl font-bold tracking-tight text-white">Recommendations &amp; Playbooks</h2>
                   <p className="text-xs text-slate-300 mt-1 max-w-2xl">
                     Consolidated playbooks and batch remediations. Instead of triaging 102 individual alerts, remediate third-party risk through coordinated governance campaigns and one-click GAM scripts.
                   </p>
@@ -1842,7 +1329,10 @@ export default function OAuthDashboardClient({
                     recViewMode === "all" ? "bg-white text-blue-600 shadow-sm" : "text-gray-600 hover:text-gray-900"
                   }`}
                 >
-                  <span>📋</span> All Findings ({initialRecs.findings?.length || 102})
+                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                  </svg>
+                  <span>All Findings ({initialRecs.findings?.length || 102})</span>
                 </button>
               </div>
 
@@ -2419,6 +1909,14 @@ export default function OAuthDashboardClient({
         />
       )}
 
+      {/* Access Timeline Tab View */}
+      {activeTab === "timeline" && (
+        <AccessTimelineView
+          events={initialTimelineEvents || []}
+          domainName="gafe.co.za"
+        />
+      )}
+
       {/* ============================================================== */}
       {/* APPLICATION DETAIL MODAL / DRAWER                              */}
       {/* ============================================================== */}
@@ -2496,7 +1994,7 @@ export default function OAuthDashboardClient({
                       className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-300 transition-colors shadow-2xs"
                       title="Copy Client ID to clipboard"
                     >
-                      <span>{copiedId === selectedApp.id ? "✓ Copied Client ID!" : "📋 Copy Client ID"}</span>
+                      <span>{copiedId === selectedApp.id ? "✓ Copied Client ID!" : "Copy Client ID"}</span>
                     </button>
                     <span className="text-[11px] text-gray-500 font-medium">
                       Console tab: <strong className="text-gray-800">{getAdminConsoleLink(selectedApp).tabName}</strong>

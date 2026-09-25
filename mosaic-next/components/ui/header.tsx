@@ -27,30 +27,11 @@ export default function Header({ variant = "default" }: { variant?: string }) {
                 <rect x="4" y="17" width="16" height="2" />
               </svg>
             </button>
-            <div className="hidden sm:flex items-center gap-2 text-sm text-gray-500">
-              <span className="font-semibold text-gray-800">Admin Lens</span>
-              <span>/</span>
-              <span>Google Workspace Governance</span>
+            <div className="hidden sm:flex items-center text-sm font-semibold text-gray-900">
+              Admin Lens
             </div>
           </div>
 
-          {/* Right: User & Domain Details */}
-          <div className="flex items-center gap-4">
-            <div className="hidden md:flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1 rounded-full text-xs font-semibold">
-              <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-              Live Sync: gafe.co.za
-            </div>
-
-            <div className="flex items-center gap-3 pl-3 border-l border-gray-200">
-              <div className="text-right hidden sm:block">
-                <div className="text-xs font-semibold text-gray-800">Super Admin</div>
-                <div className="text-[11px] font-mono text-gray-500">alister@gafe.co.za</div>
-              </div>
-              <div className="w-9 h-9 rounded-full bg-blue-100 border border-blue-200 flex items-center justify-center text-xs font-bold text-blue-700">
-                AG
-              </div>
-            </div>
-          </div>
 
         </div>
       </div>

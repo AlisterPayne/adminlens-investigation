@@ -2,6 +2,8 @@
   "hosting": {
     "site": "app-list-dev-35635",
     "public": "out",
+    "cleanUrls": true,
+    "trailingSlash": true,
     "ignore": [
       "firebase.json",
       "**/.*",
