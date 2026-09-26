@@ -290,10 +290,14 @@ function parseServicesWithScopes(rawStr) {
   return { services, scopes: Array.from(new Set(allScopes)) };
 }
 
-const accessedCsvPath = fs.existsSync('./owl_apps_accessed_apps.csv') ? './owl_apps_accessed_apps.csv' : null;
+const accessedCsvPath = fs.existsSync('./owl_apps_accessed_apps.csv') 
+  ? './owl_apps_accessed_apps.csv' 
+  : (fs.existsSync('./gafe_co_za_owl_apps_accessed.csv') ? './gafe_co_za_owl_apps_accessed.csv' : null);
 const configuredCsvPath = fs.existsSync('./owl_apps_configured_apps.csv') 
   ? './owl_apps_configured_apps.csv' 
-  : (fs.existsSync('./owl_apps.csv') ? './owl_apps.csv' : null);
+  : (fs.existsSync('./gafe_co_za_owl_apps_configured.csv') 
+    ? './gafe_co_za_owl_apps_configured.csv' 
+    : (fs.existsSync('./owl_apps.csv') ? './owl_apps.csv' : null));
 
 const parseCsvLines = (csvPath) => {
   if (!csvPath || !fs.existsSync(csvPath)) return [];

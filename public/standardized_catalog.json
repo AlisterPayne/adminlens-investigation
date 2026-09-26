@@ -19,15 +19,15 @@
     "breachBracket": "NONE",
     "breachDaysElapsed": null,
     "verificationPenalty": 0.35,
-    "scopeRiskScore": 4.48,
+    "scopeRiskScore": 4.5,
     "isVerified": false,
     "iconUrl": "https://ui-avatars.com/api/?name=526554529059-emb2o69t2ri25uicvjkj444o71sku29p.apps.googleusercontent.com&background=3B82F6&color=fff&size=128&rounded=true",
     "storeUrl": null,
     "description": "",
-    "riskScore": 4.83,
+    "riskScore": 4.85,
     "peakScopeScore": 5,
-    "breadthScore": 0.48,
-    "avgScopeScore": 2.83,
+    "breadthScore": 0.5,
+    "avgScopeScore": 2.77,
     "riskLevel": "CRITICAL",
     "riskScoreColor": "Red",
     "rawMaxRisk": "HIGH",
@@ -53,7 +53,7 @@
     ],
     "totalUsersCount": 1,
     "adminUsersCount": 1,
-    "scopesCount": 12,
+    "scopesCount": 13,
     "scopes": [
       {
         "scope": "https://www.googleapis.com/auth/calendar.events",
@@ -174,6 +174,16 @@
         "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Gmail"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/drive.appdata",
+        "riskLevel": "HIGH",
+        "description": "Isolated App Configuration Storage",
+        "threatImpact": "Accesses only a dedicated hidden app folder. Cannot touch or see regular corporate user files.",
+        "adminScore": 2,
+        "adminColor": "Green",
+        "googleTier": "Sensitive",
+        "service": "Google Drive & Docs"
       }
     ],
     "servicesTouched": [
@@ -1848,8 +1858,20 @@
       "Basic Authentication / Profile Scopes",
       "Administrative or Direct Mail Access"
     ],
-    "adminAccessLevel": "UNCONFIGURED",
-    "accessPolicy": null,
+    "adminAccessLevel": "TRUSTED",
+    "accessPolicy": {
+      "accessLevel": "TRUSTED",
+      "orgUnitPath": "/",
+      "domainName": "gafe.co.za",
+      "isOverridden": false,
+      "exemptFromContextAwareAccess": true,
+      "allowedServices": {
+        "GSuite Admin": 3,
+        "Google Sign-in": 3
+      },
+      "configuredBy": "Admin Console Baseline (gafe_co_za_owl_apps_configured.csv)",
+      "lastPolicyUpdate": "2026-09-13T18:00:00Z"
+    },
     "multiClientMapped": false,
     "familyDeploymentsCount": 1,
     "siblingDeployments": [],
@@ -2742,13 +2764,13 @@
     "breachPenalty": 0,
     "breachBracket": "NONE",
     "breachDaysElapsed": null,
-    "verificationPenalty": 0.35,
+    "verificationPenalty": 0,
     "scopeRiskScore": 1,
     "isVerified": false,
     "iconUrl": "https://www.google.com/s2/favicons?domain=bulksignature.com&sz=128",
     "storeUrl": "https://bulksignature.com",
     "description": "Centralized Gmail email signature management tool.",
-    "riskScore": 1.35,
+    "riskScore": 1,
     "peakScopeScore": 1,
     "breadthScore": 0.02,
     "avgScopeScore": 1,
@@ -2756,7 +2778,7 @@
     "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [
-      "Unverified Publisher (+0.35 Inherent Risk)",
+      "Standard SaaS Integration",
       "Basic Authentication / Profile Scopes"
     ],
     "adminAccessLevel": "UNCONFIGURED",
@@ -2882,15 +2904,33 @@
     "adminAccessLevel": "UNCONFIGURED",
     "accessPolicy": null,
     "multiClientMapped": true,
-    "familyDeploymentsCount": 2,
+    "familyDeploymentsCount": 4,
     "siblingDeployments": [
       {
         "id": "779010036194-lf6spugv22vvj41pqjdj4d8k2tq7o5fd.apps.googleusercontent.com",
         "displayName": "Canva (Web Application)",
         "deploymentType": "Web Application",
         "clientId": "779010036194-lf6spugv22vvj41pqjdj4d8k2tq7o5fd.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
+        "adminAccessLevel": "TRUSTED",
         "totalUsersCount": 16,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "779010036194-2tkv9r6fe23c6ea2ipj43auehhaj9eec.apps.googleusercontent.com",
+        "displayName": "Canva (Android)",
+        "deploymentType": "Android",
+        "clientId": "779010036194-2tkv9r6fe23c6ea2ipj43auehhaj9eec.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "779010036194-ircisfun8o70il267dbd8fh5cs8pa4gk.apps.googleusercontent.com",
+        "displayName": "Canva (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "779010036194-ircisfun8o70il267dbd8fh5cs8pa4gk.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
         "maxRisk": "LOW"
       }
     ],
@@ -3009,10 +3049,21 @@
       "Vendor Breach Exposure: Historical Breach (> 12 months) (+0.10)",
       "Basic Authentication / Profile Scopes"
     ],
-    "adminAccessLevel": "UNCONFIGURED",
-    "accessPolicy": null,
+    "adminAccessLevel": "TRUSTED",
+    "accessPolicy": {
+      "accessLevel": "TRUSTED",
+      "orgUnitPath": "/",
+      "domainName": "gafe.co.za",
+      "isOverridden": false,
+      "exemptFromContextAwareAccess": true,
+      "allowedServices": {
+        "Google Sign-in": 3
+      },
+      "configuredBy": "Admin Console Baseline (gafe_co_za_owl_apps_configured.csv)",
+      "lastPolicyUpdate": "2026-09-13T18:00:00Z"
+    },
     "multiClientMapped": true,
-    "familyDeploymentsCount": 2,
+    "familyDeploymentsCount": 4,
     "siblingDeployments": [
       {
         "id": "968320677628-ort3v6hao1mu08d1i4eg97it7rgo7e43.apps.googleusercontent.com",
@@ -3021,6 +3072,24 @@
         "clientId": "968320677628-ort3v6hao1mu08d1i4eg97it7rgo7e43.apps.googleusercontent.com",
         "adminAccessLevel": "UNCONFIGURED",
         "totalUsersCount": 1,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "779010036194-2tkv9r6fe23c6ea2ipj43auehhaj9eec.apps.googleusercontent.com",
+        "displayName": "Canva (Android)",
+        "deploymentType": "Android",
+        "clientId": "779010036194-2tkv9r6fe23c6ea2ipj43auehhaj9eec.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "779010036194-ircisfun8o70il267dbd8fh5cs8pa4gk.apps.googleusercontent.com",
+        "displayName": "Canva (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "779010036194-ircisfun8o70il267dbd8fh5cs8pa4gk.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
         "maxRisk": "LOW"
       }
     ],
@@ -3245,6 +3314,228 @@
         ]
       }
     ],
+    "firstSeen": null,
+    "lastActive": null,
+    "lastActiveFormatted": "12/09/2026",
+    "isStale": true,
+    "isNew": false,
+    "totalActivityEvents": 0
+  },
+  {
+    "id": "779010036194-2tkv9r6fe23c6ea2ipj43auehhaj9eec.apps.googleusercontent.com",
+    "clientId": "779010036194-2tkv9r6fe23c6ea2ipj43auehhaj9eec.apps.googleusercontent.com",
+    "familyId": "canva",
+    "familyName": "Canva",
+    "displayName": "Canva (Android)",
+    "vendor": "Canva Pty Ltd",
+    "publisherDomain": "canva.com",
+    "category": "Design & Creative",
+    "appType": "Web Application",
+    "deploymentType": "Android",
+    "compliance": [
+      "SOC 2",
+      "GDPR",
+      "ISO 27001",
+      "FERPA"
+    ],
+    "dataHosting": "USA / Australia",
+    "breachHistory": "1 incident (May 2019 - 139M accounts)",
+    "breaches": [
+      {
+        "incidentDate": "2019-05-24",
+        "title": "Canva Account Database Exposure",
+        "recordsImpacted": "139M accounts",
+        "severity": "HIGH",
+        "cve": null,
+        "remediated": true,
+        "details": "Customer credentials compromised; salted and hashed passwords."
+      }
+    ],
+    "breachPenalty": 0.1,
+    "breachBracket": "HISTORICAL",
+    "breachDaysElapsed": 2682,
+    "verificationPenalty": 0,
+    "scopeRiskScore": 1,
+    "isVerified": true,
+    "iconUrl": "https://www.google.com/s2/favicons?domain=canva.com&sz=128",
+    "storeUrl": "https://canva.com",
+    "description": "Visual communication platform and graphic design suite.",
+    "riskScore": 1.1,
+    "peakScopeScore": 1,
+    "breadthScore": 0,
+    "avgScopeScore": 1,
+    "riskLevel": "LOW",
+    "riskScoreColor": "Blue",
+    "rawMaxRisk": "LOW",
+    "riskReasons": [
+      "Vendor Breach Exposure: Historical Breach (> 12 months) (+0.10)"
+    ],
+    "adminAccessLevel": "TRUSTED",
+    "accessPolicy": {
+      "accessLevel": "TRUSTED",
+      "orgUnitPath": "/",
+      "domainName": "gafe.co.za",
+      "isOverridden": false,
+      "exemptFromContextAwareAccess": true,
+      "allowedServices": {},
+      "configuredBy": "Admin Console Baseline (gafe_co_za_owl_apps_configured.csv)",
+      "lastPolicyUpdate": "2026-09-13T18:00:00Z"
+    },
+    "multiClientMapped": true,
+    "familyDeploymentsCount": 4,
+    "siblingDeployments": [
+      {
+        "id": "779010036194-lf6spugv22vvj41pqjdj4d8k2tq7o5fd.apps.googleusercontent.com",
+        "displayName": "Canva (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "779010036194-lf6spugv22vvj41pqjdj4d8k2tq7o5fd.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 16,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "968320677628-ort3v6hao1mu08d1i4eg97it7rgo7e43.apps.googleusercontent.com",
+        "displayName": "Canva Charts (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "968320677628-ort3v6hao1mu08d1i4eg97it7rgo7e43.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "779010036194-ircisfun8o70il267dbd8fh5cs8pa4gk.apps.googleusercontent.com",
+        "displayName": "Canva (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "779010036194-ircisfun8o70il267dbd8fh5cs8pa4gk.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      }
+    ],
+    "clientIdsCount": 1,
+    "clientIds": [
+      "779010036194-2tkv9r6fe23c6ea2ipj43auehhaj9eec.apps.googleusercontent.com"
+    ],
+    "projectNumbers": [
+      "779010036194"
+    ],
+    "totalUsersCount": 0,
+    "adminUsersCount": 0,
+    "scopesCount": 0,
+    "scopes": [],
+    "servicesTouched": [],
+    "users": [],
+    "firstSeen": null,
+    "lastActive": null,
+    "lastActiveFormatted": "12/09/2026",
+    "isStale": true,
+    "isNew": false,
+    "totalActivityEvents": 0
+  },
+  {
+    "id": "779010036194-ircisfun8o70il267dbd8fh5cs8pa4gk.apps.googleusercontent.com",
+    "clientId": "779010036194-ircisfun8o70il267dbd8fh5cs8pa4gk.apps.googleusercontent.com",
+    "familyId": "canva",
+    "familyName": "Canva",
+    "displayName": "Canva (Web Application)",
+    "vendor": "Canva Pty Ltd",
+    "publisherDomain": "canva.com",
+    "category": "Design & Creative",
+    "appType": "Web Application",
+    "deploymentType": "Web Application",
+    "compliance": [
+      "SOC 2",
+      "GDPR",
+      "ISO 27001",
+      "FERPA"
+    ],
+    "dataHosting": "USA / Australia",
+    "breachHistory": "1 incident (May 2019 - 139M accounts)",
+    "breaches": [
+      {
+        "incidentDate": "2019-05-24",
+        "title": "Canva Account Database Exposure",
+        "recordsImpacted": "139M accounts",
+        "severity": "HIGH",
+        "cve": null,
+        "remediated": true,
+        "details": "Customer credentials compromised; salted and hashed passwords."
+      }
+    ],
+    "breachPenalty": 0.1,
+    "breachBracket": "HISTORICAL",
+    "breachDaysElapsed": 2682,
+    "verificationPenalty": 0,
+    "scopeRiskScore": 1,
+    "isVerified": true,
+    "iconUrl": "https://www.google.com/s2/favicons?domain=canva.com&sz=128",
+    "storeUrl": "https://canva.com",
+    "description": "Visual communication platform and graphic design suite.",
+    "riskScore": 1.1,
+    "peakScopeScore": 1,
+    "breadthScore": 0,
+    "avgScopeScore": 1,
+    "riskLevel": "LOW",
+    "riskScoreColor": "Blue",
+    "rawMaxRisk": "LOW",
+    "riskReasons": [
+      "Vendor Breach Exposure: Historical Breach (> 12 months) (+0.10)"
+    ],
+    "adminAccessLevel": "TRUSTED",
+    "accessPolicy": {
+      "accessLevel": "TRUSTED",
+      "orgUnitPath": "/AA School/Students",
+      "domainName": "gafe.co.za",
+      "isOverridden": true,
+      "exemptFromContextAwareAccess": true,
+      "allowedServices": {},
+      "configuredBy": "Admin Console Baseline (gafe_co_za_owl_apps_configured.csv)",
+      "lastPolicyUpdate": "2026-09-13T18:00:00Z"
+    },
+    "multiClientMapped": true,
+    "familyDeploymentsCount": 4,
+    "siblingDeployments": [
+      {
+        "id": "779010036194-lf6spugv22vvj41pqjdj4d8k2tq7o5fd.apps.googleusercontent.com",
+        "displayName": "Canva (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "779010036194-lf6spugv22vvj41pqjdj4d8k2tq7o5fd.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 16,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "968320677628-ort3v6hao1mu08d1i4eg97it7rgo7e43.apps.googleusercontent.com",
+        "displayName": "Canva Charts (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "968320677628-ort3v6hao1mu08d1i4eg97it7rgo7e43.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "779010036194-2tkv9r6fe23c6ea2ipj43auehhaj9eec.apps.googleusercontent.com",
+        "displayName": "Canva (Android)",
+        "deploymentType": "Android",
+        "clientId": "779010036194-2tkv9r6fe23c6ea2ipj43auehhaj9eec.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      }
+    ],
+    "clientIdsCount": 1,
+    "clientIds": [
+      "779010036194-ircisfun8o70il267dbd8fh5cs8pa4gk.apps.googleusercontent.com"
+    ],
+    "projectNumbers": [
+      "779010036194"
+    ],
+    "totalUsersCount": 0,
+    "adminUsersCount": 0,
+    "scopesCount": 0,
+    "scopes": [],
+    "servicesTouched": [],
+    "users": [],
     "firstSeen": null,
     "lastActive": null,
     "lastActiveFormatted": "12/09/2026",
@@ -3598,8 +3889,9 @@
     "familyId": "gcp_proj_899041083010",
     "familyName": "CloudReady Home Edition",
     "displayName": "CloudReady Home Edition (Web Application)",
+    "vendor": "Google LLC",
     "publisherDomain": "",
-    "category": "Unclassified SaaS",
+    "category": "Google Workspace Core",
     "appType": "Web Application",
     "deploymentType": "Web Application",
     "compliance": [
@@ -3694,13 +3986,13 @@
     "breachPenalty": 0,
     "breachBracket": "NONE",
     "breachDaysElapsed": null,
-    "verificationPenalty": 0.35,
+    "verificationPenalty": 0,
     "scopeRiskScore": 1,
-    "isVerified": false,
+    "isVerified": true,
     "iconUrl": "https://ui-avatars.com/api/?name=Collaborative%20Whiteboard&background=3B82F6&color=fff&size=128&rounded=true",
     "storeUrl": null,
     "description": "",
-    "riskScore": 1.35,
+    "riskScore": 1,
     "peakScopeScore": 1,
     "breadthScore": 0.02,
     "avgScopeScore": 1,
@@ -3708,7 +4000,7 @@
     "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [
-      "Unverified Publisher (+0.35 Inherent Risk)",
+      "Standard SaaS Integration",
       "Basic Authentication / Profile Scopes"
     ],
     "adminAccessLevel": "UNCONFIGURED",
@@ -3819,13 +4111,13 @@
     "breachPenalty": 0,
     "breachBracket": "NONE",
     "breachDaysElapsed": null,
-    "verificationPenalty": 0.35,
+    "verificationPenalty": 0,
     "scopeRiskScore": 1,
-    "isVerified": false,
+    "isVerified": true,
     "iconUrl": "https://ui-avatars.com/api/?name=Collaborative%20Whiteboard&background=3B82F6&color=fff&size=128&rounded=true",
     "storeUrl": null,
     "description": "",
-    "riskScore": 1.35,
+    "riskScore": 1,
     "peakScopeScore": 1,
     "breadthScore": 0.02,
     "avgScopeScore": 1,
@@ -3833,7 +4125,7 @@
     "riskScoreColor": "Blue",
     "rawMaxRisk": "LOW",
     "riskReasons": [
-      "Unverified Publisher (+0.35 Inherent Risk)",
+      "Standard SaaS Integration",
       "Basic Authentication / Profile Scopes"
     ],
     "adminAccessLevel": "UNCONFIGURED",
@@ -3944,13 +4236,13 @@
     "breachPenalty": 0,
     "breachBracket": "NONE",
     "breachDaysElapsed": null,
-    "verificationPenalty": 0.35,
+    "verificationPenalty": 0,
     "scopeRiskScore": 3.14,
-    "isVerified": false,
+    "isVerified": true,
     "iconUrl": "https://ui-avatars.com/api/?name=DelCal%20by%20AliceKeeler&background=3B82F6&color=fff&size=128&rounded=true",
     "storeUrl": null,
     "description": "",
-    "riskScore": 3.49,
+    "riskScore": 3.14,
     "peakScopeScore": 4,
     "breadthScore": 0.14,
     "avgScopeScore": 2,
@@ -3959,7 +4251,6 @@
     "rawMaxRisk": "MEDIUM",
     "riskReasons": [
       "Full Google Drive Read/Write Access or Mail Modification",
-      "Unverified Publisher (+0.35 Inherent Risk)",
       "Basic Authentication / Profile Scopes",
       "Access to Domain Directory, Files, or Calendars"
     ],
@@ -4084,8 +4375,9 @@
     "familyId": "gcp_proj_99790332366",
     "familyName": "Edu Launchpad",
     "displayName": "Edu Launchpad (Web Application)",
+    "vendor": "Google LLC",
     "publisherDomain": "",
-    "category": "Unclassified SaaS",
+    "category": "Google Workspace Core",
     "appType": "Web Application",
     "deploymentType": "Web Application",
     "compliance": [
@@ -4327,10 +4619,21 @@
       "Critical Administrative or Direct Mail Access",
       "Basic Authentication / Profile Scopes"
     ],
-    "adminAccessLevel": "UNCONFIGURED",
-    "accessPolicy": null,
+    "adminAccessLevel": "TRUSTED",
+    "accessPolicy": {
+      "accessLevel": "TRUSTED",
+      "orgUnitPath": "/Jacaranda Academy",
+      "domainName": "gafe.co.za",
+      "isOverridden": true,
+      "exemptFromContextAwareAccess": true,
+      "allowedServices": {
+        "Cloud Platform": 1
+      },
+      "configuredBy": "Admin Console Baseline (gafe_co_za_owl_apps_configured.csv)",
+      "lastPolicyUpdate": "2026-09-13T18:00:00Z"
+    },
     "multiClientMapped": true,
-    "familyDeploymentsCount": 6,
+    "familyDeploymentsCount": 7,
     "siblingDeployments": [
       {
         "id": "458969862783-1smfdj4v8qbnibgarka1a99400lhsa13.apps.googleusercontent.com",
@@ -4375,6 +4678,15 @@
         "clientId": "101367350966766396496",
         "adminAccessLevel": "UNCONFIGURED",
         "totalUsersCount": 1,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "585538275436-5k5co106krror5jgc4f4dpjib0efeb7o.apps.googleusercontent.com",
+        "displayName": "GAM (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "585538275436-5k5co106krror5jgc4f4dpjib0efeb7o.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
         "maxRisk": "LOW"
       }
     ],
@@ -4471,14 +4783,14 @@
     "adminAccessLevel": "UNCONFIGURED",
     "accessPolicy": null,
     "multiClientMapped": true,
-    "familyDeploymentsCount": 6,
+    "familyDeploymentsCount": 7,
     "siblingDeployments": [
       {
         "id": "297408095146-fug707qsjv4ikron0hugpevbrjhkmsk7.apps.googleusercontent.com",
         "displayName": "GAM Project Creation (Web Application)",
         "deploymentType": "Web Application",
         "clientId": "297408095146-fug707qsjv4ikron0hugpevbrjhkmsk7.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
+        "adminAccessLevel": "TRUSTED",
         "totalUsersCount": 2,
         "maxRisk": "LOW"
       },
@@ -4516,6 +4828,15 @@
         "clientId": "101367350966766396496",
         "adminAccessLevel": "UNCONFIGURED",
         "totalUsersCount": 1,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "585538275436-5k5co106krror5jgc4f4dpjib0efeb7o.apps.googleusercontent.com",
+        "displayName": "GAM (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "585538275436-5k5co106krror5jgc4f4dpjib0efeb7o.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
         "maxRisk": "LOW"
       }
     ],
@@ -5114,14 +5435,14 @@
     "adminAccessLevel": "UNCONFIGURED",
     "accessPolicy": null,
     "multiClientMapped": true,
-    "familyDeploymentsCount": 6,
+    "familyDeploymentsCount": 7,
     "siblingDeployments": [
       {
         "id": "297408095146-fug707qsjv4ikron0hugpevbrjhkmsk7.apps.googleusercontent.com",
         "displayName": "GAM Project Creation (Web Application)",
         "deploymentType": "Web Application",
         "clientId": "297408095146-fug707qsjv4ikron0hugpevbrjhkmsk7.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
+        "adminAccessLevel": "TRUSTED",
         "totalUsersCount": 2,
         "maxRisk": "LOW"
       },
@@ -5159,6 +5480,15 @@
         "clientId": "101367350966766396496",
         "adminAccessLevel": "UNCONFIGURED",
         "totalUsersCount": 1,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "585538275436-5k5co106krror5jgc4f4dpjib0efeb7o.apps.googleusercontent.com",
+        "displayName": "GAM (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "585538275436-5k5co106krror5jgc4f4dpjib0efeb7o.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
         "maxRisk": "LOW"
       }
     ],
@@ -5757,14 +6087,14 @@
     "adminAccessLevel": "UNCONFIGURED",
     "accessPolicy": null,
     "multiClientMapped": true,
-    "familyDeploymentsCount": 6,
+    "familyDeploymentsCount": 7,
     "siblingDeployments": [
       {
         "id": "297408095146-fug707qsjv4ikron0hugpevbrjhkmsk7.apps.googleusercontent.com",
         "displayName": "GAM Project Creation (Web Application)",
         "deploymentType": "Web Application",
         "clientId": "297408095146-fug707qsjv4ikron0hugpevbrjhkmsk7.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
+        "adminAccessLevel": "TRUSTED",
         "totalUsersCount": 2,
         "maxRisk": "LOW"
       },
@@ -5802,6 +6132,15 @@
         "clientId": "101367350966766396496",
         "adminAccessLevel": "UNCONFIGURED",
         "totalUsersCount": 1,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "585538275436-5k5co106krror5jgc4f4dpjib0efeb7o.apps.googleusercontent.com",
+        "displayName": "GAM (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "585538275436-5k5co106krror5jgc4f4dpjib0efeb7o.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
         "maxRisk": "LOW"
       }
     ],
@@ -6400,14 +6739,14 @@
     "adminAccessLevel": "UNCONFIGURED",
     "accessPolicy": null,
     "multiClientMapped": true,
-    "familyDeploymentsCount": 6,
+    "familyDeploymentsCount": 7,
     "siblingDeployments": [
       {
         "id": "297408095146-fug707qsjv4ikron0hugpevbrjhkmsk7.apps.googleusercontent.com",
         "displayName": "GAM Project Creation (Web Application)",
         "deploymentType": "Web Application",
         "clientId": "297408095146-fug707qsjv4ikron0hugpevbrjhkmsk7.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
+        "adminAccessLevel": "TRUSTED",
         "totalUsersCount": 2,
         "maxRisk": "LOW"
       },
@@ -6445,6 +6784,15 @@
         "clientId": "101367350966766396496",
         "adminAccessLevel": "UNCONFIGURED",
         "totalUsersCount": 1,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "585538275436-5k5co106krror5jgc4f4dpjib0efeb7o.apps.googleusercontent.com",
+        "displayName": "GAM (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "585538275436-5k5co106krror5jgc4f4dpjib0efeb7o.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
         "maxRisk": "LOW"
       }
     ],
@@ -7039,14 +7387,14 @@
     "adminAccessLevel": "UNCONFIGURED",
     "accessPolicy": null,
     "multiClientMapped": true,
-    "familyDeploymentsCount": 6,
+    "familyDeploymentsCount": 7,
     "siblingDeployments": [
       {
         "id": "297408095146-fug707qsjv4ikron0hugpevbrjhkmsk7.apps.googleusercontent.com",
         "displayName": "GAM Project Creation (Web Application)",
         "deploymentType": "Web Application",
         "clientId": "297408095146-fug707qsjv4ikron0hugpevbrjhkmsk7.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
+        "adminAccessLevel": "TRUSTED",
         "totalUsersCount": 2,
         "maxRisk": "LOW"
       },
@@ -7085,6 +7433,15 @@
         "adminAccessLevel": "UNCONFIGURED",
         "totalUsersCount": 1,
         "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "585538275436-5k5co106krror5jgc4f4dpjib0efeb7o.apps.googleusercontent.com",
+        "displayName": "GAM (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "585538275436-5k5co106krror5jgc4f4dpjib0efeb7o.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
       }
     ],
     "clientIdsCount": 1,
@@ -7114,6 +7471,131 @@
     "isStale": false,
     "isNew": true,
     "totalActivityEvents": 668
+  },
+  {
+    "id": "585538275436-5k5co106krror5jgc4f4dpjib0efeb7o.apps.googleusercontent.com",
+    "clientId": "585538275436-5k5co106krror5jgc4f4dpjib0efeb7o.apps.googleusercontent.com",
+    "familyId": "gam",
+    "familyName": "GAM (Google Apps Manager)",
+    "displayName": "GAM (Web Application)",
+    "vendor": "GAM Open Source",
+    "publisherDomain": "github.com/GAM-team/GAM",
+    "category": "IT Admin & Automation",
+    "appType": "Command-Line IT Tool",
+    "deploymentType": "Web Application",
+    "compliance": [
+      "Open Source Audited"
+    ],
+    "dataHosting": "Local / Tenant Only",
+    "breachHistory": null,
+    "breaches": [],
+    "breachPenalty": 0,
+    "breachBracket": "NONE",
+    "breachDaysElapsed": null,
+    "verificationPenalty": 0,
+    "scopeRiskScore": 1,
+    "isVerified": true,
+    "iconUrl": "https://www.google.com/s2/favicons?domain=github.com&sz=128",
+    "storeUrl": "https://github.com/GAM-team/GAM",
+    "description": "Command-line management tool for Google Workspace domain administration.",
+    "riskScore": 1,
+    "peakScopeScore": 1,
+    "breadthScore": 0,
+    "avgScopeScore": 1,
+    "riskLevel": "LOW",
+    "riskScoreColor": "Blue",
+    "rawMaxRisk": "LOW",
+    "riskReasons": [
+      "Standard SaaS Integration"
+    ],
+    "adminAccessLevel": "TRUSTED",
+    "accessPolicy": {
+      "accessLevel": "TRUSTED",
+      "orgUnitPath": "/Jacaranda Academy",
+      "domainName": "gafe.co.za",
+      "isOverridden": true,
+      "exemptFromContextAwareAccess": true,
+      "allowedServices": {},
+      "configuredBy": "Admin Console Baseline (gafe_co_za_owl_apps_configured.csv)",
+      "lastPolicyUpdate": "2026-09-13T18:00:00Z"
+    },
+    "multiClientMapped": true,
+    "familyDeploymentsCount": 7,
+    "siblingDeployments": [
+      {
+        "id": "297408095146-fug707qsjv4ikron0hugpevbrjhkmsk7.apps.googleusercontent.com",
+        "displayName": "GAM Project Creation (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "297408095146-fug707qsjv4ikron0hugpevbrjhkmsk7.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 2,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "458969862783-1smfdj4v8qbnibgarka1a99400lhsa13.apps.googleusercontent.com",
+        "displayName": "GAM (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "458969862783-1smfdj4v8qbnibgarka1a99400lhsa13.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "72867247940-n969jo6c29qg22m8sodb2hftn6dck1mk.apps.googleusercontent.com",
+        "displayName": "GAM7-demo (Staging / Dev)",
+        "deploymentType": "Staging / Dev",
+        "clientId": "72867247940-n969jo6c29qg22m8sodb2hftn6dck1mk.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "521549528509-f17hlgjd91nbi5sooc73ia3d4dqln10s.apps.googleusercontent.com",
+        "displayName": "GAM7-CGP-Training (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "521549528509-f17hlgjd91nbi5sooc73ia3d4dqln10s.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "585538275436-4lk6emnir2l22atsdk61fstd4nhkgbku.apps.googleusercontent.com",
+        "displayName": "GAM (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "585538275436-4lk6emnir2l22atsdk61fstd4nhkgbku.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "101367350966766396496",
+        "displayName": "GAM7-CGP-Training (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "101367350966766396496",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "LOW"
+      }
+    ],
+    "clientIdsCount": 1,
+    "clientIds": [
+      "585538275436-5k5co106krror5jgc4f4dpjib0efeb7o.apps.googleusercontent.com"
+    ],
+    "projectNumbers": [
+      "585538275436"
+    ],
+    "totalUsersCount": 0,
+    "adminUsersCount": 0,
+    "scopesCount": 0,
+    "scopes": [],
+    "servicesTouched": [],
+    "users": [],
+    "firstSeen": null,
+    "lastActive": null,
+    "lastActiveFormatted": "12/09/2026",
+    "isStale": true,
+    "isNew": false,
+    "totalActivityEvents": 0
   },
   {
     "id": "626051926611-uisg6tp5g4e2be4pbs1f8dagkmv7o9s8.apps.googleusercontent.com",
@@ -7320,8 +7802,9 @@
     "familyId": "gcp_proj_953348912797",
     "familyName": "Google AppSheet",
     "displayName": "Google AppSheet (Web Application)",
+    "vendor": "Google LLC",
     "publisherDomain": "",
-    "category": "Unclassified SaaS",
+    "category": "Google Workspace Core",
     "appType": "Web Application",
     "deploymentType": "Web Application",
     "compliance": [
@@ -7333,13 +7816,13 @@
     "breachPenalty": 0,
     "breachBracket": "NONE",
     "breachDaysElapsed": null,
-    "verificationPenalty": 0.35,
+    "verificationPenalty": 0,
     "scopeRiskScore": 4.19,
-    "isVerified": false,
+    "isVerified": true,
     "iconUrl": "https://ui-avatars.com/api/?name=Google%20AppSheet&background=3B82F6&color=fff&size=128&rounded=true",
     "storeUrl": null,
     "description": "",
-    "riskScore": 4.54,
+    "riskScore": 4.19,
     "peakScopeScore": 5,
     "breadthScore": 0.19,
     "avgScopeScore": 2.67,
@@ -7349,7 +7832,6 @@
     "riskReasons": [
       "Critical Administrative or Direct Mail Access",
       "Full Google Drive Read/Write Access or Mail Modification",
-      "Unverified Publisher (+0.35 Inherent Risk)",
       "Basic Authentication / Profile Scopes",
       "Access to Domain Directory, Files, or Calendars",
       "Full Google Drive Read/Write Access"
@@ -7464,8 +7946,9 @@
     "familyId": "gcp_proj_469390422673",
     "familyName": "Google Calendar for Workspace Studio",
     "displayName": "Google Calendar for Workspace Studio (Web Application)",
+    "vendor": "Google LLC",
     "publisherDomain": "",
-    "category": "Unclassified SaaS",
+    "category": "Google Workspace Core",
     "appType": "Web Application",
     "deploymentType": "Web Application",
     "compliance": [
@@ -7477,13 +7960,13 @@
     "breachPenalty": 0,
     "breachBracket": "NONE",
     "breachDaysElapsed": null,
-    "verificationPenalty": 0.35,
+    "verificationPenalty": 0,
     "scopeRiskScore": 3.04,
-    "isVerified": false,
+    "isVerified": true,
     "iconUrl": "https://ui-avatars.com/api/?name=Google%20Calendar%20for%20Workspace%20Studio&background=3B82F6&color=fff&size=128&rounded=true",
     "storeUrl": null,
     "description": "",
-    "riskScore": 3.39,
+    "riskScore": 3.04,
     "peakScopeScore": 4,
     "breadthScore": 0.04,
     "avgScopeScore": 3.5,
@@ -7493,7 +7976,6 @@
     "riskReasons": [
       "Full Google Drive Read/Write Access or Mail Modification",
       "Access to Domain Directory, Files, or Calendars",
-      "Unverified Publisher (+0.35 Inherent Risk)",
       "Basic Authentication / Profile Scopes"
     ],
     "adminAccessLevel": "UNCONFIGURED",
@@ -7571,8 +8053,9 @@
     "familyId": "gcp_proj_873507009103",
     "familyName": "Google Chat for Workspace Studio",
     "displayName": "Google Chat for Workspace Studio (Web Application)",
+    "vendor": "Google LLC",
     "publisherDomain": "",
-    "category": "Unclassified SaaS",
+    "category": "Google Workspace Core",
     "appType": "Web Application",
     "deploymentType": "Web Application",
     "compliance": [
@@ -7584,13 +8067,13 @@
     "breachPenalty": 0,
     "breachBracket": "NONE",
     "breachDaysElapsed": null,
-    "verificationPenalty": 0.35,
+    "verificationPenalty": 0,
     "scopeRiskScore": 3.2,
-    "isVerified": false,
+    "isVerified": true,
     "iconUrl": "https://ui-avatars.com/api/?name=Google%20Chat%20for%20Workspace%20Studio&background=3B82F6&color=fff&size=128&rounded=true",
     "storeUrl": null,
     "description": "",
-    "riskScore": 3.55,
+    "riskScore": 3.2,
     "peakScopeScore": 4,
     "breadthScore": 0.2,
     "avgScopeScore": 2.86,
@@ -7600,7 +8083,6 @@
     "riskReasons": [
       "Full Google Drive Read/Write Access or Mail Modification",
       "Access to Domain Directory, Files, or Calendars",
-      "Unverified Publisher (+0.35 Inherent Risk)",
       "Basic Authentication / Profile Scopes"
     ],
     "adminAccessLevel": "UNCONFIGURED",
@@ -8579,7 +9061,7 @@
     "adminAccessLevel": "UNCONFIGURED",
     "accessPolicy": null,
     "multiClientMapped": true,
-    "familyDeploymentsCount": 4,
+    "familyDeploymentsCount": 6,
     "siblingDeployments": [
       {
         "id": "823511539352-ojaretejk1s95sdvkic0te923pt7knpu.apps.googleusercontent.com",
@@ -8606,6 +9088,24 @@
         "clientId": "1023251155897-tb54g624q9e77gtsrnemgv4c2ihekurv.apps.googleusercontent.com",
         "adminAccessLevel": "UNCONFIGURED",
         "totalUsersCount": 2,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "com.google.DevicePolicy",
+        "displayName": "Google Device Policy (Android App)",
+        "deploymentType": "Android App",
+        "clientId": "com.google.DevicePolicy",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "531246522847-cpii92d27guqb6mrvgtc8skipar03g1f.apps.googleusercontent.com",
+        "displayName": "Grasshopper (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "531246522847-cpii92d27guqb6mrvgtc8skipar03g1f.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
         "maxRisk": "LOW"
       }
     ],
@@ -8766,7 +9266,7 @@
     "adminAccessLevel": "UNCONFIGURED",
     "accessPolicy": null,
     "multiClientMapped": true,
-    "familyDeploymentsCount": 4,
+    "familyDeploymentsCount": 6,
     "siblingDeployments": [
       {
         "id": "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
@@ -8793,6 +9293,24 @@
         "clientId": "1023251155897-tb54g624q9e77gtsrnemgv4c2ihekurv.apps.googleusercontent.com",
         "adminAccessLevel": "UNCONFIGURED",
         "totalUsersCount": 2,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "com.google.DevicePolicy",
+        "displayName": "Google Device Policy (Android App)",
+        "deploymentType": "Android App",
+        "clientId": "com.google.DevicePolicy",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "531246522847-cpii92d27guqb6mrvgtc8skipar03g1f.apps.googleusercontent.com",
+        "displayName": "Grasshopper (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "531246522847-cpii92d27guqb6mrvgtc8skipar03g1f.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
         "maxRisk": "LOW"
       }
     ],
@@ -8895,7 +9413,7 @@
     "adminAccessLevel": "UNCONFIGURED",
     "accessPolicy": null,
     "multiClientMapped": true,
-    "familyDeploymentsCount": 4,
+    "familyDeploymentsCount": 6,
     "siblingDeployments": [
       {
         "id": "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
@@ -8922,6 +9440,24 @@
         "clientId": "1023251155897-tb54g624q9e77gtsrnemgv4c2ihekurv.apps.googleusercontent.com",
         "adminAccessLevel": "UNCONFIGURED",
         "totalUsersCount": 2,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "com.google.DevicePolicy",
+        "displayName": "Google Device Policy (Android App)",
+        "deploymentType": "Android App",
+        "clientId": "com.google.DevicePolicy",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "531246522847-cpii92d27guqb6mrvgtc8skipar03g1f.apps.googleusercontent.com",
+        "displayName": "Grasshopper (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "531246522847-cpii92d27guqb6mrvgtc8skipar03g1f.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
         "maxRisk": "LOW"
       }
     ],
@@ -9134,7 +9670,7 @@
     "adminAccessLevel": "UNCONFIGURED",
     "accessPolicy": null,
     "multiClientMapped": true,
-    "familyDeploymentsCount": 4,
+    "familyDeploymentsCount": 6,
     "siblingDeployments": [
       {
         "id": "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
@@ -9162,6 +9698,24 @@
         "adminAccessLevel": "UNCONFIGURED",
         "totalUsersCount": 1,
         "maxRisk": "HIGH"
+      },
+      {
+        "id": "com.google.DevicePolicy",
+        "displayName": "Google Device Policy (Android App)",
+        "deploymentType": "Android App",
+        "clientId": "com.google.DevicePolicy",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "531246522847-cpii92d27guqb6mrvgtc8skipar03g1f.apps.googleusercontent.com",
+        "displayName": "Grasshopper (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "531246522847-cpii92d27guqb6mrvgtc8skipar03g1f.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
       }
     ],
     "clientIdsCount": 1,
@@ -9231,6 +9785,241 @@
         ]
       }
     ],
+    "firstSeen": null,
+    "lastActive": null,
+    "lastActiveFormatted": "12/09/2026",
+    "isStale": true,
+    "isNew": false,
+    "totalActivityEvents": 0
+  },
+  {
+    "id": "com.google.DevicePolicy",
+    "clientId": "com.google.DevicePolicy",
+    "familyId": "google-llc",
+    "familyName": "Google LLC",
+    "displayName": "Google Device Policy (Android App)",
+    "vendor": "Google LLC",
+    "publisherDomain": "google.com",
+    "category": "MDM & Endpoint Security",
+    "appType": "Mobile Device Agent",
+    "deploymentType": "Android App",
+    "compliance": [
+      "SOC 2",
+      "SOC 3",
+      "ISO 27001",
+      "GDPR"
+    ],
+    "dataHosting": "Google Cloud",
+    "breachHistory": null,
+    "breaches": [],
+    "breachPenalty": 0,
+    "breachBracket": "NONE",
+    "breachDaysElapsed": null,
+    "verificationPenalty": 0,
+    "scopeRiskScore": 1,
+    "isVerified": true,
+    "iconUrl": "https://www.google.com/s2/favicons?domain=google.com&sz=128",
+    "storeUrl": "https://google.com",
+    "description": "Enforces security policies and management on mobile devices accessing domain data.",
+    "riskScore": 1,
+    "peakScopeScore": 1,
+    "breadthScore": 0,
+    "avgScopeScore": 1,
+    "riskLevel": "LOW",
+    "riskScoreColor": "Blue",
+    "rawMaxRisk": "LOW",
+    "riskReasons": [
+      "Standard SaaS Integration"
+    ],
+    "adminAccessLevel": "UNCONFIGURED",
+    "accessPolicy": {
+      "accessLevel": "UNCONFIGURED",
+      "orgUnitPath": "/",
+      "domainName": "gafe.co.za",
+      "isOverridden": "",
+      "exemptFromContextAwareAccess": false,
+      "allowedServices": {},
+      "configuredBy": "Admin Console Baseline (gafe_co_za_owl_apps_configured.csv)",
+      "lastPolicyUpdate": "2026-09-13T18:00:00Z"
+    },
+    "multiClientMapped": true,
+    "familyDeploymentsCount": 6,
+    "siblingDeployments": [
+      {
+        "id": "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
+        "displayName": "Gemini for Workspace Studio (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 4,
+        "maxRisk": "HIGH"
+      },
+      {
+        "id": "823511539352-ojaretejk1s95sdvkic0te923pt7knpu.apps.googleusercontent.com",
+        "displayName": "Google AI Studio (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "823511539352-ojaretejk1s95sdvkic0te923pt7knpu.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "HIGH"
+      },
+      {
+        "id": "526554529059-bpm1k15t6a60h9u79tjhmpnutblkmalu.apps.googleusercontent.com",
+        "displayName": "gemini-enterprise (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "526554529059-bpm1k15t6a60h9u79tjhmpnutblkmalu.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "HIGH"
+      },
+      {
+        "id": "1023251155897-tb54g624q9e77gtsrnemgv4c2ihekurv.apps.googleusercontent.com",
+        "displayName": "Google Skills (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "1023251155897-tb54g624q9e77gtsrnemgv4c2ihekurv.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 2,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "531246522847-cpii92d27guqb6mrvgtc8skipar03g1f.apps.googleusercontent.com",
+        "displayName": "Grasshopper (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "531246522847-cpii92d27guqb6mrvgtc8skipar03g1f.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      }
+    ],
+    "clientIdsCount": 1,
+    "clientIds": [
+      "com.google.DevicePolicy"
+    ],
+    "projectNumbers": [
+      "com.google.DevicePolicy"
+    ],
+    "totalUsersCount": 0,
+    "adminUsersCount": 0,
+    "scopesCount": 0,
+    "scopes": [],
+    "servicesTouched": [],
+    "users": [],
+    "firstSeen": null,
+    "lastActive": null,
+    "lastActiveFormatted": "12/09/2026",
+    "isStale": true,
+    "isNew": false,
+    "totalActivityEvents": 0
+  },
+  {
+    "id": "531246522847-cpii92d27guqb6mrvgtc8skipar03g1f.apps.googleusercontent.com",
+    "clientId": "531246522847-cpii92d27guqb6mrvgtc8skipar03g1f.apps.googleusercontent.com",
+    "familyId": "google-llc",
+    "familyName": "Google LLC",
+    "displayName": "Grasshopper (Web Application)",
+    "vendor": "Google LLC",
+    "publisherDomain": "grasshopper.app",
+    "category": "Education & Coding",
+    "appType": "Web Application",
+    "deploymentType": "Web Application",
+    "compliance": [
+      "Google Privacy & Security"
+    ],
+    "dataHosting": "USA",
+    "breachHistory": null,
+    "breaches": [],
+    "breachPenalty": 0,
+    "breachBracket": "NONE",
+    "breachDaysElapsed": null,
+    "verificationPenalty": 0,
+    "scopeRiskScore": 1,
+    "isVerified": true,
+    "iconUrl": "https://www.google.com/s2/favicons?domain=google.com&sz=128",
+    "storeUrl": "https://grasshopper.app",
+    "description": "Coding and beginner JavaScript learning platform by Google.",
+    "riskScore": 1,
+    "peakScopeScore": 1,
+    "breadthScore": 0,
+    "avgScopeScore": 1,
+    "riskLevel": "LOW",
+    "riskScoreColor": "Blue",
+    "rawMaxRisk": "LOW",
+    "riskReasons": [
+      "Standard SaaS Integration"
+    ],
+    "adminAccessLevel": "TRUSTED",
+    "accessPolicy": {
+      "accessLevel": "TRUSTED",
+      "orgUnitPath": "/",
+      "domainName": "gafe.co.za",
+      "isOverridden": false,
+      "exemptFromContextAwareAccess": true,
+      "allowedServices": {},
+      "configuredBy": "Admin Console Baseline (gafe_co_za_owl_apps_configured.csv)",
+      "lastPolicyUpdate": "2026-09-13T18:00:00Z"
+    },
+    "multiClientMapped": true,
+    "familyDeploymentsCount": 6,
+    "siblingDeployments": [
+      {
+        "id": "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
+        "displayName": "Gemini for Workspace Studio (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 4,
+        "maxRisk": "HIGH"
+      },
+      {
+        "id": "823511539352-ojaretejk1s95sdvkic0te923pt7knpu.apps.googleusercontent.com",
+        "displayName": "Google AI Studio (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "823511539352-ojaretejk1s95sdvkic0te923pt7knpu.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "HIGH"
+      },
+      {
+        "id": "526554529059-bpm1k15t6a60h9u79tjhmpnutblkmalu.apps.googleusercontent.com",
+        "displayName": "gemini-enterprise (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "526554529059-bpm1k15t6a60h9u79tjhmpnutblkmalu.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "HIGH"
+      },
+      {
+        "id": "1023251155897-tb54g624q9e77gtsrnemgv4c2ihekurv.apps.googleusercontent.com",
+        "displayName": "Google Skills (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "1023251155897-tb54g624q9e77gtsrnemgv4c2ihekurv.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 2,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "com.google.DevicePolicy",
+        "displayName": "Google Device Policy (Android App)",
+        "deploymentType": "Android App",
+        "clientId": "com.google.DevicePolicy",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      }
+    ],
+    "clientIdsCount": 1,
+    "clientIds": [
+      "531246522847-cpii92d27guqb6mrvgtc8skipar03g1f.apps.googleusercontent.com"
+    ],
+    "projectNumbers": [
+      "531246522847"
+    ],
+    "totalUsersCount": 0,
+    "adminUsersCount": 0,
+    "scopesCount": 0,
+    "scopes": [],
+    "servicesTouched": [],
+    "users": [],
     "firstSeen": null,
     "lastActive": null,
     "lastActiveFormatted": "12/09/2026",
@@ -9469,13 +10258,13 @@
     "breachPenalty": 0,
     "breachBracket": "NONE",
     "breachDaysElapsed": null,
-    "verificationPenalty": 0.35,
+    "verificationPenalty": 0,
     "scopeRiskScore": 4.42,
-    "isVerified": false,
+    "isVerified": true,
     "iconUrl": "https://ui-avatars.com/api/?name=InactiveUserInventory&background=3B82F6&color=fff&size=128&rounded=true",
     "storeUrl": null,
     "description": "",
-    "riskScore": 4.77,
+    "riskScore": 4.42,
     "peakScopeScore": 5,
     "breadthScore": 0.42,
     "avgScopeScore": 3.13,
@@ -9485,7 +10274,6 @@
     "riskReasons": [
       "Critical Administrative or Direct Mail Access",
       "Full Google Drive Read/Write Access or Mail Modification",
-      "Unverified Publisher (+0.35 Inherent Risk)",
       "Administrative or Direct Mail Access",
       "Basic Authentication / Profile Scopes",
       "Access to Domain Directory, Files, or Calendars",
@@ -11977,13 +12765,13 @@
     "breachPenalty": 0,
     "breachBracket": "NONE",
     "breachDaysElapsed": null,
-    "verificationPenalty": 0.35,
+    "verificationPenalty": 0,
     "scopeRiskScore": 4.15,
-    "isVerified": false,
+    "isVerified": true,
     "iconUrl": "https://ui-avatars.com/api/?name=iOS&background=3B82F6&color=fff&size=128&rounded=true",
     "storeUrl": null,
     "description": "",
-    "riskScore": 4.5,
+    "riskScore": 4.15,
     "peakScopeScore": 5,
     "breadthScore": 0.15,
     "avgScopeScore": 2.5,
@@ -11994,7 +12782,6 @@
       "Critical Administrative or Direct Mail Access",
       "Full Google Drive Read/Write Access or Mail Modification",
       "Access to Domain Directory, Files, or Calendars",
-      "Unverified Publisher (+0.35 Inherent Risk)",
       "Basic Authentication / Profile Scopes",
       "Administrative or Direct Mail Access"
     ],
@@ -12102,6 +12889,308 @@
     "isStale": false,
     "isNew": true,
     "totalActivityEvents": 19
+  },
+  {
+    "id": "com.lego.education.wedo",
+    "clientId": "com.lego.education.wedo",
+    "familyId": "lego-education",
+    "familyName": "LEGO Education",
+    "displayName": "WeDo 2.0 LEGO® Education (Android App)",
+    "vendor": "LEGO System A/S (LEGO Education)",
+    "publisherDomain": "education.lego.com",
+    "category": "STEM & Robotics",
+    "appType": "Mobile & Desktop App",
+    "deploymentType": "Android App",
+    "compliance": [
+      "COPPA",
+      "GDPR"
+    ],
+    "dataHosting": "EU / Local",
+    "breachHistory": null,
+    "breaches": [],
+    "breachPenalty": 0,
+    "breachBracket": "NONE",
+    "breachDaysElapsed": null,
+    "verificationPenalty": 0,
+    "scopeRiskScore": 1,
+    "isVerified": true,
+    "iconUrl": "https://www.google.com/s2/favicons?domain=lego.com&sz=128",
+    "storeUrl": "https://education.lego.com",
+    "description": "Robotics and coding software for LEGO Education WeDo 2.0 classroom kits.",
+    "riskScore": 1,
+    "peakScopeScore": 1,
+    "breadthScore": 0,
+    "avgScopeScore": 1,
+    "riskLevel": "LOW",
+    "riskScoreColor": "Blue",
+    "rawMaxRisk": "LOW",
+    "riskReasons": [
+      "Standard SaaS Integration"
+    ],
+    "adminAccessLevel": "TRUSTED",
+    "accessPolicy": {
+      "accessLevel": "TRUSTED",
+      "orgUnitPath": "/",
+      "domainName": "gafe.co.za",
+      "isOverridden": false,
+      "exemptFromContextAwareAccess": true,
+      "allowedServices": {},
+      "configuredBy": "Admin Console Baseline (gafe_co_za_owl_apps_configured.csv)",
+      "lastPolicyUpdate": "2026-09-13T18:00:00Z"
+    },
+    "multiClientMapped": true,
+    "familyDeploymentsCount": 2,
+    "siblingDeployments": [
+      {
+        "id": "com.lego.education.spike",
+        "displayName": "SPIKE™ Legacy LEGO® Education (Android App)",
+        "deploymentType": "Android App",
+        "clientId": "com.lego.education.spike",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      }
+    ],
+    "clientIdsCount": 1,
+    "clientIds": [
+      "com.lego.education.wedo"
+    ],
+    "projectNumbers": [
+      "com.lego.education.wedo"
+    ],
+    "totalUsersCount": 0,
+    "adminUsersCount": 0,
+    "scopesCount": 0,
+    "scopes": [],
+    "servicesTouched": [],
+    "users": [],
+    "firstSeen": null,
+    "lastActive": null,
+    "lastActiveFormatted": "12/09/2026",
+    "isStale": true,
+    "isNew": false,
+    "totalActivityEvents": 0
+  },
+  {
+    "id": "com.lego.education.spike",
+    "clientId": "com.lego.education.spike",
+    "familyId": "lego-education",
+    "familyName": "LEGO Education",
+    "displayName": "SPIKE™ Legacy LEGO® Education (Android App)",
+    "vendor": "LEGO System A/S (LEGO Education)",
+    "publisherDomain": "education.lego.com",
+    "category": "STEM & Robotics",
+    "appType": "Mobile & Desktop App",
+    "deploymentType": "Android App",
+    "compliance": [
+      "COPPA",
+      "GDPR"
+    ],
+    "dataHosting": "EU / Local",
+    "breachHistory": null,
+    "breaches": [],
+    "breachPenalty": 0,
+    "breachBracket": "NONE",
+    "breachDaysElapsed": null,
+    "verificationPenalty": 0,
+    "scopeRiskScore": 1,
+    "isVerified": true,
+    "iconUrl": "https://www.google.com/s2/favicons?domain=lego.com&sz=128",
+    "storeUrl": "https://education.lego.com",
+    "description": "STEAM learning app for LEGO Education SPIKE Prime and Essential.",
+    "riskScore": 1,
+    "peakScopeScore": 1,
+    "breadthScore": 0,
+    "avgScopeScore": 1,
+    "riskLevel": "LOW",
+    "riskScoreColor": "Blue",
+    "rawMaxRisk": "LOW",
+    "riskReasons": [
+      "Standard SaaS Integration"
+    ],
+    "adminAccessLevel": "TRUSTED",
+    "accessPolicy": {
+      "accessLevel": "TRUSTED",
+      "orgUnitPath": "/",
+      "domainName": "gafe.co.za",
+      "isOverridden": false,
+      "exemptFromContextAwareAccess": true,
+      "allowedServices": {},
+      "configuredBy": "Admin Console Baseline (gafe_co_za_owl_apps_configured.csv)",
+      "lastPolicyUpdate": "2026-09-13T18:00:00Z"
+    },
+    "multiClientMapped": true,
+    "familyDeploymentsCount": 2,
+    "siblingDeployments": [
+      {
+        "id": "com.lego.education.wedo",
+        "displayName": "WeDo 2.0 LEGO® Education (Android App)",
+        "deploymentType": "Android App",
+        "clientId": "com.lego.education.wedo",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      }
+    ],
+    "clientIdsCount": 1,
+    "clientIds": [
+      "com.lego.education.spike"
+    ],
+    "projectNumbers": [
+      "com.lego.education.spike"
+    ],
+    "totalUsersCount": 0,
+    "adminUsersCount": 0,
+    "scopesCount": 0,
+    "scopes": [],
+    "servicesTouched": [],
+    "users": [],
+    "firstSeen": null,
+    "lastActive": null,
+    "lastActiveFormatted": "12/09/2026",
+    "isStale": true,
+    "isNew": false,
+    "totalActivityEvents": 0
+  },
+  {
+    "id": "609427711699-8kgr4bj5hc7ip93n5erf04qjtr1c1tel.apps.googleusercontent.com",
+    "clientId": "609427711699-8kgr4bj5hc7ip93n5erf04qjtr1c1tel.apps.googleusercontent.com",
+    "familyId": "gcp_proj_609427711699",
+    "familyName": "LinkHMS",
+    "displayName": "LinkHMS (Web Application)",
+    "publisherDomain": "",
+    "category": "Unclassified SaaS",
+    "appType": "Web Application",
+    "deploymentType": "Web Application",
+    "compliance": [
+      "Standard Terms"
+    ],
+    "dataHosting": "USA",
+    "breachHistory": null,
+    "breaches": [],
+    "breachPenalty": 0,
+    "breachBracket": "NONE",
+    "breachDaysElapsed": null,
+    "verificationPenalty": 0.35,
+    "scopeRiskScore": 1,
+    "isVerified": false,
+    "iconUrl": "https://ui-avatars.com/api/?name=LinkHMS&background=3B82F6&color=fff&size=128&rounded=true",
+    "storeUrl": null,
+    "description": "",
+    "riskScore": 1.35,
+    "peakScopeScore": 1,
+    "breadthScore": 0,
+    "avgScopeScore": 1,
+    "riskLevel": "LOW",
+    "riskScoreColor": "Blue",
+    "rawMaxRisk": "LOW",
+    "riskReasons": [
+      "Unverified Publisher (+0.35 Inherent Risk)"
+    ],
+    "adminAccessLevel": "UNCONFIGURED",
+    "accessPolicy": null,
+    "multiClientMapped": true,
+    "familyDeploymentsCount": 2,
+    "siblingDeployments": [
+      {
+        "id": "609427711699-sq919k8t73af34500gr6vrfclaafcslb.apps.googleusercontent.com",
+        "displayName": "LinkHMS (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "609427711699-sq919k8t73af34500gr6vrfclaafcslb.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      }
+    ],
+    "clientIdsCount": 1,
+    "clientIds": [
+      "609427711699-8kgr4bj5hc7ip93n5erf04qjtr1c1tel.apps.googleusercontent.com"
+    ],
+    "projectNumbers": [
+      "609427711699"
+    ],
+    "totalUsersCount": 0,
+    "adminUsersCount": 0,
+    "scopesCount": 0,
+    "scopes": [],
+    "servicesTouched": [],
+    "users": [],
+    "firstSeen": null,
+    "lastActive": null,
+    "lastActiveFormatted": "12/09/2026",
+    "isStale": true,
+    "isNew": false,
+    "totalActivityEvents": 0
+  },
+  {
+    "id": "609427711699-sq919k8t73af34500gr6vrfclaafcslb.apps.googleusercontent.com",
+    "clientId": "609427711699-sq919k8t73af34500gr6vrfclaafcslb.apps.googleusercontent.com",
+    "familyId": "gcp_proj_609427711699",
+    "familyName": "LinkHMS",
+    "displayName": "LinkHMS (Web Application)",
+    "publisherDomain": "",
+    "category": "Unclassified SaaS",
+    "appType": "Web Application",
+    "deploymentType": "Web Application",
+    "compliance": [
+      "Standard Terms"
+    ],
+    "dataHosting": "USA",
+    "breachHistory": null,
+    "breaches": [],
+    "breachPenalty": 0,
+    "breachBracket": "NONE",
+    "breachDaysElapsed": null,
+    "verificationPenalty": 0.35,
+    "scopeRiskScore": 1,
+    "isVerified": false,
+    "iconUrl": "https://ui-avatars.com/api/?name=LinkHMS&background=3B82F6&color=fff&size=128&rounded=true",
+    "storeUrl": null,
+    "description": "",
+    "riskScore": 1.35,
+    "peakScopeScore": 1,
+    "breadthScore": 0,
+    "avgScopeScore": 1,
+    "riskLevel": "LOW",
+    "riskScoreColor": "Blue",
+    "rawMaxRisk": "LOW",
+    "riskReasons": [
+      "Unverified Publisher (+0.35 Inherent Risk)"
+    ],
+    "adminAccessLevel": "UNCONFIGURED",
+    "accessPolicy": null,
+    "multiClientMapped": true,
+    "familyDeploymentsCount": 2,
+    "siblingDeployments": [
+      {
+        "id": "609427711699-8kgr4bj5hc7ip93n5erf04qjtr1c1tel.apps.googleusercontent.com",
+        "displayName": "LinkHMS (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "609427711699-8kgr4bj5hc7ip93n5erf04qjtr1c1tel.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      }
+    ],
+    "clientIdsCount": 1,
+    "clientIds": [
+      "609427711699-sq919k8t73af34500gr6vrfclaafcslb.apps.googleusercontent.com"
+    ],
+    "projectNumbers": [
+      "609427711699"
+    ],
+    "totalUsersCount": 0,
+    "adminUsersCount": 0,
+    "scopesCount": 0,
+    "scopes": [],
+    "servicesTouched": [],
+    "users": [],
+    "firstSeen": null,
+    "lastActive": null,
+    "lastActiveFormatted": "12/09/2026",
+    "isStale": true,
+    "isNew": false,
+    "totalActivityEvents": 0
   },
   {
     "id": "961782772109-gr6rmo3pe7iibrmjifhhar5iu2mjin9r.apps.googleusercontent.com",
@@ -12452,6 +13541,973 @@
     "totalActivityEvents": 0
   },
   {
+    "id": "224054973946.apps.googleusercontent.com",
+    "clientId": "224054973946.apps.googleusercontent.com",
+    "familyId": "mailsuite",
+    "familyName": "Mailsuite / Mailtrack",
+    "displayName": "Mailsuite (Web Application)",
+    "vendor": "Mailtrack / Mailsuite, S.L.",
+    "publisherDomain": "mailsuite.com",
+    "category": "Productivity & Email Tracking",
+    "appType": "Gmail Add-on / Extension",
+    "deploymentType": "Web Application",
+    "compliance": [
+      "GDPR",
+      "ISO 27001"
+    ],
+    "dataHosting": "EU",
+    "breachHistory": null,
+    "breaches": [],
+    "breachPenalty": 0,
+    "breachBracket": "NONE",
+    "breachDaysElapsed": null,
+    "verificationPenalty": 0,
+    "scopeRiskScore": 1,
+    "isVerified": true,
+    "iconUrl": "https://www.google.com/s2/favicons?domain=mailsuite.com&sz=128",
+    "storeUrl": "https://mailsuite.com",
+    "description": "Email read tracking and document analytics for Gmail.",
+    "riskScore": 1,
+    "peakScopeScore": 1,
+    "breadthScore": 0,
+    "avgScopeScore": 1,
+    "riskLevel": "LOW",
+    "riskScoreColor": "Blue",
+    "rawMaxRisk": "LOW",
+    "riskReasons": [
+      "Standard SaaS Integration"
+    ],
+    "adminAccessLevel": "TRUSTED",
+    "accessPolicy": {
+      "accessLevel": "TRUSTED",
+      "orgUnitPath": "/",
+      "domainName": "gafe.co.za",
+      "isOverridden": false,
+      "exemptFromContextAwareAccess": true,
+      "allowedServices": {},
+      "configuredBy": "Admin Console Baseline (gafe_co_za_owl_apps_configured.csv)",
+      "lastPolicyUpdate": "2026-09-13T18:00:00Z"
+    },
+    "multiClientMapped": false,
+    "familyDeploymentsCount": 1,
+    "siblingDeployments": [],
+    "clientIdsCount": 1,
+    "clientIds": [
+      "224054973946.apps.googleusercontent.com"
+    ],
+    "projectNumbers": [
+      "224054973946.apps.googleusercontent.com"
+    ],
+    "totalUsersCount": 0,
+    "adminUsersCount": 0,
+    "scopesCount": 0,
+    "scopes": [],
+    "servicesTouched": [],
+    "users": [],
+    "firstSeen": null,
+    "lastActive": null,
+    "lastActiveFormatted": "12/09/2026",
+    "isStale": true,
+    "isNew": false,
+    "totalActivityEvents": 0
+  },
+  {
+    "id": "243341882805-sqhe1f8jq8t8i5ha4nqbv50gk0iteup7.apps.googleusercontent.com",
+    "clientId": "243341882805-sqhe1f8jq8t8i5ha4nqbv50gk0iteup7.apps.googleusercontent.com",
+    "familyId": "texthelp-orbitnote",
+    "familyName": "OrbitNote",
+    "displayName": "OrbitNote (Web Application)",
+    "vendor": "Texthelp Ltd.",
+    "publisherDomain": "texthelp.com",
+    "category": "Education & Accessibility",
+    "appType": "Chrome Extension / Web App",
+    "deploymentType": "Web Application",
+    "compliance": [
+      "FERPA",
+      "COPPA",
+      "GDPR",
+      "SOC 2"
+    ],
+    "dataHosting": "USA / EU",
+    "breachHistory": null,
+    "breaches": [],
+    "breachPenalty": 0,
+    "breachBracket": "NONE",
+    "breachDaysElapsed": null,
+    "verificationPenalty": 0,
+    "scopeRiskScore": 1,
+    "isVerified": true,
+    "iconUrl": "https://www.google.com/s2/favicons?domain=texthelp.com&sz=128",
+    "storeUrl": "https://texthelp.com",
+    "description": "PDF reader and digital annotation toolbar for Google Drive and Classroom.",
+    "riskScore": 1,
+    "peakScopeScore": 1,
+    "breadthScore": 0,
+    "avgScopeScore": 1,
+    "riskLevel": "LOW",
+    "riskScoreColor": "Blue",
+    "rawMaxRisk": "LOW",
+    "riskReasons": [
+      "Standard SaaS Integration"
+    ],
+    "adminAccessLevel": "SPECIFIC_DATA",
+    "accessPolicy": {
+      "accessLevel": "SPECIFIC_DATA",
+      "orgUnitPath": "/",
+      "domainName": "gafe.co.za",
+      "isOverridden": false,
+      "exemptFromContextAwareAccess": false,
+      "allowedServices": {},
+      "configuredBy": "Admin Console Baseline (gafe_co_za_owl_apps_configured.csv)",
+      "lastPolicyUpdate": "2026-09-13T18:00:00Z"
+    },
+    "multiClientMapped": true,
+    "familyDeploymentsCount": 7,
+    "siblingDeployments": [
+      {
+        "id": "243341882805-ifm1nlmmaiphpqltrhc3am7tf31cttc2.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-ifm1nlmmaiphpqltrhc3am7tf31cttc2.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "243341882805-gqvp3jffcpj3bn588oeum6i0rdvq9lgj.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-gqvp3jffcpj3bn588oeum6i0rdvq9lgj.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "243341882805-gldjffc0aa5angvaauku8kjdnenian8t.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-gldjffc0aa5angvaauku8kjdnenian8t.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "243341882805-fav9vbuf7c132v7lkvav10h32o5gds7q.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-fav9vbuf7c132v7lkvav10h32o5gds7q.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "243341882805-ah59e7mg9ccjnft0nu5mgopk60k4u2bs.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-ah59e7mg9ccjnft0nu5mgopk60k4u2bs.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "243341882805-4e3fs19mqa8olc5e8vt86chmk0eejpl1.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-4e3fs19mqa8olc5e8vt86chmk0eejpl1.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      }
+    ],
+    "clientIdsCount": 1,
+    "clientIds": [
+      "243341882805-sqhe1f8jq8t8i5ha4nqbv50gk0iteup7.apps.googleusercontent.com"
+    ],
+    "projectNumbers": [
+      "243341882805"
+    ],
+    "totalUsersCount": 0,
+    "adminUsersCount": 0,
+    "scopesCount": 0,
+    "scopes": [],
+    "servicesTouched": [],
+    "users": [],
+    "firstSeen": null,
+    "lastActive": null,
+    "lastActiveFormatted": "12/09/2026",
+    "isStale": true,
+    "isNew": false,
+    "totalActivityEvents": 0
+  },
+  {
+    "id": "243341882805-ifm1nlmmaiphpqltrhc3am7tf31cttc2.apps.googleusercontent.com",
+    "clientId": "243341882805-ifm1nlmmaiphpqltrhc3am7tf31cttc2.apps.googleusercontent.com",
+    "familyId": "texthelp-orbitnote",
+    "familyName": "OrbitNote",
+    "displayName": "OrbitNote (Web Application)",
+    "vendor": "Texthelp Ltd.",
+    "publisherDomain": "texthelp.com",
+    "category": "Education & Accessibility",
+    "appType": "Chrome Extension / Web App",
+    "deploymentType": "Web Application",
+    "compliance": [
+      "FERPA",
+      "COPPA",
+      "GDPR",
+      "SOC 2"
+    ],
+    "dataHosting": "USA / EU",
+    "breachHistory": null,
+    "breaches": [],
+    "breachPenalty": 0,
+    "breachBracket": "NONE",
+    "breachDaysElapsed": null,
+    "verificationPenalty": 0,
+    "scopeRiskScore": 1,
+    "isVerified": true,
+    "iconUrl": "https://www.google.com/s2/favicons?domain=texthelp.com&sz=128",
+    "storeUrl": "https://texthelp.com",
+    "description": "PDF reader and digital annotation toolbar for Google Drive and Classroom.",
+    "riskScore": 1,
+    "peakScopeScore": 1,
+    "breadthScore": 0,
+    "avgScopeScore": 1,
+    "riskLevel": "LOW",
+    "riskScoreColor": "Blue",
+    "rawMaxRisk": "LOW",
+    "riskReasons": [
+      "Standard SaaS Integration"
+    ],
+    "adminAccessLevel": "TRUSTED",
+    "accessPolicy": {
+      "accessLevel": "TRUSTED",
+      "orgUnitPath": "/",
+      "domainName": "gafe.co.za",
+      "isOverridden": false,
+      "exemptFromContextAwareAccess": true,
+      "allowedServices": {},
+      "configuredBy": "Admin Console Baseline (gafe_co_za_owl_apps_configured.csv)",
+      "lastPolicyUpdate": "2026-09-13T18:00:00Z"
+    },
+    "multiClientMapped": true,
+    "familyDeploymentsCount": 7,
+    "siblingDeployments": [
+      {
+        "id": "243341882805-sqhe1f8jq8t8i5ha4nqbv50gk0iteup7.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-sqhe1f8jq8t8i5ha4nqbv50gk0iteup7.apps.googleusercontent.com",
+        "adminAccessLevel": "SPECIFIC_DATA",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "243341882805-gqvp3jffcpj3bn588oeum6i0rdvq9lgj.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-gqvp3jffcpj3bn588oeum6i0rdvq9lgj.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "243341882805-gldjffc0aa5angvaauku8kjdnenian8t.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-gldjffc0aa5angvaauku8kjdnenian8t.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "243341882805-fav9vbuf7c132v7lkvav10h32o5gds7q.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-fav9vbuf7c132v7lkvav10h32o5gds7q.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "243341882805-ah59e7mg9ccjnft0nu5mgopk60k4u2bs.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-ah59e7mg9ccjnft0nu5mgopk60k4u2bs.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "243341882805-4e3fs19mqa8olc5e8vt86chmk0eejpl1.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-4e3fs19mqa8olc5e8vt86chmk0eejpl1.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      }
+    ],
+    "clientIdsCount": 1,
+    "clientIds": [
+      "243341882805-ifm1nlmmaiphpqltrhc3am7tf31cttc2.apps.googleusercontent.com"
+    ],
+    "projectNumbers": [
+      "243341882805"
+    ],
+    "totalUsersCount": 0,
+    "adminUsersCount": 0,
+    "scopesCount": 0,
+    "scopes": [],
+    "servicesTouched": [],
+    "users": [],
+    "firstSeen": null,
+    "lastActive": null,
+    "lastActiveFormatted": "12/09/2026",
+    "isStale": true,
+    "isNew": false,
+    "totalActivityEvents": 0
+  },
+  {
+    "id": "243341882805-gqvp3jffcpj3bn588oeum6i0rdvq9lgj.apps.googleusercontent.com",
+    "clientId": "243341882805-gqvp3jffcpj3bn588oeum6i0rdvq9lgj.apps.googleusercontent.com",
+    "familyId": "texthelp-orbitnote",
+    "familyName": "OrbitNote",
+    "displayName": "OrbitNote (Web Application)",
+    "vendor": "Texthelp Ltd.",
+    "publisherDomain": "texthelp.com",
+    "category": "Education & Accessibility",
+    "appType": "Chrome Extension / Web App",
+    "deploymentType": "Web Application",
+    "compliance": [
+      "FERPA",
+      "COPPA",
+      "GDPR",
+      "SOC 2"
+    ],
+    "dataHosting": "USA / EU",
+    "breachHistory": null,
+    "breaches": [],
+    "breachPenalty": 0,
+    "breachBracket": "NONE",
+    "breachDaysElapsed": null,
+    "verificationPenalty": 0,
+    "scopeRiskScore": 1,
+    "isVerified": true,
+    "iconUrl": "https://www.google.com/s2/favicons?domain=texthelp.com&sz=128",
+    "storeUrl": "https://texthelp.com",
+    "description": "PDF reader and digital annotation toolbar for Google Drive and Classroom.",
+    "riskScore": 1,
+    "peakScopeScore": 1,
+    "breadthScore": 0,
+    "avgScopeScore": 1,
+    "riskLevel": "LOW",
+    "riskScoreColor": "Blue",
+    "rawMaxRisk": "LOW",
+    "riskReasons": [
+      "Standard SaaS Integration"
+    ],
+    "adminAccessLevel": "TRUSTED",
+    "accessPolicy": {
+      "accessLevel": "TRUSTED",
+      "orgUnitPath": "/",
+      "domainName": "gafe.co.za",
+      "isOverridden": false,
+      "exemptFromContextAwareAccess": true,
+      "allowedServices": {},
+      "configuredBy": "Admin Console Baseline (gafe_co_za_owl_apps_configured.csv)",
+      "lastPolicyUpdate": "2026-09-13T18:00:00Z"
+    },
+    "multiClientMapped": true,
+    "familyDeploymentsCount": 7,
+    "siblingDeployments": [
+      {
+        "id": "243341882805-sqhe1f8jq8t8i5ha4nqbv50gk0iteup7.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-sqhe1f8jq8t8i5ha4nqbv50gk0iteup7.apps.googleusercontent.com",
+        "adminAccessLevel": "SPECIFIC_DATA",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "243341882805-ifm1nlmmaiphpqltrhc3am7tf31cttc2.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-ifm1nlmmaiphpqltrhc3am7tf31cttc2.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "243341882805-gldjffc0aa5angvaauku8kjdnenian8t.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-gldjffc0aa5angvaauku8kjdnenian8t.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "243341882805-fav9vbuf7c132v7lkvav10h32o5gds7q.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-fav9vbuf7c132v7lkvav10h32o5gds7q.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "243341882805-ah59e7mg9ccjnft0nu5mgopk60k4u2bs.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-ah59e7mg9ccjnft0nu5mgopk60k4u2bs.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "243341882805-4e3fs19mqa8olc5e8vt86chmk0eejpl1.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-4e3fs19mqa8olc5e8vt86chmk0eejpl1.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      }
+    ],
+    "clientIdsCount": 1,
+    "clientIds": [
+      "243341882805-gqvp3jffcpj3bn588oeum6i0rdvq9lgj.apps.googleusercontent.com"
+    ],
+    "projectNumbers": [
+      "243341882805"
+    ],
+    "totalUsersCount": 0,
+    "adminUsersCount": 0,
+    "scopesCount": 0,
+    "scopes": [],
+    "servicesTouched": [],
+    "users": [],
+    "firstSeen": null,
+    "lastActive": null,
+    "lastActiveFormatted": "12/09/2026",
+    "isStale": true,
+    "isNew": false,
+    "totalActivityEvents": 0
+  },
+  {
+    "id": "243341882805-gldjffc0aa5angvaauku8kjdnenian8t.apps.googleusercontent.com",
+    "clientId": "243341882805-gldjffc0aa5angvaauku8kjdnenian8t.apps.googleusercontent.com",
+    "familyId": "texthelp-orbitnote",
+    "familyName": "OrbitNote",
+    "displayName": "OrbitNote (Web Application)",
+    "vendor": "Texthelp Ltd.",
+    "publisherDomain": "texthelp.com",
+    "category": "Education & Accessibility",
+    "appType": "Chrome Extension / Web App",
+    "deploymentType": "Web Application",
+    "compliance": [
+      "FERPA",
+      "COPPA",
+      "GDPR",
+      "SOC 2"
+    ],
+    "dataHosting": "USA / EU",
+    "breachHistory": null,
+    "breaches": [],
+    "breachPenalty": 0,
+    "breachBracket": "NONE",
+    "breachDaysElapsed": null,
+    "verificationPenalty": 0,
+    "scopeRiskScore": 1,
+    "isVerified": true,
+    "iconUrl": "https://www.google.com/s2/favicons?domain=texthelp.com&sz=128",
+    "storeUrl": "https://texthelp.com",
+    "description": "PDF reader and digital annotation toolbar for Google Drive and Classroom.",
+    "riskScore": 1,
+    "peakScopeScore": 1,
+    "breadthScore": 0,
+    "avgScopeScore": 1,
+    "riskLevel": "LOW",
+    "riskScoreColor": "Blue",
+    "rawMaxRisk": "LOW",
+    "riskReasons": [
+      "Standard SaaS Integration"
+    ],
+    "adminAccessLevel": "TRUSTED",
+    "accessPolicy": {
+      "accessLevel": "TRUSTED",
+      "orgUnitPath": "/",
+      "domainName": "gafe.co.za",
+      "isOverridden": false,
+      "exemptFromContextAwareAccess": true,
+      "allowedServices": {},
+      "configuredBy": "Admin Console Baseline (gafe_co_za_owl_apps_configured.csv)",
+      "lastPolicyUpdate": "2026-09-13T18:00:00Z"
+    },
+    "multiClientMapped": true,
+    "familyDeploymentsCount": 7,
+    "siblingDeployments": [
+      {
+        "id": "243341882805-sqhe1f8jq8t8i5ha4nqbv50gk0iteup7.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-sqhe1f8jq8t8i5ha4nqbv50gk0iteup7.apps.googleusercontent.com",
+        "adminAccessLevel": "SPECIFIC_DATA",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "243341882805-ifm1nlmmaiphpqltrhc3am7tf31cttc2.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-ifm1nlmmaiphpqltrhc3am7tf31cttc2.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "243341882805-gqvp3jffcpj3bn588oeum6i0rdvq9lgj.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-gqvp3jffcpj3bn588oeum6i0rdvq9lgj.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "243341882805-fav9vbuf7c132v7lkvav10h32o5gds7q.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-fav9vbuf7c132v7lkvav10h32o5gds7q.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "243341882805-ah59e7mg9ccjnft0nu5mgopk60k4u2bs.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-ah59e7mg9ccjnft0nu5mgopk60k4u2bs.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "243341882805-4e3fs19mqa8olc5e8vt86chmk0eejpl1.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-4e3fs19mqa8olc5e8vt86chmk0eejpl1.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      }
+    ],
+    "clientIdsCount": 1,
+    "clientIds": [
+      "243341882805-gldjffc0aa5angvaauku8kjdnenian8t.apps.googleusercontent.com"
+    ],
+    "projectNumbers": [
+      "243341882805"
+    ],
+    "totalUsersCount": 0,
+    "adminUsersCount": 0,
+    "scopesCount": 0,
+    "scopes": [],
+    "servicesTouched": [],
+    "users": [],
+    "firstSeen": null,
+    "lastActive": null,
+    "lastActiveFormatted": "12/09/2026",
+    "isStale": true,
+    "isNew": false,
+    "totalActivityEvents": 0
+  },
+  {
+    "id": "243341882805-fav9vbuf7c132v7lkvav10h32o5gds7q.apps.googleusercontent.com",
+    "clientId": "243341882805-fav9vbuf7c132v7lkvav10h32o5gds7q.apps.googleusercontent.com",
+    "familyId": "texthelp-orbitnote",
+    "familyName": "OrbitNote",
+    "displayName": "OrbitNote (Web Application)",
+    "vendor": "Texthelp Ltd.",
+    "publisherDomain": "texthelp.com",
+    "category": "Education & Accessibility",
+    "appType": "Chrome Extension / Web App",
+    "deploymentType": "Web Application",
+    "compliance": [
+      "FERPA",
+      "COPPA",
+      "GDPR",
+      "SOC 2"
+    ],
+    "dataHosting": "USA / EU",
+    "breachHistory": null,
+    "breaches": [],
+    "breachPenalty": 0,
+    "breachBracket": "NONE",
+    "breachDaysElapsed": null,
+    "verificationPenalty": 0,
+    "scopeRiskScore": 1,
+    "isVerified": true,
+    "iconUrl": "https://www.google.com/s2/favicons?domain=texthelp.com&sz=128",
+    "storeUrl": "https://texthelp.com",
+    "description": "PDF reader and digital annotation toolbar for Google Drive and Classroom.",
+    "riskScore": 1,
+    "peakScopeScore": 1,
+    "breadthScore": 0,
+    "avgScopeScore": 1,
+    "riskLevel": "LOW",
+    "riskScoreColor": "Blue",
+    "rawMaxRisk": "LOW",
+    "riskReasons": [
+      "Standard SaaS Integration"
+    ],
+    "adminAccessLevel": "TRUSTED",
+    "accessPolicy": {
+      "accessLevel": "TRUSTED",
+      "orgUnitPath": "/",
+      "domainName": "gafe.co.za",
+      "isOverridden": false,
+      "exemptFromContextAwareAccess": true,
+      "allowedServices": {},
+      "configuredBy": "Admin Console Baseline (gafe_co_za_owl_apps_configured.csv)",
+      "lastPolicyUpdate": "2026-09-13T18:00:00Z"
+    },
+    "multiClientMapped": true,
+    "familyDeploymentsCount": 7,
+    "siblingDeployments": [
+      {
+        "id": "243341882805-sqhe1f8jq8t8i5ha4nqbv50gk0iteup7.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-sqhe1f8jq8t8i5ha4nqbv50gk0iteup7.apps.googleusercontent.com",
+        "adminAccessLevel": "SPECIFIC_DATA",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "243341882805-ifm1nlmmaiphpqltrhc3am7tf31cttc2.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-ifm1nlmmaiphpqltrhc3am7tf31cttc2.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "243341882805-gqvp3jffcpj3bn588oeum6i0rdvq9lgj.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-gqvp3jffcpj3bn588oeum6i0rdvq9lgj.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "243341882805-gldjffc0aa5angvaauku8kjdnenian8t.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-gldjffc0aa5angvaauku8kjdnenian8t.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "243341882805-ah59e7mg9ccjnft0nu5mgopk60k4u2bs.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-ah59e7mg9ccjnft0nu5mgopk60k4u2bs.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "243341882805-4e3fs19mqa8olc5e8vt86chmk0eejpl1.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-4e3fs19mqa8olc5e8vt86chmk0eejpl1.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      }
+    ],
+    "clientIdsCount": 1,
+    "clientIds": [
+      "243341882805-fav9vbuf7c132v7lkvav10h32o5gds7q.apps.googleusercontent.com"
+    ],
+    "projectNumbers": [
+      "243341882805"
+    ],
+    "totalUsersCount": 0,
+    "adminUsersCount": 0,
+    "scopesCount": 0,
+    "scopes": [],
+    "servicesTouched": [],
+    "users": [],
+    "firstSeen": null,
+    "lastActive": null,
+    "lastActiveFormatted": "12/09/2026",
+    "isStale": true,
+    "isNew": false,
+    "totalActivityEvents": 0
+  },
+  {
+    "id": "243341882805-ah59e7mg9ccjnft0nu5mgopk60k4u2bs.apps.googleusercontent.com",
+    "clientId": "243341882805-ah59e7mg9ccjnft0nu5mgopk60k4u2bs.apps.googleusercontent.com",
+    "familyId": "texthelp-orbitnote",
+    "familyName": "OrbitNote",
+    "displayName": "OrbitNote (Web Application)",
+    "vendor": "Texthelp Ltd.",
+    "publisherDomain": "texthelp.com",
+    "category": "Education & Accessibility",
+    "appType": "Chrome Extension / Web App",
+    "deploymentType": "Web Application",
+    "compliance": [
+      "FERPA",
+      "COPPA",
+      "GDPR",
+      "SOC 2"
+    ],
+    "dataHosting": "USA / EU",
+    "breachHistory": null,
+    "breaches": [],
+    "breachPenalty": 0,
+    "breachBracket": "NONE",
+    "breachDaysElapsed": null,
+    "verificationPenalty": 0,
+    "scopeRiskScore": 1,
+    "isVerified": true,
+    "iconUrl": "https://www.google.com/s2/favicons?domain=texthelp.com&sz=128",
+    "storeUrl": "https://texthelp.com",
+    "description": "PDF reader and digital annotation toolbar for Google Drive and Classroom.",
+    "riskScore": 1,
+    "peakScopeScore": 1,
+    "breadthScore": 0,
+    "avgScopeScore": 1,
+    "riskLevel": "LOW",
+    "riskScoreColor": "Blue",
+    "rawMaxRisk": "LOW",
+    "riskReasons": [
+      "Standard SaaS Integration"
+    ],
+    "adminAccessLevel": "TRUSTED",
+    "accessPolicy": {
+      "accessLevel": "TRUSTED",
+      "orgUnitPath": "/",
+      "domainName": "gafe.co.za",
+      "isOverridden": false,
+      "exemptFromContextAwareAccess": true,
+      "allowedServices": {},
+      "configuredBy": "Admin Console Baseline (gafe_co_za_owl_apps_configured.csv)",
+      "lastPolicyUpdate": "2026-09-13T18:00:00Z"
+    },
+    "multiClientMapped": true,
+    "familyDeploymentsCount": 7,
+    "siblingDeployments": [
+      {
+        "id": "243341882805-sqhe1f8jq8t8i5ha4nqbv50gk0iteup7.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-sqhe1f8jq8t8i5ha4nqbv50gk0iteup7.apps.googleusercontent.com",
+        "adminAccessLevel": "SPECIFIC_DATA",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "243341882805-ifm1nlmmaiphpqltrhc3am7tf31cttc2.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-ifm1nlmmaiphpqltrhc3am7tf31cttc2.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "243341882805-gqvp3jffcpj3bn588oeum6i0rdvq9lgj.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-gqvp3jffcpj3bn588oeum6i0rdvq9lgj.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "243341882805-gldjffc0aa5angvaauku8kjdnenian8t.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-gldjffc0aa5angvaauku8kjdnenian8t.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "243341882805-fav9vbuf7c132v7lkvav10h32o5gds7q.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-fav9vbuf7c132v7lkvav10h32o5gds7q.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "243341882805-4e3fs19mqa8olc5e8vt86chmk0eejpl1.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-4e3fs19mqa8olc5e8vt86chmk0eejpl1.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      }
+    ],
+    "clientIdsCount": 1,
+    "clientIds": [
+      "243341882805-ah59e7mg9ccjnft0nu5mgopk60k4u2bs.apps.googleusercontent.com"
+    ],
+    "projectNumbers": [
+      "243341882805"
+    ],
+    "totalUsersCount": 0,
+    "adminUsersCount": 0,
+    "scopesCount": 0,
+    "scopes": [],
+    "servicesTouched": [],
+    "users": [],
+    "firstSeen": null,
+    "lastActive": null,
+    "lastActiveFormatted": "12/09/2026",
+    "isStale": true,
+    "isNew": false,
+    "totalActivityEvents": 0
+  },
+  {
+    "id": "243341882805-4e3fs19mqa8olc5e8vt86chmk0eejpl1.apps.googleusercontent.com",
+    "clientId": "243341882805-4e3fs19mqa8olc5e8vt86chmk0eejpl1.apps.googleusercontent.com",
+    "familyId": "texthelp-orbitnote",
+    "familyName": "OrbitNote",
+    "displayName": "OrbitNote (Web Application)",
+    "vendor": "Texthelp Ltd.",
+    "publisherDomain": "texthelp.com",
+    "category": "Education & Accessibility",
+    "appType": "Chrome Extension / Web App",
+    "deploymentType": "Web Application",
+    "compliance": [
+      "FERPA",
+      "COPPA",
+      "GDPR",
+      "SOC 2"
+    ],
+    "dataHosting": "USA / EU",
+    "breachHistory": null,
+    "breaches": [],
+    "breachPenalty": 0,
+    "breachBracket": "NONE",
+    "breachDaysElapsed": null,
+    "verificationPenalty": 0,
+    "scopeRiskScore": 1,
+    "isVerified": true,
+    "iconUrl": "https://www.google.com/s2/favicons?domain=texthelp.com&sz=128",
+    "storeUrl": "https://texthelp.com",
+    "description": "PDF reader and digital annotation toolbar for Google Drive and Classroom.",
+    "riskScore": 1,
+    "peakScopeScore": 1,
+    "breadthScore": 0,
+    "avgScopeScore": 1,
+    "riskLevel": "LOW",
+    "riskScoreColor": "Blue",
+    "rawMaxRisk": "LOW",
+    "riskReasons": [
+      "Standard SaaS Integration"
+    ],
+    "adminAccessLevel": "TRUSTED",
+    "accessPolicy": {
+      "accessLevel": "TRUSTED",
+      "orgUnitPath": "/",
+      "domainName": "gafe.co.za",
+      "isOverridden": false,
+      "exemptFromContextAwareAccess": true,
+      "allowedServices": {},
+      "configuredBy": "Admin Console Baseline (gafe_co_za_owl_apps_configured.csv)",
+      "lastPolicyUpdate": "2026-09-13T18:00:00Z"
+    },
+    "multiClientMapped": true,
+    "familyDeploymentsCount": 7,
+    "siblingDeployments": [
+      {
+        "id": "243341882805-sqhe1f8jq8t8i5ha4nqbv50gk0iteup7.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-sqhe1f8jq8t8i5ha4nqbv50gk0iteup7.apps.googleusercontent.com",
+        "adminAccessLevel": "SPECIFIC_DATA",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "243341882805-ifm1nlmmaiphpqltrhc3am7tf31cttc2.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-ifm1nlmmaiphpqltrhc3am7tf31cttc2.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "243341882805-gqvp3jffcpj3bn588oeum6i0rdvq9lgj.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-gqvp3jffcpj3bn588oeum6i0rdvq9lgj.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "243341882805-gldjffc0aa5angvaauku8kjdnenian8t.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-gldjffc0aa5angvaauku8kjdnenian8t.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "243341882805-fav9vbuf7c132v7lkvav10h32o5gds7q.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-fav9vbuf7c132v7lkvav10h32o5gds7q.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "243341882805-ah59e7mg9ccjnft0nu5mgopk60k4u2bs.apps.googleusercontent.com",
+        "displayName": "OrbitNote (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "243341882805-ah59e7mg9ccjnft0nu5mgopk60k4u2bs.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
+      }
+    ],
+    "clientIdsCount": 1,
+    "clientIds": [
+      "243341882805-4e3fs19mqa8olc5e8vt86chmk0eejpl1.apps.googleusercontent.com"
+    ],
+    "projectNumbers": [
+      "243341882805"
+    ],
+    "totalUsersCount": 0,
+    "adminUsersCount": 0,
+    "scopesCount": 0,
+    "scopes": [],
+    "servicesTouched": [],
+    "users": [],
+    "firstSeen": null,
+    "lastActive": null,
+    "lastActiveFormatted": "12/09/2026",
+    "isStale": true,
+    "isNew": false,
+    "totalActivityEvents": 0
+  },
+  {
     "id": "58172892053-hh2k290hilpi3edodu8lrv3cag3pop0f.apps.googleusercontent.com",
     "clientId": "58172892053-hh2k290hilpi3edodu8lrv3cag3pop0f.apps.googleusercontent.com",
     "familyId": "quizizz",
@@ -12495,14 +14551,14 @@
     "adminAccessLevel": "UNCONFIGURED",
     "accessPolicy": null,
     "multiClientMapped": true,
-    "familyDeploymentsCount": 3,
+    "familyDeploymentsCount": 4,
     "siblingDeployments": [
       {
         "id": "58172892053-6laet7k6ls3k5va0jija3b175sm3jjms.apps.googleusercontent.com",
         "displayName": "Wayground (formerly Quizizz)",
         "deploymentType": "Web Application",
         "clientId": "58172892053-6laet7k6ls3k5va0jija3b175sm3jjms.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
+        "adminAccessLevel": "TRUSTED",
         "totalUsersCount": 4,
         "maxRisk": "CRITICAL"
       },
@@ -12513,6 +14569,15 @@
         "clientId": "58172892053-faol054co4k3tsmtbtuk41v4si41slq0.apps.googleusercontent.com",
         "adminAccessLevel": "UNCONFIGURED",
         "totalUsersCount": 2,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "com.google.enterprise.webapp.xeca034b3fe0c6828",
+        "displayName": "Quizizz (Android App)",
+        "deploymentType": "Android App",
+        "clientId": "com.google.enterprise.webapp.xeca034b3fe0c6828",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
         "maxRisk": "LOW"
       }
     ],
@@ -12636,14 +14701,14 @@
     "adminAccessLevel": "UNCONFIGURED",
     "accessPolicy": null,
     "multiClientMapped": true,
-    "familyDeploymentsCount": 3,
+    "familyDeploymentsCount": 4,
     "siblingDeployments": [
       {
         "id": "58172892053-6laet7k6ls3k5va0jija3b175sm3jjms.apps.googleusercontent.com",
         "displayName": "Wayground (formerly Quizizz)",
         "deploymentType": "Web Application",
         "clientId": "58172892053-6laet7k6ls3k5va0jija3b175sm3jjms.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
+        "adminAccessLevel": "TRUSTED",
         "totalUsersCount": 4,
         "maxRisk": "CRITICAL"
       },
@@ -12655,6 +14720,15 @@
         "adminAccessLevel": "UNCONFIGURED",
         "totalUsersCount": 1,
         "maxRisk": "HIGH"
+      },
+      {
+        "id": "com.google.enterprise.webapp.xeca034b3fe0c6828",
+        "displayName": "Quizizz (Android App)",
+        "deploymentType": "Android App",
+        "clientId": "com.google.enterprise.webapp.xeca034b3fe0c6828",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
       }
     ],
     "clientIdsCount": 1,
@@ -12762,10 +14836,24 @@
       "Basic Authentication / Profile Scopes",
       "Administrative or Direct Mail Access"
     ],
-    "adminAccessLevel": "UNCONFIGURED",
-    "accessPolicy": null,
+    "adminAccessLevel": "TRUSTED",
+    "accessPolicy": {
+      "accessLevel": "TRUSTED",
+      "orgUnitPath": "/",
+      "domainName": "gafe.co.za",
+      "isOverridden": false,
+      "exemptFromContextAwareAccess": true,
+      "allowedServices": {
+        "Classroom": 6,
+        "Drive": 1,
+        "GSuite Admin": 2,
+        "Google Sign-in": 3
+      },
+      "configuredBy": "Admin Console Baseline (gafe_co_za_owl_apps_configured.csv)",
+      "lastPolicyUpdate": "2026-09-13T18:00:00Z"
+    },
     "multiClientMapped": true,
-    "familyDeploymentsCount": 3,
+    "familyDeploymentsCount": 4,
     "siblingDeployments": [
       {
         "id": "58172892053-faol054co4k3tsmtbtuk41v4si41slq0.apps.googleusercontent.com",
@@ -12784,6 +14872,15 @@
         "adminAccessLevel": "UNCONFIGURED",
         "totalUsersCount": 1,
         "maxRisk": "HIGH"
+      },
+      {
+        "id": "com.google.enterprise.webapp.xeca034b3fe0c6828",
+        "displayName": "Quizizz (Android App)",
+        "deploymentType": "Android App",
+        "clientId": "com.google.enterprise.webapp.xeca034b3fe0c6828",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 0,
+        "maxRisk": "LOW"
       }
     ],
     "clientIdsCount": 1,
@@ -12978,6 +15075,107 @@
         ]
       }
     ],
+    "firstSeen": null,
+    "lastActive": null,
+    "lastActiveFormatted": "12/09/2026",
+    "isStale": true,
+    "isNew": false,
+    "totalActivityEvents": 0
+  },
+  {
+    "id": "com.google.enterprise.webapp.xeca034b3fe0c6828",
+    "clientId": "com.google.enterprise.webapp.xeca034b3fe0c6828",
+    "familyId": "quizizz",
+    "familyName": "Quizizz / Wayground",
+    "displayName": "Quizizz (Android App)",
+    "vendor": "Quizizz Inc.",
+    "publisherDomain": "quizizz.com",
+    "category": "Education & LMS",
+    "appType": "Web Application",
+    "deploymentType": "Android App",
+    "compliance": [
+      "SOC 2",
+      "FERPA",
+      "COPPA",
+      "GDPR"
+    ],
+    "dataHosting": "USA",
+    "breachHistory": null,
+    "breaches": [],
+    "breachPenalty": 0,
+    "breachBracket": "NONE",
+    "breachDaysElapsed": null,
+    "verificationPenalty": 0,
+    "scopeRiskScore": 1,
+    "isVerified": true,
+    "iconUrl": "https://www.google.com/s2/favicons?domain=quizizz.com&sz=128",
+    "storeUrl": "https://quizizz.com",
+    "description": "Student quiz and engagement learning software.",
+    "riskScore": 1,
+    "peakScopeScore": 1,
+    "breadthScore": 0,
+    "avgScopeScore": 1,
+    "riskLevel": "LOW",
+    "riskScoreColor": "Blue",
+    "rawMaxRisk": "LOW",
+    "riskReasons": [
+      "Standard SaaS Integration"
+    ],
+    "adminAccessLevel": "TRUSTED",
+    "accessPolicy": {
+      "accessLevel": "TRUSTED",
+      "orgUnitPath": "/",
+      "domainName": "gafe.co.za",
+      "isOverridden": false,
+      "exemptFromContextAwareAccess": true,
+      "allowedServices": {},
+      "configuredBy": "Admin Console Baseline (gafe_co_za_owl_apps_configured.csv)",
+      "lastPolicyUpdate": "2026-09-13T18:00:00Z"
+    },
+    "multiClientMapped": true,
+    "familyDeploymentsCount": 4,
+    "siblingDeployments": [
+      {
+        "id": "58172892053-6laet7k6ls3k5va0jija3b175sm3jjms.apps.googleusercontent.com",
+        "displayName": "Wayground (formerly Quizizz)",
+        "deploymentType": "Web Application",
+        "clientId": "58172892053-6laet7k6ls3k5va0jija3b175sm3jjms.apps.googleusercontent.com",
+        "adminAccessLevel": "TRUSTED",
+        "totalUsersCount": 4,
+        "maxRisk": "CRITICAL"
+      },
+      {
+        "id": "58172892053-faol054co4k3tsmtbtuk41v4si41slq0.apps.googleusercontent.com",
+        "displayName": "Wayground (formerly Quizizz)",
+        "deploymentType": "Web Application",
+        "clientId": "58172892053-faol054co4k3tsmtbtuk41v4si41slq0.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 2,
+        "maxRisk": "LOW"
+      },
+      {
+        "id": "58172892053-hh2k290hilpi3edodu8lrv3cag3pop0f.apps.googleusercontent.com",
+        "displayName": "Wayground (formerly Quizizz)",
+        "deploymentType": "Web Application",
+        "clientId": "58172892053-hh2k290hilpi3edodu8lrv3cag3pop0f.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "HIGH"
+      }
+    ],
+    "clientIdsCount": 1,
+    "clientIds": [
+      "com.google.enterprise.webapp.xeca034b3fe0c6828"
+    ],
+    "projectNumbers": [
+      "com.google.enterprise.webapp.xeca034b3fe0c6828"
+    ],
+    "totalUsersCount": 0,
+    "adminUsersCount": 0,
+    "scopesCount": 0,
+    "scopes": [],
+    "servicesTouched": [],
+    "users": [],
     "firstSeen": null,
     "lastActive": null,
     "lastActiveFormatted": "12/09/2026",
@@ -13345,8 +15543,20 @@
       "Basic Authentication / Profile Scopes",
       "Administrative or Direct Mail Access"
     ],
-    "adminAccessLevel": "UNCONFIGURED",
-    "accessPolicy": null,
+    "adminAccessLevel": "TRUSTED",
+    "accessPolicy": {
+      "accessLevel": "TRUSTED",
+      "orgUnitPath": "/",
+      "domainName": "gafe.co.za",
+      "isOverridden": false,
+      "exemptFromContextAwareAccess": true,
+      "allowedServices": {
+        "GSuite Admin": 3,
+        "Google Sign-in": 3
+      },
+      "configuredBy": "Admin Console Baseline (gafe_co_za_owl_apps_configured.csv)",
+      "lastPolicyUpdate": "2026-09-13T18:00:00Z"
+    },
     "multiClientMapped": false,
     "familyDeploymentsCount": 1,
     "siblingDeployments": [],
@@ -13629,6 +15839,79 @@
         ]
       }
     ],
+    "firstSeen": null,
+    "lastActive": null,
+    "lastActiveFormatted": "12/09/2026",
+    "isStale": true,
+    "isNew": false,
+    "totalActivityEvents": 0
+  },
+  {
+    "id": "com.zoho.calendar.sync",
+    "clientId": "com.zoho.calendar.sync",
+    "familyId": "zoho-corporation",
+    "familyName": "Zoho Corporation",
+    "displayName": "Zoho CalSync (Android App)",
+    "vendor": "Zoho Corporation",
+    "publisherDomain": "zoho.com",
+    "category": "Productivity & Calendar Sync",
+    "appType": "Mobile Sync App",
+    "deploymentType": "Android App",
+    "compliance": [
+      "SOC 2",
+      "ISO 27001",
+      "GDPR",
+      "HIPAA"
+    ],
+    "dataHosting": "Global / USA",
+    "breachHistory": null,
+    "breaches": [],
+    "breachPenalty": 0,
+    "breachBracket": "NONE",
+    "breachDaysElapsed": null,
+    "verificationPenalty": 0,
+    "scopeRiskScore": 1,
+    "isVerified": true,
+    "iconUrl": "https://www.google.com/s2/favicons?domain=zoho.com&sz=128",
+    "storeUrl": "https://zoho.com",
+    "description": "Calendar synchronization between Google Workspace and Zoho apps.",
+    "riskScore": 1,
+    "peakScopeScore": 1,
+    "breadthScore": 0,
+    "avgScopeScore": 1,
+    "riskLevel": "LOW",
+    "riskScoreColor": "Blue",
+    "rawMaxRisk": "LOW",
+    "riskReasons": [
+      "Standard SaaS Integration"
+    ],
+    "adminAccessLevel": "TRUSTED",
+    "accessPolicy": {
+      "accessLevel": "TRUSTED",
+      "orgUnitPath": "/",
+      "domainName": "gafe.co.za",
+      "isOverridden": false,
+      "exemptFromContextAwareAccess": true,
+      "allowedServices": {},
+      "configuredBy": "Admin Console Baseline (gafe_co_za_owl_apps_configured.csv)",
+      "lastPolicyUpdate": "2026-09-13T18:00:00Z"
+    },
+    "multiClientMapped": false,
+    "familyDeploymentsCount": 1,
+    "siblingDeployments": [],
+    "clientIdsCount": 1,
+    "clientIds": [
+      "com.zoho.calendar.sync"
+    ],
+    "projectNumbers": [
+      "com.zoho.calendar.sync"
+    ],
+    "totalUsersCount": 0,
+    "adminUsersCount": 0,
+    "scopesCount": 0,
+    "scopes": [],
+    "servicesTouched": [],
+    "users": [],
     "firstSeen": null,
     "lastActive": null,
     "lastActiveFormatted": "12/09/2026",

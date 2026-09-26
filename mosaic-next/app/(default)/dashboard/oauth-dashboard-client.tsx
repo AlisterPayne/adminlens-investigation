@@ -6,6 +6,7 @@ import React, { useEffect, useMemo, useState } from "react";
 
 import AccessTimelineView, { TimelineEvent } from "@/components/access-timeline-view";
 import ApplicationsView from "@/components/applications-view";
+import GoogleVerifiedBadge from "@/components/google-verified-badge";
 import {
   GmailIcon,
   GoogleAdminIcon,
@@ -17,6 +18,7 @@ import {
   GoogleProductIcon,
 } from "@/components/google-icons";
 import OWLImportPanel from "@/components/owl-import-panel";
+import RecommendationsView from "@/components/recommendations-view";
 import ScopeMatrixView, { ScopeMetrics,ScopeReferenceItem } from "@/components/scope-matrix-view";
 
 interface ScopeItem {
@@ -1249,715 +1251,11 @@ export default function OAuthDashboardClient({
       )}
 
       {/* ============================================================== */}
-      {/* VIEW 3: RECOMMENDATIONS & GOVERNANCE PLAYBOOKS                  */}
+      {/* VIEW 3: RECOMMENDATIONS & GOVERNANCE ACTIONS (SIMPLIFIED)      */}
       {/* ============================================================== */}
-      {activeTab === "recs" && (() => {
-        const playbooks = initialRecs.playbooks || [];
-        const byFamily = initialRecs.byFamily || [];
-        const byAdmin = initialRecs.byAdmin || [];
-        const summary = initialRecs.summary || {
-          totalFindings: initialRecs.totalFindings || 102,
-          totalPlaybooks: playbooks.length || 6,
-          totalFamiliesAffected: byFamily.length || 35,
-          totalAdminsAffected: byAdmin.length || 7,
-          criticalCount: initialRecs.criticalCount || 41,
-          highCount: initialRecs.highCount || 14,
-          mediumCount: initialRecs.mediumCount || 47,
-          actionChannels: { GAM_CLI: 27, GOOGLE_ADMIN_CONSOLE: 75 },
-        };
-
-        // Filtered Playbooks
-        const filteredPlaybooks = playbooks.filter((p) => {
-          const matchesSeverity = recSeverityFilter === "ALL" || p.severity === recSeverityFilter;
-          const matchesChannel = recChannelFilter === "ALL" || p.actionChannel === recChannelFilter;
-          const s = recSearch.toLowerCase();
-          const matchesSearch = !s || 
-            p.title.toLowerCase().includes(s) || 
-            p.subtitle.toLowerCase().includes(s) ||
-            p.familyTargets.some(t => t.familyName.toLowerCase().includes(s) || t.affectedAccounts.some(a => a.toLowerCase().includes(s)));
-          return matchesSeverity && matchesChannel && matchesSearch;
-        });
-
-        // Filtered Families
-        const filteredFamilies = byFamily.filter((fam) => {
-          const matchesSeverity = recSeverityFilter === "ALL" || fam.highestSeverity === recSeverityFilter;
-          const matchesChannel = recChannelFilter === "ALL" || fam.actionChannels.includes(recChannelFilter);
-          const s = recSearch.toLowerCase();
-          const matchesSearch = !s || 
-            fam.familyName.toLowerCase().includes(s) || 
-            fam.vendor.toLowerCase().includes(s) ||
-            fam.affectedAccounts.some(a => a.toLowerCase().includes(s));
-          return matchesSeverity && matchesChannel && matchesSearch;
-        });
-
-        // Filtered Admins
-        const filteredAdmins = byAdmin.filter((adm) => {
-          const s = recSearch.toLowerCase();
-          return !s || 
-            adm.adminEmail.toLowerCase().includes(s) ||
-            adm.items.some(i => i.application.toLowerCase().includes(s));
-        });
-
-        // Filtered Raw Findings
-        const filteredRawFindings = (initialRecs.findings || []).filter((f) => {
-          const matchesSeverity = recSeverityFilter === "ALL" || f.severity === recSeverityFilter;
-          const matchesChannel = recChannelFilter === "ALL" || (f.actionChannel || (f.gamCommand ? "GAM_CLI" : "GOOGLE_ADMIN_CONSOLE")) === recChannelFilter;
-          const s = recSearch.toLowerCase();
-          const matchesSearch = !s || 
-            f.title.toLowerCase().includes(s) || 
-            f.application.toLowerCase().includes(s) ||
-            f.affectedAccount.toLowerCase().includes(s) ||
-            f.clientId.toLowerCase().includes(s);
-          return matchesSeverity && matchesChannel && matchesSearch;
-        });
-
-        const togglePlaybook = (id: string) => {
-          setExpandedPlaybooks(prev => ({ ...prev, [id]: !prev[id] }));
-        };
-
-        const toggleFamily = (id: string) => {
-          setExpandedFamilies(prev => ({ ...prev, [id]: !prev[id] }));
-        };
-
-        return (
-          <div className="space-y-5">
-            {/* Top Metric & Governance Banner */}
-            <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white p-6 rounded-2xl shadow-lg border border-slate-800">
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div>
-                  <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-semibold mb-2 border border-blue-400/30">
-                    <span>🛡️</span> Playbooks
-                  </div>
-                  <h2 className="text-xl font-bold tracking-tight text-white">Recommendations &amp; Playbooks</h2>
-                  <p className="text-xs text-slate-300 mt-1 max-w-2xl">
-                    Consolidated playbooks and batch remediations. Instead of triaging 102 individual alerts, remediate third-party risk through coordinated governance campaigns and one-click GAM scripts.
-                  </p>
-                </div>
-
-                {/* Quick Summary Badges */}
-                <div className="flex items-center gap-2 flex-wrap">
-                  <div className="bg-slate-800/80 border border-slate-700/60 rounded-xl px-3 py-2 text-center">
-                    <div className="text-lg font-black text-white">{summary.totalPlaybooks}</div>
-                    <div className="text-[10px] uppercase font-bold tracking-wider text-slate-400">Campaigns</div>
-                  </div>
-                  <div className="bg-slate-800/80 border border-slate-700/60 rounded-xl px-3 py-2 text-center">
-                    <div className="text-lg font-black text-amber-400">{summary.totalFamiliesAffected}</div>
-                    <div className="text-[10px] uppercase font-bold tracking-wider text-slate-400">App Families</div>
-                  </div>
-                  <div className="bg-slate-800/80 border border-slate-700/60 rounded-xl px-3 py-2 text-center">
-                    <div className="text-lg font-black text-red-400">{summary.totalAdminsAffected}</div>
-                    <div className="text-[10px] uppercase font-bold tracking-wider text-slate-400">Super Admins</div>
-                  </div>
-                  <div className="bg-slate-800/80 border border-slate-700/60 rounded-xl px-3 py-2 text-center">
-                    <div className="text-lg font-black text-emerald-400">{summary.actionChannels.GAM_CLI}</div>
-                    <div className="text-[10px] uppercase font-bold tracking-wider text-slate-400">CLI Tokens</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* View Mode Switcher and Filters */}
-            <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm flex flex-col lg:flex-row gap-4 items-stretch lg:items-center justify-between">
-              {/* Segmented View Mode Toggle */}
-              <div className="inline-flex p-1 bg-gray-100 rounded-xl border border-gray-200 self-start">
-                <button
-                  onClick={() => setRecViewMode("playbooks")}
-                  className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 ${
-                    recViewMode === "playbooks" ? "bg-white text-blue-600 shadow-sm" : "text-gray-600 hover:text-gray-900"
-                  }`}
-                >
-                  <span>📁</span> Action Playbooks ({playbooks.length})
-                </button>
-                <button
-                  onClick={() => setRecViewMode("families")}
-                  className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 ${
-                    recViewMode === "families" ? "bg-white text-blue-600 shadow-sm" : "text-gray-600 hover:text-gray-900"
-                  }`}
-                >
-                  <span>📦</span> By App Family ({byFamily.length})
-                </button>
-                <button
-                  onClick={() => setRecViewMode("admins")}
-                  className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 ${
-                    recViewMode === "admins" ? "bg-white text-blue-600 shadow-sm" : "text-gray-600 hover:text-gray-900"
-                  }`}
-                >
-                  <span>👤</span> By Super Admin ({byAdmin.length})
-                </button>
-                <button
-                  onClick={() => setRecViewMode("all")}
-                  className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 ${
-                    recViewMode === "all" ? "bg-white text-blue-600 shadow-sm" : "text-gray-600 hover:text-gray-900"
-                  }`}
-                >
-                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
-                  </svg>
-                  <span>All Findings ({initialRecs.findings?.length || 102})</span>
-                </button>
-              </div>
-
-              {/* Filtering Controls */}
-              <div className="flex flex-wrap items-center gap-3">
-                {/* Search */}
-                <div className="relative min-w-[200px] flex-1 sm:flex-initial">
-                  <input
-                    type="text"
-                    value={recSearch}
-                    onChange={(e) => setRecSearch(e.target.value)}
-                    placeholder="Filter recommendations..."
-                    className="w-full bg-gray-50 border border-gray-300 rounded-lg pl-8 pr-3 py-1.5 text-xs text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                  <span className="absolute left-2.5 top-2 text-xs text-gray-400">🔍</span>
-                  {recSearch && (
-                    <button onClick={() => setRecSearch("")} className="absolute right-2 top-1.5 text-gray-400 hover:text-gray-600 text-xs">✕</button>
-                  )}
-                </div>
-
-                {/* Channel Filter */}
-                <select
-                  value={recChannelFilter}
-                  onChange={(e) => setRecChannelFilter(e.target.value)}
-                  className="bg-gray-50 border border-gray-300 rounded-lg px-2.5 py-1.5 text-xs text-gray-700 font-medium"
-                >
-                  <option value="ALL">All Channels</option>
-                  <option value="GAM_CLI">⚡ GAM CLI (Batch Scriptable)</option>
-                  <option value="GOOGLE_ADMIN_CONSOLE">🛡️ Google Admin Console</option>
-                </select>
-
-                {/* Severity Filter */}
-                <select
-                  value={recSeverityFilter}
-                  onChange={(e) => setRecSeverityFilter(e.target.value)}
-                  className="bg-gray-50 border border-gray-300 rounded-lg px-2.5 py-1.5 text-xs text-gray-700 font-medium"
-                >
-                  <option value="ALL">All Severities</option>
-                  <option value="CRITICAL">🔴 Critical Only</option>
-                  <option value="HIGH">🟠 High Only</option>
-                  <option value="MEDIUM">🟡 Medium Only</option>
-                </select>
-              </div>
-            </div>
-
-            {/* ========================================================== */}
-            {/* VIEW MODE 1: ACTION PLAYBOOKS (CAMPAIGNS)                   */}
-            {/* ========================================================== */}
-            {recViewMode === "playbooks" && (
-              <div className="space-y-4">
-                {filteredPlaybooks.length === 0 ? (
-                  <div className="p-12 text-center text-gray-500 bg-white rounded-2xl border border-gray-200">
-                    <p className="font-semibold text-sm">No action playbooks matching the current filters.</p>
-                    <button
-                      onClick={() => { setRecSeverityFilter("ALL"); setRecChannelFilter("ALL"); setRecSearch(""); }}
-                      className="mt-3 text-xs text-blue-600 font-bold hover:underline"
-                    >
-                      Clear filters
-                    </button>
-                  </div>
-                ) : (
-                  filteredPlaybooks.map((playbook) => {
-                    const isExpanded = !!expandedPlaybooks[playbook.id];
-                    const isCritical = playbook.severity === "CRITICAL";
-                    const isHigh = playbook.severity === "HIGH";
-
-                    return (
-                      <div
-                        key={playbook.id}
-                        className={`bg-white border rounded-2xl overflow-hidden shadow-sm transition-all ${
-                          isCritical
-                            ? "border-red-300 bg-gradient-to-b from-red-50/20 to-white"
-                            : isHigh
-                            ? "border-amber-300 bg-gradient-to-b from-amber-50/20 to-white"
-                            : "border-gray-200"
-                        }`}
-                      >
-                        {/* Playbook Header Accordion Bar */}
-                        <div
-                          onClick={() => togglePlaybook(playbook.id)}
-                          className="p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-pointer hover:bg-gray-50/60 transition-colors"
-                        >
-                          <div className="flex items-start gap-3.5">
-                            <span className="text-2xl mt-0.5">{isCritical ? "🚨" : isHigh ? "⚠️" : "🛡️"}</span>
-                            <div>
-                              <div className="flex items-center gap-2 flex-wrap mb-1">
-                                {getRiskBadge(playbook.severity)}
-                                <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full uppercase border ${
-                                  playbook.actionChannel === "GAM_CLI"
-                                    ? "bg-purple-100 text-purple-800 border-purple-200"
-                                    : "bg-blue-100 text-blue-800 border-blue-200"
-                                }`}>
-                                  {playbook.actionChannel === "GAM_CLI" ? "⚡ CLI Batch Scriptable" : "🛡️ Google Admin Console"}
-                                </span>
-                                <span className="text-[11px] font-bold text-gray-500 bg-gray-100 px-2 py-0.5 rounded">
-                                  {playbook.metrics.totalFindings} Findings
-                                </span>
-                                <span className="text-[11px] font-bold text-gray-500 bg-gray-100 px-2 py-0.5 rounded">
-                                  {playbook.metrics.distinctFamilies} App Families
-                                </span>
-                              </div>
-                              <h3 className="font-extrabold text-base text-gray-900">{playbook.title}</h3>
-                              <p className="text-xs text-gray-600 mt-0.5">{playbook.subtitle}</p>
-                            </div>
-                          </div>
-
-                          {/* Action Buttons in Header */}
-                          <div className="flex items-center gap-2 flex-shrink-0" onClick={(e) => e.stopPropagation()}>
-                            {playbook.batchGamScript && (
-                              <button
-                                onClick={() => copyScriptToClipboard(playbook.batchGamScript!, playbook.id)}
-                                className="px-3 py-1.5 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-xs font-bold shadow-sm flex items-center gap-1.5 transition-colors"
-                              >
-                                <span>⚡</span>
-                                <span>{copiedScriptId === playbook.id ? "Copied All! ✓" : `Copy All (${playbook.metrics.totalFindings}) GAM Commands`}</span>
-                              </button>
-                            )}
-
-                            {playbook.adminConsolePath && (
-                              <a
-                                href="https://admin.google.com/ac/owl/list?tab=apps"
-                                target="_blank"
-                                rel="noreferrer"
-                                className="px-3 py-1.5 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-colors"
-                              >
-                                <GoogleAdminIcon className="w-3.5 h-3.5" />
-                                <span>Admin Console ↗</span>
-                              </a>
-                            )}
-
-                            <button
-                              onClick={() => togglePlaybook(playbook.id)}
-                              className="p-1.5 text-gray-400 hover:text-gray-700 rounded-lg hover:bg-gray-100 transition-colors ml-1"
-                              aria-label="Toggle details"
-                            >
-                              <span className="inline-block transform transition-transform text-xs font-bold" style={{ transform: isExpanded ? "rotate(180deg)" : "none" }}>
-                                ▼
-                              </span>
-                            </button>
-                          </div>
-                        </div>
-
-                        {/* Expanded Playbook Details */}
-                        {isExpanded && (
-                          <div className="border-t border-gray-200/80 p-5 space-y-5 bg-white/70">
-                            {/* Remediation Summary Box */}
-                            <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 text-xs space-y-1.5">
-                              <div className="font-bold text-slate-800 flex items-center gap-1.5">
-                                <span className="text-blue-600">📌</span> Campaign Remediation Objective:
-                              </div>
-                              <p className="text-slate-600 leading-relaxed">{playbook.remediationSummary}</p>
-                              {playbook.adminConsolePath && (
-                                <div className="text-slate-500 font-mono text-[11px] pt-1">
-                                  Path: <span className="font-bold text-slate-700">{playbook.adminConsolePath}</span>
-                                </div>
-                              )}
-                            </div>
-
-                            {/* Special Sub-Section: Super Admin Breakdown (for Super Admin Exposure Playbook) */}
-                            {playbook.adminBreakdown && playbook.adminBreakdown.length > 0 && (
-                              <div className="space-y-3">
-                                <div className="flex items-center justify-between">
-                                  <h4 className="text-xs font-extrabold uppercase tracking-wider text-gray-700">
-                                    Privileged Super Admin Breakdown ({playbook.adminBreakdown.length} Admins)
-                                  </h4>
-                                  <span className="text-[11px] text-gray-500">Click to copy individual cleanup scripts</span>
-                                </div>
-
-                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                                  {playbook.adminBreakdown.map((adm) => (
-                                    <div
-                                      key={adm.adminEmail}
-                                      className="border border-purple-200 bg-purple-50/40 rounded-xl p-3.5 space-y-2.5 flex flex-col justify-between"
-                                    >
-                                      <div>
-                                        <div className="flex items-center justify-between gap-2">
-                                          <span className="font-mono font-bold text-xs text-purple-950 truncate" title={adm.adminEmail}>
-                                            {adm.adminEmail}
-                                          </span>
-                                          <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-red-100 text-red-800 border border-red-200">
-                                            {adm.tokenCount} tokens
-                                          </span>
-                                        </div>
-                                        <p className="text-[11px] text-purple-800/80 mt-1 truncate">
-                                          Apps: {adm.items.map(i => i.application).slice(0, 2).join(", ")}
-                                          {adm.items.length > 2 ? ` +${adm.items.length - 2} more` : ""}
-                                        </p>
-                                      </div>
-
-                                      <button
-                                        onClick={() => copyScriptToClipboard(adm.batchGamScript, `adm-${adm.adminEmail}`)}
-                                        className="w-full text-center px-2.5 py-1.5 bg-white hover:bg-purple-100 text-purple-700 border border-purple-300 rounded-lg text-xs font-bold transition-colors shadow-2xs"
-                                      >
-                                        {copiedScriptId === `adm-${adm.adminEmail}` ? "Copied Admin Script! ✓" : `Copy (${adm.tokenCount}) GAM Commands`}
-                                      </button>
-                                    </div>
-                                  ))}
-                                </div>
-                              </div>
-                            )}
-
-                            {/* Consolidated Targets Table */}
-                            <div className="space-y-2">
-                              <h4 className="text-xs font-extrabold uppercase tracking-wider text-gray-700">
-                                Consolidated Target Applications ({playbook.familyTargets.length} Application Families)
-                              </h4>
-
-                              <div className="overflow-x-auto rounded-xl border border-gray-200">
-                                <table className="w-full text-left text-xs border-collapse">
-                                  <thead className="bg-gray-50 border-b border-gray-200 text-gray-600 font-bold">
-                                    <tr>
-                                      <th className="py-2.5 px-3">Application Family</th>
-                                      <th className="py-2.5 px-3">Affected Accounts / Deployments</th>
-                                      <th className="py-2.5 px-3">Primary Action</th>
-                                      <th className="py-2.5 px-3 text-right">Action</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody className="divide-y divide-gray-100 bg-white">
-                                    {playbook.familyTargets.map((target) => (
-                                      <tr key={target.familyId} className="hover:bg-gray-50/60 transition-colors">
-                                        <td className="py-3 px-3">
-                                          <div className="font-bold text-gray-900 flex items-center gap-2">
-                                            {target.iconUrl ? (
-                                              <img src={target.iconUrl} alt="" className="w-4 h-4 rounded-sm flex-shrink-0" />
-                                            ) : (
-                                              <span className="text-sm">📦</span>
-                                            )}
-                                            <span>{target.familyName}</span>
-                                          </div>
-                                          <div className="text-[11px] text-gray-500">{target.vendor}</div>
-                                          {target.clientIds.length > 1 && (
-                                            <span className="text-[10px] font-mono text-slate-500 bg-slate-100 px-1.5 py-0.5 rounded border border-slate-200 inline-block mt-1">
-                                              {target.clientIds.length} OAuth Client Deployments
-                                            </span>
-                                          )}
-                                        </td>
-                                        <td className="py-3 px-3">
-                                          <div className="flex flex-wrap gap-1 max-w-md">
-                                            {target.affectedAccounts.slice(0, 3).map((acc) => (
-                                              <span key={acc} className="font-mono text-[10px] bg-gray-100 text-gray-700 px-2 py-0.5 rounded">
-                                                {acc}
-                                              </span>
-                                            ))}
-                                            {target.affectedAccounts.length > 3 && (
-                                              <span className="text-[10px] text-gray-500 self-center">
-                                                +{target.affectedAccounts.length - 3} more
-                                              </span>
-                                            )}
-                                          </div>
-                                        </td>
-                                        <td className="py-3 px-3">
-                                          <div className="text-gray-700 leading-snug">
-                                            {target.items[0]?.remediation.slice(0, 100)}...
-                                          </div>
-                                        </td>
-                                        <td className="py-3 px-3 text-right whitespace-nowrap">
-                                          {target.gamCommands && target.gamCommands.length > 0 ? (
-                                            <button
-                                              onClick={() => copyScriptToClipboard(target.gamCommands!.join('\n'), `fam-${target.familyId}`)}
-                                              className="text-xs font-bold text-purple-600 hover:text-purple-800 bg-purple-50 hover:bg-purple-100 border border-purple-200 px-2.5 py-1 rounded-md transition-colors"
-                                            >
-                                              {copiedScriptId === `fam-${target.familyId}` ? "Copied! ✓" : `Copy (${target.gamCommands.length}) GAM`}
-                                            </button>
-                                          ) : (
-                                            <a
-                                              href="https://admin.google.com/ac/owl/list?tab=apps"
-                                              target="_blank"
-                                              rel="noreferrer"
-                                              className="text-xs font-bold text-blue-600 hover:text-blue-800 bg-blue-50 hover:bg-blue-100 border border-blue-200 px-2.5 py-1 rounded-md transition-colors inline-block"
-                                            >
-                                              Admin Console ↗
-                                            </a>
-                                          )}
-                                        </td>
-                                      </tr>
-                                    ))}
-                                  </tbody>
-                                </table>
-                              </div>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })
-                )}
-              </div>
-            )}
-
-            {/* ========================================================== */}
-            {/* VIEW MODE 2: BY PRODUCT FAMILY (ASSET VIEW)                 */}
-            {/* ========================================================== */}
-            {recViewMode === "families" && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {filteredFamilies.length === 0 ? (
-                  <div className="col-span-full p-12 text-center text-gray-500 bg-white rounded-2xl border border-gray-200">
-                    No product families matching current filters.
-                  </div>
-                ) : (
-                  filteredFamilies.map((fam) => {
-                    const isExpanded = !!expandedFamilies[fam.familyId];
-                    return (
-                      <div
-                        key={fam.familyId}
-                        className={`bg-white border rounded-2xl p-5 shadow-sm space-y-3.5 flex flex-col justify-between ${
-                          fam.highestSeverity === "CRITICAL"
-                            ? "border-red-300 bg-red-50/15"
-                            : fam.highestSeverity === "HIGH"
-                            ? "border-amber-300 bg-amber-50/15"
-                            : "border-gray-200"
-                        }`}
-                      >
-                        <div className="space-y-2.5">
-                          {/* Card Header */}
-                          <div className="flex items-start justify-between gap-3">
-                            <div className="flex items-center gap-2.5">
-                              {fam.iconUrl ? (
-                                <img src={fam.iconUrl} alt="" className="w-8 h-8 rounded-lg border border-gray-200 p-0.5 bg-white flex-shrink-0" />
-                              ) : (
-                                <div className="w-8 h-8 rounded-lg bg-gray-100 border border-gray-200 flex items-center justify-center text-sm font-bold text-gray-600">
-                                  📦
-                                </div>
-                              )}
-                              <div>
-                                <h3 className="font-bold text-sm text-gray-900">{fam.familyName}</h3>
-                                <p className="text-xs text-gray-500">{fam.vendor}</p>
-                              </div>
-                            </div>
-                            <div className="flex items-center gap-1.5">
-                              {getRiskBadge(fam.highestSeverity)}
-                              <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-gray-100 text-gray-700 border border-gray-200">
-                                {fam.findingsCount} Findings
-                              </span>
-                            </div>
-                          </div>
-
-                          {/* Rule Pills */}
-                          <div className="flex flex-wrap gap-1">
-                            {fam.rulesTriggered.map(r => (
-                              <span key={r} className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200">
-                                {r.replace(/_/g, " ")}
-                              </span>
-                            ))}
-                          </div>
-
-                          {/* Deployments & Users */}
-                          <div className="text-xs text-gray-600 space-y-1 bg-gray-50/80 p-2.5 rounded-lg border border-gray-200">
-                            <div>
-                              Deployments: <span className="font-semibold text-gray-800">{fam.clientIds.length} OAuth Client(s)</span>
-                            </div>
-                            <div>
-                              Target Accounts: <span className="font-mono text-gray-800">{fam.affectedAccounts.slice(0, 2).join(", ")}{fam.affectedAccounts.length > 2 ? ` +${fam.affectedAccounts.length - 2} more` : ""}</span>
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* Action Bar */}
-                        <div className="flex items-center justify-between gap-2 pt-2 border-t border-gray-100">
-                          <button
-                            onClick={() => toggleFamily(fam.familyId)}
-                            className="text-xs font-semibold text-gray-600 hover:text-gray-900"
-                          >
-                            {isExpanded ? "Hide Grants ▲" : `View ${fam.findings.length} Detailed Findings ▼`}
-                          </button>
-
-                          {fam.gamCommands && fam.gamCommands.length > 0 ? (
-                            <button
-                              onClick={() => copyScriptToClipboard(fam.gamCommands!.join('\n'), `fam-btn-${fam.familyId}`)}
-                              className="text-xs font-bold text-purple-600 hover:text-purple-800 bg-purple-50 hover:bg-purple-100 border border-purple-200 px-3 py-1.5 rounded-lg transition-colors"
-                            >
-                              {copiedScriptId === `fam-btn-${fam.familyId}` ? "Copied! ✓" : `Copy (${fam.gamCommands.length}) GAM`}
-                            </button>
-                          ) : (
-                            <a
-                              href="https://admin.google.com/ac/owl/list?tab=apps"
-                              target="_blank"
-                              rel="noreferrer"
-                              className="text-xs font-bold text-blue-600 hover:text-blue-800 bg-blue-50 hover:bg-blue-100 border border-blue-200 px-3 py-1.5 rounded-lg transition-colors inline-flex items-center gap-1"
-                            >
-                              <GoogleAdminIcon className="w-3.5 h-3.5" />
-                              <span>Admin Console ↗</span>
-                            </a>
-                          )}
-                        </div>
-
-                        {/* Expanded Findings Drawer */}
-                        {isExpanded && (
-                          <div className="pt-2 border-t border-gray-200 space-y-2">
-                            {fam.findings.map((finding) => (
-                              <div key={finding.id} className="bg-gray-50 p-2.5 rounded-lg border border-gray-200 text-xs space-y-1">
-                                <div className="font-bold text-gray-800 flex items-center justify-between">
-                                  <span>{finding.title}</span>
-                                  {getRiskBadge(finding.severity)}
-                                </div>
-                                <div className="text-gray-600">{finding.details}</div>
-                                {finding.gamCommand && (
-                                  <div className="font-mono text-[10px] text-purple-900 bg-purple-50 p-1 rounded truncate">
-                                    {finding.gamCommand}
-                                  </div>
-                                )}
-                              </div>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })
-                )}
-              </div>
-            )}
-
-            {/* ========================================================== */}
-            {/* VIEW MODE 3: BY SUPER ADMIN (IDENTITY VIEW)                */}
-            {/* ========================================================== */}
-            {recViewMode === "admins" && (
-              <div className="space-y-4">
-                <div className="bg-purple-50 border border-purple-200 rounded-xl p-4 text-xs text-purple-900 flex items-center justify-between">
-                  <div>
-                    <span className="font-bold">Super Admin Privilege Exposure:</span> In Google Workspace, third-party tokens authorized by Super Admins inherit tenant-wide administrative power. Revoking unnecessary tokens minimizes full tenant compromise risk.
-                  </div>
-                  <button
-                    onClick={() => {
-                      const allAdminScript = byAdmin.flatMap(a => a.gamCommands).join('\n');
-                      copyScriptToClipboard(allAdminScript, "all-admins-script");
-                    }}
-                    className="px-3 py-1.5 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-xs font-bold shadow-sm whitespace-nowrap ml-3"
-                  >
-                    {copiedScriptId === "all-admins-script" ? "Copied All Admins! ✓" : "Copy All 7 Admins Script"}
-                  </button>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {filteredAdmins.map((adm) => (
-                    <div
-                      key={adm.adminEmail}
-                      className="bg-white border border-purple-200 rounded-2xl p-5 shadow-sm space-y-3.5 flex flex-col justify-between"
-                    >
-                      <div className="space-y-2.5">
-                        <div className="flex items-center justify-between gap-3">
-                          <div className="flex items-center gap-2.5">
-                            <div className="w-9 h-9 rounded-full bg-purple-100 text-purple-800 font-bold flex items-center justify-center text-sm border border-purple-200">
-                              {adm.adminEmail[0].toUpperCase()}
-                            </div>
-                            <div>
-                              <div className="font-bold text-sm text-gray-900">{adm.adminEmail}</div>
-                              <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-red-100 text-red-800 border border-red-200 uppercase">
-                                Super Administrator
-                              </span>
-                            </div>
-                          </div>
-                          <span className="font-extrabold text-sm text-purple-800 bg-purple-50 px-3 py-1 rounded-lg border border-purple-200">
-                            {adm.tokenCount} Tokens
-                          </span>
-                        </div>
-
-                        {/* List of Authorized Apps for this Admin */}
-                        <div className="border border-gray-200 rounded-xl overflow-hidden divide-y divide-gray-100 text-xs bg-gray-50/50">
-                          {adm.items.map((item) => (
-                            <div key={item.id} className="p-2.5 flex items-center justify-between gap-2 hover:bg-white transition-colors">
-                              <div className="truncate">
-                                <div className="font-bold text-gray-900 truncate">{item.application}</div>
-                                <div className="text-[10px] font-mono text-gray-500 truncate">{item.clientId}</div>
-                              </div>
-                              <button
-                                onClick={() => copyToClipboard(item.gamCommand!, item.id)}
-                                className="text-[11px] font-semibold text-blue-600 hover:text-blue-800 px-2 py-0.5 rounded hover:bg-blue-50 transition-colors flex-shrink-0"
-                              >
-                                {copiedId === item.id ? "Copied! ✓" : "Copy"}
-                              </button>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Admin Batch Copy Button */}
-                      <button
-                        onClick={() => copyScriptToClipboard(adm.batchGamScript, `adm-card-${adm.adminEmail}`)}
-                        className="w-full text-center px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-xl text-xs font-bold shadow-sm transition-colors"
-                      >
-                        {copiedScriptId === `adm-card-${adm.adminEmail}` ? "Copied Script! ✓" : `⚡ Copy (${adm.tokenCount}) GAM Revoke Commands for ${adm.adminEmail.split('@')[0]}`}
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* ========================================================== */}
-            {/* VIEW MODE 4: ALL RAW FINDINGS (LEGACY GRANULAR VIEW)       */}
-            {/* ========================================================== */}
-            {recViewMode === "all" && (
-              <div className="space-y-3">
-                <div className="text-xs text-gray-500 italic px-1">
-                  Displaying {filteredRawFindings.length} granular findings across the entire domain.
-                </div>
-
-                {filteredRawFindings.map((rec) => (
-                  <div
-                    key={rec.id}
-                    className={`bg-white border rounded-xl p-5 shadow-sm space-y-3 ${
-                      rec.severity === "CRITICAL"
-                        ? "border-red-300 bg-red-50/20"
-                        : rec.severity === "HIGH"
-                        ? "border-amber-300 bg-amber-50/20"
-                        : "border-gray-200"
-                    }`}
-                  >
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="space-y-1">
-                        <div className="flex items-center gap-2 flex-wrap">
-                          {getRiskBadge(rec.severity)}
-                          <h3 className="font-bold text-sm text-gray-900">{rec.title}</h3>
-                          {rec.clientId && (
-                            <span 
-                              title={`Client ID: ${rec.clientId}`}
-                              className="font-mono text-[10px] px-2 py-0.5 rounded bg-slate-100 text-slate-600 border border-slate-200 truncate max-w-[280px]"
-                            >
-                              Client ID: {rec.clientId.length > 25 ? `${rec.clientId.slice(0, 12)}...${rec.clientId.slice(-10)}` : rec.clientId}
-                            </span>
-                          )}
-                        </div>
-                        <p className="text-xs text-gray-600">{rec.details}</p>
-                      </div>
-                      <div className="text-right text-xs text-gray-500 flex-shrink-0">
-                        User: <span className="font-mono font-medium text-gray-800">{rec.affectedAccount}</span>
-                      </div>
-                    </div>
-
-                    <div className="bg-gray-50 rounded-lg p-3 border border-gray-200 space-y-2 text-xs">
-                      <div className="text-gray-700">
-                        <span className="font-semibold text-blue-700">Remediation:</span> {rec.remediation}
-                      </div>
-                      {rec.gamCommand ? (
-                        <div className="flex items-center justify-between bg-white px-3 py-1.5 rounded font-mono text-[11px] text-gray-800 border border-gray-300 shadow-inner">
-                          <span className="truncate">{rec.gamCommand}</span>
-                          <button
-                            onClick={() => copyToClipboard(rec.gamCommand!, rec.id)}
-                            className="text-xs text-blue-600 hover:text-blue-800 font-semibold ml-3 flex-shrink-0"
-                          >
-                            {copiedId === rec.id ? "Copied! ✓" : "Copy Command"}
-                          </button>
-                        </div>
-                      ) : (
-                        <div className="flex items-center justify-between bg-white px-3 py-1.5 rounded text-[11px] text-gray-700 border border-gray-200 shadow-2xs">
-                          <span className="text-gray-600">Console Action: <strong className="text-gray-900">{rec.adminConsolePath || "Security > API controls > App access control"}</strong></span>
-                          <a
-                            href="https://admin.google.com/ac/owl/list?tab=apps"
-                            target="_blank"
-                            rel="noreferrer"
-                            className="inline-flex items-center gap-1 text-xs text-blue-600 hover:text-blue-800 font-bold ml-3 flex-shrink-0"
-                          >
-                            <GoogleAdminIcon className="w-3.5 h-3.5" />
-                            Open Google Admin Console ↗
-                          </a>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        );
-      })()}
+      {activeTab === "recs" && (
+        <RecommendationsView apps={currentApps as any} initialRecs={initialRecs as any} />
+      )}
 
 
       {/* Scope Threat Matrix Tab View */}
@@ -2010,9 +1308,7 @@ export default function OAuthDashboardClient({
                   <div className="flex flex-wrap items-center gap-2">
                     <h2 className="text-xl sm:text-2xl font-bold text-gray-900 tracking-tight">{selectedApp.displayName}</h2>
                     {selectedApp.isVerified && (
-                      <span className="text-xs px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200 font-semibold">
-                        Verified
-                      </span>
+                      <GoogleVerifiedBadge size="md" />
                     )}
                     {getRiskBadge(selectedApp.riskLevel, selectedApp.riskScore)}
                   </div>
@@ -2231,7 +1527,7 @@ export default function OAuthDashboardClient({
               )}
 
               {/* Google Admin Console App Access Policy Options (All 4 Options View) */}
-              <div className="bg-white border border-gray-200 rounded-xl p-5 space-y-4 shadow-xs">
+              <div className="bg-slate-50/70 border border-slate-200 rounded-xl p-4 space-y-3">
                 {(() => {
                   const policyLevel = selectedApp.adminAccessLevel || (selectedApp.accessPolicy as any)?.accessLevel || "UNCONFIGURED";
                   const isConfigured = policyLevel && policyLevel !== "UNCONFIGURED";
@@ -2274,246 +1570,172 @@ export default function OAuthDashboardClient({
 
                   return (
                     <>
-                      <div className="flex flex-wrap items-start justify-between gap-3 border-b border-gray-100 pb-3">
-                        <div>
-                          <div className="text-xs font-semibold text-gray-800">
-                            Select what type of access this app has to Google data for users in the selected org unit.
-                          </div>
-                          <div className="flex flex-wrap items-center gap-2 mt-1 text-[11px] text-gray-500">
-                            <span>
-                              Org Unit: <strong className="font-mono text-gray-700">{orgUnit}</strong> ({isOverridden ? "Direct OU Override" : "Inherited from Domain Root"})
+                      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200/80 pb-2.5">
+                        <div className="flex items-center gap-2.5">
+                          <GoogleAdminIcon className="w-5 h-5 text-emerald-600 shrink-0" />
+                          <div>
+                            <span className="text-sm font-bold text-gray-900">Google Workspace Data Access</span>
+                            <span className="text-xs text-gray-500 ml-2.5">
+                              Org Unit: <strong className="font-mono text-gray-700">{orgUnit}</strong> ({isOverridden ? "Override" : "Root"})
                             </span>
-                            <span>•</span>
-                            <a
-                              href="https://support.google.com/a/answer/7281227"
-                              target="_blank"
-                              rel="noreferrer"
-                              className="text-blue-600 hover:underline"
-                            >
-                              Learn more about app access ↗
-                            </a>
                           </div>
                         </div>
 
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-2.5">
                           {isConfigured ? (
-                            <span className="text-[11px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full shadow-2xs">
-                              Configured in Google Workspace
+                            <span className="text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full">
+                              Configured
                             </span>
                           ) : (
-                            <span className="inline-flex items-center gap-1 text-[11px] font-medium bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full">
+                            <span className="text-xs font-medium text-gray-500 bg-gray-100 border border-gray-200 px-2.5 py-0.5 rounded-full">
                               ⚪ Unconfigured in Google Admin
                             </span>
                           )}
+                          <a
+                            href="https://support.google.com/a/answer/7281227"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-xs text-blue-600 hover:underline font-medium"
+                            title="Google Admin app access help"
+                          >
+                            Help ↗
+                          </a>
                         </div>
                       </div>
 
-                      {/* 4 Radio Options */}
-                      <div className="space-y-3.5">
-                        {/* Option 1: Trusted */}
-                        <div className={`p-3.5 rounded-xl border transition-all ${
+                      {/* 4 Radio Options List */}
+                      <div className="divide-y divide-gray-100 rounded-lg border border-gray-200 bg-white overflow-hidden">
+                        {/* 1. Trusted */}
+                        <div className={`p-3 px-3.5 transition-colors ${
                           policyLevel === "TRUSTED"
-                            ? "border-emerald-400 bg-emerald-50/20 ring-1 ring-emerald-500/20"
-                            : "border-gray-200 bg-white hover:bg-gray-50/50"
+                            ? "bg-emerald-50/40 border-l-4 border-l-emerald-600"
+                            : "hover:bg-gray-50/60"
                         }`}>
                           <div className="flex items-start gap-3">
-                            <div className="mt-0.5 shrink-0">
-                              <span className={`w-4 h-4 rounded-full border flex items-center justify-center ${
-                                policyLevel === "TRUSTED"
-                                  ? "border-blue-600 bg-white"
-                                  : "border-gray-300 bg-white"
-                              }`}>
-                                {policyLevel === "TRUSTED" && <span className="w-2 h-2 rounded-full bg-blue-600"></span>}
-                              </span>
-                            </div>
+                            <span className={`mt-0.5 w-4 h-4 rounded-full border shrink-0 flex items-center justify-center ${
+                              policyLevel === "TRUSTED" ? "border-blue-600 bg-white" : "border-gray-300 bg-white"
+                            }`}>
+                              {policyLevel === "TRUSTED" && <span className="w-2 h-2 rounded-full bg-blue-600"></span>}
+                            </span>
                             <div className="flex-1 min-w-0">
-                              <div className="flex items-center gap-2">
-                                <span className={`text-sm font-semibold ${policyLevel === "TRUSTED" ? "text-gray-900" : "text-gray-800"}`}>
-                                  Trusted
-                                </span>
+                              <div className="flex flex-wrap items-center gap-2">
+                                <span className="text-sm font-bold text-gray-900">Trusted</span>
+                                <span className="text-xs text-gray-600">— App can request access to all Google data</span>
                                 {policyLevel === "TRUSTED" && (
-                                  <span className="text-[10px] font-bold px-2 py-0.2 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
-                                    Active Policy
+                                  <span className="text-[10px] font-extrabold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 tracking-wide">
+                                    ACTIVE
                                   </span>
                                 )}
                               </div>
-                              <p className="text-xs text-gray-600 mt-0.5">
-                                App can request access to all Google data
-                              </p>
-
-                              {/* Context-Aware Access Exemption Sub-section */}
-                              <div className="mt-2.5 pt-2 border-t border-gray-100 space-y-1.5">
-                                <label className="flex items-start gap-2 text-xs text-gray-700 cursor-default select-none">
-                                  <input
-                                    type="checkbox"
-                                    readOnly
-                                    checked={isExempt}
-                                    className="mt-0.5 rounded border-gray-300 text-blue-600 focus:ring-blue-500 pointer-events-none"
-                                  />
-                                  <span>
-                                    Exempt from having API access blocked by Context-Aware Access levels. Applies only if this app was added by OAuth client ID.{" "}
-                                    <a
-                                      href="https://support.google.com/a/answer/9275380"
-                                      target="_blank"
-                                      rel="noreferrer"
-                                      className="text-blue-600 hover:underline"
-                                    >
-                                      Learn about exempting apps.
-                                    </a>
+                              {policyLevel === "TRUSTED" && (
+                                <div className="mt-1 flex items-center gap-2 text-xs text-gray-600">
+                                  <span className={isExempt ? "text-emerald-700 font-medium" : "text-gray-400"}>
+                                    {isExempt ? "✓" : "○"} Exempt from Context-Aware Access blocks
                                   </span>
-                                </label>
-                                <p className="text-[11px] text-gray-500 pl-5">
-                                  This exception is enforced only if a Context-Aware Access level in the same org unit selected in Scope also allows exemptions.
-                                </p>
-
-                                {policyLevel === "TRUSTED" && (
-                                  <div className="ml-5 mt-1.5 flex items-start gap-2 bg-blue-50/60 border border-blue-200/60 rounded-lg p-2 text-[11px] text-blue-900">
-                                    <span className="text-blue-600 font-bold shrink-0">ℹ</span>
-                                    <span>
-                                      Allowlisting an app here doesn&apos;t mean it&apos;s immediately exempted from API access blocks. You&apos;ll need to explicitly exempt the app during access level assignments to enforce the exemption.{" "}
-                                      <a
-                                        href="https://support.google.com/a/answer/9275380"
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        className="font-medium underline hover:text-blue-950"
-                                      >
-                                        Learn more
-                                      </a>
-                                    </span>
-                                  </div>
-                                )}
-                              </div>
+                                </div>
+                              )}
                             </div>
                           </div>
                         </div>
 
-                        {/* Option 2: Limited */}
-                        <div className={`p-3.5 rounded-xl border transition-all ${
+                        {/* 2. Limited */}
+                        <div className={`p-3 px-3.5 transition-colors ${
                           policyLevel === "LIMITED"
-                            ? "border-blue-400 bg-blue-50/20 ring-1 ring-blue-500/20"
-                            : "border-gray-200 bg-white hover:bg-gray-50/50"
+                            ? "bg-blue-50/40 border-l-4 border-l-blue-600"
+                            : "hover:bg-gray-50/60"
                         }`}>
                           <div className="flex items-start gap-3">
-                            <div className="mt-0.5 shrink-0">
-                              <span className={`w-4 h-4 rounded-full border flex items-center justify-center ${
-                                policyLevel === "LIMITED"
-                                  ? "border-blue-600 bg-white"
-                                  : "border-gray-300 bg-white"
-                              }`}>
-                                {policyLevel === "LIMITED" && <span className="w-2 h-2 rounded-full bg-blue-600"></span>}
-                              </span>
-                            </div>
+                            <span className={`mt-0.5 w-4 h-4 rounded-full border shrink-0 flex items-center justify-center ${
+                              policyLevel === "LIMITED" ? "border-blue-600 bg-white" : "border-gray-300 bg-white"
+                            }`}>
+                              {policyLevel === "LIMITED" && <span className="w-2 h-2 rounded-full bg-blue-600"></span>}
+                            </span>
                             <div className="flex-1 min-w-0">
-                              <div className="flex items-center gap-2">
-                                <span className={`text-sm font-semibold ${policyLevel === "LIMITED" ? "text-gray-900" : "text-gray-800"}`}>
-                                  Limited
-                                </span>
+                              <div className="flex flex-wrap items-center gap-2">
+                                <span className="text-sm font-bold text-gray-900">Limited</span>
+                                <span className="text-xs text-gray-600">— App can request access to unrestricted Google data only</span>
                                 {policyLevel === "LIMITED" && (
-                                  <span className="text-[10px] font-bold px-2 py-0.2 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
-                                    Active Policy
+                                  <span className="text-[10px] font-extrabold px-2 py-0.5 rounded bg-blue-100 text-blue-800 tracking-wide">
+                                    ACTIVE
                                   </span>
                                 )}
                               </div>
-                              <p className="text-xs text-gray-600 mt-0.5">
-                                App can request access to unrestricted Google data
-                              </p>
                             </div>
                           </div>
                         </div>
 
-                        {/* Option 3: Specific Google data */}
-                        <div className={`p-3.5 rounded-xl border transition-all ${
+                        {/* 3. Specific Google data */}
+                        <div className={`p-3 px-3.5 transition-colors ${
                           policyLevel === "SPECIFIC_DATA" || policyLevel.includes("SPECIFIC")
-                            ? "border-amber-400 bg-amber-50/20 ring-1 ring-amber-500/20"
-                            : "border-gray-200 bg-white hover:bg-gray-50/50"
+                            ? "bg-amber-50/40 border-l-4 border-l-amber-600"
+                            : "hover:bg-gray-50/60"
                         }`}>
                           <div className="flex items-start gap-3">
-                            <div className="mt-0.5 shrink-0">
-                              <span className={`w-4 h-4 rounded-full border flex items-center justify-center ${
-                                policyLevel === "SPECIFIC_DATA" || policyLevel.includes("SPECIFIC")
-                                  ? "border-blue-600 bg-white"
-                                  : "border-gray-300 bg-white"
-                              }`}>
-                                {(policyLevel === "SPECIFIC_DATA" || policyLevel.includes("SPECIFIC")) && <span className="w-2 h-2 rounded-full bg-blue-600"></span>}
-                              </span>
-                            </div>
+                            <span className={`mt-0.5 w-4 h-4 rounded-full border shrink-0 flex items-center justify-center ${
+                              policyLevel === "SPECIFIC_DATA" || policyLevel.includes("SPECIFIC") ? "border-blue-600 bg-white" : "border-gray-300 bg-white"
+                            }`}>
+                              {(policyLevel === "SPECIFIC_DATA" || policyLevel.includes("SPECIFIC")) && <span className="w-2 h-2 rounded-full bg-blue-600"></span>}
+                            </span>
                             <div className="flex-1 min-w-0">
-                              <div className="flex items-center gap-2">
-                                <span className={`text-sm font-semibold ${policyLevel === "SPECIFIC_DATA" || policyLevel.includes("SPECIFIC") ? "text-gray-900" : "text-gray-800"}`}>
-                                  Specific Google data
-                                </span>
-                                {(policyLevel === "SPECIFIC_DATA" || policyLevel.includes("SPECIFIC")) && (
-                                  <span className="text-[10px] font-bold px-2 py-0.2 rounded-full bg-amber-50 text-amber-700 border border-amber-200">
-                                    Active Policy
-                                  </span>
-                                )}
-                              </div>
-                              <p className="text-xs text-gray-600 mt-0.5 leading-relaxed">
-                                This app can only request access to user data from the Google services specified below. Note, you must include the Google Sign-in scope below to allow users to sign in with their Google Account.
-                              </p>
-
-                              {/* Connected Services Table matching screenshot */}
-                              <div className="mt-3 border border-gray-200 rounded-lg overflow-hidden bg-white divide-y divide-gray-100">
-                                {servicesList.map(({ service, count }) => (
-                                  <div key={service} className="py-2.5 px-3 flex items-center justify-between hover:bg-gray-50/60 transition-colors">
-                                    <div className="flex items-center gap-3">
-                                      <div className="w-5 h-5 flex items-center justify-center shrink-0">
-                                        <GoogleProductIcon service={service} className="w-4.5 h-4.5" />
-                                      </div>
-                                      <span className="text-xs font-medium text-gray-800">{service}</span>
-                                    </div>
-                                    <span className="text-[11px] text-gray-500 font-mono">
-                                      {count} {count === 1 ? "scope" : "scopes"}
+                              <div className="flex flex-wrap items-center justify-between gap-1.5">
+                                <div className="flex flex-wrap items-center gap-2">
+                                  <span className="text-sm font-bold text-gray-900">Specific Google data</span>
+                                  <span className="text-xs text-gray-600">— Restricted to specified services &amp; scopes only</span>
+                                  {(policyLevel === "SPECIFIC_DATA" || policyLevel.includes("SPECIFIC")) && (
+                                    <span className="text-[10px] font-extrabold px-2 py-0.5 rounded bg-amber-100 text-amber-800 tracking-wide">
+                                      ACTIVE
                                     </span>
-                                  </div>
-                                ))}
-                              </div>
-
-                              <div className="mt-2.5">
+                                  )}
+                                </div>
                                 <a
                                   href={getAdminConsoleLink(selectedApp).url}
                                   target="_blank"
                                   rel="noreferrer"
-                                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-blue-700 bg-blue-50/80 hover:bg-blue-100 border border-blue-200 rounded-lg transition-colors"
+                                  className="text-xs text-blue-600 hover:underline font-semibold"
                                 >
-                                  <span>Update Google services or scopes</span>
-                                  <span className="text-blue-500">↗</span>
+                                  Update in Google Admin ↗
                                 </a>
+                              </div>
+
+                              {/* Services Chips */}
+                              <div className="mt-2 flex flex-wrap gap-2">
+                                {servicesList.map(({ service, count }) => (
+                                  <span
+                                    key={service}
+                                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-gray-50 border border-gray-200 text-xs font-medium text-gray-700"
+                                  >
+                                    <GoogleProductIcon service={service} className="w-4 h-4" />
+                                    <span>{service}</span>
+                                    <span className="text-gray-400 font-mono text-xs">({count})</span>
+                                  </span>
+                                ))}
                               </div>
                             </div>
                           </div>
                         </div>
 
-                        {/* Option 4: Blocked */}
-                        <div className={`p-3.5 rounded-xl border transition-all ${
+                        {/* 4. Blocked */}
+                        <div className={`p-3 px-3.5 transition-colors ${
                           policyLevel === "BLOCKED"
-                            ? "border-red-400 bg-red-50/20 ring-1 ring-red-500/20"
-                            : "border-gray-200 bg-white hover:bg-gray-50/50"
+                            ? "bg-red-50/40 border-l-4 border-l-red-600"
+                            : "hover:bg-gray-50/60"
                         }`}>
                           <div className="flex items-start gap-3">
-                            <div className="mt-0.5 shrink-0">
-                              <span className={`w-4 h-4 rounded-full border flex items-center justify-center ${
-                                policyLevel === "BLOCKED"
-                                  ? "border-blue-600 bg-white"
-                                  : "border-gray-300 bg-white"
-                              }`}>
-                                {policyLevel === "BLOCKED" && <span className="w-2 h-2 rounded-full bg-blue-600"></span>}
-                              </span>
-                            </div>
+                            <span className={`mt-0.5 w-4 h-4 rounded-full border shrink-0 flex items-center justify-center ${
+                              policyLevel === "BLOCKED" ? "border-blue-600 bg-white" : "border-gray-300 bg-white"
+                            }`}>
+                              {policyLevel === "BLOCKED" && <span className="w-2 h-2 rounded-full bg-blue-600"></span>}
+                            </span>
                             <div className="flex-1 min-w-0">
-                              <div className="flex items-center gap-2">
-                                <span className={`text-sm font-semibold ${policyLevel === "BLOCKED" ? "text-gray-900" : "text-gray-800"}`}>
-                                  Blocked
-                                </span>
+                              <div className="flex flex-wrap items-center gap-2">
+                                <span className="text-sm font-bold text-gray-900">Blocked</span>
+                                <span className="text-xs text-gray-600">— Blocked from accessing any Google data</span>
                                 {policyLevel === "BLOCKED" && (
-                                  <span className="text-[10px] font-bold px-2 py-0.2 rounded-full bg-red-50 text-red-700 border border-red-200">
-                                    Active Policy
+                                  <span className="text-[10px] font-extrabold px-2 py-0.5 rounded bg-red-100 text-red-800 tracking-wide">
+                                    ACTIVE
                                   </span>
                                 )}
                               </div>
-                              <p className="text-xs text-gray-600 mt-0.5">
-                                App can&apos;t request access to any Google data
-                              </p>
                             </div>
                           </div>
                         </div>

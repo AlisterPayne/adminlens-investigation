@@ -48,16 +48,6 @@ export default function AccessTimelineView({
   const [selectedPolicy, setSelectedPolicy] = useState<string>("ALL");
   const [selectedAdmin, setSelectedAdmin] = useState<string>("ALL");
   const [selectedTimeRange, setSelectedTimeRange] = useState<string>("ALL");
-  const [expandedEventIds, setExpandedEventIds] = useState<Set<string>>(new Set());
-
-  const toggleExpand = (id: string) => {
-    setExpandedEventIds((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
-      return next;
-    });
-  };
 
   // Extract unique admins for filter
   const uniqueAdmins = useMemo(() => {
@@ -427,7 +417,6 @@ export default function AccessTimelineView({
               {/* Timeline Items */}
               <div className="relative pl-6 sm:pl-8 space-y-4 before:absolute before:left-2.5 sm:before:left-3.5 before:top-2 before:bottom-2 before:w-0.5 before:bg-gray-200">
                 {dateEvents.map((ev) => {
-                  const isExpanded = expandedEventIds.has(ev.id);
                   const state = (ev.newState || ev.newPolicy || ev.action || "").toUpperCase();
                   const isBlock = state.includes("BLOCK");
                   const isTrust = state.includes("TRUST") || state.includes("WHITELIST");
@@ -473,9 +462,9 @@ export default function AccessTimelineView({
                         />
                       </div>
 
-                      {/* Header Row */}
-                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-gray-100 pb-3">
-                        <div className="flex items-center gap-3">
+                      {/* Header Row: App Identity, Policy Badge, Admin & Timestamp */}
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div className="flex items-center gap-3 min-w-0">
                           <img
                             src={
                               ev.appIconUrl ||
@@ -485,110 +474,72 @@ export default function AccessTimelineView({
                               )}&background=3B82F6&color=fff&size=64`
                             }
                             alt=""
-                            className="w-8 h-8 rounded-lg object-contain bg-white border border-gray-200 p-0.5 shrink-0"
+                            className="w-9 h-9 rounded-xl object-contain bg-white border border-gray-200 p-0.5 shrink-0 shadow-2xs"
                             onError={(e: any) => {
                               e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(
                                 ev.appName || "App"
                               )}&background=3B82F6&color=fff&size=64`;
                             }}
                           />
-                          <div>
-                            <div className="flex items-center gap-2">
-                              <span className="font-bold text-gray-900 text-sm">
+                          <div className="min-w-0">
+                            <div className="flex items-center gap-2 flex-wrap">
+                              <span className="font-bold text-gray-900 text-sm truncate">
                                 {ev.appName || "OAuth Application"}
                               </span>
                               {getPolicyBadge(ev.newState || ev.newPolicy, ev.action)}
                             </div>
-                            <div className="text-[11px] font-mono text-gray-400 truncate max-w-xs sm:max-w-md">
-                              {ev.clientId || ev.appId || "—"}
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* Timestamp & Relative Badge */}
-                        <div className="flex sm:flex-col items-center sm:items-end justify-between text-right">
-                          <span className="text-xs font-semibold text-gray-700 font-mono">
-                            {formatTimestamp(ev.timestamp)}
-                          </span>
-                          <span className="text-[10px] text-gray-400">
-                            {getRelativeTime(ev.timestamp)}
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Content Row: Transition & Actor */}
-                      <div className="pt-3 grid grid-cols-1 sm:grid-cols-12 gap-3 text-xs">
-                        {/* Policy Transition Details */}
-                        <div className="sm:col-span-7 space-y-1.5">
-                          <div className="flex items-center gap-2 flex-wrap">
-                            <span className="text-gray-500 font-medium">Access Policy:</span>
-                            <span className="font-semibold text-gray-800">
-                              {ev.actionDisplay || ev.action || "Policy Change"}
-                            </span>
-                            {(ev.previousState || ev.oldPolicy) && (
-                              <>
-                                <span className="text-gray-400 font-bold select-none">|</span>
-                                <span className="text-gray-400">Previous:</span>
-                                <span className="px-1.5 py-0.5 rounded text-[10px] font-medium bg-gray-100 text-gray-600 border border-gray-200 font-mono">
-                                  {ev.previousState || ev.oldPolicy}
-                                </span>
-                              </>
+                            {ev.clientId && ev.clientId !== ev.appName && (
+                              <div className="text-[11px] font-mono text-gray-400 truncate max-w-xs sm:max-w-md">
+                                {ev.clientId}
+                              </div>
                             )}
                           </div>
+                        </div>
 
-                          {(ev.target || ev.orgUnit) && (
-                            <div className="text-[11px] text-gray-500">
-                              Applied Scope:{" "}
-                              <span className="font-mono text-gray-700 bg-gray-50 border border-gray-200 px-1.5 py-0.5 rounded">
-                                {ev.target || ev.orgUnit}
+                        {/* Admin & Timestamp Information */}
+                        <div className="flex items-center gap-3 shrink-0 self-start sm:self-auto text-xs">
+                          {ev.actorEmail && (
+                            <div className="flex items-center gap-1.5 bg-gray-50 border border-gray-200 px-2.5 py-1 rounded-lg">
+                              <div className="w-5 h-5 rounded-full bg-purple-100 border border-purple-200 text-purple-700 flex items-center justify-center font-bold text-[9px]">
+                                {ev.actorEmail.charAt(0).toUpperCase()}
+                              </div>
+                              <span className="font-mono text-gray-700 text-[11px] font-medium truncate max-w-[160px]" title={ev.actorEmail}>
+                                {ev.actorEmail}
                               </span>
                             </div>
                           )}
 
-                          <div className="text-[11px] text-gray-600 mt-1 leading-snug">
-                            {ev.changeSummary || (typeof ev.details === "string" ? ev.details : "")}
-                          </div>
-                        </div>
-
-                        {/* Administrator / Actor */}
-                        <div className="sm:col-span-5 sm:border-l sm:border-gray-100 sm:pl-4 flex flex-col justify-center">
-                          <div className="text-[10px] text-gray-400 uppercase font-semibold">
-                            Modified By Administrator
-                          </div>
-                          <div className="flex items-center gap-2 mt-1">
-                            <div className="w-6 h-6 rounded-full bg-purple-100 border border-purple-200 text-purple-700 flex items-center justify-center font-bold text-[10px]">
-                              {ev.actorEmail?.charAt(0).toUpperCase() || "A"}
-                            </div>
-                            <span className="text-xs font-mono font-semibold text-gray-800 truncate" title={ev.actorEmail}>
-                              {ev.actorEmail || "Administrator"}
+                          <div className="text-right whitespace-nowrap">
+                            <span className="text-xs font-semibold text-gray-700 font-mono block">
+                              {formatTimestamp(ev.timestamp)}
+                            </span>
+                            <span className="text-[10px] text-gray-400 block">
+                              {getRelativeTime(ev.timestamp)}
                             </span>
                           </div>
-                          {ev.ipAddress && (
-                            <div className="text-[10px] font-mono text-gray-400 mt-1">
-                              IP: {ev.ipAddress}
-                            </div>
-                          )}
                         </div>
                       </div>
 
-                      {/* Technical Details Toggle */}
-                      {ev.details && typeof ev.details === "object" && Object.keys(ev.details).length > 0 && (
-                        <div className="mt-3 pt-2.5 border-t border-gray-100">
-                          <button
-                            type="button"
-                            onClick={() => toggleExpand(ev.id)}
-                            className="text-[11px] font-medium text-blue-600 hover:text-blue-800 flex items-center gap-1"
-                          >
-                            <span>{isExpanded ? "Hide Audit Parameters ▲" : "View Audit Parameters ▼"}</span>
-                          </button>
+                      {/* Summary & Transition Badges */}
+                      <div className="mt-3 pt-2.5 border-t border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+                        <div className="text-gray-700 text-xs leading-relaxed">
+                          {ev.changeSummary || (typeof ev.details === "string" ? ev.details : "")}
+                        </div>
 
-                          {isExpanded && (
-                            <pre className="mt-2 p-2.5 bg-gray-50 border border-gray-200 rounded-lg text-[10px] font-mono text-gray-700 overflow-x-auto">
-                              {JSON.stringify(ev.details, null, 2)}
-                            </pre>
+                        {/* Context Badges: Scope and Previous Policy */}
+                        <div className="flex items-center gap-1.5 flex-wrap shrink-0 text-[11px]">
+                          {(ev.previousState || ev.oldPolicy) && (
+                            <span className="px-2 py-0.5 rounded-md bg-gray-100 text-gray-600 border border-gray-200 font-medium">
+                              Previous: <strong className="text-gray-800">{ev.previousState || ev.oldPolicy}</strong>
+                            </span>
+                          )}
+                          {(ev.target || ev.orgUnit) && (
+                            <span className="px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 border border-blue-200 font-medium font-mono text-[10px]">
+                              Scope: {ev.target || ev.orgUnit}
+                            </span>
                           )}
                         </div>
-                      )}
+                      </div>
                     </div>
                   );
                 })}

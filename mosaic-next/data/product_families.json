@@ -26,17 +26,71 @@
     "familyName": "GAM (Google Apps Manager)",
     "vendor": "GAM Open Source",
     "iconUrl": "https://www.google.com/s2/favicons?domain=github.com&sz=128",
-    "deploymentsCount": 6,
+    "deploymentsCount": 7,
     "totalUsersCount": 7,
     "maxRisk": "CRITICAL",
-    "avgRiskScore": 4.17,
+    "avgRiskScore": 3.71,
     "deploymentIds": [
       "297408095146-fug707qsjv4ikron0hugpevbrjhkmsk7.apps.googleusercontent.com",
       "458969862783-1smfdj4v8qbnibgarka1a99400lhsa13.apps.googleusercontent.com",
       "72867247940-n969jo6c29qg22m8sodb2hftn6dck1mk.apps.googleusercontent.com",
       "521549528509-f17hlgjd91nbi5sooc73ia3d4dqln10s.apps.googleusercontent.com",
       "585538275436-4lk6emnir2l22atsdk61fstd4nhkgbku.apps.googleusercontent.com",
-      "101367350966766396496"
+      "101367350966766396496",
+      "585538275436-5k5co106krror5jgc4f4dpjib0efeb7o.apps.googleusercontent.com"
+    ]
+  },
+  {
+    "familyId": "texthelp-orbitnote",
+    "familyName": "OrbitNote",
+    "vendor": "Texthelp Ltd.",
+    "iconUrl": "https://www.google.com/s2/favicons?domain=texthelp.com&sz=128",
+    "deploymentsCount": 7,
+    "totalUsersCount": 0,
+    "maxRisk": "LOW",
+    "avgRiskScore": 1,
+    "deploymentIds": [
+      "243341882805-sqhe1f8jq8t8i5ha4nqbv50gk0iteup7.apps.googleusercontent.com",
+      "243341882805-ifm1nlmmaiphpqltrhc3am7tf31cttc2.apps.googleusercontent.com",
+      "243341882805-gqvp3jffcpj3bn588oeum6i0rdvq9lgj.apps.googleusercontent.com",
+      "243341882805-gldjffc0aa5angvaauku8kjdnenian8t.apps.googleusercontent.com",
+      "243341882805-fav9vbuf7c132v7lkvav10h32o5gds7q.apps.googleusercontent.com",
+      "243341882805-ah59e7mg9ccjnft0nu5mgopk60k4u2bs.apps.googleusercontent.com",
+      "243341882805-4e3fs19mqa8olc5e8vt86chmk0eejpl1.apps.googleusercontent.com"
+    ]
+  },
+  {
+    "familyId": "google-llc",
+    "familyName": "Google LLC",
+    "vendor": "Google LLC",
+    "iconUrl": "https://www.google.com/s2/favicons?domain=google.com&sz=128",
+    "deploymentsCount": 6,
+    "totalUsersCount": 8,
+    "maxRisk": "CRITICAL",
+    "avgRiskScore": 2.62,
+    "deploymentIds": [
+      "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
+      "823511539352-ojaretejk1s95sdvkic0te923pt7knpu.apps.googleusercontent.com",
+      "526554529059-bpm1k15t6a60h9u79tjhmpnutblkmalu.apps.googleusercontent.com",
+      "1023251155897-tb54g624q9e77gtsrnemgv4c2ihekurv.apps.googleusercontent.com",
+      "com.google.DevicePolicy",
+      "531246522847-cpii92d27guqb6mrvgtc8skipar03g1f.apps.googleusercontent.com"
+    ]
+  },
+  {
+    "familyId": "canva",
+    "familyName": "Canva",
+    "vendor": "Canva Pty Ltd",
+    "iconUrl": "https://www.google.com/s2/favicons?domain=canva.com&sz=128",
+    "deploymentsCount": 4,
+    "totalUsersCount": 17,
+    "maxRisk": "HIGH",
+    "avgRiskScore": 1.61,
+    "deploymentIds": [
+      "779010036194-lf6spugv22vvj41pqjdj4d8k2tq7o5fd.apps.googleusercontent.com",
+      "968320677628-ort3v6hao1mu08d1i4eg97it7rgo7e43.apps.googleusercontent.com",
+      "779010036194-2tkv9r6fe23c6ea2ipj43auehhaj9eec.apps.googleusercontent.com",
+      "779010036194-ircisfun8o70il267dbd8fh5cs8pa4gk.apps.googleusercontent.com"
     ]
   },
   {
@@ -56,34 +110,19 @@
     ]
   },
   {
-    "familyId": "google-llc",
-    "familyName": "Google LLC",
-    "vendor": "Google LLC",
-    "iconUrl": "https://www.google.com/s2/favicons?domain=google.com&sz=128",
-    "deploymentsCount": 4,
-    "totalUsersCount": 8,
-    "maxRisk": "CRITICAL",
-    "avgRiskScore": 3.42,
-    "deploymentIds": [
-      "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
-      "823511539352-ojaretejk1s95sdvkic0te923pt7knpu.apps.googleusercontent.com",
-      "526554529059-bpm1k15t6a60h9u79tjhmpnutblkmalu.apps.googleusercontent.com",
-      "1023251155897-tb54g624q9e77gtsrnemgv4c2ihekurv.apps.googleusercontent.com"
-    ]
-  },
-  {
     "familyId": "quizizz",
     "familyName": "Quizizz / Wayground",
     "vendor": "Wayground (Quizizz Inc.)",
     "iconUrl": "https://www.google.com/s2/favicons?domain=wayground.com&sz=128",
-    "deploymentsCount": 3,
+    "deploymentsCount": 4,
     "totalUsersCount": 7,
     "maxRisk": "CRITICAL",
-    "avgRiskScore": 3.13,
+    "avgRiskScore": 2.6,
     "deploymentIds": [
       "58172892053-6laet7k6ls3k5va0jija3b175sm3jjms.apps.googleusercontent.com",
       "58172892053-faol054co4k3tsmtbtuk41v4si41slq0.apps.googleusercontent.com",
-      "58172892053-hh2k290hilpi3edodu8lrv3cag3pop0f.apps.googleusercontent.com"
+      "58172892053-hh2k290hilpi3edodu8lrv3cag3pop0f.apps.googleusercontent.com",
+      "com.google.enterprise.webapp.xeca034b3fe0c6828"
     ]
   },
   {
@@ -98,20 +137,6 @@
     "deploymentIds": [
       "936475272427.apps.googleusercontent.com",
       "946018238758-bi6ni53dfoddlgn97pk3b8i7nphige40.apps.googleusercontent.com"
-    ]
-  },
-  {
-    "familyId": "canva",
-    "familyName": "Canva",
-    "vendor": "Canva Pty Ltd",
-    "iconUrl": "https://www.google.com/s2/favicons?domain=canva.com&sz=128",
-    "deploymentsCount": 2,
-    "totalUsersCount": 17,
-    "maxRisk": "HIGH",
-    "avgRiskScore": 2.13,
-    "deploymentIds": [
-      "779010036194-lf6spugv22vvj41pqjdj4d8k2tq7o5fd.apps.googleusercontent.com",
-      "968320677628-ort3v6hao1mu08d1i4eg97it7rgo7e43.apps.googleusercontent.com"
     ]
   },
   {
@@ -149,10 +174,37 @@
     "deploymentsCount": 2,
     "totalUsersCount": 4,
     "maxRisk": "LOW",
-    "avgRiskScore": 1.35,
+    "avgRiskScore": 1,
     "deploymentIds": [
       "657959631782-i9cm367mk2m810gc99sp2lsie03vo4u3.apps.googleusercontent.com",
       "657959631782-gig0qdc3vaieq93qtv1mubvj0c4mjdfl.apps.googleusercontent.com"
+    ]
+  },
+  {
+    "familyId": "gcp_proj_609427711699",
+    "familyName": "LinkHMS",
+    "iconUrl": "https://ui-avatars.com/api/?name=LinkHMS&background=3B82F6&color=fff&size=128&rounded=true",
+    "deploymentsCount": 2,
+    "totalUsersCount": 0,
+    "maxRisk": "LOW",
+    "avgRiskScore": 1.35,
+    "deploymentIds": [
+      "609427711699-8kgr4bj5hc7ip93n5erf04qjtr1c1tel.apps.googleusercontent.com",
+      "609427711699-sq919k8t73af34500gr6vrfclaafcslb.apps.googleusercontent.com"
+    ]
+  },
+  {
+    "familyId": "lego-education",
+    "familyName": "LEGO Education",
+    "vendor": "LEGO System A/S (LEGO Education)",
+    "iconUrl": "https://www.google.com/s2/favicons?domain=lego.com&sz=128",
+    "deploymentsCount": 2,
+    "totalUsersCount": 0,
+    "maxRisk": "LOW",
+    "avgRiskScore": 1,
+    "deploymentIds": [
+      "com.lego.education.wedo",
+      "com.lego.education.spike"
     ]
   },
   {
@@ -222,7 +274,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 1,
     "maxRisk": "CRITICAL",
-    "avgRiskScore": 4.83,
+    "avgRiskScore": 4.85,
     "deploymentIds": [
       "526554529059-emb2o69t2ri25uicvjkj444o71sku29p.apps.googleusercontent.com"
     ]
@@ -273,7 +325,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 1,
     "maxRisk": "CRITICAL",
-    "avgRiskScore": 4.77,
+    "avgRiskScore": 4.42,
     "deploymentIds": [
       "718809722883-l2mt5r2m2omka59ahjm1js78slbubsd7.apps.googleusercontent.com"
     ]
@@ -294,11 +346,12 @@
   {
     "familyId": "gcp_proj_873507009103",
     "familyName": "Google Chat for Workspace Studio",
+    "vendor": "Google LLC",
     "iconUrl": "https://ui-avatars.com/api/?name=Google%20Chat%20for%20Workspace%20Studio&background=3B82F6&color=fff&size=128&rounded=true",
     "deploymentsCount": 1,
     "totalUsersCount": 3,
     "maxRisk": "HIGH",
-    "avgRiskScore": 3.55,
+    "avgRiskScore": 3.2,
     "deploymentIds": [
       "873507009103-gi4ff8nkju6ggaurt6ebbiqrfmr0c79j.apps.googleusercontent.com"
     ]
@@ -356,11 +409,12 @@
   {
     "familyId": "gcp_proj_953348912797",
     "familyName": "Google AppSheet",
+    "vendor": "Google LLC",
     "iconUrl": "https://ui-avatars.com/api/?name=Google%20AppSheet&background=3B82F6&color=fff&size=128&rounded=true",
     "deploymentsCount": 1,
     "totalUsersCount": 1,
     "maxRisk": "CRITICAL",
-    "avgRiskScore": 4.54,
+    "avgRiskScore": 4.19,
     "deploymentIds": [
       "953348912797-h2fo9tmk42mnrkk0kc6gula9i8ipv3re.apps.googleusercontent.com"
     ]
@@ -372,7 +426,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 1,
     "maxRisk": "HIGH",
-    "avgRiskScore": 3.49,
+    "avgRiskScore": 3.14,
     "deploymentIds": [
       "690997610676-l8hvunsob913lqf9315ogsolip0pbs7o.apps.googleusercontent.com"
     ]
@@ -398,7 +452,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 1,
     "maxRisk": "LOW",
-    "avgRiskScore": 1.35,
+    "avgRiskScore": 1,
     "deploymentIds": [
       "64634722053-udlis9tvkf8tuh5r1r3jgbfsh1b29e00.apps.googleusercontent.com"
     ]
@@ -410,7 +464,7 @@
     "deploymentsCount": 1,
     "totalUsersCount": 1,
     "maxRisk": "CRITICAL",
-    "avgRiskScore": 4.5,
+    "avgRiskScore": 4.15,
     "deploymentIds": [
       "450232826690-0rm6bs9d2fps9tifvk2oodh3tasd7vl7.apps.googleusercontent.com"
     ]
@@ -470,11 +524,12 @@
   {
     "familyId": "gcp_proj_469390422673",
     "familyName": "Google Calendar for Workspace Studio",
+    "vendor": "Google LLC",
     "iconUrl": "https://ui-avatars.com/api/?name=Google%20Calendar%20for%20Workspace%20Studio&background=3B82F6&color=fff&size=128&rounded=true",
     "deploymentsCount": 1,
     "totalUsersCount": 2,
     "maxRisk": "HIGH",
-    "avgRiskScore": 3.39,
+    "avgRiskScore": 3.04,
     "deploymentIds": [
       "469390422673-r0p2tar3lgjlnhtsv4t4uonq4bi2svf8.apps.googleusercontent.com"
     ]
@@ -520,6 +575,7 @@
   {
     "familyId": "gcp_proj_899041083010",
     "familyName": "CloudReady Home Edition",
+    "vendor": "Google LLC",
     "iconUrl": "https://ui-avatars.com/api/?name=CloudReady%20Home%20Edition&background=3B82F6&color=fff&size=128&rounded=true",
     "deploymentsCount": 1,
     "totalUsersCount": 1,
@@ -545,6 +601,7 @@
   {
     "familyId": "gcp_proj_99790332366",
     "familyName": "Edu Launchpad",
+    "vendor": "Google LLC",
     "iconUrl": "https://ui-avatars.com/api/?name=Edu%20Launchpad&background=3B82F6&color=fff&size=128&rounded=true",
     "deploymentsCount": 1,
     "totalUsersCount": 1,
@@ -552,6 +609,32 @@
     "avgRiskScore": 1.35,
     "deploymentIds": [
       "99790332366-7jbqgn7andc12kui6o7810gk03le7asr.apps.googleusercontent.com"
+    ]
+  },
+  {
+    "familyId": "mailsuite",
+    "familyName": "Mailsuite / Mailtrack",
+    "vendor": "Mailtrack / Mailsuite, S.L.",
+    "iconUrl": "https://www.google.com/s2/favicons?domain=mailsuite.com&sz=128",
+    "deploymentsCount": 1,
+    "totalUsersCount": 0,
+    "maxRisk": "LOW",
+    "avgRiskScore": 1,
+    "deploymentIds": [
+      "224054973946.apps.googleusercontent.com"
+    ]
+  },
+  {
+    "familyId": "zoho-corporation",
+    "familyName": "Zoho Corporation",
+    "vendor": "Zoho Corporation",
+    "iconUrl": "https://www.google.com/s2/favicons?domain=zoho.com&sz=128",
+    "deploymentsCount": 1,
+    "totalUsersCount": 0,
+    "maxRisk": "LOW",
+    "avgRiskScore": 1,
+    "deploymentIds": [
+      "com.zoho.calendar.sync"
     ]
   }
 ]

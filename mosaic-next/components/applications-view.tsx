@@ -4,6 +4,7 @@ import Link from "next/link";
 import React, { useMemo,useState } from "react";
 
 import { GoogleAdminIcon,GoogleProductIcon } from "@/components/google-icons";
+import GoogleVerifiedBadge from "@/components/google-verified-badge";
 
 export interface ApplicationScope {
   scope: string;
@@ -599,247 +600,174 @@ export default function ApplicationsView({
     }, [app]);
 
     return (
-      <div className="bg-white border border-gray-200 rounded-xl p-5 space-y-4 shadow-xs">
-        <div className="flex flex-wrap items-start justify-between gap-3 border-b border-gray-100 pb-3">
-          <div>
-            <div className="text-xs font-semibold text-gray-800">
-              Select what type of access this app has to Google data for users in the selected org unit.
-            </div>
-            <div className="flex flex-wrap items-center gap-2 mt-1 text-[11px] text-gray-500">
-              <span>
-                Org Unit: <strong className="font-mono text-gray-700">{orgUnit}</strong> ({isOverridden ? "Direct OU Override" : "Inherited from Domain Root"})
+      <div className="bg-slate-50/70 border border-slate-200 rounded-xl p-4 space-y-3">
+        {/* Header */}
+        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200/80 pb-2.5">
+          <div className="flex items-center gap-2.5">
+            <GoogleAdminIcon className="w-5 h-5 text-emerald-600 shrink-0" />
+            <div>
+              <span className="text-sm font-bold text-gray-900">Google Workspace Data Access</span>
+              <span className="text-xs text-gray-500 ml-2.5">
+                Org Unit: <strong className="font-mono text-gray-700">{orgUnit}</strong> ({isOverridden ? "Override" : "Root"})
               </span>
-              <span>•</span>
-              <a
-                href="https://support.google.com/a/answer/7281227"
-                target="_blank"
-                rel="noreferrer"
-                className="text-blue-600 hover:underline"
-              >
-                Learn more about app access ↗
-              </a>
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2.5">
             {isConfigured ? (
-              <span className="text-[11px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full shadow-2xs">
-                Configured in Google Workspace
+              <span className="text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full">
+                Configured
               </span>
             ) : (
-              <span className="inline-flex items-center gap-1 text-[11px] font-medium bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full">
+              <span className="text-xs font-medium text-gray-500 bg-gray-100 border border-gray-200 px-2.5 py-0.5 rounded-full">
                 ⚪ Unconfigured in Google Admin
               </span>
             )}
+            <a
+              href="https://support.google.com/a/answer/7281227"
+              target="_blank"
+              rel="noreferrer"
+              className="text-xs text-blue-600 hover:underline font-medium"
+              title="Google Admin app access help"
+            >
+              Help ↗
+            </a>
           </div>
         </div>
 
-        {/* 4 Radio Options */}
-        <div className="space-y-3.5">
-          {/* Option 1: Trusted */}
-          <div className={`p-3.5 rounded-xl border transition-all ${
+        {/* 4 Radio Options List */}
+        <div className="divide-y divide-gray-100 rounded-lg border border-gray-200 bg-white overflow-hidden">
+          {/* 1. Trusted */}
+          <div className={`p-3 px-3.5 transition-colors ${
             policyLevel === "TRUSTED"
-              ? "border-emerald-400 bg-emerald-50/20 ring-1 ring-emerald-500/20"
-              : "border-gray-200 bg-white hover:bg-gray-50/50"
+              ? "bg-emerald-50/40 border-l-4 border-l-emerald-600"
+              : "hover:bg-gray-50/60"
           }`}>
             <div className="flex items-start gap-3">
-              <div className="mt-0.5 shrink-0">
-                <span className={`w-4 h-4 rounded-full border flex items-center justify-center ${
-                  policyLevel === "TRUSTED"
-                    ? "border-blue-600 bg-white"
-                    : "border-gray-300 bg-white"
-                }`}>
-                  {policyLevel === "TRUSTED" && <span className="w-2 h-2 rounded-full bg-blue-600"></span>}
-                </span>
-              </div>
+              <span className={`mt-0.5 w-4 h-4 rounded-full border shrink-0 flex items-center justify-center ${
+                policyLevel === "TRUSTED" ? "border-blue-600 bg-white" : "border-gray-300 bg-white"
+              }`}>
+                {policyLevel === "TRUSTED" && <span className="w-2 h-2 rounded-full bg-blue-600"></span>}
+              </span>
               <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2">
-                  <span className={`text-sm font-semibold ${policyLevel === "TRUSTED" ? "text-gray-900" : "text-gray-800"}`}>
-                    Trusted
-                  </span>
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-sm font-bold text-gray-900">Trusted</span>
+                  <span className="text-xs text-gray-600">— App can request access to all Google data</span>
                   {policyLevel === "TRUSTED" && (
-                    <span className="text-[10px] font-bold px-2 py-0.2 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
-                      Active Policy
+                    <span className="text-[10px] font-extrabold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 tracking-wide">
+                      ACTIVE
                     </span>
                   )}
                 </div>
-                <p className="text-xs text-gray-600 mt-0.5">
-                  App can request access to all Google data
-                </p>
-
-                {/* Context-Aware Access Exemption Sub-section */}
-                <div className="mt-2.5 pt-2 border-t border-gray-100 space-y-1.5">
-                  <label className="flex items-start gap-2 text-xs text-gray-700 cursor-default select-none">
-                    <input
-                      type="checkbox"
-                      readOnly
-                      checked={isExempt}
-                      className="mt-0.5 rounded border-gray-300 text-blue-600 focus:ring-blue-500 pointer-events-none"
-                    />
-                    <span>
-                      Exempt from having API access blocked by Context-Aware Access levels. Applies only if this app was added by OAuth client ID.{" "}
-                      <a
-                        href="https://support.google.com/a/answer/9275380"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="text-blue-600 hover:underline"
-                      >
-                        Learn about exempting apps.
-                      </a>
+                {policyLevel === "TRUSTED" && (
+                  <div className="mt-1 flex items-center gap-2 text-xs text-gray-600">
+                    <span className={isExempt ? "text-emerald-700 font-medium" : "text-gray-400"}>
+                      {isExempt ? "✓" : "○"} Exempt from Context-Aware Access blocks
                     </span>
-                  </label>
-                  <p className="text-[11px] text-gray-500 pl-5">
-                    This exception is enforced only if a Context-Aware Access level in the same org unit selected in Scope also allows exemptions.
-                  </p>
-
-                  {policyLevel === "TRUSTED" && (
-                    <div className="ml-5 mt-1.5 flex items-start gap-2 bg-blue-50/60 border border-blue-200/60 rounded-lg p-2 text-[11px] text-blue-900">
-                      <span className="text-blue-600 font-bold shrink-0">ℹ</span>
-                      <span>
-                        Allowlisting an app here doesn&apos;t mean it&apos;s immediately exempted from API access blocks. You&apos;ll need to explicitly exempt the app during access level assignments to enforce the exemption.{" "}
-                        <a
-                          href="https://support.google.com/a/answer/9275380"
-                          target="_blank"
-                          rel="noreferrer"
-                          className="font-medium underline hover:text-blue-950"
-                        >
-                          Learn more
-                        </a>
-                      </span>
-                    </div>
-                  )}
-                </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
 
-          {/* Option 2: Limited */}
-          <div className={`p-3.5 rounded-xl border transition-all ${
+          {/* 2. Limited */}
+          <div className={`p-3 px-3.5 transition-colors ${
             policyLevel === "LIMITED"
-              ? "border-blue-400 bg-blue-50/20 ring-1 ring-blue-500/20"
-              : "border-gray-200 bg-white hover:bg-gray-50/50"
+              ? "bg-blue-50/40 border-l-4 border-l-blue-600"
+              : "hover:bg-gray-50/60"
           }`}>
             <div className="flex items-start gap-3">
-              <div className="mt-0.5 shrink-0">
-                <span className={`w-4 h-4 rounded-full border flex items-center justify-center ${
-                  policyLevel === "LIMITED"
-                    ? "border-blue-600 bg-white"
-                    : "border-gray-300 bg-white"
-                }`}>
-                  {policyLevel === "LIMITED" && <span className="w-2 h-2 rounded-full bg-blue-600"></span>}
-                </span>
-              </div>
+              <span className={`mt-0.5 w-4 h-4 rounded-full border shrink-0 flex items-center justify-center ${
+                policyLevel === "LIMITED" ? "border-blue-600 bg-white" : "border-gray-300 bg-white"
+              }`}>
+                {policyLevel === "LIMITED" && <span className="w-2 h-2 rounded-full bg-blue-600"></span>}
+              </span>
               <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2">
-                  <span className={`text-sm font-semibold ${policyLevel === "LIMITED" ? "text-gray-900" : "text-gray-800"}`}>
-                    Limited
-                  </span>
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-sm font-bold text-gray-900">Limited</span>
+                  <span className="text-xs text-gray-600">— App can request access to unrestricted Google data only</span>
                   {policyLevel === "LIMITED" && (
-                    <span className="text-[10px] font-bold px-2 py-0.2 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
-                      Active Policy
+                    <span className="text-[10px] font-extrabold px-2 py-0.5 rounded bg-blue-100 text-blue-800 tracking-wide">
+                      ACTIVE
                     </span>
                   )}
                 </div>
-                <p className="text-xs text-gray-600 mt-0.5">
-                  App can request access to unrestricted Google data
-                </p>
               </div>
             </div>
           </div>
 
-          {/* Option 3: Specific Google data */}
-          <div className={`p-3.5 rounded-xl border transition-all ${
+          {/* 3. Specific Google data */}
+          <div className={`p-3 px-3.5 transition-colors ${
             policyLevel === "SPECIFIC_DATA"
-              ? "border-amber-400 bg-amber-50/20 ring-1 ring-amber-500/20"
-              : "border-gray-200 bg-white hover:bg-gray-50/50"
+              ? "bg-amber-50/40 border-l-4 border-l-amber-600"
+              : "hover:bg-gray-50/60"
           }`}>
             <div className="flex items-start gap-3">
-              <div className="mt-0.5 shrink-0">
-                <span className={`w-4 h-4 rounded-full border flex items-center justify-center ${
-                  policyLevel === "SPECIFIC_DATA"
-                    ? "border-blue-600 bg-white"
-                    : "border-gray-300 bg-white"
-                }`}>
-                  {policyLevel === "SPECIFIC_DATA" && <span className="w-2 h-2 rounded-full bg-blue-600"></span>}
-                </span>
-              </div>
+              <span className={`mt-0.5 w-4 h-4 rounded-full border shrink-0 flex items-center justify-center ${
+                policyLevel === "SPECIFIC_DATA" ? "border-blue-600 bg-white" : "border-gray-300 bg-white"
+              }`}>
+                {policyLevel === "SPECIFIC_DATA" && <span className="w-2 h-2 rounded-full bg-blue-600"></span>}
+              </span>
               <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2">
-                  <span className={`text-sm font-semibold ${policyLevel === "SPECIFIC_DATA" ? "text-gray-900" : "text-gray-800"}`}>
-                    Specific Google data
-                  </span>
-                  {policyLevel === "SPECIFIC_DATA" && (
-                    <span className="text-[10px] font-bold px-2 py-0.2 rounded-full bg-amber-50 text-amber-700 border border-amber-200">
-                      Active Policy
-                    </span>
-                  )}
-                </div>
-                <p className="text-xs text-gray-600 mt-0.5 leading-relaxed">
-                  This app can only request access to user data from the Google services specified below. Note, you must include the Google Sign-in scope below to allow users to sign in with their Google Account.
-                </p>
-
-                {/* Connected Services Table matching screenshot */}
-                <div className="mt-3 border border-gray-200 rounded-lg overflow-hidden bg-white divide-y divide-gray-100">
-                  {servicesList.map(({ service, count }) => (
-                    <div key={service} className="py-2.5 px-3 flex items-center justify-between hover:bg-gray-50/60 transition-colors">
-                      <div className="flex items-center gap-3">
-                        <div className="w-5 h-5 flex items-center justify-center shrink-0">
-                          <GoogleProductIcon service={service} className="w-4 h-4" />
-                        </div>
-                        <span className="text-xs font-medium text-gray-800">{service}</span>
-                      </div>
-                      <span className="text-[11px] text-gray-500 font-mono">
-                        {count} {count === 1 ? "scope" : "scopes"}
+                <div className="flex flex-wrap items-center justify-between gap-1.5">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="text-sm font-bold text-gray-900">Specific Google data</span>
+                    <span className="text-xs text-gray-600">— Restricted to specified services &amp; scopes only</span>
+                    {policyLevel === "SPECIFIC_DATA" && (
+                      <span className="text-[10px] font-extrabold px-2 py-0.5 rounded bg-amber-100 text-amber-800 tracking-wide">
+                        ACTIVE
                       </span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-2.5">
+                    )}
+                  </div>
                   <a
                     href={getAdminConsoleLink(app).url}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-blue-700 bg-blue-50/80 hover:bg-blue-100 border border-blue-200 rounded-lg transition-colors"
+                    className="text-xs text-blue-600 hover:underline font-semibold"
                   >
-                    <span>Update Google services or scopes</span>
-                    <span className="text-blue-500">↗</span>
+                    Update in Google Admin ↗
                   </a>
+                </div>
+
+                {/* Services Chips */}
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {servicesList.map(({ service, count }) => (
+                    <span
+                      key={service}
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-gray-50 border border-gray-200 text-xs font-medium text-gray-700"
+                    >
+                      <GoogleProductIcon service={service} className="w-4 h-4" />
+                      <span>{service}</span>
+                      <span className="text-gray-400 font-mono text-xs">({count})</span>
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Option 4: Blocked */}
-          <div className={`p-3.5 rounded-xl border transition-all ${
+          {/* 4. Blocked */}
+          <div className={`p-3 px-3.5 transition-colors ${
             policyLevel === "BLOCKED"
-              ? "border-red-400 bg-red-50/20 ring-1 ring-red-500/20"
-              : "border-gray-200 bg-white hover:bg-gray-50/50"
+              ? "bg-red-50/40 border-l-4 border-l-red-600"
+              : "hover:bg-gray-50/60"
           }`}>
             <div className="flex items-start gap-3">
-              <div className="mt-0.5 shrink-0">
-                <span className={`w-4 h-4 rounded-full border flex items-center justify-center ${
-                  policyLevel === "BLOCKED"
-                    ? "border-blue-600 bg-white"
-                    : "border-gray-300 bg-white"
-                }`}>
-                  {policyLevel === "BLOCKED" && <span className="w-2 h-2 rounded-full bg-blue-600"></span>}
-                </span>
-              </div>
+              <span className={`mt-0.5 w-4 h-4 rounded-full border shrink-0 flex items-center justify-center ${
+                policyLevel === "BLOCKED" ? "border-blue-600 bg-white" : "border-gray-300 bg-white"
+              }`}>
+                {policyLevel === "BLOCKED" && <span className="w-2 h-2 rounded-full bg-blue-600"></span>}
+              </span>
               <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2">
-                  <span className={`text-sm font-semibold ${policyLevel === "BLOCKED" ? "text-gray-900" : "text-gray-800"}`}>
-                    Blocked
-                  </span>
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-sm font-bold text-gray-900">Blocked</span>
+                  <span className="text-xs text-gray-600">— Blocked from accessing any Google data</span>
                   {policyLevel === "BLOCKED" && (
-                    <span className="text-[10px] font-bold px-2 py-0.2 rounded-full bg-red-50 text-red-700 border border-red-200">
-                      Active Policy
+                    <span className="text-[10px] font-extrabold px-2 py-0.5 rounded bg-red-100 text-red-800 tracking-wide">
+                      ACTIVE
                     </span>
                   )}
                 </div>
-                <p className="text-xs text-gray-600 mt-0.5">
-                  App can&apos;t request access to any Google data
-                </p>
               </div>
             </div>
           </div>
@@ -1602,12 +1530,7 @@ export default function ApplicationsView({
                                   {app.displayName}
                                 </span>
                                 {app.isVerified && (
-                                  <span className="inline-flex items-center gap-1 text-[10px] font-bold text-blue-700 bg-blue-50 border border-blue-200 px-1.5 py-0.5 rounded-full shrink-0" title="Google Workspace Verified">
-                                    <svg className="w-3 h-3 text-blue-600 shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                                    </svg>
-                                    Verified
-                                  </span>
+                                  <GoogleVerifiedBadge size="sm" className="shrink-0" />
                                 )}
                                 {hasDeployments && (
                                   <button
@@ -1774,12 +1697,7 @@ export default function ApplicationsView({
                                       {child.displayName}
                                     </span>
                                     {child.isVerified && (
-                                      <span className="inline-flex items-center gap-0.5 text-[9px] font-bold text-blue-700 bg-blue-50 border border-blue-200 px-1.5 py-0.2 rounded-full shrink-0" title="Google Workspace Verified">
-                                        <svg className="w-2.5 h-2.5 text-blue-600 shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                                        </svg>
-                                        Verified
-                                      </span>
+                                      <GoogleVerifiedBadge size="xs" className="shrink-0" />
                                     )}
                                     <span className="text-[10px] text-gray-400 font-medium">
                                       (Deployment #{childIdx + 2})
@@ -1967,12 +1885,7 @@ export default function ApplicationsView({
                     </div>
                     {getOwnershipBadge(selectedApp.ownership)}
                     {selectedApp.isVerified ? (
-                      <span className="text-xs px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200 font-semibold inline-flex items-center gap-1">
-                        <svg className="w-3 h-3 text-blue-600 shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                        </svg>
-                        Verified
-                      </span>
+                      <GoogleVerifiedBadge size="md" />
                     ) : (
                       <span className="text-xs px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-600 border border-gray-200 font-medium">
                         Unverified
