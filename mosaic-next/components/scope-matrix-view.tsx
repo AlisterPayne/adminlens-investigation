@@ -613,17 +613,28 @@ export default function ScopeMatrixView({
         activeApps,
       };
     }).sort((a, b) => {
+      // In client view, prioritize services with active apps first
+      if (!isBackend && b.activeApps !== a.activeApps) {
+        return b.activeApps - a.activeApps;
+      }
       // Rank from the service that has the most APIs/scopes to the least
       if (b.total !== a.total) {
         return b.total - a.total;
       }
-      const avgDiff = parseFloat(b.avgScore) - parseFloat(a.avgScore);
-      if (Math.abs(avgDiff) > 0.001) {
-        return avgDiff;
+      if (isBackend) {
+        const avgDiff = parseFloat(b.avgScore) - parseFloat(a.avgScore);
+        if (Math.abs(avgDiff) > 0.001) {
+          return avgDiff;
+        }
+      } else {
+        const restrictedDiff = b.restricted - a.restricted;
+        if (restrictedDiff !== 0) {
+          return restrictedDiff;
+        }
       }
       return a.serviceName.localeCompare(b.serviceName);
     });
-  }, [filteredScopes, serviceActiveAppCounts]);
+  }, [filteredScopes, serviceActiveAppCounts, isBackend]);
 
   // Helper to resolve apps for a given scope strictly from client workspace applications
   const getScopeApps = (s: ScopeReferenceItem): ScopeAppInfo[] => {
@@ -811,7 +822,7 @@ export default function ScopeMatrixView({
 
         {/* Right: Granular Filters */}
         <div className="flex items-center gap-2.5 flex-wrap w-full md:w-auto">
-          {(serviceFilter !== "ALL" || tierFilter !== "ALL" || scoreFilter !== "ALL" || (!isBackend && activeOnly) || search.trim() !== "") && (
+          {(serviceFilter !== "ALL" || tierFilter !== "ALL" || (isBackend && scoreFilter !== "ALL") || (!isBackend && activeOnly) || search.trim() !== "") && (
             <button
               type="button"
               onClick={() => {
@@ -863,24 +874,24 @@ export default function ScopeMatrixView({
             </select>
           </div>
 
-          {/* Threat Score Filter */}
-          <div className="flex items-center gap-1.5">
-            <label className="text-xs text-gray-500 font-semibold">Threat Score:</label>
-            <select
-              value={scoreFilter}
-              onChange={(e) => setScoreFilter(e.target.value)}
-              className={`bg-gray-50 border border-gray-300 rounded-lg px-2.5 py-1.5 text-xs text-gray-800 focus:outline-none ${
-                isBackend ? "focus:border-emerald-500" : "focus:border-blue-500"
-              }`}
-            >
-              <option value="ALL">All Scores</option>
-              <option value="5">🔴 Critical</option>
-              <option value="4">🟠 High</option>
-              <option value="3">🟡 Moderate</option>
-              <option value="2">🟢 Minor</option>
-              <option value="1">🔵 Low</option>
-            </select>
-          </div>
+          {/* Threat Score Filter (Backend only) */}
+          {isBackend && (
+            <div className="flex items-center gap-1.5">
+              <label className="text-xs text-gray-500 font-semibold">Threat Score:</label>
+              <select
+                value={scoreFilter}
+                onChange={(e) => setScoreFilter(e.target.value)}
+                className="bg-gray-50 border border-gray-300 rounded-lg px-2.5 py-1.5 text-xs text-gray-800 focus:outline-none focus:border-emerald-500"
+              >
+                <option value="ALL">All Scores</option>
+                <option value="5">🔴 Critical</option>
+                <option value="4">🟠 High</option>
+                <option value="3">🟡 Moderate</option>
+                <option value="2">🟢 Minor</option>
+                <option value="1">🔵 Low</option>
+              </select>
+            </div>
+          )}
 
           {/* Active Apps Only (Tenant specific - only shown in client mode) */}
           {!isBackend && (
@@ -908,7 +919,9 @@ export default function ScopeMatrixView({
               <span>Showing <strong className="text-gray-900">{groupedByService.length}</strong> Google Services</span>
               <span>•</span>
               <span className="text-gray-500">
-                Ranked by accessing applications &amp; average threat score
+                {isBackend
+                  ? "Ranked by accessing applications & average threat score"
+                  : "Ranked by accessing applications & Google tiers"}
               </span>
             </div>
             <div className="flex items-center gap-2 self-end sm:self-auto">
@@ -987,14 +1000,16 @@ export default function ScopeMatrixView({
 
                     {/* Service Controls: Threat Info Popover & Chevron */}
                     <div className="flex items-center gap-2 self-end md:self-auto">
-                      <div onClick={(e) => e.stopPropagation()}>
-                        <ServiceThreatInfoPopover
-                          serviceName={grp.serviceName}
-                          avgScore={grp.avgScore}
-                          criticalCount={grp.criticalCount}
-                          maxScore={grp.maxScore}
-                        />
-                      </div>
+                      {isBackend && (
+                        <div onClick={(e) => e.stopPropagation()}>
+                          <ServiceThreatInfoPopover
+                            serviceName={grp.serviceName}
+                            avgScore={grp.avgScore}
+                            criticalCount={grp.criticalCount}
+                            maxScore={grp.maxScore}
+                          />
+                        </div>
+                      )}
 
                       <div
                         className="w-8 h-8 rounded-lg border border-gray-200 bg-white flex items-center justify-center text-gray-500 shadow-2xs hover:bg-gray-50 transition-colors"
@@ -1019,7 +1034,7 @@ export default function ScopeMatrixView({
                         <colgroup>
                           <col style={{ width: isBackend ? "40%" : "35%" }} />
                           <col style={{ width: "140px" }} />
-                          <col style={{ width: "160px" }} />
+                          {isBackend && <col style={{ width: "160px" }} />}
                           <col />
                           {!isBackend && <col style={{ width: "120px" }} />}
                         </colgroup>
@@ -1027,7 +1042,7 @@ export default function ScopeMatrixView({
                           <tr>
                             <th className="py-2.5 px-4" style={{ width: isBackend ? "40%" : "35%" }}>OAuth Scope URI</th>
                             <th className="py-2.5 px-4" style={{ width: "140px" }}>Google Tier</th>
-                            <th className="py-2.5 px-4" style={{ width: "160px" }}>Admin Score</th>
+                            {isBackend && <th className="py-2.5 px-4" style={{ width: "160px" }}>Admin Score</th>}
                             <th className="py-2.5 px-4">Threat Rationale &amp; Exploit Impact</th>
                             {!isBackend && <th className="py-2.5 px-4 text-center" style={{ width: "120px" }}>Tenant Apps</th>}
                           </tr>
@@ -1053,10 +1068,12 @@ export default function ScopeMatrixView({
                                   {getTierBadge(s.google_tier)}
                                 </td>
 
-                                {/* Admin Threat Score */}
-                                <td className="py-3 px-4 whitespace-nowrap">
-                                  {getScoreBadge(s.admin_score)}
-                                </td>
+                                {/* Admin Threat Score (Backend only) */}
+                                {isBackend && (
+                                  <td className="py-3 px-4 whitespace-nowrap">
+                                    {getScoreBadge(s.admin_score)}
+                                  </td>
+                                )}
 
                                 {/* Threat Rationale & Impact */}
                                 <td className="py-3 px-4">
@@ -1110,7 +1127,7 @@ export default function ScopeMatrixView({
                 <th className="py-3 px-4">OAuth Scope URI</th>
                 <th className="py-3 px-4">Service</th>
                 <th className="py-3 px-4">Google Tier</th>
-                <th className="py-3 px-4">Admin Score</th>
+                {isBackend && <th className="py-3 px-4">Admin Score</th>}
                 <th className="py-3 px-4">Threat Rationale &amp; Technical Impact</th>
                 {!isBackend && <th className="py-3 px-4 text-center">Tenant Footprint</th>}
               </tr>
@@ -1119,7 +1136,7 @@ export default function ScopeMatrixView({
               {filteredScopes.length === 0 ? (
                 <tr>
                   <td
-                    colSpan={isBackend ? 5 : 6}
+                    colSpan={5}
                     className="py-12 text-center text-gray-400 font-medium"
                   >
                     No OAuth scopes match the selected filters.
@@ -1154,10 +1171,12 @@ export default function ScopeMatrixView({
                         {getTierBadge(s.google_tier)}
                       </td>
 
-                      {/* Admin Score */}
-                      <td className="py-3.5 px-4 whitespace-nowrap">
-                        {getScoreBadge(s.admin_score)}
-                      </td>
+                      {/* Admin Score (Backend only) */}
+                      {isBackend && (
+                        <td className="py-3.5 px-4 whitespace-nowrap">
+                          {getScoreBadge(s.admin_score)}
+                        </td>
+                      )}
 
                       {/* Threat Rationale & Technical Impact */}
                       <td className="py-3.5 px-4 max-w-md">

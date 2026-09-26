@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+
 import ScopeMatrixView from "@/components/scope-matrix-view";
 
 export const metadata = {

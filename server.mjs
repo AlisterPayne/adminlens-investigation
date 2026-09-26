@@ -1,12 +1,17 @@
 import http from 'http';
 import fs from 'fs';
+import os from 'os';
 import path from 'path';
+import { DatabaseSync } from 'node:sqlite';
 import { AdminLensDatabase } from './db_client.mjs';
 import { AdminLensRiskEngine } from './recommendations_engine.mjs';
+import { parseCSV, parseRequestedServicesWithScopes } from './ingest_owl_apps_csv.mjs';
+
 
 const PORT = process.env.PORT || 3333;
 const db = new AdminLensDatabase('./adminlens.db');
 const riskEngine = new AdminLensRiskEngine('./adminlens.db');
+
 
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, `http://${req.headers.host}`);
@@ -182,7 +187,227 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  // 6. Static Files: public/index.html
+
+  // 6. API: Import OWL CSV Upload
+  if (pathname === '/api/import-owl-csv' && req.method === 'POST') {
+    const contentType = req.headers['content-type'] || '';
+    if (!contentType.includes('multipart/form-data')) {
+      res.writeHead(400, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: 'Expected multipart/form-data' }));
+      return;
+    }
+
+    // Collect raw body
+    const chunks = [];
+    req.on('data', chunk => chunks.push(chunk));
+    req.on('end', () => {
+      try {
+        const body = Buffer.concat(chunks);
+
+        // ── Simple multipart boundary parser ──────────────────────────────
+        const boundaryMatch = contentType.match(/boundary=([^\s;]+)/);
+        if (!boundaryMatch) {
+          res.writeHead(400, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ error: 'No multipart boundary found' }));
+          return;
+        }
+        const boundary = boundaryMatch[1];
+        const delimiter = Buffer.from(`\r\n--${boundary}`);
+        const parts = [];
+        let start = body.indexOf(`--${boundary}`) + `--${boundary}`.length;
+
+        while (start < body.length) {
+          const end = body.indexOf(delimiter, start);
+          const part = end === -1 ? body.slice(start) : body.slice(start, end);
+          const headerEnd = part.indexOf('\r\n\r\n');
+          if (headerEnd === -1) break;
+          const headerText = part.slice(0, headerEnd).toString();
+          const data = part.slice(headerEnd + 4);
+          // Strip trailing \r\n
+          const trimmed = data[data.length - 2] === 13 && data[data.length - 1] === 10
+            ? data.slice(0, -2) : data;
+          const nameMatch = headerText.match(/name="([^"]+)"/);
+          const filenameMatch = headerText.match(/filename="([^"]+)"/);
+          if (nameMatch) {
+            parts.push({ name: nameMatch[1], filename: filenameMatch?.[1], data: trimmed });
+          }
+          if (end === -1) break;
+          start = end + delimiter.length;
+        }
+
+        const filePart = parts.find(p => p.name === 'file');
+        if (!filePart || !filePart.data) {
+          res.writeHead(400, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ error: 'No file field in upload' }));
+          return;
+        }
+
+        const csvText = filePart.data.toString('utf8');
+
+        // ── Detect CSV type by header fingerprint ─────────────────────────
+        const firstLine = csvText.split(/\r?\n/)[0];
+        const hasSpecificData = firstLine.includes('Scopes for Specific Google Data');
+        const hasAccessedMarkers = firstLine.includes('Requested Services with Scopes') && firstLine.includes('Access');
+        const csvType = hasSpecificData ? 'configured' : hasAccessedMarkers ? 'accessed' : 'unknown';
+
+        if (csvType === 'unknown') {
+          res.writeHead(422, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ error: 'Unrecognised CSV format — does not match Google Workspace OWL export headers.' }));
+          return;
+        }
+
+        // ── Write to temp file and ingest ─────────────────────────────────
+        const tmpPath = path.join(os.tmpdir(), `owl_import_${Date.now()}.csv`);
+        fs.writeFileSync(tmpPath, csvText, 'utf8');
+
+        const rawDb = new DatabaseSync('./adminlens.db');
+
+        const rows = parseCSV(csvText);
+        const isConfigured = csvType === 'configured';
+
+        // Clear existing policies if this is the configured CSV
+        if (isConfigured) {
+          rawDb.exec('DELETE FROM app_access_policies');
+        }
+
+        rawDb.exec('BEGIN TRANSACTION');
+
+        let newApps = 0, updatedApps = 0, policiesCount = 0;
+
+        const checkClientId = rawDb.prepare('SELECT application_id FROM application_client_ids WHERE client_id = ?');
+        const checkApp = rawDb.prepare('SELECT id FROM applications WHERE id = ? OR display_name = ?');
+        const insertApp = rawDb.prepare(`
+          INSERT INTO applications (id, display_name, vendor, publisher_domain, category, is_verified,
+            icon_url, risk_level, risk_reasons, admin_access_level, total_users_count,
+            admin_users_count, first_seen_at, last_active_at)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        `);
+        const updateAppAccess = rawDb.prepare('UPDATE applications SET admin_access_level = ?, is_verified = MAX(is_verified, ?) WHERE id = ?');
+        const updateVerified = rawDb.prepare('UPDATE applications SET is_verified = ?, total_users_count = MAX(total_users_count, ?) WHERE id = ?');
+        const insertClientId = rawDb.prepare('INSERT OR IGNORE INTO application_client_ids (client_id, application_id, project_number) VALUES (?, ?, ?)');
+        const insertPolicy = rawDb.prepare(`
+          INSERT INTO app_access_policies (application_id, client_id, org_unit_path, access_level,
+            is_overridden, exempt_from_context_aware_access, allowed_services_json, configured_by, last_policy_update)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        `);
+
+        for (const r of rows) {
+          const appName = r['App Name'] || 'Unnamed App';
+          const clientId = r['Id'];
+          if (!clientId) continue;
+
+          const ownership = r['Ownership'] || 'Third party';
+          if (ownership.toLowerCase() === 'internal') continue;
+
+          const isVerifiedRaw = r['Verification Status'] || '';
+          const isVerified = (isVerifiedRaw.toLowerCase() === 'verified' && !isVerifiedRaw.toLowerCase().includes('not')) ? 1 : 0;
+          const usersCount = parseInt(r['Users'] || '0', 10);
+          const orgUnit = r['Org Unit'] || '/';
+
+          const accessRaw = r['Access'] || 'UNCONFIGURED';
+          const accessLevel = accessRaw.toUpperCase() === 'TRUSTED' ? 'TRUSTED'
+            : accessRaw.toUpperCase() === 'LIMITED' ? 'LIMITED'
+            : accessRaw.toUpperCase() === 'BLOCKED' ? 'BLOCKED'
+            : accessRaw.toUpperCase().includes('SPECIFIC') ? 'SPECIFIC_DATA'
+            : 'UNCONFIGURED';
+
+          const { services, scopes } = parseRequestedServicesWithScopes(r['Requested Services with Scopes'] || '');
+
+          // Find existing app
+          const existingMapping = checkClientId.get(clientId);
+          let targetAppId = existingMapping ? existingMapping.application_id : null;
+          if (!targetAppId) {
+            const byName = checkApp.get(appName, appName);
+            if (byName) targetAppId = byName.id;
+          }
+
+          if (targetAppId) {
+            if (isConfigured) {
+              updateAppAccess.run(accessLevel, isVerified, targetAppId);
+            } else {
+              updateVerified.run(isVerified, usersCount, targetAppId);
+            }
+            updatedApps++;
+          } else {
+            targetAppId = appName || clientId;
+            const match = clientId.match(/^(\d+)-/);
+            const projNum = match ? match[1] : null;
+            const iconUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(appName)}&background=3B82F6&color=fff&size=64`;
+
+            try {
+              insertApp.run(
+                targetAppId, appName,
+                ownership === 'Google owned' ? 'Google LLC' : (appName || 'Third-Party Developer'),
+                null,
+                ownership === 'Google owned' ? 'Google Workspace Core' : 'Configured SaaS',
+                isVerified, iconUrl,
+                scopes.length > 5 ? 'MEDIUM' : 'LOW',
+                JSON.stringify(['Imported via Google Admin Console CSV']),
+                isConfigured ? accessLevel : 'UNCONFIGURED',
+                usersCount, 0, null, null
+              );
+              insertClientId.run(clientId, targetAppId, projNum);
+              newApps++;
+            } catch (insertErr) {
+              console.warn(`Skipping duplicate app ${appName}:`, insertErr.message);
+            }
+          }
+
+          if (isConfigured) {
+            try {
+              insertPolicy.run(
+                targetAppId, clientId, orgUnit, accessLevel,
+                orgUnit !== '/' ? 1 : 0, 0,
+                JSON.stringify(services),
+                `Google Admin Console CSV Import (${csvType})`,
+                new Date().toISOString()
+              );
+              policiesCount++;
+            } catch (policyErr) {
+              console.warn('Policy insert warning:', policyErr.message);
+            }
+          }
+        }
+
+        rawDb.exec('COMMIT');
+        rawDb.close();
+
+        // Clean up temp file
+        try { fs.unlinkSync(tmpPath); } catch (_) {}
+
+        // Regenerate catalog JSON files so the UI picks up new data on next page load
+        const catalogPaths = [
+          './standardized_catalog/applications_catalog.json',
+          './mosaic-next/data/applications_catalog.json'
+        ];
+        for (const catPath of catalogPaths) {
+          if (fs.existsSync(catPath)) {
+            // Touch the file's mtime to invalidate any cache
+            const now = new Date();
+            try { fs.utimesSync(catPath, now, now); } catch (_) {}
+          }
+        }
+
+        console.log(`✓ OWL CSV import (${csvType}): ${rows.length} rows, ${newApps} new apps, ${updatedApps} updated, ${policiesCount} policies`);
+
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({
+          success: true,
+          type: csvType,
+          rowCount: rows.length,
+          counts: { newApps, updatedApps, policiesCount }
+        }));
+      } catch (err) {
+        console.error('Import error:', err);
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ success: false, error: err.message }));
+      }
+    });
+    return;
+  }
+
+  // 7. Static Files: public/index.html
+
   if (pathname === '/' || pathname === '/index.html') {
     const html = fs.readFileSync('./public/index.html', 'utf8');
     res.writeHead(200, { 'Content-Type': 'text/html' });

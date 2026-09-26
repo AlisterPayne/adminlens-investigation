@@ -40,6 +40,7 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
   const isClientScopesActive = isClientWorkspace && currentTab === "scopes";
   const isClientRecsActive = isClientWorkspace && currentTab === "recs";
   const isClientTimelineActive = isClientWorkspace && currentTab === "timeline";
+  const isDataImportActive = isClientWorkspace && currentTab === "import";
 
   const isAdminScopesActive = segments.includes("scopes");
   const isAdminRepoActive = segments.includes("central-database");
@@ -174,6 +175,23 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
                         Access Timeline
                       </span>
                     </div>
+                  </div>
+                </SidebarLink>
+              </li>
+
+              {/* Data Import (5th Item) */}
+              <li className={`px-2.5 py-2 rounded-lg transition-colors ${isDataImportActive ? "bg-blue-50 text-blue-700 font-semibold" : "hover:bg-gray-100 text-gray-700"}`}>
+                <SidebarLink href="/dashboard?tab=import" onClick={() => setCurrentTab("import")}>
+                  <div className="flex items-center justify-between w-full">
+                    <div className="flex items-center">
+                      <svg className={`shrink-0 h-4.5 w-4.5 ${isDataImportActive ? "text-blue-600" : "text-gray-500"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                      </svg>
+                      <span className="text-sm ml-2.5 font-medium">
+                        Data Import
+                      </span>
+                    </div>
+                    <span className="ml-1.5 flex h-2 w-2 shrink-0 rounded-full bg-blue-400 opacity-80" title="Import CSV data" />
                   </div>
                 </SidebarLink>
               </li>

@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
 import Link from "next/link";
-import { GoogleProductIcon, GoogleAdminIcon } from "@/components/google-icons";
+import React, { useMemo,useState } from "react";
+
+import { GoogleAdminIcon,GoogleProductIcon } from "@/components/google-icons";
 
 export interface ApplicationScope {
   scope: string;
@@ -52,9 +53,14 @@ export interface ApplicationItem {
   totalUsersCount?: number;
   adminUsersCount?: number;
   adminAccessLevel?: string;
-  accessPolicy?: string;
+  accessPolicy?: any;
   adminConsoleUrl?: string;
   users?: any[];
+  lastActive?: string | null;
+  lastActiveFormatted?: string;
+  isStale?: boolean;
+  isNew?: boolean;
+  totalActivityEvents?: number;
 }
 
 export interface ApplicationsViewProps {
@@ -97,6 +103,7 @@ export default function ApplicationsView({
   const [selectedRisk, setSelectedRisk] = useState("ALL");
   const [selectedType, setSelectedType] = useState("ALL");
   const [selectedVerified, setSelectedVerified] = useState("ALL");
+  const [selectedConfig, setSelectedConfig] = useState("ALL");
   const [catalogFilter, setCatalogFilter] = useState<"ALL" | "VERIFIED" | "COMPLIANT" | "HIGH_RISK">("ALL");
 
   // Pagination state
@@ -142,6 +149,51 @@ export default function ApplicationsView({
     };
   };
 
+  const renderLastActive = (app: ApplicationItem) => {
+    const { lastActive, totalActivityEvents } = app;
+
+    // Helper: relative time string
+    const relativeTime = (iso: string) => {
+      const diffMs = Date.now() - new Date(iso).getTime();
+      const days = Math.floor(diffMs / 86400000);
+      if (days === 0) return "Today";
+      if (days === 1) return "Yesterday";
+      if (days < 30) return `${days}d ago`;
+      const months = Math.floor(days / 30);
+      if (months < 12) return `${months}mo ago`;
+      return `${Math.floor(months / 12)}yr ago`;
+    };
+
+    if (!lastActive || !totalActivityEvents) {
+      return (
+        <div className="flex flex-col gap-0.5">
+          <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-gray-100 text-gray-500 border border-gray-200 w-fit">
+            <span className="h-1.5 w-1.5 rounded-full bg-gray-400 shrink-0" />
+            No Activity
+          </span>
+          <span className="text-[10px] text-gray-400 pl-1">No events recorded</span>
+        </div>
+      );
+    }
+
+    const diffDays = Math.floor((Date.now() - new Date(lastActive).getTime()) / 86400000);
+    const isActive = diffDays <= 30;
+
+    return (
+      <div className="flex flex-col gap-0.5">
+        <span className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-semibold border w-fit ${
+          isActive
+            ? "bg-emerald-50 text-emerald-700 border-emerald-200"
+            : "bg-amber-50 text-amber-700 border-amber-200"
+        }`}>
+          <span className={`h-1.5 w-1.5 rounded-full shrink-0 ${isActive ? "bg-emerald-500" : "bg-amber-500"}`} />
+          {isActive ? "Active" : "Stale"}
+        </span>
+        <span className="text-[10px] text-gray-400 pl-1">{relativeTime(lastActive)}</span>
+      </div>
+    );
+  };
+
   const getRiskBadge = (level: string) => {
     switch (level?.toUpperCase()) {
       case "CRITICAL":
@@ -178,6 +230,66 @@ export default function ApplicationsView({
           <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-semibold text-blue-700 border border-blue-200">
             <span className="h-1.5 w-1.5 rounded-full bg-blue-600"></span>
             <span>Low</span>
+          </span>
+        );
+    }
+  };
+
+  const getNormalizedAccessLevel = (app?: { adminAccessLevel?: string; accessPolicy?: any } | null) => {
+    if (!app) return "UNCONFIGURED";
+    let raw = app.adminAccessLevel;
+    if ((!raw || raw === "UNCONFIGURED") && app.accessPolicy) {
+      if (typeof app.accessPolicy === "string") {
+        raw = app.accessPolicy;
+      } else if (typeof app.accessPolicy === "object" && app.accessPolicy.accessLevel) {
+        raw = app.accessPolicy.accessLevel;
+      }
+    }
+    if (!raw) return "UNCONFIGURED";
+    const upper = raw.trim().toUpperCase();
+    if (upper === "TRUSTED") return "TRUSTED";
+    if (upper === "LIMITED") return "LIMITED";
+    if (upper === "BLOCKED") return "BLOCKED";
+    if (upper.includes("SPECIFIC")) return "SPECIFIC_DATA";
+    if (upper === "UNCONFIGURED") return "UNCONFIGURED";
+    return upper;
+  };
+
+  const renderConfigurationBadge = (app: ApplicationItem) => {
+    const level = getNormalizedAccessLevel(app);
+    switch (level) {
+      case "TRUSTED":
+        return (
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 shadow-2xs whitespace-nowrap">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+            Trusted
+          </span>
+        );
+      case "LIMITED":
+        return (
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200 shadow-2xs whitespace-nowrap">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+            Limited
+          </span>
+        );
+      case "SPECIFIC_DATA":
+        return (
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200 shadow-2xs whitespace-nowrap">
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-600"></span>
+            Specific Google Data
+          </span>
+        );
+      case "BLOCKED":
+        return (
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-red-50 text-red-700 border border-red-200 shadow-2xs whitespace-nowrap">
+            <span className="w-1.5 h-1.5 rounded-full bg-red-600"></span>
+            Blocked
+          </span>
+        );
+      default:
+        return (
+          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-50 text-gray-400 border border-gray-200 opacity-60 whitespace-nowrap">
+            Unconfigured
           </span>
         );
     }
@@ -375,6 +487,367 @@ export default function ApplicationsView({
     }
   };
 
+  // Collapsible scopes list component (client-side popup, no descriptions shown)
+  const ScopesCollapsible = ({
+    scopes,
+    scopesCount,
+  }: {
+    scopes?: ApplicationScope[];
+    scopesCount: number;
+  }) => {
+    const [open, setOpen] = useState(false);
+    return (
+      <div>
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          className="flex w-full justify-between items-center mb-2 group focus:outline-none"
+        >
+          <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+            Requested Scopes ({scopesCount})
+          </h3>
+          <span className="flex items-center gap-1 text-[11px] text-gray-400 group-hover:text-gray-600 transition-colors">
+            <span>Google Workspace OAuth Permissions</span>
+            <svg
+              className={`w-3.5 h-3.5 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </span>
+        </button>
+
+        {open && (
+          scopes && scopes.length > 0 ? (
+            <div className="space-y-1.5 text-xs">
+              {scopes.map((s, i) => (
+                <div key={i} className="bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 flex justify-between items-center gap-3">
+                  <div className="flex items-center gap-2 min-w-0">
+                    <div className="w-5 h-5 bg-white rounded p-0.5 border border-gray-200/60 flex items-center justify-center shrink-0">
+                      <GoogleProductIcon service={s.service || s.scope} className="w-3.5 h-3.5" />
+                    </div>
+                    <span className="truncate font-mono text-gray-800">{s.scope}</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    {getTierBadge(s.googleTier)}
+                    {getScoreBadge(s.adminScore)}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg text-xs text-gray-500 text-center">
+              No elevated or sensitive Google Workspace OAuth scopes registered for this application.
+            </div>
+          )
+        )}
+      </div>
+    );
+  };
+
+  {/* ============================================================== */}
+  {/* GOOGLE ADMIN CONSOLE ACCESS POLICY (ALL 4 OPTIONS VISUALIZER) */}
+  {/* ============================================================== */}
+  const GoogleAdminAccessPolicyOptions = ({
+    app,
+    getAdminConsoleLink,
+  }: {
+    app: ApplicationItem;
+    getAdminConsoleLink: (app: ApplicationItem) => { url: string; label: string; tabName: string };
+  }) => {
+    const policyLevel = getNormalizedAccessLevel(app);
+    const isConfigured = policyLevel !== "UNCONFIGURED";
+    const orgUnit = typeof app.accessPolicy === "object" && app.accessPolicy?.orgUnitPath ? app.accessPolicy.orgUnitPath : "/";
+    const isOverridden = typeof app.accessPolicy === "object" && Boolean(app.accessPolicy?.isOverridden);
+    const isExempt = typeof app.accessPolicy === "object" && Boolean(app.accessPolicy?.exemptFromContextAwareAccess);
+
+    // Group services for Specific Google data
+    const servicesList = useMemo(() => {
+      const map = new Map<string, number>();
+      (app.scopes || []).forEach((s: any) => {
+        let svc = s.service;
+        if (!svc) {
+          const sc = (s.scope || "").toLowerCase();
+          if (sc.includes("drive")) svc = "Drive";
+          else if (sc.includes("gmail") || sc.includes("mail")) svc = "Gmail";
+          else if (sc.includes("calendar")) svc = "Calendar";
+          else if (sc.includes("contacts")) svc = "Contacts";
+          else if (sc.includes("classroom")) svc = "Classroom";
+          else if (sc.includes("cloud-platform")) svc = "Cloud Platform";
+          else if (sc.includes("userinfo") || sc.includes("openid") || sc.includes("profile")) svc = "Google Sign-in";
+          else svc = "Other";
+        }
+        map.set(svc, (map.get(svc) || 0) + 1);
+      });
+
+      if (map.size === 0 && app.servicesTouched && app.servicesTouched.length > 0) {
+        app.servicesTouched.forEach((svc: string) => {
+          map.set(svc, 1);
+        });
+      }
+
+      if (map.size === 0) {
+        map.set("Google Sign-in", 1);
+      }
+
+      return Array.from(map.entries()).map(([service, count]) => ({
+        service,
+        count,
+      }));
+    }, [app]);
+
+    return (
+      <div className="bg-white border border-gray-200 rounded-xl p-5 space-y-4 shadow-xs">
+        <div className="flex flex-wrap items-start justify-between gap-3 border-b border-gray-100 pb-3">
+          <div>
+            <div className="text-xs font-semibold text-gray-800">
+              Select what type of access this app has to Google data for users in the selected org unit.
+            </div>
+            <div className="flex flex-wrap items-center gap-2 mt-1 text-[11px] text-gray-500">
+              <span>
+                Org Unit: <strong className="font-mono text-gray-700">{orgUnit}</strong> ({isOverridden ? "Direct OU Override" : "Inherited from Domain Root"})
+              </span>
+              <span>•</span>
+              <a
+                href="https://support.google.com/a/answer/7281227"
+                target="_blank"
+                rel="noreferrer"
+                className="text-blue-600 hover:underline"
+              >
+                Learn more about app access ↗
+              </a>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2">
+            {isConfigured ? (
+              <span className="text-[11px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full shadow-2xs">
+                Configured in Google Workspace
+              </span>
+            ) : (
+              <span className="inline-flex items-center gap-1 text-[11px] font-medium bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full">
+                ⚪ Unconfigured in Google Admin
+              </span>
+            )}
+          </div>
+        </div>
+
+        {/* 4 Radio Options */}
+        <div className="space-y-3.5">
+          {/* Option 1: Trusted */}
+          <div className={`p-3.5 rounded-xl border transition-all ${
+            policyLevel === "TRUSTED"
+              ? "border-emerald-400 bg-emerald-50/20 ring-1 ring-emerald-500/20"
+              : "border-gray-200 bg-white hover:bg-gray-50/50"
+          }`}>
+            <div className="flex items-start gap-3">
+              <div className="mt-0.5 shrink-0">
+                <span className={`w-4 h-4 rounded-full border flex items-center justify-center ${
+                  policyLevel === "TRUSTED"
+                    ? "border-blue-600 bg-white"
+                    : "border-gray-300 bg-white"
+                }`}>
+                  {policyLevel === "TRUSTED" && <span className="w-2 h-2 rounded-full bg-blue-600"></span>}
+                </span>
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2">
+                  <span className={`text-sm font-semibold ${policyLevel === "TRUSTED" ? "text-gray-900" : "text-gray-800"}`}>
+                    Trusted
+                  </span>
+                  {policyLevel === "TRUSTED" && (
+                    <span className="text-[10px] font-bold px-2 py-0.2 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+                      Active Policy
+                    </span>
+                  )}
+                </div>
+                <p className="text-xs text-gray-600 mt-0.5">
+                  App can request access to all Google data
+                </p>
+
+                {/* Context-Aware Access Exemption Sub-section */}
+                <div className="mt-2.5 pt-2 border-t border-gray-100 space-y-1.5">
+                  <label className="flex items-start gap-2 text-xs text-gray-700 cursor-default select-none">
+                    <input
+                      type="checkbox"
+                      readOnly
+                      checked={isExempt}
+                      className="mt-0.5 rounded border-gray-300 text-blue-600 focus:ring-blue-500 pointer-events-none"
+                    />
+                    <span>
+                      Exempt from having API access blocked by Context-Aware Access levels. Applies only if this app was added by OAuth client ID.{" "}
+                      <a
+                        href="https://support.google.com/a/answer/9275380"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-blue-600 hover:underline"
+                      >
+                        Learn about exempting apps.
+                      </a>
+                    </span>
+                  </label>
+                  <p className="text-[11px] text-gray-500 pl-5">
+                    This exception is enforced only if a Context-Aware Access level in the same org unit selected in Scope also allows exemptions.
+                  </p>
+
+                  {policyLevel === "TRUSTED" && (
+                    <div className="ml-5 mt-1.5 flex items-start gap-2 bg-blue-50/60 border border-blue-200/60 rounded-lg p-2 text-[11px] text-blue-900">
+                      <span className="text-blue-600 font-bold shrink-0">ℹ</span>
+                      <span>
+                        Allowlisting an app here doesn&apos;t mean it&apos;s immediately exempted from API access blocks. You&apos;ll need to explicitly exempt the app during access level assignments to enforce the exemption.{" "}
+                        <a
+                          href="https://support.google.com/a/answer/9275380"
+                          target="_blank"
+                          rel="noreferrer"
+                          className="font-medium underline hover:text-blue-950"
+                        >
+                          Learn more
+                        </a>
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Option 2: Limited */}
+          <div className={`p-3.5 rounded-xl border transition-all ${
+            policyLevel === "LIMITED"
+              ? "border-blue-400 bg-blue-50/20 ring-1 ring-blue-500/20"
+              : "border-gray-200 bg-white hover:bg-gray-50/50"
+          }`}>
+            <div className="flex items-start gap-3">
+              <div className="mt-0.5 shrink-0">
+                <span className={`w-4 h-4 rounded-full border flex items-center justify-center ${
+                  policyLevel === "LIMITED"
+                    ? "border-blue-600 bg-white"
+                    : "border-gray-300 bg-white"
+                }`}>
+                  {policyLevel === "LIMITED" && <span className="w-2 h-2 rounded-full bg-blue-600"></span>}
+                </span>
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2">
+                  <span className={`text-sm font-semibold ${policyLevel === "LIMITED" ? "text-gray-900" : "text-gray-800"}`}>
+                    Limited
+                  </span>
+                  {policyLevel === "LIMITED" && (
+                    <span className="text-[10px] font-bold px-2 py-0.2 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
+                      Active Policy
+                    </span>
+                  )}
+                </div>
+                <p className="text-xs text-gray-600 mt-0.5">
+                  App can request access to unrestricted Google data
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Option 3: Specific Google data */}
+          <div className={`p-3.5 rounded-xl border transition-all ${
+            policyLevel === "SPECIFIC_DATA"
+              ? "border-amber-400 bg-amber-50/20 ring-1 ring-amber-500/20"
+              : "border-gray-200 bg-white hover:bg-gray-50/50"
+          }`}>
+            <div className="flex items-start gap-3">
+              <div className="mt-0.5 shrink-0">
+                <span className={`w-4 h-4 rounded-full border flex items-center justify-center ${
+                  policyLevel === "SPECIFIC_DATA"
+                    ? "border-blue-600 bg-white"
+                    : "border-gray-300 bg-white"
+                }`}>
+                  {policyLevel === "SPECIFIC_DATA" && <span className="w-2 h-2 rounded-full bg-blue-600"></span>}
+                </span>
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2">
+                  <span className={`text-sm font-semibold ${policyLevel === "SPECIFIC_DATA" ? "text-gray-900" : "text-gray-800"}`}>
+                    Specific Google data
+                  </span>
+                  {policyLevel === "SPECIFIC_DATA" && (
+                    <span className="text-[10px] font-bold px-2 py-0.2 rounded-full bg-amber-50 text-amber-700 border border-amber-200">
+                      Active Policy
+                    </span>
+                  )}
+                </div>
+                <p className="text-xs text-gray-600 mt-0.5 leading-relaxed">
+                  This app can only request access to user data from the Google services specified below. Note, you must include the Google Sign-in scope below to allow users to sign in with their Google Account.
+                </p>
+
+                {/* Connected Services Table matching screenshot */}
+                <div className="mt-3 border border-gray-200 rounded-lg overflow-hidden bg-white divide-y divide-gray-100">
+                  {servicesList.map(({ service, count }) => (
+                    <div key={service} className="py-2.5 px-3 flex items-center justify-between hover:bg-gray-50/60 transition-colors">
+                      <div className="flex items-center gap-3">
+                        <div className="w-5 h-5 flex items-center justify-center shrink-0">
+                          <GoogleProductIcon service={service} className="w-4 h-4" />
+                        </div>
+                        <span className="text-xs font-medium text-gray-800">{service}</span>
+                      </div>
+                      <span className="text-[11px] text-gray-500 font-mono">
+                        {count} {count === 1 ? "scope" : "scopes"}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-2.5">
+                  <a
+                    href={getAdminConsoleLink(app).url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-blue-700 bg-blue-50/80 hover:bg-blue-100 border border-blue-200 rounded-lg transition-colors"
+                  >
+                    <span>Update Google services or scopes</span>
+                    <span className="text-blue-500">↗</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Option 4: Blocked */}
+          <div className={`p-3.5 rounded-xl border transition-all ${
+            policyLevel === "BLOCKED"
+              ? "border-red-400 bg-red-50/20 ring-1 ring-red-500/20"
+              : "border-gray-200 bg-white hover:bg-gray-50/50"
+          }`}>
+            <div className="flex items-start gap-3">
+              <div className="mt-0.5 shrink-0">
+                <span className={`w-4 h-4 rounded-full border flex items-center justify-center ${
+                  policyLevel === "BLOCKED"
+                    ? "border-blue-600 bg-white"
+                    : "border-gray-300 bg-white"
+                }`}>
+                  {policyLevel === "BLOCKED" && <span className="w-2 h-2 rounded-full bg-blue-600"></span>}
+                </span>
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2">
+                  <span className={`text-sm font-semibold ${policyLevel === "BLOCKED" ? "text-gray-900" : "text-gray-800"}`}>
+                    Blocked
+                  </span>
+                  {policyLevel === "BLOCKED" && (
+                    <span className="text-[10px] font-bold px-2 py-0.2 rounded-full bg-red-50 text-red-700 border border-red-200">
+                      Active Policy
+                    </span>
+                  )}
+                </div>
+                <p className="text-xs text-gray-600 mt-0.5">
+                  App can&apos;t request access to any Google data
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   // Form State for editing or adding (Backend Catalog mode only)
   const [formData, setFormData] = useState({
     id: "",
@@ -444,8 +917,19 @@ export default function ApplicationsView({
         )
       );
 
+      const configuredMember = members.find(m => {
+        const lvl = getNormalizedAccessLevel(m);
+        return lvl !== "UNCONFIGURED";
+      });
+      const resolvedAdminAccessLevel = (primary.adminAccessLevel && primary.adminAccessLevel !== "UNCONFIGURED")
+        ? primary.adminAccessLevel
+        : configuredMember?.adminAccessLevel || "UNCONFIGURED";
+      const resolvedAccessPolicy = primary.accessPolicy || configuredMember?.accessPolicy;
+
       grouped.push({
         ...primary,
+        adminAccessLevel: resolvedAdminAccessLevel,
+        accessPolicy: resolvedAccessPolicy,
         familyDeploymentsCount: members.length,
         siblingDeployments: siblingDeployments,
         allPlatformTypes: allPlatformTypes,
@@ -520,6 +1004,11 @@ export default function ApplicationsView({
         (selectedVerified === "VERIFIED" && app.isVerified) ||
         (selectedVerified === "UNVERIFIED" && !app.isVerified);
 
+      const policyLevel = getNormalizedAccessLevel(app);
+      const matchesConfig =
+        selectedConfig === "ALL" ||
+        (selectedConfig === "CONFIGURED" ? policyLevel !== "UNCONFIGURED" : policyLevel === selectedConfig);
+
       const hasCompliance = app.compliance && (Array.isArray(app.compliance) ? app.compliance.length > 0 : Boolean(app.compliance));
       const isHighRisk = app.riskLevel === "CRITICAL" || app.riskLevel === "HIGH";
 
@@ -529,9 +1018,9 @@ export default function ApplicationsView({
         (catalogFilter === "COMPLIANT" && hasCompliance) ||
         (catalogFilter === "HIGH_RISK" && isHighRisk);
 
-      return matchesSearch && matchesOwnership && matchesCat && matchesRisk && matchesType && matchesVerified && matchesTab;
+      return matchesSearch && matchesOwnership && matchesCat && matchesRisk && matchesType && matchesVerified && matchesConfig && matchesTab;
     });
-  }, [activeDataset, searchTerm, selectedOwnership, selectedCategory, selectedRisk, selectedType, selectedVerified, catalogFilter]);
+  }, [activeDataset, searchTerm, selectedOwnership, selectedCategory, selectedRisk, selectedType, selectedVerified, selectedConfig, catalogFilter]);
 
   // Pagination calculation
   const totalPages = Math.ceil(filteredApps.length / pageSize) || 1;
@@ -664,7 +1153,7 @@ export default function ApplicationsView({
 
   // Export CSV
   const handleExportCSV = () => {
-    const baseHeaders = ["App Name", "Vendor", "Domain", "Ownership", "Category", "Type", "Risk Level", "Verified", "Id"];
+    const baseHeaders = ["App Name", "Last Active", "Status", "Ownership", "Category", "Type", "Risk Level", "Verified", "Id"];
     const headers = isBackend ? baseHeaders : [...baseHeaders, "Users"];
     const rows = apps.map(a => {
       const row = [
@@ -716,6 +1205,11 @@ export default function ApplicationsView({
             <h1 className="text-2xl font-bold text-gray-900">
               {headerTitle}
             </h1>
+            {isBackend && (
+              <p className="text-xs text-gray-500 mt-1">
+                Global master database of SaaS, third-party, and mobile applications across Google Workspace
+              </p>
+            )}
           </div>
 
           <div className="flex items-center gap-2">
@@ -828,9 +1322,9 @@ export default function ApplicationsView({
           </button>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-3 pt-1">
+        <div className="flex flex-wrap items-center gap-2.5 pt-1">
           {/* Search Input */}
-          <div className="md:col-span-3 relative">
+          <div className="flex-1 min-w-[260px] relative">
             <input
               type="text"
               placeholder="Search name, vendor, domain, or Client ID..."
@@ -839,10 +1333,10 @@ export default function ApplicationsView({
                 setSearchTerm(e.target.value);
                 setCurrentPage(1);
               }}
-              className="w-full pl-9 pr-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-hidden focus:ring-2 focus:ring-emerald-500"
+              className="w-full pl-9 pr-4 py-2 border border-gray-200 rounded-lg text-sm bg-white focus:outline-hidden focus:ring-2 focus:ring-emerald-500 shadow-2xs"
             />
             <svg
-              className="w-4 h-4 text-gray-400 absolute left-3 top-3"
+              className="w-4 h-4 text-gray-400 absolute left-3 top-2.5"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -852,14 +1346,14 @@ export default function ApplicationsView({
           </div>
 
           {/* Ownership Filter */}
-          <div className="md:col-span-2">
+          <div className="w-full sm:w-auto min-w-[145px]">
             <select
               value={selectedOwnership}
               onChange={e => {
                 setSelectedOwnership(e.target.value);
                 setCurrentPage(1);
               }}
-              className="w-full py-2 px-3 border border-gray-200 rounded-lg text-sm text-gray-700 focus:outline-hidden focus:ring-2 focus:ring-emerald-500"
+              className="w-full py-2 px-3 border border-gray-200 rounded-lg text-xs font-medium text-gray-700 bg-white focus:outline-hidden focus:ring-2 focus:ring-emerald-500 shadow-2xs"
             >
               <option value="ALL">All Ownership ({metrics.total.toLocaleString()})</option>
               <option value="Google owned">Google owned ({metrics.googleOwned.toLocaleString()})</option>
@@ -869,14 +1363,14 @@ export default function ApplicationsView({
           </div>
 
           {/* Category Filter */}
-          <div className="md:col-span-2">
+          <div className="w-full sm:w-auto min-w-[145px]">
             <select
               value={selectedCategory}
               onChange={e => {
                 setSelectedCategory(e.target.value);
                 setCurrentPage(1);
               }}
-              className="w-full py-2 px-3 border border-gray-200 rounded-lg text-sm text-gray-700 focus:outline-hidden focus:ring-2 focus:ring-emerald-500"
+              className="w-full py-2 px-3 border border-gray-200 rounded-lg text-xs font-medium text-gray-700 bg-white focus:outline-hidden focus:ring-2 focus:ring-emerald-500 shadow-2xs"
             >
               <option value="ALL">All Categories ({categories.length})</option>
               {categories.map(c => (
@@ -886,14 +1380,14 @@ export default function ApplicationsView({
           </div>
 
           {/* Risk Filter */}
-          <div className="md:col-span-2">
+          <div className="w-full sm:w-auto min-w-[130px]">
             <select
               value={selectedRisk}
               onChange={e => {
                 setSelectedRisk(e.target.value);
                 setCurrentPage(1);
               }}
-              className="w-full py-2 px-3 border border-gray-200 rounded-lg text-sm text-gray-700 focus:outline-hidden focus:ring-2 focus:ring-emerald-500"
+              className="w-full py-2 px-3 border border-gray-200 rounded-lg text-xs font-medium text-gray-700 bg-white focus:outline-hidden focus:ring-2 focus:ring-emerald-500 shadow-2xs"
             >
               <option value="ALL">All Risk Levels</option>
               <option value="CRITICAL">🔴 Critical Risk</option>
@@ -904,36 +1398,55 @@ export default function ApplicationsView({
           </div>
 
           {/* Type Filter */}
-          <div className="md:col-span-2">
+          <div className="w-full sm:w-auto min-w-[125px]">
             <select
               value={selectedType}
               onChange={e => {
                 setSelectedType(e.target.value);
                 setCurrentPage(1);
               }}
-              className="w-full py-2 px-3 border border-gray-200 rounded-lg text-sm text-gray-700 focus:outline-hidden focus:ring-2 focus:ring-emerald-500"
+              className="w-full py-2 px-3 border border-gray-200 rounded-lg text-xs font-medium text-gray-700 bg-white focus:outline-hidden focus:ring-2 focus:ring-emerald-500 shadow-2xs"
             >
               <option value="ALL">All App Types</option>
               <option value="Web Application">Web Application</option>
               <option value="Android">Android</option>
               <option value="iOS">iOS</option>
-              <option value="Unknown Application Type">Unknown Application Type</option>
+              <option value="Unknown Application Type">Unknown Type</option>
             </select>
           </div>
 
           {/* Verification Status */}
-          <div className="md:col-span-1">
+          <div className="w-full sm:w-auto min-w-[130px]">
             <select
               value={selectedVerified}
               onChange={e => {
                 setSelectedVerified(e.target.value);
                 setCurrentPage(1);
               }}
-              className="w-full py-2 px-2 border border-gray-200 rounded-lg text-xs text-gray-700 focus:outline-hidden focus:ring-2 focus:ring-emerald-500"
+              className="w-full py-2 px-3 border border-gray-200 rounded-lg text-xs font-medium text-gray-700 bg-white focus:outline-hidden focus:ring-2 focus:ring-emerald-500 shadow-2xs"
             >
-              <option value="ALL">Verified?</option>
-              <option value="VERIFIED">Verified</option>
-              <option value="UNVERIFIED">Unverified</option>
+              <option value="ALL">All Verification</option>
+              <option value="VERIFIED">Verified Only</option>
+              <option value="UNVERIFIED">Unverified Only</option>
+            </select>
+          </div>
+
+          {/* Configuration Filter */}
+          <div className="w-full sm:w-auto min-w-[135px]">
+            <select
+              value={selectedConfig}
+              onChange={e => {
+                setSelectedConfig(e.target.value);
+                setCurrentPage(1);
+              }}
+              className="w-full py-2 px-3 border border-gray-200 rounded-lg text-xs font-medium text-gray-700 bg-white focus:outline-hidden focus:ring-2 focus:ring-emerald-500 shadow-2xs"
+            >
+              <option value="ALL">All Configurations</option>
+              <option value="TRUSTED">🛡️ Trusted</option>
+              <option value="LIMITED">🔷 Limited</option>
+              <option value="SPECIFIC_DATA">🔶 Specific Google Data</option>
+              <option value="BLOCKED">🚫 Blocked</option>
+              <option value="UNCONFIGURED">⚪ Unconfigured</option>
             </select>
           </div>
         </div>
@@ -980,7 +1493,7 @@ export default function ApplicationsView({
               </button>
             </div>
 
-            {(searchTerm || selectedOwnership !== "ALL" || selectedCategory !== "ALL" || selectedRisk !== "ALL" || selectedType !== "ALL" || selectedVerified !== "ALL" || catalogFilter !== "ALL") && (
+            {(searchTerm || selectedOwnership !== "ALL" || selectedCategory !== "ALL" || selectedRisk !== "ALL" || selectedType !== "ALL" || selectedVerified !== "ALL" || selectedConfig !== "ALL" || catalogFilter !== "ALL") && (
               <button
                 onClick={() => {
                   setSearchTerm("");
@@ -989,6 +1502,7 @@ export default function ApplicationsView({
                   setSelectedRisk("ALL");
                   setSelectedType("ALL");
                   setSelectedVerified("ALL");
+                  setSelectedConfig("ALL");
                   setCatalogFilter("ALL");
                   setCurrentPage(1);
                 }}
@@ -1008,7 +1522,12 @@ export default function ApplicationsView({
             <thead>
               <tr className="bg-gray-50/80 border-b border-gray-200 text-[11px] font-semibold uppercase text-gray-500 tracking-wider">
                 <th className="py-3 px-4">Application</th>
-                <th className="py-3 px-4">Vendor &amp; Domain</th>
+                {isBackend ? (
+                  <th className="py-3 px-4">Category</th>
+                ) : (
+                  <th className="py-3 px-4">Last Active</th>
+                )}
+                <th className="py-3 px-4">Configuration</th>
                 <th className="py-3 px-4">Ownership</th>
                 <th className="py-3 px-4">Type</th>
                 <th className="py-3 px-4">Compliance &amp; Hosting</th>
@@ -1020,7 +1539,7 @@ export default function ApplicationsView({
             <tbody className="divide-y divide-gray-100 text-sm">
               {paginatedApps.length === 0 ? (
                 <tr>
-                  <td colSpan={isBackend ? 7 : 8} className="py-12 text-center text-gray-400">
+                  <td colSpan={isBackend ? 8 : 9} className="py-12 text-center text-gray-400">
                     {apps.length === 0
                       ? isBackend
                         ? "No applications found in the central database."
@@ -1111,48 +1630,37 @@ export default function ApplicationsView({
                                   </button>
                                 )}
                               </div>
-                              <div className="text-[11px] font-mono text-gray-400 truncate" title={app.id}>
-                                {app.id}
-                              </div>
-                              {/* Accessed Google Services Icons */}
-                              {getAppServices(app).length > 0 && (
-                                <div className="flex items-center gap-1 mt-1.5 flex-wrap">
-                                  {getAppServices(app).map((svc) => (
-                                    <span
-                                      key={svc}
-                                      title={svc}
-                                      className="inline-flex items-center justify-center p-0.5 rounded-md bg-white border border-gray-200 shadow-2xs hover:border-gray-300 transition-colors"
-                                    >
-                                      <GoogleProductIcon service={svc} className="w-3.5 h-3.5" />
+                              <div className="flex items-center gap-1.5 mt-0.5 text-xs text-gray-500 truncate">
+                                <span>{app.publisherDomain || app.vendor || "External Application"}</span>
+                                {app.id && (
+                                  <>
+                                    <span className="text-gray-300">·</span>
+                                    <span className="font-mono text-[11px] text-gray-400 truncate max-w-[200px]" title={app.id}>
+                                      {app.id}
                                     </span>
-                                  ))}
-                                </div>
-                              )}
+                                  </>
+                                )}
+                              </div>
                             </div>
                           </div>
                         </td>
 
-                        {/* Vendor & Domain */}
+                        {/* Category (Backend) or Last Active (Client Workspace) */}
+                        {isBackend ? (
+                          <td className="py-3 px-4">
+                            <span className="inline-flex items-center text-xs font-medium text-gray-700 bg-gray-100 px-2 py-0.5 rounded-md">
+                              {app.category || "General"}
+                            </span>
+                          </td>
+                        ) : (
+                          <td className="py-3 px-4">
+                            {renderLastActive(app)}
+                          </td>
+                        )}
+
+                        {/* Configuration */}
                         <td className="py-3 px-4">
-                          <div className="text-gray-800 font-medium truncate max-w-[180px]" title={app.vendor}>
-                            {app.vendor || "—"}
-                          </div>
-                          {app.publisherDomain ? (
-                            <a
-                              href={`https://${app.publisherDomain}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onClick={(e) => e.stopPropagation()}
-                              className="text-xs text-blue-600 hover:underline flex items-center gap-1"
-                            >
-                              {app.publisherDomain}
-                              <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                              </svg>
-                            </a>
-                          ) : (
-                            <span className="text-xs text-gray-400">Unspecified domain</span>
-                          )}
+                          {renderConfigurationBadge(app)}
                         </td>
 
                         {/* Ownership */}
@@ -1167,17 +1675,17 @@ export default function ApplicationsView({
 
                         {/* Compliance & Hosting */}
                         <td className="py-3 px-4">
-                          <div className="flex flex-wrap items-center gap-1.5 max-w-[220px]">
+                          <div className="flex flex-col gap-1 items-start">
                             {app.compliance && (Array.isArray(app.compliance) ? app.compliance.length > 0 : Boolean(app.compliance)) ? (
-                              <span className="inline-flex items-center text-[10px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded">
+                              <span className="inline-flex items-center text-[10px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">
                                 {Array.isArray(app.compliance) ? app.compliance[0] : String(app.compliance).split(",")[0]}
                               </span>
                             ) : (
-                              <span className="text-[11px] text-gray-400">Standard</span>
+                              <span className="text-xs text-gray-400">Standard</span>
                             )}
                             {app.dataHosting && (
-                              <span className="text-[10px] text-gray-500 font-mono">
-                                {app.dataHosting}
+                              <span className="text-[11px] text-gray-500 font-medium">
+                                📍 {app.dataHosting}
                               </span>
                             )}
                           </div>
@@ -1218,7 +1726,7 @@ export default function ApplicationsView({
                                 e.stopPropagation();
                                 handleOpenEdit(app);
                               }}
-                              className="px-3 py-1.5 text-xs font-medium bg-white hover:bg-gray-100 text-emerald-700 border border-gray-200 rounded-lg shadow-2xs transition-colors"
+                              className="px-3 py-1.5 text-xs font-semibold bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 rounded-lg shadow-2xs transition-colors"
                             >
                               Edit
                             </button>
@@ -1229,7 +1737,7 @@ export default function ApplicationsView({
                                 e.stopPropagation();
                                 setSelectedApp(app);
                               }}
-                              className="px-3 py-1.5 text-xs font-medium bg-white hover:bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-lg shadow-2xs transition-colors"
+                              className="px-3 py-1.5 text-xs font-semibold bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 rounded-lg shadow-2xs transition-colors"
                             >
                               Inspect
                             </button>
@@ -1277,37 +1785,37 @@ export default function ApplicationsView({
                                       (Deployment #{childIdx + 2})
                                     </span>
                                   </div>
-                                  <div className="text-[10px] font-mono text-gray-400 truncate" title={child.id}>
-                                    {child.id}
-                                  </div>
-                                  {/* Child Services Icons */}
-                                  {getAppServices(child).length > 0 && (
-                                    <div className="flex items-center gap-1 mt-1 flex-wrap">
-                                      {getAppServices(child).map((svc) => (
-                                        <span
-                                          key={svc}
-                                          title={svc}
-                                          className="inline-flex items-center justify-center p-0.5 rounded bg-white border border-gray-200 shadow-2xs hover:border-gray-300 transition-colors"
-                                        >
-                                          <GoogleProductIcon service={svc} className="w-3 h-3" />
+                                  <div className="flex items-center gap-1.5 mt-0.5 text-xs text-gray-500 truncate">
+                                    <span>{child.publisherDomain || app.publisherDomain || child.vendor || app.vendor || "External App"}</span>
+                                    {child.id && (
+                                      <>
+                                        <span className="text-gray-300">·</span>
+                                        <span className="font-mono text-[10px] text-gray-400 truncate max-w-[180px]" title={child.id}>
+                                          {child.id}
                                         </span>
-                                      ))}
-                                    </div>
-                                  )}
+                                      </>
+                                    )}
+                                  </div>
                                 </div>
                               </div>
                             </td>
 
-                            {/* Vendor & Domain */}
-                            <td className="py-2.5 px-4 text-xs">
-                              <div className="text-gray-700 truncate max-w-[180px]" title={child.vendor || app.vendor}>
-                                {child.vendor || app.vendor || "—"}
-                              </div>
-                              {(child.publisherDomain || app.publisherDomain) && (
-                                <span className="text-[11px] text-gray-400 font-mono">
-                                  {child.publisherDomain || app.publisherDomain}
+                            {/* Category (Backend) or Last Active (Client Workspace) */}
+                            {isBackend ? (
+                              <td className="py-2.5 px-4">
+                                <span className="inline-flex items-center text-[11px] font-medium text-gray-700 bg-gray-100 px-2 py-0.5 rounded">
+                                  {child.category || app.category || "General"}
                                 </span>
-                              )}
+                              </td>
+                            ) : (
+                              <td className="py-2.5 px-4">
+                                {renderLastActive(child)}
+                              </td>
+                            )}
+
+                            {/* Configuration */}
+                            <td className="py-2.5 px-4 text-xs">
+                              {renderConfigurationBadge(child)}
                             </td>
 
                             {/* Ownership */}
@@ -1322,17 +1830,17 @@ export default function ApplicationsView({
 
                             {/* Compliance & Hosting */}
                             <td className="py-2.5 px-4 text-xs">
-                              <div className="flex flex-wrap items-center gap-1.5 max-w-[220px]">
+                              <div className="flex flex-col gap-1 items-start">
                                 {child.compliance && (Array.isArray(child.compliance) ? child.compliance.length > 0 : Boolean(child.compliance)) ? (
-                                  <span className="inline-flex items-center text-[9px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-1 py-0.2 rounded">
+                                  <span className="inline-flex items-center text-[9px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.2 rounded-full">
                                     {Array.isArray(child.compliance) ? child.compliance[0] : String(child.compliance).split(",")[0]}
                                   </span>
                                 ) : (
                                   <span className="text-[10px] text-gray-400">Standard</span>
                                 )}
                                 {(child.dataHosting || app.dataHosting) && (
-                                  <span className="text-[9px] text-gray-500 font-mono">
-                                    {child.dataHosting || app.dataHosting}
+                                  <span className="text-[10px] text-gray-500 font-medium">
+                                    📍 {child.dataHosting || app.dataHosting}
                                   </span>
                                 )}
                               </div>
@@ -1533,13 +2041,84 @@ export default function ApplicationsView({
             {/* Modal Body */}
             <div className="p-6 space-y-6 overflow-y-auto flex-1">
               {/* Trust, Compliance & Security Posture */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                <div className="p-3 bg-gray-50 border border-gray-200 rounded-lg text-xs">
-                  <div className="text-gray-500 font-medium">Ownership</div>
-                  <div className="font-semibold text-gray-800 mt-0.5 truncate">
-                    {selectedApp.ownership || "Third party"}
-                  </div>
-                </div>
+              <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
+                {/* 1. Configuration (Access Policy) Box */}
+                {(() => {
+                  const policyLevel = getNormalizedAccessLevel(selectedApp);
+                  const isConfigured = policyLevel !== "UNCONFIGURED";
+
+                  if (!isConfigured) {
+                    return (
+                      <div className="p-3 bg-gray-50/80 border border-gray-200 rounded-lg text-xs opacity-60">
+                        <div className="text-gray-400 font-medium">Configuration</div>
+                        <div className="font-semibold text-gray-400 mt-0.5 truncate flex items-center gap-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-gray-300"></span>
+                          Unconfigured
+                        </div>
+                      </div>
+                    );
+                  }
+
+                  if (policyLevel === "TRUSTED") {
+                    return (
+                      <div className="p-3 bg-emerald-50 border border-emerald-300 rounded-lg text-xs shadow-2xs">
+                        <div className="text-emerald-800 font-medium flex items-center justify-between">
+                          <span>Configuration</span>
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                        </div>
+                        <div className="font-bold text-emerald-800 mt-0.5 truncate flex items-center gap-1.5">
+                          <span>🛡️</span>
+                          <span>Trusted</span>
+                        </div>
+                      </div>
+                    );
+                  }
+
+                  if (policyLevel === "LIMITED") {
+                    return (
+                      <div className="p-3 bg-blue-50 border border-blue-300 rounded-lg text-xs shadow-2xs">
+                        <div className="text-blue-800 font-medium flex items-center justify-between">
+                          <span>Configuration</span>
+                          <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                        </div>
+                        <div className="font-bold text-blue-800 mt-0.5 truncate flex items-center gap-1.5">
+                          <span>🔷</span>
+                          <span>Limited</span>
+                        </div>
+                      </div>
+                    );
+                  }
+
+                  if (policyLevel === "SPECIFIC_DATA") {
+                    return (
+                      <div className="p-3 bg-amber-50 border border-amber-300 rounded-lg text-xs shadow-2xs">
+                        <div className="text-amber-800 font-medium flex items-center justify-between">
+                          <span>Configuration</span>
+                          <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                        </div>
+                        <div className="font-bold text-amber-800 mt-0.5 truncate flex items-center gap-1.5">
+                          <span>🔶</span>
+                          <span>Specific Google Data</span>
+                        </div>
+                      </div>
+                    );
+                  }
+
+                  // BLOCKED
+                  return (
+                    <div className="p-3 bg-red-50 border border-red-300 rounded-lg text-xs shadow-2xs">
+                      <div className="text-red-800 font-medium flex items-center justify-between">
+                        <span>Configuration</span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                      </div>
+                      <div className="font-bold text-red-800 mt-0.5 truncate flex items-center gap-1.5">
+                        <span>🚫</span>
+                        <span>Blocked</span>
+                      </div>
+                    </div>
+                  );
+                })()}
+
                 <div className="p-3 bg-gray-50 border border-gray-200 rounded-lg text-xs">
                   <div className="text-gray-500 font-medium">Data Residency</div>
                   <div className="font-bold text-gray-800 mt-0.5 truncate">
@@ -1562,45 +2141,14 @@ export default function ApplicationsView({
                 </div>
               </div>
 
+              {/* Google Admin Console App Access Policy Options (All 4 Options View) */}
+              <GoogleAdminAccessPolicyOptions
+                app={selectedApp}
+                getAdminConsoleLink={getAdminConsoleLink}
+              />
+
               {/* Requested Scopes */}
-              <div>
-                <div className="flex justify-between items-center mb-2">
-                  <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500">
-                    Requested Scopes ({selectedApp.scopes?.length || selectedApp.scopesCount || 0})
-                  </h3>
-                  <span className="text-[11px] text-gray-500 font-medium">Google Workspace OAuth Permissions</span>
-                </div>
-                
-                {selectedApp.scopes && selectedApp.scopes.length > 0 ? (
-                  <div className="space-y-2 text-xs">
-                    {selectedApp.scopes.map((s, i) => (
-                      <div key={i} className="bg-gray-50 border border-gray-200 rounded-lg p-3 space-y-1.5">
-                        <div className="flex justify-between items-center gap-3">
-                          <div className="flex items-center gap-2 min-w-0">
-                            <div className="w-6 h-6 bg-white rounded p-0.5 border border-gray-200/60 flex items-center justify-center shrink-0">
-                              <GoogleProductIcon service={s.service || s.scope} className="w-4 h-4" />
-                            </div>
-                            <span className="truncate font-mono text-gray-800 font-semibold">{s.scope}</span>
-                          </div>
-                          <div className="flex items-center gap-2 shrink-0">
-                            {getTierBadge(s.googleTier)}
-                            {getScoreBadge(s.adminScore)}
-                          </div>
-                        </div>
-                        {s.description && (
-                          <div className="text-[11px] text-gray-600 pl-8">
-                            <span className="font-semibold text-gray-700">{s.description}:</span> {s.threatImpact || ''}
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg text-xs text-gray-500 text-center">
-                    No elevated or sensitive Google Workspace OAuth scopes registered for this application.
-                  </div>
-                )}
-              </div>
+              <ScopesCollapsible scopes={selectedApp.scopes} scopesCount={selectedApp.scopes?.length || selectedApp.scopesCount || 0} />
             </div>
 
             {/* Modal Footer */}

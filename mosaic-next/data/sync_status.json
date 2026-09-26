@@ -1,0 +1,18 @@
+{
+  "taskName": "24-Hour Google Workspace Data Ingestion Task",
+  "domain": "gafe.co.za",
+  "scheduleCadence": "Every 24 Hours",
+  "cronExpression": "0 2 * * *",
+  "status": "SUCCESS",
+  "lastRunTimestamp": "2026-09-26T00:02:59.428Z",
+  "nextRunTimestamp": "2026-09-27T00:02:59.428Z",
+  "durationSeconds": 177.7,
+  "summary": {
+    "usersProcessed": 296,
+    "activeTokensCollected": 269,
+    "applicationsIndexed": 69,
+    "distinctScopesMapped": 95,
+    "totalScopeGrants": 447,
+    "adminPolicyChanges": 10
+  }
+}

@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { Suspense } from "react";
+
 import OAuthDashboardClient from "./oauth-dashboard-client";
 
 export const metadata = {
@@ -42,6 +43,16 @@ export default function Dashboard() {
     }
   }
 
+  const syncStatusPath = path.join(dataDir, "sync_status.json");
+  let syncStatus = null;
+  if (fs.existsSync(syncStatusPath)) {
+    try {
+      syncStatus = JSON.parse(fs.readFileSync(syncStatusPath, "utf8"));
+    } catch (e) {
+      console.error("Error reading sync_status.json:", e);
+    }
+  }
+
   return (
     <Suspense fallback={<div className="p-8 text-gray-400">Loading Client Workspace...</div>}>
       <OAuthDashboardClient
@@ -52,6 +63,7 @@ export default function Dashboard() {
         initialScopes={scopes}
         scopeMetrics={scopeMetrics}
         initialTimelineEvents={timelineEvents}
+        syncStatus={syncStatus}
       />
     </Suspense>
   );

@@ -1,8 +1,9 @@
 import fs from "fs";
 import path from "path";
 import { Suspense } from "react";
-import DefaultLayout from "./(default)/layout";
+
 import OAuthDashboardClient from "./(default)/dashboard/oauth-dashboard-client";
+import DefaultLayout from "./(default)/layout";
 
 export const metadata = {
   title: "Admin Lens — OAuth Applications Governance",

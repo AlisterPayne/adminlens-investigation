@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import React, { useEffect, useMemo, useState } from "react";
 
+import AccessTimelineView, { TimelineEvent } from "@/components/access-timeline-view";
+import ApplicationsView from "@/components/applications-view";
 import {
   GmailIcon,
   GoogleAdminIcon,
@@ -14,9 +16,8 @@ import {
   GoogleDriveIcon,
   GoogleProductIcon,
 } from "@/components/google-icons";
+import OWLImportPanel from "@/components/owl-import-panel";
 import ScopeMatrixView, { ScopeMetrics,ScopeReferenceItem } from "@/components/scope-matrix-view";
-import ApplicationsView from "@/components/applications-view";
-import AccessTimelineView, { TimelineEvent } from "@/components/access-timeline-view";
 
 interface ScopeItem {
   scope: string;
@@ -224,6 +225,7 @@ export default function OAuthDashboardClient({
   initialScopes = [],
   scopeMetrics = null,
   initialTimelineEvents = [],
+  syncStatus,
 }: {
   initialApps: Application[];
   initialRecs: InitialRecsData;
@@ -232,22 +234,78 @@ export default function OAuthDashboardClient({
   initialScopes?: ScopeReferenceItem[];
   scopeMetrics?: ScopeMetrics | null;
   initialTimelineEvents?: TimelineEvent[];
+  syncStatus?: any;
 }) {
   const [currentApps, setCurrentApps] = useState<Application[]>(initialApps);
   const [currentMetrics, setCurrentMetrics] = useState<Metrics>(metrics);
-  const [activeTab, setActiveTab] = useState<"dashboard" | "apps" | "recs" | "scopes" | "timeline">("apps");
+  const [timelineEvents, setTimelineEvents] = useState<TimelineEvent[]>(initialTimelineEvents || []);
+  const [activeTab, setActiveTab] = useState<"dashboard" | "apps" | "recs" | "scopes" | "timeline" | "import">("apps");
   const searchParams = useSearchParams();
 
   useEffect(() => {
     if (searchParams) {
       const tabParam = searchParams.get("tab");
-      if (tabParam === "apps" || tabParam === "recs" || tabParam === "scopes" || tabParam === "dashboard" || tabParam === "timeline") {
+      if (tabParam === "apps" || tabParam === "recs" || tabParam === "scopes" || tabParam === "dashboard" || tabParam === "timeline" || tabParam === "import") {
         setActiveTab(tabParam as any);
       }
     }
   }, [searchParams]);
 
-  const handleTabChange = (tab: "dashboard" | "apps" | "recs" | "scopes" | "timeline") => {
+  useEffect(() => {
+    try {
+      const savedApps = localStorage.getItem("adminlens_imported_apps");
+      if (savedApps) {
+        const parsed = JSON.parse(savedApps);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setCurrentApps(parsed);
+        }
+      }
+      const savedMetrics = localStorage.getItem("adminlens_imported_metrics");
+      if (savedMetrics) {
+        const parsedM = JSON.parse(savedMetrics);
+        if (parsedM) {
+          setCurrentMetrics(prev => ({ ...prev, ...parsedM }));
+        }
+      }
+      const savedEvents = localStorage.getItem("adminlens_timeline_events");
+      if (savedEvents) {
+        const parsedE = JSON.parse(savedEvents);
+        if (Array.isArray(parsedE) && parsedE.length > 0) {
+          setTimelineEvents(parsedE);
+        }
+      }
+    } catch (_) {}
+  }, []);
+
+  const handleEventLogged = (newEvent: TimelineEvent) => {
+    setTimelineEvents(prev => {
+      const next = [newEvent, ...prev];
+      try {
+        localStorage.setItem("adminlens_timeline_events", JSON.stringify(next));
+      } catch (_) {}
+      return next;
+    });
+  };
+
+  const handleAppsImported = (newAppsList: Application[], metricsUpdate: any) => {
+    setCurrentApps(newAppsList);
+    if (metricsUpdate) {
+      setCurrentMetrics(prev => ({
+        ...prev,
+        ...metricsUpdate,
+        baselinePolicyCount: (prev.baselinePolicyCount || 0) + (metricsUpdate.configuredAppsCount || 0),
+        baselineLoadedAt: new Date().toISOString(),
+      }));
+    }
+    try {
+      localStorage.setItem("adminlens_imported_apps", JSON.stringify(newAppsList));
+      if (metricsUpdate) {
+        localStorage.setItem("adminlens_imported_metrics", JSON.stringify(metricsUpdate));
+      }
+    } catch (_) {}
+  };
+
+  const handleTabChange = (tab: "dashboard" | "apps" | "recs" | "scopes" | "timeline" | "import") => {
     setActiveTab(tab);
     if (typeof window !== "undefined") {
       const url = new URL(window.location.href);
@@ -718,6 +776,9 @@ export default function OAuthDashboardClient({
             ? "Overview"
             : "Applications"}
         </h1>
+        <p className="text-xs text-gray-500 mt-0.5">
+          Google Workspace OAuth Security &amp; Governance for <strong className="font-mono text-gray-700">gafe.co.za</strong>
+        </p>
       </div>
 
       {/* Upload Toast Alert */}
@@ -1912,8 +1973,19 @@ export default function OAuthDashboardClient({
       {/* Access Timeline Tab View */}
       {activeTab === "timeline" && (
         <AccessTimelineView
-          events={initialTimelineEvents || []}
+          events={timelineEvents}
           domainName="gafe.co.za"
+          syncStatus={syncStatus}
+        />
+      )}
+
+      {/* Data Import Tab View */}
+      {activeTab === "import" && (
+        <OWLImportPanel
+          currentApps={currentApps}
+          onNavigateToApps={() => handleTabChange("apps")}
+          onAppsImported={handleAppsImported}
+          onEventLogged={handleEventLogged}
         />
       )}
 
@@ -2015,7 +2087,84 @@ export default function OAuthDashboardClient({
             <div className="p-6 space-y-6 overflow-y-auto flex-1">
               
               {/* Trust, Compliance & Breach History */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                {/* Configuration Box */}
+                {(() => {
+                  const policyLevel = selectedApp.adminAccessLevel || (selectedApp.accessPolicy as any)?.accessLevel || "UNCONFIGURED";
+                  const isConfigured = policyLevel && policyLevel !== "UNCONFIGURED";
+
+                  if (!isConfigured) {
+                    return (
+                      <div className="p-3 bg-gray-50/80 border border-gray-200 rounded-lg text-xs opacity-60">
+                        <div className="text-gray-400 font-medium">Configuration</div>
+                        <div className="font-semibold text-gray-400 mt-0.5 truncate flex items-center gap-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-gray-300"></span>
+                          Unconfigured
+                        </div>
+                      </div>
+                    );
+                  }
+
+                  if (policyLevel === "TRUSTED") {
+                    return (
+                      <div className="p-3 bg-emerald-50 border border-emerald-300 rounded-lg text-xs shadow-2xs">
+                        <div className="text-emerald-800 font-medium flex items-center justify-between">
+                          <span>Configuration</span>
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                        </div>
+                        <div className="font-bold text-emerald-800 mt-0.5 truncate flex items-center gap-1.5">
+                          <span>🛡️</span>
+                          <span>Trusted</span>
+                        </div>
+                      </div>
+                    );
+                  }
+
+                  if (policyLevel === "LIMITED") {
+                    return (
+                      <div className="p-3 bg-blue-50 border border-blue-300 rounded-lg text-xs shadow-2xs">
+                        <div className="text-blue-800 font-medium flex items-center justify-between">
+                          <span>Configuration</span>
+                          <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                        </div>
+                        <div className="font-bold text-blue-800 mt-0.5 truncate flex items-center gap-1.5">
+                          <span>🔷</span>
+                          <span>Limited</span>
+                        </div>
+                      </div>
+                    );
+                  }
+
+                  if (policyLevel === "SPECIFIC_DATA" || policyLevel.includes("SPECIFIC")) {
+                    return (
+                      <div className="p-3 bg-amber-50 border border-amber-300 rounded-lg text-xs shadow-2xs">
+                        <div className="text-amber-800 font-medium flex items-center justify-between">
+                          <span>Configuration</span>
+                          <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                        </div>
+                        <div className="font-bold text-amber-800 mt-0.5 truncate flex items-center gap-1.5">
+                          <span>🔶</span>
+                          <span>Specific Google Data</span>
+                        </div>
+                      </div>
+                    );
+                  }
+
+                  // BLOCKED
+                  return (
+                    <div className="p-3 bg-red-50 border border-red-300 rounded-lg text-xs shadow-2xs">
+                      <div className="text-red-800 font-medium flex items-center justify-between">
+                        <span>Configuration</span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                      </div>
+                      <div className="font-bold text-red-800 mt-0.5 truncate flex items-center gap-1.5">
+                        <span>🚫</span>
+                        <span>Blocked</span>
+                      </div>
+                    </div>
+                  );
+                })()}
+
                 <div className="p-3 bg-gray-50 border border-gray-200 rounded-lg text-xs">
                   <div className="text-gray-500 font-medium">Data Residency</div>
                   <div className="font-bold text-gray-800 mt-0.5">📍 {selectedApp.dataHosting}</div>
@@ -2081,81 +2230,297 @@ export default function OAuthDashboardClient({
                 </div>
               )}
 
-              {/* Google Admin Access Control Policy Visualizer */}
-              <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-3">
-                <div className="flex items-center justify-between border-b border-slate-200 pb-2.5">
-                  <div className="flex items-center gap-2">
-                    <div className="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center">
-                      <GoogleAdminIcon className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <h4 className="text-xs font-bold text-gray-900">Access to Google Data</h4>
-                      <p className="text-[11px] text-gray-500">Google Admin Console API Access Control</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    {getPolicyBadge(selectedApp.adminAccessLevel)}
-                  </div>
-                </div>
+              {/* Google Admin Console App Access Policy Options (All 4 Options View) */}
+              <div className="bg-white border border-gray-200 rounded-xl p-5 space-y-4 shadow-xs">
+                {(() => {
+                  const policyLevel = selectedApp.adminAccessLevel || (selectedApp.accessPolicy as any)?.accessLevel || "UNCONFIGURED";
+                  const isConfigured = policyLevel && policyLevel !== "UNCONFIGURED";
+                  const orgUnit = (selectedApp.accessPolicy as any)?.orgUnitPath || "/";
+                  const isOverridden = Boolean((selectedApp.accessPolicy as any)?.isOverridden);
+                  const isExempt = Boolean((selectedApp.accessPolicy as any)?.exemptFromContextAwareAccess);
 
-                {/* Policy Options Radios / Cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-                  <div className={`p-2.5 rounded-lg border flex items-start gap-2.5 ${
-                    selectedApp.adminAccessLevel === 'TRUSTED' ? 'border-emerald-400 bg-emerald-50/60 shadow-2xs font-semibold text-emerald-900' : 'border-gray-200 bg-white text-gray-400 opacity-60'
-                  }`}>
-                    <span className={`mt-0.5 w-3.5 h-3.5 rounded-full border flex items-center justify-center ${selectedApp.adminAccessLevel === 'TRUSTED' ? 'border-emerald-600 bg-emerald-600' : 'border-gray-300'}`}>
-                      {selectedApp.adminAccessLevel === 'TRUSTED' && <span className="w-1.5 h-1.5 rounded-full bg-white"></span>}
-                    </span>
-                    <div>
-                      <div className="text-xs">Trusted</div>
-                      <div className="text-[11px] text-gray-500 font-normal">Can request access to all Google data</div>
-                      {selectedApp.accessPolicy?.exemptFromContextAwareAccess && (
-                        <div className="text-[10px] text-emerald-700 font-normal mt-0.5">✓ Exempt from Context-Aware Access</div>
-                      )}
-                    </div>
-                  </div>
+                  // Group services for Specific Google data
+                  const map = new Map<string, number>();
+                  (selectedApp.scopes || []).forEach((s: any) => {
+                    let svc = s.service;
+                    if (!svc) {
+                      const sc = (s.scope || "").toLowerCase();
+                      if (sc.includes("drive")) svc = "Drive";
+                      else if (sc.includes("gmail") || sc.includes("mail")) svc = "Gmail";
+                      else if (sc.includes("calendar")) svc = "Calendar";
+                      else if (sc.includes("contacts")) svc = "Contacts";
+                      else if (sc.includes("classroom")) svc = "Classroom";
+                      else if (sc.includes("cloud-platform")) svc = "Cloud Platform";
+                      else if (sc.includes("userinfo") || sc.includes("openid") || sc.includes("profile")) svc = "Google Sign-in";
+                      else svc = "Other";
+                    }
+                    map.set(svc, (map.get(svc) || 0) + 1);
+                  });
 
-                  <div className={`p-2.5 rounded-lg border flex items-start gap-2.5 ${
-                    selectedApp.adminAccessLevel === 'LIMITED' ? 'border-blue-400 bg-blue-50/60 shadow-2xs font-semibold text-blue-900' : 'border-gray-200 bg-white text-gray-400 opacity-60'
-                  }`}>
-                    <span className={`mt-0.5 w-3.5 h-3.5 rounded-full border flex items-center justify-center ${selectedApp.adminAccessLevel === 'LIMITED' ? 'border-blue-600 bg-blue-600' : 'border-gray-300'}`}>
-                      {selectedApp.adminAccessLevel === 'LIMITED' && <span className="w-1.5 h-1.5 rounded-full bg-white"></span>}
-                    </span>
-                    <div>
-                      <div className="text-xs">Limited</div>
-                      <div className="text-[11px] text-gray-500 font-normal">Can request unrestricted data only</div>
-                    </div>
-                  </div>
+                  if (map.size === 0 && selectedApp.servicesTouched && selectedApp.servicesTouched.length > 0) {
+                    selectedApp.servicesTouched.forEach((svc: string) => {
+                      map.set(svc, 1);
+                    });
+                  }
 
-                  <div className={`p-2.5 rounded-lg border flex items-start gap-2.5 ${
-                    selectedApp.adminAccessLevel === 'SPECIFIC_DATA' ? 'border-amber-400 bg-amber-50/60 shadow-2xs font-semibold text-amber-900' : 'border-gray-200 bg-white text-gray-400 opacity-60'
-                  }`}>
-                    <span className={`mt-0.5 w-3.5 h-3.5 rounded-full border flex items-center justify-center ${selectedApp.adminAccessLevel === 'SPECIFIC_DATA' ? 'border-amber-600 bg-amber-600' : 'border-gray-300'}`}>
-                      {selectedApp.adminAccessLevel === 'SPECIFIC_DATA' && <span className="w-1.5 h-1.5 rounded-full bg-white"></span>}
-                    </span>
-                    <div>
-                      <div className="text-xs">Specific Google data</div>
-                      <div className="text-[11px] text-gray-500 font-normal">Restricted to specified services &amp; scopes</div>
-                    </div>
-                  </div>
+                  if (map.size === 0) {
+                    map.set("Google Sign-in", 1);
+                  }
 
-                  <div className={`p-2.5 rounded-lg border flex items-start gap-2.5 ${
-                    selectedApp.adminAccessLevel === 'BLOCKED' ? 'border-red-400 bg-red-50/60 shadow-2xs font-semibold text-red-900' : 'border-gray-200 bg-white text-gray-400 opacity-60'
-                  }`}>
-                    <span className={`mt-0.5 w-3.5 h-3.5 rounded-full border flex items-center justify-center ${selectedApp.adminAccessLevel === 'BLOCKED' ? 'border-red-600 bg-red-600' : 'border-gray-300'}`}>
-                      {selectedApp.adminAccessLevel === 'BLOCKED' && <span className="w-1.5 h-1.5 rounded-full bg-white"></span>}
-                    </span>
-                    <div>
-                      <div className="text-xs">Blocked</div>
-                      <div className="text-[11px] text-gray-500 font-normal">Blocked from accessing any Google data</div>
-                    </div>
-                  </div>
-                </div>
+                  const servicesList = Array.from(map.entries()).map(([service, count]) => ({
+                    service,
+                    count,
+                  }));
 
-                <div className="flex justify-between items-center text-[11px] text-gray-500 pt-1 border-t border-slate-200">
-                  <span>Organizational Unit: <span className="font-mono font-medium text-gray-700">{selectedApp.accessPolicy?.orgUnitPath || '/'}</span></span>
-                  <span>{selectedApp.accessPolicy?.isOverridden ? 'Direct OU Override' : 'Inherited from Domain Root'}</span>
-                </div>
+                  return (
+                    <>
+                      <div className="flex flex-wrap items-start justify-between gap-3 border-b border-gray-100 pb-3">
+                        <div>
+                          <div className="text-xs font-semibold text-gray-800">
+                            Select what type of access this app has to Google data for users in the selected org unit.
+                          </div>
+                          <div className="flex flex-wrap items-center gap-2 mt-1 text-[11px] text-gray-500">
+                            <span>
+                              Org Unit: <strong className="font-mono text-gray-700">{orgUnit}</strong> ({isOverridden ? "Direct OU Override" : "Inherited from Domain Root"})
+                            </span>
+                            <span>•</span>
+                            <a
+                              href="https://support.google.com/a/answer/7281227"
+                              target="_blank"
+                              rel="noreferrer"
+                              className="text-blue-600 hover:underline"
+                            >
+                              Learn more about app access ↗
+                            </a>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-2">
+                          {isConfigured ? (
+                            <span className="text-[11px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full shadow-2xs">
+                              Configured in Google Workspace
+                            </span>
+                          ) : (
+                            <span className="inline-flex items-center gap-1 text-[11px] font-medium bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full">
+                              ⚪ Unconfigured in Google Admin
+                            </span>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* 4 Radio Options */}
+                      <div className="space-y-3.5">
+                        {/* Option 1: Trusted */}
+                        <div className={`p-3.5 rounded-xl border transition-all ${
+                          policyLevel === "TRUSTED"
+                            ? "border-emerald-400 bg-emerald-50/20 ring-1 ring-emerald-500/20"
+                            : "border-gray-200 bg-white hover:bg-gray-50/50"
+                        }`}>
+                          <div className="flex items-start gap-3">
+                            <div className="mt-0.5 shrink-0">
+                              <span className={`w-4 h-4 rounded-full border flex items-center justify-center ${
+                                policyLevel === "TRUSTED"
+                                  ? "border-blue-600 bg-white"
+                                  : "border-gray-300 bg-white"
+                              }`}>
+                                {policyLevel === "TRUSTED" && <span className="w-2 h-2 rounded-full bg-blue-600"></span>}
+                              </span>
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center gap-2">
+                                <span className={`text-sm font-semibold ${policyLevel === "TRUSTED" ? "text-gray-900" : "text-gray-800"}`}>
+                                  Trusted
+                                </span>
+                                {policyLevel === "TRUSTED" && (
+                                  <span className="text-[10px] font-bold px-2 py-0.2 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+                                    Active Policy
+                                  </span>
+                                )}
+                              </div>
+                              <p className="text-xs text-gray-600 mt-0.5">
+                                App can request access to all Google data
+                              </p>
+
+                              {/* Context-Aware Access Exemption Sub-section */}
+                              <div className="mt-2.5 pt-2 border-t border-gray-100 space-y-1.5">
+                                <label className="flex items-start gap-2 text-xs text-gray-700 cursor-default select-none">
+                                  <input
+                                    type="checkbox"
+                                    readOnly
+                                    checked={isExempt}
+                                    className="mt-0.5 rounded border-gray-300 text-blue-600 focus:ring-blue-500 pointer-events-none"
+                                  />
+                                  <span>
+                                    Exempt from having API access blocked by Context-Aware Access levels. Applies only if this app was added by OAuth client ID.{" "}
+                                    <a
+                                      href="https://support.google.com/a/answer/9275380"
+                                      target="_blank"
+                                      rel="noreferrer"
+                                      className="text-blue-600 hover:underline"
+                                    >
+                                      Learn about exempting apps.
+                                    </a>
+                                  </span>
+                                </label>
+                                <p className="text-[11px] text-gray-500 pl-5">
+                                  This exception is enforced only if a Context-Aware Access level in the same org unit selected in Scope also allows exemptions.
+                                </p>
+
+                                {policyLevel === "TRUSTED" && (
+                                  <div className="ml-5 mt-1.5 flex items-start gap-2 bg-blue-50/60 border border-blue-200/60 rounded-lg p-2 text-[11px] text-blue-900">
+                                    <span className="text-blue-600 font-bold shrink-0">ℹ</span>
+                                    <span>
+                                      Allowlisting an app here doesn&apos;t mean it&apos;s immediately exempted from API access blocks. You&apos;ll need to explicitly exempt the app during access level assignments to enforce the exemption.{" "}
+                                      <a
+                                        href="https://support.google.com/a/answer/9275380"
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="font-medium underline hover:text-blue-950"
+                                      >
+                                        Learn more
+                                      </a>
+                                    </span>
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Option 2: Limited */}
+                        <div className={`p-3.5 rounded-xl border transition-all ${
+                          policyLevel === "LIMITED"
+                            ? "border-blue-400 bg-blue-50/20 ring-1 ring-blue-500/20"
+                            : "border-gray-200 bg-white hover:bg-gray-50/50"
+                        }`}>
+                          <div className="flex items-start gap-3">
+                            <div className="mt-0.5 shrink-0">
+                              <span className={`w-4 h-4 rounded-full border flex items-center justify-center ${
+                                policyLevel === "LIMITED"
+                                  ? "border-blue-600 bg-white"
+                                  : "border-gray-300 bg-white"
+                              }`}>
+                                {policyLevel === "LIMITED" && <span className="w-2 h-2 rounded-full bg-blue-600"></span>}
+                              </span>
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center gap-2">
+                                <span className={`text-sm font-semibold ${policyLevel === "LIMITED" ? "text-gray-900" : "text-gray-800"}`}>
+                                  Limited
+                                </span>
+                                {policyLevel === "LIMITED" && (
+                                  <span className="text-[10px] font-bold px-2 py-0.2 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
+                                    Active Policy
+                                  </span>
+                                )}
+                              </div>
+                              <p className="text-xs text-gray-600 mt-0.5">
+                                App can request access to unrestricted Google data
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Option 3: Specific Google data */}
+                        <div className={`p-3.5 rounded-xl border transition-all ${
+                          policyLevel === "SPECIFIC_DATA" || policyLevel.includes("SPECIFIC")
+                            ? "border-amber-400 bg-amber-50/20 ring-1 ring-amber-500/20"
+                            : "border-gray-200 bg-white hover:bg-gray-50/50"
+                        }`}>
+                          <div className="flex items-start gap-3">
+                            <div className="mt-0.5 shrink-0">
+                              <span className={`w-4 h-4 rounded-full border flex items-center justify-center ${
+                                policyLevel === "SPECIFIC_DATA" || policyLevel.includes("SPECIFIC")
+                                  ? "border-blue-600 bg-white"
+                                  : "border-gray-300 bg-white"
+                              }`}>
+                                {(policyLevel === "SPECIFIC_DATA" || policyLevel.includes("SPECIFIC")) && <span className="w-2 h-2 rounded-full bg-blue-600"></span>}
+                              </span>
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center gap-2">
+                                <span className={`text-sm font-semibold ${policyLevel === "SPECIFIC_DATA" || policyLevel.includes("SPECIFIC") ? "text-gray-900" : "text-gray-800"}`}>
+                                  Specific Google data
+                                </span>
+                                {(policyLevel === "SPECIFIC_DATA" || policyLevel.includes("SPECIFIC")) && (
+                                  <span className="text-[10px] font-bold px-2 py-0.2 rounded-full bg-amber-50 text-amber-700 border border-amber-200">
+                                    Active Policy
+                                  </span>
+                                )}
+                              </div>
+                              <p className="text-xs text-gray-600 mt-0.5 leading-relaxed">
+                                This app can only request access to user data from the Google services specified below. Note, you must include the Google Sign-in scope below to allow users to sign in with their Google Account.
+                              </p>
+
+                              {/* Connected Services Table matching screenshot */}
+                              <div className="mt-3 border border-gray-200 rounded-lg overflow-hidden bg-white divide-y divide-gray-100">
+                                {servicesList.map(({ service, count }) => (
+                                  <div key={service} className="py-2.5 px-3 flex items-center justify-between hover:bg-gray-50/60 transition-colors">
+                                    <div className="flex items-center gap-3">
+                                      <div className="w-5 h-5 flex items-center justify-center shrink-0">
+                                        <GoogleProductIcon service={service} className="w-4.5 h-4.5" />
+                                      </div>
+                                      <span className="text-xs font-medium text-gray-800">{service}</span>
+                                    </div>
+                                    <span className="text-[11px] text-gray-500 font-mono">
+                                      {count} {count === 1 ? "scope" : "scopes"}
+                                    </span>
+                                  </div>
+                                ))}
+                              </div>
+
+                              <div className="mt-2.5">
+                                <a
+                                  href={getAdminConsoleLink(selectedApp).url}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-blue-700 bg-blue-50/80 hover:bg-blue-100 border border-blue-200 rounded-lg transition-colors"
+                                >
+                                  <span>Update Google services or scopes</span>
+                                  <span className="text-blue-500">↗</span>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Option 4: Blocked */}
+                        <div className={`p-3.5 rounded-xl border transition-all ${
+                          policyLevel === "BLOCKED"
+                            ? "border-red-400 bg-red-50/20 ring-1 ring-red-500/20"
+                            : "border-gray-200 bg-white hover:bg-gray-50/50"
+                        }`}>
+                          <div className="flex items-start gap-3">
+                            <div className="mt-0.5 shrink-0">
+                              <span className={`w-4 h-4 rounded-full border flex items-center justify-center ${
+                                policyLevel === "BLOCKED"
+                                  ? "border-blue-600 bg-white"
+                                  : "border-gray-300 bg-white"
+                              }`}>
+                                {policyLevel === "BLOCKED" && <span className="w-2 h-2 rounded-full bg-blue-600"></span>}
+                              </span>
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center gap-2">
+                                <span className={`text-sm font-semibold ${policyLevel === "BLOCKED" ? "text-gray-900" : "text-gray-800"}`}>
+                                  Blocked
+                                </span>
+                                {policyLevel === "BLOCKED" && (
+                                  <span className="text-[10px] font-bold px-2 py-0.2 rounded-full bg-red-50 text-red-700 border border-red-200">
+                                    Active Policy
+                                  </span>
+                                )}
+                              </div>
+                              <p className="text-xs text-gray-600 mt-0.5">
+                                App can&apos;t request access to any Google data
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  );
+                })()}
               </div>
 
               {/* Connected Google Workspace Services */}

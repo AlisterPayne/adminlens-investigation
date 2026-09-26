@@ -1,1 +1,3850 @@
-[]
+[
+  {
+    "id": "104435600379044401911",
+    "primaryEmail": "abm_mdm@winstore.co.za",
+    "name": {
+      "givenName": "ABM",
+      "familyName": "MDM",
+      "fullName": "ABM MDM"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Dev/apple mdm"
+  },
+  {
+    "id": "116656696435512026126",
+    "primaryEmail": "acer@gafe.co.za",
+    "name": {
+      "givenName": "Acer",
+      "familyName": "Chromebook",
+      "fullName": "Acer Chromebook"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical"
+  },
+  {
+    "id": "109063064967270932458",
+    "primaryEmail": "ackbar@gafe.co.za",
+    "name": {
+      "givenName": "Admiral",
+      "familyName": "Ackbar",
+      "fullName": "Admiral Ackbar"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "104606809944181351292",
+    "primaryEmail": "adaobi@gafe.co.za",
+    "name": {
+      "givenName": "Adaobi",
+      "familyName": "Agbaegbu",
+      "fullName": "Adaobi Agbaegbu"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Trainers"
+  },
+  {
+    "id": "115951350550914078420",
+    "primaryEmail": "admin10@gafe.co.za",
+    "name": {
+      "givenName": "Gafe",
+      "familyName": "Admin10",
+      "fullName": "Gafe Admin10"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": true,
+    "suspended": true,
+    "orgUnitPath": "/CloudEDU Technical/Admin Console Training"
+  },
+  {
+    "id": "102897553277601481594",
+    "primaryEmail": "admin11@gafe.co.za",
+    "name": {
+      "givenName": "Gafe",
+      "familyName": "Admin11",
+      "fullName": "Gafe Admin11"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": true,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Admin Console Training"
+  },
+  {
+    "id": "108495066799504686938",
+    "primaryEmail": "admin12@gafe.co.za",
+    "name": {
+      "givenName": "Gafe",
+      "familyName": "Admin12",
+      "fullName": "Gafe Admin12"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": true,
+    "suspended": true,
+    "orgUnitPath": "/CloudEDU Technical/Admin Console Training"
+  },
+  {
+    "id": "102977052542767342033",
+    "primaryEmail": "admin13@gafe.co.za",
+    "name": {
+      "givenName": "Gafe",
+      "familyName": "Admin13",
+      "fullName": "Gafe Admin13"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/CloudEDU Technical/Admin Console Training"
+  },
+  {
+    "id": "106962638586722386679",
+    "primaryEmail": "admin2@gafe.co.za",
+    "name": {
+      "givenName": "Gafe",
+      "familyName": "Admin2",
+      "fullName": "Gafe Admin2"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": true,
+    "suspended": true,
+    "orgUnitPath": "/CloudEDU Technical/Admin Console Training"
+  },
+  {
+    "id": "102648725480709446399",
+    "primaryEmail": "admin3@gafe.co.za",
+    "name": {
+      "givenName": "Gafe",
+      "familyName": "Admin3",
+      "fullName": "Gafe Admin3"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/CloudEDU Technical/Admin Console Training"
+  },
+  {
+    "id": "115404783789071795403",
+    "primaryEmail": "admin4@gafe.co.za",
+    "name": {
+      "givenName": "Gafe",
+      "familyName": "Admin4",
+      "fullName": "Gafe Admin4"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": true,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Admin Console Training"
+  },
+  {
+    "id": "105277039457792396149",
+    "primaryEmail": "admin5@gafe.co.za",
+    "name": {
+      "givenName": "Gafe",
+      "familyName": "Admin5",
+      "fullName": "Gafe Admin5"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": true,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Admin Console Training"
+  },
+  {
+    "id": "102450855888635743124",
+    "primaryEmail": "admin6@gafe.co.za",
+    "name": {
+      "givenName": "Gafe",
+      "familyName": "Admin6",
+      "fullName": "Gafe Admin6"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": true,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Admin Console Training"
+  },
+  {
+    "id": "115779417706262194341",
+    "primaryEmail": "admin7@gafe.co.za",
+    "name": {
+      "givenName": "Gafe",
+      "familyName": "Admin7",
+      "fullName": "Gafe Admin7"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": true,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Admin Console Training"
+  },
+  {
+    "id": "107992647785227883848",
+    "primaryEmail": "admin8@gafe.co.za",
+    "name": {
+      "givenName": "Gafe",
+      "familyName": "Admin8",
+      "fullName": "Gafe Admin8"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": true,
+    "suspended": true,
+    "orgUnitPath": "/CloudEDU Technical/Admin Console Training"
+  },
+  {
+    "id": "114726633776806483400",
+    "primaryEmail": "admin9@gafe.co.za",
+    "name": {
+      "givenName": "Gafe",
+      "familyName": "Admin9",
+      "fullName": "Gafe Admin9"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": true,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Admin Console Training"
+  },
+  {
+    "id": "105349156913333644782",
+    "primaryEmail": "akhun@gafe.co.za",
+    "name": {
+      "givenName": "Adrian",
+      "familyName": "Khun",
+      "fullName": "Adrian Khun"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Inactive Users"
+  },
+  {
+    "id": "104276604317260706842",
+    "primaryEmail": "aleksandr.protsak@gafe.co.za",
+    "name": {
+      "givenName": "Aleksandr",
+      "familyName": "Protsak",
+      "fullName": "Aleksandr Protsak"
+    },
+    "isAdmin": true,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/"
+  },
+  {
+    "id": "102305463948441239613",
+    "primaryEmail": "alister@gafe.co.za",
+    "name": {
+      "givenName": "Alister",
+      "familyName": "Payne",
+      "fullName": "Alister Payne"
+    },
+    "isAdmin": true,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical"
+  },
+  {
+    "id": "112974752049387167647",
+    "primaryEmail": "amidala@gafe.co.za",
+    "name": {
+      "givenName": "Padme",
+      "familyName": "Amidala",
+      "fullName": "Padme Amidala"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "109576350634466843253",
+    "primaryEmail": "analytics@gafe.co.za",
+    "name": {
+      "givenName": "CloudEDU",
+      "familyName": "Analytics",
+      "fullName": "CloudEDU Analytics"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Resources"
+  },
+  {
+    "id": "103341239705920017250",
+    "primaryEmail": "andor@gafe.co.za",
+    "name": {
+      "givenName": "Cassian",
+      "familyName": "Andor",
+      "fullName": "Cassian Andor"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "100235636165901307971",
+    "primaryEmail": "andrew@gafe.co.za",
+    "name": {
+      "givenName": "Andrew",
+      "familyName": "Roberts",
+      "fullName": "Andrew Roberts"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical"
+  },
+  {
+    "id": "103207223531869234909",
+    "primaryEmail": "androidmdm@gafe.co.za",
+    "name": {
+      "givenName": "Android",
+      "familyName": "MDM",
+      "fullName": "Android MDM"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Devices"
+  },
+  {
+    "id": "116820020278487040768",
+    "primaryEmail": "anthony@gafe.co.za",
+    "name": {
+      "givenName": "Anthony",
+      "familyName": "Egbers",
+      "fullName": "Anthony Egbers"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/Archived Users"
+  },
+  {
+    "id": "113680142019416023520",
+    "primaryEmail": "applemdm@gafe.co.za",
+    "name": {
+      "givenName": "Apple",
+      "familyName": "Device MDM",
+      "fullName": "Apple Device MDM"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Jacaranda Academy/Students/Senior Phase"
+  },
+  {
+    "id": "106905788198563704769",
+    "primaryEmail": "appsheetviewer@gafe.co.za",
+    "name": {
+      "givenName": "AppSheet",
+      "familyName": "Viewer",
+      "fullName": "AppSheet Viewer"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/"
+  },
+  {
+    "id": "111033113571873118569",
+    "primaryEmail": "artem@gafe.co.za",
+    "name": {
+      "givenName": "Artem",
+      "familyName": "Opolskyi",
+      "fullName": "Artem Opolskyi"
+    },
+    "isAdmin": true,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/"
+  },
+  {
+    "id": "114920839580619063190",
+    "primaryEmail": "askywalker@gafe.co.za",
+    "name": {
+      "givenName": "Anakin",
+      "familyName": "Skywalker",
+      "fullName": "Anakin Skywalker"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "106589348596915286156",
+    "primaryEmail": "astark@gedu.demo.cloudedsolutions.co.za",
+    "name": {
+      "givenName": "Arya",
+      "familyName": "Stark",
+      "fullName": "Arya Stark"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/AA School/Academic Staff"
+  },
+  {
+    "id": "117605190274261018208",
+    "primaryEmail": "astevens@gafe.co.za",
+    "name": {
+      "givenName": "Penreach",
+      "familyName": "Stevens",
+      "fullName": "Penreach Stevens"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Demo"
+  },
+  {
+    "id": "109625366584984494234",
+    "primaryEmail": "atest1@winstore.co.za",
+    "name": {
+      "givenName": "A",
+      "familyName": "Test1",
+      "fullName": "A Test1"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Dev/BrowserSignin"
+  },
+  {
+    "id": "117458034940242613934",
+    "primaryEmail": "atest2@gafe.co.za",
+    "name": {
+      "givenName": "Alef",
+      "familyName": "Test2",
+      "fullName": "Alef Test2"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/POC/users"
+  },
+  {
+    "id": "104709671941401232070",
+    "primaryEmail": "azelinskova7259@gafe.co.za",
+    "name": {
+      "givenName": "Ann",
+      "familyName": "Zelinskova",
+      "fullName": "Ann Zelinskova"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/No license"
+  },
+  {
+    "id": "105385842726666811924",
+    "primaryEmail": "b.jobs@gafe.co.za",
+    "name": {
+      "givenName": "Bill",
+      "familyName": "Jobs",
+      "fullName": "Bill Jobs"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Jacaranda Academy/Students/Senior Phase/Grade 12"
+  },
+  {
+    "id": "112132910252868734635",
+    "primaryEmail": "babbot9232@gafe.co.za",
+    "name": {
+      "givenName": "Ben",
+      "familyName": "Abbot",
+      "fullName": "Ben Abbot"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Jacaranda Academy/Students"
+  },
+  {
+    "id": "104665266680370222066",
+    "primaryEmail": "bainai@gafe.co.za",
+    "name": {
+      "givenName": "Kitster",
+      "familyName": "Banai",
+      "fullName": "Kitster Banai"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "100335408616775641257",
+    "primaryEmail": "bb-8@gafe.co.za",
+    "name": {
+      "givenName": "BB",
+      "familyName": "-8",
+      "fullName": "BB -8"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/No license"
+  },
+  {
+    "id": "109322985441704865401",
+    "primaryEmail": "ben.nine@gafe.co.za",
+    "name": {
+      "givenName": "Ben",
+      "familyName": "Nine",
+      "fullName": "Ben Nine"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/A School A/Students/Penryn College/Grade 12"
+  },
+  {
+    "id": "115988544569690054001",
+    "primaryEmail": "bg@winstore.co.za",
+    "name": {
+      "givenName": "BG",
+      "familyName": "Test",
+      "fullName": "BG Test"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical"
+  },
+  {
+    "id": "103384962604831793808",
+    "primaryEmail": "billaba@gafe.co.za",
+    "name": {
+      "givenName": "Depa",
+      "familyName": "Billaba",
+      "fullName": "Depa Billaba"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "115646521610449850163",
+    "primaryEmail": "binks@gafe.co.za",
+    "name": {
+      "givenName": "Jar Jar",
+      "familyName": "Binks",
+      "fullName": "Jar Jar Binks"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "114688689448641417529",
+    "primaryEmail": "bliss@gafe.co.za",
+    "name": {
+      "givenName": "Zorii",
+      "familyName": "Bliss",
+      "fullName": "Zorii Bliss"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training"
+  },
+  {
+    "id": "113626225450202962643",
+    "primaryEmail": "brother-mfp@gafe.co.za",
+    "name": {
+      "givenName": "Brother",
+      "familyName": "MFP",
+      "fullName": "Brother MFP"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical"
+  },
+  {
+    "id": "113245169563129173801",
+    "primaryEmail": "c.miller@gafe.co.za",
+    "name": {
+      "givenName": "Coach",
+      "familyName": "Miller",
+      "fullName": "Coach Miller"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Jacaranda Academy/Staff/Senior Phase Teachers"
+  },
+  {
+    "id": "113518919542482923459",
+    "primaryEmail": "c3p0@gafe.co.za",
+    "name": {
+      "givenName": "C-3",
+      "familyName": "P0",
+      "fullName": "C-3 P0"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "115283134611160700590",
+    "primaryEmail": "calrissian@gafe.co.za",
+    "name": {
+      "givenName": "Lando",
+      "familyName": "Calrissian",
+      "fullName": "Lando Calrissian"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "103416915522411762101",
+    "primaryEmail": "cameyo@gafe.co.za",
+    "name": {
+      "givenName": "Cameyo",
+      "familyName": "Development",
+      "fullName": "Cameyo Development"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Cameyo_development"
+  },
+  {
+    "id": "101696790106284248012",
+    "primaryEmail": "canvaadmin@gafe.co.za",
+    "name": {
+      "givenName": "Canva",
+      "familyName": "Admin",
+      "fullName": "Canva Admin"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Trainers"
+  },
+  {
+    "id": "118301334895895155039",
+    "primaryEmail": "caroline@gafe.co.za",
+    "name": {
+      "givenName": "Caroline",
+      "familyName": "Binestead",
+      "fullName": "Caroline Binestead"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Dev/app_script"
+  },
+  {
+    "id": "115671697910361521295",
+    "primaryEmail": "catherine@gafe.co.za",
+    "name": {
+      "givenName": "Catherine",
+      "familyName": "Jones",
+      "fullName": "Catherine Jones"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical"
+  },
+  {
+    "id": "108066217622712806284",
+    "primaryEmail": "cb@gedu.demo.cloudedsolutions.co.za",
+    "name": {
+      "givenName": "Chromebook",
+      "familyName": "DO NOT DELETE",
+      "fullName": "Chromebook DO NOT DELETE"
+    },
+    "isAdmin": true,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/CloudEDU Technical"
+  },
+  {
+    "id": "106601304107114058967",
+    "primaryEmail": "cbarbee@gafe.co.za",
+    "name": {
+      "givenName": "Cree",
+      "familyName": "Barbee",
+      "fullName": "Cree Barbee"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Inactive Users"
+  },
+  {
+    "id": "116661034349223308074",
+    "primaryEmail": "cbdemo@gafe.co.za",
+    "name": {
+      "givenName": "Chromebook",
+      "familyName": "Demo",
+      "fullName": "Chromebook Demo"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Demo"
+  },
+  {
+    "id": "101635121891079294514",
+    "primaryEmail": "charlotte@gafe.co.za",
+    "name": {
+      "givenName": "Charlotte",
+      "familyName": "Bleakley",
+      "fullName": "Charlotte Bleakley"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Trainers"
+  },
+  {
+    "id": "109448364429284019387",
+    "primaryEmail": "cheri@gafe.co.za",
+    "name": {
+      "givenName": "Cheri",
+      "familyName": "Meyer-Palmer",
+      "fullName": "Cheri Meyer-Palmer"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Trainers"
+  },
+  {
+    "id": "100579017097539805290",
+    "primaryEmail": "chewbacca@gafe.co.za",
+    "name": {
+      "givenName": "Chewbacca",
+      "familyName": "Wookiee",
+      "fullName": "Chewbacca Wookiee"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "116013352925213305751",
+    "primaryEmail": "chromeadmin@gafe.co.za",
+    "name": {
+      "givenName": "Chrome",
+      "familyName": "Admin",
+      "fullName": "Chrome Admin"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": true,
+    "suspended": false,
+    "orgUnitPath": "/"
+  },
+  {
+    "id": "108588646543994700465",
+    "primaryEmail": "chromeos@gafe.co.za",
+    "name": {
+      "givenName": "chromeos",
+      "familyName": "environment",
+      "fullName": "chromeos environment"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/"
+  },
+  {
+    "id": "115268900456582315219",
+    "primaryEmail": "cisaacs@gafe.co.za",
+    "name": {
+      "givenName": "Cariem ",
+      "familyName": "Isaacs",
+      "fullName": "Cariem Isaacs"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical"
+  },
+  {
+    "id": "102154654412776700805",
+    "primaryEmail": "clannister@gafe.co.za",
+    "name": {
+      "givenName": "Cersei",
+      "familyName": "Lannister",
+      "fullName": "Cersei Lannister"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/AA School/Academic Staff"
+  },
+  {
+    "id": "109645915470710837868",
+    "primaryEmail": "clarissa@gafe.co.za",
+    "name": {
+      "givenName": "Clarissa",
+      "familyName": "Coetzee",
+      "fullName": "Clarissa Coetzee"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Trainers"
+  },
+  {
+    "id": "104714476638536291195",
+    "primaryEmail": "clelia@gedu.demo.cloudedsolutions.co.za",
+    "name": {
+      "givenName": "Clelia",
+      "familyName": "Cudlipp",
+      "fullName": "Clelia Cudlipp"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Inactive Users"
+  },
+  {
+    "id": "102658014234967918100",
+    "primaryEmail": "conflict_test@winstore.co.za",
+    "name": {
+      "givenName": "Conflicting",
+      "familyName": "Testing",
+      "fullName": "Conflicting Testing"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical"
+  },
+  {
+    "id": "101809658200130477137",
+    "primaryEmail": "cool1@gafe.co.za",
+    "name": {
+      "givenName": "Cool Student",
+      "familyName": "Demo 1",
+      "fullName": "Cool Student Demo 1"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/CloudEDU Technical/COOL/Students"
+  },
+  {
+    "id": "107475917571055868760",
+    "primaryEmail": "cool1@gedu.demo.cloudedsolutions.co.za",
+    "name": {
+      "givenName": "Cool Student",
+      "familyName": "Demo",
+      "fullName": "Cool Student Demo"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/CloudEDU Technical/COOL/Students"
+  },
+  {
+    "id": "104613729742594869955",
+    "primaryEmail": "cool2@gafe.co.za",
+    "name": {
+      "givenName": "Cool Staff",
+      "familyName": "Demo",
+      "fullName": "Cool Staff Demo"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/CloudEDU Technical/COOL/Staff"
+  },
+  {
+    "id": "101199448538532149382",
+    "primaryEmail": "cool2@gedu.demo.cloudedsolutions.co.za",
+    "name": {
+      "givenName": "Cool Staff",
+      "familyName": "Demo ",
+      "fullName": "Cool Staff Demo"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/CloudEDU Technical/COOL/Staff"
+  },
+  {
+    "id": "108689514545762497931",
+    "primaryEmail": "copier@gafe.co.za",
+    "name": {
+      "givenName": "CloudEDU",
+      "familyName": "Copier",
+      "fullName": "CloudEDU Copier"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical"
+  },
+  {
+    "id": "116410722943118782210",
+    "primaryEmail": "cros@gedu.demo.cloudedsolutions.co.za",
+    "name": {
+      "givenName": "cros",
+      "familyName": "ceu",
+      "fullName": "cros ceu"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/"
+  },
+  {
+    "id": "111155289945283952504",
+    "primaryEmail": "d.chen@gafe.co.za",
+    "name": {
+      "givenName": "David",
+      "familyName": "Chen",
+      "fullName": "David Chen"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Jacaranda Academy/Students/Intermediate Phase/Grade 7"
+  },
+  {
+    "id": "112704667929228875778",
+    "primaryEmail": "dameron@gafe.co.za",
+    "name": {
+      "givenName": "Poe",
+      "familyName": "Dameron",
+      "fullName": "Poe Dameron"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "101582705975930607408",
+    "primaryEmail": "danielle@gafe.co.za",
+    "name": {
+      "givenName": "Danielle",
+      "familyName": "Rowe",
+      "fullName": "Danielle Rowe"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Trainers"
+  },
+  {
+    "id": "107570569515894761769",
+    "primaryEmail": "darklighter@gafe.co.za",
+    "name": {
+      "givenName": "Biggs",
+      "familyName": "Darklighter",
+      "fullName": "Biggs Darklighter"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "108529170927100956427",
+    "primaryEmail": "deidre@gafe.co.za",
+    "name": {
+      "givenName": "Deïdrè",
+      "familyName": "Hugo",
+      "fullName": "Deïdrè Hugo"
+    },
+    "isAdmin": true,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/deidre Testing OU"
+  },
+  {
+    "id": "111100226279784888657",
+    "primaryEmail": "deidredemo@gedu.demo.cloudedsolutions.co.za",
+    "name": {
+      "givenName": "Deidre",
+      "familyName": "G Edu Demo Cool",
+      "fullName": "Deidre G Edu Demo Cool"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": true,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/COOL/Admins"
+  },
+  {
+    "id": "101029196382913760021",
+    "primaryEmail": "deidretest@gafe.co.za",
+    "name": {
+      "givenName": "Deidre",
+      "familyName": "Tester",
+      "fullName": "Deidre Tester"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": true,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Test Deidre"
+  },
+  {
+    "id": "103806631844141431557",
+    "primaryEmail": "demo-user1@gafe.co.za",
+    "name": {
+      "givenName": "Demo",
+      "familyName": "User1",
+      "fullName": "Demo User1"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/CloudEDU Technical/Inactive Users"
+  },
+  {
+    "id": "117018411512323249642",
+    "primaryEmail": "demo-user2@gafe.co.za",
+    "name": {
+      "givenName": "Demo",
+      "familyName": "User2",
+      "fullName": "Demo User2"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/CloudEDU Technical/Inactive Users"
+  },
+  {
+    "id": "103563892221402556777",
+    "primaryEmail": "demo1.student@gedu.demo.cloudedsolutions.co.za",
+    "name": {
+      "givenName": "Demo",
+      "familyName": "1",
+      "fullName": "Demo 1"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/CloudEDU Technical/COOL/Students/1"
+  },
+  {
+    "id": "113663690122962205895",
+    "primaryEmail": "demo2.student@gedu.demo.cloudedsolutions.co.za",
+    "name": {
+      "givenName": "Demo",
+      "familyName": "2",
+      "fullName": "Demo 2"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/CloudEDU Technical/COOL/Students/5"
+  },
+  {
+    "id": "114535806404375242401",
+    "primaryEmail": "demo3.teacher@gedu.demo.cloudedsolutions.co.za",
+    "name": {
+      "givenName": "Demo",
+      "familyName": "3",
+      "fullName": "Demo 3"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/CloudEDU Technical/COOL/Staff/Teachers"
+  },
+  {
+    "id": "111934950577884529284",
+    "primaryEmail": "demo4.teacher@gedu.demo.cloudedsolutions.co.za",
+    "name": {
+      "givenName": "Demo",
+      "familyName": "4",
+      "fullName": "Demo 4"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/CloudEDU Technical/COOL/Staff/Teachers"
+  },
+  {
+    "id": "105972364679994337004",
+    "primaryEmail": "des@gafe.co.za",
+    "name": {
+      "givenName": "Des",
+      "familyName": "Dunstone",
+      "fullName": "Des Dunstone"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔"
+  },
+  {
+    "id": "115145067199738888177",
+    "primaryEmail": "dev@gafe.co.za",
+    "name": {
+      "givenName": "Dev",
+      "familyName": "User",
+      "fullName": "Dev User"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": true,
+    "suspended": false,
+    "orgUnitPath": "/"
+  },
+  {
+    "id": "115450473022941978174",
+    "primaryEmail": "dheathcote@gafe.co.za",
+    "name": {
+      "givenName": "Dianna",
+      "familyName": "Heathcote",
+      "fullName": "Dianna Heathcote"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Inactive Users"
+  },
+  {
+    "id": "100072665257660837665",
+    "primaryEmail": "dominique@gafe.co.za",
+    "name": {
+      "givenName": "Dominique",
+      "familyName": "Cave",
+      "fullName": "Dominique Cave"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/Archived Users"
+  },
+  {
+    "id": "109163712476859319533",
+    "primaryEmail": "dooku@gafe.co.za",
+    "name": {
+      "givenName": "Count",
+      "familyName": "Dooku",
+      "fullName": "Count Dooku"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "105468429374191001608",
+    "primaryEmail": "dsmith@gafe.co.za",
+    "name": {
+      "givenName": "David",
+      "familyName": "Smith",
+      "fullName": "David Smith"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/CloudEDU Technical"
+  },
+  {
+    "id": "105405482814071012746",
+    "primaryEmail": "dtargaryen@gafe.co.za",
+    "name": {
+      "givenName": "Daenerys",
+      "familyName": "Targaryen",
+      "fullName": "Daenerys Targaryen"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/AA School/Academic Staff"
+  },
+  {
+    "id": "101115215158853893549",
+    "primaryEmail": "dtucker@gafe.co.za",
+    "name": {
+      "givenName": "Darryn",
+      "familyName": "Tucker",
+      "fullName": "Darryn Tucker"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Inactive Users"
+  },
+  {
+    "id": "111663298299257974367",
+    "primaryEmail": "dune@gafe.co.za",
+    "name": {
+      "givenName": "Cara",
+      "familyName": "Dune",
+      "fullName": "Cara Dune"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/No license"
+  },
+  {
+    "id": "110704197503404637261",
+    "primaryEmail": "dylan@gafe.co.za",
+    "name": {
+      "givenName": "Dylan",
+      "familyName": "Langheim",
+      "fullName": "Dylan Langheim"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Trainers"
+  },
+  {
+    "id": "102460298356310712717",
+    "primaryEmail": "e.johnson@gafe.co.za",
+    "name": {
+      "givenName": "Emily",
+      "familyName": "Johnson",
+      "fullName": "Emily Johnson"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Jacaranda Academy/Students/Senior Phase/Grade 11"
+  },
+  {
+    "id": "107763678247491051368",
+    "primaryEmail": "esethu@gafe.co.za",
+    "name": {
+      "givenName": "Esethu",
+      "familyName": "Stofile",
+      "fullName": "Esethu Stofile"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Trainers"
+  },
+  {
+    "id": "105221937046664268034",
+    "primaryEmail": "farrakhan@gafe.co.za",
+    "name": {
+      "givenName": "Farrakhan",
+      "familyName": "Raborife",
+      "fullName": "Farrakhan Raborife"
+    },
+    "isAdmin": true,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/"
+  },
+  {
+    "id": "111862280074858733376",
+    "primaryEmail": "fett@gafe.co.za",
+    "name": {
+      "givenName": "Boba",
+      "familyName": "Fett",
+      "fullName": "Boba Fett"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/"
+  },
+  {
+    "id": "102458000606243379901",
+    "primaryEmail": "finn@gafe.co.za",
+    "name": {
+      "givenName": "Finn",
+      "familyName": "Galfridian",
+      "fullName": "Finn Galfridian"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "102136990782956973559",
+    "primaryEmail": "fisto@gafe.co.za",
+    "name": {
+      "givenName": "Kit",
+      "familyName": "Fisto",
+      "fullName": "Kit Fisto"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "101366292891254076610",
+    "primaryEmail": "fortuna@gafe.co.za",
+    "name": {
+      "givenName": "Bib",
+      "familyName": "Fortuna",
+      "fullName": "Bib Fortuna"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "104459125334577210382",
+    "primaryEmail": "gaelan@gafe.co.za",
+    "name": {
+      "givenName": "Gaelan",
+      "familyName": "Killock",
+      "fullName": "Gaelan Killock"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Dev/app_script"
+  },
+  {
+    "id": "114122057118464318950",
+    "primaryEmail": "gafe10@gafe.co.za",
+    "name": {
+      "givenName": "GAFE",
+      "familyName": "Demo 10",
+      "fullName": "GAFE Demo 10"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/InnovateEDU Users"
+  },
+  {
+    "id": "114022384764829448121",
+    "primaryEmail": "gafe11@gafe.co.za",
+    "name": {
+      "givenName": "GAFE",
+      "familyName": "Demo 11",
+      "fullName": "GAFE Demo 11"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/InnovateEDU Users"
+  },
+  {
+    "id": "103312707498172880109",
+    "primaryEmail": "gafe12@gafe.co.za",
+    "name": {
+      "givenName": "GAFE",
+      "familyName": "Demo 12",
+      "fullName": "GAFE Demo 12"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/InnovateEDU Users"
+  },
+  {
+    "id": "100795743937280692180",
+    "primaryEmail": "gafe13@gafe.co.za",
+    "name": {
+      "givenName": "GAFE",
+      "familyName": "Demo 13",
+      "fullName": "GAFE Demo 13"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/InnovateEDU Users"
+  },
+  {
+    "id": "115580030147815392680",
+    "primaryEmail": "gafe14@gafe.co.za",
+    "name": {
+      "givenName": "GAFE",
+      "familyName": "Demo 14",
+      "fullName": "GAFE Demo 14"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/InnovateEDU Users"
+  },
+  {
+    "id": "111689298534973960275",
+    "primaryEmail": "gafe15@gafe.co.za",
+    "name": {
+      "givenName": "GAFE",
+      "familyName": "Demo 15",
+      "fullName": "GAFE Demo 15"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/InnovateEDU Users"
+  },
+  {
+    "id": "100824884648605271418",
+    "primaryEmail": "gafe16@gafe.co.za",
+    "name": {
+      "givenName": "GAFE",
+      "familyName": "Demo 16",
+      "fullName": "GAFE Demo 16"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/InnovateEDU Users"
+  },
+  {
+    "id": "110326726672976304401",
+    "primaryEmail": "gafe17@gafe.co.za",
+    "name": {
+      "givenName": "GAFE",
+      "familyName": "Demo 17",
+      "fullName": "GAFE Demo 17"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/InnovateEDU Users"
+  },
+  {
+    "id": "113274611253731305103",
+    "primaryEmail": "gafe18@gafe.co.za",
+    "name": {
+      "givenName": "GAFE",
+      "familyName": "Demo 18",
+      "fullName": "GAFE Demo 18"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/InnovateEDU Users"
+  },
+  {
+    "id": "109978234686377034899",
+    "primaryEmail": "gafe19@gafe.co.za",
+    "name": {
+      "givenName": "GAFE",
+      "familyName": "Demo 19",
+      "fullName": "GAFE Demo 19"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/InnovateEDU Users"
+  },
+  {
+    "id": "112367893214935637698",
+    "primaryEmail": "gafe1@gafe.co.za",
+    "name": {
+      "givenName": "GAFE",
+      "familyName": "Demo 1",
+      "fullName": "GAFE Demo 1"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/InnovateEDU Users"
+  },
+  {
+    "id": "112564123669657586223",
+    "primaryEmail": "gafe20@gafe.co.za",
+    "name": {
+      "givenName": "GAFE",
+      "familyName": "Demo 20",
+      "fullName": "GAFE Demo 20"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/InnovateEDU Users"
+  },
+  {
+    "id": "102935771448515809954",
+    "primaryEmail": "gafe2@gafe.co.za",
+    "name": {
+      "givenName": "GAFE",
+      "familyName": "Demo 2",
+      "fullName": "GAFE Demo 2"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/InnovateEDU Users"
+  },
+  {
+    "id": "100523225355631119016",
+    "primaryEmail": "gafe3@gafe.co.za",
+    "name": {
+      "givenName": "GAFE",
+      "familyName": "Demo 3",
+      "fullName": "GAFE Demo 3"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/CloudEDU Technical/InnovateEDU Users"
+  },
+  {
+    "id": "118402370929458914371",
+    "primaryEmail": "gafe4@gafe.co.za",
+    "name": {
+      "givenName": "GAFE",
+      "familyName": "Demo 4",
+      "fullName": "GAFE Demo 4"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/InnovateEDU Users"
+  },
+  {
+    "id": "111479546291692150249",
+    "primaryEmail": "gafe5@gafe.co.za",
+    "name": {
+      "givenName": "GAFE",
+      "familyName": "Demo 5",
+      "fullName": "GAFE Demo 5"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/InnovateEDU Users"
+  },
+  {
+    "id": "115026978536065309513",
+    "primaryEmail": "gafe6@gafe.co.za",
+    "name": {
+      "givenName": "GAFE",
+      "familyName": "Demo 6",
+      "fullName": "GAFE Demo 6"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/InnovateEDU Users"
+  },
+  {
+    "id": "111598063586947560014",
+    "primaryEmail": "gafe7@gafe.co.za",
+    "name": {
+      "givenName": "GAFE",
+      "familyName": "Demo 7",
+      "fullName": "GAFE Demo 7"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/InnovateEDU Users"
+  },
+  {
+    "id": "105419487666791455225",
+    "primaryEmail": "gafe8@gafe.co.za",
+    "name": {
+      "givenName": "GAFE",
+      "familyName": "Demo 8",
+      "fullName": "GAFE Demo 8"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/InnovateEDU Users"
+  },
+  {
+    "id": "112803111290919481116",
+    "primaryEmail": "gafe9@gafe.co.za",
+    "name": {
+      "givenName": "GAFE",
+      "familyName": "Demo 9",
+      "fullName": "GAFE Demo 9"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/InnovateEDU Users"
+  },
+  {
+    "id": "111749199120022399733",
+    "primaryEmail": "gamu@gafe.co.za",
+    "name": {
+      "givenName": "Gamuchirai",
+      "familyName": "Murashiki",
+      "fullName": "Gamuchirai Murashiki"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Trainers"
+  },
+  {
+    "id": "101506237021476370314",
+    "primaryEmail": "gcpw@gafe.co.za",
+    "name": {
+      "givenName": "GCPW",
+      "familyName": "MDM",
+      "fullName": "GCPW MDM"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/"
+  },
+  {
+    "id": "112052253782177028417",
+    "primaryEmail": "gcpw@gedu.demo.cloudedsolutions.co.za",
+    "name": {
+      "givenName": "gcpw",
+      "familyName": "primary domain",
+      "fullName": "gcpw primary domain"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/"
+  },
+  {
+    "id": "113879282288539957612",
+    "primaryEmail": "gde@gafe.co.za",
+    "name": {
+      "givenName": "gde",
+      "familyName": "user",
+      "fullName": "gde user"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Dev/Education Dept/gde"
+  },
+  {
+    "id": "100923065238582416579",
+    "primaryEmail": "gdetech@gafe.co.za",
+    "name": {
+      "givenName": "GDE",
+      "familyName": "Tech",
+      "fullName": "GDE Tech"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Dev/Education Dept/gde/gdetech"
+  },
+  {
+    "id": "106660864077349367850",
+    "primaryEmail": "geminiskillsteacher@gafe.co.za",
+    "name": {
+      "givenName": "GeminiSkills",
+      "familyName": "Demo",
+      "fullName": "GeminiSkills Demo"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/"
+  },
+  {
+    "id": "109162366777417078258",
+    "primaryEmail": "gideon@gafe.co.za",
+    "name": {
+      "givenName": "Moff",
+      "familyName": "Gideon",
+      "fullName": "Moff Gideon"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/No license"
+  },
+  {
+    "id": "102416221352999483946",
+    "primaryEmail": "grogu@gafe.co.za",
+    "name": {
+      "givenName": "Grogu",
+      "familyName": ".",
+      "fullName": "Grogu"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "118118962855107129143",
+    "primaryEmail": "head@gafe.co.za",
+    "name": {
+      "givenName": "Johannes",
+      "familyName": "Mouton",
+      "fullName": "Johannes Mouton"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/TEST/Staff Test"
+  },
+  {
+    "id": "100932700456172105274",
+    "primaryEmail": "heidi@gafe.co.za",
+    "name": {
+      "givenName": "Heidi",
+      "familyName": "Hudson-Bennett",
+      "fullName": "Heidi Hudson-Bennett"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Trainers"
+  },
+  {
+    "id": "102876157362470741370",
+    "primaryEmail": "helpdesk@gafe.co.za",
+    "name": {
+      "givenName": "CloudEd",
+      "familyName": "Helpdesk",
+      "fullName": "CloudEd Helpdesk"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": true,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical"
+  },
+  {
+    "id": "116923659839907150464",
+    "primaryEmail": "holdo@gafe.co.za",
+    "name": {
+      "givenName": "Amilyn",
+      "familyName": "Holdo",
+      "fullName": "Amilyn Holdo"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "114213191744015865725",
+    "primaryEmail": "hutt@gafe.co.za",
+    "name": {
+      "givenName": "Jabba",
+      "familyName": "Hutt",
+      "fullName": "Jabba Hutt"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "116671431545293762426",
+    "primaryEmail": "ict-win-mngr@gafe.co.za",
+    "name": {
+      "givenName": "ICT Lab",
+      "familyName": "Windows Management",
+      "fullName": "ICT Lab Windows Management"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Devices/Windows"
+  },
+  {
+    "id": "104320929316647128704",
+    "primaryEmail": "info@innovateedu.africa",
+    "name": {
+      "givenName": "InnovateEDU",
+      "familyName": "Info",
+      "fullName": "InnovateEDU Info"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/"
+  },
+  {
+    "id": "113196880693862690559",
+    "primaryEmail": "iostest@gafe.co.za",
+    "name": {
+      "givenName": "iostest",
+      "familyName": "account",
+      "fullName": "iostest account"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Jacaranda Academy/Resources/iOS"
+  },
+  {
+    "id": "106550601980891438740",
+    "primaryEmail": "irma@gafe.co.za",
+    "name": {
+      "givenName": "Irma",
+      "familyName": "Basson",
+      "fullName": "Irma Basson"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/Archived Users"
+  },
+  {
+    "id": "111692526624203754375",
+    "primaryEmail": "it@gafe.co.za",
+    "name": {
+      "givenName": "Jason",
+      "familyName": "Dessington",
+      "fullName": "Jason Dessington"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/TEST/Staff Test"
+  },
+  {
+    "id": "115277699853743178221",
+    "primaryEmail": "j.doe@gafe.co.za",
+    "name": {
+      "givenName": "Jane",
+      "familyName": "Doe",
+      "fullName": "Jane Doe"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": true,
+    "suspended": false,
+    "orgUnitPath": "/Jacaranda Academy/Staff/Admin Staff"
+  },
+  {
+    "id": "103224455637801255971",
+    "primaryEmail": "james.ami-narth@gafe.co.za",
+    "name": {
+      "givenName": "James",
+      "familyName": "Ami-Narth",
+      "fullName": "James Ami-Narth"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/CloudEDU Technical"
+  },
+  {
+    "id": "102423725616725908414",
+    "primaryEmail": "jamie@gafe.co.za",
+    "name": {
+      "givenName": "Jamie",
+      "familyName": "Porter",
+      "fullName": "Jamie Porter"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/"
+  },
+  {
+    "id": "102907544154824197107",
+    "primaryEmail": "jbotes@gafe.co.za",
+    "name": {
+      "givenName": "Josephine",
+      "familyName": "Botes",
+      "fullName": "Josephine Botes"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/AA School/Academic Staff"
+  },
+  {
+    "id": "109247401756138825424",
+    "primaryEmail": "jbrowne@gafe.co.za",
+    "name": {
+      "givenName": "Jane",
+      "familyName": "Browne",
+      "fullName": "Jane Browne"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Test Deidre"
+  },
+  {
+    "id": "101915412483740662780",
+    "primaryEmail": "jinn@gafe.co.za",
+    "name": {
+      "givenName": "Qui-Gon",
+      "familyName": "Jinn",
+      "fullName": "Qui-Gon Jinn"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "109165411945016753299",
+    "primaryEmail": "jmormont@gafe.co.za",
+    "name": {
+      "givenName": "Jorah",
+      "familyName": "Mormont",
+      "fullName": "Jorah Mormont"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/AA School/Academic Staff"
+  },
+  {
+    "id": "112633079937935269255",
+    "primaryEmail": "joe.smithy@gafe.co.za",
+    "name": {
+      "givenName": "Admin",
+      "familyName": "User",
+      "fullName": "Admin User"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical"
+  },
+  {
+    "id": "115259015673595806243",
+    "primaryEmail": "john.snow-stark@gafe.co.za",
+    "name": {
+      "givenName": "John",
+      "familyName": "Snow-Black",
+      "fullName": "John Snow-Black"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/A School A/Students/FP/Grade 04"
+  },
+  {
+    "id": "117336171747681364403",
+    "primaryEmail": "jyn@gafe.co.za",
+    "name": {
+      "givenName": "Jyn",
+      "familyName": "Erso",
+      "fullName": "Jyn Erso"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "109865527608866414958",
+    "primaryEmail": "karga@gafe.co.za",
+    "name": {
+      "givenName": "Greef",
+      "familyName": "Karga",
+      "fullName": "Greef Karga"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "104163325107308236111",
+    "primaryEmail": "karien@gafe.co.za",
+    "name": {
+      "givenName": "Karien",
+      "familyName": "Joubert",
+      "fullName": "Karien Joubert"
+    },
+    "isAdmin": true,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Trainers"
+  },
+  {
+    "id": "116291902991882245788",
+    "primaryEmail": "kcollyer@gafe.co.za",
+    "name": {
+      "givenName": "Kim",
+      "familyName": "Collyer",
+      "fullName": "Kim Collyer"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/TEST/Staff Test"
+  },
+  {
+    "id": "116909570289613988756",
+    "primaryEmail": "kenobi@gafe.co.za",
+    "name": {
+      "givenName": "Obi-wan",
+      "familyName": "Kenobi",
+      "fullName": "Obi-wan Kenobi"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "110373738102602631270",
+    "primaryEmail": "kevin@gafe.co.za",
+    "name": {
+      "givenName": "Kevin",
+      "familyName": "Sherman",
+      "fullName": "Kevin Sherman"
+    },
+    "isAdmin": true,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Trainers"
+  },
+  {
+    "id": "108693179815753637187",
+    "primaryEmail": "kicd@gafe.co.za",
+    "name": {
+      "givenName": "Kenya",
+      "familyName": "ICD",
+      "fullName": "Kenya ICD"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Dev/KICD"
+  },
+  {
+    "id": "102466747038210846255",
+    "primaryEmail": "kiyashin.pillay@gafe.co.za",
+    "name": {
+      "givenName": "Kiyashin",
+      "familyName": "Pillay",
+      "fullName": "Kiyashin Pillay"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/AA School/Academic Staff"
+  },
+  {
+    "id": "102632002859963808102",
+    "primaryEmail": "kjones@gafe.co.za",
+    "name": {
+      "givenName": "Kevin",
+      "familyName": "Jones",
+      "fullName": "Kevin Jones"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/CloudEDU Technical/A School A/Staff"
+  },
+  {
+    "id": "110368725715740235357",
+    "primaryEmail": "kobus.bloggs@gafe.co.za",
+    "name": {
+      "givenName": "Kobus",
+      "familyName": "Bloggs",
+      "fullName": "Kobus Bloggs"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/"
+  },
+  {
+    "id": "113997983586798769444",
+    "primaryEmail": "kryze@gafe.co.za",
+    "name": {
+      "givenName": "Bo-Katan",
+      "familyName": "Kryze",
+      "fullName": "Bo-Katan Kryze"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "115423187908476100664",
+    "primaryEmail": "kuiil@gafe.co.za",
+    "name": {
+      "givenName": "Kuiil",
+      "familyName": ".",
+      "fullName": "Kuiil"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "117419049702858125353",
+    "primaryEmail": "l.green@gafe.co.za",
+    "name": {
+      "givenName": "Leo",
+      "familyName": "Green",
+      "fullName": "Leo Green"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Jacaranda Academy/Students/Foundation Phase/Grade 2"
+  },
+  {
+    "id": "114564997211456322436",
+    "primaryEmail": "lanni@gafe.co.za",
+    "name": {
+      "givenName": "Lanni",
+      "familyName": "Mingey",
+      "fullName": "Lanni Mingey"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Dev/app_script"
+  },
+  {
+    "id": "105321110753857560016",
+    "primaryEmail": "lars@gafe.co.za",
+    "name": {
+      "givenName": "Owen",
+      "familyName": "Lars",
+      "fullName": "Owen Lars"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "100122672292507844839",
+    "primaryEmail": "leigh@gafe.co.za",
+    "name": {
+      "givenName": "Leigh",
+      "familyName": "Morris",
+      "fullName": "Leigh Morris"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/Archived Users"
+  },
+  {
+    "id": "115648307141884234606",
+    "primaryEmail": "lesia.luhovska@gafe.co.za",
+    "name": {
+      "givenName": "Lesia",
+      "familyName": "Luhovska",
+      "fullName": "Lesia Luhovska"
+    },
+    "isAdmin": true,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/"
+  },
+  {
+    "id": "107698901502717687273",
+    "primaryEmail": "lindsay@gafe.co.za",
+    "name": {
+      "givenName": "Lindsay",
+      "familyName": "Wesner",
+      "fullName": "Lindsay Wesner"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/Archived Users"
+  },
+  {
+    "id": "109612623143152576025",
+    "primaryEmail": "lisa@gafe.co.za",
+    "name": {
+      "givenName": "Lisa",
+      "familyName": "Parrock",
+      "fullName": "Lisa Parrock"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/Archived Users"
+  },
+  {
+    "id": "104486497549913753537",
+    "primaryEmail": "liubov.filippova@gafe.co.za",
+    "name": {
+      "givenName": "Liubov",
+      "familyName": "Filippova",
+      "fullName": "Liubov Filippova"
+    },
+    "isAdmin": true,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/"
+  },
+  {
+    "id": "106910150519995059699",
+    "primaryEmail": "louise@gafe.co.za",
+    "name": {
+      "givenName": "Louise",
+      "familyName": "Bowden",
+      "fullName": "Louise Bowden"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Trainers"
+  },
+  {
+    "id": "105711821200289112172",
+    "primaryEmail": "lskywalker@gafe.co.za",
+    "name": {
+      "givenName": "Luke",
+      "familyName": "Skywalker",
+      "fullName": "Luke Skywalker"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "108931423308206198653",
+    "primaryEmail": "m.davis@gafe.co.za",
+    "name": {
+      "givenName": "Mpho",
+      "familyName": "Davis",
+      "fullName": "Mpho Davis"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Jacaranda Academy/Staff/Intermediate Phase Teachers"
+  },
+  {
+    "id": "104727216859134743535",
+    "primaryEmail": "mantest2@gafe.co.za",
+    "name": {
+      "givenName": "mannual",
+      "familyName": "test",
+      "fullName": "mannual test"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/"
+  },
+  {
+    "id": "116269444131856489058",
+    "primaryEmail": "marinus@gafe.co.za",
+    "name": {
+      "givenName": "Marinus",
+      "familyName": "van Wyk",
+      "fullName": "Marinus van Wyk"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Trainers"
+  },
+  {
+    "id": "114901650827740946445",
+    "primaryEmail": "marketing@gafe.co.za",
+    "name": {
+      "givenName": "Pippa",
+      "familyName": "Haley",
+      "fullName": "Pippa Haley"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/TEST/Staff Test"
+  },
+  {
+    "id": "102363688356011971844",
+    "primaryEmail": "mart_test@winstore.co.za",
+    "name": {
+      "givenName": "Mart",
+      "familyName": "Test",
+      "fullName": "Mart Test"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/"
+  },
+  {
+    "id": "105047889092432563187",
+    "primaryEmail": "mary.moppet@gafe.co.za",
+    "name": {
+      "givenName": "Mary",
+      "familyName": "Moppet",
+      "fullName": "Mary Moppet"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/A School A/Students/Grade 07"
+  },
+  {
+    "id": "111579658269645022377",
+    "primaryEmail": "maul@gafe.co.za",
+    "name": {
+      "givenName": "Darth",
+      "familyName": "Maul",
+      "fullName": "Darth Maul"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "112080390406976342686",
+    "primaryEmail": "mazk@gafe.co.za",
+    "name": {
+      "givenName": "Maz",
+      "familyName": "Kenata",
+      "fullName": "Maz Kenata"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "116972682146504933932",
+    "primaryEmail": "mftab@gafe.co.za",
+    "name": {
+      "givenName": "Mfuleni",
+      "familyName": "Tablet",
+      "fullName": "Mfuleni Tablet"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/IT Admin/Mfuleni - HomeChoice Project"
+  },
+  {
+    "id": "102796934296793340626",
+    "primaryEmail": "mickey@gafe.co.za",
+    "name": {
+      "givenName": "Mickey",
+      "familyName": "Durr",
+      "fullName": "Mickey Durr"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Trainers"
+  },
+  {
+    "id": "113601412542180259619",
+    "primaryEmail": "migrate@gafe.co.za",
+    "name": {
+      "givenName": "CloudEd",
+      "familyName": "Migrate",
+      "fullName": "CloudEd Migrate"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Resources"
+  },
+  {
+    "id": "102414116163264476688",
+    "primaryEmail": "migrationtest1@gafe.co.za",
+    "name": {
+      "givenName": "Migration",
+      "familyName": "Test1",
+      "fullName": "Migration Test1"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Dev"
+  },
+  {
+    "id": "107213964123950309505",
+    "primaryEmail": "migrationtest2@gafe.co.za",
+    "name": {
+      "givenName": "Migration",
+      "familyName": "Test2",
+      "fullName": "Migration Test2"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Dev"
+  },
+  {
+    "id": "103501627561835278840",
+    "primaryEmail": "migrationtest3@gafe.co.za",
+    "name": {
+      "givenName": "Migration",
+      "familyName": "Test3",
+      "fullName": "Migration Test3"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Dev"
+  },
+  {
+    "id": "107499045096750076684",
+    "primaryEmail": "mladen@gafe.co.za",
+    "name": {
+      "givenName": "Mladen",
+      "familyName": "Poj",
+      "fullName": "Mladen Poj"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical"
+  },
+  {
+    "id": "115302606900258069542",
+    "primaryEmail": "mskywalker@gafe.co.za",
+    "name": {
+      "givenName": "Mara",
+      "familyName": "Skywalker",
+      "fullName": "Mara Skywalker"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "111153673306698368903",
+    "primaryEmail": "ncmitchell@gafe.co.za",
+    "name": {
+      "givenName": "Nicola",
+      "familyName": "Carlyle-Mitchell",
+      "fullName": "Nicola Carlyle-Mitchell"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/TEST/Staff Test"
+  },
+  {
+    "id": "104603213419186464552",
+    "primaryEmail": "nmuller@gafe.co.za",
+    "name": {
+      "givenName": "Natalie",
+      "familyName": "Muller",
+      "fullName": "Natalie Muller"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/TEST/Staff Test"
+  },
+  {
+    "id": "112053341857159946100",
+    "primaryEmail": "nontokozo@gafe.co.za",
+    "name": {
+      "givenName": "Nontokozo",
+      "familyName": "Thango",
+      "fullName": "Nontokozo Thango"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Trainers"
+  },
+  {
+    "id": "116924793984006450057",
+    "primaryEmail": "nsikhosana@gafe.co.za",
+    "name": {
+      "givenName": "Nokuthula",
+      "familyName": "Sikhosana",
+      "fullName": "Nokuthula Sikhosana"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/TEST/Staff Test"
+  },
+  {
+    "id": "113840585196469505828",
+    "primaryEmail": "nu@gafe.co.za",
+    "name": {
+      "givenName": "Jocast",
+      "familyName": "Nu",
+      "fullName": "Jocast Nu"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "112801270220729219228",
+    "primaryEmail": "o365@gafe.co.za",
+    "name": {
+      "givenName": "Office",
+      "familyName": "365",
+      "fullName": "Office 365"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Dev/Microsoft"
+  },
+  {
+    "id": "118049693650933396350",
+    "primaryEmail": "organa@gafe.co.za",
+    "name": {
+      "givenName": "Princess Leah",
+      "familyName": "Organa",
+      "fullName": "Princess Leah Organa"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/No license"
+  },
+  {
+    "id": "101305015843191120425",
+    "primaryEmail": "palpatine@gafe.co.za",
+    "name": {
+      "givenName": "Emperor",
+      "familyName": "Palpatine",
+      "fullName": "Emperor Palpatine"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/No license"
+  },
+  {
+    "id": "115372228692313483495",
+    "primaryEmail": "panaka@gafe.co.za",
+    "name": {
+      "givenName": "Captain",
+      "familyName": "Panaka",
+      "fullName": "Captain Panaka"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "103985497524070573910",
+    "primaryEmail": "paploo@gafe.co.za",
+    "name": {
+      "givenName": "Paploo",
+      "familyName": "Ewok",
+      "fullName": "Paploo Ewok"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "110748736265761002976",
+    "primaryEmail": "parent_calendar@gafe.co.za",
+    "name": {
+      "givenName": "Parent",
+      "familyName": "Calendar",
+      "fullName": "Parent Calendar"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Demo"
+  },
+  {
+    "id": "117623431643634315664",
+    "primaryEmail": "patrick@gafe.co.za",
+    "name": {
+      "givenName": "Patrick",
+      "familyName": "Loreson",
+      "fullName": "Patrick Loreson"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/CloudEDU Technical/xMobileGuardian - DO NOT DELETE"
+  },
+  {
+    "id": "115213879076638367846",
+    "primaryEmail": "pavel@gafe.co.za",
+    "name": {
+      "givenName": "Pavel",
+      "familyName": "Kovbasiuk",
+      "fullName": "Pavel Kovbasiuk"
+    },
+    "isAdmin": true,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/"
+  },
+  {
+    "id": "115670100593199849568",
+    "primaryEmail": "penreach@gedu.demo.cloudedsolutions.co.za",
+    "name": {
+      "givenName": "Penreach",
+      "familyName": "Demo",
+      "fullName": "Penreach Demo"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical"
+  },
+  {
+    "id": "101999735525316591868",
+    "primaryEmail": "phasma@gafe.co.za",
+    "name": {
+      "givenName": "Captain",
+      "familyName": "Phasma",
+      "fullName": "Captain Phasma"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/No license"
+  },
+  {
+    "id": "109064796527272247488",
+    "primaryEmail": "platformadmin@gafe.co.za",
+    "name": {
+      "givenName": "platform",
+      "familyName": "admin",
+      "fullName": "platform admin"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/"
+  },
+  {
+    "id": "105199341431824083146",
+    "primaryEmail": "plutt@gafe.co.za",
+    "name": {
+      "givenName": "Unkar",
+      "familyName": "Plutt",
+      "fullName": "Unkar Plutt"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training"
+  },
+  {
+    "id": "117144031470325887701",
+    "primaryEmail": "punonzte@gafe.co.za",
+    "name": {
+      "givenName": "Punon",
+      "familyName": "ZTE",
+      "fullName": "Punon ZTE"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/"
+  },
+  {
+    "id": "111037583766329332459",
+    "primaryEmail": "pylyp@gafe.co.za",
+    "name": {
+      "givenName": "Pylyp",
+      "familyName": "Pistolkors",
+      "fullName": "Pylyp Pistolkors"
+    },
+    "isAdmin": true,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/"
+  },
+  {
+    "id": "100692513024067153801",
+    "primaryEmail": "r2d2@gafe.co.za",
+    "name": {
+      "givenName": "R2",
+      "familyName": "D2",
+      "fullName": "R2 D2"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "117131695307039316692",
+    "primaryEmail": "rbaratheon@gafe.co.za",
+    "name": {
+      "givenName": "Robert",
+      "familyName": "Baratheon",
+      "fullName": "Robert Baratheon"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/AA School/Academic Staff"
+  },
+  {
+    "id": "117146993576146448080",
+    "primaryEmail": "reception@gafe.co.za",
+    "name": {
+      "givenName": "Andrea",
+      "familyName": "Mulder",
+      "fullName": "Andrea Mulder"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Inactive Users"
+  },
+  {
+    "id": "109559720826003108128",
+    "primaryEmail": "reeves@gafe.co.za",
+    "name": {
+      "givenName": "Koska",
+      "familyName": "Reeves",
+      "fullName": "Koska Reeves"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "100949421687065827048",
+    "primaryEmail": "ren@gafe.co.za",
+    "name": {
+      "givenName": "Kylo",
+      "familyName": "Ren",
+      "fullName": "Kylo Ren"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "104858424284619903050",
+    "primaryEmail": "rey@gafe.co.za",
+    "name": {
+      "givenName": "Rey",
+      "familyName": "Skywalker",
+      "fullName": "Rey Skywalker"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training"
+  },
+  {
+    "id": "111104078800959612029",
+    "primaryEmail": "robyn@gafe.co.za",
+    "name": {
+      "givenName": "Robyn",
+      "familyName": "Clark",
+      "fullName": "Robyn Clark"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/Archived Users"
+  },
+  {
+    "id": "114771927854718127441",
+    "primaryEmail": "rycherde@gafe.co.za",
+    "name": {
+      "givenName": "Rycherde",
+      "familyName": "Walters",
+      "fullName": "Rycherde Walters"
+    },
+    "isAdmin": true,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Trainers"
+  },
+  {
+    "id": "102208185860478392329",
+    "primaryEmail": "s.bones@gafe.co.za",
+    "name": {
+      "givenName": "Susan",
+      "familyName": "Bones",
+      "fullName": "Susan Bones"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Jacaranda Academy/Staff/Admin Staff"
+  },
+  {
+    "id": "103988474234630849008",
+    "primaryEmail": "samram2566@gafe.co.za",
+    "name": {
+      "givenName": "Shabana",
+      "familyName": "Amram",
+      "fullName": "Shabana Amram"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Jacaranda Academy/Students"
+  },
+  {
+    "id": "108092609387541224156",
+    "primaryEmail": "saw@gafe.co.za",
+    "name": {
+      "givenName": "Saw",
+      "familyName": "Gerrera",
+      "fullName": "Saw Gerrera"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training"
+  },
+  {
+    "id": "111680349645895290110",
+    "primaryEmail": "scan2email@gafe.co.za",
+    "name": {
+      "givenName": "Scan2",
+      "familyName": "Email",
+      "fullName": "Scan2 Email"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Resources"
+  },
+  {
+    "id": "104711847174635317348",
+    "primaryEmail": "school_calendar@gafe.co.za",
+    "name": {
+      "givenName": "School",
+      "familyName": "Calendar",
+      "fullName": "School Calendar"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Demo"
+  },
+  {
+    "id": "103101827027588719470",
+    "primaryEmail": "shand@gafe.co.za",
+    "name": {
+      "givenName": "Fennec",
+      "familyName": "Shand",
+      "fullName": "Fennec Shand"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "110755119874917112458",
+    "primaryEmail": "sharedcontacts@gafe.co.za",
+    "name": {
+      "givenName": "Shared",
+      "familyName": "Contacts",
+      "fullName": "Shared Contacts"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Resources"
+  },
+  {
+    "id": "105892160355970817800",
+    "primaryEmail": "sharon@gafe.co.za",
+    "name": {
+      "givenName": "Sharon",
+      "familyName": "Blow",
+      "fullName": "Sharon Blow"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔"
+  },
+  {
+    "id": "116740260067277888923",
+    "primaryEmail": "signafly@gafe.co.za",
+    "name": {
+      "givenName": "Signafly",
+      "familyName": "User",
+      "fullName": "Signafly User"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/"
+  },
+  {
+    "id": "100152092720154120934",
+    "primaryEmail": "snoke@gafe.co.za",
+    "name": {
+      "givenName": "Leader",
+      "familyName": "Snoke",
+      "fullName": "Leader Snoke"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "100501870297482790167",
+    "primaryEmail": "solo@gafe.co.za",
+    "name": {
+      "givenName": "Han",
+      "familyName": "Solo",
+      "fullName": "Han Solo"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/"
+  },
+  {
+    "id": "102775826413518251472",
+    "primaryEmail": "sstark@gafe.co.za",
+    "name": {
+      "givenName": "Sansa",
+      "familyName": "Stark",
+      "fullName": "Sansa Stark"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/AA School/Academic Staff"
+  },
+  {
+    "id": "104625075494558476502",
+    "primaryEmail": "strategic_calendar@gafe.co.za",
+    "name": {
+      "givenName": "Strategic",
+      "familyName": "Calendar",
+      "fullName": "Strategic Calendar"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/Demo"
+  },
+  {
+    "id": "117127765639621960900",
+    "primaryEmail": "svandermerwe@gafe.co.za",
+    "name": {
+      "givenName": "Simone",
+      "familyName": "van der Merwe",
+      "fullName": "Simone van der Merwe"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/A School A/Staff"
+  },
+  {
+    "id": "109036757561171729367",
+    "primaryEmail": "syates1142@gafe.co.za",
+    "name": {
+      "givenName": "Sabrina",
+      "familyName": "Yates",
+      "fullName": "Sabrina Yates"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/No license"
+  },
+  {
+    "id": "106002703334281391709",
+    "primaryEmail": "t.harry@gafe.co.za",
+    "name": {
+      "givenName": "Tom",
+      "familyName": "Harry",
+      "fullName": "Tom Harry"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Jacaranda Academy/Test"
+  },
+  {
+    "id": "116192602504796356114",
+    "primaryEmail": "t.hiddleston@gafe.co.za",
+    "name": {
+      "givenName": "Tom",
+      "familyName": "Hiddleston",
+      "fullName": "Tom Hiddleston"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Jacaranda Academy/Staff/Admin Staff"
+  },
+  {
+    "id": "110069884382094535452",
+    "primaryEmail": "tcmitchell@gafe.co.za",
+    "name": {
+      "givenName": "Tanya",
+      "familyName": "Carlyle-Mitchell",
+      "fullName": "Tanya Carlyle-Mitchell"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical/TEST/Staff Test"
+  },
+  {
+    "id": "105665216279217043728",
+    "primaryEmail": "techsupport@gafe.co.za",
+    "name": {
+      "givenName": "Charlotte",
+      "familyName": "Bothma",
+      "fullName": "Charlotte Bothma"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical"
+  },
+  {
+    "id": "117699704439186118473",
+    "primaryEmail": "tetiana_kaminska@gafe.co.za",
+    "name": {
+      "givenName": "Tetiana",
+      "familyName": "Kaminska",
+      "fullName": "Tetiana Kaminska"
+    },
+    "isAdmin": true,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Existek"
+  },
+  {
+    "id": "115765194836052357025",
+    "primaryEmail": "themba@gafe.co.za",
+    "name": {
+      "givenName": "Themba",
+      "familyName": "Skosana",
+      "fullName": "Themba Skosana"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": true,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Trainers"
+  },
+  {
+    "id": "106448413712758189909",
+    "primaryEmail": "thustead1@gafe.co.za",
+    "name": {
+      "givenName": "Travis",
+      "familyName": "Hustead",
+      "fullName": "Travis Hustead"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical"
+  },
+  {
+    "id": "104142236277809819072",
+    "primaryEmail": "tsheply1@gafe.co.za",
+    "name": {
+      "givenName": "Tam",
+      "familyName": "Sheply",
+      "fullName": "Tam Sheply"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical"
+  },
+  {
+    "id": "109540952416409710790",
+    "primaryEmail": "vadar@gafe.co.za",
+    "name": {
+      "givenName": "Darth",
+      "familyName": "Vadar",
+      "fullName": "Darth Vadar"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "116611630342354864610",
+    "primaryEmail": "viktoriia.yefimchuk@gafe.co.za",
+    "name": {
+      "givenName": "Viktoriia",
+      "familyName": "Yefimchuk",
+      "fullName": "Viktoriia Yefimchuk"
+    },
+    "isAdmin": true,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/"
+  },
+  {
+    "id": "107819280743358008931",
+    "primaryEmail": "w.smith@gafe.co.za",
+    "name": {
+      "givenName": "Will",
+      "familyName": "Smith",
+      "fullName": "Will Smith"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Jacaranda Academy/Staff/Foundation phase Teachers"
+  },
+  {
+    "id": "103874952076638452896",
+    "primaryEmail": "warren@gafe.co.za",
+    "name": {
+      "givenName": "Warren",
+      "familyName": "Lilley",
+      "fullName": "Warren Lilley"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": true,
+    "orgUnitPath": "/Archived Users"
+  },
+  {
+    "id": "108676585634554558048",
+    "primaryEmail": "warrick@gafe.co.za",
+    "name": {
+      "givenName": "Wicket",
+      "familyName": "Warrick",
+      "fullName": "Wicket Warrick"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training"
+  },
+  {
+    "id": "113139145663962343169",
+    "primaryEmail": "wayground10@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher10",
+      "fullName": "Wayground Teacher10"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "100483151458776739319",
+    "primaryEmail": "wayground11@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher11",
+      "fullName": "Wayground Teacher11"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "108224426068840105809",
+    "primaryEmail": "wayground12@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher12",
+      "fullName": "Wayground Teacher12"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "117312425970620369407",
+    "primaryEmail": "wayground13@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher13",
+      "fullName": "Wayground Teacher13"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "116724922591243710246",
+    "primaryEmail": "wayground14@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher14",
+      "fullName": "Wayground Teacher14"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "116280810256633048288",
+    "primaryEmail": "wayground15@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher15",
+      "fullName": "Wayground Teacher15"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "117438714417530475370",
+    "primaryEmail": "wayground16@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher16",
+      "fullName": "Wayground Teacher16"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "107917867207555578874",
+    "primaryEmail": "wayground17@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher17",
+      "fullName": "Wayground Teacher17"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "111082731099359573995",
+    "primaryEmail": "wayground18@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher18",
+      "fullName": "Wayground Teacher18"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "116002859737037610003",
+    "primaryEmail": "wayground19@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher19",
+      "fullName": "Wayground Teacher19"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "115224574380476538398",
+    "primaryEmail": "wayground1@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher1",
+      "fullName": "Wayground Teacher1"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "114372075422703114229",
+    "primaryEmail": "wayground20@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher20",
+      "fullName": "Wayground Teacher20"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "100322179971275577796",
+    "primaryEmail": "wayground21@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher21",
+      "fullName": "Wayground Teacher21"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "113230891249307035416",
+    "primaryEmail": "wayground22@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher22",
+      "fullName": "Wayground Teacher22"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "116355563439326255488",
+    "primaryEmail": "wayground23@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher23",
+      "fullName": "Wayground Teacher23"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "102222366350918591922",
+    "primaryEmail": "wayground24@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher24",
+      "fullName": "Wayground Teacher24"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "108420861916211127884",
+    "primaryEmail": "wayground25@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher25",
+      "fullName": "Wayground Teacher25"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "110888872407019877588",
+    "primaryEmail": "wayground26@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher26",
+      "fullName": "Wayground Teacher26"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "104540100038149932532",
+    "primaryEmail": "wayground27@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher27",
+      "fullName": "Wayground Teacher27"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "107533011411749217753",
+    "primaryEmail": "wayground28@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher28",
+      "fullName": "Wayground Teacher28"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "101467980025225981489",
+    "primaryEmail": "wayground29@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher29",
+      "fullName": "Wayground Teacher29"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "114651935836398471546",
+    "primaryEmail": "wayground2@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher2",
+      "fullName": "Wayground Teacher2"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "103933050430591315889",
+    "primaryEmail": "wayground30@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher30",
+      "fullName": "Wayground Teacher30"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "115253791013855749791",
+    "primaryEmail": "wayground31@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher31",
+      "fullName": "Wayground Teacher31"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "103149519400843137184",
+    "primaryEmail": "wayground32@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher32",
+      "fullName": "Wayground Teacher32"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "111653673218114093845",
+    "primaryEmail": "wayground33@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher33",
+      "fullName": "Wayground Teacher33"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "118205347508512591136",
+    "primaryEmail": "wayground34@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher34",
+      "fullName": "Wayground Teacher34"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "107990467411005865336",
+    "primaryEmail": "wayground35@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher35",
+      "fullName": "Wayground Teacher35"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "111734085420428107009",
+    "primaryEmail": "wayground36@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher36",
+      "fullName": "Wayground Teacher36"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "101657587238222625458",
+    "primaryEmail": "wayground37@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher37",
+      "fullName": "Wayground Teacher37"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "106616461204467446238",
+    "primaryEmail": "wayground38@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher38",
+      "fullName": "Wayground Teacher38"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "116635557200051713684",
+    "primaryEmail": "wayground39@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher39",
+      "fullName": "Wayground Teacher39"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "107927275881831227259",
+    "primaryEmail": "wayground3@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher3",
+      "fullName": "Wayground Teacher3"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "112822051636976076718",
+    "primaryEmail": "wayground40@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher40",
+      "fullName": "Wayground Teacher40"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "102994247336052293381",
+    "primaryEmail": "wayground41@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher41",
+      "fullName": "Wayground Teacher41"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "103309021375248880174",
+    "primaryEmail": "wayground42@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher42",
+      "fullName": "Wayground Teacher42"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "112529049094182307341",
+    "primaryEmail": "wayground43@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher43",
+      "fullName": "Wayground Teacher43"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "111164710322888948860",
+    "primaryEmail": "wayground44@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher44",
+      "fullName": "Wayground Teacher44"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "109116064759136802853",
+    "primaryEmail": "wayground45@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher45",
+      "fullName": "Wayground Teacher45"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "114893275326246519129",
+    "primaryEmail": "wayground46@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher46",
+      "fullName": "Wayground Teacher46"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "117645518989230269534",
+    "primaryEmail": "wayground47@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher47",
+      "fullName": "Wayground Teacher47"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "107463149342897712982",
+    "primaryEmail": "wayground48@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher48",
+      "fullName": "Wayground Teacher48"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "102726445006120423804",
+    "primaryEmail": "wayground49@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher49",
+      "fullName": "Wayground Teacher49"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "109013212717686240351",
+    "primaryEmail": "wayground4@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher4",
+      "fullName": "Wayground Teacher4"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "103696956253840269638",
+    "primaryEmail": "wayground50@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher50",
+      "fullName": "Wayground Teacher50"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "110396463821616862885",
+    "primaryEmail": "wayground5@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher5",
+      "fullName": "Wayground Teacher5"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "114397306017856599637",
+    "primaryEmail": "wayground6@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher6",
+      "fullName": "Wayground Teacher6"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "115035713112284223248",
+    "primaryEmail": "wayground7@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher7",
+      "fullName": "Wayground Teacher7"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "105314257454990120503",
+    "primaryEmail": "wayground8@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher8",
+      "fullName": "Wayground Teacher8"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "104585035322493403450",
+    "primaryEmail": "wayground9@gafe.co.za",
+    "name": {
+      "givenName": "Wayground",
+      "familyName": "Teacher9",
+      "fullName": "Wayground Teacher9"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "111481680325599307571",
+    "primaryEmail": "windu@gafe.co.za",
+    "name": {
+      "givenName": "Mace",
+      "familyName": "Windu",
+      "fullName": "Mace Windu"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/No license"
+  },
+  {
+    "id": "102907672758031234200",
+    "primaryEmail": "xjvan@gafe.co.za",
+    "name": {
+      "givenName": "Jane",
+      "familyName": "Janse van Poegen",
+      "fullName": "Jane Janse van Poegen"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical"
+  },
+  {
+    "id": "101070053329965705565",
+    "primaryEmail": "yoda@gafe.co.za",
+    "name": {
+      "givenName": "Jedi",
+      "familyName": "Yoda",
+      "fullName": "Jedi Yoda"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026"
+  },
+  {
+    "id": "106867954859818812699",
+    "primaryEmail": "youtubelive@gafe.co.za",
+    "name": {
+      "givenName": "Youtube Live",
+      "familyName": "GAFE",
+      "fullName": "Youtube Live GAFE"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/CloudEDU Technical"
+  },
+  {
+    "id": "113517298582674179219",
+    "primaryEmail": "yularen@gafe.co.za",
+    "name": {
+      "givenName": "Wullf",
+      "familyName": "Yularen",
+      "fullName": "Wullf Yularen"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Training"
+  }
+]

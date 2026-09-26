@@ -1,0 +1,5167 @@
+[
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-25T13:33:42.776Z",
+      "uniqueQualifier": "-1147008657636911494",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/l8bBtwUUnOgx93hHYdrkaxlZBFs\"",
+    "actor": {
+      "callerType": "KEY",
+      "key": "SYSTEM"
+    },
+    "isAgenticAction": false,
+    "events": [
+      {
+        "type": "CHROME_BROWSER_SETTINGS",
+        "name": "INACTIVE_CHROME_PROFILE_DELETED",
+        "status": {
+          "eventStatus": "SUCCEEDED"
+        },
+        "parameters": [
+          {
+            "name": "CHROME_PROFILE_ID",
+            "value": "L7ma0SIkGmb8zoYMxSkv0kg-iOQ"
+          }
+        ],
+        "resourceIds": [
+          "CHROME_PROFILE/L7ma0SIkGmb8zoYMxSkv0kg-iOQ"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "CHROME_PROFILE/L7ma0SIkGmb8zoYMxSkv0kg-iOQ",
+        "type": "DEVICE",
+        "ownerDetails": {
+          "ownerType": "CUSTOMER",
+          "ownerIdentity": [
+            {
+              "customerIdentity": {
+                "id": "04hu2uhc"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-24T14:20:42.608Z",
+      "uniqueQualifier": "-8523847844794321807",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/n4XpslP4nsvkSto8jo5eTUodNbs\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "kevin@gafe.co.za",
+      "profileId": "110373738102602631270"
+    },
+    "ipAddress": "155.93.238.92",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37680
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "APPLICATION_SETTINGS",
+        "name": "CHANGE_APPLICATION_SETTING",
+        "parameters": [
+          {
+            "name": "APPLICATION_NAME",
+            "value": "Gmail"
+          },
+          {
+            "name": "ORG_UNIT_NAME",
+            "value": "gafe.co.za"
+          },
+          {
+            "name": "SETTING_NAME",
+            "value": "Attachment safety Enable: protect against attachments with scripts from untrusted senders"
+          },
+          {
+            "name": "OLD_VALUE",
+            "value": "true"
+          },
+          {
+            "name": "NEW_VALUE",
+            "value": "false"
+          },
+          {
+            "name": "APPLICATION_EDITION",
+            "value": "enterprise"
+          }
+        ]
+      },
+      {
+        "type": "APPLICATION_SETTINGS",
+        "name": "CHANGE_APPLICATION_SETTING",
+        "parameters": [
+          {
+            "name": "APPLICATION_NAME",
+            "value": "Gmail"
+          },
+          {
+            "name": "ORG_UNIT_NAME",
+            "value": "gafe.co.za"
+          },
+          {
+            "name": "SETTING_NAME",
+            "value": "Attachment safety Enable: protect against attachments with scripts from untrusted senders"
+          },
+          {
+            "name": "OLD_VALUE",
+            "value": "true"
+          },
+          {
+            "name": "NEW_VALUE",
+            "value": "false"
+          },
+          {
+            "name": "APPLICATION_EDITION",
+            "value": "education"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-23T14:24:28.217Z",
+      "uniqueQualifier": "8576576687665667983",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/2L0Dpw4sOUMdt2h6Bn8U_FvGPkY\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "alister@gafe.co.za",
+      "profileId": "102305463948441239613",
+      "applicationInfo": {
+        "applicationName": "Admin"
+      }
+    },
+    "ipAddress": "197.155.22.16",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37199
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "MOBILE_SETTINGS",
+        "name": "ADD_MOBILE_APPLICATION_TO_WHITELIST",
+        "parameters": [
+          {
+            "name": "MOBILE_APP_PACKAGE_ID",
+            "value": "com.canva.editor"
+          },
+          {
+            "name": "DEVICE_TYPE",
+            "value": "Android"
+          },
+          {
+            "name": "DISTRIBUTION_ENTITY_TYPE",
+            "value": "ORG_UNIT"
+          },
+          {
+            "name": "DISTRIBUTION_ENTITY_NAME",
+            "value": "/"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-23T14:23:25.612Z",
+      "uniqueQualifier": "-4827858400907648873",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/svJc-NjfI2fmEFkugb64tW-WkiM\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "alister@gafe.co.za",
+      "profileId": "102305463948441239613"
+    },
+    "ipAddress": "197.155.22.16",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37199
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_VIEW",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "032219ee-8bbd-4d67-b331-3ddee3771127,45124f4d-048b-4d5b-92f5-1e09c1a66caf,64034efc-1d43-45f8-860b-bea6e51218e9,7085b820-08c9-4a8f-a6f5-75b046add9dd"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-23T14:20:59.834Z",
+      "uniqueQualifier": "4385715748266183664",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/PY3GTfhHVqWRsimYT_VBFfTbfmo\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "alister@gafe.co.za",
+      "profileId": "102305463948441239613"
+    },
+    "ipAddress": "197.155.22.16",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37199
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_VIEW",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "032219ee-8bbd-4d67-b331-3ddee3771127,45124f4d-048b-4d5b-92f5-1e09c1a66caf,64034efc-1d43-45f8-860b-bea6e51218e9,7085b820-08c9-4a8f-a6f5-75b046add9dd"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-23T13:31:58.831Z",
+      "uniqueQualifier": "-8032820768078507327",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/NAJFqeLsHRD_dSi2k-DrFuMTEXI\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "alister@gafe.co.za",
+      "profileId": "102305463948441239613"
+    },
+    "ipAddress": "197.155.22.16",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37199
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_VIEW",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "032219ee-8bbd-4d67-b331-3ddee3771127,45124f4d-048b-4d5b-92f5-1e09c1a66caf,64034efc-1d43-45f8-860b-bea6e51218e9,7085b820-08c9-4a8f-a6f5-75b046add9dd"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-23T08:41:39.058Z",
+      "uniqueQualifier": "4068086127599908345",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/0OXSD4WnLlgYuXAHfZ-ybHUCKQY\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "alister@gafe.co.za",
+      "profileId": "102305463948441239613"
+    },
+    "ipAddress": "102.221.27.89",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37100
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_VIEW",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "032219ee-8bbd-4d67-b331-3ddee3771127,45124f4d-048b-4d5b-92f5-1e09c1a66caf,64034efc-1d43-45f8-860b-bea6e51218e9,7085b820-08c9-4a8f-a6f5-75b046add9dd"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-23T07:48:11.628Z",
+      "uniqueQualifier": "-2618781511115011604",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/Lwp3rhyjtg7dZmYDjI-HKpNLRYg\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "farrakhan@gafe.co.za",
+      "profileId": "105221937046664268034"
+    },
+    "ipAddress": "102.254.46.19",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37457
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-GP"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_LIST_CHANGE",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "032219ee-8bbd-4d67-b331-3ddee3771127"
+          }
+        ],
+        "resourceIds": [
+          "032219ee-8bbd-4d67-b331-3ddee3771127"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "032219ee-8bbd-4d67-b331-3ddee3771127",
+        "title": "Data Loss Prevention (DLP)",
+        "type": "ALERT",
+        "ownerDetails": {
+          "ownerType": "CUSTOMER",
+          "ownerIdentity": [
+            {
+              "customerIdentity": {
+                "id": "04hu2uhc"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-23T07:48:11.449Z",
+      "uniqueQualifier": "3482244414248448328",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/eK99cgCdIAsbVhlivwGTOqo1ZrE\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "farrakhan@gafe.co.za",
+      "profileId": "105221937046664268034"
+    },
+    "ipAddress": "102.254.46.19",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37457
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-GP"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_LIST_RELATED_ALERTS",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "032219ee-8bbd-4d67-b331-3ddee3771127"
+          },
+          {
+            "name": "RELATED_ALERT_ID",
+            "value": "7085b820-08c9-4a8f-a6f5-75b046add9dd"
+          }
+        ],
+        "resourceIds": [
+          "032219ee-8bbd-4d67-b331-3ddee3771127"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "032219ee-8bbd-4d67-b331-3ddee3771127",
+        "title": "Data Loss Prevention (DLP)",
+        "type": "ALERT",
+        "ownerDetails": {
+          "ownerType": "CUSTOMER",
+          "ownerIdentity": [
+            {
+              "customerIdentity": {
+                "id": "04hu2uhc"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-23T07:48:09.791Z",
+      "uniqueQualifier": "2930536042162713812",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/Uc-ZKQG7du227vkwednE-6_d2OU\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "farrakhan@gafe.co.za",
+      "profileId": "105221937046664268034"
+    },
+    "ipAddress": "102.254.46.19",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37457
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-GP"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_LIST_RELATED_ALERTS",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "032219ee-8bbd-4d67-b331-3ddee3771127"
+          },
+          {
+            "name": "RELATED_ALERT_ID",
+            "value": "7085b820-08c9-4a8f-a6f5-75b046add9dd"
+          }
+        ],
+        "resourceIds": [
+          "032219ee-8bbd-4d67-b331-3ddee3771127"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "032219ee-8bbd-4d67-b331-3ddee3771127",
+        "title": "Data Loss Prevention (DLP)",
+        "type": "ALERT",
+        "ownerDetails": {
+          "ownerType": "CUSTOMER",
+          "ownerIdentity": [
+            {
+              "customerIdentity": {
+                "id": "04hu2uhc"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-23T07:48:08.536Z",
+      "uniqueQualifier": "-6202418558555247417",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/aC9AO531eTuP_gGDbYzrsh9Zob4\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "farrakhan@gafe.co.za",
+      "profileId": "105221937046664268034"
+    },
+    "ipAddress": "102.254.46.19",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37457
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-GP"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_LIST_FEEDBACK",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "032219ee-8bbd-4d67-b331-3ddee3771127"
+          }
+        ],
+        "resourceIds": [
+          "032219ee-8bbd-4d67-b331-3ddee3771127"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "032219ee-8bbd-4d67-b331-3ddee3771127",
+        "title": "Data Loss Prevention (DLP)",
+        "type": "ALERT",
+        "ownerDetails": {
+          "ownerType": "CUSTOMER",
+          "ownerIdentity": [
+            {
+              "customerIdentity": {
+                "id": "04hu2uhc"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-23T07:48:04.793Z",
+      "uniqueQualifier": "3545653754551752061",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/Q3k7T5QGN_vnNp4W31qjeI7mbGU\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "farrakhan@gafe.co.za",
+      "profileId": "105221937046664268034"
+    },
+    "ipAddress": "102.254.46.19",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37457
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-GP"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_VIEW",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "032219ee-8bbd-4d67-b331-3ddee3771127"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-23T07:48:00.851Z",
+      "uniqueQualifier": "-5390502360177397448",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/cjnT-cWPPl9hWh5zjtUf7QgE5QY\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "farrakhan@gafe.co.za",
+      "profileId": "105221937046664268034"
+    },
+    "ipAddress": "102.254.46.19",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37457
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-GP"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_VIEW",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "032219ee-8bbd-4d67-b331-3ddee3771127,08507a9b-f342-4fdc-a4e6-1ab25a240fb6,0aa9a053-0a51-45a6-8229-1eb1eee2e315,45124f4d-048b-4d5b-92f5-1e09c1a66caf,572883e2-06aa-4cbc-a218-7abcbb7be07e,64034efc-1d43-45f8-860b-bea6e51218e9,7085b820-08c9-4a8f-a6f5-75b046add9dd,c9b8912c-df19-4159-b468-612d53230fa0,f20c99e8-d747-49b9-912c-4ecb2d718086,f216fe80-651b-4a91-94aa-33b7548ee0b3"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-23T07:47:57.694Z",
+      "uniqueQualifier": "-6687966892819153898",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/omefO3rUObYpyfN-qNtTucFMKuo\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "farrakhan@gafe.co.za",
+      "profileId": "105221937046664268034"
+    },
+    "ipAddress": "102.254.46.19",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37457
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-GP"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_VIEW",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "032219ee-8bbd-4d67-b331-3ddee3771127,45124f4d-048b-4d5b-92f5-1e09c1a66caf,64034efc-1d43-45f8-860b-bea6e51218e9,7085b820-08c9-4a8f-a6f5-75b046add9dd"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-23T07:29:20.469Z",
+      "uniqueQualifier": "7786241910689884101",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/Hmg8cqy0c_m5mALoF2bTQ0s8Xds\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "farrakhan@gafe.co.za",
+      "profileId": "105221937046664268034"
+    },
+    "ipAddress": "102.253.14.10",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37457
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-GP"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_LIST_CHANGE",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "7085b820-08c9-4a8f-a6f5-75b046add9dd"
+          }
+        ],
+        "resourceIds": [
+          "7085b820-08c9-4a8f-a6f5-75b046add9dd"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "7085b820-08c9-4a8f-a6f5-75b046add9dd",
+        "title": "Data Loss Prevention (DLP)",
+        "type": "ALERT",
+        "ownerDetails": {
+          "ownerType": "CUSTOMER",
+          "ownerIdentity": [
+            {
+              "customerIdentity": {
+                "id": "04hu2uhc"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-23T07:29:09.446Z",
+      "uniqueQualifier": "6249248438319650368",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/jUToZ6YhD6JL1Ui_NO6rsKW_EdQ\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "farrakhan@gafe.co.za",
+      "profileId": "105221937046664268034"
+    },
+    "ipAddress": "102.253.14.10",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37457
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-GP"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_LIST_RELATED_ALERTS",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "7085b820-08c9-4a8f-a6f5-75b046add9dd"
+          }
+        ],
+        "resourceIds": [
+          "7085b820-08c9-4a8f-a6f5-75b046add9dd"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "7085b820-08c9-4a8f-a6f5-75b046add9dd",
+        "title": "Data Loss Prevention (DLP)",
+        "type": "ALERT",
+        "ownerDetails": {
+          "ownerType": "CUSTOMER",
+          "ownerIdentity": [
+            {
+              "customerIdentity": {
+                "id": "04hu2uhc"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-23T07:29:08.307Z",
+      "uniqueQualifier": "-1894354195023346629",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/j03J_6kkd9LgREnyWcFeYBKfCr8\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "farrakhan@gafe.co.za",
+      "profileId": "105221937046664268034"
+    },
+    "ipAddress": "102.253.14.10",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37457
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-GP"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_LIST_FEEDBACK",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "7085b820-08c9-4a8f-a6f5-75b046add9dd"
+          }
+        ],
+        "resourceIds": [
+          "7085b820-08c9-4a8f-a6f5-75b046add9dd"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "7085b820-08c9-4a8f-a6f5-75b046add9dd",
+        "title": "Data Loss Prevention (DLP)",
+        "type": "ALERT",
+        "ownerDetails": {
+          "ownerType": "CUSTOMER",
+          "ownerIdentity": [
+            {
+              "customerIdentity": {
+                "id": "04hu2uhc"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-23T07:29:05.033Z",
+      "uniqueQualifier": "-1762236123236676048",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/64kjcX0F8Fg4CwmZAwmBl-H8WGI\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "farrakhan@gafe.co.za",
+      "profileId": "105221937046664268034"
+    },
+    "ipAddress": "102.253.14.10",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37457
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-GP"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_VIEW",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "7085b820-08c9-4a8f-a6f5-75b046add9dd"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-23T07:29:01.786Z",
+      "uniqueQualifier": "-4590332334664956642",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/sRee6KjRnWp8j6evjcNHC6kadDk\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "farrakhan@gafe.co.za",
+      "profileId": "105221937046664268034"
+    },
+    "ipAddress": "102.253.14.10",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37457
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-GP"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_VIEW",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "08507a9b-f342-4fdc-a4e6-1ab25a240fb6,0aa9a053-0a51-45a6-8229-1eb1eee2e315,45124f4d-048b-4d5b-92f5-1e09c1a66caf,572883e2-06aa-4cbc-a218-7abcbb7be07e,64034efc-1d43-45f8-860b-bea6e51218e9,7085b820-08c9-4a8f-a6f5-75b046add9dd,c7a8c086-34da-4ec9-b669-b0b46dc3e324,c9b8912c-df19-4159-b468-612d53230fa0,f20c99e8-d747-49b9-912c-4ecb2d718086,f216fe80-651b-4a91-94aa-33b7548ee0b3"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-23T07:19:28.067Z",
+      "uniqueQualifier": "1603521038879963144",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/yL-BT0KNDeMqV1Y_Z-mSHtAZcpQ\"",
+    "actor": {
+      "email": "farrakhan@gafe.co.za",
+      "profileId": "105221937046664268034"
+    },
+    "ipAddress": "102.254.46.19",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37457
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-GP"
+    },
+    "events": [
+      {
+        "type": "DOMAIN_SETTINGS",
+        "name": "UPDATE_RULE",
+        "parameters": [
+          {
+            "name": "RULE_NAME",
+            "value": "Trigger Alert external chat"
+          }
+        ],
+        "resourceIds": [
+          "policies/akajj264apszv276ci"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "policies/akajj264apszv276ci",
+        "title": "Trigger Alert external chat",
+        "type": "RULE",
+        "ownerDetails": {
+          "ownerType": "CUSTOMER",
+          "ownerIdentity": [
+            {
+              "customerIdentity": {
+                "id": "04hu2uhc"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-23T07:14:17.400Z",
+      "uniqueQualifier": "5308830268364595497",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/nEmOhR_Nb5bbzoGM_SOXlfp_rVo\"",
+    "actor": {
+      "email": "farrakhan@gafe.co.za",
+      "profileId": "105221937046664268034"
+    },
+    "ipAddress": "102.254.46.19",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37457
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-GP"
+    },
+    "events": [
+      {
+        "type": "DOMAIN_SETTINGS",
+        "name": "CREATE_RULE",
+        "parameters": [
+          {
+            "name": "RULE_NAME",
+            "value": "Trigger Alert external chat"
+          }
+        ],
+        "resourceIds": [
+          "policies/akajj264apszv276ci"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "policies/akajj264apszv276ci",
+        "title": "Trigger Alert external chat",
+        "type": "RULE",
+        "ownerDetails": {
+          "ownerType": "CUSTOMER",
+          "ownerIdentity": [
+            {
+              "customerIdentity": {
+                "id": "04hu2uhc"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-23T06:57:27.433Z",
+      "uniqueQualifier": "-6956783917509371670",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/nr7lBRSEKzVCp8_G8vpNpR1DBjw\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "farrakhan@gafe.co.za",
+      "profileId": "105221937046664268034"
+    },
+    "ipAddress": "102.254.46.19",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37457
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-GP"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_VIEW",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "45124f4d-048b-4d5b-92f5-1e09c1a66caf,64034efc-1d43-45f8-860b-bea6e51218e9,c9b8912c-df19-4159-b468-612d53230fa0,f20c99e8-d747-49b9-912c-4ecb2d718086"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-22T10:40:01.263Z",
+      "uniqueQualifier": "3433411071776294713",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/vCxxSEcdbfjMUi8te06sLnpYt7c\"",
+    "actor": {
+      "email": "deidre@gafe.co.za",
+      "profileId": "108529170927100956427"
+    },
+    "ipAddress": "41.164.155.70",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        36937
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "SECURITY_SETTINGS",
+        "name": "UNTRUST_DOMAIN_OWNED_OAUTH2_APPS",
+        "parameters": [
+          {
+            "name": "ORG_UNIT_NAME",
+            "value": "deidre Testing OU"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-22T08:58:12.678Z",
+      "uniqueQualifier": "-7344329685488360567",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/WKt5ZxeElfSKJSHklMofSr5BXAs\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "karien@gafe.co.za",
+      "profileId": "104163325107308236111"
+    },
+    "ipAddress": "152.110.108.237",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        20011
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "USER_SETTINGS",
+        "name": "CHANGE_PASSWORD",
+        "parameters": [
+          {
+            "name": "USER_EMAIL",
+            "value": "parent_calendar@gafe.co.za"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-22T08:57:27.428Z",
+      "uniqueQualifier": "-6362426421452972268",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/xmdYCxcBNcctAXBJj_HFvZ41DZU\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "karien@gafe.co.za",
+      "profileId": "104163325107308236111"
+    },
+    "ipAddress": "152.110.108.237",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        20011
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_VIEW",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "572883e2-06aa-4cbc-a218-7abcbb7be07e,64034efc-1d43-45f8-860b-bea6e51218e9,c9b8912c-df19-4159-b468-612d53230fa0,f20c99e8-d747-49b9-912c-4ecb2d718086"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-21T14:49:47.014Z",
+      "uniqueQualifier": "-699588076936608540",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/XLMfXEbfgEkfUJqGo585gYPt5ZI\"",
+    "actor": {
+      "callerType": "KEY",
+      "key": "SYSTEM"
+    },
+    "isAgenticAction": false,
+    "events": [
+      {
+        "type": "CHROME_BROWSER_SETTINGS",
+        "name": "INACTIVE_CHROME_PROFILE_DELETED",
+        "status": {
+          "eventStatus": "SUCCEEDED"
+        },
+        "parameters": [
+          {
+            "name": "CHROME_PROFILE_ID",
+            "value": "hwasKxARda9gCydgZ8Ld7FaECQQ"
+          }
+        ],
+        "resourceIds": [
+          "CHROME_PROFILE/hwasKxARda9gCydgZ8Ld7FaECQQ"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "CHROME_PROFILE/hwasKxARda9gCydgZ8Ld7FaECQQ",
+        "type": "DEVICE",
+        "ownerDetails": {
+          "ownerType": "CUSTOMER",
+          "ownerIdentity": [
+            {
+              "customerIdentity": {
+                "id": "04hu2uhc"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-21T14:37:11.993Z",
+      "uniqueQualifier": "-4795915402223736408",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/d4EBZfqMpcIK6gJjwzYldMiVZJE\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "alister@gafe.co.za",
+      "profileId": "102305463948441239613"
+    },
+    "ipAddress": "197.155.22.16",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37199
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_VIEW",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "572883e2-06aa-4cbc-a218-7abcbb7be07e,64034efc-1d43-45f8-860b-bea6e51218e9,c9b8912c-df19-4159-b468-612d53230fa0,f20c99e8-d747-49b9-912c-4ecb2d718086"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-21T13:32:10.877Z",
+      "uniqueQualifier": "4715176147300249941",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/dM-N0L-DeP0Y4nhuvCWMCalA0WU\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "alister@gafe.co.za",
+      "profileId": "102305463948441239613"
+    },
+    "ipAddress": "197.155.22.16",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37199
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_VIEW",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "572883e2-06aa-4cbc-a218-7abcbb7be07e,64034efc-1d43-45f8-860b-bea6e51218e9,c9b8912c-df19-4159-b468-612d53230fa0,f20c99e8-d747-49b9-912c-4ecb2d718086"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-21T12:25:30.663Z",
+      "uniqueQualifier": "9165956963753757040",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/DmqTZDuS9jmAGGD8x5jBiW6QnbM\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "pavel@gafe.co.za",
+      "profileId": "115213879076638367846"
+    },
+    "ipAddress": "80.238.118.60",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        41676
+      ],
+      "regionCode": "PL",
+      "subdivisionCode": "PL-14"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_VIEW",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "572883e2-06aa-4cbc-a218-7abcbb7be07e,64034efc-1d43-45f8-860b-bea6e51218e9,c9b8912c-df19-4159-b468-612d53230fa0,f20c99e8-d747-49b9-912c-4ecb2d718086"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-21T11:06:54.516Z",
+      "uniqueQualifier": "-5742297940370779237",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/bjOCatu60fT-komadr7_DGPvkEg\"",
+    "actor": {
+      "callerType": "KEY",
+      "key": "SYSTEM"
+    },
+    "isAgenticAction": false,
+    "events": [
+      {
+        "type": "CHROME_BROWSER_SETTINGS",
+        "name": "CHROME_PROFILE_INACTIVE",
+        "parameters": [
+          {
+            "name": "CHROME_PROFILE_ID",
+            "value": "0LmVD7Pg4oznMERQTMq1_gX8e_Q"
+          },
+          {
+            "name": "INACTIVE_CHROME_PROFILE_WARNING_NOTICE_PERIOD",
+            "intValue": "28"
+          }
+        ],
+        "resourceIds": [
+          "CHROME_PROFILE/0LmVD7Pg4oznMERQTMq1_gX8e_Q"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "CHROME_PROFILE/0LmVD7Pg4oznMERQTMq1_gX8e_Q",
+        "type": "DEVICE",
+        "ownerDetails": {
+          "ownerType": "CUSTOMER",
+          "ownerIdentity": [
+            {
+              "customerIdentity": {
+                "id": "04hu2uhc"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-18T11:47:16.052Z",
+      "uniqueQualifier": "-4139792079141767307",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/efz58nFMwrRHs6t5LpqGC9tBri4\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "deidre@gafe.co.za",
+      "profileId": "108529170927100956427",
+      "applicationInfo": {
+        "applicationName": "Centralized Audit Logs"
+      }
+    },
+    "isAgenticAction": false,
+    "events": [
+      {
+        "type": "CHROME_OS_SETTINGS",
+        "name": "CHANGE_DEVICE_STATE",
+        "status": {
+          "eventStatus": "SUCCEEDED"
+        },
+        "parameters": [
+          {
+            "name": "DEVICE_SERIAL_NUMBER",
+            "value": "NXATNEA002145238197611"
+          },
+          {
+            "name": "DEVICE_PREVIOUS_STATE",
+            "value": "DISABLED"
+          },
+          {
+            "name": "DEVICE_NEW_STATE",
+            "value": "ACTIVE"
+          },
+          {
+            "name": "DEVICE_TYPE",
+            "value": "Chrome OS"
+          }
+        ],
+        "resourceIds": [
+          "CHROME_OS/3bfa6de9-d141-401a-8f3e-981b7bb39fe0"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "CHROME_OS/3bfa6de9-d141-401a-8f3e-981b7bb39fe0",
+        "type": "DEVICE",
+        "ownerDetails": {
+          "ownerType": "CUSTOMER",
+          "ownerIdentity": [
+            {
+              "customerIdentity": {
+                "id": "04hu2uhc"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-18T11:35:23.073Z",
+      "uniqueQualifier": "-5164857560873340034",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/ewmEzXT33d1-VP-3vNeFQxGdo7A\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "deidre@gafe.co.za",
+      "profileId": "108529170927100956427",
+      "applicationInfo": {
+        "applicationName": "Centralized Audit Logs"
+      }
+    },
+    "isAgenticAction": false,
+    "events": [
+      {
+        "type": "CHROME_OS_SETTINGS",
+        "name": "ISSUE_DEVICE_COMMAND",
+        "status": {
+          "eventStatus": "SUCCEEDED"
+        },
+        "parameters": [
+          {
+            "name": "DEVICE_SERIAL_NUMBER",
+            "value": "NXATNEA002145238197611"
+          },
+          {
+            "name": "DEVICE_COMMAND_DETAILS",
+            "value": "QUERY_GEOLOCATION"
+          },
+          {
+            "name": "DEVICE_TYPE",
+            "value": "Chrome OS"
+          }
+        ],
+        "resourceIds": [
+          "CHROME_OS/3bfa6de9-d141-401a-8f3e-981b7bb39fe0"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "CHROME_OS/3bfa6de9-d141-401a-8f3e-981b7bb39fe0",
+        "type": "DEVICE",
+        "ownerDetails": {
+          "ownerType": "CUSTOMER",
+          "ownerIdentity": [
+            {
+              "customerIdentity": {
+                "id": "04hu2uhc"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-18T11:34:02.586Z",
+      "uniqueQualifier": "4923547539896203046",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/0J6rlkiEIL0119TLvyBG2KHTE8s\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "deidre@gafe.co.za",
+      "profileId": "108529170927100956427",
+      "applicationInfo": {
+        "applicationName": "Centralized Audit Logs"
+      }
+    },
+    "isAgenticAction": false,
+    "events": [
+      {
+        "type": "CHROME_OS_SETTINGS",
+        "name": "ENABLE_LOCATION_TRACKING",
+        "status": {
+          "eventStatus": "SUCCEEDED"
+        },
+        "parameters": [
+          {
+            "name": "DEVICE_SERIAL_NUMBER",
+            "value": "NXATNEA002145238197611"
+          }
+        ],
+        "resourceIds": [
+          "CHROME_OS/3bfa6de9-d141-401a-8f3e-981b7bb39fe0"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "CHROME_OS/3bfa6de9-d141-401a-8f3e-981b7bb39fe0",
+        "type": "DEVICE",
+        "ownerDetails": {
+          "ownerType": "CUSTOMER",
+          "ownerIdentity": [
+            {
+              "customerIdentity": {
+                "id": "04hu2uhc"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-18T11:34:02.585Z",
+      "uniqueQualifier": "-8178209082964816086",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/2hLcyMCnvQ_SYnkZ60cDNdZ0Sa4\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "deidre@gafe.co.za",
+      "profileId": "108529170927100956427",
+      "applicationInfo": {
+        "applicationName": "Centralized Audit Logs"
+      }
+    },
+    "isAgenticAction": false,
+    "events": [
+      {
+        "type": "CHROME_OS_SETTINGS",
+        "name": "CHANGE_DEVICE_STATE",
+        "status": {
+          "eventStatus": "SUCCEEDED"
+        },
+        "parameters": [
+          {
+            "name": "DEVICE_SERIAL_NUMBER",
+            "value": "NXATNEA002145238197611"
+          },
+          {
+            "name": "DEVICE_PREVIOUS_STATE",
+            "value": "ACTIVE"
+          },
+          {
+            "name": "DEVICE_NEW_STATE",
+            "value": "DISABLED"
+          },
+          {
+            "name": "DEVICE_TYPE",
+            "value": "Chrome OS"
+          }
+        ],
+        "resourceIds": [
+          "CHROME_OS/3bfa6de9-d141-401a-8f3e-981b7bb39fe0"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "CHROME_OS/3bfa6de9-d141-401a-8f3e-981b7bb39fe0",
+        "type": "DEVICE",
+        "ownerDetails": {
+          "ownerType": "CUSTOMER",
+          "ownerIdentity": [
+            {
+              "customerIdentity": {
+                "id": "04hu2uhc"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-18T11:31:42.268Z",
+      "uniqueQualifier": "-6284864141661309964",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/I21KfRGjckpKycRwpFBM_GAEj5w\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "deidre@gafe.co.za",
+      "profileId": "108529170927100956427",
+      "applicationInfo": {
+        "applicationName": "Centralized Audit Logs"
+      }
+    },
+    "isAgenticAction": false,
+    "events": [
+      {
+        "type": "CHROME_OS_SETTINGS",
+        "name": "MOVE_DEVICE_TO_ORG_UNIT_DETAILED",
+        "status": {
+          "eventStatus": "SUCCEEDED"
+        },
+        "parameters": [
+          {
+            "name": "DEVICE_SERIAL_NUMBER",
+            "value": "NXATNEA002145238197611"
+          },
+          {
+            "name": "DEVICE_PREVIOUS_ORG_UNIT",
+            "value": "gafe.co.za/⛔ CloudEDU Training ⛔/CloudEd Training/No license"
+          },
+          {
+            "name": "DEVICE_NEW_ORG_UNIT",
+            "value": "gafe.co.za/CloudEDU Technical/Test Deidre"
+          },
+          {
+            "name": "DEVICE_TYPE",
+            "value": "Chrome OS"
+          }
+        ],
+        "resourceIds": [
+          "CHROME_OS/3bfa6de9-d141-401a-8f3e-981b7bb39fe0"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "CHROME_OS/3bfa6de9-d141-401a-8f3e-981b7bb39fe0",
+        "type": "DEVICE",
+        "ownerDetails": {
+          "ownerType": "CUSTOMER",
+          "ownerIdentity": [
+            {
+              "customerIdentity": {
+                "id": "04hu2uhc"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-18T11:26:50.427Z",
+      "uniqueQualifier": "-4675502912737114792",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/VLnker_x7qDD1VfYcNfXx1isXIo\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "deidre@gafe.co.za",
+      "profileId": "108529170927100956427",
+      "applicationInfo": {
+        "applicationName": "Centralized Audit Logs"
+      }
+    },
+    "isAgenticAction": false,
+    "events": [
+      {
+        "type": "CHROME_OS_SETTINGS",
+        "name": "CHANGE_DEVICE_STATE",
+        "status": {
+          "eventStatus": "SUCCEEDED"
+        },
+        "parameters": [
+          {
+            "name": "DEVICE_SERIAL_NUMBER",
+            "value": "NXATNEA002145238197611"
+          },
+          {
+            "name": "DEVICE_PREVIOUS_STATE",
+            "value": "DEPROVISIONED"
+          },
+          {
+            "name": "DEVICE_NEW_STATE",
+            "value": "ACTIVE"
+          },
+          {
+            "name": "DEVICE_TYPE",
+            "value": "Chrome OS"
+          }
+        ],
+        "resourceIds": [
+          "CHROME_OS/3bfa6de9-d141-401a-8f3e-981b7bb39fe0"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "CHROME_OS/3bfa6de9-d141-401a-8f3e-981b7bb39fe0",
+        "type": "DEVICE",
+        "ownerDetails": {
+          "ownerType": "CUSTOMER",
+          "ownerIdentity": [
+            {
+              "customerIdentity": {
+                "id": "04hu2uhc"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-18T11:13:05.558Z",
+      "uniqueQualifier": "-8287885169211545703",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/uf-pg1QxaoTyvM6a0ZFqSBA_em4\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "deidre@gafe.co.za",
+      "profileId": "108529170927100956427"
+    },
+    "ipAddress": "41.164.155.70",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        36937
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "APPLICATION_SETTINGS",
+        "name": "CHANGE_APPLICATION_SETTING",
+        "parameters": [
+          {
+            "name": "APPLICATION_NAME",
+            "value": "Google Chat"
+          },
+          {
+            "name": "ORG_UNIT_NAME",
+            "value": "gafe.co.za"
+          },
+          {
+            "name": "SETTING_NAME",
+            "value": "RoomOtrSettingsProto otr_state"
+          },
+          {
+            "name": "OLD_VALUE",
+            "value": "ALWAYS_ON_THE_RECORD"
+          },
+          {
+            "name": "NEW_VALUE",
+            "value": "DEFAULT_ON_THE_RECORD"
+          },
+          {
+            "name": "APPLICATION_EDITION",
+            "value": "edu_enterprise_2021"
+          }
+        ]
+      },
+      {
+        "type": "APPLICATION_SETTINGS",
+        "name": "CHANGE_APPLICATION_SETTING",
+        "parameters": [
+          {
+            "name": "APPLICATION_NAME",
+            "value": "Google Chat"
+          },
+          {
+            "name": "ORG_UNIT_NAME",
+            "value": "gafe.co.za"
+          },
+          {
+            "name": "SETTING_NAME",
+            "value": "RoomOtrSettingsProto otr_state"
+          },
+          {
+            "name": "OLD_VALUE",
+            "value": "ALWAYS_ON_THE_RECORD"
+          },
+          {
+            "name": "NEW_VALUE",
+            "value": "DEFAULT_ON_THE_RECORD"
+          },
+          {
+            "name": "APPLICATION_EDITION",
+            "value": "edu_2021"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-18T11:12:16.404Z",
+      "uniqueQualifier": "-9080241159686915180",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/mTEEUWe3Vqsrcgztob1AS1RC1Cw\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "deidre@gafe.co.za",
+      "profileId": "108529170927100956427"
+    },
+    "ipAddress": "41.164.155.70",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        36937
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "APPLICATION_SETTINGS",
+        "name": "CREATE_APPLICATION_SETTING",
+        "parameters": [
+          {
+            "name": "APPLICATION_NAME",
+            "value": "Google Chat"
+          },
+          {
+            "name": "ORG_UNIT_NAME",
+            "value": "Test Deidre"
+          },
+          {
+            "name": "SETTING_NAME",
+            "value": "ChatArchivingProto chatsDefaultToOffTheRecord"
+          },
+          {
+            "name": "NEW_VALUE",
+            "value": "false"
+          },
+          {
+            "name": "APPLICATION_EDITION",
+            "value": "edu_2021"
+          }
+        ]
+      },
+      {
+        "type": "APPLICATION_SETTINGS",
+        "name": "CREATE_APPLICATION_SETTING",
+        "parameters": [
+          {
+            "name": "APPLICATION_NAME",
+            "value": "Google Chat"
+          },
+          {
+            "name": "ORG_UNIT_NAME",
+            "value": "Test Deidre"
+          },
+          {
+            "name": "SETTING_NAME",
+            "value": "ChatArchivingProto allow_chat_archiving_setting_modification"
+          },
+          {
+            "name": "NEW_VALUE",
+            "value": "true"
+          },
+          {
+            "name": "APPLICATION_EDITION",
+            "value": "edu_2021"
+          }
+        ]
+      },
+      {
+        "type": "APPLICATION_SETTINGS",
+        "name": "CREATE_APPLICATION_SETTING",
+        "parameters": [
+          {
+            "name": "APPLICATION_NAME",
+            "value": "Google Chat"
+          },
+          {
+            "name": "ORG_UNIT_NAME",
+            "value": "Test Deidre"
+          },
+          {
+            "name": "SETTING_NAME",
+            "value": "ChatArchivingProto chatsDefaultToOffTheRecord"
+          },
+          {
+            "name": "NEW_VALUE",
+            "value": "false"
+          },
+          {
+            "name": "APPLICATION_EDITION",
+            "value": "edu_enterprise_2021"
+          }
+        ]
+      },
+      {
+        "type": "APPLICATION_SETTINGS",
+        "name": "CREATE_APPLICATION_SETTING",
+        "parameters": [
+          {
+            "name": "APPLICATION_NAME",
+            "value": "Google Chat"
+          },
+          {
+            "name": "ORG_UNIT_NAME",
+            "value": "Test Deidre"
+          },
+          {
+            "name": "SETTING_NAME",
+            "value": "ChatArchivingProto allow_chat_archiving_setting_modification"
+          },
+          {
+            "name": "NEW_VALUE",
+            "value": "true"
+          },
+          {
+            "name": "APPLICATION_EDITION",
+            "value": "edu_enterprise_2021"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-18T11:08:37.185Z",
+      "uniqueQualifier": "-8254553283826035545",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/pzHQF7A9pYUU58hpu_dpsP7BxRQ\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "deidre@gafe.co.za",
+      "profileId": "108529170927100956427"
+    },
+    "ipAddress": "41.164.155.70",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        36937
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "APPLICATION_SETTINGS",
+        "name": "CHANGE_APPLICATION_SETTING",
+        "parameters": [
+          {
+            "name": "APPLICATION_NAME",
+            "value": "Google Chat"
+          },
+          {
+            "name": "ORG_UNIT_NAME",
+            "value": "Test Deidre"
+          },
+          {
+            "name": "SETTING_NAME",
+            "value": "ChatAndSpaceRestrictionsProto chat_and_space_restriction_setting"
+          },
+          {
+            "name": "OLD_VALUE",
+            "value": "CHAT_AND_SPACE_RESTRICTION_SETTING_FULLY_RESTRICTED"
+          },
+          {
+            "name": "NEW_VALUE",
+            "value": "CHAT_AND_SPACE_RESTRICTION_SETTING_SPACE_CREATION_RESTRICTED"
+          },
+          {
+            "name": "APPLICATION_EDITION",
+            "value": "edu_enterprise_2021"
+          }
+        ]
+      },
+      {
+        "type": "APPLICATION_SETTINGS",
+        "name": "CHANGE_APPLICATION_SETTING",
+        "parameters": [
+          {
+            "name": "APPLICATION_NAME",
+            "value": "Google Chat"
+          },
+          {
+            "name": "ORG_UNIT_NAME",
+            "value": "Test Deidre"
+          },
+          {
+            "name": "SETTING_NAME",
+            "value": "ChatAndSpaceRestrictionsProto chat_and_space_restriction_setting"
+          },
+          {
+            "name": "OLD_VALUE",
+            "value": "CHAT_AND_SPACE_RESTRICTION_SETTING_FULLY_RESTRICTED"
+          },
+          {
+            "name": "NEW_VALUE",
+            "value": "CHAT_AND_SPACE_RESTRICTION_SETTING_SPACE_CREATION_RESTRICTED"
+          },
+          {
+            "name": "APPLICATION_EDITION",
+            "value": "edu_2021"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-18T11:04:43.807Z",
+      "uniqueQualifier": "-7719729915136850846",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/q68fsw3GTPDjLIRcN9O4GUQLA7M\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "deidre@gafe.co.za",
+      "profileId": "108529170927100956427"
+    },
+    "ipAddress": "41.164.155.70",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        36937
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "APPLICATION_SETTINGS",
+        "name": "CREATE_APPLICATION_SETTING",
+        "parameters": [
+          {
+            "name": "APPLICATION_NAME",
+            "value": "Google Chat"
+          },
+          {
+            "name": "ORG_UNIT_NAME",
+            "value": "Test Deidre"
+          },
+          {
+            "name": "SETTING_NAME",
+            "value": "ChatAndSpaceRestrictionsProto chat_and_space_restriction_setting"
+          },
+          {
+            "name": "NEW_VALUE",
+            "value": "CHAT_AND_SPACE_RESTRICTION_SETTING_FULLY_RESTRICTED"
+          },
+          {
+            "name": "APPLICATION_EDITION",
+            "value": "edu_2021"
+          }
+        ]
+      },
+      {
+        "type": "APPLICATION_SETTINGS",
+        "name": "CREATE_APPLICATION_SETTING",
+        "parameters": [
+          {
+            "name": "APPLICATION_NAME",
+            "value": "Google Chat"
+          },
+          {
+            "name": "ORG_UNIT_NAME",
+            "value": "Test Deidre"
+          },
+          {
+            "name": "SETTING_NAME",
+            "value": "ChatAndSpaceRestrictionsProto chat_and_space_restriction_setting"
+          },
+          {
+            "name": "NEW_VALUE",
+            "value": "CHAT_AND_SPACE_RESTRICTION_SETTING_FULLY_RESTRICTED"
+          },
+          {
+            "name": "APPLICATION_EDITION",
+            "value": "edu_enterprise_2021"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-18T11:01:42.296Z",
+      "uniqueQualifier": "-6168631749578302631",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/NElJfmmEhRePpleXtjcjxlJR7BM\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "deidre@gafe.co.za",
+      "profileId": "108529170927100956427"
+    },
+    "ipAddress": "41.164.155.70",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        36937
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "APPLICATION_SETTINGS",
+        "name": "CREATE_APPLICATION_SETTING",
+        "parameters": [
+          {
+            "name": "APPLICATION_NAME",
+            "value": "Google Chat"
+          },
+          {
+            "name": "ORG_UNIT_NAME",
+            "value": "Test Deidre"
+          },
+          {
+            "name": "SETTING_NAME",
+            "value": "RestrictChatProto restrictChatToOrganization"
+          },
+          {
+            "name": "NEW_VALUE",
+            "value": "true"
+          },
+          {
+            "name": "APPLICATION_EDITION",
+            "value": "edu_2021"
+          }
+        ]
+      },
+      {
+        "type": "APPLICATION_SETTINGS",
+        "name": "CREATE_APPLICATION_SETTING",
+        "parameters": [
+          {
+            "name": "APPLICATION_NAME",
+            "value": "Google Chat"
+          },
+          {
+            "name": "ORG_UNIT_NAME",
+            "value": "Test Deidre"
+          },
+          {
+            "name": "SETTING_NAME",
+            "value": "RestrictChatProto externalChatRestriction"
+          },
+          {
+            "name": "NEW_VALUE",
+            "value": "NO_RESTRICTION"
+          },
+          {
+            "name": "APPLICATION_EDITION",
+            "value": "edu_2021"
+          }
+        ]
+      },
+      {
+        "type": "APPLICATION_SETTINGS",
+        "name": "CREATE_APPLICATION_SETTING",
+        "parameters": [
+          {
+            "name": "APPLICATION_NAME",
+            "value": "Google Chat"
+          },
+          {
+            "name": "ORG_UNIT_NAME",
+            "value": "Test Deidre"
+          },
+          {
+            "name": "SETTING_NAME",
+            "value": "RestrictChatProto restrictChatToOrganization"
+          },
+          {
+            "name": "NEW_VALUE",
+            "value": "true"
+          },
+          {
+            "name": "APPLICATION_EDITION",
+            "value": "edu_enterprise_2021"
+          }
+        ]
+      },
+      {
+        "type": "APPLICATION_SETTINGS",
+        "name": "CREATE_APPLICATION_SETTING",
+        "parameters": [
+          {
+            "name": "APPLICATION_NAME",
+            "value": "Google Chat"
+          },
+          {
+            "name": "ORG_UNIT_NAME",
+            "value": "Test Deidre"
+          },
+          {
+            "name": "SETTING_NAME",
+            "value": "RestrictChatProto externalChatRestriction"
+          },
+          {
+            "name": "NEW_VALUE",
+            "value": "NO_RESTRICTION"
+          },
+          {
+            "name": "APPLICATION_EDITION",
+            "value": "edu_enterprise_2021"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-18T10:55:40.912Z",
+      "uniqueQualifier": "3215090802881282506",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/BI5wBejuWQWPimdxcEqCskOvGxA\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "deidre@gafe.co.za",
+      "profileId": "108529170927100956427"
+    },
+    "ipAddress": "41.164.155.70",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        36937
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_VIEW",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "572883e2-06aa-4cbc-a218-7abcbb7be07e,64034efc-1d43-45f8-860b-bea6e51218e9,c9b8912c-df19-4159-b468-612d53230fa0,f20c99e8-d747-49b9-912c-4ecb2d718086"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-18T10:34:52.674Z",
+      "uniqueQualifier": "5494346603616590828",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/fhZeHtmL6JcmMDt9c0NAKfUhikA\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "deidre@gafe.co.za",
+      "profileId": "108529170927100956427"
+    },
+    "isAgenticAction": false,
+    "events": [
+      {
+        "type": "DOMAIN_SETTINGS",
+        "name": "ADD_TRUSTED_DOMAINS",
+        "parameters": [
+          {
+            "name": "DOMAIN_NAME",
+            "value": "milnertonhigh.co.za"
+          }
+        ],
+        "resourceIds": [
+          "milnertonhigh.co.za"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "milnertonhigh.co.za",
+        "title": "milnertonhigh.co.za",
+        "type": "DOMAIN_ENTITY",
+        "ownerDetails": {
+          "ownerType": "CUSTOMER",
+          "ownerIdentity": [
+            {
+              "customerIdentity": {
+                "id": "04hu2uhc"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-18T10:34:30.024Z",
+      "uniqueQualifier": "-6793173462799443351",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/FtyNZjx1bJnkG1p8PqQQ7Pq-tCA\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "deidre@gafe.co.za",
+      "profileId": "108529170927100956427"
+    },
+    "isAgenticAction": false,
+    "events": [
+      {
+        "type": "DOMAIN_SETTINGS",
+        "name": "ADD_TRUSTED_DOMAINS",
+        "parameters": [
+          {
+            "name": "DOMAIN_NAME",
+            "value": "milnertonhighschool.co.za"
+          }
+        ],
+        "resourceIds": [
+          "milnertonhighschool.co.za"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "milnertonhighschool.co.za",
+        "title": "milnertonhighschool.co.za",
+        "type": "DOMAIN_ENTITY",
+        "ownerDetails": {
+          "ownerType": "CUSTOMER",
+          "ownerIdentity": [
+            {
+              "customerIdentity": {
+                "id": "04hu2uhc"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-18T10:12:48.547Z",
+      "uniqueQualifier": "2499875040486829166",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/DxYRbQWsIwKX0tW-nflkGFHRlI0\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "deidre@gafe.co.za",
+      "profileId": "108529170927100956427"
+    },
+    "ipAddress": "41.164.155.70",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        36937
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_VIEW",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "572883e2-06aa-4cbc-a218-7abcbb7be07e,64034efc-1d43-45f8-860b-bea6e51218e9,c9b8912c-df19-4159-b468-612d53230fa0,f20c99e8-d747-49b9-912c-4ecb2d718086"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-18T06:25:37.595Z",
+      "uniqueQualifier": "-7487384203342517930",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/7S4eCbhRvglwOwuF7y-l4qbSDEI\"",
+    "actor": {
+      "callerType": "KEY",
+      "key": "SYSTEM"
+    },
+    "isAgenticAction": false,
+    "events": [
+      {
+        "type": "CHROME_BROWSER_SETTINGS",
+        "name": "INACTIVE_CHROME_PROFILE_DELETED",
+        "status": {
+          "eventStatus": "SUCCEEDED"
+        },
+        "parameters": [
+          {
+            "name": "CHROME_PROFILE_ID",
+            "value": "mdIzyzfMbgHLyh59FNc7vgD0t9M"
+          }
+        ],
+        "resourceIds": [
+          "CHROME_PROFILE/mdIzyzfMbgHLyh59FNc7vgD0t9M"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "CHROME_PROFILE/mdIzyzfMbgHLyh59FNc7vgD0t9M",
+        "type": "DEVICE",
+        "ownerDetails": {
+          "ownerType": "CUSTOMER",
+          "ownerIdentity": [
+            {
+              "customerIdentity": {
+                "id": "04hu2uhc"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-18T03:03:20.805Z",
+      "uniqueQualifier": "-8584028661249364195",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/GrmAoBFIQkarF0Y2J9O-ueaCGFc\"",
+    "actor": {
+      "callerType": "KEY",
+      "key": "SYSTEM"
+    },
+    "isAgenticAction": false,
+    "events": [
+      {
+        "type": "CHROME_BROWSER_SETTINGS",
+        "name": "CHROME_PROFILE_INACTIVE",
+        "parameters": [
+          {
+            "name": "CHROME_PROFILE_ID",
+            "value": "uNFpGDWZe43ubx15F6AZPViX5NI"
+          },
+          {
+            "name": "INACTIVE_CHROME_PROFILE_WARNING_NOTICE_PERIOD",
+            "intValue": "28"
+          }
+        ],
+        "resourceIds": [
+          "CHROME_PROFILE/uNFpGDWZe43ubx15F6AZPViX5NI"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "CHROME_PROFILE/uNFpGDWZe43ubx15F6AZPViX5NI",
+        "type": "DEVICE",
+        "ownerDetails": {
+          "ownerType": "CUSTOMER",
+          "ownerIdentity": [
+            {
+              "customerIdentity": {
+                "id": "04hu2uhc"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-17T11:06:36.742Z",
+      "uniqueQualifier": "-5900488594203266477",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/YJRS5v6Y0TJW56cx_bkz8g9EzFc\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "pavel@gafe.co.za",
+      "profileId": "115213879076638367846"
+    },
+    "ipAddress": "80.238.118.60",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        41676
+      ],
+      "regionCode": "PL",
+      "subdivisionCode": "PL-14"
+    },
+    "events": [
+      {
+        "type": "USER_SETTINGS",
+        "name": "REVOKE_3LO_TOKEN",
+        "parameters": [
+          {
+            "name": "USER_EMAIL",
+            "value": "viktoriia.yefimchuk@gafe.co.za"
+          },
+          {
+            "name": "APP_ID",
+            "value": "609427711699-8kgr4bj5hc7ip93n5erf04qjtr1c1tel.apps.googleusercontent.com"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-17T11:05:56.964Z",
+      "uniqueQualifier": "-7227573994830081403",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/nD-RSz1aCFJcIM52a7nkkrWijDo\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "pavel@gafe.co.za",
+      "profileId": "115213879076638367846"
+    },
+    "ipAddress": "80.238.118.60",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        41676
+      ],
+      "regionCode": "PL",
+      "subdivisionCode": "PL-14"
+    },
+    "events": [
+      {
+        "type": "USER_SETTINGS",
+        "name": "REVOKE_3LO_TOKEN",
+        "parameters": [
+          {
+            "name": "USER_EMAIL",
+            "value": "pavel@gafe.co.za"
+          },
+          {
+            "name": "APP_ID",
+            "value": "609427711699-8kgr4bj5hc7ip93n5erf04qjtr1c1tel.apps.googleusercontent.com"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-17T11:05:54.220Z",
+      "uniqueQualifier": "-5930046054486738052",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/zozKbtNfufPmn3-hBlKDrvV0C1U\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "pavel@gafe.co.za",
+      "profileId": "115213879076638367846"
+    },
+    "ipAddress": "80.238.118.60",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        41676
+      ],
+      "regionCode": "PL",
+      "subdivisionCode": "PL-14"
+    },
+    "events": [
+      {
+        "type": "USER_SETTINGS",
+        "name": "REVOKE_3LO_TOKEN",
+        "parameters": [
+          {
+            "name": "USER_EMAIL",
+            "value": "pavel@gafe.co.za"
+          },
+          {
+            "name": "APP_ID",
+            "value": "609427711699-sq919k8t73af34500gr6vrfclaafcslb.apps.googleusercontent.com"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-17T10:33:46.993Z",
+      "uniqueQualifier": "2579039969222544712",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/u1pmXFFqLkLS-G4RGZ7Y6cWHWpA\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "deidre@gafe.co.za",
+      "profileId": "108529170927100956427",
+      "applicationInfo": {
+        "oauthClientId": "",
+        "applicationName": "",
+        "impersonation": false
+      }
+    },
+    "ipAddress": "41.164.155.70",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        36937
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "CHROME_OS_SETTINGS",
+        "name": "CHANGE_CHROME_OS_USER_SETTING",
+        "parameters": [
+          {
+            "name": "SETTING_NAME",
+            "value": "managed_accounts_signin_restriction"
+          },
+          {
+            "name": "ORG_UNIT_NAME",
+            "value": "Test Deidre"
+          },
+          {
+            "name": "OLD_VALUE",
+            "value": "INHERITED"
+          },
+          {
+            "name": "NEW_VALUE",
+            "value": "MANDATORY|MANAGED_ACCOUNTS_SIGNIN_RESTRICTION_ENUM_PRIMARY_ACCOUNT"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-17T10:33:13.348Z",
+      "uniqueQualifier": "-9123926578106805763",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/sGJ74RfesYwsjTa8WdJ6fLRvHPk\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "deidre@gafe.co.za",
+      "profileId": "108529170927100956427"
+    },
+    "ipAddress": "41.164.155.70",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        36937
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_VIEW",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "572883e2-06aa-4cbc-a218-7abcbb7be07e,64034efc-1d43-45f8-860b-bea6e51218e9,c9b8912c-df19-4159-b468-612d53230fa0,f20c99e8-d747-49b9-912c-4ecb2d718086"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-17T10:09:19.696Z",
+      "uniqueQualifier": "3780135990682181660",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/_QQO4wdiSfTulYKah5QMIqbZqEo\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "pavel@gafe.co.za",
+      "profileId": "115213879076638367846"
+    },
+    "ipAddress": "80.238.118.60",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        41676
+      ],
+      "regionCode": "PL",
+      "subdivisionCode": "PL-14"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_VIEW",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "572883e2-06aa-4cbc-a218-7abcbb7be07e,64034efc-1d43-45f8-860b-bea6e51218e9,c9b8912c-df19-4159-b468-612d53230fa0,f20c99e8-d747-49b9-912c-4ecb2d718086"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-17T08:20:21.468Z",
+      "uniqueQualifier": "-7832418905806050697",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/1cxLhPGVF7aDfcj2z1GWv9RZIt4\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "deidre@gafe.co.za",
+      "profileId": "108529170927100956427"
+    },
+    "ipAddress": "41.164.155.70",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        36937
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_VIEW",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "572883e2-06aa-4cbc-a218-7abcbb7be07e,64034efc-1d43-45f8-860b-bea6e51218e9,c9b8912c-df19-4159-b468-612d53230fa0,f20c99e8-d747-49b9-912c-4ecb2d718086"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-17T06:05:44.259Z",
+      "uniqueQualifier": "-7522681822832178107",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/vyjDls5w4clZlhq8d4OjnUuHEVo\"",
+    "actor": {
+      "email": "alister@gafe.co.za",
+      "profileId": "102305463948441239613"
+    },
+    "ipAddress": "197.155.22.16",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37199
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "SECURITY_SETTINGS",
+        "name": "ADD_TO_BLOCKED_OAUTH2_APPS",
+        "parameters": [
+          {
+            "name": "ORG_UNIT_NAME",
+            "value": "gafe.co.za"
+          },
+          {
+            "name": "OAUTH2_APP_NAME",
+            "value": "GAM7-demo"
+          },
+          {
+            "name": "OAUTH2_APP_ID",
+            "value": "72867247940-n969jo6c29qg22m8sodb2hftn6dck1mk.apps.googleusercontent.com"
+          },
+          {
+            "name": "OAUTH2_APP_TYPE",
+            "value": "WEB_CLIENT"
+          }
+        ]
+      },
+      {
+        "type": "SECURITY_SETTINGS",
+        "name": "CHANGE_APP_ACCESS",
+        "parameters": [
+          {
+            "name": "OAUTH2_APP_NAME",
+            "value": "GAM7-demo"
+          },
+          {
+            "name": "OLD_VALUE",
+            "value": "Trusted"
+          },
+          {
+            "name": "NEW_VALUE",
+            "value": "Blocked"
+          },
+          {
+            "name": "OAUTH2_APP_TYPE",
+            "value": "WEB_CLIENT"
+          },
+          {
+            "name": "OAUTH2_APP_ID",
+            "value": "72867247940-n969jo6c29qg22m8sodb2hftn6dck1mk.apps.googleusercontent.com"
+          },
+          {
+            "name": "ORG_UNIT_NAME",
+            "value": "gafe.co.za"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-17T06:05:19.564Z",
+      "uniqueQualifier": "388043869561154385",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/KUyw-dGMkTwp1vfqrUY23Re2eU4\"",
+    "actor": {
+      "email": "alister@gafe.co.za",
+      "profileId": "102305463948441239613"
+    },
+    "ipAddress": "197.155.22.16",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37199
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "SECURITY_SETTINGS",
+        "name": "ADD_TO_TRUSTED_BY_OAUTH_SCOPE_OAUTH2_APPS",
+        "parameters": [
+          {
+            "name": "ORG_UNIT_NAME",
+            "value": "gafe.co.za"
+          },
+          {
+            "name": "OAUTH2_APP_NAME",
+            "value": "OrbitNote"
+          },
+          {
+            "name": "OAUTH2_APP_ID",
+            "value": "243341882805-sqhe1f8jq8t8i5ha4nqbv50gk0iteup7.apps.googleusercontent.com"
+          },
+          {
+            "name": "OAUTH2_APP_TYPE",
+            "value": "WEB_CLIENT"
+          }
+        ]
+      },
+      {
+        "type": "SECURITY_SETTINGS",
+        "name": "CHANGE_APP_ACCESS",
+        "parameters": [
+          {
+            "name": "OAUTH2_APP_NAME",
+            "value": "OrbitNote"
+          },
+          {
+            "name": "OLD_VALUE",
+            "value": "Trusted"
+          },
+          {
+            "name": "NEW_VALUE",
+            "value": "Specific Google data"
+          },
+          {
+            "name": "OAUTH2_APP_TYPE",
+            "value": "WEB_CLIENT"
+          },
+          {
+            "name": "OAUTH2_APP_ID",
+            "value": "243341882805-sqhe1f8jq8t8i5ha4nqbv50gk0iteup7.apps.googleusercontent.com"
+          },
+          {
+            "name": "ORG_UNIT_NAME",
+            "value": "gafe.co.za"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-16T14:40:52.129Z",
+      "uniqueQualifier": "-5770343538492658221",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/TjFjKJePhKWssYC0r3FeZLvBRio\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "alister@gafe.co.za",
+      "profileId": "102305463948441239613"
+    },
+    "ipAddress": "197.155.22.16",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37199
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_VIEW",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "572883e2-06aa-4cbc-a218-7abcbb7be07e,64034efc-1d43-45f8-860b-bea6e51218e9,c9b8912c-df19-4159-b468-612d53230fa0,f20c99e8-d747-49b9-912c-4ecb2d718086"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-16T14:28:19.231Z",
+      "uniqueQualifier": "-2616499402719859885",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/iYX0HylQo2qE8kwO7KaJzhdWwpw\"",
+    "actor": {
+      "callerType": "KEY",
+      "key": "SYSTEM"
+    },
+    "isAgenticAction": false,
+    "events": [
+      {
+        "type": "CHROME_BROWSER_SETTINGS",
+        "name": "INACTIVE_CHROME_PROFILE_DELETED",
+        "status": {
+          "eventStatus": "SUCCEEDED"
+        },
+        "parameters": [
+          {
+            "name": "CHROME_PROFILE_ID",
+            "value": "vUs2twEoDFY0Vm270j_bgb5RPBg"
+          }
+        ],
+        "resourceIds": [
+          "CHROME_PROFILE/vUs2twEoDFY0Vm270j_bgb5RPBg"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "CHROME_PROFILE/vUs2twEoDFY0Vm270j_bgb5RPBg",
+        "type": "DEVICE",
+        "ownerDetails": {
+          "ownerType": "CUSTOMER",
+          "ownerIdentity": [
+            {
+              "customerIdentity": {
+                "id": "04hu2uhc"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-16T12:33:35.958Z",
+      "uniqueQualifier": "-7499989061866527891",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/Omr0_Mu06qNaVPGZULoz-9bWYHA\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "deidre@gafe.co.za",
+      "profileId": "108529170927100956427"
+    },
+    "ipAddress": "41.164.155.70",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        36937
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "APPLICATION_SETTINGS",
+        "name": "CHANGE_APPLICATION_SETTING",
+        "parameters": [
+          {
+            "name": "APPLICATION_NAME",
+            "value": "Search And Assistant"
+          },
+          {
+            "name": "ORG_UNIT_NAME",
+            "value": "gafe.co.za"
+          },
+          {
+            "name": "SETTING_NAME",
+            "value": "ConsentConfirmationSettingsProto checkup_iteration"
+          },
+          {
+            "name": "OLD_VALUE",
+            "value": "1"
+          },
+          {
+            "name": "NEW_VALUE",
+            "value": "2"
+          },
+          {
+            "name": "APPLICATION_EDITION",
+            "value": "education"
+          }
+        ]
+      },
+      {
+        "type": "APPLICATION_SETTINGS",
+        "name": "CHANGE_APPLICATION_SETTING",
+        "parameters": [
+          {
+            "name": "APPLICATION_NAME",
+            "value": "Search And Assistant"
+          },
+          {
+            "name": "ORG_UNIT_NAME",
+            "value": "gafe.co.za"
+          },
+          {
+            "name": "SETTING_NAME",
+            "value": "ConsentConfirmationSettingsProto checkup_iteration"
+          },
+          {
+            "name": "OLD_VALUE",
+            "value": "1"
+          },
+          {
+            "name": "NEW_VALUE",
+            "value": "2"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-16T12:28:51.919Z",
+      "uniqueQualifier": "-7157307993400608984",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/KxNLcOdRF8XCpGaKpQf4iLHRIEQ\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "deidre@gafe.co.za",
+      "profileId": "108529170927100956427"
+    },
+    "ipAddress": "41.164.155.70",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        36937
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "USER_SETTINGS",
+        "name": "MOVE_USER_TO_ORG_UNIT",
+        "parameters": [
+          {
+            "name": "USER_EMAIL",
+            "value": "deidretest@gafe.co.za"
+          },
+          {
+            "name": "ORG_UNIT_NAME",
+            "value": "/AA School/Students"
+          },
+          {
+            "name": "NEW_VALUE",
+            "value": "/CloudEDU Technical/Test Deidre"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-16T12:28:11.058Z",
+      "uniqueQualifier": "-6252888347975398189",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/RU1Bs34WU5CgDkHhytlaWST_sLY\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "deidre@gafe.co.za",
+      "profileId": "108529170927100956427"
+    },
+    "ipAddress": "41.164.155.70",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        36937
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "APPLICATION_SETTINGS",
+        "name": "CREATE_APPLICATION_SETTING",
+        "parameters": [
+          {
+            "name": "APPLICATION_NAME",
+            "value": "Age-based Access"
+          },
+          {
+            "name": "ORG_UNIT_NAME",
+            "value": "Test Deidre"
+          },
+          {
+            "name": "SETTING_NAME",
+            "value": "Age label Age label"
+          },
+          {
+            "name": "NEW_VALUE",
+            "value": "Users below 18"
+          },
+          {
+            "name": "APPLICATION_EDITION",
+            "value": "legacy_edu_edition"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-16T12:24:36.805Z",
+      "uniqueQualifier": "-7104793674874653385",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/9mi3zh2_SfhiL14TvL6c51DdXjE\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "deidre@gafe.co.za",
+      "profileId": "108529170927100956427"
+    },
+    "ipAddress": "41.164.155.70",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        36937
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_VIEW",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "572883e2-06aa-4cbc-a218-7abcbb7be07e,64034efc-1d43-45f8-860b-bea6e51218e9,c9b8912c-df19-4159-b468-612d53230fa0,f20c99e8-d747-49b9-912c-4ecb2d718086"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-16T11:04:25.832Z",
+      "uniqueQualifier": "1719036185067262800",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/Lnb_G65rAetbnCbqpHEghBf5FzE\"",
+    "actor": {
+      "callerType": "KEY",
+      "key": "SYSTEM"
+    },
+    "isAgenticAction": false,
+    "events": [
+      {
+        "type": "CHROME_BROWSER_SETTINGS",
+        "name": "CHROME_PROFILE_INACTIVE",
+        "parameters": [
+          {
+            "name": "CHROME_PROFILE_ID",
+            "value": "PWtVCj6m1h8Iu96SExf8_d8dl80"
+          },
+          {
+            "name": "INACTIVE_CHROME_PROFILE_WARNING_NOTICE_PERIOD",
+            "intValue": "28"
+          }
+        ],
+        "resourceIds": [
+          "CHROME_PROFILE/PWtVCj6m1h8Iu96SExf8_d8dl80"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "CHROME_PROFILE/PWtVCj6m1h8Iu96SExf8_d8dl80",
+        "type": "DEVICE",
+        "ownerDetails": {
+          "ownerType": "CUSTOMER",
+          "ownerIdentity": [
+            {
+              "customerIdentity": {
+                "id": "04hu2uhc"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-16T09:22:16.481Z",
+      "uniqueQualifier": "1067978838503948123",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/6ffjOoX333TJuhugitQPFTcBfYY\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "karien@gafe.co.za",
+      "profileId": "104163325107308236111"
+    },
+    "ipAddress": "102.221.27.89",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37100
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_VIEW",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "572883e2-06aa-4cbc-a218-7abcbb7be07e,64034efc-1d43-45f8-860b-bea6e51218e9,c9b8912c-df19-4159-b468-612d53230fa0,f20c99e8-d747-49b9-912c-4ecb2d718086"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-15T12:31:31.668Z",
+      "uniqueQualifier": "-363566051832831677",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/_D5U3e28PYAgtvt9rySIseI9AzQ\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "farrakhan@gafe.co.za",
+      "profileId": "105221937046664268034"
+    },
+    "isAgenticAction": false,
+    "events": [
+      {
+        "type": "DOMAIN_SETTINGS",
+        "name": "ADD_TRUSTED_DOMAINS",
+        "parameters": [
+          {
+            "name": "DOMAIN_NAME",
+            "value": "excellaschool.rw"
+          }
+        ],
+        "resourceIds": [
+          "excellaschool.rw"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "excellaschool.rw",
+        "title": "excellaschool.rw",
+        "type": "DOMAIN_ENTITY",
+        "ownerDetails": {
+          "ownerType": "CUSTOMER",
+          "ownerIdentity": [
+            {
+              "customerIdentity": {
+                "id": "04hu2uhc"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-15T12:30:54.346Z",
+      "uniqueQualifier": "1650854366605094318",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/-As76nk_LsxgLew13oP3TBhu6bU\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "farrakhan@gafe.co.za",
+      "profileId": "105221937046664268034"
+    },
+    "ipAddress": "102.254.171.4",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        5713
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-GP"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_VIEW",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "572883e2-06aa-4cbc-a218-7abcbb7be07e,64034efc-1d43-45f8-860b-bea6e51218e9,c9b8912c-df19-4159-b468-612d53230fa0,f20c99e8-d747-49b9-912c-4ecb2d718086"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-15T11:24:15.686Z",
+      "uniqueQualifier": "4927883936907944076",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/PdhBeNLBib6VFsh3Qe0y_-sXiGM\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "alister@gafe.co.za",
+      "profileId": "102305463948441239613"
+    },
+    "ipAddress": "102.221.27.89",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37100
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_VIEW",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "572883e2-06aa-4cbc-a218-7abcbb7be07e,64034efc-1d43-45f8-860b-bea6e51218e9,c9b8912c-df19-4159-b468-612d53230fa0,f20c99e8-d747-49b9-912c-4ecb2d718086"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-15T07:05:46.602Z",
+      "uniqueQualifier": "3620686309406453840",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/zK6fSIdCqKfyOJ9u4V1dm4nLT9U\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "farrakhan@gafe.co.za",
+      "profileId": "105221937046664268034"
+    },
+    "ipAddress": "102.254.171.4",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        5713
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-GP"
+    },
+    "events": [
+      {
+        "type": "SECURITY_INVESTIGATION",
+        "name": "SECURITY_INVESTIGATION_QUERY",
+        "parameters": [
+          {
+            "name": "INVESTIGATION_DATA_SOURCE",
+            "value": "ADMIN LOG EVENTS"
+          },
+          {
+            "name": "INVESTIGATION_QUERY",
+            "value": "EVENT EQUALS [ADMIN_EVENTS_AUTHORIZE_API_CLIENT_ACCESS]"
+          }
+        ],
+        "resourceIds": [
+          "4920e6cf-fc20-4c75-a818-b992d77cbb92"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "4920e6cf-fc20-4c75-a818-b992d77cbb92",
+        "type": "SIT_INVESTIGATION",
+        "ownerDetails": {
+          "ownerType": "USER",
+          "ownerIdentity": [
+            {
+              "userIdentity": {
+                "id": "2afmg282js5lpa",
+                "userEmail": "farrakhan@gafe.co.za"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-15T07:04:46.973Z",
+      "uniqueQualifier": "-7269904577757052932",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/eHiGWBVh-2ew-nWiukzO7fOkgQc\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "farrakhan@gafe.co.za",
+      "profileId": "105221937046664268034"
+    },
+    "ipAddress": "102.253.107.10",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37457
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-GP"
+    },
+    "events": [
+      {
+        "type": "SECURITY_INVESTIGATION",
+        "name": "SECURITY_INVESTIGATION_OBJECT_CREATE_DRAFT_INVESTIGATION",
+        "parameters": [
+          {
+            "name": "INVESTIGATION_OBJECT_IDENTIFIER",
+            "value": "4920e6cf-fc20-4c75-a818-b992d77cbb92"
+          },
+          {
+            "name": "INVESTIGATION_URL_DISPLAY_TEXT",
+            "value": "OPEN_INVESTIGATION"
+          }
+        ],
+        "resourceIds": [
+          "4920e6cf-fc20-4c75-a818-b992d77cbb92"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "4920e6cf-fc20-4c75-a818-b992d77cbb92",
+        "type": "SIT_INVESTIGATION",
+        "ownerDetails": {
+          "ownerType": "USER",
+          "ownerIdentity": [
+            {
+              "userIdentity": {
+                "id": "2afmg282js5lpa",
+                "userEmail": "farrakhan@gafe.co.za"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-15T07:04:46.484Z",
+      "uniqueQualifier": "-3182804378041908557",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/LA8wuN7qUOYP6hZvNoZBCAAFeuY\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "farrakhan@gafe.co.za",
+      "profileId": "105221937046664268034"
+    },
+    "ipAddress": "102.253.107.10",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37457
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-GP"
+    },
+    "events": [
+      {
+        "type": "SECURITY_INVESTIGATION",
+        "name": "SECURITY_INVESTIGATION_QUERY",
+        "parameters": [
+          {
+            "name": "INVESTIGATION_DATA_SOURCE",
+            "value": "ADMIN LOG EVENTS"
+          },
+          {
+            "name": "INVESTIGATION_QUERY",
+            "value": "DATE > 2026-09-08T07:04:44Z"
+          }
+        ],
+        "resourceIds": [
+          "4920e6cf-fc20-4c75-a818-b992d77cbb92"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "4920e6cf-fc20-4c75-a818-b992d77cbb92",
+        "type": "SIT_INVESTIGATION",
+        "ownerDetails": {
+          "ownerType": "USER",
+          "ownerIdentity": [
+            {
+              "userIdentity": {
+                "id": "2afmg282js5lpa",
+                "userEmail": "farrakhan@gafe.co.za"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-15T07:03:37.376Z",
+      "uniqueQualifier": "-4736922970500935989",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/tGPDIQf9Rfa2Q9jT3pZuyHsBmPo\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "farrakhan@gafe.co.za",
+      "profileId": "105221937046664268034"
+    },
+    "ipAddress": "102.253.107.10",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37457
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-GP"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_VIEW",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "572883e2-06aa-4cbc-a218-7abcbb7be07e,64034efc-1d43-45f8-860b-bea6e51218e9,c9b8912c-df19-4159-b468-612d53230fa0,f20c99e8-d747-49b9-912c-4ecb2d718086"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-15T06:14:19.973Z",
+      "uniqueQualifier": "-6083871033513151237",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/olU6XZa6uEN8p_1FLkZaVs7rdpk\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "tetiana_kaminska@gafe.co.za",
+      "profileId": "117699704439186118473"
+    },
+    "ipAddress": "109.108.226.26",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        49223
+      ],
+      "regionCode": "UA",
+      "subdivisionCode": "UA-05"
+    },
+    "events": [
+      {
+        "type": "SECURITY_INVESTIGATION",
+        "name": "SECURITY_INVESTIGATION_QUERY",
+        "parameters": [
+          {
+            "name": "INVESTIGATION_DATA_SOURCE",
+            "value": "DRIVE LOG EVENTS"
+          },
+          {
+            "name": "INVESTIGATION_QUERY",
+            "value": "DATE > 2026-09-08T05:45:35Z"
+          }
+        ],
+        "resourceIds": [
+          ""
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "",
+        "type": "SIT_INVESTIGATION",
+        "ownerDetails": {
+          "ownerType": "USER",
+          "ownerIdentity": [
+            {
+              "userIdentity": {
+                "id": "23ckvvd14ngurs",
+                "userEmail": "tetiana_kaminska@gafe.co.za"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-15T06:03:47.919Z",
+      "uniqueQualifier": "-8001839768390483599",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/HuLn_6p-ukR25iXlIIX4pW1btw0\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "tetiana_kaminska@gafe.co.za",
+      "profileId": "117699704439186118473"
+    },
+    "ipAddress": "109.108.226.26",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        49223
+      ],
+      "regionCode": "UA",
+      "subdivisionCode": "UA-05"
+    },
+    "events": [
+      {
+        "type": "SECURITY_INVESTIGATION",
+        "name": "SECURITY_INVESTIGATION_QUERY",
+        "parameters": [
+          {
+            "name": "INVESTIGATION_DATA_SOURCE",
+            "value": "DRIVE LOG EVENTS"
+          },
+          {
+            "name": "INVESTIGATION_QUERY",
+            "value": "(DATE > 2026-09-08T05:45:35Z) AND (ACTOR CONTAINS [\"karien@gafe.co.za\"])"
+          }
+        ],
+        "resourceIds": [
+          ""
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "",
+        "type": "SIT_INVESTIGATION",
+        "ownerDetails": {
+          "ownerType": "USER",
+          "ownerIdentity": [
+            {
+              "userIdentity": {
+                "id": "23ckvvd14ngurs",
+                "userEmail": "tetiana_kaminska@gafe.co.za"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-15T06:03:29.103Z",
+      "uniqueQualifier": "-1132901249314575332",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/zzMM7zDQL_GNENne_EH7iPBksL4\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "tetiana_kaminska@gafe.co.za",
+      "profileId": "117699704439186118473"
+    },
+    "ipAddress": "109.108.226.26",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        49223
+      ],
+      "regionCode": "UA",
+      "subdivisionCode": "UA-05"
+    },
+    "events": [
+      {
+        "type": "SECURITY_INVESTIGATION",
+        "name": "SECURITY_INVESTIGATION_QUERY",
+        "parameters": [
+          {
+            "name": "INVESTIGATION_DATA_SOURCE",
+            "value": "DRIVE LOG EVENTS"
+          },
+          {
+            "name": "INVESTIGATION_QUERY",
+            "value": "(DATE > 2026-09-08T05:45:35Z) AND (ACTOR CONTAINS [\"themba@gafe.co.za\"])"
+          }
+        ],
+        "resourceIds": [
+          ""
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "",
+        "type": "SIT_INVESTIGATION",
+        "ownerDetails": {
+          "ownerType": "USER",
+          "ownerIdentity": [
+            {
+              "userIdentity": {
+                "id": "23ckvvd14ngurs",
+                "userEmail": "tetiana_kaminska@gafe.co.za"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-15T05:57:30.272Z",
+      "uniqueQualifier": "-499328096203919178",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/No2TG25bhyxfwlpAFVMtNzLC7Z4\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "tetiana_kaminska@gafe.co.za",
+      "profileId": "117699704439186118473"
+    },
+    "ipAddress": "109.108.226.26",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        49223
+      ],
+      "regionCode": "UA",
+      "subdivisionCode": "UA-05"
+    },
+    "events": [
+      {
+        "type": "SECURITY_INVESTIGATION",
+        "name": "SECURITY_INVESTIGATION_QUERY",
+        "parameters": [
+          {
+            "name": "INVESTIGATION_DATA_SOURCE",
+            "value": "DRIVE LOG EVENTS"
+          },
+          {
+            "name": "INVESTIGATION_QUERY",
+            "value": "(DATE > 2026-09-08T05:45:35Z) AND (ACTOR CONTAINS [\"karien@gafe.co.za\"])"
+          }
+        ],
+        "resourceIds": [
+          ""
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "",
+        "type": "SIT_INVESTIGATION",
+        "ownerDetails": {
+          "ownerType": "USER",
+          "ownerIdentity": [
+            {
+              "userIdentity": {
+                "id": "23ckvvd14ngurs",
+                "userEmail": "tetiana_kaminska@gafe.co.za"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-15T05:54:58.644Z",
+      "uniqueQualifier": "5197156054101919455",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/-0r43smWHonQsLdqzeQj2bDksSk\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "tetiana_kaminska@gafe.co.za",
+      "profileId": "117699704439186118473"
+    },
+    "ipAddress": "109.108.226.26",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        49223
+      ],
+      "regionCode": "UA",
+      "subdivisionCode": "UA-05"
+    },
+    "events": [
+      {
+        "type": "SECURITY_INVESTIGATION",
+        "name": "SECURITY_INVESTIGATION_QUERY",
+        "parameters": [
+          {
+            "name": "INVESTIGATION_DATA_SOURCE",
+            "value": "DRIVE LOG EVENTS"
+          },
+          {
+            "name": "INVESTIGATION_QUERY",
+            "value": "(DATE > 2026-09-08T05:45:35Z) AND (ACTOR CONTAINS [\"themba@gafe.co.za\"])"
+          }
+        ],
+        "resourceIds": [
+          ""
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "",
+        "type": "SIT_INVESTIGATION",
+        "ownerDetails": {
+          "ownerType": "USER",
+          "ownerIdentity": [
+            {
+              "userIdentity": {
+                "id": "23ckvvd14ngurs",
+                "userEmail": "tetiana_kaminska@gafe.co.za"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-15T05:45:33.304Z",
+      "uniqueQualifier": "-2794720616886919287",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/kSbdnI-lE5ki1Iqdz77UgtZL9Q4\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "tetiana_kaminska@gafe.co.za",
+      "profileId": "117699704439186118473"
+    },
+    "ipAddress": "109.108.226.26",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        49223
+      ],
+      "regionCode": "UA",
+      "subdivisionCode": "UA-05"
+    },
+    "events": [
+      {
+        "type": "SECURITY_INVESTIGATION",
+        "name": "SECURITY_INVESTIGATION_QUERY",
+        "parameters": [
+          {
+            "name": "INVESTIGATION_DATA_SOURCE",
+            "value": "DRIVE LOG EVENTS"
+          },
+          {
+            "name": "INVESTIGATION_QUERY",
+            "value": "DATE > 2026-09-08T05:45:35Z"
+          }
+        ],
+        "resourceIds": [
+          ""
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "",
+        "type": "SIT_INVESTIGATION",
+        "ownerDetails": {
+          "ownerType": "USER",
+          "ownerIdentity": [
+            {
+              "userIdentity": {
+                "id": "23ckvvd14ngurs",
+                "userEmail": "tetiana_kaminska@gafe.co.za"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-15T05:43:07.191Z",
+      "uniqueQualifier": "2534219081682813149",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/WvFTFVAUCRCEM_m7mO_WnzxhoNo\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "tetiana_kaminska@gafe.co.za",
+      "profileId": "117699704439186118473"
+    },
+    "ipAddress": "109.108.226.26",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        49223
+      ],
+      "regionCode": "UA",
+      "subdivisionCode": "UA-05"
+    },
+    "events": [
+      {
+        "type": "SECURITY_INVESTIGATION",
+        "name": "SECURITY_INVESTIGATION_QUERY",
+        "parameters": [
+          {
+            "name": "INVESTIGATION_DATA_SOURCE",
+            "value": "DRIVE LOG EVENTS"
+          },
+          {
+            "name": "INVESTIGATION_QUERY",
+            "value": "DATE > 2026-09-08T05:43:09Z"
+          }
+        ],
+        "resourceIds": [
+          ""
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "",
+        "type": "SIT_INVESTIGATION",
+        "ownerDetails": {
+          "ownerType": "USER",
+          "ownerIdentity": [
+            {
+              "userIdentity": {
+                "id": "23ckvvd14ngurs",
+                "userEmail": "tetiana_kaminska@gafe.co.za"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-15T05:34:10.843Z",
+      "uniqueQualifier": "-1060933678615021488",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/fzjpwWEYfJ2algz-6fzKvTcR1DI\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "tetiana_kaminska@gafe.co.za",
+      "profileId": "117699704439186118473"
+    },
+    "ipAddress": "109.108.226.26",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        49223
+      ],
+      "regionCode": "UA",
+      "subdivisionCode": "UA-05"
+    },
+    "events": [
+      {
+        "type": "SECURITY_INVESTIGATION",
+        "name": "SECURITY_INVESTIGATION_QUERY",
+        "parameters": [
+          {
+            "name": "INVESTIGATION_DATA_SOURCE",
+            "value": "DRIVE LOG EVENTS"
+          },
+          {
+            "name": "INVESTIGATION_QUERY",
+            "value": "DATE > 2026-09-08T05:34:13Z"
+          }
+        ],
+        "resourceIds": [
+          ""
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "",
+        "type": "SIT_INVESTIGATION",
+        "ownerDetails": {
+          "ownerType": "USER",
+          "ownerIdentity": [
+            {
+              "userIdentity": {
+                "id": "23ckvvd14ngurs",
+                "userEmail": "tetiana_kaminska@gafe.co.za"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-14T13:56:57.988Z",
+      "uniqueQualifier": "3855980523828827727",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/WaaxHrTG-_6xvjy1OOArsRtIp6Y\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "pavel@gafe.co.za",
+      "profileId": "115213879076638367846"
+    },
+    "ipAddress": "80.238.118.60",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        41676
+      ],
+      "regionCode": "PL",
+      "subdivisionCode": "PL-14"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_VIEW",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "572883e2-06aa-4cbc-a218-7abcbb7be07e,64034efc-1d43-45f8-860b-bea6e51218e9,c9b8912c-df19-4159-b468-612d53230fa0,f20c99e8-d747-49b9-912c-4ecb2d718086"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-14T13:02:13.645Z",
+      "uniqueQualifier": "7777489682188705263",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/1lRoDIj1EcbSK1o01YhbvTa-irw\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "alister@gafe.co.za",
+      "profileId": "102305463948441239613"
+    },
+    "ipAddress": "102.221.27.89",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37100
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_VIEW",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "572883e2-06aa-4cbc-a218-7abcbb7be07e,64034efc-1d43-45f8-860b-bea6e51218e9,c9b8912c-df19-4159-b468-612d53230fa0,f20c99e8-d747-49b9-912c-4ecb2d718086"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-13T17:52:53.958Z",
+      "uniqueQualifier": "-4414603409385470097",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/dxrNn4mHvMcKgX0Dpju946Id0MU\"",
+    "actor": {
+      "email": "alister@gafe.co.za",
+      "profileId": "102305463948441239613"
+    },
+    "ipAddress": "197.155.22.16",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37199
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "SECURITY_SETTINGS",
+        "name": "ADD_TO_TRUSTED_OAUTH2_APPS",
+        "parameters": [
+          {
+            "name": "ORG_UNIT_NAME",
+            "value": "gafe.co.za"
+          },
+          {
+            "name": "OAUTH2_APP_NAME",
+            "value": "MyLogin"
+          },
+          {
+            "name": "OAUTH2_APP_ID",
+            "value": "188883250313-8nmnraov1542echfae84q33gmdi5k54g.apps.googleusercontent.com"
+          },
+          {
+            "name": "OAUTH2_APP_TYPE",
+            "value": "WEB_CLIENT"
+          }
+        ]
+      },
+      {
+        "type": "SECURITY_SETTINGS",
+        "name": "CHANGE_APP_ACCESS",
+        "parameters": [
+          {
+            "name": "OAUTH2_APP_NAME",
+            "value": "MyLogin"
+          },
+          {
+            "name": "OLD_VALUE",
+            "value": "Limited"
+          },
+          {
+            "name": "NEW_VALUE",
+            "value": "Trusted"
+          },
+          {
+            "name": "OAUTH2_APP_TYPE",
+            "value": "WEB_CLIENT"
+          },
+          {
+            "name": "OAUTH2_APP_ID",
+            "value": "188883250313-8nmnraov1542echfae84q33gmdi5k54g.apps.googleusercontent.com"
+          },
+          {
+            "name": "ORG_UNIT_NAME",
+            "value": "gafe.co.za"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-13T17:52:39.116Z",
+      "uniqueQualifier": "8246039667554118953",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/9sqM8iISVvR5KrP230W82i_Zsho\"",
+    "actor": {
+      "email": "alister@gafe.co.za",
+      "profileId": "102305463948441239613"
+    },
+    "ipAddress": "197.155.22.16",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37199
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "SECURITY_SETTINGS",
+        "name": "ADD_TO_LIMITED_OAUTH2_APPS",
+        "parameters": [
+          {
+            "name": "ORG_UNIT_NAME",
+            "value": "gafe.co.za"
+          },
+          {
+            "name": "OAUTH2_APP_NAME",
+            "value": "MyLogin"
+          },
+          {
+            "name": "OAUTH2_APP_ID",
+            "value": "188883250313-8nmnraov1542echfae84q33gmdi5k54g.apps.googleusercontent.com"
+          },
+          {
+            "name": "OAUTH2_APP_TYPE",
+            "value": "WEB_CLIENT"
+          }
+        ]
+      },
+      {
+        "type": "SECURITY_SETTINGS",
+        "name": "CHANGE_APP_ACCESS",
+        "parameters": [
+          {
+            "name": "OAUTH2_APP_NAME",
+            "value": "MyLogin"
+          },
+          {
+            "name": "OLD_VALUE",
+            "value": "Trusted"
+          },
+          {
+            "name": "NEW_VALUE",
+            "value": "Limited"
+          },
+          {
+            "name": "OAUTH2_APP_TYPE",
+            "value": "WEB_CLIENT"
+          },
+          {
+            "name": "OAUTH2_APP_ID",
+            "value": "188883250313-8nmnraov1542echfae84q33gmdi5k54g.apps.googleusercontent.com"
+          },
+          {
+            "name": "ORG_UNIT_NAME",
+            "value": "gafe.co.za"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-13T17:25:47.486Z",
+      "uniqueQualifier": "6534504731362248181",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/cdKg1uER9sRz6K5YDTrsWBV1Uug\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "alister@gafe.co.za",
+      "profileId": "102305463948441239613"
+    },
+    "ipAddress": "197.155.22.16",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37199
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_VIEW",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "08507a9b-f342-4fdc-a4e6-1ab25a240fb6,0aa9a053-0a51-45a6-8229-1eb1eee2e315,572883e2-06aa-4cbc-a218-7abcbb7be07e,61c1a377-1bdc-4c77-a4fe-52594ece9a5a,64034efc-1d43-45f8-860b-bea6e51218e9,72f2c553-f15f-4df7-9983-c6b9b3869b83,7e9105f9-f0d3-4fbd-ab14-9e2f10e483c3,95e7eca0-6074-4065-9cfb-81b8dcef9ef2,97752919-5b75-4650-b9cc-114edb040a1c,a61e4296-f018-495a-aa3a-693c0b8830e4,b327bcba-df22-49ff-9991-a7229e0b529a,c7664614-88ec-4fed-b87d-f30f899eddbe,c7a8c086-34da-4ec9-b669-b0b46dc3e324,c9b8912c-df19-4159-b468-612d53230fa0,cdbd968f-cf52-460a-b27e-0534b17b9ac0,d086c06f-85e8-42d3-a871-1d151b5c7111,e4e1d611-095d-4d54-8574-f559d8eb2f66,f20c99e8-d747-49b9-912c-4ecb2d718086,f216fe80-651b-4a91-94aa-33b7548ee0b3,f3c6a259-d02c-44cd-beec-c8fed3df8696"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-12T17:22:27.150Z",
+      "uniqueQualifier": "1201347946852740177",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/IvwCu0Wrz-wkLLXIj_luwxnQDMY\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "farrakhan@gafe.co.za",
+      "profileId": "105221937046664268034",
+      "applicationInfo": {
+        "oauthClientId": "",
+        "applicationName": "",
+        "impersonation": false
+      }
+    },
+    "ipAddress": "102.254.171.18",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        5713
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-GP"
+    },
+    "events": [
+      {
+        "type": "USER_SETTINGS",
+        "name": "DOWNLOAD_USERLIST_CSV"
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-12T16:56:04.384Z",
+      "uniqueQualifier": "-2340369292676955402",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/KRuV23flC9g1tskrlglN-N8zPiQ\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "farrakhan@gafe.co.za",
+      "profileId": "105221937046664268034",
+      "applicationInfo": {
+        "oauthClientId": "",
+        "applicationName": "",
+        "impersonation": false
+      }
+    },
+    "ipAddress": "102.254.171.18",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        5713
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-GP"
+    },
+    "events": [
+      {
+        "type": "USER_SETTINGS",
+        "name": "DOWNLOAD_USERLIST_CSV"
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-12T16:51:04.697Z",
+      "uniqueQualifier": "191960241595635127",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/Fa77PKXoI-65XznQG4LDtwphEL8\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "farrakhan@gafe.co.za",
+      "profileId": "105221937046664268034"
+    },
+    "ipAddress": "102.253.107.24",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37457
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-GP"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_VIEW",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "572883e2-06aa-4cbc-a218-7abcbb7be07e,64034efc-1d43-45f8-860b-bea6e51218e9,c9b8912c-df19-4159-b468-612d53230fa0,f20c99e8-d747-49b9-912c-4ecb2d718086"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-12T12:24:36.862Z",
+      "uniqueQualifier": "3512392472491055394",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/N1WOYU-NE96FTjVP5us9U9PqqxY\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "alister@gafe.co.za",
+      "profileId": "102305463948441239613"
+    },
+    "ipAddress": "197.155.22.16",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37199
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_LIST_FEEDBACK",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "64034efc-1d43-45f8-860b-bea6e51218e9"
+          }
+        ],
+        "resourceIds": [
+          "64034efc-1d43-45f8-860b-bea6e51218e9"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "64034efc-1d43-45f8-860b-bea6e51218e9",
+        "title": "Apps outage",
+        "type": "ALERT",
+        "ownerDetails": {
+          "ownerType": "CUSTOMER",
+          "ownerIdentity": [
+            {
+              "customerIdentity": {
+                "id": "04hu2uhc"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-12T12:24:33.413Z",
+      "uniqueQualifier": "7831377789535792756",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/lUqEE7NS8knB4UIjzi6eGpV1JTY\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "alister@gafe.co.za",
+      "profileId": "102305463948441239613"
+    },
+    "ipAddress": "197.155.22.16",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37199
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_VIEW",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "64034efc-1d43-45f8-860b-bea6e51218e9"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-12T12:22:02.751Z",
+      "uniqueQualifier": "-3042384289523627430",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/BApE-OqqdDrgQ_bWnT3Nxn9o_Fo\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "alister@gafe.co.za",
+      "profileId": "102305463948441239613"
+    },
+    "ipAddress": "197.155.22.16",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37199
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_LIST_CHANGE",
+        "parameters": [
+          {
+            "name": "ALERT_CHANGE_ID",
+            "value": "0366914a-ec1e-47d7-a541-db6c164eedbf"
+          },
+          {
+            "name": "ALERT_ID",
+            "value": "64034efc-1d43-45f8-860b-bea6e51218e9"
+          }
+        ],
+        "resourceIds": [
+          "64034efc-1d43-45f8-860b-bea6e51218e9"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "64034efc-1d43-45f8-860b-bea6e51218e9",
+        "title": "Apps outage",
+        "type": "ALERT",
+        "ownerDetails": {
+          "ownerType": "CUSTOMER",
+          "ownerIdentity": [
+            {
+              "customerIdentity": {
+                "id": "04hu2uhc"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-12T12:22:01.573Z",
+      "uniqueQualifier": "5547557313372272169",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/6mGrLAaamP4OoOr9DcpvvCCRqpM\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "alister@gafe.co.za",
+      "profileId": "102305463948441239613"
+    },
+    "ipAddress": "197.155.22.16",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37199
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_LIST_RELATED_ALERTS",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "64034efc-1d43-45f8-860b-bea6e51218e9"
+          }
+        ],
+        "resourceIds": [
+          "64034efc-1d43-45f8-860b-bea6e51218e9"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "64034efc-1d43-45f8-860b-bea6e51218e9",
+        "title": "Apps outage",
+        "type": "ALERT",
+        "ownerDetails": {
+          "ownerType": "CUSTOMER",
+          "ownerIdentity": [
+            {
+              "customerIdentity": {
+                "id": "04hu2uhc"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-12T12:21:58.066Z",
+      "uniqueQualifier": "5109230240728715917",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/HJnHuU0hqi2NJF4mZrIcfC2pKHQ\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "alister@gafe.co.za",
+      "profileId": "102305463948441239613"
+    },
+    "ipAddress": "197.155.22.16",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37199
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_LIST_FEEDBACK",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "64034efc-1d43-45f8-860b-bea6e51218e9"
+          }
+        ],
+        "resourceIds": [
+          "64034efc-1d43-45f8-860b-bea6e51218e9"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "64034efc-1d43-45f8-860b-bea6e51218e9",
+        "title": "Apps outage",
+        "type": "ALERT",
+        "ownerDetails": {
+          "ownerType": "CUSTOMER",
+          "ownerIdentity": [
+            {
+              "customerIdentity": {
+                "id": "04hu2uhc"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-12T12:21:54.779Z",
+      "uniqueQualifier": "1973207882995643916",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/tNxE25PszAg1Fx0tS4fiCBFnD7o\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "alister@gafe.co.za",
+      "profileId": "102305463948441239613"
+    },
+    "ipAddress": "197.155.22.16",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37199
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_VIEW",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "64034efc-1d43-45f8-860b-bea6e51218e9"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-12T12:21:50.172Z",
+      "uniqueQualifier": "3404583595699874207",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/bfPD5PLrHVo5gdiQJaNmgyGPXas\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "alister@gafe.co.za",
+      "profileId": "102305463948441239613"
+    },
+    "ipAddress": "197.155.22.16",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37199
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_VIEW",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "08507a9b-f342-4fdc-a4e6-1ab25a240fb6,0aa9a053-0a51-45a6-8229-1eb1eee2e315,572883e2-06aa-4cbc-a218-7abcbb7be07e,61c1a377-1bdc-4c77-a4fe-52594ece9a5a,64034efc-1d43-45f8-860b-bea6e51218e9,72f2c553-f15f-4df7-9983-c6b9b3869b83,7e9105f9-f0d3-4fbd-ab14-9e2f10e483c3,95e7eca0-6074-4065-9cfb-81b8dcef9ef2,97752919-5b75-4650-b9cc-114edb040a1c,a61e4296-f018-495a-aa3a-693c0b8830e4,b327bcba-df22-49ff-9991-a7229e0b529a,c7664614-88ec-4fed-b87d-f30f899eddbe,c7a8c086-34da-4ec9-b669-b0b46dc3e324,c9b8912c-df19-4159-b468-612d53230fa0,cdbd968f-cf52-460a-b27e-0534b17b9ac0,d086c06f-85e8-42d3-a871-1d151b5c7111,e4e1d611-095d-4d54-8574-f559d8eb2f66,f20c99e8-d747-49b9-912c-4ecb2d718086,f216fe80-651b-4a91-94aa-33b7548ee0b3,f3c6a259-d02c-44cd-beec-c8fed3df8696"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-12T12:12:19.413Z",
+      "uniqueQualifier": "1215322449610953133",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/MlFtTfjhCLs3tdDj0mEipcFiRh4\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "alister@gafe.co.za",
+      "profileId": "102305463948441239613"
+    },
+    "ipAddress": "197.155.22.16",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37199
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_LIST_CHANGE",
+        "parameters": [
+          {
+            "name": "ALERT_CHANGE_ID",
+            "value": "00cfb746-7b5e-41da-9edd-6aa473f03d18,c26de8a9-363f-4bc1-8a62-bea5784f7213,cfd663c2-f9cf-418f-ad73-8d6b41345295"
+          },
+          {
+            "name": "ALERT_ID",
+            "value": "572883e2-06aa-4cbc-a218-7abcbb7be07e"
+          }
+        ],
+        "resourceIds": [
+          "572883e2-06aa-4cbc-a218-7abcbb7be07e"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "572883e2-06aa-4cbc-a218-7abcbb7be07e",
+        "title": "Apps outage",
+        "type": "ALERT",
+        "ownerDetails": {
+          "ownerType": "CUSTOMER",
+          "ownerIdentity": [
+            {
+              "customerIdentity": {
+                "id": "04hu2uhc"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-12T12:12:18.178Z",
+      "uniqueQualifier": "8743934151620392946",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/uy6kCIci1ptKuPlqdW_cfxzVSwE\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "alister@gafe.co.za",
+      "profileId": "102305463948441239613"
+    },
+    "ipAddress": "197.155.22.16",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37199
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_LIST_RELATED_ALERTS",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "572883e2-06aa-4cbc-a218-7abcbb7be07e"
+          }
+        ],
+        "resourceIds": [
+          "572883e2-06aa-4cbc-a218-7abcbb7be07e"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "572883e2-06aa-4cbc-a218-7abcbb7be07e",
+        "title": "Apps outage",
+        "type": "ALERT",
+        "ownerDetails": {
+          "ownerType": "CUSTOMER",
+          "ownerIdentity": [
+            {
+              "customerIdentity": {
+                "id": "04hu2uhc"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-12T12:12:15.157Z",
+      "uniqueQualifier": "6841236653041348969",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/4GYn8cqVXtN7VkG1wrubp7RpXB4\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "alister@gafe.co.za",
+      "profileId": "102305463948441239613"
+    },
+    "ipAddress": "197.155.22.16",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37199
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_LIST_FEEDBACK",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "572883e2-06aa-4cbc-a218-7abcbb7be07e"
+          }
+        ],
+        "resourceIds": [
+          "572883e2-06aa-4cbc-a218-7abcbb7be07e"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "572883e2-06aa-4cbc-a218-7abcbb7be07e",
+        "title": "Apps outage",
+        "type": "ALERT",
+        "ownerDetails": {
+          "ownerType": "CUSTOMER",
+          "ownerIdentity": [
+            {
+              "customerIdentity": {
+                "id": "04hu2uhc"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-12T12:12:11.603Z",
+      "uniqueQualifier": "-6936251894906598950",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/BfmwxjW2tzOGwVq5W-XVj32q824\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "alister@gafe.co.za",
+      "profileId": "102305463948441239613"
+    },
+    "ipAddress": "197.155.22.16",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37199
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_VIEW",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "572883e2-06aa-4cbc-a218-7abcbb7be07e"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-12T12:12:04.618Z",
+      "uniqueQualifier": "-4563649396865214696",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/NmEGZDCPuvdK0yzrEiRiuosLLeM\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "alister@gafe.co.za",
+      "profileId": "102305463948441239613"
+    },
+    "ipAddress": "197.155.22.16",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37199
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_VIEW",
+        "parameters": [
+          {
+            "name": "ALERT_ID",
+            "value": "08507a9b-f342-4fdc-a4e6-1ab25a240fb6,0aa9a053-0a51-45a6-8229-1eb1eee2e315,572883e2-06aa-4cbc-a218-7abcbb7be07e,61c1a377-1bdc-4c77-a4fe-52594ece9a5a,64034efc-1d43-45f8-860b-bea6e51218e9,72f2c553-f15f-4df7-9983-c6b9b3869b83,7e9105f9-f0d3-4fbd-ab14-9e2f10e483c3,95e7eca0-6074-4065-9cfb-81b8dcef9ef2,97752919-5b75-4650-b9cc-114edb040a1c,a61e4296-f018-495a-aa3a-693c0b8830e4,b327bcba-df22-49ff-9991-a7229e0b529a,c7664614-88ec-4fed-b87d-f30f899eddbe,c7a8c086-34da-4ec9-b669-b0b46dc3e324,c9b8912c-df19-4159-b468-612d53230fa0,cdbd968f-cf52-460a-b27e-0534b17b9ac0,d086c06f-85e8-42d3-a871-1d151b5c7111,e4e1d611-095d-4d54-8574-f559d8eb2f66,f20c99e8-d747-49b9-912c-4ecb2d718086,f216fe80-651b-4a91-94aa-33b7548ee0b3,f3c6a259-d02c-44cd-beec-c8fed3df8696"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "admin#reports#activity",
+    "id": {
+      "time": "2026-09-12T12:12:01.535Z",
+      "uniqueQualifier": "-6525887295443764062",
+      "applicationName": "admin",
+      "customerId": "C04hu2uhc"
+    },
+    "etag": "\"aOVgaZleKR5uPxVUqIhFSn_uDqTtNPuwv6KUb5_B2ds/2Y5sraOsR8pb-MdAkBWdTYuWXfs\"",
+    "actor": {
+      "callerType": "USER",
+      "email": "alister@gafe.co.za",
+      "profileId": "102305463948441239613"
+    },
+    "ipAddress": "197.155.22.16",
+    "isAgenticAction": false,
+    "networkInfo": {
+      "ipAsn": [
+        37199
+      ],
+      "regionCode": "ZA",
+      "subdivisionCode": "ZA-WC"
+    },
+    "events": [
+      {
+        "type": "ALERT_CENTER",
+        "name": "ALERT_CENTER_LIST_CHANGE",
+        "parameters": [
+          {
+            "name": "ALERT_CHANGE_ID",
+            "value": "0366914a-ec1e-47d7-a541-db6c164eedbf"
+          },
+          {
+            "name": "ALERT_ID",
+            "value": "64034efc-1d43-45f8-860b-bea6e51218e9"
+          }
+        ],
+        "resourceIds": [
+          "64034efc-1d43-45f8-860b-bea6e51218e9"
+        ]
+      }
+    ],
+    "resourceDetails": [
+      {
+        "id": "64034efc-1d43-45f8-860b-bea6e51218e9",
+        "title": "Apps outage",
+        "type": "ALERT",
+        "ownerDetails": {
+          "ownerType": "CUSTOMER",
+          "ownerIdentity": [
+            {
+              "customerIdentity": {
+                "id": "04hu2uhc"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

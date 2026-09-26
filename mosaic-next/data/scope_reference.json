@@ -1,13 +1,13 @@
 {
   "metrics": {
-    "total": 121,
+    "total": 124,
     "restricted": 42,
-    "sensitive": 65,
+    "sensitive": 68,
     "nonSensitive": 14,
     "scores": {
       "critical": 17,
       "high": 34,
-      "medium": 41,
+      "medium": 44,
       "low": 19,
       "minimal": 10
     },
@@ -1363,6 +1363,33 @@
       "threat_impact": "Standard OpenID Connect token for user authentication assertion.",
       "active_apps_count": 0,
       "active_apps": []
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/workspace.studio.execution",
+      "service_name": "Apps Script API",
+      "google_tier": "Sensitive",
+      "admin_score": 3,
+      "admin_color": "Yellow",
+      "rationale": "Studio Runtime Execution",
+      "threat_impact": "Execute automated Google Workspace Studio macros and workflows on behalf of the user."
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/chat.memberships.readonly",
+      "service_name": "Chat",
+      "google_tier": "Sensitive",
+      "admin_score": 3,
+      "admin_color": "Yellow",
+      "rationale": "Chat Room Membership Reconnaissance",
+      "threat_impact": "List members, attendees, and user profiles across Google Chat spaces and direct messages."
+    },
+    {
+      "scope_url": "https://www.googleapis.com/auth/admin.directory.group.member.readonly",
+      "service_name": "Google Workspace Admin",
+      "google_tier": "Sensitive",
+      "admin_score": 3,
+      "admin_color": "Yellow",
+      "rationale": "Domain Group Membership Inspection",
+      "threat_impact": "Read organizational group membership lists, internal team distribution rosters, and user roles."
     }
   ]
 }

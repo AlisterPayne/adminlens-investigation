@@ -7,7 +7,7 @@
     "deploymentsCount": 10,
     "totalUsersCount": 12,
     "maxRisk": "CRITICAL",
-    "avgRiskScore": 3.21,
+    "avgRiskScore": 3.32,
     "deploymentIds": [
       "417521716396-sr8h84pflr3sro5i53r66hi76rco6bug.apps.googleusercontent.com",
       "892359244178-5umuheruf74ttkti2115q78gkei82s0s.apps.googleusercontent.com",
@@ -17,8 +17,8 @@
       "1051074958188-u3h5tcv96sm52jubv7cqnp1squird12f.apps.googleusercontent.com",
       "97402216672-ho80qpeolqdr24nltc29n6krpebk9ss3.apps.googleusercontent.com",
       "705539309036-4ej1ri9jplb9a4791jsppcchjbvk74fp.apps.googleusercontent.com",
-      "579706874471-v1v2akhe8lqriu4hhrm58rb1e1tpo6fn.apps.googleusercontent.com",
-      "742713087391-4otjds6c701o8q958uhcku0c40r48vjk.apps.googleusercontent.com"
+      "742713087391-4otjds6c701o8q958uhcku0c40r48vjk.apps.googleusercontent.com",
+      "579706874471-v1v2akhe8lqriu4hhrm58rb1e1tpo6fn.apps.googleusercontent.com"
     ]
   },
   {
@@ -45,7 +45,7 @@
     "vendor": "Admin Lens",
     "iconUrl": "https://www.google.com/s2/favicons?domain=adminlens.io&sz=128",
     "deploymentsCount": 4,
-    "totalUsersCount": 15,
+    "totalUsersCount": 14,
     "maxRisk": "LOW",
     "avgRiskScore": 1.35,
     "deploymentIds": [
@@ -61,7 +61,7 @@
     "vendor": "Google LLC",
     "iconUrl": "https://www.google.com/s2/favicons?domain=google.com&sz=128",
     "deploymentsCount": 4,
-    "totalUsersCount": 6,
+    "totalUsersCount": 8,
     "maxRisk": "CRITICAL",
     "avgRiskScore": 3.42,
     "deploymentIds": [
@@ -151,21 +151,8 @@
     "maxRisk": "LOW",
     "avgRiskScore": 1.35,
     "deploymentIds": [
-      "657959631782-gig0qdc3vaieq93qtv1mubvj0c4mjdfl.apps.googleusercontent.com",
-      "657959631782-i9cm367mk2m810gc99sp2lsie03vo4u3.apps.googleusercontent.com"
-    ]
-  },
-  {
-    "familyId": "gcp_proj_609427711699",
-    "familyName": "LinkHMS",
-    "iconUrl": "https://ui-avatars.com/api/?name=LinkHMS&background=3B82F6&color=fff&size=128&rounded=true",
-    "deploymentsCount": 2,
-    "totalUsersCount": 2,
-    "maxRisk": "LOW",
-    "avgRiskScore": 1.35,
-    "deploymentIds": [
-      "609427711699-sq919k8t73af34500gr6vrfclaafcslb.apps.googleusercontent.com",
-      "609427711699-8kgr4bj5hc7ip93n5erf04qjtr1c1tel.apps.googleusercontent.com"
+      "657959631782-i9cm367mk2m810gc99sp2lsie03vo4u3.apps.googleusercontent.com",
+      "657959631782-gig0qdc3vaieq93qtv1mubvj0c4mjdfl.apps.googleusercontent.com"
     ]
   },
   {
@@ -173,7 +160,7 @@
     "familyName": "Android device",
     "iconUrl": "https://ui-avatars.com/api/?name=Android%20device&background=3B82F6&color=fff&size=128&rounded=true",
     "deploymentsCount": 1,
-    "totalUsersCount": 64,
+    "totalUsersCount": 65,
     "maxRisk": "HIGH",
     "avgRiskScore": 3.35,
     "deploymentIds": [
@@ -254,18 +241,6 @@
     ]
   },
   {
-    "familyId": "gcp_proj_696916210722",
-    "familyName": "GA7-demo2",
-    "iconUrl": "https://ui-avatars.com/api/?name=GA7-demo2&background=3B82F6&color=fff&size=128&rounded=true",
-    "deploymentsCount": 1,
-    "totalUsersCount": 1,
-    "maxRisk": "CRITICAL",
-    "avgRiskScore": 5,
-    "deploymentIds": [
-      "696916210722-n0mvdqjq01ebg21eeaeraggm9vb0jbr6.apps.googleusercontent.com"
-    ]
-  },
-  {
     "familyId": "chromebook-getter-cdw-amplified-it-",
     "familyName": "Chromebook Getter (CDW / Amplified IT)",
     "vendor": "Chromebook Getter (CDW / Amplified IT)",
@@ -317,6 +292,18 @@
     ]
   },
   {
+    "familyId": "gcp_proj_873507009103",
+    "familyName": "Google Chat for Workspace Studio",
+    "iconUrl": "https://ui-avatars.com/api/?name=Google%20Chat%20for%20Workspace%20Studio&background=3B82F6&color=fff&size=128&rounded=true",
+    "deploymentsCount": 1,
+    "totalUsersCount": 3,
+    "maxRisk": "HIGH",
+    "avgRiskScore": 3.55,
+    "deploymentIds": [
+      "873507009103-gi4ff8nkju6ggaurt6ebbiqrfmr0c79j.apps.googleusercontent.com"
+    ]
+  },
+  {
     "familyId": "bark-technologies-inc-",
     "familyName": "Bark Technologies, Inc.",
     "vendor": "Bark Technologies, Inc.",
@@ -327,6 +314,18 @@
     "avgRiskScore": 1,
     "deploymentIds": [
       "777045243888-mrs2ah6saspk0q3tcd9650ptjbks7buh.apps.googleusercontent.com"
+    ]
+  },
+  {
+    "familyId": "gcp_proj_626051926611",
+    "familyName": "Get a daily summary of unread emails",
+    "iconUrl": "https://ui-avatars.com/api/?name=Get%20a%20daily%20summary%20of%20unread%20emails&background=3B82F6&color=fff&size=128&rounded=true",
+    "deploymentsCount": 1,
+    "totalUsersCount": 1,
+    "maxRisk": "CRITICAL",
+    "avgRiskScore": 4.76,
+    "deploymentIds": [
+      "626051926611-uisg6tp5g4e2be4pbs1f8dagkmv7o9s8.apps.googleusercontent.com"
     ]
   },
   {
@@ -343,6 +342,18 @@
     ]
   },
   {
+    "familyId": "gcp_proj_122846605100",
+    "familyName": "Workspace Studio",
+    "iconUrl": "https://ui-avatars.com/api/?name=Workspace%20Studio&background=3B82F6&color=fff&size=128&rounded=true",
+    "deploymentsCount": 1,
+    "totalUsersCount": 1,
+    "maxRisk": "MEDIUM",
+    "avgRiskScore": 2.35,
+    "deploymentIds": [
+      "122846605100-d4jhvnotnvqprrtasnrgrahea3015vrn.apps.googleusercontent.com"
+    ]
+  },
+  {
     "familyId": "gcp_proj_953348912797",
     "familyName": "Google AppSheet",
     "iconUrl": "https://ui-avatars.com/api/?name=Google%20AppSheet&background=3B82F6&color=fff&size=128&rounded=true",
@@ -352,6 +363,18 @@
     "avgRiskScore": 4.54,
     "deploymentIds": [
       "953348912797-h2fo9tmk42mnrkk0kc6gula9i8ipv3re.apps.googleusercontent.com"
+    ]
+  },
+  {
+    "familyId": "gcp_proj_690997610676",
+    "familyName": "DelCal by AliceKeeler",
+    "iconUrl": "https://ui-avatars.com/api/?name=DelCal%20by%20AliceKeeler&background=3B82F6&color=fff&size=128&rounded=true",
+    "deploymentsCount": 1,
+    "totalUsersCount": 1,
+    "maxRisk": "HIGH",
+    "avgRiskScore": 3.49,
+    "deploymentIds": [
+      "690997610676-l8hvunsob913lqf9315ogsolip0pbs7o.apps.googleusercontent.com"
     ]
   },
   {
@@ -432,19 +455,6 @@
     ]
   },
   {
-    "familyId": "grammarly-inc-",
-    "familyName": "Grammarly, Inc.",
-    "vendor": "Grammarly, Inc.",
-    "iconUrl": "https://www.google.com/s2/favicons?domain=grammarly.com&sz=128",
-    "deploymentsCount": 1,
-    "totalUsersCount": 2,
-    "maxRisk": "LOW",
-    "avgRiskScore": 1,
-    "deploymentIds": [
-      "913728339568-tjccmfojammmqs9q0kunokb507mpjqum.apps.googleusercontent.com"
-    ]
-  },
-  {
     "familyId": "bitly-inc-",
     "familyName": "Bitly, Inc.",
     "vendor": "Bitly, Inc.",
@@ -495,18 +505,6 @@
     ]
   },
   {
-    "familyId": "gcp_proj_873507009103",
-    "familyName": "Google Chat for Workspace Studio",
-    "iconUrl": "https://ui-avatars.com/api/?name=Google%20Chat%20for%20Workspace%20Studio&background=3B82F6&color=fff&size=128&rounded=true",
-    "deploymentsCount": 1,
-    "totalUsersCount": 2,
-    "maxRisk": "HIGH",
-    "avgRiskScore": 3.55,
-    "deploymentIds": [
-      "873507009103-gi4ff8nkju6ggaurt6ebbiqrfmr0c79j.apps.googleusercontent.com"
-    ]
-  },
-  {
     "familyId": "suno-inc-",
     "familyName": "Suno, Inc.",
     "vendor": "Suno, Inc.",
@@ -529,6 +527,19 @@
     "avgRiskScore": 3.35,
     "deploymentIds": [
       "899041083010-d9l71rq1omp8sj53qo1v0sjb9n6aqpu8.apps.googleusercontent.com"
+    ]
+  },
+  {
+    "familyId": "grammarly-inc-",
+    "familyName": "Grammarly, Inc.",
+    "vendor": "Grammarly, Inc.",
+    "iconUrl": "https://www.google.com/s2/favicons?domain=grammarly.com&sz=128",
+    "deploymentsCount": 1,
+    "totalUsersCount": 1,
+    "maxRisk": "LOW",
+    "avgRiskScore": 1,
+    "deploymentIds": [
+      "913728339568-tjccmfojammmqs9q0kunokb507mpjqum.apps.googleusercontent.com"
     ]
   },
   {
