@@ -100,6 +100,7 @@ const parseCsvLines = (csvPath) => {
         else { q = !q; }
       } else if (c === ',' && !q) {
         res.push(cur);
+        cur = '';
       } else {
         cur += c;
       }
@@ -421,9 +422,9 @@ function parseServicesWithScopes(rawStr) {
 if (accessedCsvPath) {
   const accessedRows = parseCsvLines(accessedCsvPath);
   for (const row of accessedRows) {
+    const cid = row['Id'];
     if (row['Ownership']?.toLowerCase() === 'internal' && !catalog.has(cid)) continue;
     let appName = row['App Name'] ? row['App Name'].trim() : '';
-    const cid = row['Id'];
     const rawType = row['Type'] || 'Web Application';
 
     if (!appName && cid) {

@@ -534,9 +534,14 @@ export default function OWLImportPanel({
       });
 
       if (existingIdx !== -1) {
-        // Update existing application
+        // Update existing application — CSV upload has strict precedence
         updatedAppsCount++;
         const target = { ...updatedApps[existingIdx] };
+
+        if (appName && appName.trim()) {
+          target.displayName = appName.trim();
+          target.familyName = appName.trim();
+        }
 
         if (detectedType === "configured") {
           target.adminAccessLevel = accessLevel;

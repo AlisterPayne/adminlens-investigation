@@ -13,13 +13,13 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
   const sidebar = useRef<HTMLDivElement>(null);
   const { sidebarOpen, setSidebarOpen, sidebarExpanded, setSidebarExpanded } = useAppProvider();
   const segments = useSelectedLayoutSegments();
-  const [currentTab, setCurrentTab] = useState("apps");
+  const [currentTab, setCurrentTab] = useState("dashboard");
 
   useEffect(() => {
     const syncTab = () => {
       if (typeof window !== "undefined") {
         const params = new URLSearchParams(window.location.search);
-        setCurrentTab(params.get("tab") || "apps");
+        setCurrentTab(params.get("tab") || "dashboard");
       }
     };
     syncTab();
@@ -35,8 +35,10 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
     !segments.includes("scopes") &&
     !segments.includes("central-database");
 
+  const isDashboardActive =
+    isClientWorkspace && (currentTab === "dashboard" || !currentTab);
   const isApplicationsActive =
-    isClientWorkspace && (currentTab === "apps" || currentTab === "dashboard");
+    isClientWorkspace && currentTab === "apps";
   const isClientScopesActive = isClientWorkspace && currentTab === "scopes";
   const isClientRecsActive = isClientWorkspace && currentTab === "recs";
   const isClientTimelineActive = isClientWorkspace && currentTab === "timeline";
@@ -116,6 +118,22 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
             </div>
             <ul className="space-y-1">
               
+              {/* Dashboard (1st Item - Initial Landing Page) */}
+              <li className={`px-2.5 py-2 rounded-lg transition-colors ${isDashboardActive ? "bg-blue-50 text-blue-700 font-semibold" : "hover:bg-gray-100 text-gray-700"}`}>
+                <SidebarLink href="/dashboard?tab=dashboard" onClick={() => setCurrentTab("dashboard")}>
+                  <div className="flex items-center justify-between w-full">
+                    <div className="flex items-center">
+                      <svg className={`shrink-0 h-4.5 w-4.5 ${isDashboardActive ? "text-blue-600" : "text-gray-500"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                      </svg>
+                      <span className="text-sm ml-2.5 font-medium">
+                        Dashboard
+                      </span>
+                    </div>
+                  </div>
+                </SidebarLink>
+              </li>
+
               {/* Applications */}
               <li className={`px-2.5 py-2 rounded-lg transition-colors ${isApplicationsActive ? "bg-blue-50 text-blue-700 font-semibold" : "hover:bg-gray-100 text-gray-700"}`}>
                 <SidebarLink href="/dashboard?tab=apps" onClick={() => setCurrentTab("apps")}>

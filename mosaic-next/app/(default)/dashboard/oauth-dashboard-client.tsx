@@ -17,6 +17,7 @@ import {
   GoogleDriveIcon,
   GoogleProductIcon,
 } from "@/components/google-icons";
+import DashboardLandingView from "@/components/dashboard-landing-view";
 import OWLImportPanel from "@/components/owl-import-panel";
 import RecommendationsView from "@/components/recommendations-view";
 import ScopeMatrixView, { ScopeMetrics,ScopeReferenceItem } from "@/components/scope-matrix-view";
@@ -242,7 +243,7 @@ export default function OAuthDashboardClient({
   const [currentApps, setCurrentApps] = useState<Application[]>(initialApps);
   const [currentMetrics, setCurrentMetrics] = useState<Metrics>(metrics);
   const [timelineEvents, setTimelineEvents] = useState<TimelineEvent[]>(initialTimelineEvents || []);
-  const [activeTab, setActiveTab] = useState<"dashboard" | "apps" | "recs" | "scopes" | "timeline" | "import" | "baseline">("apps");
+  const [activeTab, setActiveTab] = useState<"dashboard" | "apps" | "recs" | "scopes" | "timeline" | "import" | "baseline">("dashboard");
   const searchParams = useSearchParams();
 
   useEffect(() => {
@@ -250,6 +251,8 @@ export default function OAuthDashboardClient({
       const tabParam = searchParams.get("tab");
       if (tabParam === "apps" || tabParam === "recs" || tabParam === "scopes" || tabParam === "dashboard" || tabParam === "timeline" || tabParam === "import" || tabParam === "baseline") {
         setActiveTab(tabParam as any);
+      } else if (!tabParam) {
+        setActiveTab("dashboard");
       }
     }
   }, [searchParams]);
@@ -279,6 +282,35 @@ export default function OAuthDashboardClient({
       }
     } catch (_) {}
   }, []);
+
+  // Shared Confirmed Trusted Apps State
+  const [confirmedTrustedMap, setConfirmedTrustedMap] = useState<Record<string, { confirmedAt: string }>>({});
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("adminlens_confirmed_trusted_apps");
+      if (saved) {
+        setConfirmedTrustedMap(JSON.parse(saved));
+      }
+    } catch (_) {}
+  }, []);
+
+  const handleConfirmTrustedApp = (appId: string) => {
+    const next = { ...confirmedTrustedMap, [appId]: { confirmedAt: new Date().toISOString() } };
+    setConfirmedTrustedMap(next);
+    try {
+      localStorage.setItem("adminlens_confirmed_trusted_apps", JSON.stringify(next));
+    } catch (_) {}
+  };
+
+  const handleUndoConfirmTrustedApp = (appId: string) => {
+    const next = { ...confirmedTrustedMap };
+    delete next[appId];
+    setConfirmedTrustedMap(next);
+    try {
+      localStorage.setItem("adminlens_confirmed_trusted_apps", JSON.stringify(next));
+    } catch (_) {}
+  };
 
   const handleEventLogged = (newEvent: TimelineEvent) => {
     setTimelineEvents(prev => {
@@ -778,11 +810,11 @@ export default function OAuthDashboardClient({
             : activeTab === "baseline"
             ? "Domain Security Baseline"
             : activeTab === "dashboard"
-            ? "Overview"
+            ? "Dashboard"
             : "Applications"}
         </h1>
         <p className="text-xs text-gray-500 mt-0.5">
-          Google Workspace OAuth Security &amp; Governance for <strong className="font-mono text-gray-700">gafe.co.za</strong>
+          Google Workspace OAuth Security &amp; Governance
         </p>
       </div>
 
@@ -800,446 +832,14 @@ export default function OAuthDashboardClient({
       )}
 
       {/* ============================================================== */}
-      {/* VIEW 1: EXECUTIVE DASHBOARD VIEW                               */}
+      {/* VIEW 1: EXECUTIVE DASHBOARD LANDING VIEW                       */}
       {/* ============================================================== */}
       {activeTab === "dashboard" && (
-        <div className="space-y-6">
-          {/* App Access Control Baseline Banner (Shown on main dashboard only) */}
-          {!showBaselineBanner ? (
-            <div 
-              onClick={() => setShowBaselineBanner(true)}
-              className="flex items-center justify-between py-1.5 px-3 bg-gray-50/70 hover:bg-blue-50/60 border border-gray-200/80 hover:border-blue-300 rounded-lg text-xs text-gray-500 hover:text-gray-700 cursor-pointer transition-all select-none shadow-2xs"
-            >
-              <div className="flex items-center gap-2">
-                <span className="text-[10px] text-gray-400">▶</span>
-                <span className="font-semibold text-gray-700 text-xs">App Access Control Baseline</span>
-                <span className="text-gray-400">•</span>
-                <span className="text-[11px] text-emerald-600 font-medium">Ground-Truth Active ({currentMetrics.baselinePolicyCount || 32} domain policies synchronized)</span>
-              </div>
-              <span className="text-[11px] text-blue-600 font-semibold hover:underline flex items-center gap-1">
-                Show baseline & tools ▾
-              </span>
-            </div>
-          ) : (
-            <div className="bg-gradient-to-r from-blue-900/10 via-indigo-900/5 to-white border border-blue-200 rounded-xl p-4 shadow-sm transition-all animate-fade-in">
-              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
-                <div
-                  className="flex items-center gap-3.5 cursor-pointer select-none flex-1"
-                  onClick={() => setShowBaselineBanner(false)}
-                >
-                  <div className="w-9 h-9 rounded-xl bg-blue-600/10 border border-blue-500/20 flex items-center justify-center text-blue-600 flex-shrink-0 shadow-xs">
-                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <h2 className="font-bold text-xs sm:text-sm text-gray-900 tracking-tight">
-                        App Access Control Baseline
-                      </h2>
-                      <span className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold shadow-2xs">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Ground-Truth Active ({currentMetrics.baselineSource || 'owl_apps.csv'})
-                      </span>
-                      <span className="text-[11px] text-gray-500">
-                        • <strong className="text-emerald-700 font-semibold">{currentMetrics.baselinePolicyCount || 32} domain policies synchronized</strong>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-2 flex-shrink-0 w-full md:w-auto justify-end">
-                  <button
-                    type="button"
-                    onClick={() => setShowBaselineBanner(false)}
-                    className="px-3 py-1.5 rounded-lg bg-white hover:bg-gray-50 border border-blue-200 text-xs font-bold text-blue-700 transition-colors shadow-2xs flex items-center gap-1"
-                  >
-                    <span>▲ Hide / Collapse</span>
-                  </button>
-                  <button
-                    onClick={() => setShowSetupModal(true)}
-                    className="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-semibold flex items-center gap-1 transition-all shadow-sm shadow-blue-500/20"
-                  >
-                    <span>📖</span> Instructions
-                  </button>
-                  <label className="px-3 py-1.5 bg-white hover:bg-gray-50 text-gray-700 rounded-lg text-xs font-semibold flex items-center gap-1 transition-colors border border-gray-300 cursor-pointer shadow-2xs">
-                    <span>📥</span> Update CSV
-                    <input
-                      type="file"
-                      accept=".csv"
-                      className="hidden"
-                      onChange={(e) => {
-                        const f = e.target.files?.[0];
-                        if (f) handleCsvUpload(f);
-                      }}
-                    />
-                  </label>
-                </div>
-              </div>
-
-              {/* Expanded Explanation Section */}
-              <div className="mt-3 pt-3 border-t border-blue-200/80 text-xs text-gray-600 leading-relaxed space-y-2">
-                <p>
-                  <strong className="text-gray-900 font-semibold">Why this baseline is required:</strong> Google Workspace only stores OAuth authorization tokens for active users within a 180-day window. By importing your <code className="text-blue-700 bg-blue-50 px-1 py-0.5 rounded font-mono text-[11px]">owl_apps.csv</code> export, AdminLens gains permanent ground truth of all admin-configured policies across Organizational Units—surfacing dormant, pre-sanctioned, or restricted third-party applications even when they produce zero recent telemetry.
-                </p>
-                <div className="flex items-center gap-4 text-[11px] text-gray-500 pt-1">
-                  <span>Status: <strong className="text-emerald-700">Synchronized</strong></span>
-                  <span>•</span>
-                  <span>Domain Scope: <strong className="text-gray-800">All Organizational Units</strong></span>
-                  <span>•</span>
-                  <span>Total Rules: <strong className="text-gray-800">{currentMetrics.baselinePolicyCount || 32} policies</strong></span>
-                </div>
-
-                {/* Quick Deep-Links to Google Admin Console */}
-                <div className="pt-2 border-t border-blue-200/50 flex flex-wrap items-center gap-2 text-xs">
-                  <span className="font-bold text-gray-700 flex items-center gap-1.5">
-                    <GoogleAdminIcon className="w-3.5 h-3.5" /> Console Deep Links:
-                  </span>
-                  <a
-                    href="https://admin.google.com/ac/owl/list?tab=apps"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1 px-2.5 py-1 bg-white hover:bg-blue-50 text-blue-700 font-semibold rounded-md border border-gray-200 hover:border-blue-300 transition-colors shadow-2xs"
-                  >
-                    <span>Accessed Apps ↗</span>
-                  </a>
-                  <a
-                    href="https://admin.google.com/ac/owl/list?tab=configuredApps"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1 px-2.5 py-1 bg-white hover:bg-emerald-50 text-emerald-700 font-semibold rounded-md border border-gray-200 hover:border-emerald-300 transition-colors shadow-2xs"
-                  >
-                    <span>Configured Apps ↗</span>
-                  </a>
-                  <a
-                    href="https://admin.google.com/ac/owl/list?tab=pendingReviewApps"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1 px-2.5 py-1 bg-white hover:bg-amber-50 text-amber-700 font-semibold rounded-md border border-gray-200 hover:border-amber-300 transition-colors shadow-2xs"
-                  >
-                    <span>Apps Pending Review ↗</span>
-                  </a>
-                  <a
-                    href="https://admin.google.com/ac/owl/list?tab=services"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1 px-2.5 py-1 bg-white hover:bg-purple-50 text-purple-700 font-semibold rounded-md border border-gray-200 hover:border-purple-300 transition-colors shadow-2xs"
-                  >
-                    <span>Google Services ↗</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          )}
-          
-          {/* Top 5 KPI Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-            
-            {/* Total Apps */}
-            <div 
-              onClick={() => { setActiveTab("apps"); setRiskFilter("ALL"); setPolicyFilter("ALL"); setServiceFilter("ALL"); }}
-              className="bg-white border border-blue-200/80 rounded-xl p-5 shadow-sm relative overflow-hidden bg-gradient-to-br from-blue-50/40 to-white hover:shadow-md transition-all cursor-pointer"
-            >
-              <div className="flex items-center justify-between text-xs font-bold text-gray-500 uppercase tracking-wider">
-                <span className="flex items-center gap-1.5">
-                  <span className="text-blue-600 text-sm">⚡</span> TOTAL APPS
-                </span>
-                <span className="text-gray-400">›</span>
-              </div>
-              <div className="text-3xl font-extrabold text-gray-900 mt-2">{totalAppsCount}</div>
-              <div className="text-xs text-gray-500 mt-1">Unique apps authorized</div>
-            </div>
-
-            {/* Configured by Admin */}
-            <div 
-              onClick={() => { setActiveTab("apps"); setPolicyFilter("CONFIGURED"); setRiskFilter("ALL"); setServiceFilter("ALL"); }}
-              className="bg-white border border-emerald-200 rounded-xl p-5 shadow-sm relative overflow-hidden bg-gradient-to-br from-emerald-50/40 to-white hover:shadow-md transition-all cursor-pointer"
-            >
-              <div className="flex items-center justify-between text-xs font-bold text-emerald-700 uppercase tracking-wider">
-                <span className="flex items-center gap-1.5">
-                  <span className="text-emerald-600 text-sm">⚙️</span> CONFIGURED BY ADMIN
-                </span>
-                <span className="text-emerald-400">›</span>
-              </div>
-              <div className="text-3xl font-extrabold text-emerald-700 mt-2">{configuredAppsCount}</div>
-              <div className="text-xs text-emerald-600/80 mt-1">Admin configured in Console</div>
-            </div>
-
-            {/* High Risk Apps */}
-            <div 
-              onClick={() => { setActiveTab("apps"); setRiskFilter("HIGH_RISK"); setPolicyFilter("ALL"); setServiceFilter("ALL"); setRiskyScopesOnly(false); }}
-              className="bg-white border border-red-200 rounded-xl p-5 shadow-sm relative overflow-hidden bg-gradient-to-br from-red-50/40 to-white hover:shadow-md transition-all cursor-pointer"
-            >
-              <div className="flex items-center justify-between text-xs font-bold text-red-600 uppercase tracking-wider">
-                <span className="flex items-center gap-1.5">
-                  <span className="text-red-600 text-sm">⚠️</span> HIGH-RISK APPS
-                </span>
-                <span className="text-red-400">›</span>
-              </div>
-              <div className="text-3xl font-extrabold text-red-600 mt-2">{highRiskAppsCount}</div>
-              <div className="text-xs text-red-600/80 mt-1">Require immediate review</div>
-            </div>
-
-            {/* Stale Apps */}
-            <div 
-              onClick={() => { setActiveTab("apps"); }}
-              className="bg-white border border-amber-200 rounded-xl p-5 shadow-sm relative overflow-hidden bg-gradient-to-br from-amber-50/40 to-white hover:shadow-md transition-all cursor-pointer"
-            >
-              <div className="flex items-center justify-between text-xs font-bold text-amber-700 uppercase tracking-wider">
-                <span className="flex items-center gap-1.5">
-                  <span className="text-amber-600 text-sm">⏳</span> STALE APPS
-                </span>
-                <span className="text-amber-400">›</span>
-              </div>
-              <div className="text-3xl font-extrabold text-amber-700 mt-2">{staleAppsCount}</div>
-              <div className="text-xs text-amber-600/80 mt-1">Inactive for &gt;90 days</div>
-            </div>
-
-            {/* New Apps */}
-            <div 
-              onClick={() => { setActiveTab("apps"); }}
-              className="bg-white border border-indigo-200 rounded-xl p-5 shadow-sm relative overflow-hidden bg-gradient-to-br from-indigo-50/40 to-white hover:shadow-md transition-all cursor-pointer"
-            >
-              <div className="flex items-center justify-between text-xs font-bold text-indigo-700 uppercase tracking-wider">
-                <span className="flex items-center gap-1.5">
-                  <span className="text-indigo-600 text-sm">🚀</span> NEW APPS
-                </span>
-                <span className="text-indigo-400">›</span>
-              </div>
-              <div className="text-3xl font-extrabold text-indigo-700 mt-2">{newAppsCount}</div>
-              <div className="text-xs text-indigo-600/80 mt-1">Detected in last 30 days</div>
-            </div>
-
-          </div>
-
-          {/* Row 2: Sensitive Access Hotspots & Frequent Risky Scopes */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            
-            {/* Sensitive Access Hotspots (Interactive Drill-Down) */}
-            <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm space-y-4">
-              <div className="flex justify-between items-center border-b border-gray-100 pb-3">
-                <div>
-                  <h3 className="font-bold text-sm text-gray-900 flex items-center gap-2">
-                    <span>🔥</span> Sensitive Access
-                  </h3>
-                  <p className="text-[11px] text-gray-400 mt-0.5">Click any service to view authorized apps</p>
-                </div>
-                <span className="text-xs font-semibold text-gray-400">App Count</span>
-              </div>
-
-              <div className="space-y-2 text-xs">
-                {/* Gmail */}
-                <div 
-                  onClick={() => filterByServiceAndNavigate("Gmail")}
-                  className="group flex items-center justify-between p-3 rounded-lg bg-gray-50/90 border border-gray-100 hover:bg-blue-50/60 hover:border-blue-200 transition-all cursor-pointer"
-                >
-                  <div className="flex items-center gap-3 font-semibold text-gray-800 group-hover:text-blue-700">
-                    <div className="w-8 h-8 rounded-lg bg-white border border-gray-200/80 shadow-xs flex items-center justify-center p-1.5 flex-shrink-0">
-                      <GmailIcon className="w-5 h-5" />
-                    </div>
-                    <span>Gmail Access</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="bg-blue-600 text-white font-bold px-2.5 py-0.5 rounded-full text-xs shadow-xs">{serviceHotspots.Gmail}</span>
-                    <span className="text-gray-300 group-hover:text-blue-500 font-bold">›</span>
-                  </div>
-                </div>
-
-                {/* Google Drive */}
-                <div 
-                  onClick={() => filterByServiceAndNavigate("Google Drive")}
-                  className="group flex items-center justify-between p-3 rounded-lg bg-gray-50/90 border border-gray-100 hover:bg-emerald-50/60 hover:border-emerald-200 transition-all cursor-pointer"
-                >
-                  <div className="flex items-center gap-3 font-semibold text-gray-800 group-hover:text-emerald-700">
-                    <div className="w-8 h-8 rounded-lg bg-white border border-gray-200/80 shadow-xs flex items-center justify-center p-1.5 flex-shrink-0">
-                      <GoogleDriveIcon className="w-5 h-5" />
-                    </div>
-                    <span>Google Drive (Full Data Access)</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="bg-emerald-600 text-white font-bold px-2.5 py-0.5 rounded-full text-xs shadow-xs">{serviceHotspots.Drive}</span>
-                    <span className="text-gray-300 group-hover:text-emerald-500 font-bold">›</span>
-                  </div>
-                </div>
-
-                {/* Admin SDK */}
-                <div 
-                  onClick={() => filterByServiceAndNavigate("Admin SDK")}
-                  className="group flex items-center justify-between p-3 rounded-lg bg-gray-50/90 border border-gray-100 hover:bg-red-50/60 hover:border-red-200 transition-all cursor-pointer"
-                >
-                  <div className="flex items-center gap-3 font-semibold text-gray-800 group-hover:text-red-700">
-                    <div className="w-8 h-8 rounded-lg bg-white border border-gray-200/80 shadow-xs flex items-center justify-center p-1.5 flex-shrink-0">
-                      <GoogleAdminIcon className="w-5 h-5" />
-                    </div>
-                    <span>Admin SDK / Directory &amp; Devices</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="bg-red-600 text-white font-bold px-2.5 py-0.5 rounded-full text-xs shadow-xs">{serviceHotspots.AdminSDK}</span>
-                    <span className="text-gray-300 group-hover:text-red-500 font-bold">›</span>
-                  </div>
-                </div>
-
-                {/* Calendar */}
-                <div 
-                  onClick={() => filterByServiceAndNavigate("Calendar")}
-                  className="group flex items-center justify-between p-3 rounded-lg bg-gray-50/90 border border-gray-100 hover:bg-amber-50/60 hover:border-amber-200 transition-all cursor-pointer"
-                >
-                  <div className="flex items-center gap-3 font-semibold text-gray-800 group-hover:text-amber-700">
-                    <div className="w-8 h-8 rounded-lg bg-white border border-gray-200/80 shadow-xs flex items-center justify-center p-1.5 flex-shrink-0">
-                      <GoogleCalendarIcon className="w-5 h-5" />
-                    </div>
-                    <span>Calendar &amp; Scheduling</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="bg-amber-600 text-white font-bold px-2.5 py-0.5 rounded-full text-xs shadow-xs">{serviceHotspots.Calendar}</span>
-                    <span className="text-gray-300 group-hover:text-amber-500 font-bold">›</span>
-                  </div>
-                </div>
-
-                {/* Google Classroom */}
-                <div 
-                  onClick={() => filterByServiceAndNavigate("Classroom")}
-                  className="group flex items-center justify-between p-3 rounded-lg bg-gray-50/90 border border-gray-100 hover:bg-indigo-50/60 hover:border-indigo-200 transition-all cursor-pointer"
-                >
-                  <div className="flex items-center gap-3 font-semibold text-gray-800 group-hover:text-indigo-700">
-                    <div className="w-8 h-8 rounded-lg bg-white border border-gray-200/80 shadow-xs flex items-center justify-center p-1.5 flex-shrink-0">
-                      <GoogleClassroomIcon className="w-5 h-5" />
-                    </div>
-                    <span>Google Classroom &amp; Rosters</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="bg-indigo-600 text-white font-bold px-2.5 py-0.5 rounded-full text-xs shadow-xs">{serviceHotspots.Classroom}</span>
-                    <span className="text-gray-300 group-hover:text-indigo-500 font-bold">›</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Most Frequent Risky Scopes */}
-            <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm space-y-4">
-              <div className="flex justify-between items-center border-b border-gray-100 pb-3">
-                <div>
-                  <h3 className="font-bold text-sm text-gray-900 flex items-center gap-2">
-                    <span>⚠️</span> Risky Scopes
-                  </h3>
-                  <p className="text-[11px] text-gray-400 mt-0.5">Permissions requiring administrative oversight</p>
-                </div>
-                <span className="text-xs font-semibold text-gray-400">Grants</span>
-              </div>
-
-              <div className="space-y-2 text-xs">
-                {frequentScopes.length === 0 ? (
-                  <div className="text-gray-400 text-xs py-4 text-center italic">No risky scopes detected in workspace</div>
-                ) : (
-                  frequentScopes.map(([desc, count], i) => (
-                    <div 
-                      key={i} 
-                      onClick={() => { setActiveTab("apps"); setSearch(desc.split(" ")[0]); }}
-                      className="group flex items-center justify-between p-3 rounded-lg bg-gray-50/90 border border-gray-100 hover:bg-gray-100 transition-all cursor-pointer"
-                    >
-                      <div className="truncate font-semibold text-gray-800 pr-2 group-hover:text-blue-700">
-                        {desc}
-                      </div>
-                      <span className="bg-red-50 text-red-700 font-bold px-2.5 py-0.5 rounded-full text-xs border border-red-200 flex-shrink-0">
-                        {count} apps
-                      </span>
-                    </div>
-                  ))
-                )}
-              </div>
-            </div>
-
-          </div>
-
-          {/* Row 3: Shadow AI Tools & Security Incident History */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            
-            {/* Top AI Tools */}
-            <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm space-y-4">
-              <div className="flex justify-between items-center border-b border-gray-100 pb-3">
-                <div>
-                  <h3 className="font-bold text-sm text-gray-900 flex items-center gap-2">
-                    <span>🤖</span> AI Tools
-                  </h3>
-                  <p className="text-[11px] text-gray-400 mt-0.5">Active AI platforms &amp; developer tools</p>
-                </div>
-                <span className="text-xs text-purple-600 font-bold bg-purple-50 px-2.5 py-0.5 rounded-full border border-purple-200">
-                  {aiTools.length} Detected
-                </span>
-              </div>
-
-              <div className="space-y-2 text-xs">
-                {aiTools.length === 0 ? (
-                  <div className="text-gray-400 text-xs py-4 text-center italic">No active AI tools detected in workspace</div>
-                ) : (
-                  aiTools.map((ai) => (
-                    <div
-                      key={ai.id}
-                      onClick={() => setSelectedApp(ai)}
-                      className="flex items-center justify-between p-3 rounded-lg bg-gray-50 border border-gray-100 hover:bg-purple-50/40 hover:border-purple-200 transition-all cursor-pointer"
-                    >
-                      <div className="flex items-center gap-3">
-                        <img src={ai.iconUrl} alt="" className="w-8 h-8 rounded-lg bg-white border border-gray-200 object-contain p-0.5" />
-                        <div>
-                          <div className="font-bold text-gray-900">{ai.displayName}</div>
-                          <div className="text-[11px] text-gray-500">{ai.vendor} • {ai.category}</div>
-                        </div>
-                      </div>
-                      <div className="text-right">
-                        <span className="text-xs font-bold text-purple-700 bg-purple-50 border border-purple-200 px-2.5 py-1 rounded-md">
-                          {ai.totalUsersCount} user(s)
-                        </span>
-                      </div>
-                    </div>
-                  ))
-                )}
-              </div>
-            </div>
-
-            {/* Breach History Alert Widget */}
-            <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm space-y-4">
-              <div className="flex justify-between items-center border-b border-gray-100 pb-3">
-                <div>
-                  <h3 className="font-bold text-sm text-gray-900 flex items-center gap-2">
-                    <span>🛡️</span> Breach History
-                  </h3>
-                  <p className="text-[11px] text-gray-400 mt-0.5">Public breach records for authorized vendors</p>
-                </div>
-                <span className="text-xs text-red-600 font-bold bg-red-50 px-2.5 py-0.5 rounded-full border border-red-200">
-                  {breachApps.length} Flagged
-                </span>
-              </div>
-
-              <div className="space-y-2 text-xs">
-                {breachApps.length === 0 ? (
-                  <div className="text-gray-400 text-xs py-4 text-center italic">No vendor breaches recorded</div>
-                ) : (
-                  breachApps.map((app) => (
-                    <div
-                      key={app.id}
-                      onClick={() => setSelectedApp(app)}
-                      className="flex items-center justify-between p-3 rounded-lg bg-red-50/30 border border-red-200/60 hover:bg-red-50/80 transition-all cursor-pointer"
-                    >
-                      <div className="flex items-center gap-3">
-                        <img src={app.iconUrl} alt="" className="w-8 h-8 rounded-lg bg-white border border-gray-200 object-contain p-0.5" />
-                        <div>
-                          <div className="font-bold text-gray-900">{app.displayName}</div>
-                          <div className="text-[11px] text-red-700 font-semibold">{app.breachHistory}</div>
-                        </div>
-                      </div>
-                      <div>
-                        <span className="text-xs font-bold text-red-700 bg-red-100 border border-red-200 px-2.5 py-1 rounded-full">
-                          {app.totalUsersCount} exposed user(s)
-                        </span>
-                      </div>
-                    </div>
-                  ))
-                )}
-              </div>
-            </div>
-
-          </div>
-
-        </div>
+        <DashboardLandingView 
+          apps={currentApps as any} 
+          confirmedTrustedMap={confirmedTrustedMap} 
+          timelineEvents={timelineEvents}
+        />
       )}
 
       {/* ============================================================== */}
@@ -1257,7 +857,13 @@ export default function OAuthDashboardClient({
       {/* VIEW 3: RECOMMENDATIONS & GOVERNANCE ACTIONS (SIMPLIFIED)      */}
       {/* ============================================================== */}
       {activeTab === "recs" && (
-        <RecommendationsView apps={currentApps as any} initialRecs={initialRecs as any} />
+        <RecommendationsView 
+          apps={currentApps as any} 
+          initialRecs={initialRecs as any} 
+          confirmedTrustedMap={confirmedTrustedMap}
+          onConfirmTrusted={handleConfirmTrustedApp}
+          onUndoConfirmTrusted={handleUndoConfirmTrustedApp}
+        />
       )}
 
 
