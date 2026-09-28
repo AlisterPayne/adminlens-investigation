@@ -492,11 +492,13 @@ export default function ApplicationsView({
   const ScopesCollapsible = ({
     scopes,
     scopesCount,
+    defaultOpen = false,
   }: {
     scopes?: ApplicationScope[];
     scopesCount: number;
+    defaultOpen?: boolean;
   }) => {
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(defaultOpen);
     return (
       <div>
         <button
@@ -1381,14 +1383,7 @@ export default function ApplicationsView({
 
         {/* Results summary, View Mode Switcher, and Active filters reset */}
         <div className="flex flex-wrap justify-between items-center gap-3 text-xs text-gray-500 pt-2 border-t border-gray-100">
-          <div className="flex items-center gap-2">
-            <span>
-              Showing <strong className="text-gray-800">{filteredApps.length.toLocaleString()}</strong> matching {viewMode === "family" ? "application families" : "client deployments"}
-              {searchTerm && ` for "${searchTerm}"`}
-            </span>
-          </div>
-
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 flex-wrap">
             {/* View Mode Toggle Switcher */}
             <div className="inline-flex items-center bg-gray-100 p-0.5 rounded-lg border border-gray-200 shadow-2xs">
               <button
@@ -1421,25 +1416,32 @@ export default function ApplicationsView({
               </button>
             </div>
 
-            {(searchTerm || selectedOwnership !== "ALL" || selectedCategory !== "ALL" || selectedRisk !== "ALL" || selectedType !== "ALL" || selectedVerified !== "ALL" || selectedConfig !== "ALL" || catalogFilter !== "ALL") && (
-              <button
-                onClick={() => {
-                  setSearchTerm("");
-                  setSelectedOwnership("ALL");
-                  setSelectedCategory("ALL");
-                  setSelectedRisk("ALL");
-                  setSelectedType("ALL");
-                  setSelectedVerified("ALL");
-                  setSelectedConfig("ALL");
-                  setCatalogFilter("ALL");
-                  setCurrentPage(1);
-                }}
-                className="text-emerald-600 hover:text-emerald-800 font-medium hover:underline"
-              >
-                Reset all filters
-              </button>
-            )}
+            <div className="flex items-center gap-2">
+              <span>
+                Showing <strong className="text-gray-800">{filteredApps.length.toLocaleString()}</strong> matching {viewMode === "family" ? "application families" : "client deployments"}
+                {searchTerm && ` for "${searchTerm}"`}
+              </span>
+            </div>
           </div>
+
+          {(searchTerm || selectedOwnership !== "ALL" || selectedCategory !== "ALL" || selectedRisk !== "ALL" || selectedType !== "ALL" || selectedVerified !== "ALL" || selectedConfig !== "ALL" || catalogFilter !== "ALL") && (
+            <button
+              onClick={() => {
+                setSearchTerm("");
+                setSelectedOwnership("ALL");
+                setSelectedCategory("ALL");
+                setSelectedRisk("ALL");
+                setSelectedType("ALL");
+                setSelectedVerified("ALL");
+                setSelectedConfig("ALL");
+                setCatalogFilter("ALL");
+                setCurrentPage(1);
+              }}
+              className="text-emerald-600 hover:text-emerald-800 font-medium hover:underline cursor-pointer"
+            >
+              Reset all filters
+            </button>
+          )}
         </div>
       </div>
 
@@ -1564,6 +1566,20 @@ export default function ApplicationsView({
                                   </>
                                 )}
                               </div>
+                              {/* Accessed Google Services Icons */}
+                              {getAppServices(app).length > 0 && (
+                                <div className="flex items-center gap-1 mt-1.5 flex-wrap">
+                                  {getAppServices(app).map((svc) => (
+                                    <span
+                                      key={svc}
+                                      title={svc}
+                                      className="inline-flex items-center justify-center p-0.5 rounded-md bg-white border border-gray-200 shadow-2xs hover:border-gray-300 transition-colors"
+                                    >
+                                      <GoogleProductIcon service={svc} className="w-3.5 h-3.5" />
+                                    </span>
+                                  ))}
+                                </div>
+                              )}
                             </div>
                           </div>
                         </td>
@@ -1714,6 +1730,20 @@ export default function ApplicationsView({
                                       </>
                                     )}
                                   </div>
+                                  {/* Child Services Icons */}
+                                  {getAppServices(child).length > 0 && (
+                                    <div className="flex items-center gap-1 mt-1 flex-wrap">
+                                      {getAppServices(child).map((svc) => (
+                                        <span
+                                          key={svc}
+                                          title={svc}
+                                          className="inline-flex items-center justify-center p-0.5 rounded bg-white border border-gray-200 shadow-2xs hover:border-gray-300 transition-colors"
+                                        >
+                                          <GoogleProductIcon service={svc} className="w-3 h-3" />
+                                        </span>
+                                      ))}
+                                    </div>
+                                  )}
                                 </div>
                               </div>
                             </td>
@@ -1932,11 +1962,11 @@ export default function ApplicationsView({
                       href={getAdminConsoleLink(selectedApp).url}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-lg border shadow-xs transition-all bg-emerald-600 hover:bg-emerald-700 text-white border-emerald-700 ring-2 ring-emerald-500/20"
+                      className="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-semibold rounded-md border shadow-2xs transition-all bg-emerald-600 hover:bg-emerald-700 text-white border-emerald-700"
                       title={getAdminConsoleLink(selectedApp).label}
                     >
-                      <GoogleAdminIcon className="w-4 h-4 text-white" />
-                      <span>{getAdminConsoleLink(selectedApp).label} ↗</span>
+                      <GoogleAdminIcon className="w-3.5 h-3.5 text-white" />
+                      <span>Google Admin ↗</span>
                     </a>
                   </div>
                 </div>
@@ -1954,9 +1984,9 @@ export default function ApplicationsView({
             {/* Modal Body */}
             <div className="p-6 space-y-6 overflow-y-auto flex-1">
               {/* Trust, Compliance & Security Posture */}
-              <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
-                {/* 1. Configuration (Access Policy) Box */}
-                {(() => {
+              <div className={`grid grid-cols-1 ${!isBackend ? 'sm:grid-cols-4' : 'sm:grid-cols-3'} gap-3`}>
+                {/* 1. Configuration (Access Policy) Box - Client Tenant only */}
+                {!isBackend && (() => {
                   const policyLevel = getNormalizedAccessLevel(selectedApp);
                   const isConfigured = policyLevel !== "UNCONFIGURED";
 
@@ -2054,14 +2084,21 @@ export default function ApplicationsView({
                 </div>
               </div>
 
-              {/* Google Admin Console App Access Policy Options (All 4 Options View) */}
-              <GoogleAdminAccessPolicyOptions
-                app={selectedApp}
-                getAdminConsoleLink={getAdminConsoleLink}
-              />
+              {/* Google Admin Console App Access Policy Options (All 4 Options View - Client Tenant only) */}
+              {!isBackend && (
+                <GoogleAdminAccessPolicyOptions
+                  app={selectedApp}
+                  getAdminConsoleLink={getAdminConsoleLink}
+                />
+              )}
 
               {/* Requested Scopes */}
-              <ScopesCollapsible scopes={selectedApp.scopes} scopesCount={selectedApp.scopes?.length || selectedApp.scopesCount || 0} />
+              <ScopesCollapsible
+                key={selectedApp.id}
+                scopes={selectedApp.scopes}
+                scopesCount={selectedApp.scopes?.length || selectedApp.scopesCount || 0}
+                defaultOpen={isBackend}
+              />
             </div>
 
             {/* Modal Footer */}

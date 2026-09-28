@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Investigation Methodology & Analytical Thinking — Data Compliance & Third-Party App Audits</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 14mm 14mm 14mm 14mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #1e293b;
+      background-color: #ffffff;
+      line-height: 1.45;
+      font-size: 9pt;
+      margin: 0;
+      padding: 0;
+    }
+
+    .page {
+      height: 269mm;
+      max-height: 269mm;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      page-break-after: always;
+      break-after: page;
+      position: relative;
+    }
+
+    .page:last-child {
+      page-break-after: avoid;
+      break-after: avoid;
+    }
+
+    .running-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1.5px solid #0f172a;
+      padding-bottom: 4px;
+      margin-bottom: 12px;
+      font-size: 7.2pt;
+      color: #475569;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .running-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #cbd5e1;
+      padding-top: 4px;
+      margin-top: auto;
+      font-size: 7.2pt;
+      color: #64748b;
+    }
+
+    /* Cover / Title Block */
+    .title-banner {
+      border-bottom: 3px solid #0f172a;
+      padding-bottom: 14px;
+      margin-bottom: 16px;
+    }
+
+    .tag-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .badge-primary {
+      background-color: #0f172a;
+      color: #ffffff;
+      font-size: 7.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .badge-secondary {
+      background-color: #f1f5f9;
+      color: #334155;
+      border: 1px solid #cbd5e1;
+      font-size: 7.5pt;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    h1 {
+      font-size: 19pt;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.2;
+      margin: 6px 0 4px 0;
+      letter-spacing: -0.4px;
+    }
+
+    .subtitle {
+      font-size: 10pt;
+      color: #475569;
+      font-weight: 500;
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    h2 {
+      font-size: 11pt;
+      font-weight: 800;
+      color: #0f172a;
+      margin-top: 14px;
+      margin-bottom: 6px;
+      border-left: 3.5px solid #2563eb;
+      padding-left: 6px;
+    }
+
+    h3 {
+      font-size: 9.5pt;
+      font-weight: 700;
+      color: #1e293b;
+      margin-top: 10px;
+      margin-bottom: 4px;
+    }
+
+    p {
+      margin: 0 0 8px 0;
+      color: #334155;
+      text-align: justify;
+      line-height: 1.4;
+    }
+
+    ul, ol {
+      margin: 0 0 10px 0;
+      padding-left: 18px;
+      color: #334155;
+    }
+
+    li {
+      margin-bottom: 3px;
+      line-height: 1.35;
+    }
+
+    /* Step / Stage Box */
+    .stage-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid #0f172a;
+      border-radius: 0 6px 6px 0;
+      padding: 12px 14px;
+      margin: 10px 0;
+    }
+
+    .stage-card.blue { border-left-color: #2563eb; background: #f0f7ff; }
+    .stage-card.amber { border-left-color: #d97706; background: #fffbeb; }
+    .stage-card.red { border-left-color: #dc2626; background: #fef2f2; }
+    .stage-card.green { border-left-color: #16a34a; background: #f0fdf4; }
+
+    .stage-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .stage-title {
+      font-size: 10pt;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    .stage-step-tag {
+      font-size: 7pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 3px;
+      background: #e2e8f0;
+      color: #334155;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 8px 0 10px 0;
+      font-size: 7.5pt;
+    }
+
+    th {
+      background-color: #0f172a;
+      color: #ffffff;
+      font-weight: 600;
+      text-align: left;
+      padding: 5px 6px;
+      border: 1px solid #0f172a;
+      text-transform: uppercase;
+      font-size: 6.8pt;
+      letter-spacing: 0.4px;
+    }
+
+    td {
+      padding: 4px 6px;
+      border: 1px solid #cbd5e1;
+      color: #1e293b;
+      vertical-align: top;
+      line-height: 1.3;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-block;
+      padding: 1px 5px;
+      border-radius: 2px;
+      font-size: 6pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+
+    .badge-critical { background: #fee2e2; color: #991b1b; border: 1px solid #f87171; }
+    .badge-high { background: #ffedd5; color: #9a3412; border: 1px solid #fb923c; }
+    .badge-medium { background: #fef9c3; color: #854d0e; border: 1px solid #facc15; }
+    .badge-low { background: #e0f2fe; color: #075985; border: 1px solid #38bdf8; }
+    .badge-trusted { background: #dcfce7; color: #166534; border: 1px solid #4ade80; }
+
+    /* Code & Terminal blocks */
+    pre {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 8px 10px;
+      border-radius: 4px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 6.8pt;
+      line-height: 1.3;
+      overflow-x: hidden;
+      white-space: pre-wrap;
+      word-break: break-all;
+      margin: 6px 0;
+      border: 1px solid #1e293b;
+    }
+
+    .query-box {
+      background: #1e293b;
+      color: #38bdf8;
+      padding: 5px 8px;
+      border-radius: 3px;
+      font-family: monospace;
+      font-size: 6.8pt;
+      margin: 6px 0;
+    }
+
+    .key-insight {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 5px;
+      padding: 8px 10px;
+      margin: 8px 0;
+      font-size: 8pt;
+      color: #1e40af;
+      line-height: 1.35;
+    }
+
+    .key-insight strong {
+      color: #1e3a8a;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== PAGE 1 ==================== -->
+  <div class="page">
+    <div class="running-header">
+      <span>Investigation Methodology Dossier</span>
+      <span>Stage 1: Formulation & Scoping</span>
+    </div>
+
+    <div>
+      <div class="title-banner">
+        <div class="tag-row">
+          <span class="badge-primary">ANALYTICAL INVESTIGATION DOSSIER</span>
+          <span class="badge-secondary">COGNITIVE WORKFLOW & METHODOLOGY</span>
+        </div>
+        <h1>Investigation Thinking & Analytical Process</h1>
+        <p class="subtitle">
+          An end-to-end analytical audit transcript documenting hypothesis formulation, statutory legal research, empirical database extraction, and compliance reasoning behind the Educational Third-Party App Audit.
+        </p>
+      </div>
+
+      <div class="stage-card blue">
+        <div class="stage-header">
+          <span class="stage-title">STAGE 1: Prompt Deconstruction & Framing the Investigation</span>
+          <span class="stage-step-tag">Step 1: Scoping</span>
+        </div>
+        <p>
+          <strong>User Request Analysis</strong>: The user requested an investigation into two interrelated areas:
+        </p>
+        <ol>
+          <li><strong>Fiduciary & Legal Responsibilities</strong>: What are the duties of an educational institution regarding data compliance and auditing third-party applications?</li>
+          <li><strong>Jurisdictional Focus & Empirical Grounding</strong>: Start with a wide funnel, narrow specifically to GDPR, and ground the investigation in the user's live application architecture and domain dataset.</li>
+        </ol>
+        <div class="key-insight">
+          <strong>Core Analytical Premise</strong>: In education, cybersecurity and data protection cannot be evaluated in a technical vacuum. Educational institutions hold a <em>dual legal persona</em>: they are corporate bodies bound by fiduciary governance rules (duty of care to students, parents, and trustees) and statutory <em>Data Controllers</em> under data privacy law. Therefore, third-party app governance is not merely an "IT configuration," but an affirmative fiduciary and legal mandate.
+        </div>
+      </div>
+
+      <h2>Investigation Roadmap & Hypothesis Tree</h2>
+      <p>
+        To ensure exhaustive analytical coverage, the investigation was decomposed into four structural hypotheses:
+      </p>
+      <ul>
+        <li><strong>Hypothesis 1 (Fiduciary Doctrine)</strong>: School governing bodies retain non-delegable legal liability for digital supply-chain compromises, regardless of whether applications were consented to by IT staff, faculty, or students.</li>
+        <li><strong>Hypothesis 2 (Statutory Mechanics)</strong>: Under GDPR, unconfigured OAuth applications in Google Workspace violate Articles 5 (Data Minimisation & Storage Limitation), 24 (Controller Responsibility), 25 (Privacy by Default), 28 (Processor Contracts), and 32 (Technical & Organisational Measures).</li>
+        <li><strong>Hypothesis 3 (Empirical Risk in Tenant)</strong>: Live telemetry from <code>gafe.co.za</code> will reveal significant "Shadow IT" sprawl, over-privileged OAuth tokens on Super Admin accounts, and dormant trusted applications acting as persistent backdoors.</li>
+        <li><strong>Hypothesis 4 (Remediation Bridging)</strong>: Fiduciary and legal compliance requires a two-tier remediation strategy: tactical programmatic revocation (via GAM CLI) and strategic policy lockdown (via Google Admin Console).</li>
+      </ul>
+    </div>
+
+    <div class="running-footer">
+      <span>AdminLens Investigation Methodology • Audit ID: AL-METHODOLOGY-2026</span>
+      <span>Document Page 1 of 5</span>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE 2 ==================== -->
+  <div class="page">
+    <div class="running-header">
+      <span>Investigation Methodology Dossier</span>
+      <span>Stage 2: Wide Funnel & Global Legal Benchmarking</span>
+    </div>
+
+    <div>
+      <div class="stage-card amber">
+        <div class="stage-header">
+          <span class="stage-title">STAGE 2: Wide Funnel — Global Fiduciary & Comparative Legal Research</span>
+          <span class="stage-step-tag">Step 2: Legal Benchmarking</span>
+        </div>
+        <p>
+          The investigation surveyed the global spectrum of regulatory regimes and governance doctrines governing educational technology:
+        </p>
+        <ul>
+          <li>
+            <strong>The Fiduciary Doctrine of Non-Delegable Accountability</strong>:
+            Under corporate and charity governance law, school boards, governors, and headteachers cannot delegate statutory accountability. When an IT administrator or classroom teacher clicks "Grant Access" on a third-party app, the school remains legally responsible for any resultant breach or unlawful egress.
+          </li>
+          <li>
+            <strong>Child Safeguarding as a Legal Standard</strong>:
+            Minors are legally classified as "vulnerable data subjects." Data protection frameworks worldwide establish that children are less aware of the implications of personal data harvesting. Consequently, allowing commercial EdTech tools to scrape student directories, tracking pixels, or browsing telemetry breaches child safeguarding duties.
+          </li>
+          <li>
+            <strong>Comparative Multi-Jurisdictional Baseline</strong>:
+            <table>
+              <thead>
+                <tr>
+                  <th>Regulatory Regime</th>
+                  <th>Key Classification</th>
+                  <th>Applicable Legal Test</th>
+                  <th>Third-Party Software Implications</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>EU & UK GDPR</strong></td>
+                  <td>School = Data Controller<br>Vendor = Data Processor</td>
+                  <td>Articles 5, 24, 28, 30, 32, 35</td>
+                  <td>Mandatory binding DPA, strict data minimisation, prohibition of unvetted sub-processors.</td>
+                </tr>
+                <tr>
+                  <td><strong>POPIA (South Africa)</strong></td>
+                  <td>School = Responsible Party<br>Vendor = Operator</td>
+                  <td>Condition 7; Section 34 (Children)</td>
+                  <td>General prohibition on processing minors' personal info without competent parental or legal consent.</td>
+                </tr>
+                <tr>
+                  <td><strong>US FERPA & COPPA</strong></td>
+                  <td>School Official Exemption /<br>Parental Consent</td>
+                  <td>34 CFR § 99.31(a)(1)(i)(B);<br>16 CFR Part 312</td>
+                  <td>Vendor must be under the <em>direct control</em> of the school regarding records; zero non-educational data exploitation.</td>
+                </tr>
+              </tbody>
+            </table>
+          </li>
+          <li>
+            <strong>European Enforcement Precedents</strong>:
+            Research examined the landmark <strong>Danish Datatilsynet ruling against Helsingør Municipality (2022–2024)</strong>, where the regulator banned municipal school use of Google Workspace and Chromebooks because schools failed to govern third-party apps, secondary telemetry, and US data transfers. The DPA explicitly reprimanded the municipality for failing to act as an accountable Data Controller. Similarly, the <strong>Dutch SIVON/SURF DPIAs</strong> demonstrated that educational institutions must actively negotiate contractual boundaries and enforce technical lockdowns over third-party extensions.
+          </li>
+        </ul>
+      </div>
+
+      <div class="key-insight">
+        <strong>Strategic Takeaway</strong>: Regardless of whether an institution is situated in the European Union, the United Kingdom, South Africa, or the United States, regulators universally reject the defense that "an individual employee installed the software." The legal responsibility remains anchored to the institutional controller.
+      </div>
+    </div>
+
+    <div class="running-footer">
+      <span>AdminLens Investigation Methodology • Domain: gafe.co.za</span>
+      <span>Document Page 2 of 5</span>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE 3 ==================== -->
+  <div class="page">
+    <div class="running-header">
+      <span>Investigation Methodology Dossier</span>
+      <span>Stage 3: Narrowing Scope to GDPR Technical Mandates</span>
+    </div>
+
+    <div>
+      <div class="stage-card red">
+        <div class="stage-header">
+          <span class="stage-title">STAGE 3: Narrowing Scope to GDPR Technical Mandates</span>
+          <span class="stage-step-tag">Step 3: Statutory Mapping</span>
+        </div>
+        <p>
+          The investigation mapped the specific technical mechanics of OAuth 2.0 app authorization in Google Workspace against GDPR statutory requirements:
+        </p>
+        <ul>
+          <li><strong>OAuth Token Persistence vs. Article 5(1)(e) (Storage Limitation)</strong>: Unlike web session cookies that expire, Google Workspace OAuth refresh tokens remain valid indefinitely until actively revoked. Stale, abandoned apps authorized years ago retain perpetual read/write channels to institutional cloud drives.</li>
+          <li><strong>Scope Creep vs. Article 5(1)(c) (Data Minimisation)</strong>: Educational tools frequently request sweeping permissions (such as <code>https://www.googleapis.com/auth/drive</code> or <code>https://mail.google.com/</code>) to execute minor functions like exporting a certificate or sending an alert. Under GDPR, granting disproportionate scopes is a statutory violation.</li>
+          <li><strong>Open Self-Consent vs. Article 25 (Privacy by Design & Default)</strong>: If an institution leaves Google Workspace App Access Control "Unconfigured," the default setting permits users to self-authorize any third-party app. This inverts GDPR's mandate that systems must be secure and privacy-protective by default.</li>
+          <li><strong>Super Admin Privilege Tunnels vs. Article 32 (Technical & Organisational Measures)</strong>: When a Super Administrator consents to a third-party app with their admin account, the token inherits the administrative blast radius. An adversary compromising that external vendor gains full tenant compromise authority.</li>
+        </ul>
+      </div>
+
+      <h2>The Taxonomy of 7 Mandatory SaaS Audits</h2>
+      <p>
+        To satisfy GDPR Article 24 (Accountability), educational institutions must execute seven distinct audits:
+      </p>
+      <ol>
+        <li><strong>Application Discovery & Census Audit</strong>: Reconciling Reports API audit events against live Directory API tokens (<code>users.tokens.list</code>) to discover every active client ID.</li>
+        <li><strong>Scope Threat & Privilege Audit</strong>: Evaluating requested technical permissions on a 1–5 threat scale, flagging restricted Google scopes (Drive, Gmail, Directory).</li>
+        <li><strong>Administrative Blast Radius Audit</strong>: Auditing Super Admin user accounts to isolate administrative identities from third-party application consent.</li>
+        <li><strong>App Access Control Baseline Audit</strong>: Inspecting tenant configuration to verify whether unconfigured apps are blocked or permitted.</li>
+        <li><strong>Token Lifecycle & Dormancy Audit</strong>: Programmatic identification and revocation of tokens inactive for &gt; 90 days.</li>
+        <li><strong>Vendor Security Posture & Breach Audit</strong>: Cross-referencing vendors against public breach disclosures and verifying active DPA contracts.</li>
+        <li><strong>Cross-Border Transfer Audit</strong>: Evaluating vendor data hosting locations against the EU-US Data Privacy Framework (DPF) and Standard Contractual Clauses (SCCs).</li>
+      </ol>
+    </div>
+
+    <div class="running-footer">
+      <span>AdminLens Investigation Methodology • Domain: gafe.co.za</span>
+      <span>Document Page 3 of 5</span>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE 4 ==================== -->
+  <div class="page">
+    <div class="running-header">
+      <span>Investigation Methodology Dossier</span>
+      <span>Stage 4: Empirical Discovery in Live Database</span>
+    </div>
+
+    <div>
+      <div class="stage-card green">
+        <div class="stage-header">
+          <span class="stage-title">STAGE 4: Empirical Investigation of Live Application & Database</span>
+          <span class="stage-step-tag">Step 4: Empirical Discovery</span>
+        </div>
+        <p>
+          The investigation examined the live SQLite database (<code>adminlens.db</code>) and catalog artifacts for the educational domain <code>gafe.co.za</code> to replace theoretical assumptions with verifiable data:
+        </p>
+
+        <h3>1. Execution of Telemetry Queries via node:sqlite</h3>
+        <div class="query-box">
+          const db = new DatabaseSync('./adminlens.db');
+          // 1. Ingestion Volume & Risk Distribution
+          db.prepare('SELECT risk_level, count(*) FROM applications GROUP BY risk_level').all();
+          // 2. Policy State Distribution
+          db.prepare('SELECT admin_access_level, count(*) FROM applications GROUP BY admin_access_level').all();
+          // 3. Super Admin Exposure
+          db.prepare('SELECT display_name, admin_users_count FROM applications WHERE admin_users_count > 0').all();
+          // 4. Dormant Trusted Apps
+          db.prepare("SELECT display_name FROM applications WHERE admin_access_level='TRUSTED' AND total_users_count <= 1").all();
+        </div>
+
+        <h3>2. Summary of Empirical Findings in gafe.co.za</h3>
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 25%;">Investigated Parameter</th>
+              <th style="width: 25%;">Empirical Query Result</th>
+              <th style="width: 50%;">Analytical & Regulatory Significance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Application Catalog Size</strong></td>
+              <td><strong>2,059 Total Apps</strong></td>
+              <td>Substantial software footprint requiring centralized, automated governance.</td>
+            </tr>
+            <tr>
+              <td><strong>Shadow IT Exposure</strong></td>
+              <td><strong>2,038 Unconfigured (99.0%)</strong></td>
+              <td>Critical GDPR violation: 99% of applications bypass IT review and DPA contracts.</td>
+            </tr>
+            <tr>
+              <td><strong>Critical / High Risk Tiers</strong></td>
+              <td><strong>94 Apps (52 Crit / 42 High)</strong></td>
+              <td>Apps holding unrestricted access to Gmail, Google Drive, and Directory metadata.</td>
+            </tr>
+            <tr>
+              <td><strong>Super Admin Grants</strong></td>
+              <td><strong>27 Tokens (7 Admins)</strong></td>
+              <td>Direct takeover vector across named admins: <code>alister</code>, <code>deidre</code>, <code>kevin</code>, <code>karien</code>, etc.</td>
+            </tr>
+            <tr>
+              <td><strong>Dormant Trusted Apps</strong></td>
+              <td><strong>16 Apps (&le; 1 User)</strong></td>
+              <td>Apps like <em>Mailsuite</em>, <em>OrbitNote</em>, and <em>Zoho CalSync</em> retaining permanent API bypass.</td>
+            </tr>
+            <tr>
+              <td><strong>Supply Chain Breaches</strong></td>
+              <td><strong>Canva (2019), Bitly (2014)</strong></td>
+              <td>Historical compromises requiring verified DPA addenda and SSO segmentation.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>3. Analysis of Architecture & Scoring Model</h3>
+        <p>
+          Inspected <code>APPLICATION_RISK_SCORING_METHODOLOGY.md</code>. Evaluated why traditional "Scope-Only" scoring fails: tools like GAM hold critical scopes but are legitimate administrative utilities, whereas unverified tools with moderate scopes consented to by Super Admins create critical compromise paths. AdminLens resolves this through its <strong>Three-Layer Architecture</strong> (Layer 1: Scope Threat Scale, Layer 2: Central Repository Inherent Risk, Layer 3: Tenant Operational Risk).
+        </p>
+      </div>
+    </div>
+
+    <div class="running-footer">
+      <span>AdminLens Investigation Methodology • Domain: gafe.co.za</span>
+      <span>Document Page 4 of 5</span>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE 5 ==================== -->
+  <div class="page">
+    <div class="running-header">
+      <span>Investigation Methodology Dossier</span>
+      <span>Stage 5: Remediation Synthesis & Action Plan</span>
+    </div>
+
+    <div>
+      <div class="stage-card blue">
+        <div class="stage-header">
+          <span class="stage-title">STAGE 5: Synthesis, Remediation Engineering & Governance Ledger</span>
+          <span class="stage-step-tag">Step 5: Actionable Remediation</span>
+        </div>
+        <p>
+          The final phase synthesized the legal mandates and empirical findings into an actionable remediation architecture:
+        </p>
+        <ul>
+          <li>
+            <strong>Bridging Legal Policy and Technical Action</strong>:
+            A statutory finding is useless to an IT administrator unless accompanied by direct technical remediation. The investigation mapped each high-risk finding to two operational execution channels:
+            <ol>
+              <li><strong>Google Apps Manager (GAM) CLI</strong>: Engineered automated shell scripts to batch-revoke the 27 Super Admin tokens across the 7 named administrator accounts (e.g. <code>gam user alister@gafe.co.za delete token clientid ...</code>).</li>
+              <li><strong>Google Admin Console App Access Control</strong>: Formulated the policy baseline to transition unconfigured apps from open-by-default to <em>Blocked by default</em>, and downgraded dormant trusted apps from <code>TRUSTED</code> to <code>LIMITED</code>.</li>
+            </ol>
+          </li>
+          <li>
+            <strong>The Fiduciary Governance Sign-Off Triad</strong>:
+            To close the legal loop, the report established an institutional attestation block requiring formal signatures from:
+            <ul>
+              <li><strong>The Data Protection Officer (DPO)</strong> (Statutory compliance under GDPR Art. 38).</li>
+              <li><strong>The Head of School / Principal</strong> (Executive Duty of Care).</li>
+              <li><strong>The Chair of the Board of Governors</strong> (Institutional Fiduciary Acceptance).</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h2>Conclusions & Strategic Recommendations</h2>
+        <ol>
+          <li><strong>Execute Super Admin Token Cleanup Immediately</strong>: Run the generated GAM batch script to eliminate lateral domain compromise paths.</li>
+          <li><strong>Invert App Access Control Policy</strong>: Toggle Google Workspace App Access Control to block unconfigured applications by default, requiring central administrative approval.</li>
+          <li><strong>Institutionalize the 90-Day Audit Cadence</strong>: Transition third-party app governance from an ad-hoc investigation into a recurring statutory compliance cycle.</li>
+        </ol>
+
+        <div class="key-insight">
+          <strong>Final Reflection</strong>: The investigation demonstrates that educational data compliance is fundamentally about <em>active governance</em>. By bridging Google Admin SDK telemetry with GDPR statutory standards, the institution moves from passive risk exposure to defensible, accountable compliance.
+        </div>
+      </div>
+    </div>
+
+    <div class="running-footer">
+      <span>AdminLens Investigation Methodology • Audit ID: AL-METHODOLOGY-2026</span>
+      <span>Document Page 5 of 5 • Complete Analytical Dossier</span>
+    </div>
+  </div>
+
+</body>
+</html>

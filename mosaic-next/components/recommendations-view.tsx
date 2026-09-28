@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
+import Link from "next/link";
 import GoogleVerifiedBadge from "@/components/google-verified-badge";
 import { GoogleAdminIcon } from "@/components/google-icons";
 
@@ -66,15 +67,12 @@ export interface RecommendationFinding {
   details: string;
   remediation: string;
   actionType: string;
-  gamCommand?: string;
   adminConsolePath?: string;
 }
 
 export interface AdminGroup {
   adminEmail: string;
   tokenCount: number;
-  gamCommands: string[];
-  batchGamScript: string;
   items: RecommendationFinding[];
 }
 
@@ -94,14 +92,6 @@ export default function RecommendationsView({ apps, initialRecs }: Recommendatio
   const [searchQuery, setSearchQuery] = useState("");
   const [severityFilter, setSeverityFilter] = useState<string>("ALL");
   const [expandedAppIds, setExpandedAppIds] = useState<Record<string, boolean>>({});
-  const [copiedId, setCopiedId] = useState<string | null>(null);
-  const [showPolicyExplainer, setShowPolicyExplainer] = useState(false);
-
-  const copyToClipboard = (text: string, id: string) => {
-    navigator.clipboard.writeText(text);
-    setCopiedId(id);
-    setTimeout(() => setCopiedId(null), 2500);
-  };
 
   const toggleExpand = (id: string) => {
     setExpandedAppIds(prev => ({ ...prev, [id]: !prev[id] }));
@@ -145,15 +135,6 @@ export default function RecommendationsView({ apps, initialRecs }: Recommendatio
       const policy = (app.adminAccessLevel || "UNCONFIGURED").toUpperCase();
       const isVerified = Boolean(app.isVerified);
       const findings = findingsByClientId.get(app.clientId || app.id) || [];
-      const gamCommands = findings.map(f => f.gamCommand).filter(Boolean) as string[];
-
-      // Gam commands generation fallback if not in findings
-      const adminUsersList = app.users?.filter(u => u.isAdmin) || [];
-      if (gamCommands.length === 0 && app.clientId && adminUsersList.length > 0) {
-        for (const u of adminUsersList) {
-          gamCommands.push(`gam user ${u.email} delete token clientid ${app.clientId}`);
-        }
-      }
 
       // Classification Logic based on user criteria:
       // - Risk score & breach history
@@ -169,7 +150,7 @@ export default function RecommendationsView({ apps, initialRecs }: Recommendatio
 
       let isUrgent = false;
       let primaryAction = "";
-      let actionType: "CONSOLE" | "GAM" | "SECURED" = "CONSOLE";
+      let actionType: "CONSOLE" | "SECURED" = "CONSOLE";
       let actionReason = "";
 
       if (isSecured) {
@@ -180,8 +161,8 @@ export default function RecommendationsView({ apps, initialRecs }: Recommendatio
         actionReason = "Application adheres to zero-trust Google Workspace security baseline.";
       } else if (isRecent && adminUsers > 0 && isHighOrCrit) {
         isUrgent = true;
-        primaryAction = `Revoke ${adminUsers} Super Admin token(s) via GAM and restrict in Admin Console`;
-        actionType = "GAM";
+        primaryAction = `Revoke ${adminUsers} Super Admin token(s) and restrict in Admin Console`;
+        actionType = "CONSOLE";
         actionReason = `Super Admin privilege exposure on active ${app.riskLevel} risk application. Compromise gives tenant-wide delegation.`;
       } else if (isRecent && isUnconfigured && isHighOrCrit && !isVerified) {
         isUrgent = true;
@@ -221,7 +202,6 @@ export default function RecommendationsView({ apps, initialRecs }: Recommendatio
         primaryAction,
         actionType,
         actionReason,
-        gamCommands,
         findings,
       };
     });
@@ -338,6 +318,48 @@ export default function RecommendationsView({ apps, initialRecs }: Recommendatio
   return (
     <div className="space-y-6">
       {/* ============================================================== */}
+      {/* 0. ROOT TENANT SECURITY BASELINE CALLOUT                       */}
+      {/* ============================================================== */}
+      <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 border border-indigo-900/60 rounded-2xl p-5 shadow-sm text-white">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          <div className="space-y-1.5 max-w-3xl">
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full bg-blue-500/20 text-blue-300 border border-blue-400/30">
+                🏛️ Domain Baseline Setting
+              </span>
+              <span className="text-xs text-slate-400 font-semibold">• Google Workspace Default Policy</span>
+            </div>
+            <h3 className="text-base font-extrabold text-white">
+              Unconfigured Third-Party Apps: Mandatory Student Protection Baseline
+            </h3>
+            <p className="text-xs text-slate-300 leading-relaxed">
+              Schools are legally responsible for student data access. Verify your domain defaults: 
+              <span className="text-emerald-300 font-bold ml-1">Under 18 (Students)</span> should be set to <em>"Don't allow users to access any third-party apps"</em>, while <span className="text-blue-300 font-bold">18 and older (Staff)</span> remains <em>"Allow users to access any third-party apps"</em>.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-2.5 flex-shrink-0 self-start lg:self-center">
+            <a
+              href="https://admin.google.com/ac/owl/settings#:~:text=%EE%8F%89-,Unconfigured%20third%2Dparty%20apps"
+              target="_blank"
+              rel="noreferrer"
+              className="px-3.5 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold shadow-sm transition-all inline-flex items-center gap-1.5"
+            >
+              <GoogleAdminIcon className="w-3.5 h-3.5 text-white" />
+              <span>Configure in Admin Console ↗</span>
+            </a>
+
+            <Link
+              href="/dashboard?tab=baseline"
+              className="px-3 py-2 bg-white/10 hover:bg-white/15 text-slate-200 border border-white/10 rounded-xl text-xs font-semibold transition-all inline-flex items-center gap-1"
+            >
+              <span>Full Guidance Guide →</span>
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* ============================================================== */}
       {/* 1. EXECUTIVE POSTURE BAR                                       */}
       {/* ============================================================== */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -430,41 +452,6 @@ export default function RecommendationsView({ apps, initialRecs }: Recommendatio
         </div>
       </div>
 
-      {/* ============================================================== */}
-      {/* 2. THE "HOLY GRAIL" POLICY PRINCIPLE CALLOUT                   */}
-      {/* ============================================================== */}
-      <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white rounded-2xl p-5 shadow-md border border-slate-800">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div className="space-y-1 max-w-3xl">
-            <div className="flex items-center gap-2">
-              <span className="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">
-                🏆 Security Gold Standard
-              </span>
-              <span className="text-xs text-slate-300 font-medium">
-                Why "Specific Google Data" is the Holy Grail of App Access Control
-              </span>
-            </div>
-            <h3 className="text-base font-bold text-white tracking-tight">
-              Move apps from blanket "Trusted" or "Unconfigured" to "Specific Google Data"
-            </h3>
-            <p className="text-xs text-slate-300 leading-relaxed">
-              In Google Workspace, setting an app to <strong>"Trusted"</strong> exempts it from API restrictions and grants access to <strong>all requested scopes, including future scopes added by the vendor</strong>. The best practice is configuring apps to <strong>"Specific Google Data"</strong>, locking third parties to only explicitly authorized Google services while denying all other APIs.
-            </p>
-          </div>
-
-          <div className="flex items-center gap-2 flex-shrink-0">
-            <a
-              href="https://admin.google.com/ac/owl/list?tab=apps"
-              target="_blank"
-              rel="noreferrer"
-              className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold rounded-xl shadow-sm inline-flex items-center gap-2 transition-colors"
-            >
-              <GoogleAdminIcon className="w-4 h-4 text-white" />
-              <span>Open Google Admin Console ↗</span>
-            </a>
-          </div>
-        </div>
-      </div>
 
       {/* ============================================================== */}
       {/* 3. SIMPLIFIED NAVIGATION TABS & FILTERS                         */}
@@ -654,17 +641,6 @@ export default function RecommendationsView({ apps, initialRecs }: Recommendatio
 
                     {/* Direct Action Area */}
                     <div className="flex items-center gap-2.5 flex-shrink-0">
-                      {app.gamCommands && app.gamCommands.length > 0 && (
-                        <button
-                          onClick={() => copyToClipboard(app.gamCommands.join("\n"), `gam-${app.id}`)}
-                          className="px-3 py-1.5 bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 rounded-lg text-xs font-bold transition-colors inline-flex items-center gap-1.5"
-                          title="Copy GAM revocation CLI script"
-                        >
-                          <span>⚡</span>
-                          <span>{copiedId === `gam-${app.id}` ? "Copied GAM! ✓" : "Copy GAM Script"}</span>
-                        </button>
-                      )}
-
                       <a
                         href="https://admin.google.com/ac/owl/list?tab=apps"
                         target="_blank"
@@ -740,26 +716,6 @@ export default function RecommendationsView({ apps, initialRecs }: Recommendatio
                           </div>
                         </div>
                       </div>
-
-                      {/* GAM Script Snippet if available */}
-                      {app.gamCommands && app.gamCommands.length > 0 && (
-                        <div className="space-y-1 bg-white p-3 rounded-xl border border-purple-200">
-                          <div className="flex items-center justify-between">
-                            <span className="text-[10px] font-bold uppercase tracking-wider text-purple-900">
-                              ⚡ One-Click Remediation (GAM CLI)
-                            </span>
-                            <button
-                              onClick={() => copyToClipboard(app.gamCommands.join("\n"), `gam-btn-${app.id}`)}
-                              className="text-xs text-purple-700 hover:text-purple-900 font-bold"
-                            >
-                              {copiedId === `gam-btn-${app.id}` ? "Copied! ✓" : "Copy Command"}
-                            </button>
-                          </div>
-                          <pre className="p-2 bg-slate-900 text-emerald-400 font-mono text-[11px] rounded-lg overflow-x-auto">
-                            {app.gamCommands.join("\n")}
-                          </pre>
-                        </div>
-                      )}
                     </div>
                   )}
                 </div>
@@ -774,17 +730,17 @@ export default function RecommendationsView({ apps, initialRecs }: Recommendatio
         <div className="space-y-4">
           <div className="bg-purple-50 border border-purple-200 rounded-xl p-4 text-xs text-purple-900 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
-              <span className="font-bold">Super Admin Privilege Exposure:</span> In Google Workspace, third-party tokens authorized by Super Admins inherit tenant-wide administrative power. Revoking unnecessary tokens minimizes full tenant compromise risk.
+              <span className="font-bold">Super Admin Privilege Exposure:</span> In Google Workspace, third-party tokens authorized by Super Admins inherit tenant-wide administrative power. Revoking unnecessary tokens directly in the Admin Console minimizes tenant compromise risk.
             </div>
-            <button
-              onClick={() => {
-                const allAdminScript = superAdminGroups.flatMap(a => a.gamCommands).join("\n");
-                copyToClipboard(allAdminScript, "all-admins-script");
-              }}
-              className="px-3.5 py-1.5 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-xs font-bold shadow-sm whitespace-nowrap self-start sm:self-auto"
+            <a
+              href="https://admin.google.com/ac/owl/list?tab=apps"
+              target="_blank"
+              rel="noreferrer"
+              className="px-3.5 py-1.5 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-xs font-bold shadow-sm whitespace-nowrap self-start sm:self-auto inline-flex items-center gap-1.5"
             >
-              {copiedId === "all-admins-script" ? "Copied All Admins! ✓" : `Copy All (${superAdminGroups.length}) Admin Scripts`}
-            </button>
+              <GoogleAdminIcon className="w-3.5 h-3.5 text-white" />
+              <span>Review Apps in Admin Console ↗</span>
+            </a>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -819,28 +775,29 @@ export default function RecommendationsView({ apps, initialRecs }: Recommendatio
                           <div className="font-bold text-gray-900 truncate">{item.application}</div>
                           <div className="text-[10px] font-mono text-gray-500 truncate">{item.clientId}</div>
                         </div>
-                        {item.gamCommand && (
-                          <button
-                            onClick={() => copyToClipboard(item.gamCommand!, item.id)}
-                            className="text-[11px] font-semibold text-blue-600 hover:text-blue-800 px-2 py-0.5 rounded hover:bg-blue-50 transition-colors flex-shrink-0"
-                          >
-                            {copiedId === item.id ? "Copied! ✓" : "Copy"}
-                          </button>
-                        )}
+                        <a
+                          href="https://admin.google.com/ac/owl/list?tab=apps"
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-[11px] font-semibold text-blue-600 hover:text-blue-800 px-2 py-0.5 rounded hover:bg-blue-50 transition-colors flex-shrink-0 inline-flex items-center gap-1"
+                        >
+                          <span>Review ↗</span>
+                        </a>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Admin Batch Copy Button */}
-                <button
-                  onClick={() => copyToClipboard(adm.batchGamScript, `adm-card-${adm.adminEmail}`)}
-                  className="w-full text-center px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-xl text-xs font-bold shadow-xs transition-colors"
+                {/* Admin Console Action Link */}
+                <a
+                  href="https://admin.google.com/ac/owl/list?tab=apps"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-full text-center px-4 py-2 bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 rounded-xl text-xs font-bold shadow-xs transition-colors inline-flex items-center justify-center gap-1.5"
                 >
-                  {copiedId === `adm-card-${adm.adminEmail}`
-                    ? "Copied Script! ✓"
-                    : `⚡ Copy (${adm.tokenCount}) GAM Revoke Commands for ${adm.adminEmail.split("@")[0]}`}
-                </button>
+                  <GoogleAdminIcon className="w-3.5 h-3.5 text-purple-700" />
+                  <span>Review Grants for {adm.adminEmail.split("@")[0]} in Admin Console ↗</span>
+                </a>
               </div>
             ))}
           </div>

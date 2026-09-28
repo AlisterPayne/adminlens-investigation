@@ -68,6 +68,88 @@ function assessScopeRisk(scope) {
   return { level: 'LOW', reason: 'Basic Authentication / Profile Scopes' };
 }
 
+function isDescriptiveAppName(name) {
+  if (!name || typeof name !== 'string') return false;
+  const t = name.trim();
+  if (!t) return false;
+  if (t.includes('.apps.googleusercontent.com')) return false;
+  if (/^\d{6,}-[a-z0-9_]+/.test(t)) return false;
+  if (t === 'Unnamed App' || t === 'Accessed Third-Party App' || t === 'Configured Third-Party App' || t === 'Third-Party Software') return false;
+  return true;
+}
+
+// -------------------------------------------------------------
+// Pre-scan all CSV uploads/baselines to build Client ID -> Metadata lookup
+// If an application name is present in CSV uploads and the IDs match,
+// the CSV name MUST override what is pulled from the Google API.
+// -------------------------------------------------------------
+const parseCsvLines = (csvPath) => {
+  if (!csvPath || !fs.existsSync(csvPath)) return [];
+  const owlText = fs.readFileSync(csvPath, 'utf8');
+  const lines = owlText.trim().split(/\r?\n/);
+  if (lines.length < 2) return [];
+
+  const parseLine = (line) => {
+    const res = [];
+    let cur = '';
+    let q = false;
+    for (let i = 0; i < line.length; i++) {
+      const c = line[i];
+      if (c === '"') {
+        if (q && line[i+1] === '"') { cur += '"'; i++; }
+        else { q = !q; }
+      } else if (c === ',' && !q) {
+        res.push(cur);
+      } else {
+        cur += c;
+      }
+    }
+    res.push(cur);
+    return res;
+  };
+
+  const headers = parseLine(lines[0]).map(h => h.trim());
+  const rows = [];
+  for (let i = 1; i < lines.length; i++) {
+    if (!lines[i].trim()) continue;
+    const vals = parseLine(lines[i]);
+    const row = {};
+    headers.forEach((h, idx) => row[h] = vals[idx] ? vals[idx].trim() : '');
+    rows.push(row);
+  }
+  return rows;
+};
+
+const accessedCsvPath = fs.existsSync('./owl_apps_accessed_apps.csv') 
+  ? './owl_apps_accessed_apps.csv' 
+  : (fs.existsSync('./gafe_co_za_owl_apps_accessed.csv') ? './gafe_co_za_owl_apps_accessed.csv' : null);
+const configuredCsvPath = fs.existsSync('./owl_apps_configured_apps.csv') 
+  ? './owl_apps_configured_apps.csv' 
+  : (fs.existsSync('./gafe_co_za_owl_apps_configured.csv') 
+    ? './gafe_co_za_owl_apps_configured.csv' 
+    : (fs.existsSync('./owl_apps.csv') ? './owl_apps.csv' : null));
+const masterCsvPath = fs.existsSync('./master_apps2.csv')
+  ? './master_apps2.csv'
+  : (fs.existsSync('./master_apps.csv') ? './master_apps.csv' : null);
+
+const csvAppMap = new Map();
+for (const csvFile of [masterCsvPath, configuredCsvPath, accessedCsvPath].filter(Boolean)) {
+  const rows = parseCsvLines(csvFile);
+  for (const r of rows) {
+    const cid = r['Id'] || r['id'] || r['Client ID'] || r['clientId'];
+    const name = r['App Name'] || r['appName'] || r['Name'] || r['name'];
+    if (cid && isDescriptiveAppName(name)) {
+      csvAppMap.set(cid.trim(), {
+        appName: name.trim(),
+        rawType: r['Type'] || r['type'] || 'Web Application',
+        verificationStatus: r['Verification Status'] || r['verificationStatus'],
+        ownership: r['Ownership'] || r['ownership'],
+        sourceCsv: path.basename(csvFile)
+      });
+    }
+  }
+}
+
 // -------------------------------------------------------------
 // Aggregation Map: Keyed by DISTINCT DEPLOYMENT (clientId)
 // -------------------------------------------------------------
@@ -180,6 +262,42 @@ function getOrCreateDeploymentRecord(appName, clientId, owlType = null, verified
       lastActive: null,
       totalActivityEvents: 0,
     });
+  } else {
+    // If the record exists, but was previously named with a raw client ID or placeholder,
+    // and the incoming appName is descriptive (e.g. from CSV upload), override it!
+    const existing = catalog.get(deploymentKey);
+    const existingIsRaw = !existing.displayName || 
+      existing.displayName.includes('.apps.googleusercontent.com') ||
+      existing.displayName.startsWith('Accessed Third-Party') ||
+      existing.displayName.startsWith('Configured Third-Party');
+
+    const incomingIsBetter = isDescriptiveAppName(appName);
+
+    if (incomingIsBetter && (existingIsRaw || (appName && appName !== existing.familyName))) {
+      existing.displayName = variantTitle;
+      existing.familyName = familyName;
+      existing.familyId = familyId;
+      existing.deploymentType = deploymentType;
+      existing.appType = deploymentType;
+      if (enriched.vendor && enriched.vendor !== 'Third-Party Developer') {
+        existing.vendor = enriched.vendor;
+      }
+      if (enriched.category && enriched.category !== 'Unclassified SaaS') {
+        existing.category = enriched.category;
+      }
+      if (enriched.iconUrl && !enriched.iconUrl.includes('ui-avatars')) {
+        existing.iconUrl = enriched.iconUrl;
+      }
+      if (enriched.description) {
+        existing.description = enriched.description;
+      }
+      if (enriched.publisherDomain) {
+        existing.publisherDomain = enriched.publisherDomain;
+      }
+      if (enriched.compliance && enriched.compliance.length > 0) {
+        existing.compliance = enriched.compliance;
+      }
+    }
   }
 
   const record = catalog.get(deploymentKey);
@@ -193,7 +311,15 @@ function getOrCreateDeploymentRecord(appName, clientId, owlType = null, verified
 
 // 1. Ingest Active Tokens (Directory API)
 for (const token of activeTokens) {
-  const record = getOrCreateDeploymentRecord(token.displayText, token.clientId);
+  // If the name is mentioned in the CSV uploads and the IDs match, the CSV name MUST override what is in the database from the API pull
+  const csvMatch = csvAppMap.get(token.clientId);
+  const effectiveName = (csvMatch && isDescriptiveAppName(csvMatch.appName))
+    ? csvMatch.appName
+    : token.displayText;
+  const effectiveType = csvMatch?.rawType || null;
+  const effectiveVerified = csvMatch?.verificationStatus || null;
+
+  const record = getOrCreateDeploymentRecord(effectiveName, token.clientId, effectiveType, effectiveVerified);
   if (token.nativeApp) record.isNativeApp = true;
   if (token.anonymous) record.isAnonymous = true;
 
@@ -290,58 +416,12 @@ function parseServicesWithScopes(rawStr) {
   return { services, scopes: Array.from(new Set(allScopes)) };
 }
 
-const accessedCsvPath = fs.existsSync('./owl_apps_accessed_apps.csv') 
-  ? './owl_apps_accessed_apps.csv' 
-  : (fs.existsSync('./gafe_co_za_owl_apps_accessed.csv') ? './gafe_co_za_owl_apps_accessed.csv' : null);
-const configuredCsvPath = fs.existsSync('./owl_apps_configured_apps.csv') 
-  ? './owl_apps_configured_apps.csv' 
-  : (fs.existsSync('./gafe_co_za_owl_apps_configured.csv') 
-    ? './gafe_co_za_owl_apps_configured.csv' 
-    : (fs.existsSync('./owl_apps.csv') ? './owl_apps.csv' : null));
-
-const parseCsvLines = (csvPath) => {
-  if (!csvPath || !fs.existsSync(csvPath)) return [];
-  const owlText = fs.readFileSync(csvPath, 'utf8');
-  const lines = owlText.trim().split(/\r?\n/);
-  if (lines.length < 2) return [];
-
-  const parseLine = (line) => {
-    const res = [];
-    let cur = '';
-    let q = false;
-    for (let i = 0; i < line.length; i++) {
-      const c = line[i];
-      if (c === '"') {
-        if (q && line[i+1] === '"') { cur += '"'; i++; }
-        else { q = !q; }
-      } else if (c === ',' && !q) {
-        res.push(cur);
-        cur = '';
-      } else {
-        cur += c;
-      }
-    }
-    res.push(cur);
-    return res;
-  };
-
-  const headers = parseLine(lines[0]).map(h => h.trim());
-  const rows = [];
-  for (let i = 1; i < lines.length; i++) {
-    if (!lines[i].trim()) continue;
-    const vals = parseLine(lines[i]);
-    const row = {};
-    headers.forEach((h, idx) => row[h] = vals[idx] ? vals[idx].trim() : '');
-    rows.push(row);
-  }
-  return rows;
-};
 
 // 3a. Ingest Accessed Apps Baseline (if available) to capture baseline verification and scopes
 if (accessedCsvPath) {
   const accessedRows = parseCsvLines(accessedCsvPath);
   for (const row of accessedRows) {
-    if (row['Ownership']?.toLowerCase() === 'internal') continue;
+    if (row['Ownership']?.toLowerCase() === 'internal' && !catalog.has(cid)) continue;
     let appName = row['App Name'] ? row['App Name'].trim() : '';
     const cid = row['Id'];
     const rawType = row['Type'] || 'Web Application';

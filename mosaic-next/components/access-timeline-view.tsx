@@ -520,26 +520,12 @@ export default function AccessTimelineView({
                         </div>
                       </div>
 
-                      {/* Summary & Transition Badges */}
-                      <div className="mt-3 pt-2.5 border-t border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
-                        <div className="text-gray-700 text-xs leading-relaxed">
+                      {/* Summary */}
+                      {(ev.changeSummary || (typeof ev.details === "string" && ev.details)) && (
+                        <div className="mt-3 pt-2.5 border-t border-gray-100 text-gray-700 text-xs leading-relaxed">
                           {ev.changeSummary || (typeof ev.details === "string" ? ev.details : "")}
                         </div>
-
-                        {/* Context Badges: Scope and Previous Policy */}
-                        <div className="flex items-center gap-1.5 flex-wrap shrink-0 text-[11px]">
-                          {(ev.previousState || ev.oldPolicy) && (
-                            <span className="px-2 py-0.5 rounded-md bg-gray-100 text-gray-600 border border-gray-200 font-medium">
-                              Previous: <strong className="text-gray-800">{ev.previousState || ev.oldPolicy}</strong>
-                            </span>
-                          )}
-                          {(ev.target || ev.orgUnit) && (
-                            <span className="px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 border border-blue-200 font-medium font-mono text-[10px]">
-                              Scope: {ev.target || ev.orgUnit}
-                            </span>
-                          )}
-                        </div>
-                      </div>
+                      )}
                     </div>
                   );
                 })}

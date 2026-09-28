@@ -41,6 +41,7 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
   const isClientRecsActive = isClientWorkspace && currentTab === "recs";
   const isClientTimelineActive = isClientWorkspace && currentTab === "timeline";
   const isDataImportActive = isClientWorkspace && currentTab === "import";
+  const isClientBaselineActive = isClientWorkspace && currentTab === "baseline";
 
   const isAdminScopesActive = segments.includes("scopes");
   const isAdminRepoActive = segments.includes("central-database");
@@ -192,6 +193,22 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
                       </span>
                     </div>
                     <span className="ml-1.5 flex h-2 w-2 shrink-0 rounded-full bg-blue-400 opacity-80" title="Import CSV data" />
+                  </div>
+                </SidebarLink>
+              </li>
+
+              {/* Domain Baseline Settings (6th Item) */}
+              <li className={`px-2.5 py-2 rounded-lg transition-colors ${isClientBaselineActive ? "bg-blue-50 text-blue-700 font-semibold" : "hover:bg-gray-100 text-gray-700"}`}>
+                <SidebarLink href="/dashboard?tab=baseline" onClick={() => setCurrentTab("baseline")}>
+                  <div className="flex items-center justify-between w-full">
+                    <div className="flex items-center">
+                      <svg className={`shrink-0 h-4.5 w-4.5 ${isClientBaselineActive ? "text-blue-600" : "text-gray-500"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                      </svg>
+                      <span className="text-sm ml-2.5 font-medium">
+                        Domain Baseline
+                      </span>
+                    </div>
                   </div>
                 </SidebarLink>
               </li>

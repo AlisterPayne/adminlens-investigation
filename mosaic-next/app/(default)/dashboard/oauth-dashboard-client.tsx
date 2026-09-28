@@ -20,6 +20,7 @@ import {
 import OWLImportPanel from "@/components/owl-import-panel";
 import RecommendationsView from "@/components/recommendations-view";
 import ScopeMatrixView, { ScopeMetrics,ScopeReferenceItem } from "@/components/scope-matrix-view";
+import TenantBaselineView from "@/components/tenant-baseline-view";
 
 interface ScopeItem {
   scope: string;
@@ -241,13 +242,13 @@ export default function OAuthDashboardClient({
   const [currentApps, setCurrentApps] = useState<Application[]>(initialApps);
   const [currentMetrics, setCurrentMetrics] = useState<Metrics>(metrics);
   const [timelineEvents, setTimelineEvents] = useState<TimelineEvent[]>(initialTimelineEvents || []);
-  const [activeTab, setActiveTab] = useState<"dashboard" | "apps" | "recs" | "scopes" | "timeline" | "import">("apps");
+  const [activeTab, setActiveTab] = useState<"dashboard" | "apps" | "recs" | "scopes" | "timeline" | "import" | "baseline">("apps");
   const searchParams = useSearchParams();
 
   useEffect(() => {
     if (searchParams) {
       const tabParam = searchParams.get("tab");
-      if (tabParam === "apps" || tabParam === "recs" || tabParam === "scopes" || tabParam === "dashboard" || tabParam === "timeline" || tabParam === "import") {
+      if (tabParam === "apps" || tabParam === "recs" || tabParam === "scopes" || tabParam === "dashboard" || tabParam === "timeline" || tabParam === "import" || tabParam === "baseline") {
         setActiveTab(tabParam as any);
       }
     }
@@ -774,6 +775,8 @@ export default function OAuthDashboardClient({
             ? "Recommendations"
             : activeTab === "timeline"
             ? "Access Timeline"
+            : activeTab === "baseline"
+            ? "Domain Security Baseline"
             : activeTab === "dashboard"
             ? "Overview"
             : "Applications"}
@@ -1287,6 +1290,11 @@ export default function OAuthDashboardClient({
         />
       )}
 
+      {/* Domain Baseline Tab View */}
+      {activeTab === "baseline" && (
+        <TenantBaselineView />
+      )}
+
       {/* ============================================================== */}
       {/* APPLICATION DETAIL MODAL / DRAWER                              */}
       {/* ============================================================== */}
@@ -1339,15 +1347,15 @@ export default function OAuthDashboardClient({
                       href={getAdminConsoleLink(selectedApp).url}
                       target="_blank"
                       rel="noreferrer"
-                      className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-lg border shadow-xs transition-all ${
+                      className={`inline-flex items-center gap-1 px-2.5 py-1 text-xs font-semibold rounded-md border shadow-2xs transition-all ${
                         getAdminConsoleLink(selectedApp).isConfigured
-                          ? "bg-emerald-600 hover:bg-emerald-700 text-white border-emerald-700 ring-2 ring-emerald-500/20"
-                          : "bg-blue-600 hover:bg-blue-700 text-white border-blue-700 ring-2 ring-blue-500/20"
+                          ? "bg-emerald-600 hover:bg-emerald-700 text-white border-emerald-700"
+                          : "bg-blue-600 hover:bg-blue-700 text-white border-blue-700"
                       }`}
                       title={getAdminConsoleLink(selectedApp).label}
                     >
-                      <GoogleAdminIcon className="w-4 h-4 text-white" />
-                      <span>{getAdminConsoleLink(selectedApp).label} ↗</span>
+                      <GoogleAdminIcon className="w-3.5 h-3.5 text-white" />
+                      <span>Google Admin ↗</span>
                     </a>
                     <button
                       type="button"
@@ -1359,7 +1367,7 @@ export default function OAuthDashboardClient({
                           setTimeout(() => setCopiedId(null), 2000);
                         }
                       }}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-300 transition-colors shadow-2xs"
+                      className="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-semibold rounded-md bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-300 transition-colors shadow-2xs"
                       title="Copy Client ID to clipboard"
                     >
                       <span>{copiedId === selectedApp.id ? "✓ Copied Client ID!" : "Copy Client ID"}</span>

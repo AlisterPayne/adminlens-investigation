@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GDPR & Third-Party App Compliance Audit Report — gafe.co.za</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 12mm 12mm 12mm 12mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #1e293b;
+      background-color: #ffffff;
+      line-height: 1.4;
+      font-size: 8.5pt;
+      margin: 0;
+      padding: 0;
+    }
+
+    .page {
+      height: 273mm;
+      max-height: 273mm;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      page-break-after: always;
+      break-after: page;
+      position: relative;
+    }
+
+    .page:last-child {
+      page-break-after: avoid;
+      break-after: avoid;
+    }
+
+    /* Running Header / Footer for print */
+    .report-running-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1.5px solid #0f172a;
+      padding-bottom: 4px;
+      margin-bottom: 10px;
+      font-size: 7pt;
+      color: #475569;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .report-running-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #cbd5e1;
+      padding-top: 4px;
+      margin-top: auto;
+      font-size: 7pt;
+      color: #64748b;
+    }
+
+    /* Cover Page */
+    .cover-page {
+      padding: 20px 10px 10px 10px;
+    }
+
+    .cover-top {
+      border-bottom: 4px solid #0f172a;
+      padding-bottom: 16px;
+    }
+
+    .badge-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .brand-badge {
+      background-color: #0f172a;
+      color: #ffffff;
+      font-size: 8pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    .classification-tag {
+      background-color: #fef2f2;
+      color: #b91c1c;
+      border: 1px solid #fecaca;
+      font-size: 7.5pt;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    .cover-title {
+      font-size: 22pt;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.15;
+      margin: 10px 0 6px 0;
+      letter-spacing: -0.4px;
+    }
+
+    .cover-subtitle {
+      font-size: 11pt;
+      color: #475569;
+      font-weight: 500;
+      line-height: 1.4;
+      margin-bottom: 16px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin: 16px 0;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .meta-label {
+      font-size: 7pt;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #64748b;
+      letter-spacing: 0.5px;
+    }
+
+    .meta-value {
+      font-size: 9.5pt;
+      font-weight: 700;
+      color: #0f172a;
+      margin-top: 1px;
+    }
+
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin: 16px 0;
+    }
+
+    .kpi-card {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-top: 3px solid #0f172a;
+      border-radius: 5px;
+      padding: 10px 8px;
+      text-align: center;
+    }
+
+    .kpi-card.critical { border-top-color: #dc2626; background: #fff5f5; }
+    .kpi-card.warning { border-top-color: #ea580c; background: #fffaf0; }
+    .kpi-card.info { border-top-color: #2563eb; background: #f0f7ff; }
+
+    .kpi-number {
+      font-size: 18pt;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.1;
+    }
+
+    .kpi-card.critical .kpi-number { color: #dc2626; }
+    .kpi-card.warning .kpi-number { color: #c2410c; }
+    .kpi-card.info .kpi-number { color: #1d4ed8; }
+
+    .kpi-label {
+      font-size: 7pt;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #64748b;
+      margin-top: 2px;
+      letter-spacing: 0.4px;
+    }
+
+    /* Headings */
+    h1 {
+      font-size: 13pt;
+      font-weight: 800;
+      color: #0f172a;
+      border-bottom: 1.5px solid #0f172a;
+      padding-bottom: 3px;
+      margin-top: 8px;
+      margin-bottom: 8px;
+      letter-spacing: -0.2px;
+    }
+
+    h2 {
+      font-size: 9.5pt;
+      font-weight: 700;
+      color: #1e293b;
+      margin-top: 8px;
+      margin-bottom: 4px;
+      border-left: 3px solid #2563eb;
+      padding-left: 6px;
+    }
+
+    p {
+      margin: 0 0 6px 0;
+      color: #334155;
+      font-size: 8.2pt;
+      text-align: justify;
+      line-height: 1.35;
+    }
+
+    ul, ol {
+      margin: 0 0 8px 0;
+      padding-left: 16px;
+      font-size: 8.2pt;
+      color: #334155;
+      line-height: 1.35;
+    }
+
+    li {
+      margin-bottom: 2px;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 6px 0 8px 0;
+      font-size: 7.5pt;
+    }
+
+    th {
+      background-color: #0f172a;
+      color: #ffffff;
+      font-weight: 600;
+      text-align: left;
+      padding: 5px 6px;
+      border: 1px solid #0f172a;
+      text-transform: uppercase;
+      font-size: 6.8pt;
+      letter-spacing: 0.4px;
+    }
+
+    td {
+      padding: 4px 6px;
+      border: 1px solid #cbd5e1;
+      color: #1e293b;
+      vertical-align: top;
+      line-height: 1.25;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-block;
+      padding: 1px 4px;
+      border-radius: 2px;
+      font-size: 6pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+
+    .badge-critical { background: #fee2e2; color: #991b1b; border: 1px solid #f87171; }
+    .badge-high { background: #ffedd5; color: #9a3412; border: 1px solid #fb923c; }
+    .badge-medium { background: #fef9c3; color: #854d0e; border: 1px solid #facc15; }
+    .badge-low { background: #e0f2fe; color: #075985; border: 1px solid #38bdf8; }
+    .badge-trusted { background: #dcfce7; color: #166534; border: 1px solid #4ade80; }
+    .badge-unconfigured { background: #f1f5f9; color: #475569; border: 1px solid #94a3b8; }
+
+    /* Callout Boxes */
+    .callout {
+      border-left: 3px solid #0f172a;
+      background: #f8fafc;
+      padding: 6px 10px;
+      margin: 8px 0;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .callout.danger {
+      border-left-color: #dc2626;
+      background: #fef2f2;
+    }
+
+    .callout.warning {
+      border-left-color: #ea580c;
+      background: #fffaf0;
+    }
+
+    .callout.info {
+      border-left-color: #2563eb;
+      background: #eff6ff;
+    }
+
+    .callout-title {
+      font-size: 7.8pt;
+      font-weight: 700;
+      margin-bottom: 2px;
+      color: #0f172a;
+    }
+
+    .callout.danger .callout-title { color: #991b1b; }
+    .callout.warning .callout-title { color: #9a3412; }
+    .callout.info .callout-title { color: #1e40af; }
+
+    .callout-content {
+      font-size: 7.5pt;
+      color: #334155;
+      line-height: 1.35;
+    }
+
+    /* Code blocks */
+    pre {
+      background: #0f172a;
+      color: #f1f5f9;
+      padding: 6px 8px;
+      border-radius: 4px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 6.2pt;
+      line-height: 1.25;
+      white-space: pre-wrap;
+      word-break: break-all;
+      margin: 4px 0 8px 0;
+      border: 1px solid #1e293b;
+    }
+
+    /* Sign-off section */
+    .signature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .sig-box {
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      padding: 8px;
+      background: #f8fafc;
+    }
+
+    .sig-line {
+      margin-top: 20px;
+      border-bottom: 1px solid #475569;
+    }
+
+    .sig-title {
+      font-size: 7.2pt;
+      font-weight: 700;
+      color: #0f172a;
+      margin-top: 3px;
+    }
+
+    .sig-sub {
+      font-size: 6.2pt;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== PAGE 1: COVER PAGE ==================== -->
+  <div class="page cover-page">
+    <div class="cover-top">
+      <div class="badge-bar">
+        <span class="brand-badge">ADMINLENS GOVERNANCE INTELLIGENCE</span>
+        <span class="classification-tag">CONFIDENTIAL & PRIVILEGED</span>
+      </div>
+      <div class="cover-title">Third-Party SaaS & OAuth Application Compliance Audit</div>
+      <div class="cover-subtitle">
+        Statutory GDPR Legal Investigation, Fiduciary Risk Assessment, and Google Workspace App Access Control Audit for Educational Institutions
+      </div>
+
+      <div class="meta-grid">
+        <div class="meta-item">
+          <span class="meta-label">Audited Educational Domain</span>
+          <span class="meta-value">gafe.co.za (Google Workspace for Education)</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Primary Compliance Framework</span>
+          <span class="meta-value">EU General Data Protection Regulation (Reg 2016/679) & UK GDPR</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Secondary Jurisdictional Benchmarks</span>
+          <span class="meta-value">POPIA (South Africa Act 4 of 2013) / FERPA & COPPA (USA)</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Audit Window & Baseline Dataset</span>
+          <span class="meta-value">September 2026 (180-Day Google Admin SDK Timeline)</span>
+        </div>
+      </div>
+
+      <div class="kpi-row">
+        <div class="kpi-card">
+          <div class="kpi-number">2,059</div>
+          <div class="kpi-label">Total Applications</div>
+        </div>
+        <div class="kpi-card critical">
+          <div class="kpi-number">2,038</div>
+          <div class="kpi-label">Unconfigured Shadow IT</div>
+        </div>
+        <div class="kpi-card critical">
+          <div class="kpi-number">27</div>
+          <div class="kpi-label">Super Admin Tokens</div>
+        </div>
+        <div class="kpi-card warning">
+          <div class="kpi-number">94</div>
+          <div class="kpi-label">Critical / High Risk</div>
+        </div>
+      </div>
+
+      <div class="callout danger">
+        <div class="callout-title">⚠️ EXECUTIVE COMPLIANCE SUMMARY</div>
+        <div class="callout-content">
+          This statutory investigation evaluated third-party SaaS and OAuth applications connected to the <code>gafe.co.za</code> educational domain. <strong>99.0% of external applications (2,038 apps)</strong> reside in an <strong>UNCONFIGURED</strong> state in Google Admin Console, bypassing mandatory Article 28 Data Processing Agreements (DPAs) and Article 30 Records of Processing Activities (ROPA). Furthermore, <strong>27 active OAuth tokens granted by 7 Super Administrators</strong> create immediate lateral takeover vectors to the institution's entire data store.
+        </div>
+      </div>
+    </div>
+
+    <div class="report-running-footer">
+      <span>Distribution: Board of Governors, Data Protection Officer (DPO) & Executive Leadership</span>
+      <span>AdminLens Audit Framework v1.0.0 • Page 1 of 6</span>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE 2: LEGAL & FIDUCIARY ANALYSIS ==================== -->
+  <div class="page">
+    <div class="report-running-header">
+      <span>AdminLens Compliance Audit Report — gafe.co.za</span>
+      <span>Section 1: Legal & Fiduciary Responsibilities</span>
+    </div>
+
+    <div>
+      <h1>1. Legal Framework: Fiduciary & Statutory Responsibilities in Education</h1>
+
+      <h2>1.1 The Fiduciary Duties of Educational Leadership</h2>
+      <p>
+        School Boards, Trustees, Principals, and Executive Leadership hold a direct <strong>Fiduciary Duty of Care and Diligence</strong>. In modern digital education, personal data—specifically that of minor students—is an institutional asset and a legally protected class. Under corporate and charity governance law:
+      </p>
+      <ul>
+        <li><strong>Non-Delegable Accountability</strong>: While technical configuration is assigned to IT personnel, ultimate legal liability for data breaches, unlawful processing, and regulatory sanctions rests strictly with the institution's governing body.</li>
+        <li><strong>Child Safeguarding as a Legal Standard</strong>: Educational data contains sensitive behavioral records, academic assessments, communications, and safeguarding notes. Failing to control the egress of minors' data to unvetted commercial vendors constitutes a breach of safeguarding duty.</li>
+        <li><strong>Supply Chain & Vendor Risk Governance</strong>: When an institution permits software integrations, it is legally contracting out the processing of student and staff personal data. Leadership has a duty to perform pre-acquisition due diligence, ongoing monitoring, and incident response.</li>
+      </ul>
+
+      <h2>1.2 Global Regulatory Landscape: The Broad Spectrum</h2>
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 20%;">Jurisdiction / Law</th>
+            <th style="width: 24%;">Legal Classification</th>
+            <th style="width: 33%;">Core Mandate for Third-Party Apps</th>
+            <th style="width: 23%;">Statutory Non-Compliance Risk</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>EU GDPR / UK GDPR</strong><br>(Regulation 2016/679)</td>
+            <td>School is <strong>Data Controller</strong>;<br>Vendor is <strong>Data Processor</strong>.</td>
+            <td>Mandatory Article 28 DPA, Article 30 ROPA, Article 35 DPIA for high-risk tools, strict data minimisation (Art. 5).</td>
+            <td>Administrative fines up to €20M / 4% global turnover; binding processing bans.</td>
+          </tr>
+          <tr>
+            <td><strong>POPIA (South Africa)</strong><br>(Act 4 of 2013)</td>
+            <td>School is <strong>Responsible Party</strong>;<br>Vendor is <strong>Operator</strong>.</td>
+            <td>Condition 7 security safeguards; Section 34 general prohibition on processing children's personal data without authorization.</td>
+            <td>Administrative fines up to ZAR 10M, civil lawsuits, public enforcement notices.</td>
+          </tr>
+          <tr>
+            <td><strong>FERPA & COPPA</strong><br>(United States)</td>
+            <td>Direct Institutional Control / In Loco Parentis.</td>
+            <td>FERPA "School Official" exemption requires vendor to be under direct school control. COPPA forbids non-educational tracking under 13.</td>
+            <td>Loss of federal educational funding; FTC civil monetary enforcement.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>1.3 Regulatory Enforcement Precedents: The European Experience</h2>
+      <p>
+        The risks of unvetted cloud software in education are demonstrated by landmark European Data Protection Authority decisions:
+      </p>
+      <ul>
+        <li><strong>The Danish Datatilsynet Landmark Ruling (Helsingør Municipality)</strong>: In 2022–2024, the Danish DPA issued an injunction banning municipal schools from utilizing Google Workspace and Chromebooks due to lack of control over third-party sub-processors, secondary telemetry use, and unlawful US data transfers. The DPA explicitly reprimanded the municipality for failing to act as an accountable Data Controller.</li>
+        <li><strong>Dutch SIVON & SURF Sectoral DPIA</strong>: Dutch educational authorities negotiated mandatory contractual and technical mitigations with Google, requiring strict purpose limitation, elimination of advertising/profiling on student accounts, and granular administrative controls over third-party extensions.</li>
+      </ul>
+    </div>
+
+    <div class="report-running-footer">
+      <span>AdminLens Compliance Engine • Domain: gafe.co.za</span>
+      <span>Confidential & Privileged • Page 2 of 6</span>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE 3: GDPR NARROW SCOPE ==================== -->
+  <div class="page">
+    <div class="report-running-header">
+      <span>AdminLens Compliance Audit Report — gafe.co.za</span>
+      <span>Section 2: GDPR Narrow Scope & Audit Taxonomy</span>
+    </div>
+
+    <div>
+      <h1>2. GDPR Narrow Scope: Specific Mandates for Third-Party OAuth Apps</h1>
+      <p>
+        Under <strong>GDPR (and UK GDPR)</strong>, third-party OAuth applications in Google Workspace trigger specific statutory requirements:
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 14%;">GDPR Article</th>
+            <th style="width: 24%;">Statutory Requirement</th>
+            <th style="width: 38%;">Third-Party OAuth App Application</th>
+            <th style="width: 24%;">Compliance Status in gafe.co.za</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Art. 5(1)(c)</strong></td>
+            <td><strong>Data Minimisation</strong></td>
+            <td>Apps must only request scopes strictly necessary for educational function. Full-Drive/full-Gmail scopes violate this rule.</td>
+            <td><span class="badge badge-critical">NON-COMPLIANT</span><br>5 apps hold full Drive access; multiple hold full Gmail.</td>
+          </tr>
+          <tr>
+            <td><strong>Art. 5(1)(e)</strong></td>
+            <td><strong>Storage Limitation</strong></td>
+            <td>Access tokens and historical app permissions must not persist indefinitely when no longer in active use.</td>
+            <td><span class="badge badge-high">NON-COMPLIANT</span><br>16 dormant "Trusted" apps retained without active users.</td>
+          </tr>
+          <tr>
+            <td><strong>Art. 5(1)(f) & 32</strong></td>
+            <td><strong>Security of Processing (TOMs)</strong></td>
+            <td>Implementation of technical access controls to prevent unauthorized access or privilege escalation.</td>
+            <td><span class="badge badge-critical">NON-COMPLIANT</span><br>27 tokens on Super Admin accounts create lateral takeover paths.</td>
+          </tr>
+          <tr>
+            <td><strong>Art. 8 & Rec. 38</strong></td>
+            <td><strong>Children's Data Protection</strong></td>
+            <td>Prohibits behavioral tracking, automated profiling, and commercial harvesting of minor students.</td>
+            <td><span class="badge badge-high">AT RISK</span><br>Unconfigured apps enable ad-supported tools to track students.</td>
+          </tr>
+          <tr>
+            <td><strong>Art. 24 & 25</strong></td>
+            <td><strong>Privacy by Design & Default</strong></td>
+            <td>Default institutional configuration must prevent unauthorized third-party data egress.</td>
+            <td><span class="badge badge-critical">NON-COMPLIANT</span><br>2,038 unconfigured apps demonstrate open-by-default posture.</td>
+          </tr>
+          <tr>
+            <td><strong>Art. 28</strong></td>
+            <td><strong>Processor Agreements (DPA)</strong></td>
+            <td>Mandatory binding legal contract detailing data types, duration, security, and audit rights.</td>
+            <td><span class="badge badge-critical">MAJOR BREACH</span><br>Vast majority of 2,038 shadow apps lack institutional DPAs.</td>
+          </tr>
+          <tr>
+            <td><strong>Art. 30</strong></td>
+            <td><strong>Records of Processing (ROPA)</strong></td>
+            <td>Exhaustive, maintained register of all external data processors, data categories, and recipients.</td>
+            <td><span class="badge badge-high">NON-COMPLIANT</span><br>Shadow IT apps absent from institutional ROPA register.</td>
+          </tr>
+          <tr>
+            <td><strong>Art. 44–49</strong></td>
+            <td><strong>International Data Transfers</strong></td>
+            <td>Verification of EU-US Data Privacy Framework (DPF) certification or Standard Contractual Clauses (SCCs).</td>
+            <td><span class="badge badge-high">UNVERIFIED</span><br>Numerous US SaaS vendors unvetted for transfer legality.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>2.1 The Seven Mandatory Audits Educational Institutions Must Conduct</h2>
+      <ol>
+        <li><strong>Application Discovery & Census Audit</strong>: Complete inventory reconciliation between Google Admin Reports API audit events and live Directory API tokens (`users.tokens.list`).</li>
+        <li><strong>Scope Threat & Privilege Audit</strong>: Categorization of requested OAuth scopes on a 1–5 threat scale, identifying restricted scopes (e.g. `mail.google.com`, `drive`, `contacts`).</li>
+        <li><strong>Administrative Blast Radius Audit</strong>: Identification of high-privilege Super Admin accounts holding third-party OAuth grants.</li>
+        <li><strong>App Access Control Baseline Audit</strong>: Verification that Google Admin Console App Access Control is locked down rather than left unconfigured.</li>
+        <li><strong>Token Lifecycle & Dormancy Audit</strong>: Identification and automated revocation of stale/orphan tokens (inactivity &gt; 90 days).</li>
+        <li><strong>Vendor Due Diligence & Breach Audit</strong>: Verification of publisher verification status, active DPA contracts, and historical security incidents.</li>
+        <li><strong>Cross-Border Transfer Audit</strong>: Verification of vendor data hosting residency and international transfer mechanisms (SCCs/DPF).</li>
+      </ol>
+    </div>
+
+    <div class="report-running-footer">
+      <span>AdminLens Compliance Engine • Domain: gafe.co.za</span>
+      <span>Confidential & Privileged • Page 3 of 6</span>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE 4: TECHNICAL AUDIT FINDINGS ==================== -->
+  <div class="page">
+    <div class="report-running-header">
+      <span>AdminLens Compliance Audit Report — gafe.co.za</span>
+      <span>Section 3: Technical Audit Findings & Inventory</span>
+    </div>
+
+    <div>
+      <h1>3. Technical Audit Findings: Tenant Inventory (`gafe.co.za`)</h1>
+
+      <h2>3.1 Top Critical & High-Risk Unconfigured Applications</h2>
+      <p>
+        The following applications possess critical permissions but reside in an <strong>UNCONFIGURED</strong> state in Google Admin Console—meaning any student or staff member can authorize them without central IT review:
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 28%;">Application Name</th>
+            <th style="width: 24%;">Vendor / Publisher</th>
+            <th style="width: 13%;">Risk Score</th>
+            <th style="width: 15%;">Policy Status</th>
+            <th style="width: 20%;">Primary Threat Vector</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Yet Another Mail Merge (YAMM)</strong></td>
+            <td>YAMM / Anvil SAS</td>
+            <td><span class="badge badge-critical">5.00 CRITICAL</span></td>
+            <td><span class="badge badge-unconfigured">UNCONFIGURED</span></td>
+            <td>Full Gmail send/read/draft impersonation.</td>
+          </tr>
+          <tr>
+            <td><strong>Mergo</strong></td>
+            <td>Mergo Inc.</td>
+            <td><span class="badge badge-critical">5.00 CRITICAL</span></td>
+            <td><span class="badge badge-unconfigured">UNCONFIGURED</span></td>
+            <td>Mass mailing & mailbox access.</td>
+          </tr>
+          <tr>
+            <td><strong>Chromebook Getter</strong></td>
+            <td>CDW / Amplified IT</td>
+            <td><span class="badge badge-critical">4.36 CRITICAL</span></td>
+            <td><span class="badge badge-unconfigured">UNCONFIGURED</span></td>
+            <td>Chrome OS device & directory management.</td>
+          </tr>
+          <tr>
+            <td><strong>autoCrat</strong></td>
+            <td>New Visions CloudLab</td>
+            <td><span class="badge badge-critical">4.62 CRITICAL</span></td>
+            <td><span class="badge badge-unconfigured">UNCONFIGURED</span></td>
+            <td>Full Google Drive read/write & sheet access.</td>
+          </tr>
+          <tr>
+            <td><strong>Signeasy</strong></td>
+            <td>Signeasy Inc.</td>
+            <td><span class="badge badge-critical">4.72 CRITICAL</span></td>
+            <td><span class="badge badge-unconfigured">UNCONFIGURED</span></td>
+            <td>Document extraction & digital signature store.</td>
+          </tr>
+          <tr>
+            <td><strong>n8n.cloud</strong></td>
+            <td>n8n GmbH</td>
+            <td><span class="badge badge-critical">4.59 CRITICAL</span></td>
+            <td><span class="badge badge-unconfigured">UNCONFIGURED</span></td>
+            <td>Automated workflow execution & data exfiltration.</td>
+          </tr>
+          <tr>
+            <td><strong>Mailtrack / Mail Merge</strong></td>
+            <td>Mailtrack Inc.</td>
+            <td><span class="badge badge-critical">4.56 CRITICAL</span></td>
+            <td><span class="badge badge-unconfigured">UNCONFIGURED</span></td>
+            <td>Tracking beacons & mailbox scanning.</td>
+          </tr>
+          <tr>
+            <td><strong>Lusha (Web Application)</strong></td>
+            <td>Lusha Systems Inc.</td>
+            <td><span class="badge badge-high">3.23 HIGH</span></td>
+            <td><span class="badge badge-unconfigured">UNCONFIGURED</span></td>
+            <td>Contact & directory scraping.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>3.2 Super Administrator Token Exposure Ledger</h2>
+      <div class="callout danger">
+        <div class="callout-title">🚨 CATASTROPHIC BLAST RADIUS: SUPER ADMIN TOKENS DETECTED</div>
+        <div class="callout-content">
+          <strong>7 Super Administrators hold 27 active third-party OAuth grants</strong>. Under GDPR Art. 32, failing to ring-fence administrative accounts from third-party application consent represents gross organizational negligence.
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 28%;">Super Admin Account</th>
+            <th style="width: 14%;">Active Tokens</th>
+            <th style="width: 38%;">Key Applications Authorized</th>
+            <th style="width: 20%;">Remediation Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>alister@gafe.co.za</code></td>
+            <td><strong>9 tokens</strong></td>
+            <td>Chromebook Getter, GAM Creation, Gemini Studio, Apple Business Mgr</td>
+            <td><span class="badge badge-critical">IMMEDIATE REVOCATION</span></td>
+          </tr>
+          <tr>
+            <td><code>deidre@gafe.co.za</code></td>
+            <td><strong>5 tokens</strong></td>
+            <td>Chromebook Getter, Unverified Scripts, Core Admin Tools</td>
+            <td><span class="badge badge-critical">IMMEDIATE REVOCATION</span></td>
+          </tr>
+          <tr>
+            <td><code>karien@gafe.co.za</code></td>
+            <td><strong>4 tokens</strong></td>
+            <td>Chromebook Getter, Wayground (Quizizz), Internal Scripts</td>
+            <td><span class="badge badge-critical">IMMEDIATE REVOCATION</span></td>
+          </tr>
+          <tr>
+            <td><code>kevin@gafe.co.za</code></td>
+            <td><strong>4 tokens</strong></td>
+            <td>Gemini Studio, Google Chat Studio, Unverified Tools</td>
+            <td><span class="badge badge-critical">IMMEDIATE REVOCATION</span></td>
+          </tr>
+          <tr>
+            <td><code>farrakhan@gafe.co.za</code></td>
+            <td><strong>3 tokens</strong></td>
+            <td>GAM Project Creation, Third-Party Administrative Tools</td>
+            <td><span class="badge badge-critical">IMMEDIATE REVOCATION</span></td>
+          </tr>
+          <tr>
+            <td><code>pavel@gafe.co.za</code></td>
+            <td><strong>1 token</strong></td>
+            <td>Third-Party Extension Client</td>
+            <td><span class="badge badge-critical">IMMEDIATE REVOCATION</span></td>
+          </tr>
+          <tr>
+            <td><code>themba@gafe.co.za</code></td>
+            <td><strong>1 token</strong></td>
+            <td>Third-Party Extension Client</td>
+            <td><span class="badge badge-critical">IMMEDIATE REVOCATION</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="report-running-footer">
+      <span>AdminLens Compliance Engine • Domain: gafe.co.za</span>
+      <span>Confidential & Privileged • Page 4 of 6</span>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE 5: DORMANT APPS & SUPPLY CHAIN ==================== -->
+  <div class="page">
+    <div class="report-running-header">
+      <span>AdminLens Compliance Audit Report — gafe.co.za</span>
+      <span>Section 4: Dormant Apps & Supply Chain Posture</span>
+    </div>
+
+    <div>
+      <h1>4. Compliance Vulnerabilities: Dormant Tokens & Supply Chain</h1>
+
+      <h2>4.1 Dormant "Trusted" Applications (Policy Backdoors)</h2>
+      <p>
+        An application marked as <code>TRUSTED</code> in Google Admin Console bypasses all scope restrictions. When an app is abandoned or unused, leaving it marked as <code>TRUSTED</code> grants a permanent, dormant backdoor to the vendor's cloud environment:
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 28%;">Application Name</th>
+            <th style="width: 26%;">Vendor</th>
+            <th style="width: 14%;">Active Users</th>
+            <th style="width: 14%;">Console Status</th>
+            <th style="width: 18%;">Recommended Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Mailsuite</strong></td>
+            <td>Mailtrack / Mailsuite, S.L.</td>
+            <td>0 Users</td>
+            <td><span class="badge badge-trusted">TRUSTED</span></td>
+            <td><span class="badge badge-high">DOWNGRADE TO BLOCKED</span></td>
+          </tr>
+          <tr>
+            <td><strong>OrbitNote (Web Application)</strong></td>
+            <td>Texthelp Ltd.</td>
+            <td>0 Users (6 Entries)</td>
+            <td><span class="badge badge-trusted">TRUSTED</span></td>
+            <td><span class="badge badge-medium">DOWNGRADE TO LIMITED</span></td>
+          </tr>
+          <tr>
+            <td><strong>Canva (Android / Web)</strong></td>
+            <td>Canva Pty Ltd</td>
+            <td>0 Users</td>
+            <td><span class="badge badge-trusted">TRUSTED</span></td>
+            <td><span class="badge badge-medium">DOWNGRADE TO LIMITED</span></td>
+          </tr>
+          <tr>
+            <td><strong>Zoho CalSync (Android)</strong></td>
+            <td>Zoho Corporation</td>
+            <td>0 Users</td>
+            <td><span class="badge badge-trusted">TRUSTED</span></td>
+            <td><span class="badge badge-high">DOWNGRADE TO BLOCKED</span></td>
+          </tr>
+          <tr>
+            <td><strong>Quizizz (Android Client)</strong></td>
+            <td>Quizizz Inc.</td>
+            <td>0 Users</td>
+            <td><span class="badge badge-trusted">TRUSTED</span></td>
+            <td><span class="badge badge-medium">DOWNGRADE TO LIMITED</span></td>
+          </tr>
+          <tr>
+            <td><strong>MyLogin (Web Application)</strong></td>
+            <td>Wonde Ltd (MyLogin)</td>
+            <td>1 User</td>
+            <td><span class="badge badge-trusted">TRUSTED</span></td>
+            <td><span class="badge badge-low">RETAIN WITH AUDIT</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>4.2 Vendor Breach History & Supply Chain Threat Tracking</h2>
+      <p>
+        Under GDPR Article 28, the Data Controller must continuously verify the technical security of vendors. AdminLens actively ring-fences vendors with public breach histories:
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 25%;">Vendor / Tool</th>
+            <th style="width: 16%;">Incident Date</th>
+            <th style="width: 36%;">Breach Details & Scope of Impact</th>
+            <th style="width: 23%;">Governance Requirement</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Canva Pty Ltd</strong><br>(Canva Charts / Web)</td>
+            <td>2019-05-24</td>
+            <td>139M user accounts exposed; customer credentials, salt/hashed passwords exfiltrated.</td>
+            <td>Mandatory verification of SSO passwordless enforcement & DPA addendum.</td>
+          </tr>
+          <tr>
+            <td><strong>Bitly, Inc.</strong><br>(Bitly URL Shortener)</td>
+            <td>2014-05-08</td>
+            <td>Account credential compromise; unauthorized adversary access to OAuth tokens.</td>
+            <td>Token rotation verification; restrict to non-administrative organizational units.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout warning">
+        <div class="callout-title">⚠️ SUPPLY CHAIN MONITORING POLICY MANDATE</div>
+        <div class="callout-content">
+          Vendors with historical security incidents must undergo annual technical posture re-evaluations. Ensure that third-party tokens are segmented from Super Admin accounts and strictly prohibited from accessing restricted Google Workspace scopes.
+        </div>
+      </div>
+    </div>
+
+    <div class="report-running-footer">
+      <span>AdminLens Compliance Engine • Domain: gafe.co.za</span>
+      <span>Confidential & Privileged • Page 5 of 6</span>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE 6: REMEDIATION & SIGN-OFF ==================== -->
+  <div class="page">
+    <div class="report-running-header">
+      <span>AdminLens Compliance Audit Report — gafe.co.za</span>
+      <span>Section 5: Remediation Playbooks & Sign-off</span>
+    </div>
+
+    <div>
+      <h1>5. Actionable Remediation Plan & Institutional Sign-Off</h1>
+
+      <h2>5.1 Playbook 1: Immediate Super Admin Token Revocation (GAM CLI)</h2>
+      <p>
+        Execute the following automated Google Apps Manager (GAM) batch script to immediately revoke all 27 Super Admin tokens:
+      </p>
+
+      <pre>#!/bin/bash
+# --- 1. Revoke Tokens for alister@gafe.co.za (9 Tokens) ---
+gam user alister@gafe.co.za delete token clientid 871655740233-iad5enbpe9r7o18h2ajle4vdd51vhflp.apps.googleusercontent.com
+gam user alister@gafe.co.za delete token clientid 696916210722-n0mvdqjq01ebg21eeaeraggm9vb0jbr6.apps.googleusercontent.com
+gam user alister@gafe.co.za delete token clientid 297408095146-fug707qsjv4ikron0hugpevbrjhkmsk7.apps.googleusercontent.com
+gam user alister@gafe.co.za delete token clientid 458969862783-1smfdj4v8qbnibgarka1a99400lhsa13.apps.googleusercontent.com
+gam user alister@gafe.co.za delete token clientid 72867247940-n969jo6c29qg22m8sodb2hftn6dck1mk.apps.googleusercontent.com
+gam user alister@gafe.co.za delete token clientid 521549528509-f17hlgjd91nbi5sooc73ia3d4dqln10s.apps.googleusercontent.com
+gam user alister@gafe.co.za delete token clientid 296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com
+gam user alister@gafe.co.za delete token clientid 823511539352-ojaretejk1s95sdvkic0te923pt7knpu.apps.googleusercontent.com
+gam user alister@gafe.co.za delete token clientid 821073268825-uj405qcuu2pbpq5ab05rsupc98ldq2ou.apps.googleusercontent.com
+
+# --- 2. Revoke Tokens for deidre, karien, kevin, farrakhan, pavel, themba (18 Tokens) ---
+gam user deidre@gafe.co.za delete token clientid 946018238758-bi6ni53dfoddlgn97pk3b8i7nphige40.apps.googleusercontent.com
+gam user deidre@gafe.co.za delete token clientid 871655740233-iad5enbpe9r7o18h2ajle4vdd51vhflp.apps.googleusercontent.com
+gam user deidre@gafe.co.za delete token clientid 953348912797-h2fo9tmk42mnrkk0kc6gula9i8ipv3re.apps.googleusercontent.com
+gam user deidre@gafe.co.za delete token clientid 718809722883-l2mt5r2m2omka59ahjm1js78slbubsd7.apps.googleusercontent.com
+gam user deidre@gafe.co.za delete token clientid 936475272427.apps.googleusercontent.com
+gam user karien@gafe.co.za delete token clientid 871655740233-iad5enbpe9r7o18h2ajle4vdd51vhflp.apps.googleusercontent.com
+gam user karien@gafe.co.za delete token clientid 936475272427.apps.googleusercontent.com
+gam user karien@gafe.co.za delete token clientid 968320677628-ort3v6hao1mu08d1i4eg97it7rgo7e43.apps.googleusercontent.com
+gam user karien@gafe.co.za delete token clientid 58172892053-faol054co4k3tsmtbtuk41v4si41slq0.apps.googleusercontent.com
+gam user kevin@gafe.co.za delete token clientid 296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com
+gam user kevin@gafe.co.za delete token clientid 936475272427.apps.googleusercontent.com
+gam user kevin@gafe.co.za delete token clientid 469390422673-r0p2tar3lgjlnhtsv4t4uonq4bi2svf8.apps.googleusercontent.com
+gam user kevin@gafe.co.za delete token clientid 873507009103-gi4ff8nkju6ggaurt6ebbiqrfmr0c79j.apps.googleusercontent.com
+gam user farrakhan@gafe.co.za delete token clientid 297408095146-fug707qsjv4ikron0hugpevbrjhkmsk7.apps.googleusercontent.com
+gam user farrakhan@gafe.co.za delete token clientid 585538275436-4lk6emnir2l22atsdk61fstd4nhkgbku.apps.googleusercontent.com
+gam user farrakhan@gafe.co.za delete token clientid 936475272427.apps.googleusercontent.com
+gam user pavel@gafe.co.za delete token clientid 936475272427.apps.googleusercontent.com
+gam user themba@gafe.co.za delete token clientid 936475272427.apps.googleusercontent.com
+echo "✓ Remediated: All 27 high-privilege Super Admin tokens revoked."</pre>
+
+      <h2>5.2 Playbook 2: Google Admin Console Global Policy Lockdown</h2>
+      <ol>
+        <li>Navigate to <strong>Security &gt; Access and data control &gt; API controls &gt; App access control</strong>.</li>
+        <li>Under <strong>Settings</strong>, set Unconfigured third-party apps to <strong>"Block all third-party apps unless explicitly approved"</strong>.</li>
+        <li>Under <strong>App Access Control</strong>, downgrade the 16 dormant applications from <code>TRUSTED</code> to <code>LIMITED</code> or <code>BLOCKED</code>.</li>
+        <li>Under <strong>Organizational Units (OUs)</strong>, restrict sensitive app permissions exclusively to Staff OUs; block third-party API consent for Student OUs.</li>
+      </ol>
+
+      <h2>5.3 Institutional Sign-Off & Verification Block</h2>
+      <div class="signature-grid">
+        <div class="sig-box">
+          <div class="sig-line"></div>
+          <div class="sig-title">Data Protection Officer (DPO)</div>
+          <div class="sig-sub">Attestation of Statutory Compliance</div>
+          <div class="sig-sub" style="margin-top: 6px;">Date: ________________________</div>
+        </div>
+        <div class="sig-box">
+          <div class="sig-line"></div>
+          <div class="sig-title">Head of School / Principal</div>
+          <div class="sig-sub">Executive Duty of Care Sign-Off</div>
+          <div class="sig-sub" style="margin-top: 6px;">Date: ________________________</div>
+        </div>
+        <div class="sig-box">
+          <div class="sig-line"></div>
+          <div class="sig-title">Chair of the Board of Governors</div>
+          <div class="sig-sub">Fiduciary Governance Acceptance</div>
+          <div class="sig-sub" style="margin-top: 6px;">Date: ________________________</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="report-running-footer">
+      <span>AdminLens Compliance Engine • Audit ID: AL-2026-GAFE-01</span>
+      <span>Mandatory 90-Day Recertification Cadence • Page 6 of 6</span>
+    </div>
+  </div>
+
+</body>
+</html>
