@@ -3,7 +3,7 @@
 import Link from "next/link";
 import React, { useMemo,useState } from "react";
 
-import { GoogleAdminIcon,GoogleProductIcon } from "@/components/google-icons";
+import { GoogleAdminIcon, GoogleAppsScriptIcon, GoogleProductIcon } from "@/components/google-icons";
 import GoogleVerifiedBadge from "@/components/google-verified-badge";
 
 export interface ApplicationScope {
@@ -69,6 +69,8 @@ export interface ApplicationsViewProps {
   isBackend?: boolean;
   title?: string;
   hideTitle?: boolean;
+  defaultSegment?: "third_party" | "internal";
+  onSegmentChange?: (segment: "third_party" | "internal") => void;
 }
 
 export default function ApplicationsView({
@@ -76,15 +78,42 @@ export default function ApplicationsView({
   isBackend = true,
   title,
   hideTitle = false,
+  defaultSegment = "third_party",
+  onSegmentChange,
 }: ApplicationsViewProps) {
   const [apps, setApps] = useState<ApplicationItem[]>(initialApps);
-  const [viewMode, setViewMode] = useState<"family" | "list">("family");
+  const [segmentTab, setSegmentTab] = useState<"third_party" | "internal">(defaultSegment);
+  const [viewMode, setViewMode] = useState<"family" | "list">(defaultSegment === "internal" ? "list" : "family");
   const [expandedFamilies, setExpandedFamilies] = useState<Set<string>>(new Set());
 
   // Sync state if initialApps prop changes
   React.useEffect(() => {
     setApps(initialApps);
   }, [initialApps]);
+
+  // Sync segmentTab if defaultSegment prop changes
+  React.useEffect(() => {
+    if (defaultSegment) {
+      setSegmentTab(defaultSegment);
+      if (defaultSegment === "internal") {
+        setViewMode("list");
+      }
+    }
+  }, [defaultSegment]);
+
+  const handleSegmentChange = (tab: "third_party" | "internal") => {
+    setSegmentTab(tab);
+    setCurrentPage(1);
+    setCatalogFilter("ALL");
+    if (tab === "internal") {
+      setViewMode("list");
+    } else {
+      setViewMode("family");
+    }
+    if (onSegmentChange) {
+      onSegmentChange(tab);
+    }
+  };
 
   const toggleExpandFamily = (familyKey: string) => {
     setExpandedFamilies(prev => {
@@ -105,7 +134,7 @@ export default function ApplicationsView({
   const [selectedType, setSelectedType] = useState("ALL");
   const [selectedVerified, setSelectedVerified] = useState("ALL");
   const [selectedConfig, setSelectedConfig] = useState("ALL");
-  const [catalogFilter, setCatalogFilter] = useState<"ALL" | "VERIFIED" | "COMPLIANT" | "HIGH_RISK">("ALL");
+  const [catalogFilter, setCatalogFilter] = useState<"ALL" | "VERIFIED" | "COMPLIANT" | "HIGH_RISK" | "UNCONFIGURED" | "LOW_RISK">("ALL");
 
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
@@ -296,30 +325,36 @@ export default function ApplicationsView({
     }
   };
 
-  const getOwnershipBadge = (ownership?: string) => {
-    const own = ownership || "Third party";
-    const isGoogle = own.toLowerCase() === "google owned";
-    const isThirdParty = own.toLowerCase() === "third party";
+  const getOwnershipBadge = (ownership?: string, app?: ApplicationItem) => {
+    const isInternal = (ownership && (ownership.toLowerCase() === "internal" || ownership.toLowerCase().includes("internal"))) ||
+      (app && isInternalApp(app));
+    const own = (ownership || "Third party").toLowerCase();
+    const isGoogle = own === "google owned";
+    const isThirdParty = own === "third party";
     return (
       <span
         className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium border ${
-          isGoogle
+          isInternal
+            ? "bg-purple-50 text-purple-700 border-purple-200"
+            : isGoogle
             ? "bg-blue-50 text-blue-700 border-blue-200"
             : isThirdParty
-            ? "bg-purple-50 text-purple-700 border-purple-200"
+            ? "bg-indigo-50 text-indigo-700 border-indigo-200"
             : "bg-gray-100 text-gray-700 border-gray-200"
         }`}
       >
         <span
           className={`w-1.5 h-1.5 rounded-full ${
-            isGoogle
+            isInternal
+              ? "bg-purple-500"
+              : isGoogle
               ? "bg-blue-500"
               : isThirdParty
-              ? "bg-purple-500"
+              ? "bg-indigo-500"
               : "bg-gray-400"
           }`}
         />
-        {isGoogle ? "Google owned" : isThirdParty ? "Third party" : "Unknown"}
+        {isInternal ? "Internal" : isGoogle ? "Google owned" : isThirdParty ? "Third party" : "Unknown"}
       </span>
     );
   };
@@ -870,47 +905,108 @@ export default function ApplicationsView({
     return grouped;
   }, [apps]);
 
-  // Active dataset driven by viewMode
+  // Active dataset driven by viewMode and segmentTab
   const activeDataset = useMemo(() => {
+    if (segmentTab === "internal") {
+      return apps;
+    }
     return viewMode === "family" ? familyGroupedApps : apps;
-  }, [viewMode, familyGroupedApps, apps]);
+  }, [segmentTab, viewMode, familyGroupedApps, apps]);
 
-  // Metrics summary (strictly excluding any internal applications)
-  const metrics = useMemo(() => {
-    const nonInternal = activeDataset.filter(a => {
-      const isInternal =
-        a.ownership === "Internal" ||
-        (a.vendor && a.vendor.toLowerCase().includes("internal")) ||
-        (a.category && a.category.toLowerCase().includes("internal")) ||
-        (a.description && a.description.toLowerCase().includes("internal domain tool")) ||
-        (a.description && a.description.toLowerCase().includes("custom google apps script")) ||
-        (Array.isArray(a.compliance) && a.compliance.includes("Internal Tenant Only"));
-      return !isInternal;
+  // Internal application detection logic
+  const isInternalApp = (a: ApplicationItem) => {
+    const name = (a.displayName || "").toLowerCase();
+    const vendor = (a.vendor || "").toLowerCase();
+    const cat = (a.category || "").toLowerCase();
+    const desc = (a.description || "").toLowerCase();
+    const own = (a.ownership || "").toLowerCase();
+    const type = (a.appType || a.deploymentType || "").toLowerCase();
+
+    return (
+      own === "internal" ||
+      vendor.includes("internal") ||
+      cat.includes("internal") ||
+      desc.includes("internal domain tool") ||
+      desc.includes("custom google apps script") ||
+      type.includes("apps script") ||
+      name.includes("apps script") ||
+      name.includes("'s apps") ||
+      (Array.isArray(a.compliance) && a.compliance.includes("Internal Tenant Only"))
+    );
+  };
+
+  // Counts for the segment tabs (installed applications)
+  const { thirdPartyCount, internalCount } = useMemo(() => {
+    let tp = 0;
+    let intern = 0;
+    apps.forEach(a => {
+      if (isInternalApp(a)) {
+        intern++;
+      } else {
+        tp++;
+      }
     });
+    return { thirdPartyCount: tp, internalCount: intern };
+  }, [apps]);
 
-    const total = nonInternal.length;
-    const verified = nonInternal.filter(a => a.isVerified).length;
-    const googleOwned = nonInternal.filter(a => a.ownership?.toLowerCase() === "google owned").length;
-    const thirdParty = nonInternal.filter(a => a.ownership?.toLowerCase() === "third party").length;
-    const unknownOwnership = nonInternal.filter(a => a.ownership?.toLowerCase() === "unknown").length;
-    const highCritical = nonInternal.filter(a => a.riskLevel === "CRITICAL" || a.riskLevel === "HIGH").length;
-    const compliant = nonInternal.filter(a => a.compliance && (Array.isArray(a.compliance) ? a.compliance.length > 0 : Boolean(a.compliance))).length;
-    return { total, verified, googleOwned, thirdParty, unknownOwnership, highCritical, compliant };
-  }, [activeDataset]);
+  // Current segment apps (either third-party or internal)
+  const currentSegmentApps = useMemo(() => {
+    return activeDataset.filter(a => {
+      const internal = isInternalApp(a);
+      return segmentTab === "internal" ? internal : !internal;
+    });
+  }, [activeDataset, segmentTab]);
+
+  // Metrics summary
+  const metrics = useMemo(() => {
+    if (segmentTab === "internal") {
+      const total = currentSegmentApps.length;
+      const appsScripts = currentSegmentApps.filter(a => 
+        (a.appType || "").toLowerCase().includes("apps script") ||
+        (a.displayName || "").toLowerCase().includes("apps script") ||
+        (a.category || "").toLowerCase().includes("automation")
+      ).length;
+      const highCritical = currentSegmentApps.filter(a => a.riskLevel === "CRITICAL" || a.riskLevel === "HIGH").length;
+      const unconfigured = currentSegmentApps.filter(a => !a.adminAccessLevel || a.adminAccessLevel === "UNCONFIGURED").length;
+      const lowRisk = currentSegmentApps.filter(a => a.riskLevel === "LOW").length;
+      return {
+        total,
+        verified: 0,
+        googleOwned: 0,
+        thirdParty: 0,
+        unknownOwnership: 0,
+        highCritical,
+        compliant: 0,
+        appsScripts,
+        unconfigured,
+        lowRisk,
+      };
+    }
+
+    const total = currentSegmentApps.length;
+    const verified = currentSegmentApps.filter(a => a.isVerified).length;
+    const googleOwned = currentSegmentApps.filter(a => a.ownership?.toLowerCase() === "google owned").length;
+    const thirdParty = currentSegmentApps.filter(a => a.ownership?.toLowerCase() === "third party").length;
+    const unknownOwnership = currentSegmentApps.filter(a => a.ownership?.toLowerCase() === "unknown").length;
+    const highCritical = currentSegmentApps.filter(a => a.riskLevel === "CRITICAL" || a.riskLevel === "HIGH").length;
+    const compliant = currentSegmentApps.filter(a => a.compliance && (Array.isArray(a.compliance) ? a.compliance.length > 0 : Boolean(a.compliance))).length;
+    return {
+      total,
+      verified,
+      googleOwned,
+      thirdParty,
+      unknownOwnership,
+      highCritical,
+      compliant,
+      appsScripts: 0,
+      unconfigured: 0,
+      lowRisk: 0,
+    };
+  }, [currentSegmentApps, segmentTab]);
 
   // Filtering
   const filteredApps = useMemo(() => {
-    return activeDataset.filter(app => {
-      // Exclude any internal apps
-      const isInternal =
-        app.ownership === "Internal" ||
-        (app.vendor && app.vendor.toLowerCase().includes("internal")) ||
-        (app.category && app.category.toLowerCase().includes("internal")) ||
-        (app.description && app.description.toLowerCase().includes("internal domain tool")) ||
-        (app.description && app.description.toLowerCase().includes("custom google apps script")) ||
-        (Array.isArray(app.compliance) && app.compliance.includes("Internal Tenant Only"));
-      if (isInternal) return false;
-
+    return currentSegmentApps.filter(app => {
       const term = searchTerm.toLowerCase();
       const matchesSearch =
         !term ||
@@ -942,15 +1038,24 @@ export default function ApplicationsView({
       const hasCompliance = app.compliance && (Array.isArray(app.compliance) ? app.compliance.length > 0 : Boolean(app.compliance));
       const isHighRisk = app.riskLevel === "CRITICAL" || app.riskLevel === "HIGH";
 
-      const matchesTab =
-        catalogFilter === "ALL" ||
-        (catalogFilter === "VERIFIED" && app.isVerified) ||
-        (catalogFilter === "COMPLIANT" && hasCompliance) ||
-        (catalogFilter === "HIGH_RISK" && isHighRisk);
+      let matchesTab = true;
+      if (segmentTab === "internal") {
+        matchesTab =
+          catalogFilter === "ALL" ||
+          (catalogFilter === "HIGH_RISK" && isHighRisk) ||
+          ((catalogFilter as string) === "UNCONFIGURED" && (!app.adminAccessLevel || app.adminAccessLevel === "UNCONFIGURED")) ||
+          ((catalogFilter as string) === "LOW_RISK" && app.riskLevel === "LOW");
+      } else {
+        matchesTab =
+          catalogFilter === "ALL" ||
+          (catalogFilter === "VERIFIED" && app.isVerified) ||
+          (catalogFilter === "COMPLIANT" && hasCompliance) ||
+          (catalogFilter === "HIGH_RISK" && isHighRisk);
+      }
 
       return matchesSearch && matchesOwnership && matchesCat && matchesRisk && matchesType && matchesVerified && matchesConfig && matchesTab;
     });
-  }, [activeDataset, searchTerm, selectedOwnership, selectedCategory, selectedRisk, selectedType, selectedVerified, selectedConfig, catalogFilter]);
+  }, [currentSegmentApps, segmentTab, searchTerm, selectedOwnership, selectedCategory, selectedRisk, selectedType, selectedVerified, selectedConfig, catalogFilter]);
 
   // Pagination calculation
   const totalPages = Math.ceil(filteredApps.length / pageSize) || 1;
@@ -1168,89 +1273,219 @@ export default function ApplicationsView({
         </div>
       )}
 
-      {/* Metrics Row */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-        <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-xs">
-          <div className="text-xs font-semibold uppercase text-gray-400">
-            {isBackend ? "Total Global Catalog" : "Total Applications"}
-          </div>
-          <div className="text-2xl font-bold text-gray-800 mt-1">{metrics.total.toLocaleString()}</div>
-          <div className="text-xs text-gray-500 mt-1 flex items-center gap-1.5 truncate">
-            <span className="text-blue-600 font-semibold">{metrics.googleOwned} Google</span> ·{" "}
-            <span className="text-purple-600 font-semibold">{metrics.thirdParty} Third Party</span> ·{" "}
-            <span className="text-gray-500 font-semibold">{metrics.unknownOwnership} Unknown</span>
-          </div>
+      {/* Top Segmented Navigation Tabs: Third-Party Applications vs Internal Applications */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-gray-200 pb-3 mb-6">
+        <div className="inline-flex p-1 bg-gray-100 rounded-xl border border-gray-200 shadow-2xs">
+          <button
+            type="button"
+            onClick={() => handleSegmentChange("third_party")}
+            className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 ${
+              segmentTab === "third_party"
+                ? "bg-white text-blue-700 shadow-xs"
+                : "text-gray-600 hover:text-gray-900"
+            }`}
+          >
+            <span>🌐 Third-Party Applications</span>
+            <span
+              className={`text-xs px-2 py-0.5 rounded-full font-bold transition-colors ${
+                segmentTab === "third_party" ? "bg-blue-100 text-blue-800" : "bg-gray-200 text-gray-700"
+              }`}
+            >
+              {thirdPartyCount}
+            </span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => handleSegmentChange("internal")}
+            className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 ${
+              segmentTab === "internal"
+                ? "bg-white text-purple-700 shadow-xs"
+                : "text-gray-600 hover:text-gray-900"
+            }`}
+          >
+            <span>🏢 Internal Applications</span>
+            <span
+              className={`text-xs px-2 py-0.5 rounded-full font-bold transition-colors ${
+                segmentTab === "internal" ? "bg-purple-100 text-purple-800" : "bg-gray-200 text-gray-700"
+              }`}
+            >
+              {internalCount}
+            </span>
+          </button>
         </div>
 
-        <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-xs">
-          <div className="text-xs font-semibold uppercase text-gray-400">Google Verified Apps</div>
-          <div className="text-2xl font-bold text-blue-600 mt-1">{metrics.verified.toLocaleString()}</div>
-          <div className="text-xs text-gray-500 mt-1">
-            {metrics.total > 0 ? ((metrics.verified / metrics.total) * 100).toFixed(1) : "0.0"}% marketplace certified
+        {segmentTab === "internal" ? (
+          <div className="flex items-center gap-2 text-xs text-purple-800 bg-purple-50 px-3 py-1.5 rounded-lg border border-purple-200">
+            <span className="font-bold">🏢 Internal Tenant Scope:</span>
+            <span>Custom Google Apps Scripts, internal tools & domain developer automations</span>
           </div>
-        </div>
-
-        <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-xs">
-          <div className="text-xs font-semibold uppercase text-gray-400">Enterprise Compliant</div>
-          <div className="text-2xl font-bold text-emerald-600 mt-1">{metrics.compliant.toLocaleString()}</div>
-          <div className="text-xs text-gray-500 mt-1">SOC 2, ISO 27001, GDPR audited</div>
-        </div>
-
-        <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-xs">
-          <div className="text-xs font-semibold uppercase text-gray-400">High &amp; Critical Threat</div>
-          <div className="text-2xl font-bold text-rose-600 mt-1">{metrics.highCritical.toLocaleString()}</div>
-          <div className="text-xs text-gray-500 mt-1">Risk matrix assessment</div>
-        </div>
+        ) : (
+          <div className="flex items-center gap-2 text-xs text-gray-500">
+            <span>SaaS vendors, external integrations & marketplace add-ons</span>
+          </div>
+        )}
       </div>
+
+      {/* Metrics Row */}
+      {segmentTab === "internal" ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-xs">
+            <div className="text-xs font-semibold uppercase text-purple-600">Total Internal Automations</div>
+            <div className="text-2xl font-bold text-gray-800 mt-1">{metrics.total.toLocaleString()}</div>
+            <div className="text-xs text-gray-500 mt-1">Domain scripts & custom tools</div>
+          </div>
+
+          <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-xs">
+            <div className="text-xs font-semibold uppercase text-purple-600">Google Apps Scripts</div>
+            <div className="text-2xl font-bold text-purple-700 mt-1">{metrics.appsScripts.toLocaleString()}</div>
+            <div className="text-xs text-gray-500 mt-1">Standalone & container-bound</div>
+          </div>
+
+          <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-xs">
+            <div className="text-xs font-semibold uppercase text-rose-600">High &amp; Critical Threat</div>
+            <div className="text-2xl font-bold text-rose-600 mt-1">{metrics.highCritical.toLocaleString()}</div>
+            <div className="text-xs text-gray-500 mt-1">Full Mail, Drive, or Admin delegation</div>
+          </div>
+
+          <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-xs">
+            <div className="text-xs font-semibold uppercase text-amber-600">Pending Admin Policy</div>
+            <div className="text-2xl font-bold text-amber-600 mt-1">{metrics.unconfigured.toLocaleString()}</div>
+            <div className="text-xs text-gray-500 mt-1">Self-consented execution</div>
+          </div>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-xs">
+            <div className="text-xs font-semibold uppercase text-gray-400">
+              {isBackend ? "Total Global Catalog" : "Total Applications"}
+            </div>
+            <div className="text-2xl font-bold text-gray-800 mt-1">{metrics.total.toLocaleString()}</div>
+            <div className="text-xs text-gray-500 mt-1 flex items-center gap-1.5 truncate">
+              <span className="text-blue-600 font-semibold">{metrics.googleOwned} Google</span> ·{" "}
+              <span className="text-purple-600 font-semibold">{metrics.thirdParty} Third Party</span> ·{" "}
+              <span className="text-gray-500 font-semibold">{metrics.unknownOwnership} Unknown</span>
+            </div>
+          </div>
+
+          <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-xs">
+            <div className="text-xs font-semibold uppercase text-gray-400">Google Verified Apps</div>
+            <div className="text-2xl font-bold text-blue-600 mt-1">{metrics.verified.toLocaleString()}</div>
+            <div className="text-xs text-gray-500 mt-1">
+              {metrics.total > 0 ? ((metrics.verified / metrics.total) * 100).toFixed(1) : "0.0"}% marketplace certified
+            </div>
+          </div>
+
+          <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-xs">
+            <div className="text-xs font-semibold uppercase text-gray-400">Enterprise Compliant</div>
+            <div className="text-2xl font-bold text-emerald-600 mt-1">{metrics.compliant.toLocaleString()}</div>
+            <div className="text-xs text-gray-500 mt-1">SOC 2, ISO 27001, GDPR audited</div>
+          </div>
+
+          <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-xs">
+            <div className="text-xs font-semibold uppercase text-gray-400">High &amp; Critical Threat</div>
+            <div className="text-2xl font-bold text-rose-600 mt-1">{metrics.highCritical.toLocaleString()}</div>
+            <div className="text-xs text-gray-500 mt-1">Risk matrix assessment</div>
+          </div>
+        </div>
+      )}
 
       {/* Controls & Filter Bar */}
       <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-xs mb-6 space-y-4">
         {/* Scope Tabs */}
-        <div className="flex border-b border-gray-200 overflow-x-auto">
-          <button
-            onClick={() => { setCatalogFilter("ALL"); setCurrentPage(1); }}
-            className={`pb-2.5 px-4 text-xs font-bold border-b-2 transition-colors whitespace-nowrap ${
-              catalogFilter === "ALL"
-                ? "border-emerald-600 text-emerald-700"
-                : "border-transparent text-gray-500 hover:text-gray-700"
-            }`}
-          >
-            All Applications ({metrics.total.toLocaleString()})
-          </button>
-          <button
-            onClick={() => { setCatalogFilter("VERIFIED"); setCurrentPage(1); }}
-            className={`pb-2.5 px-4 text-xs font-bold border-b-2 transition-colors flex items-center gap-1.5 whitespace-nowrap ${
-              catalogFilter === "VERIFIED"
-                ? "border-blue-600 text-blue-700"
-                : "border-transparent text-gray-500 hover:text-gray-700"
-            }`}
-          >
-            <span className="w-2 h-2 rounded-full bg-blue-500"></span>
-            Google Verified ({metrics.verified.toLocaleString()})
-          </button>
-          <button
-            onClick={() => { setCatalogFilter("COMPLIANT"); setCurrentPage(1); }}
-            className={`pb-2.5 px-4 text-xs font-bold border-b-2 transition-colors flex items-center gap-1.5 whitespace-nowrap ${
-              catalogFilter === "COMPLIANT"
-                ? "border-emerald-600 text-emerald-700"
-                : "border-transparent text-gray-500 hover:text-gray-700"
-            }`}
-          >
-            <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-            Enterprise Compliant ({metrics.compliant.toLocaleString()})
-          </button>
-          <button
-            onClick={() => { setCatalogFilter("HIGH_RISK"); setCurrentPage(1); }}
-            className={`pb-2.5 px-4 text-xs font-bold border-b-2 transition-colors flex items-center gap-1.5 whitespace-nowrap ${
-              catalogFilter === "HIGH_RISK"
-                ? "border-rose-600 text-rose-700"
-                : "border-transparent text-gray-500 hover:text-gray-700"
-            }`}
-          >
-            <span className="w-2 h-2 rounded-full bg-rose-500"></span>
-            High &amp; Critical Risk ({metrics.highCritical.toLocaleString()})
-          </button>
-        </div>
+        {segmentTab === "internal" ? (
+          <div className="flex border-b border-gray-200 overflow-x-auto">
+            <button
+              onClick={() => { setCatalogFilter("ALL"); setCurrentPage(1); }}
+              className={`pb-2.5 px-4 text-xs font-bold border-b-2 transition-colors whitespace-nowrap ${
+                catalogFilter === "ALL"
+                  ? "border-purple-600 text-purple-700"
+                  : "border-transparent text-gray-500 hover:text-gray-700"
+              }`}
+            >
+              All Internal Apps ({metrics.total.toLocaleString()})
+            </button>
+            <button
+              onClick={() => { setCatalogFilter("HIGH_RISK" as any); setCurrentPage(1); }}
+              className={`pb-2.5 px-4 text-xs font-bold border-b-2 transition-colors flex items-center gap-1.5 whitespace-nowrap ${
+                (catalogFilter as string) === "HIGH_RISK"
+                  ? "border-rose-600 text-rose-700"
+                  : "border-transparent text-gray-500 hover:text-gray-700"
+              }`}
+            >
+              <span className="w-2 h-2 rounded-full bg-rose-500"></span>
+              High &amp; Critical Risk ({metrics.highCritical.toLocaleString()})
+            </button>
+            <button
+              onClick={() => { setCatalogFilter("UNCONFIGURED" as any); setCurrentPage(1); }}
+              className={`pb-2.5 px-4 text-xs font-bold border-b-2 transition-colors flex items-center gap-1.5 whitespace-nowrap ${
+                (catalogFilter as string) === "UNCONFIGURED"
+                  ? "border-amber-600 text-amber-700"
+                  : "border-transparent text-gray-500 hover:text-gray-700"
+              }`}
+            >
+              <span className="w-2 h-2 rounded-full bg-amber-500"></span>
+              Pending Policy ({metrics.unconfigured.toLocaleString()})
+            </button>
+            <button
+              onClick={() => { setCatalogFilter("LOW_RISK" as any); setCurrentPage(1); }}
+              className={`pb-2.5 px-4 text-xs font-bold border-b-2 transition-colors flex items-center gap-1.5 whitespace-nowrap ${
+                (catalogFilter as string) === "LOW_RISK"
+                  ? "border-emerald-600 text-emerald-700"
+                  : "border-transparent text-gray-500 hover:text-gray-700"
+              }`}
+            >
+              <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+              Low Risk ({metrics.lowRisk.toLocaleString()})
+            </button>
+          </div>
+        ) : (
+          <div className="flex border-b border-gray-200 overflow-x-auto">
+            <button
+              onClick={() => { setCatalogFilter("ALL"); setCurrentPage(1); }}
+              className={`pb-2.5 px-4 text-xs font-bold border-b-2 transition-colors whitespace-nowrap ${
+                catalogFilter === "ALL"
+                  ? "border-emerald-600 text-emerald-700"
+                  : "border-transparent text-gray-500 hover:text-gray-700"
+              }`}
+            >
+              All Applications ({metrics.total.toLocaleString()})
+            </button>
+            <button
+              onClick={() => { setCatalogFilter("VERIFIED"); setCurrentPage(1); }}
+              className={`pb-2.5 px-4 text-xs font-bold border-b-2 transition-colors flex items-center gap-1.5 whitespace-nowrap ${
+                catalogFilter === "VERIFIED"
+                  ? "border-blue-600 text-blue-700"
+                  : "border-transparent text-gray-500 hover:text-gray-700"
+              }`}
+            >
+              <span className="w-2 h-2 rounded-full bg-blue-500"></span>
+              Google Verified ({metrics.verified.toLocaleString()})
+            </button>
+            <button
+              onClick={() => { setCatalogFilter("COMPLIANT"); setCurrentPage(1); }}
+              className={`pb-2.5 px-4 text-xs font-bold border-b-2 transition-colors flex items-center gap-1.5 whitespace-nowrap ${
+                catalogFilter === "COMPLIANT"
+                  ? "border-emerald-600 text-emerald-700"
+                  : "border-transparent text-gray-500 hover:text-gray-700"
+              }`}
+            >
+              <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+              Enterprise Compliant ({metrics.compliant.toLocaleString()})
+            </button>
+            <button
+              onClick={() => { setCatalogFilter("HIGH_RISK"); setCurrentPage(1); }}
+              className={`pb-2.5 px-4 text-xs font-bold border-b-2 transition-colors flex items-center gap-1.5 whitespace-nowrap ${
+                catalogFilter === "HIGH_RISK"
+                  ? "border-rose-600 text-rose-700"
+                  : "border-transparent text-gray-500 hover:text-gray-700"
+              }`}
+            >
+              <span className="w-2 h-2 rounded-full bg-rose-500"></span>
+              High &amp; Critical Risk ({metrics.highCritical.toLocaleString()})
+            </button>
+          </div>
+        )}
 
         <div className="flex flex-wrap items-center gap-2.5 pt-1">
           {/* Search Input */}
@@ -1385,40 +1620,49 @@ export default function ApplicationsView({
         <div className="flex flex-wrap justify-between items-center gap-3 text-xs text-gray-500 pt-2 border-t border-gray-100">
           <div className="flex items-center gap-3 flex-wrap">
             {/* View Mode Toggle Switcher */}
-            <div className="inline-flex items-center bg-gray-100 p-0.5 rounded-lg border border-gray-200 shadow-2xs">
-              <button
-                type="button"
-                onClick={() => { setViewMode("family"); setCurrentPage(1); }}
-                className={`flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-semibold transition-all ${
-                  viewMode === "family"
-                    ? "bg-white text-emerald-700 shadow-xs"
-                    : "text-gray-600 hover:text-gray-900"
-                }`}
-              >
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
-                </svg>
-                Group by App Family
-              </button>
-              <button
-                type="button"
-                onClick={() => { setViewMode("list"); setCurrentPage(1); }}
-                className={`flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-semibold transition-all ${
-                  viewMode === "list"
-                    ? "bg-white text-emerald-700 shadow-xs"
-                    : "text-gray-600 hover:text-gray-900"
-                }`}
-              >
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            {segmentTab === "third_party" ? (
+              <div className="inline-flex items-center bg-gray-100 p-0.5 rounded-lg border border-gray-200 shadow-2xs">
+                <button
+                  type="button"
+                  onClick={() => { setViewMode("family"); setCurrentPage(1); }}
+                  className={`flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-semibold transition-all ${
+                    viewMode === "family"
+                      ? "bg-white text-emerald-700 shadow-xs"
+                      : "text-gray-600 hover:text-gray-900"
+                  }`}
+                >
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+                  </svg>
+                  Group by App Family
+                </button>
+                <button
+                  type="button"
+                  onClick={() => { setViewMode("list"); setCurrentPage(1); }}
+                  className={`flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-semibold transition-all ${
+                    viewMode === "list"
+                      ? "bg-white text-emerald-700 shadow-xs"
+                      : "text-gray-600 hover:text-gray-900"
+                  }`}
+                >
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                  List View
+                </button>
+              </div>
+            ) : (
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-purple-50 text-purple-800 rounded-lg border border-purple-200 text-xs font-semibold">
+                <svg className="w-3.5 h-3.5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
-                List View
-              </button>
-            </div>
+                <span>Domain Scripts &amp; Projects ({filteredApps.length})</span>
+              </div>
+            )}
 
             <div className="flex items-center gap-2">
               <span>
-                Showing <strong className="text-gray-800">{filteredApps.length.toLocaleString()}</strong> matching {viewMode === "family" ? "application families" : "client deployments"}
+                Showing <strong className="text-gray-800">{filteredApps.length.toLocaleString()}</strong> {segmentTab === "internal" ? "internal scripts" : viewMode === "family" ? "application families" : "client deployments"}
                 {searchTerm && ` for "${searchTerm}"`}
               </span>
             </div>
@@ -1518,14 +1762,20 @@ export default function ApplicationsView({
                               <span className="w-6 shrink-0" />
                             )}
 
-                            <img
-                              src={app.iconUrl || `https://ui-avatars.com/api/?name=${encodeURIComponent(app.displayName)}&background=3B82F6&color=fff&size=64`}
-                              alt={app.displayName}
-                              className="w-9 h-9 rounded-lg object-contain bg-white border border-gray-200 shrink-0 p-0.5"
-                              onError={(e: any) => {
-                                e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(app.displayName)}&background=3B82F6&color=fff&size=64`;
-                              }}
-                            />
+                            {isInternalApp(app) && (!app.iconUrl || app.iconUrl.includes("ui-avatars")) ? (
+                              <div className="w-9 h-9 rounded-lg bg-purple-50 border border-purple-200 flex items-center justify-center shrink-0 p-1 shadow-2xs">
+                                <GoogleAppsScriptIcon className="w-5 h-5" />
+                              </div>
+                            ) : (
+                              <img
+                                src={app.iconUrl || `https://ui-avatars.com/api/?name=${encodeURIComponent(app.displayName)}&background=3B82F6&color=fff&size=64`}
+                                alt={app.displayName}
+                                className="w-9 h-9 rounded-lg object-contain bg-white border border-gray-200 shrink-0 p-0.5"
+                                onError={(e: any) => {
+                                  e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(app.displayName)}&background=3B82F6&color=fff&size=64`;
+                                }}
+                              />
+                            )}
                             <div className="min-w-0 max-w-sm sm:max-w-md">
                               <div className="flex items-center gap-2 whitespace-nowrap">
                                 <span className="font-semibold text-gray-900 group-hover:text-emerald-700 transition-colors truncate" title={app.displayName}>
@@ -1604,7 +1854,7 @@ export default function ApplicationsView({
 
                         {/* Ownership */}
                         <td className="py-3 px-4">
-                          {getOwnershipBadge(app.ownership)}
+                          {getOwnershipBadge(app.ownership, app)}
                         </td>
 
                         {/* Type */}
@@ -1768,7 +2018,7 @@ export default function ApplicationsView({
 
                             {/* Ownership */}
                             <td className="py-2.5 px-4 text-xs">
-                              {getOwnershipBadge(child.ownership || app.ownership)}
+                              {getOwnershipBadge(child.ownership || app.ownership, child)}
                             </td>
 
                             {/* Type */}
@@ -1913,7 +2163,7 @@ export default function ApplicationsView({
                     <div className="inline-flex items-center" title={`Application Type: ${selectedApp.appType || selectedApp.deploymentType || "Web Application"}`}>
                       {renderTypeIcon(selectedApp.appType || selectedApp.deploymentType)}
                     </div>
-                    {getOwnershipBadge(selectedApp.ownership)}
+                    {getOwnershipBadge(selectedApp.ownership, selectedApp)}
                     {selectedApp.isVerified ? (
                       <GoogleVerifiedBadge size="md" />
                     ) : (

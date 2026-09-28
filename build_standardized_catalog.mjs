@@ -190,6 +190,9 @@ function getOrCreateDeploymentRecord(appName, clientId, owlType = null, verified
   } else if (appName && (appName.toLowerCase().includes('wedo') || appName.toLowerCase().includes('spike') || appName.toLowerCase().includes('lego'))) {
     familyId = 'lego-education';
     familyName = 'LEGO Education';
+  } else if (appName && appName.toLowerCase().includes('gemini')) {
+    familyId = 'gemini-enterprise';
+    familyName = 'Gemini Enterprise';
   } else if (appName && appName.toLowerCase().includes('devicepolicy')) {
     familyId = 'google-device-policy';
     familyName = 'Google Device Policy';

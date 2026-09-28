@@ -762,20 +762,7 @@ export default function RecommendationsView({
 
         return (
           <div className="space-y-6">
-            <div className="bg-amber-50/70 border border-amber-200 rounded-xl p-3.5 text-xs text-amber-950 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-              <div>
-                <span className="font-bold">Prioritized Triage Groups:</span> Unconfigured applications grouped by blast radius tier. Review Tier 1 first, then Tier 2.
-              </div>
-              <a
-                href="https://admin.google.com/ac/owl/list?tab=apps"
-                target="_blank"
-                rel="noreferrer"
-                className="text-amber-800 hover:text-amber-950 font-bold whitespace-nowrap inline-flex items-center gap-1"
-              >
-                <span>Google Admin Console</span>
-                <span>↗</span>
-              </a>
-            </div>
+
 
             {displayedUnconfigured.length === 0 ? (
               <div className="p-12 text-center text-gray-500 bg-white rounded-2xl border border-gray-200">
@@ -846,19 +833,18 @@ export default function RecommendationsView({
       {/* ============================================================== */}
       {activeGroup === "trusted" && (
         <div className="space-y-4">
-          <div className="bg-orange-50/70 border border-orange-200 rounded-xl p-4 text-xs text-orange-950 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <div>
-              <span className="font-bold">Blanket Trust Governance Review:</span> In Google Workspace, setting an application to "Trusted" grants blanket approval to all current and future scopes without admin re-consent. If you have confirmed that this application legitimately requires blanket trust, click <strong>"Confirm Trusted Setting"</strong> to acknowledge it and exempt it from your risk score penalty.
+          <div className="bg-orange-50/60 border border-orange-200/80 rounded-xl px-4 py-3 text-xs text-orange-950 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="flex flex-wrap items-center gap-1.5">
+              <span className="font-semibold text-orange-900">Review Trusted Apps:</span>
+              <span className="text-orange-850">Confirm applications that legitimately require blanket Google Workspace access.</span>
             </div>
             
-            <div className="flex items-center gap-2 flex-shrink-0">
-              <button
-                onClick={() => setShowConfirmedTrusted(!showConfirmedTrusted)}
-                className="px-3 py-1.5 bg-white hover:bg-orange-100 text-orange-900 border border-orange-300 rounded-lg text-xs font-bold transition-colors"
-              >
-                {showConfirmedTrusted ? `View Pending Review (${pendingTrustedApps.length})` : `View Confirmed (${confirmedTrustedApps.length})`}
-              </button>
-            </div>
+            <button
+              onClick={() => setShowConfirmedTrusted(!showConfirmedTrusted)}
+              className="px-3 py-1.5 bg-white hover:bg-orange-100 text-orange-900 border border-orange-300 rounded-lg text-xs font-medium transition-colors whitespace-nowrap self-start sm:self-auto flex-shrink-0"
+            >
+              {showConfirmedTrusted ? `View Pending (${pendingTrustedApps.length})` : `View Confirmed (${confirmedTrustedApps.length})`}
+            </button>
           </div>
 
           {displayedTrusted.length === 0 ? (

@@ -61,6 +61,10 @@ export default function AccessTimelineView({
   // Filter events strictly by administrator policy changes
   const filteredEvents = useMemo(() => {
     return events.filter((ev) => {
+      // Exclude CSV upload ingestion events from Google Admin audit timeline
+      if (ev.action === "IMPORT" || ev.id?.startsWith("csv_upload") || ev.appName?.includes("Google Admin Console Export")) {
+        return false;
+      }
       const term = searchTerm.toLowerCase();
       const summaryText = ev.changeSummary || (typeof ev.details === "string" ? ev.details : "");
       const matchesSearch =

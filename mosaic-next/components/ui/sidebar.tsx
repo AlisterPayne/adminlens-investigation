@@ -39,6 +39,8 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
     isClientWorkspace && (currentTab === "dashboard" || !currentTab);
   const isApplicationsActive =
     isClientWorkspace && currentTab === "apps";
+  const isInternalAppsActive =
+    isClientWorkspace && currentTab === "internal";
   const isClientScopesActive = isClientWorkspace && currentTab === "scopes";
   const isClientRecsActive = isClientWorkspace && currentTab === "recs";
   const isClientTimelineActive = isClientWorkspace && currentTab === "timeline";
@@ -146,6 +148,27 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
                         Applications
                       </span>
                     </div>
+                  </div>
+                </SidebarLink>
+              </li>
+
+              {/* Internal Applications */}
+              <li className={`px-2.5 py-2 rounded-lg transition-colors ${isInternalAppsActive ? "bg-purple-50 text-purple-700 font-semibold" : "hover:bg-gray-100 text-gray-700"}`}>
+                <SidebarLink href="/dashboard?tab=internal" onClick={() => setCurrentTab("internal")}>
+                  <div className="flex items-center justify-between w-full">
+                    <div className="flex items-center">
+                      <svg className={`shrink-0 h-4.5 w-4.5 ${isInternalAppsActive ? "text-purple-600" : "text-gray-500"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                      </svg>
+                      <span className="text-sm ml-2.5 font-medium">
+                        Internal Applications
+                      </span>
+                    </div>
+                    <span className={`text-[11px] font-bold px-1.5 py-0.5 rounded-full ${
+                      isInternalAppsActive ? "bg-purple-200 text-purple-800" : "bg-purple-100 text-purple-700"
+                    }`}>
+                      12
+                    </span>
                   </div>
                 </SidebarLink>
               </li>

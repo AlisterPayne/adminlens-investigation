@@ -22,25 +22,6 @@
     ]
   },
   {
-    "familyId": "google-llc",
-    "familyName": "Google LLC",
-    "vendor": "Google LLC",
-    "iconUrl": "https://www.google.com/s2/favicons?domain=cloud.google.com&sz=128",
-    "deploymentsCount": 7,
-    "totalUsersCount": 9,
-    "maxRisk": "CRITICAL",
-    "avgRiskScore": 2.89,
-    "deploymentIds": [
-      "526554529059-emb2o69t2ri25uicvjkj444o71sku29p.apps.googleusercontent.com",
-      "823511539352-ojaretejk1s95sdvkic0te923pt7knpu.apps.googleusercontent.com",
-      "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
-      "526554529059-bpm1k15t6a60h9u79tjhmpnutblkmalu.apps.googleusercontent.com",
-      "1023251155897-tb54g624q9e77gtsrnemgv4c2ihekurv.apps.googleusercontent.com",
-      "com.google.DevicePolicy",
-      "531246522847-cpii92d27guqb6mrvgtc8skipar03g1f.apps.googleusercontent.com"
-    ]
-  },
-  {
     "familyId": "texthelp-orbitnote",
     "familyName": "OrbitNote",
     "vendor": "Texthelp Ltd.",
@@ -110,6 +91,22 @@
     ]
   },
   {
+    "familyId": "google-llc",
+    "familyName": "Google LLC",
+    "vendor": "Google LLC",
+    "iconUrl": "https://www.google.com/s2/favicons?domain=google.com&sz=128",
+    "deploymentsCount": 4,
+    "totalUsersCount": 3,
+    "maxRisk": "CRITICAL",
+    "avgRiskScore": 1.75,
+    "deploymentIds": [
+      "823511539352-ojaretejk1s95sdvkic0te923pt7knpu.apps.googleusercontent.com",
+      "1023251155897-tb54g624q9e77gtsrnemgv4c2ihekurv.apps.googleusercontent.com",
+      "com.google.DevicePolicy",
+      "531246522847-cpii92d27guqb6mrvgtc8skipar03g1f.apps.googleusercontent.com"
+    ]
+  },
+  {
     "familyId": "quizizz",
     "familyName": "Quizizz / Wayground",
     "vendor": "Wayground (Quizizz Inc.)",
@@ -123,6 +120,21 @@
       "58172892053-faol054co4k3tsmtbtuk41v4si41slq0.apps.googleusercontent.com",
       "58172892053-hh2k290hilpi3edodu8lrv3cag3pop0f.apps.googleusercontent.com",
       "com.google.enterprise.webapp.xeca034b3fe0c6828"
+    ]
+  },
+  {
+    "familyId": "gemini-enterprise",
+    "familyName": "Gemini Enterprise",
+    "vendor": "Google LLC",
+    "iconUrl": "https://www.google.com/s2/favicons?domain=cloud.google.com&sz=128",
+    "deploymentsCount": 3,
+    "totalUsersCount": 6,
+    "maxRisk": "CRITICAL",
+    "avgRiskScore": 4.4,
+    "deploymentIds": [
+      "526554529059-emb2o69t2ri25uicvjkj444o71sku29p.apps.googleusercontent.com",
+      "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
+      "526554529059-bpm1k15t6a60h9u79tjhmpnutblkmalu.apps.googleusercontent.com"
     ]
   },
   {

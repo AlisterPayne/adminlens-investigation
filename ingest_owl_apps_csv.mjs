@@ -86,10 +86,14 @@ function checkIsVerified(status) {
 }
 
 export function ingestOwlAppsCsv(customPath = null) {
-  const accessedCsv = fs.existsSync('./owl_apps_accessed_apps.csv') ? './owl_apps_accessed_apps.csv' : null;
+  const accessedCsv = fs.existsSync('./owl_apps_accessed_apps.csv') 
+    ? './owl_apps_accessed_apps.csv' 
+    : (fs.existsSync('./gafe_co_za_owl_apps_accessed.csv') ? './gafe_co_za_owl_apps_accessed.csv' : null);
   const configuredCsv = fs.existsSync('./owl_apps_configured_apps.csv')
     ? './owl_apps_configured_apps.csv'
-    : (fs.existsSync('./owl_apps.csv') ? './owl_apps.csv' : null);
+    : (fs.existsSync('./gafe_co_za_owl_apps_configured.csv') 
+      ? './gafe_co_za_owl_apps_configured.csv' 
+      : (fs.existsSync('./owl_apps.csv') ? './owl_apps.csv' : null));
 
   const filesToIngest = [];
   if (customPath) {
@@ -185,10 +189,17 @@ export function ingestOwlAppsCsv(customPath = null) {
       }
 
       if (targetAppId) {
+        const isDescriptive = appName && !appName.includes('.apps.googleusercontent.com') && appName !== 'Unnamed App' && appName !== 'Accessed Third-Party App' && appName !== 'Configured Third-Party App';
+        if (isDescriptive) {
+          db.prepare('UPDATE applications SET display_name = ? WHERE id = ?').run(appName, targetAppId);
+        }
+        if (appName.toLowerCase().includes('gemini') || ownership === 'Google owned') {
+          db.prepare('UPDATE applications SET vendor = ? WHERE id = ?').run('Google LLC', targetAppId);
+        }
         if (isConfiguredFile) {
           updateAppAccess.run(accessLevel, isVerified, targetAppId);
         } else {
-          db.prepare('UPDATE applications SET is_verified = ? WHERE id = ?').run(isVerified, targetAppId);
+          db.prepare('UPDATE applications SET is_verified = MAX(is_verified, ?) WHERE id = ?').run(isVerified, targetAppId);
         }
         updatedAppsCount++;
       } else {

@@ -1,6 +1,6 @@
 {
   "totalApplications": 87,
-  "totalProductFamilies": 46,
+  "totalProductFamilies": 47,
   "totalDomainUsers": 296,
   "totalActiveGrants": 268,
   "criticalRiskApps": 18,
@@ -13,8 +13,8 @@
   "blockedAppsCount": 0,
   "specificDataAppsCount": 1,
   "unconfiguredAppsCount": 66,
-  "multiClientFamiliesCount": 13,
+  "multiClientFamiliesCount": 14,
   "baselineSource": "gafe_co_za_owl_apps_configured.csv",
   "baselinePolicyCount": 25,
-  "baselineLoadedAt": "2026-09-28T09:47:06.996Z"
+  "baselineLoadedAt": "2026-09-28T09:55:24.394Z"
 }

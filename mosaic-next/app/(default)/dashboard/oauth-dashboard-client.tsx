@@ -243,13 +243,16 @@ export default function OAuthDashboardClient({
   const [currentApps, setCurrentApps] = useState<Application[]>(initialApps);
   const [currentMetrics, setCurrentMetrics] = useState<Metrics>(metrics);
   const [timelineEvents, setTimelineEvents] = useState<TimelineEvent[]>(initialTimelineEvents || []);
-  const [activeTab, setActiveTab] = useState<"dashboard" | "apps" | "recs" | "scopes" | "timeline" | "import" | "baseline">("dashboard");
+  const [activeTab, setActiveTab] = useState<"dashboard" | "apps" | "internal" | "recs" | "scopes" | "timeline" | "import" | "baseline">("dashboard");
   const searchParams = useSearchParams();
 
   useEffect(() => {
     if (searchParams) {
       const tabParam = searchParams.get("tab");
-      if (tabParam === "apps" || tabParam === "recs" || tabParam === "scopes" || tabParam === "dashboard" || tabParam === "timeline" || tabParam === "import" || tabParam === "baseline") {
+      const appTypeParam = searchParams.get("appType");
+      if (tabParam === "internal" || (tabParam === "apps" && appTypeParam === "internal")) {
+        setActiveTab("internal");
+      } else if (tabParam === "apps" || tabParam === "recs" || tabParam === "scopes" || tabParam === "dashboard" || tabParam === "timeline" || tabParam === "import" || tabParam === "baseline") {
         setActiveTab(tabParam as any);
       } else if (!tabParam) {
         setActiveTab("dashboard");
@@ -277,7 +280,13 @@ export default function OAuthDashboardClient({
       if (savedEvents) {
         const parsedE = JSON.parse(savedEvents);
         if (Array.isArray(parsedE) && parsedE.length > 0) {
-          setTimelineEvents(parsedE);
+          const cleaned = parsedE.filter((e: any) => 
+            !e.id?.startsWith("csv_upload") && 
+            e.action !== "IMPORT" && 
+            !e.appName?.includes("Google Admin Console Export")
+          );
+          setTimelineEvents(cleaned);
+          localStorage.setItem("adminlens_timeline_events", JSON.stringify(cleaned));
         }
       }
     } catch (_) {}
@@ -340,11 +349,12 @@ export default function OAuthDashboardClient({
     } catch (_) {}
   };
 
-  const handleTabChange = (tab: "dashboard" | "apps" | "recs" | "scopes" | "timeline" | "import") => {
+  const handleTabChange = (tab: "dashboard" | "apps" | "internal" | "recs" | "scopes" | "timeline" | "import" | "baseline") => {
     setActiveTab(tab);
     if (typeof window !== "undefined") {
       const url = new URL(window.location.href);
       url.searchParams.set("tab", tab);
+      url.searchParams.delete("appType");
       window.history.pushState({}, "", url.toString());
     }
   };
@@ -649,15 +659,26 @@ export default function OAuthDashboardClient({
 
         const newApps = currentApps.map(app => {
           let matchedPolicy = null;
-          for (const cid of app.clientIds) {
+          const allCids = [...(app.clientIds || []), app.clientId, app.id].filter(Boolean) as string[];
+          for (const cid of allCids) {
             if (policyMap.has(cid)) {
               matchedPolicy = policyMap.get(cid);
               break;
             }
           }
           if (matchedPolicy) {
+            const hasCleanName = matchedPolicy.appName && 
+              !matchedPolicy.appName.includes('.apps.googleusercontent.com') && 
+              matchedPolicy.appName !== 'Unnamed App' && 
+              matchedPolicy.appName !== 'Accessed Third-Party App' && 
+              matchedPolicy.appName !== 'Configured Third-Party App';
+            const cleanName = hasCleanName ? matchedPolicy.appName.trim() : null;
+
             return {
               ...app,
+              displayName: cleanName ? `${cleanName} (${app.deploymentType || app.appType || 'Web Application'})` : app.displayName,
+              familyName: cleanName || app.familyName,
+              vendor: (cleanName && cleanName.toLowerCase().includes('gemini')) ? 'Google LLC' : app.vendor,
               adminAccessLevel: matchedPolicy.accessLevel,
               accessPolicy: {
                 accessLevel: matchedPolicy.accessLevel,
@@ -809,12 +830,16 @@ export default function OAuthDashboardClient({
             ? "Access Timeline"
             : activeTab === "baseline"
             ? "Domain Security Baseline"
+            : activeTab === "internal"
+            ? "Internal Applications"
             : activeTab === "dashboard"
             ? "Dashboard"
             : "Applications"}
         </h1>
         <p className="text-xs text-gray-500 mt-0.5">
-          Google Workspace OAuth Security &amp; Governance
+          {activeTab === "internal"
+            ? "Audit and govern internal Apps Scripts, custom automations, and domain developer tools"
+            : "Google Workspace OAuth Security & Governance"}
         </p>
       </div>
 
@@ -839,17 +864,21 @@ export default function OAuthDashboardClient({
           apps={currentApps as any} 
           confirmedTrustedMap={confirmedTrustedMap} 
           timelineEvents={timelineEvents}
+          onNavigateToTab={(tab) => handleTabChange(tab as any)}
+          onSelectApp={(app) => setSelectedApp(app as any)}
         />
       )}
 
       {/* ============================================================== */}
-      {/* VIEW 2: CLIENT WORKSPACE APPLICATIONS                          */}
+      {/* VIEW 2: CLIENT WORKSPACE APPLICATIONS (THIRD-PARTY & INTERNAL) */}
       {/* ============================================================== */}
-      {activeTab === "apps" && (
+      {(activeTab === "apps" || activeTab === "internal") && (
         <ApplicationsView
           initialApps={currentApps as any}
           isBackend={false}
           hideTitle={true}
+          defaultSegment={activeTab === "internal" ? "internal" : "third_party"}
+          onSegmentChange={(seg) => handleTabChange(seg === "internal" ? "internal" : "apps")}
         />
       )}
 

@@ -539,8 +539,16 @@ export default function OWLImportPanel({
         const target = { ...updatedApps[existingIdx] };
 
         if (appName && appName.trim()) {
-          target.displayName = appName.trim();
+          const typeSuffix = target.deploymentType || target.appType || "Web Application";
+          target.displayName = appName.toLowerCase().includes(typeSuffix.toLowerCase())
+            ? appName.trim()
+            : `${appName.trim()} (${typeSuffix})`;
           target.familyName = appName.trim();
+          if (appName.toLowerCase().includes("gemini")) {
+            target.vendor = "Google LLC";
+            target.category = "AI & Enterprise Cloud";
+            target.iconUrl = "https://www.google.com/s2/favicons?domain=cloud.google.com&sz=128";
+          }
         }
 
         if (detectedType === "configured") {
@@ -768,35 +776,7 @@ export default function OWLImportPanel({
         const label = detectedType === "accessed" ? "Apps Accessed" : "Apps Configured";
         showToast(`✓ ${label} CSV imported — ${rowCount} apps processed`, "success");
 
-        // Log timeline event for this CSV upload
-        const timelineEvent = {
-          id: `csv_upload_${Date.now()}_${detectedType}`,
-          timestamp: new Date().toISOString(),
-          action: "IMPORT",
-          actionDisplay: `CSV Ingested (${label})`,
-          actorEmail: "admin@gafe.co.za",
-          actorName: "Workspace Administrator",
-          actorType: "ADMIN",
-          appName: `Google Admin Console Export: ${label}`,
-          appId: file.name,
-          clientId: file.name,
-          appIconUrl: "https://www.gstatic.com/images/branding/product/2x/admin_64dp.png",
-          target: "gafe.co.za",
-          previousState: "Baseline",
-          newState: "CSV Ingested",
-          changeSummary: `Administrator uploaded ${label} CSV (${file.name}) — ${rowCount} rows processed, ${counts.newApps} new apps, ${counts.updatedApps} updated apps, ${counts.policiesCount} policies.`,
-          details: {
-            "CSV Export": label,
-            "File Name": file.name,
-            "Total Rows Processed": rowCount,
-            "New Apps Discovered": counts.newApps,
-            "Existing Apps Updated": counts.updatedApps,
-            "Access Policies Ingested": counts.policiesCount,
-            "Ingestion Method": "Google Admin Console Export Import",
-            "Domain": "gafe.co.za",
-          },
-        };
-        onEventLogged?.(timelineEvent);
+
 
         // Best-effort background sync to backend server if reachable (does not fail if backend is down)
         try {

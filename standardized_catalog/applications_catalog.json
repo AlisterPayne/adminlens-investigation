@@ -6670,6 +6670,673 @@
     "totalActivityEvents": 0
   },
   {
+    "id": "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
+    "clientId": "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
+    "familyId": "gemini-enterprise",
+    "familyName": "Gemini Enterprise",
+    "displayName": "Gemini for Workspace Studio (Web Application)",
+    "vendor": "Google LLC",
+    "publisherDomain": "workspace.google.com",
+    "category": "AI & Collaboration",
+    "appType": "Workspace Add-on",
+    "deploymentType": "Web Application",
+    "compliance": [
+      "SOC 2",
+      "SOC 3",
+      "ISO 27001",
+      "GDPR",
+      "FERPA"
+    ],
+    "dataHosting": "USA / Global",
+    "breachHistory": null,
+    "breaches": [],
+    "breachPenalty": 0,
+    "breachBracket": "NONE",
+    "breachDaysElapsed": null,
+    "verificationPenalty": 0,
+    "scopeRiskScore": 4.2,
+    "isVerified": true,
+    "iconUrl": "https://www.google.com/s2/favicons?domain=google.com&sz=128",
+    "storeUrl": "https://workspace.google.com",
+    "description": "Google Workspace generative AI integration for Docs, Sheets, and Gmail.",
+    "riskScore": 4.2,
+    "peakScopeScore": 5,
+    "breadthScore": 0.2,
+    "avgScopeScore": 4,
+    "riskLevel": "CRITICAL",
+    "riskScoreColor": "Red",
+    "rawMaxRisk": "HIGH",
+    "riskReasons": [
+      "Critical Administrative or Direct Mail Access",
+      "Full Google Drive Read/Write Access or Mail Modification",
+      "Access to Domain Directory, Files, or Calendars",
+      "Basic Authentication / Profile Scopes",
+      "Full Google Drive Read/Write Access"
+    ],
+    "adminAccessLevel": "UNCONFIGURED",
+    "accessPolicy": null,
+    "multiClientMapped": true,
+    "familyDeploymentsCount": 3,
+    "siblingDeployments": [
+      {
+        "id": "526554529059-emb2o69t2ri25uicvjkj444o71sku29p.apps.googleusercontent.com",
+        "displayName": "gemini-enterprise (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "526554529059-emb2o69t2ri25uicvjkj444o71sku29p.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "HIGH"
+      },
+      {
+        "id": "526554529059-bpm1k15t6a60h9u79tjhmpnutblkmalu.apps.googleusercontent.com",
+        "displayName": "gemini-enterprise (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "526554529059-bpm1k15t6a60h9u79tjhmpnutblkmalu.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "HIGH"
+      }
+    ],
+    "clientIdsCount": 1,
+    "clientIds": [
+      "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com"
+    ],
+    "projectNumbers": [
+      "296758037454"
+    ],
+    "totalUsersCount": 4,
+    "adminUsersCount": 3,
+    "scopesCount": 4,
+    "scopes": [
+      {
+        "scope": "https://www.googleapis.com/auth/documents",
+        "riskLevel": "LOW",
+        "description": "Document Manipulation & Espionage",
+        "threatImpact": "Read and write access to all Google Docs files (confidential reports, policies, legal contracts).",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Sensitive",
+        "service": "Google Drive & Docs"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/spreadsheets",
+        "riskLevel": "MEDIUM",
+        "description": "Financial & Tabular Data Access",
+        "threatImpact": "Read and write access to all Google Sheets (financial models, customer lists, HR payroll, and analytics).",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Sensitive",
+        "service": "Google Drive & Docs"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/apps_genai",
+        "riskLevel": "LOW",
+        "description": "Workspace Generative AI & Gemini Configuration",
+        "threatImpact": "Manage administrative configurations and policies for generative AI features in Google Workspace.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Admin SDK"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/drive",
+        "riskLevel": "HIGH",
+        "description": "Full Cloud Storage Compromise",
+        "threatImpact": "Read, edit, create, and permanently delete all files in My Drive and Shared Drives. Severe ransomware and wipeout risk.",
+        "adminScore": 5,
+        "adminColor": "Red",
+        "googleTier": "Restricted",
+        "service": "Google Drive & Docs"
+      }
+    ],
+    "servicesTouched": [
+      "Spreadsheets",
+      "Google Drive"
+    ],
+    "users": [
+      {
+        "email": "alister@gafe.co.za",
+        "name": "Alister Payne",
+        "orgUnit": "/CloudEDU Technical",
+        "isAdmin": true,
+        "grantedScopes": [
+          "https://www.googleapis.com/auth/documents",
+          "https://www.googleapis.com/auth/spreadsheets",
+          "https://www.googleapis.com/auth/apps_genai",
+          "https://www.googleapis.com/auth/drive"
+        ]
+      },
+      {
+        "email": "deidre@gafe.co.za",
+        "name": "Deïdrè Hugo",
+        "orgUnit": "/deidre Testing OU",
+        "isAdmin": true,
+        "grantedScopes": [
+          "https://www.googleapis.com/auth/documents",
+          "https://www.googleapis.com/auth/spreadsheets",
+          "https://www.googleapis.com/auth/apps_genai",
+          "https://www.googleapis.com/auth/drive"
+        ]
+      },
+      {
+        "email": "kevin@gafe.co.za",
+        "name": "Kevin Sherman",
+        "orgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+        "isAdmin": true,
+        "grantedScopes": [
+          "https://www.googleapis.com/auth/documents",
+          "https://www.googleapis.com/auth/spreadsheets",
+          "https://www.googleapis.com/auth/apps_genai",
+          "https://www.googleapis.com/auth/drive"
+        ]
+      },
+      {
+        "email": "mickey@gafe.co.za",
+        "name": "Mickey Durr",
+        "orgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+        "isAdmin": false,
+        "grantedScopes": [
+          "https://www.googleapis.com/auth/documents",
+          "https://www.googleapis.com/auth/spreadsheets",
+          "https://www.googleapis.com/auth/apps_genai",
+          "https://www.googleapis.com/auth/drive"
+        ]
+      }
+    ],
+    "firstSeen": null,
+    "lastActive": null,
+    "lastActiveFormatted": "12/09/2026",
+    "isStale": true,
+    "isNew": false,
+    "totalActivityEvents": 0
+  },
+  {
+    "id": "526554529059-emb2o69t2ri25uicvjkj444o71sku29p.apps.googleusercontent.com",
+    "clientId": "526554529059-emb2o69t2ri25uicvjkj444o71sku29p.apps.googleusercontent.com",
+    "familyId": "gemini-enterprise",
+    "familyName": "Gemini Enterprise",
+    "displayName": "gemini-enterprise (Web Application)",
+    "vendor": "Google LLC",
+    "publisherDomain": "cloud.google.com",
+    "category": "AI & Enterprise Cloud",
+    "appType": "Enterprise Cloud Service",
+    "deploymentType": "Web Application",
+    "compliance": [
+      "SOC 2",
+      "ISO 27001",
+      "GDPR"
+    ],
+    "dataHosting": "USA / Global",
+    "breachHistory": null,
+    "breaches": [],
+    "breachPenalty": 0,
+    "breachBracket": "NONE",
+    "breachDaysElapsed": null,
+    "verificationPenalty": 0,
+    "scopeRiskScore": 4.5,
+    "isVerified": true,
+    "iconUrl": "https://www.google.com/s2/favicons?domain=cloud.google.com&sz=128",
+    "storeUrl": "https://cloud.google.com",
+    "description": "Google Cloud Gemini Enterprise AI deployment and management.",
+    "riskScore": 4.5,
+    "peakScopeScore": 5,
+    "breadthScore": 0.5,
+    "avgScopeScore": 2.77,
+    "riskLevel": "CRITICAL",
+    "riskScoreColor": "Red",
+    "rawMaxRisk": "HIGH",
+    "riskReasons": [
+      "Critical Administrative or Direct Mail Access",
+      "Full Google Drive Read/Write Access or Mail Modification",
+      "Access to Domain Directory, Files, or Calendars",
+      "Basic Authentication / Profile Scopes",
+      "Full Google Drive Read/Write Access"
+    ],
+    "adminAccessLevel": "UNCONFIGURED",
+    "accessPolicy": null,
+    "multiClientMapped": true,
+    "familyDeploymentsCount": 3,
+    "siblingDeployments": [
+      {
+        "id": "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
+        "displayName": "Gemini for Workspace Studio (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 4,
+        "maxRisk": "HIGH"
+      },
+      {
+        "id": "526554529059-bpm1k15t6a60h9u79tjhmpnutblkmalu.apps.googleusercontent.com",
+        "displayName": "gemini-enterprise (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "526554529059-bpm1k15t6a60h9u79tjhmpnutblkmalu.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "HIGH"
+      }
+    ],
+    "clientIdsCount": 1,
+    "clientIds": [
+      "526554529059-emb2o69t2ri25uicvjkj444o71sku29p.apps.googleusercontent.com"
+    ],
+    "projectNumbers": [
+      "526554529059"
+    ],
+    "totalUsersCount": 1,
+    "adminUsersCount": 1,
+    "scopesCount": 13,
+    "scopes": [
+      {
+        "scope": "https://www.googleapis.com/auth/calendar.events",
+        "riskLevel": "MEDIUM",
+        "description": "Meeting Creation & Alteration",
+        "threatImpact": "Create, edit, and delete calendar meetings on the user's schedule.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Google Calendar"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/gmail.readonly",
+        "riskLevel": "LOW",
+        "description": "Bulk Email Exfiltration",
+        "threatImpact": "Read all historical messages, sensitive corporate contracts, passwords, and reset links without edit rights.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Restricted",
+        "service": "Gmail"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/userinfo.profile",
+        "riskLevel": "LOW",
+        "description": "Basic Profile Assertion",
+        "threatImpact": "View the user's display name and profile avatar URL.",
+        "adminScore": 1,
+        "adminColor": "Blue",
+        "googleTier": "Non-Sensitive",
+        "service": "Identity & SSO"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/contacts.readonly",
+        "riskLevel": "MEDIUM",
+        "description": "Address Book Exfiltration",
+        "threatImpact": "Bulk export of contact names, private phone numbers, personal emails, and company notes.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Google Contacts"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/userinfo.email",
+        "riskLevel": "LOW",
+        "description": "Primary Email Verification",
+        "threatImpact": "View the user's primary email address for SSO sign-in.",
+        "adminScore": 1,
+        "adminColor": "Blue",
+        "googleTier": "Non-Sensitive",
+        "service": "Identity & SSO"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/gmail.send",
+        "riskLevel": "LOW",
+        "description": "Direct Mail Transmission",
+        "threatImpact": "Send messages on the user's behalf without read access to existing email history.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Gmail"
+      },
+      {
+        "scope": "openid",
+        "riskLevel": "LOW",
+        "description": "OpenID Identity Assertion",
+        "threatImpact": "Standard OpenID Connect token for user authentication assertion.",
+        "adminScore": 1,
+        "adminColor": "Blue",
+        "googleTier": "Non-Sensitive",
+        "service": "Identity & SSO"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/drive.file",
+        "riskLevel": "LOW",
+        "description": "Scoped File Access (Least Privilege)",
+        "threatImpact": "Only accesses files created by the app or explicitly opened with it via the Google picker. Safe enterprise pattern.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Google Drive & Docs"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/calendar.readonly",
+        "riskLevel": "MEDIUM",
+        "description": "Executive Calendar Surveillance",
+        "threatImpact": "Read entire schedule, attendees, location, video conference links, and meeting notes.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Google Calendar"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/drive.appfolder",
+        "riskLevel": "HIGH",
+        "description": "Application Dedicated Folder Access",
+        "threatImpact": "Read and write files solely within the application-specific Drive directory.",
+        "adminScore": 2,
+        "adminColor": "Green",
+        "googleTier": "Sensitive",
+        "service": "Google Drive & Docs"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/drive",
+        "riskLevel": "HIGH",
+        "description": "Full Cloud Storage Compromise",
+        "threatImpact": "Read, edit, create, and permanently delete all files in My Drive and Shared Drives. Severe ransomware and wipeout risk.",
+        "adminScore": 5,
+        "adminColor": "Red",
+        "googleTier": "Restricted",
+        "service": "Google Drive & Docs"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/gmail.modify",
+        "riskLevel": "LOW",
+        "description": "Message Manipulation & Exfiltration",
+        "threatImpact": "Read, compose, modify labels, and move messages to trash. Enables silent email interception and manipulation.",
+        "adminScore": 5,
+        "adminColor": "Red",
+        "googleTier": "Restricted",
+        "service": "Gmail"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/drive.appdata",
+        "riskLevel": "HIGH",
+        "description": "Isolated App Configuration Storage",
+        "threatImpact": "Accesses only a dedicated hidden app folder. Cannot touch or see regular corporate user files.",
+        "adminScore": 2,
+        "adminColor": "Green",
+        "googleTier": "Sensitive",
+        "service": "Google Drive & Docs"
+      }
+    ],
+    "servicesTouched": [
+      "Calendar",
+      "Gmail",
+      "Contacts",
+      "Google Drive"
+    ],
+    "users": [
+      {
+        "email": "alister@gafe.co.za",
+        "name": "Alister Payne",
+        "orgUnit": "/CloudEDU Technical",
+        "isAdmin": true,
+        "grantedScopes": [
+          "https://www.googleapis.com/auth/calendar.events",
+          "https://www.googleapis.com/auth/gmail.readonly",
+          "https://www.googleapis.com/auth/userinfo.profile",
+          "https://www.googleapis.com/auth/contacts.readonly",
+          "https://www.googleapis.com/auth/userinfo.email",
+          "https://www.googleapis.com/auth/gmail.send",
+          "openid",
+          "https://www.googleapis.com/auth/drive.file",
+          "https://www.googleapis.com/auth/calendar.readonly",
+          "https://www.googleapis.com/auth/drive.appfolder",
+          "https://www.googleapis.com/auth/drive",
+          "https://www.googleapis.com/auth/gmail.modify"
+        ]
+      }
+    ],
+    "firstSeen": null,
+    "lastActive": null,
+    "lastActiveFormatted": "12/09/2026",
+    "isStale": true,
+    "isNew": false,
+    "totalActivityEvents": 0
+  },
+  {
+    "id": "526554529059-bpm1k15t6a60h9u79tjhmpnutblkmalu.apps.googleusercontent.com",
+    "clientId": "526554529059-bpm1k15t6a60h9u79tjhmpnutblkmalu.apps.googleusercontent.com",
+    "familyId": "gemini-enterprise",
+    "familyName": "Gemini Enterprise",
+    "displayName": "gemini-enterprise (Web Application)",
+    "vendor": "Google LLC",
+    "publisherDomain": "cloud.google.com",
+    "category": "AI & Enterprise Cloud",
+    "appType": "Enterprise Cloud Service",
+    "deploymentType": "Web Application",
+    "compliance": [
+      "SOC 2",
+      "ISO 27001",
+      "GDPR"
+    ],
+    "dataHosting": "USA / Global",
+    "breachHistory": null,
+    "breaches": [],
+    "breachPenalty": 0,
+    "breachBracket": "NONE",
+    "breachDaysElapsed": null,
+    "verificationPenalty": 0,
+    "scopeRiskScore": 4.5,
+    "isVerified": true,
+    "iconUrl": "https://www.google.com/s2/favicons?domain=cloud.google.com&sz=128",
+    "storeUrl": "https://cloud.google.com",
+    "description": "Google Cloud Gemini Enterprise AI deployment and management.",
+    "riskScore": 4.5,
+    "peakScopeScore": 5,
+    "breadthScore": 0.5,
+    "avgScopeScore": 2.77,
+    "riskLevel": "CRITICAL",
+    "riskScoreColor": "Red",
+    "rawMaxRisk": "HIGH",
+    "riskReasons": [
+      "Critical Administrative or Direct Mail Access",
+      "Full Google Drive Read/Write Access or Mail Modification",
+      "Access to Domain Directory, Files, or Calendars",
+      "Basic Authentication / Profile Scopes",
+      "Full Google Drive Read/Write Access"
+    ],
+    "adminAccessLevel": "UNCONFIGURED",
+    "accessPolicy": null,
+    "multiClientMapped": true,
+    "familyDeploymentsCount": 3,
+    "siblingDeployments": [
+      {
+        "id": "526554529059-emb2o69t2ri25uicvjkj444o71sku29p.apps.googleusercontent.com",
+        "displayName": "gemini-enterprise (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "526554529059-emb2o69t2ri25uicvjkj444o71sku29p.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 1,
+        "maxRisk": "HIGH"
+      },
+      {
+        "id": "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
+        "displayName": "Gemini for Workspace Studio (Web Application)",
+        "deploymentType": "Web Application",
+        "clientId": "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
+        "adminAccessLevel": "UNCONFIGURED",
+        "totalUsersCount": 4,
+        "maxRisk": "HIGH"
+      }
+    ],
+    "clientIdsCount": 1,
+    "clientIds": [
+      "526554529059-bpm1k15t6a60h9u79tjhmpnutblkmalu.apps.googleusercontent.com"
+    ],
+    "projectNumbers": [
+      "526554529059"
+    ],
+    "totalUsersCount": 1,
+    "adminUsersCount": 1,
+    "scopesCount": 13,
+    "scopes": [
+      {
+        "scope": "https://www.googleapis.com/auth/calendar.events",
+        "riskLevel": "MEDIUM",
+        "description": "Meeting Creation & Alteration",
+        "threatImpact": "Create, edit, and delete calendar meetings on the user's schedule.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Google Calendar"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/gmail.readonly",
+        "riskLevel": "LOW",
+        "description": "Bulk Email Exfiltration",
+        "threatImpact": "Read all historical messages, sensitive corporate contracts, passwords, and reset links without edit rights.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Restricted",
+        "service": "Gmail"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/userinfo.profile",
+        "riskLevel": "LOW",
+        "description": "Basic Profile Assertion",
+        "threatImpact": "View the user's display name and profile avatar URL.",
+        "adminScore": 1,
+        "adminColor": "Blue",
+        "googleTier": "Non-Sensitive",
+        "service": "Identity & SSO"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/gmail.send",
+        "riskLevel": "LOW",
+        "description": "Direct Mail Transmission",
+        "threatImpact": "Send messages on the user's behalf without read access to existing email history.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Gmail"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/contacts.readonly",
+        "riskLevel": "MEDIUM",
+        "description": "Address Book Exfiltration",
+        "threatImpact": "Bulk export of contact names, private phone numbers, personal emails, and company notes.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Google Contacts"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/userinfo.email",
+        "riskLevel": "LOW",
+        "description": "Primary Email Verification",
+        "threatImpact": "View the user's primary email address for SSO sign-in.",
+        "adminScore": 1,
+        "adminColor": "Blue",
+        "googleTier": "Non-Sensitive",
+        "service": "Identity & SSO"
+      },
+      {
+        "scope": "openid",
+        "riskLevel": "LOW",
+        "description": "OpenID Identity Assertion",
+        "threatImpact": "Standard OpenID Connect token for user authentication assertion.",
+        "adminScore": 1,
+        "adminColor": "Blue",
+        "googleTier": "Non-Sensitive",
+        "service": "Identity & SSO"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/drive.file",
+        "riskLevel": "LOW",
+        "description": "Scoped File Access (Least Privilege)",
+        "threatImpact": "Only accesses files created by the app or explicitly opened with it via the Google picker. Safe enterprise pattern.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Google Drive & Docs"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/calendar.readonly",
+        "riskLevel": "MEDIUM",
+        "description": "Executive Calendar Surveillance",
+        "threatImpact": "Read entire schedule, attendees, location, video conference links, and meeting notes.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
+        "googleTier": "Sensitive",
+        "service": "Google Calendar"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/drive.appfolder",
+        "riskLevel": "HIGH",
+        "description": "Application Dedicated Folder Access",
+        "threatImpact": "Read and write files solely within the application-specific Drive directory.",
+        "adminScore": 2,
+        "adminColor": "Green",
+        "googleTier": "Sensitive",
+        "service": "Google Drive & Docs"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/drive",
+        "riskLevel": "HIGH",
+        "description": "Full Cloud Storage Compromise",
+        "threatImpact": "Read, edit, create, and permanently delete all files in My Drive and Shared Drives. Severe ransomware and wipeout risk.",
+        "adminScore": 5,
+        "adminColor": "Red",
+        "googleTier": "Restricted",
+        "service": "Google Drive & Docs"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/gmail.modify",
+        "riskLevel": "LOW",
+        "description": "Message Manipulation & Exfiltration",
+        "threatImpact": "Read, compose, modify labels, and move messages to trash. Enables silent email interception and manipulation.",
+        "adminScore": 5,
+        "adminColor": "Red",
+        "googleTier": "Restricted",
+        "service": "Gmail"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/drive.appdata",
+        "riskLevel": "HIGH",
+        "description": "Isolated App Configuration Storage",
+        "threatImpact": "Accesses only a dedicated hidden app folder. Cannot touch or see regular corporate user files.",
+        "adminScore": 2,
+        "adminColor": "Green",
+        "googleTier": "Sensitive",
+        "service": "Google Drive & Docs"
+      }
+    ],
+    "servicesTouched": [
+      "Calendar",
+      "Gmail",
+      "Contacts",
+      "Google Drive"
+    ],
+    "users": [
+      {
+        "email": "alister@gafe.co.za",
+        "name": "Alister Payne",
+        "orgUnit": "/CloudEDU Technical",
+        "isAdmin": true,
+        "grantedScopes": [
+          "https://www.googleapis.com/auth/calendar.events",
+          "https://www.googleapis.com/auth/gmail.readonly",
+          "https://www.googleapis.com/auth/userinfo.profile",
+          "https://www.googleapis.com/auth/gmail.send",
+          "https://www.googleapis.com/auth/contacts.readonly",
+          "https://www.googleapis.com/auth/userinfo.email",
+          "openid",
+          "https://www.googleapis.com/auth/drive.file",
+          "https://www.googleapis.com/auth/calendar.readonly",
+          "https://www.googleapis.com/auth/drive.appfolder",
+          "https://www.googleapis.com/auth/drive",
+          "https://www.googleapis.com/auth/gmail.modify"
+        ]
+      }
+    ],
+    "firstSeen": null,
+    "lastActive": null,
+    "lastActiveFormatted": "12/09/2026",
+    "isStale": true,
+    "isNew": false,
+    "totalActivityEvents": 0
+  },
+  {
     "id": "626051926611-uisg6tp5g4e2be4pbs1f8dagkmv7o9s8.apps.googleusercontent.com",
     "clientId": "626051926611-uisg6tp5g4e2be4pbs1f8dagkmv7o9s8.apps.googleusercontent.com",
     "familyId": "gcp_proj_626051926611",
@@ -8087,502 +8754,6 @@
     "totalActivityEvents": 0
   },
   {
-    "id": "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
-    "clientId": "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
-    "familyId": "google-llc",
-    "familyName": "Google LLC",
-    "displayName": "Gemini for Workspace Studio (Web Application)",
-    "vendor": "Google LLC",
-    "publisherDomain": "workspace.google.com",
-    "category": "AI & Collaboration",
-    "appType": "Workspace Add-on",
-    "deploymentType": "Web Application",
-    "compliance": [
-      "SOC 2",
-      "SOC 3",
-      "ISO 27001",
-      "GDPR",
-      "FERPA"
-    ],
-    "dataHosting": "USA / Global",
-    "breachHistory": null,
-    "breaches": [],
-    "breachPenalty": 0,
-    "breachBracket": "NONE",
-    "breachDaysElapsed": null,
-    "verificationPenalty": 0,
-    "scopeRiskScore": 4.2,
-    "isVerified": true,
-    "iconUrl": "https://www.google.com/s2/favicons?domain=google.com&sz=128",
-    "storeUrl": "https://workspace.google.com",
-    "description": "Google Workspace generative AI integration for Docs, Sheets, and Gmail.",
-    "riskScore": 4.2,
-    "peakScopeScore": 5,
-    "breadthScore": 0.2,
-    "avgScopeScore": 4,
-    "riskLevel": "CRITICAL",
-    "riskScoreColor": "Red",
-    "rawMaxRisk": "HIGH",
-    "riskReasons": [
-      "Critical Administrative or Direct Mail Access",
-      "Full Google Drive Read/Write Access or Mail Modification",
-      "Access to Domain Directory, Files, or Calendars",
-      "Basic Authentication / Profile Scopes",
-      "Full Google Drive Read/Write Access"
-    ],
-    "adminAccessLevel": "UNCONFIGURED",
-    "accessPolicy": null,
-    "multiClientMapped": true,
-    "familyDeploymentsCount": 7,
-    "siblingDeployments": [
-      {
-        "id": "526554529059-emb2o69t2ri25uicvjkj444o71sku29p.apps.googleusercontent.com",
-        "displayName": "gemini-enterprise (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "526554529059-emb2o69t2ri25uicvjkj444o71sku29p.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "HIGH"
-      },
-      {
-        "id": "823511539352-ojaretejk1s95sdvkic0te923pt7knpu.apps.googleusercontent.com",
-        "displayName": "Google AI Studio (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "823511539352-ojaretejk1s95sdvkic0te923pt7knpu.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "HIGH"
-      },
-      {
-        "id": "526554529059-bpm1k15t6a60h9u79tjhmpnutblkmalu.apps.googleusercontent.com",
-        "displayName": "gemini-enterprise (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "526554529059-bpm1k15t6a60h9u79tjhmpnutblkmalu.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "HIGH"
-      },
-      {
-        "id": "1023251155897-tb54g624q9e77gtsrnemgv4c2ihekurv.apps.googleusercontent.com",
-        "displayName": "Google Skills (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "1023251155897-tb54g624q9e77gtsrnemgv4c2ihekurv.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 2,
-        "maxRisk": "LOW"
-      },
-      {
-        "id": "com.google.DevicePolicy",
-        "displayName": "Google Device Policy (Android App)",
-        "deploymentType": "Android App",
-        "clientId": "com.google.DevicePolicy",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 0,
-        "maxRisk": "LOW"
-      },
-      {
-        "id": "531246522847-cpii92d27guqb6mrvgtc8skipar03g1f.apps.googleusercontent.com",
-        "displayName": "Grasshopper (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "531246522847-cpii92d27guqb6mrvgtc8skipar03g1f.apps.googleusercontent.com",
-        "adminAccessLevel": "TRUSTED",
-        "totalUsersCount": 0,
-        "maxRisk": "LOW"
-      }
-    ],
-    "clientIdsCount": 1,
-    "clientIds": [
-      "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com"
-    ],
-    "projectNumbers": [
-      "296758037454"
-    ],
-    "totalUsersCount": 4,
-    "adminUsersCount": 3,
-    "scopesCount": 4,
-    "scopes": [
-      {
-        "scope": "https://www.googleapis.com/auth/documents",
-        "riskLevel": "LOW",
-        "description": "Document Manipulation & Espionage",
-        "threatImpact": "Read and write access to all Google Docs files (confidential reports, policies, legal contracts).",
-        "adminScore": 4,
-        "adminColor": "Orange",
-        "googleTier": "Sensitive",
-        "service": "Google Drive & Docs"
-      },
-      {
-        "scope": "https://www.googleapis.com/auth/spreadsheets",
-        "riskLevel": "MEDIUM",
-        "description": "Financial & Tabular Data Access",
-        "threatImpact": "Read and write access to all Google Sheets (financial models, customer lists, HR payroll, and analytics).",
-        "adminScore": 4,
-        "adminColor": "Orange",
-        "googleTier": "Sensitive",
-        "service": "Google Drive & Docs"
-      },
-      {
-        "scope": "https://www.googleapis.com/auth/apps_genai",
-        "riskLevel": "LOW",
-        "description": "Workspace Generative AI & Gemini Configuration",
-        "threatImpact": "Manage administrative configurations and policies for generative AI features in Google Workspace.",
-        "adminScore": 3,
-        "adminColor": "Yellow",
-        "googleTier": "Sensitive",
-        "service": "Admin SDK"
-      },
-      {
-        "scope": "https://www.googleapis.com/auth/drive",
-        "riskLevel": "HIGH",
-        "description": "Full Cloud Storage Compromise",
-        "threatImpact": "Read, edit, create, and permanently delete all files in My Drive and Shared Drives. Severe ransomware and wipeout risk.",
-        "adminScore": 5,
-        "adminColor": "Red",
-        "googleTier": "Restricted",
-        "service": "Google Drive & Docs"
-      }
-    ],
-    "servicesTouched": [
-      "Spreadsheets",
-      "Google Drive"
-    ],
-    "users": [
-      {
-        "email": "alister@gafe.co.za",
-        "name": "Alister Payne",
-        "orgUnit": "/CloudEDU Technical",
-        "isAdmin": true,
-        "grantedScopes": [
-          "https://www.googleapis.com/auth/documents",
-          "https://www.googleapis.com/auth/spreadsheets",
-          "https://www.googleapis.com/auth/apps_genai",
-          "https://www.googleapis.com/auth/drive"
-        ]
-      },
-      {
-        "email": "deidre@gafe.co.za",
-        "name": "Deïdrè Hugo",
-        "orgUnit": "/deidre Testing OU",
-        "isAdmin": true,
-        "grantedScopes": [
-          "https://www.googleapis.com/auth/documents",
-          "https://www.googleapis.com/auth/spreadsheets",
-          "https://www.googleapis.com/auth/apps_genai",
-          "https://www.googleapis.com/auth/drive"
-        ]
-      },
-      {
-        "email": "kevin@gafe.co.za",
-        "name": "Kevin Sherman",
-        "orgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
-        "isAdmin": true,
-        "grantedScopes": [
-          "https://www.googleapis.com/auth/documents",
-          "https://www.googleapis.com/auth/spreadsheets",
-          "https://www.googleapis.com/auth/apps_genai",
-          "https://www.googleapis.com/auth/drive"
-        ]
-      },
-      {
-        "email": "mickey@gafe.co.za",
-        "name": "Mickey Durr",
-        "orgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
-        "isAdmin": false,
-        "grantedScopes": [
-          "https://www.googleapis.com/auth/documents",
-          "https://www.googleapis.com/auth/spreadsheets",
-          "https://www.googleapis.com/auth/apps_genai",
-          "https://www.googleapis.com/auth/drive"
-        ]
-      }
-    ],
-    "firstSeen": null,
-    "lastActive": null,
-    "lastActiveFormatted": "12/09/2026",
-    "isStale": true,
-    "isNew": false,
-    "totalActivityEvents": 0
-  },
-  {
-    "id": "526554529059-emb2o69t2ri25uicvjkj444o71sku29p.apps.googleusercontent.com",
-    "clientId": "526554529059-emb2o69t2ri25uicvjkj444o71sku29p.apps.googleusercontent.com",
-    "familyId": "google-llc",
-    "familyName": "Google LLC",
-    "displayName": "gemini-enterprise (Web Application)",
-    "vendor": "Google LLC",
-    "publisherDomain": "cloud.google.com",
-    "category": "AI & Enterprise Cloud",
-    "appType": "Enterprise Cloud Service",
-    "deploymentType": "Web Application",
-    "compliance": [
-      "SOC 2",
-      "ISO 27001",
-      "GDPR"
-    ],
-    "dataHosting": "USA / Global",
-    "breachHistory": null,
-    "breaches": [],
-    "breachPenalty": 0,
-    "breachBracket": "NONE",
-    "breachDaysElapsed": null,
-    "verificationPenalty": 0,
-    "scopeRiskScore": 4.5,
-    "isVerified": true,
-    "iconUrl": "https://www.google.com/s2/favicons?domain=cloud.google.com&sz=128",
-    "storeUrl": "https://cloud.google.com",
-    "description": "Google Cloud Gemini Enterprise AI deployment and management.",
-    "riskScore": 4.5,
-    "peakScopeScore": 5,
-    "breadthScore": 0.5,
-    "avgScopeScore": 2.77,
-    "riskLevel": "CRITICAL",
-    "riskScoreColor": "Red",
-    "rawMaxRisk": "HIGH",
-    "riskReasons": [
-      "Critical Administrative or Direct Mail Access",
-      "Full Google Drive Read/Write Access or Mail Modification",
-      "Access to Domain Directory, Files, or Calendars",
-      "Basic Authentication / Profile Scopes",
-      "Full Google Drive Read/Write Access"
-    ],
-    "adminAccessLevel": "UNCONFIGURED",
-    "accessPolicy": null,
-    "multiClientMapped": true,
-    "familyDeploymentsCount": 7,
-    "siblingDeployments": [
-      {
-        "id": "823511539352-ojaretejk1s95sdvkic0te923pt7knpu.apps.googleusercontent.com",
-        "displayName": "Google AI Studio (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "823511539352-ojaretejk1s95sdvkic0te923pt7knpu.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "HIGH"
-      },
-      {
-        "id": "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
-        "displayName": "Gemini for Workspace Studio (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 4,
-        "maxRisk": "HIGH"
-      },
-      {
-        "id": "526554529059-bpm1k15t6a60h9u79tjhmpnutblkmalu.apps.googleusercontent.com",
-        "displayName": "gemini-enterprise (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "526554529059-bpm1k15t6a60h9u79tjhmpnutblkmalu.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "HIGH"
-      },
-      {
-        "id": "1023251155897-tb54g624q9e77gtsrnemgv4c2ihekurv.apps.googleusercontent.com",
-        "displayName": "Google Skills (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "1023251155897-tb54g624q9e77gtsrnemgv4c2ihekurv.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 2,
-        "maxRisk": "LOW"
-      },
-      {
-        "id": "com.google.DevicePolicy",
-        "displayName": "Google Device Policy (Android App)",
-        "deploymentType": "Android App",
-        "clientId": "com.google.DevicePolicy",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 0,
-        "maxRisk": "LOW"
-      },
-      {
-        "id": "531246522847-cpii92d27guqb6mrvgtc8skipar03g1f.apps.googleusercontent.com",
-        "displayName": "Grasshopper (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "531246522847-cpii92d27guqb6mrvgtc8skipar03g1f.apps.googleusercontent.com",
-        "adminAccessLevel": "TRUSTED",
-        "totalUsersCount": 0,
-        "maxRisk": "LOW"
-      }
-    ],
-    "clientIdsCount": 1,
-    "clientIds": [
-      "526554529059-emb2o69t2ri25uicvjkj444o71sku29p.apps.googleusercontent.com"
-    ],
-    "projectNumbers": [
-      "526554529059"
-    ],
-    "totalUsersCount": 1,
-    "adminUsersCount": 1,
-    "scopesCount": 13,
-    "scopes": [
-      {
-        "scope": "https://www.googleapis.com/auth/calendar.events",
-        "riskLevel": "MEDIUM",
-        "description": "Meeting Creation & Alteration",
-        "threatImpact": "Create, edit, and delete calendar meetings on the user's schedule.",
-        "adminScore": 3,
-        "adminColor": "Yellow",
-        "googleTier": "Sensitive",
-        "service": "Google Calendar"
-      },
-      {
-        "scope": "https://www.googleapis.com/auth/gmail.readonly",
-        "riskLevel": "LOW",
-        "description": "Bulk Email Exfiltration",
-        "threatImpact": "Read all historical messages, sensitive corporate contracts, passwords, and reset links without edit rights.",
-        "adminScore": 4,
-        "adminColor": "Orange",
-        "googleTier": "Restricted",
-        "service": "Gmail"
-      },
-      {
-        "scope": "https://www.googleapis.com/auth/userinfo.profile",
-        "riskLevel": "LOW",
-        "description": "Basic Profile Assertion",
-        "threatImpact": "View the user's display name and profile avatar URL.",
-        "adminScore": 1,
-        "adminColor": "Blue",
-        "googleTier": "Non-Sensitive",
-        "service": "Identity & SSO"
-      },
-      {
-        "scope": "https://www.googleapis.com/auth/contacts.readonly",
-        "riskLevel": "MEDIUM",
-        "description": "Address Book Exfiltration",
-        "threatImpact": "Bulk export of contact names, private phone numbers, personal emails, and company notes.",
-        "adminScore": 3,
-        "adminColor": "Yellow",
-        "googleTier": "Sensitive",
-        "service": "Google Contacts"
-      },
-      {
-        "scope": "https://www.googleapis.com/auth/userinfo.email",
-        "riskLevel": "LOW",
-        "description": "Primary Email Verification",
-        "threatImpact": "View the user's primary email address for SSO sign-in.",
-        "adminScore": 1,
-        "adminColor": "Blue",
-        "googleTier": "Non-Sensitive",
-        "service": "Identity & SSO"
-      },
-      {
-        "scope": "https://www.googleapis.com/auth/gmail.send",
-        "riskLevel": "LOW",
-        "description": "Direct Mail Transmission",
-        "threatImpact": "Send messages on the user's behalf without read access to existing email history.",
-        "adminScore": 3,
-        "adminColor": "Yellow",
-        "googleTier": "Sensitive",
-        "service": "Gmail"
-      },
-      {
-        "scope": "openid",
-        "riskLevel": "LOW",
-        "description": "OpenID Identity Assertion",
-        "threatImpact": "Standard OpenID Connect token for user authentication assertion.",
-        "adminScore": 1,
-        "adminColor": "Blue",
-        "googleTier": "Non-Sensitive",
-        "service": "Identity & SSO"
-      },
-      {
-        "scope": "https://www.googleapis.com/auth/drive.file",
-        "riskLevel": "LOW",
-        "description": "Scoped File Access (Least Privilege)",
-        "threatImpact": "Only accesses files created by the app or explicitly opened with it via the Google picker. Safe enterprise pattern.",
-        "adminScore": 3,
-        "adminColor": "Yellow",
-        "googleTier": "Sensitive",
-        "service": "Google Drive & Docs"
-      },
-      {
-        "scope": "https://www.googleapis.com/auth/calendar.readonly",
-        "riskLevel": "MEDIUM",
-        "description": "Executive Calendar Surveillance",
-        "threatImpact": "Read entire schedule, attendees, location, video conference links, and meeting notes.",
-        "adminScore": 3,
-        "adminColor": "Yellow",
-        "googleTier": "Sensitive",
-        "service": "Google Calendar"
-      },
-      {
-        "scope": "https://www.googleapis.com/auth/drive.appfolder",
-        "riskLevel": "HIGH",
-        "description": "Application Dedicated Folder Access",
-        "threatImpact": "Read and write files solely within the application-specific Drive directory.",
-        "adminScore": 2,
-        "adminColor": "Green",
-        "googleTier": "Sensitive",
-        "service": "Google Drive & Docs"
-      },
-      {
-        "scope": "https://www.googleapis.com/auth/drive",
-        "riskLevel": "HIGH",
-        "description": "Full Cloud Storage Compromise",
-        "threatImpact": "Read, edit, create, and permanently delete all files in My Drive and Shared Drives. Severe ransomware and wipeout risk.",
-        "adminScore": 5,
-        "adminColor": "Red",
-        "googleTier": "Restricted",
-        "service": "Google Drive & Docs"
-      },
-      {
-        "scope": "https://www.googleapis.com/auth/gmail.modify",
-        "riskLevel": "LOW",
-        "description": "Message Manipulation & Exfiltration",
-        "threatImpact": "Read, compose, modify labels, and move messages to trash. Enables silent email interception and manipulation.",
-        "adminScore": 5,
-        "adminColor": "Red",
-        "googleTier": "Restricted",
-        "service": "Gmail"
-      },
-      {
-        "scope": "https://www.googleapis.com/auth/drive.appdata",
-        "riskLevel": "HIGH",
-        "description": "Isolated App Configuration Storage",
-        "threatImpact": "Accesses only a dedicated hidden app folder. Cannot touch or see regular corporate user files.",
-        "adminScore": 2,
-        "adminColor": "Green",
-        "googleTier": "Sensitive",
-        "service": "Google Drive & Docs"
-      }
-    ],
-    "servicesTouched": [
-      "Calendar",
-      "Gmail",
-      "Contacts",
-      "Google Drive"
-    ],
-    "users": [
-      {
-        "email": "alister@gafe.co.za",
-        "name": "Alister Payne",
-        "orgUnit": "/CloudEDU Technical",
-        "isAdmin": true,
-        "grantedScopes": [
-          "https://www.googleapis.com/auth/calendar.events",
-          "https://www.googleapis.com/auth/gmail.readonly",
-          "https://www.googleapis.com/auth/userinfo.profile",
-          "https://www.googleapis.com/auth/contacts.readonly",
-          "https://www.googleapis.com/auth/userinfo.email",
-          "https://www.googleapis.com/auth/gmail.send",
-          "openid",
-          "https://www.googleapis.com/auth/drive.file",
-          "https://www.googleapis.com/auth/calendar.readonly",
-          "https://www.googleapis.com/auth/drive.appfolder",
-          "https://www.googleapis.com/auth/drive",
-          "https://www.googleapis.com/auth/gmail.modify"
-        ]
-      }
-    ],
-    "firstSeen": null,
-    "lastActive": null,
-    "lastActiveFormatted": "12/09/2026",
-    "isStale": true,
-    "isNew": false,
-    "totalActivityEvents": 0
-  },
-  {
     "id": "823511539352-ojaretejk1s95sdvkic0te923pt7knpu.apps.googleusercontent.com",
     "clientId": "823511539352-ojaretejk1s95sdvkic0te923pt7knpu.apps.googleusercontent.com",
     "familyId": "google-llc",
@@ -8626,35 +8797,8 @@
     "adminAccessLevel": "UNCONFIGURED",
     "accessPolicy": null,
     "multiClientMapped": true,
-    "familyDeploymentsCount": 7,
+    "familyDeploymentsCount": 4,
     "siblingDeployments": [
-      {
-        "id": "526554529059-emb2o69t2ri25uicvjkj444o71sku29p.apps.googleusercontent.com",
-        "displayName": "gemini-enterprise (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "526554529059-emb2o69t2ri25uicvjkj444o71sku29p.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "HIGH"
-      },
-      {
-        "id": "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
-        "displayName": "Gemini for Workspace Studio (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 4,
-        "maxRisk": "HIGH"
-      },
-      {
-        "id": "526554529059-bpm1k15t6a60h9u79tjhmpnutblkmalu.apps.googleusercontent.com",
-        "displayName": "gemini-enterprise (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "526554529059-bpm1k15t6a60h9u79tjhmpnutblkmalu.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "HIGH"
-      },
       {
         "id": "1023251155897-tb54g624q9e77gtsrnemgv4c2ihekurv.apps.googleusercontent.com",
         "displayName": "Google Skills (Web Application)",
@@ -8738,285 +8882,6 @@
     "totalActivityEvents": 0
   },
   {
-    "id": "526554529059-bpm1k15t6a60h9u79tjhmpnutblkmalu.apps.googleusercontent.com",
-    "clientId": "526554529059-bpm1k15t6a60h9u79tjhmpnutblkmalu.apps.googleusercontent.com",
-    "familyId": "google-llc",
-    "familyName": "Google LLC",
-    "displayName": "gemini-enterprise (Web Application)",
-    "vendor": "Google LLC",
-    "publisherDomain": "cloud.google.com",
-    "category": "AI & Enterprise Cloud",
-    "appType": "Enterprise Cloud Service",
-    "deploymentType": "Web Application",
-    "compliance": [
-      "SOC 2",
-      "ISO 27001",
-      "GDPR"
-    ],
-    "dataHosting": "USA / Global",
-    "breachHistory": null,
-    "breaches": [],
-    "breachPenalty": 0,
-    "breachBracket": "NONE",
-    "breachDaysElapsed": null,
-    "verificationPenalty": 0,
-    "scopeRiskScore": 4.5,
-    "isVerified": true,
-    "iconUrl": "https://www.google.com/s2/favicons?domain=cloud.google.com&sz=128",
-    "storeUrl": "https://cloud.google.com",
-    "description": "Google Cloud Gemini Enterprise AI deployment and management.",
-    "riskScore": 4.5,
-    "peakScopeScore": 5,
-    "breadthScore": 0.5,
-    "avgScopeScore": 2.77,
-    "riskLevel": "CRITICAL",
-    "riskScoreColor": "Red",
-    "rawMaxRisk": "HIGH",
-    "riskReasons": [
-      "Critical Administrative or Direct Mail Access",
-      "Full Google Drive Read/Write Access or Mail Modification",
-      "Access to Domain Directory, Files, or Calendars",
-      "Basic Authentication / Profile Scopes",
-      "Full Google Drive Read/Write Access"
-    ],
-    "adminAccessLevel": "UNCONFIGURED",
-    "accessPolicy": null,
-    "multiClientMapped": true,
-    "familyDeploymentsCount": 7,
-    "siblingDeployments": [
-      {
-        "id": "526554529059-emb2o69t2ri25uicvjkj444o71sku29p.apps.googleusercontent.com",
-        "displayName": "gemini-enterprise (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "526554529059-emb2o69t2ri25uicvjkj444o71sku29p.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "HIGH"
-      },
-      {
-        "id": "823511539352-ojaretejk1s95sdvkic0te923pt7knpu.apps.googleusercontent.com",
-        "displayName": "Google AI Studio (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "823511539352-ojaretejk1s95sdvkic0te923pt7knpu.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "HIGH"
-      },
-      {
-        "id": "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
-        "displayName": "Gemini for Workspace Studio (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 4,
-        "maxRisk": "HIGH"
-      },
-      {
-        "id": "1023251155897-tb54g624q9e77gtsrnemgv4c2ihekurv.apps.googleusercontent.com",
-        "displayName": "Google Skills (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "1023251155897-tb54g624q9e77gtsrnemgv4c2ihekurv.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 2,
-        "maxRisk": "LOW"
-      },
-      {
-        "id": "com.google.DevicePolicy",
-        "displayName": "Google Device Policy (Android App)",
-        "deploymentType": "Android App",
-        "clientId": "com.google.DevicePolicy",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 0,
-        "maxRisk": "LOW"
-      },
-      {
-        "id": "531246522847-cpii92d27guqb6mrvgtc8skipar03g1f.apps.googleusercontent.com",
-        "displayName": "Grasshopper (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "531246522847-cpii92d27guqb6mrvgtc8skipar03g1f.apps.googleusercontent.com",
-        "adminAccessLevel": "TRUSTED",
-        "totalUsersCount": 0,
-        "maxRisk": "LOW"
-      }
-    ],
-    "clientIdsCount": 1,
-    "clientIds": [
-      "526554529059-bpm1k15t6a60h9u79tjhmpnutblkmalu.apps.googleusercontent.com"
-    ],
-    "projectNumbers": [
-      "526554529059"
-    ],
-    "totalUsersCount": 1,
-    "adminUsersCount": 1,
-    "scopesCount": 13,
-    "scopes": [
-      {
-        "scope": "https://www.googleapis.com/auth/calendar.events",
-        "riskLevel": "MEDIUM",
-        "description": "Meeting Creation & Alteration",
-        "threatImpact": "Create, edit, and delete calendar meetings on the user's schedule.",
-        "adminScore": 3,
-        "adminColor": "Yellow",
-        "googleTier": "Sensitive",
-        "service": "Google Calendar"
-      },
-      {
-        "scope": "https://www.googleapis.com/auth/gmail.readonly",
-        "riskLevel": "LOW",
-        "description": "Bulk Email Exfiltration",
-        "threatImpact": "Read all historical messages, sensitive corporate contracts, passwords, and reset links without edit rights.",
-        "adminScore": 4,
-        "adminColor": "Orange",
-        "googleTier": "Restricted",
-        "service": "Gmail"
-      },
-      {
-        "scope": "https://www.googleapis.com/auth/userinfo.profile",
-        "riskLevel": "LOW",
-        "description": "Basic Profile Assertion",
-        "threatImpact": "View the user's display name and profile avatar URL.",
-        "adminScore": 1,
-        "adminColor": "Blue",
-        "googleTier": "Non-Sensitive",
-        "service": "Identity & SSO"
-      },
-      {
-        "scope": "https://www.googleapis.com/auth/gmail.send",
-        "riskLevel": "LOW",
-        "description": "Direct Mail Transmission",
-        "threatImpact": "Send messages on the user's behalf without read access to existing email history.",
-        "adminScore": 3,
-        "adminColor": "Yellow",
-        "googleTier": "Sensitive",
-        "service": "Gmail"
-      },
-      {
-        "scope": "https://www.googleapis.com/auth/contacts.readonly",
-        "riskLevel": "MEDIUM",
-        "description": "Address Book Exfiltration",
-        "threatImpact": "Bulk export of contact names, private phone numbers, personal emails, and company notes.",
-        "adminScore": 3,
-        "adminColor": "Yellow",
-        "googleTier": "Sensitive",
-        "service": "Google Contacts"
-      },
-      {
-        "scope": "https://www.googleapis.com/auth/userinfo.email",
-        "riskLevel": "LOW",
-        "description": "Primary Email Verification",
-        "threatImpact": "View the user's primary email address for SSO sign-in.",
-        "adminScore": 1,
-        "adminColor": "Blue",
-        "googleTier": "Non-Sensitive",
-        "service": "Identity & SSO"
-      },
-      {
-        "scope": "openid",
-        "riskLevel": "LOW",
-        "description": "OpenID Identity Assertion",
-        "threatImpact": "Standard OpenID Connect token for user authentication assertion.",
-        "adminScore": 1,
-        "adminColor": "Blue",
-        "googleTier": "Non-Sensitive",
-        "service": "Identity & SSO"
-      },
-      {
-        "scope": "https://www.googleapis.com/auth/drive.file",
-        "riskLevel": "LOW",
-        "description": "Scoped File Access (Least Privilege)",
-        "threatImpact": "Only accesses files created by the app or explicitly opened with it via the Google picker. Safe enterprise pattern.",
-        "adminScore": 3,
-        "adminColor": "Yellow",
-        "googleTier": "Sensitive",
-        "service": "Google Drive & Docs"
-      },
-      {
-        "scope": "https://www.googleapis.com/auth/calendar.readonly",
-        "riskLevel": "MEDIUM",
-        "description": "Executive Calendar Surveillance",
-        "threatImpact": "Read entire schedule, attendees, location, video conference links, and meeting notes.",
-        "adminScore": 3,
-        "adminColor": "Yellow",
-        "googleTier": "Sensitive",
-        "service": "Google Calendar"
-      },
-      {
-        "scope": "https://www.googleapis.com/auth/drive.appfolder",
-        "riskLevel": "HIGH",
-        "description": "Application Dedicated Folder Access",
-        "threatImpact": "Read and write files solely within the application-specific Drive directory.",
-        "adminScore": 2,
-        "adminColor": "Green",
-        "googleTier": "Sensitive",
-        "service": "Google Drive & Docs"
-      },
-      {
-        "scope": "https://www.googleapis.com/auth/drive",
-        "riskLevel": "HIGH",
-        "description": "Full Cloud Storage Compromise",
-        "threatImpact": "Read, edit, create, and permanently delete all files in My Drive and Shared Drives. Severe ransomware and wipeout risk.",
-        "adminScore": 5,
-        "adminColor": "Red",
-        "googleTier": "Restricted",
-        "service": "Google Drive & Docs"
-      },
-      {
-        "scope": "https://www.googleapis.com/auth/gmail.modify",
-        "riskLevel": "LOW",
-        "description": "Message Manipulation & Exfiltration",
-        "threatImpact": "Read, compose, modify labels, and move messages to trash. Enables silent email interception and manipulation.",
-        "adminScore": 5,
-        "adminColor": "Red",
-        "googleTier": "Restricted",
-        "service": "Gmail"
-      },
-      {
-        "scope": "https://www.googleapis.com/auth/drive.appdata",
-        "riskLevel": "HIGH",
-        "description": "Isolated App Configuration Storage",
-        "threatImpact": "Accesses only a dedicated hidden app folder. Cannot touch or see regular corporate user files.",
-        "adminScore": 2,
-        "adminColor": "Green",
-        "googleTier": "Sensitive",
-        "service": "Google Drive & Docs"
-      }
-    ],
-    "servicesTouched": [
-      "Calendar",
-      "Gmail",
-      "Contacts",
-      "Google Drive"
-    ],
-    "users": [
-      {
-        "email": "alister@gafe.co.za",
-        "name": "Alister Payne",
-        "orgUnit": "/CloudEDU Technical",
-        "isAdmin": true,
-        "grantedScopes": [
-          "https://www.googleapis.com/auth/calendar.events",
-          "https://www.googleapis.com/auth/gmail.readonly",
-          "https://www.googleapis.com/auth/userinfo.profile",
-          "https://www.googleapis.com/auth/gmail.send",
-          "https://www.googleapis.com/auth/contacts.readonly",
-          "https://www.googleapis.com/auth/userinfo.email",
-          "openid",
-          "https://www.googleapis.com/auth/drive.file",
-          "https://www.googleapis.com/auth/calendar.readonly",
-          "https://www.googleapis.com/auth/drive.appfolder",
-          "https://www.googleapis.com/auth/drive",
-          "https://www.googleapis.com/auth/gmail.modify"
-        ]
-      }
-    ],
-    "firstSeen": null,
-    "lastActive": null,
-    "lastActiveFormatted": "12/09/2026",
-    "isStale": true,
-    "isNew": false,
-    "totalActivityEvents": 0
-  },
-  {
     "id": "1023251155897-tb54g624q9e77gtsrnemgv4c2ihekurv.apps.googleusercontent.com",
     "clientId": "1023251155897-tb54g624q9e77gtsrnemgv4c2ihekurv.apps.googleusercontent.com",
     "familyId": "google-llc",
@@ -9058,40 +8923,13 @@
     "adminAccessLevel": "UNCONFIGURED",
     "accessPolicy": null,
     "multiClientMapped": true,
-    "familyDeploymentsCount": 7,
+    "familyDeploymentsCount": 4,
     "siblingDeployments": [
-      {
-        "id": "526554529059-emb2o69t2ri25uicvjkj444o71sku29p.apps.googleusercontent.com",
-        "displayName": "gemini-enterprise (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "526554529059-emb2o69t2ri25uicvjkj444o71sku29p.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "HIGH"
-      },
       {
         "id": "823511539352-ojaretejk1s95sdvkic0te923pt7knpu.apps.googleusercontent.com",
         "displayName": "Google AI Studio (Web Application)",
         "deploymentType": "Web Application",
         "clientId": "823511539352-ojaretejk1s95sdvkic0te923pt7knpu.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "HIGH"
-      },
-      {
-        "id": "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
-        "displayName": "Gemini for Workspace Studio (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 4,
-        "maxRisk": "HIGH"
-      },
-      {
-        "id": "526554529059-bpm1k15t6a60h9u79tjhmpnutblkmalu.apps.googleusercontent.com",
-        "displayName": "gemini-enterprise (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "526554529059-bpm1k15t6a60h9u79tjhmpnutblkmalu.apps.googleusercontent.com",
         "adminAccessLevel": "UNCONFIGURED",
         "totalUsersCount": 1,
         "maxRisk": "HIGH"
@@ -9240,40 +9078,13 @@
       "lastPolicyUpdate": "2026-09-13T18:00:00Z"
     },
     "multiClientMapped": true,
-    "familyDeploymentsCount": 7,
+    "familyDeploymentsCount": 4,
     "siblingDeployments": [
-      {
-        "id": "526554529059-emb2o69t2ri25uicvjkj444o71sku29p.apps.googleusercontent.com",
-        "displayName": "gemini-enterprise (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "526554529059-emb2o69t2ri25uicvjkj444o71sku29p.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "HIGH"
-      },
       {
         "id": "823511539352-ojaretejk1s95sdvkic0te923pt7knpu.apps.googleusercontent.com",
         "displayName": "Google AI Studio (Web Application)",
         "deploymentType": "Web Application",
         "clientId": "823511539352-ojaretejk1s95sdvkic0te923pt7knpu.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "HIGH"
-      },
-      {
-        "id": "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
-        "displayName": "Gemini for Workspace Studio (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 4,
-        "maxRisk": "HIGH"
-      },
-      {
-        "id": "526554529059-bpm1k15t6a60h9u79tjhmpnutblkmalu.apps.googleusercontent.com",
-        "displayName": "gemini-enterprise (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "526554529059-bpm1k15t6a60h9u79tjhmpnutblkmalu.apps.googleusercontent.com",
         "adminAccessLevel": "UNCONFIGURED",
         "totalUsersCount": 1,
         "maxRisk": "HIGH"
@@ -9365,40 +9176,13 @@
       "lastPolicyUpdate": "2026-09-13T18:00:00Z"
     },
     "multiClientMapped": true,
-    "familyDeploymentsCount": 7,
+    "familyDeploymentsCount": 4,
     "siblingDeployments": [
-      {
-        "id": "526554529059-emb2o69t2ri25uicvjkj444o71sku29p.apps.googleusercontent.com",
-        "displayName": "gemini-enterprise (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "526554529059-emb2o69t2ri25uicvjkj444o71sku29p.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "HIGH"
-      },
       {
         "id": "823511539352-ojaretejk1s95sdvkic0te923pt7knpu.apps.googleusercontent.com",
         "displayName": "Google AI Studio (Web Application)",
         "deploymentType": "Web Application",
         "clientId": "823511539352-ojaretejk1s95sdvkic0te923pt7knpu.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 1,
-        "maxRisk": "HIGH"
-      },
-      {
-        "id": "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
-        "displayName": "Gemini for Workspace Studio (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
-        "adminAccessLevel": "UNCONFIGURED",
-        "totalUsersCount": 4,
-        "maxRisk": "HIGH"
-      },
-      {
-        "id": "526554529059-bpm1k15t6a60h9u79tjhmpnutblkmalu.apps.googleusercontent.com",
-        "displayName": "gemini-enterprise (Web Application)",
-        "deploymentType": "Web Application",
-        "clientId": "526554529059-bpm1k15t6a60h9u79tjhmpnutblkmalu.apps.googleusercontent.com",
         "adminAccessLevel": "UNCONFIGURED",
         "totalUsersCount": 1,
         "maxRisk": "HIGH"
