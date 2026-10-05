@@ -77,11 +77,16 @@ async function runDailySync() {
     }
 
     // Stage 4: Ingest 180-Day Administrator Policy Timeline Events
-    log('[Stage 4/5] Ingesting administrator application access policy changes (180 days)...');
+    log('[Stage 4/6] Ingesting administrator application access policy changes (180 days)...');
     execSync('/usr/bin/node ingest_timeline_180d.mjs', { cwd: WORKSPACE_DIR, stdio: 'inherit' });
     log('✓ Stage 4 Complete: Access timeline updated with administrator policy changes.');
 
-    // Stage 5: Update Sync Status Metadata
+    // Stage 5: Ingest Generative AI & Gemini Notebook Telemetry
+    log('[Stage 5/6] Ingesting Generative AI & Gemini Notebook audit logs...');
+    execSync('/usr/bin/node ingest_generative_ai.mjs', { cwd: WORKSPACE_DIR, stdio: 'inherit' });
+    log('✓ Stage 5 Complete: Generative AI telemetry ingested into SQLite & JSON.');
+
+    // Stage 6: Update Sync Status Metadata
     const endTime = new Date();
     const durationSec = ((endTime.getTime() - startTime.getTime()) / 1000).toFixed(1);
     const nextRun = new Date(endTime.getTime() + 24 * 60 * 60 * 1000);

@@ -1,7 +1,7 @@
 "use client";
 
-import { useSelectedLayoutSegments } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useSearchParams,useSelectedLayoutSegments } from "next/navigation";
+import { Suspense, useEffect, useRef } from "react";
 
 import { useAppProvider } from "@/app/app-provider";
 import { useWindowWidth } from "@/components/utils/use-window-width";
@@ -9,46 +9,42 @@ import { useWindowWidth } from "@/components/utils/use-window-width";
 import Logo from "./logo";
 import SidebarLink from "./sidebar-link";
 
-export default function Sidebar({ variant = "default" }: { variant?: string }) {
+function SidebarContent({ variant = "default" }: { variant?: string }) {
   const sidebar = useRef<HTMLDivElement>(null);
   const { sidebarOpen, setSidebarOpen, sidebarExpanded, setSidebarExpanded } = useAppProvider();
   const segments = useSelectedLayoutSegments();
-  const [currentTab, setCurrentTab] = useState("dashboard");
-
-  useEffect(() => {
-    const syncTab = () => {
-      if (typeof window !== "undefined") {
-        const params = new URLSearchParams(window.location.search);
-        setCurrentTab(params.get("tab") || "dashboard");
-      }
-    };
-    syncTab();
-
-    window.addEventListener("popstate", syncTab);
-    return () => {
-      window.removeEventListener("popstate", syncTab);
-    };
-  }, [segments]);
+  const searchParams = useSearchParams();
+  const tabFromQuery = searchParams.get("tab");
 
   const isClientWorkspace =
     (segments.length === 0 || segments.includes("dashboard")) &&
     !segments.includes("scopes") &&
-    !segments.includes("central-database");
+    !segments.includes("central-database") &&
+    !segments.includes("generative-ai");
 
+  const workspaceTab = tabFromQuery || "dashboard";
+  const isMainDashboardActive =
+    isClientWorkspace && workspaceTab === "main-dashboard";
   const isDashboardActive =
-    isClientWorkspace && (currentTab === "dashboard" || !currentTab);
+    isClientWorkspace && workspaceTab === "dashboard";
   const isApplicationsActive =
-    isClientWorkspace && currentTab === "apps";
-  const isInternalAppsActive =
-    isClientWorkspace && currentTab === "internal";
-  const isClientScopesActive = isClientWorkspace && currentTab === "scopes";
-  const isClientRecsActive = isClientWorkspace && currentTab === "recs";
-  const isClientTimelineActive = isClientWorkspace && currentTab === "timeline";
-  const isDataImportActive = isClientWorkspace && currentTab === "import";
-  const isClientBaselineActive = isClientWorkspace && currentTab === "baseline";
+    isClientWorkspace && (workspaceTab === "apps" || workspaceTab === "internal");
+  const isClientScopesActive = isClientWorkspace && workspaceTab === "scopes";
+  const isClientRecsActive = isClientWorkspace && workspaceTab === "recs";
+  const isClientTimelineActive = isClientWorkspace && workspaceTab === "timeline";
+  const isDataImportActive = isClientWorkspace && workspaceTab === "import";
+  const isClientBaselineActive = isClientWorkspace && workspaceTab === "baseline";
 
   const isAdminScopesActive = segments.includes("scopes");
   const isAdminRepoActive = segments.includes("central-database");
+
+  // Generative AI section
+  const isGenAI = segments.includes("generative-ai");
+  const genAiTab = tabFromQuery || "overview";
+  const isGenAIOverviewActive = isGenAI && genAiTab === "overview";
+  const isGenAINotebooksActive = isGenAI && genAiTab === "notebooks";
+  const isGenAIAppsActive = isGenAI && genAiTab === "apps";
+  const isGenAIAuditActive = isGenAI && genAiTab === "audit";
   const breakpoint = useWindowWidth();
   const expandOnly = !sidebarExpanded && breakpoint && breakpoint >= 1024 && breakpoint < 1536;
 
@@ -92,7 +88,7 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
         }`}
       >
         {/* Sidebar header */}
-        <div className="flex justify-between mb-8 pr-3 sm:px-2">
+        <div className="flex justify-between mb-4 pr-3 sm:px-2">
           {/* Close button */}
           <button
             className="text-gray-500 hover:text-gray-400 lg:hidden"
@@ -110,19 +106,36 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
         </div>
 
         {/* Links */}
-        <div className="space-y-6">
-          {/* Section 1: Workspace */}
+        <div className="flex-1 overflow-y-auto space-y-4 pr-1 pb-16">
+          {/* Main Dashboard (Standalone Top Item) */}
+          <ul className="space-y-1">
+            <li className={`px-2.5 py-2 rounded-lg transition-colors ${isMainDashboardActive ? "bg-blue-50 text-blue-700 font-semibold" : "hover:bg-gray-100 text-gray-700"}`}>
+              <SidebarLink href="/dashboard?tab=main-dashboard">
+                <div className="flex items-center justify-between w-full">
+                  <div className="flex items-center">
+                    <svg className={`shrink-0 h-4.5 w-4.5 ${isMainDashboardActive ? "text-blue-600" : "text-gray-500"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                    <span className="text-sm ml-2.5 font-medium">
+                      Main Dashboard
+                    </span>
+                  </div>
+                </div>
+              </SidebarLink>
+            </li>
+          </ul>
+
+          {/* Section 1: App Access Control */}
           <div>
             <div className="pl-3 pr-2 mb-2">
               <h3 className="text-xs uppercase text-gray-400 font-bold tracking-wider">
-                Workspace
+                App Access Control
               </h3>
             </div>
             <ul className="space-y-1">
-              
-              {/* Dashboard (1st Item - Initial Landing Page) */}
+              {/* Dashboard (2nd Item - Initial Landing Page) */}
               <li className={`px-2.5 py-2 rounded-lg transition-colors ${isDashboardActive ? "bg-blue-50 text-blue-700 font-semibold" : "hover:bg-gray-100 text-gray-700"}`}>
-                <SidebarLink href="/dashboard?tab=dashboard" onClick={() => setCurrentTab("dashboard")}>
+                <SidebarLink href="/dashboard?tab=dashboard">
                   <div className="flex items-center justify-between w-full">
                     <div className="flex items-center">
                       <svg className={`shrink-0 h-4.5 w-4.5 ${isDashboardActive ? "text-blue-600" : "text-gray-500"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -138,7 +151,7 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
 
               {/* Applications */}
               <li className={`px-2.5 py-2 rounded-lg transition-colors ${isApplicationsActive ? "bg-blue-50 text-blue-700 font-semibold" : "hover:bg-gray-100 text-gray-700"}`}>
-                <SidebarLink href="/dashboard?tab=apps" onClick={() => setCurrentTab("apps")}>
+                <SidebarLink href="/dashboard?tab=apps">
                   <div className="flex items-center justify-between w-full">
                     <div className="flex items-center">
                       <svg className={`shrink-0 h-4.5 w-4.5 ${isApplicationsActive ? "text-blue-600" : "text-gray-500"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -152,30 +165,10 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
                 </SidebarLink>
               </li>
 
-              {/* Internal Applications */}
-              <li className={`px-2.5 py-2 rounded-lg transition-colors ${isInternalAppsActive ? "bg-purple-50 text-purple-700 font-semibold" : "hover:bg-gray-100 text-gray-700"}`}>
-                <SidebarLink href="/dashboard?tab=internal" onClick={() => setCurrentTab("internal")}>
-                  <div className="flex items-center justify-between w-full">
-                    <div className="flex items-center">
-                      <svg className={`shrink-0 h-4.5 w-4.5 ${isInternalAppsActive ? "text-purple-600" : "text-gray-500"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                      </svg>
-                      <span className="text-sm ml-2.5 font-medium">
-                        Internal Applications
-                      </span>
-                    </div>
-                    <span className={`text-[11px] font-bold px-1.5 py-0.5 rounded-full ${
-                      isInternalAppsActive ? "bg-purple-200 text-purple-800" : "bg-purple-100 text-purple-700"
-                    }`}>
-                      12
-                    </span>
-                  </div>
-                </SidebarLink>
-              </li>
 
               {/* Services & Scopes */}
               <li className={`px-2.5 py-2 rounded-lg transition-colors ${isClientScopesActive ? "bg-blue-50 text-blue-700 font-semibold" : "hover:bg-gray-100 text-gray-700"}`}>
-                <SidebarLink href="/dashboard?tab=scopes" onClick={() => setCurrentTab("scopes")}>
+                <SidebarLink href="/dashboard?tab=scopes">
                   <div className="flex items-center justify-between w-full">
                     <div className="flex items-center">
                       <svg className={`shrink-0 h-4.5 w-4.5 ${isClientScopesActive ? "text-blue-600" : "text-gray-500"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -191,7 +184,7 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
 
               {/* Recommendations */}
               <li className={`px-2.5 py-2 rounded-lg transition-colors ${isClientRecsActive ? "bg-blue-50 text-blue-700 font-semibold" : "hover:bg-gray-100 text-gray-700"}`}>
-                <SidebarLink href="/dashboard?tab=recs" onClick={() => setCurrentTab("recs")}>
+                <SidebarLink href="/dashboard?tab=recs">
                   <div className="flex items-center justify-between w-full">
                     <div className="flex items-center">
                       <svg className={`shrink-0 h-4.5 w-4.5 ${isClientRecsActive ? "text-blue-600" : "text-gray-500"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -207,7 +200,7 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
 
               {/* Access Timeline (4th Item) */}
               <li className={`px-2.5 py-2 rounded-lg transition-colors ${isClientTimelineActive ? "bg-blue-50 text-blue-700 font-semibold" : "hover:bg-gray-100 text-gray-700"}`}>
-                <SidebarLink href="/dashboard?tab=timeline" onClick={() => setCurrentTab("timeline")}>
+                <SidebarLink href="/dashboard?tab=timeline">
                   <div className="flex items-center justify-between w-full">
                     <div className="flex items-center">
                       <svg className={`shrink-0 h-4.5 w-4.5 ${isClientTimelineActive ? "text-blue-600" : "text-gray-500"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -223,7 +216,7 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
 
               {/* Data Import (5th Item) */}
               <li className={`px-2.5 py-2 rounded-lg transition-colors ${isDataImportActive ? "bg-blue-50 text-blue-700 font-semibold" : "hover:bg-gray-100 text-gray-700"}`}>
-                <SidebarLink href="/dashboard?tab=import" onClick={() => setCurrentTab("import")}>
+                <SidebarLink href="/dashboard?tab=import">
                   <div className="flex items-center justify-between w-full">
                     <div className="flex items-center">
                       <svg className={`shrink-0 h-4.5 w-4.5 ${isDataImportActive ? "text-blue-600" : "text-gray-500"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -240,7 +233,7 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
 
               {/* Domain Baseline Settings (6th Item) */}
               <li className={`px-2.5 py-2 rounded-lg transition-colors ${isClientBaselineActive ? "bg-blue-50 text-blue-700 font-semibold" : "hover:bg-gray-100 text-gray-700"}`}>
-                <SidebarLink href="/dashboard?tab=baseline" onClick={() => setCurrentTab("baseline")}>
+                <SidebarLink href="/dashboard?tab=baseline">
                   <div className="flex items-center justify-between w-full">
                     <div className="flex items-center">
                       <svg className={`shrink-0 h-4.5 w-4.5 ${isClientBaselineActive ? "text-blue-600" : "text-gray-500"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -303,6 +296,61 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
             </ul>
           </div>
 
+          {/* Section 3: Generative AI */}
+          <div className="pt-2 border-t border-gray-200">
+            <div className="pl-3 pr-2 mb-2">
+              <h3 className="text-xs uppercase text-gray-400 font-bold tracking-wider">
+                Generative AI
+              </h3>
+            </div>
+            
+            {/* Standalone Sub-menu Group */}
+            <ul className="space-y-1 bg-slate-50/70 p-1.5 rounded-xl border border-slate-200/80">
+
+              {/* Sub-menu 1: Overview */}
+              <li className={`px-3 py-1.5 rounded-lg transition-colors ${isGenAIOverviewActive ? "bg-white text-slate-900 font-semibold shadow-2xs border border-slate-200" : "hover:bg-white/80 text-gray-600 hover:text-gray-900"}`}>
+                <SidebarLink href="/generative-ai?tab=overview">
+                  <span className="text-sm">
+                    Overview
+                  </span>
+                </SidebarLink>
+              </li>
+
+              {/* Sub-menu 2: NotebookLM */}
+              <li className={`px-3 py-1.5 rounded-lg transition-colors ${isGenAINotebooksActive ? "bg-white text-slate-900 font-semibold shadow-2xs border border-slate-200" : "hover:bg-white/80 text-gray-600 hover:text-gray-900"}`}>
+                <SidebarLink href="/generative-ai?tab=notebooks">
+                  <div className="flex items-center justify-between w-full">
+                    <span className="text-sm">
+                      NotebookLM
+                    </span>
+                    <span className="text-[11px] font-bold px-1.5 py-0.5 rounded-full bg-slate-200/70 text-slate-700">
+                      9
+                    </span>
+                  </div>
+                </SidebarLink>
+              </li>
+
+              {/* Sub-menu 3: Applications */}
+              <li className={`px-3 py-1.5 rounded-lg transition-colors ${isGenAIAppsActive ? "bg-white text-slate-900 font-semibold shadow-2xs border border-slate-200" : "hover:bg-white/80 text-gray-600 hover:text-gray-900"}`}>
+                <SidebarLink href="/generative-ai?tab=apps">
+                  <span className="text-sm">
+                    Applications
+                  </span>
+                </SidebarLink>
+              </li>
+
+              {/* Sub-menu 4: Audit Logs */}
+              <li className={`px-3 py-1.5 rounded-lg transition-colors ${isGenAIAuditActive ? "bg-white text-slate-900 font-semibold shadow-2xs border border-slate-200" : "hover:bg-white/80 text-gray-600 hover:text-gray-900"}`}>
+                <SidebarLink href="/generative-ai?tab=audit">
+                  <span className="text-sm">
+                    Audit Logs
+                  </span>
+                </SidebarLink>
+              </li>
+
+            </ul>
+          </div>
+
         </div>
 
         {/* Expand / collapse button */}
@@ -327,5 +375,13 @@ export default function Sidebar({ variant = "default" }: { variant?: string }) {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function Sidebar(props: { variant?: string }) {
+  return (
+    <Suspense fallback={null}>
+      <SidebarContent {...props} />
+    </Suspense>
   );
 }

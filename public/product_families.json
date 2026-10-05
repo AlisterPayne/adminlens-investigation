@@ -236,7 +236,7 @@
     "familyName": "Google Chrome",
     "iconUrl": "https://ui-avatars.com/api/?name=Google%20Chrome&background=3B82F6&color=fff&size=128&rounded=true",
     "deploymentsCount": 1,
-    "totalUsersCount": 69,
+    "totalUsersCount": 70,
     "maxRisk": "HIGH",
     "avgRiskScore": 3.35,
     "deploymentIds": [
@@ -382,19 +382,6 @@
     ]
   },
   {
-    "familyId": "wonde-ltd",
-    "familyName": "Wonde Ltd",
-    "vendor": "Wonde Ltd",
-    "iconUrl": "https://www.google.com/s2/favicons?domain=wonde.com&sz=128",
-    "deploymentsCount": 1,
-    "totalUsersCount": 1,
-    "maxRisk": "LOW",
-    "avgRiskScore": 1,
-    "deploymentIds": [
-      "1098397018324-aqmj80n4sfufvbn3cg4bd7ugkcfpu21o.apps.googleusercontent.com"
-    ]
-  },
-  {
     "familyId": "gcp_proj_122846605100",
     "familyName": "Workspace Studio",
     "iconUrl": "https://ui-avatars.com/api/?name=Workspace%20Studio&background=3B82F6&color=fff&size=128&rounded=true",
@@ -509,19 +496,6 @@
     ]
   },
   {
-    "familyId": "bitly-inc-",
-    "familyName": "Bitly, Inc.",
-    "vendor": "Bitly, Inc.",
-    "iconUrl": "https://www.google.com/s2/favicons?domain=bitly.com&sz=128",
-    "deploymentsCount": 1,
-    "totalUsersCount": 1,
-    "maxRisk": "LOW",
-    "avgRiskScore": 1.1,
-    "deploymentIds": [
-      "489890094529-ueegekuf9mubvv4sc6bh57op2rkjok62.apps.googleusercontent.com"
-    ]
-  },
-  {
     "familyId": "gcp_proj_469390422673",
     "familyName": "Google Calendar for Workspace Studio",
     "vendor": "Google LLC",
@@ -532,6 +506,19 @@
     "avgRiskScore": 3.04,
     "deploymentIds": [
       "469390422673-r0p2tar3lgjlnhtsv4t4uonq4bi2svf8.apps.googleusercontent.com"
+    ]
+  },
+  {
+    "familyId": "bitly-inc-",
+    "familyName": "Bitly, Inc.",
+    "vendor": "Bitly, Inc.",
+    "iconUrl": "https://www.google.com/s2/favicons?domain=bitly.com&sz=128",
+    "deploymentsCount": 1,
+    "totalUsersCount": 1,
+    "maxRisk": "LOW",
+    "avgRiskScore": 1.1,
+    "deploymentIds": [
+      "489890094529-ueegekuf9mubvv4sc6bh57op2rkjok62.apps.googleusercontent.com"
     ]
   },
   {
@@ -609,6 +596,19 @@
     "avgRiskScore": 1.35,
     "deploymentIds": [
       "99790332366-7jbqgn7andc12kui6o7810gk03le7asr.apps.googleusercontent.com"
+    ]
+  },
+  {
+    "familyId": "wonde-ltd",
+    "familyName": "Wonde Ltd",
+    "vendor": "Wonde Ltd",
+    "iconUrl": "https://www.google.com/s2/favicons?domain=wonde.com&sz=128",
+    "deploymentsCount": 1,
+    "totalUsersCount": 0,
+    "maxRisk": "LOW",
+    "avgRiskScore": 1,
+    "deploymentIds": [
+      "1098397018324-aqmj80n4sfufvbn3cg4bd7ugkcfpu21o.apps.googleusercontent.com"
     ]
   },
   {

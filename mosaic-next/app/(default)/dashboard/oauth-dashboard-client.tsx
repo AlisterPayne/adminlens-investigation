@@ -6,7 +6,7 @@ import React, { useEffect, useMemo, useState } from "react";
 
 import AccessTimelineView, { TimelineEvent } from "@/components/access-timeline-view";
 import ApplicationsView from "@/components/applications-view";
-import GoogleVerifiedBadge from "@/components/google-verified-badge";
+import DashboardLandingView from "@/components/dashboard-landing-view";
 import {
   GmailIcon,
   GoogleAdminIcon,
@@ -17,7 +17,8 @@ import {
   GoogleDriveIcon,
   GoogleProductIcon,
 } from "@/components/google-icons";
-import DashboardLandingView from "@/components/dashboard-landing-view";
+import GoogleVerifiedBadge from "@/components/google-verified-badge";
+import MainDashboardView from "@/components/main-dashboard-view";
 import OWLImportPanel from "@/components/owl-import-panel";
 import RecommendationsView from "@/components/recommendations-view";
 import ScopeMatrixView, { ScopeMetrics,ScopeReferenceItem } from "@/components/scope-matrix-view";
@@ -243,7 +244,7 @@ export default function OAuthDashboardClient({
   const [currentApps, setCurrentApps] = useState<Application[]>(initialApps);
   const [currentMetrics, setCurrentMetrics] = useState<Metrics>(metrics);
   const [timelineEvents, setTimelineEvents] = useState<TimelineEvent[]>(initialTimelineEvents || []);
-  const [activeTab, setActiveTab] = useState<"dashboard" | "apps" | "internal" | "recs" | "scopes" | "timeline" | "import" | "baseline">("dashboard");
+  const [activeTab, setActiveTab] = useState<"main-dashboard" | "dashboard" | "apps" | "internal" | "recs" | "scopes" | "timeline" | "import" | "baseline">("dashboard");
   const searchParams = useSearchParams();
 
   useEffect(() => {
@@ -252,7 +253,7 @@ export default function OAuthDashboardClient({
       const appTypeParam = searchParams.get("appType");
       if (tabParam === "internal" || (tabParam === "apps" && appTypeParam === "internal")) {
         setActiveTab("internal");
-      } else if (tabParam === "apps" || tabParam === "recs" || tabParam === "scopes" || tabParam === "dashboard" || tabParam === "timeline" || tabParam === "import" || tabParam === "baseline") {
+      } else if (tabParam === "main-dashboard" || tabParam === "apps" || tabParam === "recs" || tabParam === "scopes" || tabParam === "dashboard" || tabParam === "timeline" || tabParam === "import" || tabParam === "baseline") {
         setActiveTab(tabParam as any);
       } else if (!tabParam) {
         setActiveTab("dashboard");
@@ -349,7 +350,7 @@ export default function OAuthDashboardClient({
     } catch (_) {}
   };
 
-  const handleTabChange = (tab: "dashboard" | "apps" | "internal" | "recs" | "scopes" | "timeline" | "import" | "baseline") => {
+  const handleTabChange = (tab: "main-dashboard" | "dashboard" | "apps" | "internal" | "recs" | "scopes" | "timeline" | "import" | "baseline") => {
     setActiveTab(tab);
     if (typeof window !== "undefined") {
       const url = new URL(window.location.href);
@@ -822,7 +823,9 @@ export default function OAuthDashboardClient({
       {/* Page Heading */}
       <div className="mb-2">
         <h1 className="text-2xl font-bold text-gray-900">
-          {activeTab === "scopes"
+          {activeTab === "main-dashboard"
+            ? "Main Dashboard"
+            : activeTab === "scopes"
             ? "Services & Scopes"
             : activeTab === "recs"
             ? "Recommendations"
@@ -837,7 +840,9 @@ export default function OAuthDashboardClient({
             : "Applications"}
         </h1>
         <p className="text-xs text-gray-500 mt-0.5">
-          {activeTab === "internal"
+          {activeTab === "main-dashboard"
+            ? "Domain Security Governance & 3rd-Party Risk Posture Evaluation"
+            : activeTab === "internal"
             ? "Audit and govern internal Apps Scripts, custom automations, and domain developer tools"
             : "Google Workspace OAuth Security & Governance"}
         </p>
@@ -854,6 +859,19 @@ export default function OAuthDashboardClient({
             ✕
           </button>
         </div>
+      )}
+
+      {/* ============================================================== */}
+      {/* VIEW 0: MAIN DASH BOARD (POSTURE EVALUATION & GOVERNANCE)      */}
+      {/* ============================================================== */}
+      {activeTab === "main-dashboard" && (
+        <MainDashboardView
+          apps={currentApps as any}
+          confirmedTrustedMap={confirmedTrustedMap}
+          timelineEvents={timelineEvents}
+          onNavigateToTab={(tab) => handleTabChange(tab as any)}
+          onSelectApp={(app) => setSelectedApp(app as any)}
+        />
       )}
 
       {/* ============================================================== */}

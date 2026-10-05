@@ -238,6 +238,29 @@ export class AdminLensDatabase {
       linkedGoogleAppsCount: linkedAppsCount,
     };
   }
+
+  getGenerativeAIMetrics() {
+    const wsTotal = this.db.prepare('SELECT COUNT(*) as count FROM gemini_workspace_events').get().count;
+    const nbTotal = this.db.prepare('SELECT COUNT(*) as count FROM gemini_notebook_events').get().count;
+    const wsUsers = this.db.prepare('SELECT COUNT(DISTINCT user_email) as count FROM gemini_workspace_events').get().count;
+    const nbUsers = this.db.prepare('SELECT COUNT(DISTINCT user_email) as count FROM gemini_notebook_events').get().count;
+    const agenticCount = this.db.prepare('SELECT COUNT(*) as count FROM gemini_workspace_events WHERE is_agentic_action = 1').get().count;
+    const notebooksCount = this.db.prepare('SELECT COUNT(DISTINCT notebook_id) as count FROM gemini_notebook_events WHERE notebook_id IS NOT NULL').get().count;
+    const artifactsCount = this.db.prepare('SELECT COUNT(*) as count FROM gemini_notebook_events WHERE studio_artifact_id IS NOT NULL OR studio_artifact_type IS NOT NULL').get().count;
+    const sourcesCount = this.db.prepare('SELECT COUNT(*) as count FROM gemini_notebook_events WHERE source_name IS NOT NULL OR source_url IS NOT NULL').get().count;
+
+    return {
+      totalEvents: wsTotal + nbTotal,
+      workspaceEvents: wsTotal,
+      notebookEvents: nbTotal,
+      workspaceUsersCount: wsUsers,
+      notebookUsersCount: nbUsers,
+      agenticEventsCount: agenticCount,
+      notebooksCount,
+      artifactsCount,
+      sourcesCount
+    };
+  }
 }
 
 // CLI test

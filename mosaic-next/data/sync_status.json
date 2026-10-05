@@ -4,15 +4,15 @@
   "scheduleCadence": "Every 24 Hours",
   "cronExpression": "0 2 * * *",
   "status": "SUCCESS",
-  "lastRunTimestamp": "2026-09-28T00:02:42.033Z",
-  "nextRunTimestamp": "2026-09-29T00:02:42.033Z",
-  "durationSeconds": 160.2,
+  "lastRunTimestamp": "2026-10-05T00:02:20.148Z",
+  "nextRunTimestamp": "2026-10-06T00:02:20.148Z",
+  "durationSeconds": 137.6,
   "summary": {
     "usersProcessed": 296,
     "activeTokensCollected": 268,
-    "applicationsIndexed": 68,
+    "applicationsIndexed": 87,
     "distinctScopesMapped": 95,
-    "totalScopeGrants": 400,
+    "totalScopeGrants": 402,
     "adminPolicyChanges": 10
   }
 }

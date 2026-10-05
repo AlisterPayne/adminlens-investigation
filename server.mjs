@@ -406,7 +406,36 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  // 7. Static Files: public/index.html
+  // 7. API: Generative AI Data
+  if (pathname === '/api/generative-ai/data' && req.method === 'GET') {
+    const dataPath = './mosaic-next/data/generative_ai_data.json';
+    if (fs.existsSync(dataPath)) {
+      const data = fs.readFileSync(dataPath, 'utf8');
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(data);
+    } else {
+      res.writeHead(404, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: 'Generative AI data not found. Please run sync.' }));
+    }
+    return;
+  }
+
+  // 7b. API: Generative AI Sync (On demand)
+  if (pathname === '/api/generative-ai/sync' && req.method === 'POST') {
+    try {
+      const { ingestGenerativeAIData } = await import('./ingest_generative_ai.mjs');
+      const data = await ingestGenerativeAIData();
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ success: true, metrics: data.metrics }));
+    } catch (err) {
+      console.error('GenAI sync error:', err);
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ success: false, error: err.message }));
+    }
+    return;
+  }
+
+  // 8. Static Files: public/index.html
 
   if (pathname === '/' || pathname === '/index.html') {
     const html = fs.readFileSync('./public/index.html', 'utf8');

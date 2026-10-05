@@ -1,9 +1,9 @@
 {
   "metadata": {
     "domain": "gafe.co.za",
-    "pullInitiated": "2026-09-28T00:02:32.966Z",
+    "pullInitiated": "2026-10-05T00:01:57.731Z",
     "historicalHorizonDays": 180,
-    "historicalStartDate": "2026-04-01T00:02:33.745Z",
+    "historicalStartDate": "2026-04-08T00:01:58.491Z",
     "adminPolicyEventsFound": 10,
     "retentionPolicy": "Permanent database storage (preserves history beyond Google 180-day window)",
     "filterApplied": "Administrator application access policy changes only (Trusted, Specific Data, Limited, Blocked)"

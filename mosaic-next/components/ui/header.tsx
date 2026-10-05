@@ -9,6 +9,7 @@ export default function Header({ variant = "default" }: { variant?: string }) {
   const pathname = usePathname() || "";
   const isCentralDb = pathname.includes("central-database");
   const isScopes = pathname.includes("scopes");
+  const isGenAI = pathname.includes("generative-ai");
 
   return (
     <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-xs border-b border-gray-200">
@@ -47,6 +48,12 @@ export default function Header({ variant = "default" }: { variant?: string }) {
                   <span className="text-gray-300">/</span>
                   <span className="text-gray-800 font-semibold">Services &amp; Scopes</span>
                 </>
+              ) : isGenAI ? (
+                <>
+                  <span className="text-slate-800 font-medium">Generative AI</span>
+                  <span className="text-gray-300">/</span>
+                  <span className="text-gray-800 font-semibold">gafe.co.za</span>
+                </>
               ) : (
                 <>
                   <span className="text-blue-700 font-medium">Workspace</span>
@@ -63,6 +70,11 @@ export default function Header({ variant = "default" }: { variant?: string }) {
               <div className="hidden md:flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 text-emerald-800 px-2.5 py-1 rounded-full text-[11px] font-semibold">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                 <span>Global Master Catalog</span>
+              </div>
+            ) : isGenAI ? (
+              <div className="hidden md:flex items-center gap-1.5 bg-slate-100 border border-slate-200 text-slate-800 px-2.5 py-1 rounded-full text-[11px] font-semibold">
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                <span>Workspace: gafe.co.za</span>
               </div>
             ) : (
               <div className="hidden md:flex items-center gap-1.5 bg-blue-50 border border-blue-200 text-blue-800 px-2.5 py-1 rounded-full text-[11px] font-semibold">

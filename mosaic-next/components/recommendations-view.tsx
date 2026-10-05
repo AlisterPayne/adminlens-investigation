@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import GoogleVerifiedBadge from "@/components/google-verified-badge";
+import React, { useEffect, useMemo, useState } from "react";
+
 import { GoogleAdminIcon } from "@/components/google-icons";
+import GoogleVerifiedBadge from "@/components/google-verified-badge";
 
 export interface ScopeItem {
   scope: string;

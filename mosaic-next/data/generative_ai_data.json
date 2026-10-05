@@ -1,0 +1,4366 @@
+{
+  "updatedAt": "2026-10-05T00:02:20.061Z",
+  "metrics": {
+    "totalEvents": 714,
+    "totalWorkspaceEvents": 683,
+    "totalNotebookEvents": 31,
+    "totalActiveUsers": 30,
+    "agenticEventsCount": 16,
+    "userInitiatedCount": 698,
+    "uniqueAppsCount": 9,
+    "notebooksCount": 9,
+    "artifactsCount": 7,
+    "sourcesIngestedCount": 9
+  },
+  "appCounts": {
+    "workflows": 108,
+    "gemini_app": 294,
+    "forms": 2,
+    "gmail": 53,
+    "meet": 28,
+    "classroom": 49,
+    "slides": 96,
+    "docs": 24,
+    "vids": 29
+  },
+  "actionCounts": {
+    "evaluate_natural_language_condition": 46,
+    "classic_use_case_workspace_studio_flow_execution": 53,
+    "summarize_unreads": 9,
+    "classic_use_case_gemini_app": 294,
+    "summarize_proactive": 55,
+    "classic_use_case_meet_studio_sound": 28,
+    "classic_use_case_generate_questions": 15,
+    "edit_image": 7,
+    "classic_use_case_generate_story": 11,
+    "proactive_suggestions": 37,
+    "conversation": 35,
+    "match_writing_style": 3,
+    "generate_starter_tile_prompts": 24,
+    "generate_recording_scripts": 1,
+    "slide_as_image": 10,
+    "generate_document": 4,
+    "generate_page_outline": 4,
+    "generate_avatar_video": 2,
+    "classic_use_case_preset_voiceover": 7,
+    "text_to_speech": 3,
+    "infographic": 4,
+    "classic_use_case_generate_rubric": 6,
+    "classic_use_case_generate_lesson_plan": 3,
+    "classic_use_case_generate_choice_board": 8,
+    "classic_use_case_generate_audio_lesson": 2,
+    "classic_use_case_generate_informative_articles": 2,
+    "classic_use_case_generate_vocab_list": 2,
+    "classic_use_case_teleprompter_word_match": 1,
+    "generate_videos_from_image": 7
+  },
+  "categoryCounts": {
+    "active_generate": 210,
+    "active_conversations": 329,
+    "inactive": 144
+  },
+  "dailyTimeline": [
+    {
+      "date": "2026-04-07",
+      "total": 2,
+      "workspace": 2,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 2
+    },
+    {
+      "date": "2026-04-08",
+      "total": 2,
+      "workspace": 2,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 2
+    },
+    {
+      "date": "2026-04-13",
+      "total": 11,
+      "workspace": 11,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 11
+    },
+    {
+      "date": "2026-04-14",
+      "total": 1,
+      "workspace": 1,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 1
+    },
+    {
+      "date": "2026-04-17",
+      "total": 1,
+      "workspace": 1,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 1
+    },
+    {
+      "date": "2026-04-24",
+      "total": 3,
+      "workspace": 3,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 3
+    },
+    {
+      "date": "2026-04-26",
+      "total": 1,
+      "workspace": 1,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 1
+    },
+    {
+      "date": "2026-04-27",
+      "total": 1,
+      "workspace": 1,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 1
+    },
+    {
+      "date": "2026-05-04",
+      "total": 1,
+      "workspace": 1,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 1
+    },
+    {
+      "date": "2026-05-05",
+      "total": 4,
+      "workspace": 4,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 4
+    },
+    {
+      "date": "2026-05-06",
+      "total": 3,
+      "workspace": 3,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 3
+    },
+    {
+      "date": "2026-05-07",
+      "total": 5,
+      "workspace": 5,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 5
+    },
+    {
+      "date": "2026-05-11",
+      "total": 3,
+      "workspace": 3,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 3
+    },
+    {
+      "date": "2026-05-12",
+      "total": 3,
+      "workspace": 3,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 3
+    },
+    {
+      "date": "2026-05-13",
+      "total": 5,
+      "workspace": 5,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 5
+    },
+    {
+      "date": "2026-05-15",
+      "total": 50,
+      "workspace": 50,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 50
+    },
+    {
+      "date": "2026-05-16",
+      "total": 97,
+      "workspace": 97,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 97
+    },
+    {
+      "date": "2026-05-17",
+      "total": 8,
+      "workspace": 8,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 8
+    },
+    {
+      "date": "2026-05-18",
+      "total": 22,
+      "workspace": 22,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 22
+    },
+    {
+      "date": "2026-05-19",
+      "total": 14,
+      "workspace": 14,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 14
+    },
+    {
+      "date": "2026-05-21",
+      "total": 6,
+      "workspace": 6,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 6
+    },
+    {
+      "date": "2026-05-22",
+      "total": 19,
+      "workspace": 19,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 19
+    },
+    {
+      "date": "2026-05-25",
+      "total": 7,
+      "workspace": 7,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 7
+    },
+    {
+      "date": "2026-05-27",
+      "total": 11,
+      "workspace": 11,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 11
+    },
+    {
+      "date": "2026-05-28",
+      "total": 3,
+      "workspace": 3,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 3
+    },
+    {
+      "date": "2026-05-29",
+      "total": 1,
+      "workspace": 1,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 1
+    },
+    {
+      "date": "2026-06-02",
+      "total": 5,
+      "workspace": 5,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 5
+    },
+    {
+      "date": "2026-06-04",
+      "total": 2,
+      "workspace": 2,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 2
+    },
+    {
+      "date": "2026-06-05",
+      "total": 30,
+      "workspace": 30,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 30
+    },
+    {
+      "date": "2026-06-06",
+      "total": 3,
+      "workspace": 3,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 3
+    },
+    {
+      "date": "2026-06-08",
+      "total": 27,
+      "workspace": 27,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 27
+    },
+    {
+      "date": "2026-06-09",
+      "total": 5,
+      "workspace": 5,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 5
+    },
+    {
+      "date": "2026-06-11",
+      "total": 6,
+      "workspace": 6,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 6
+    },
+    {
+      "date": "2026-06-12",
+      "total": 6,
+      "workspace": 6,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 6
+    },
+    {
+      "date": "2026-06-14",
+      "total": 4,
+      "workspace": 4,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 4
+    },
+    {
+      "date": "2026-06-17",
+      "total": 2,
+      "workspace": 2,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 2
+    },
+    {
+      "date": "2026-06-18",
+      "total": 7,
+      "workspace": 7,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 7
+    },
+    {
+      "date": "2026-06-19",
+      "total": 12,
+      "workspace": 12,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 12
+    },
+    {
+      "date": "2026-06-20",
+      "total": 4,
+      "workspace": 4,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 4
+    },
+    {
+      "date": "2026-06-22",
+      "total": 22,
+      "workspace": 22,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 22
+    },
+    {
+      "date": "2026-06-23",
+      "total": 4,
+      "workspace": 4,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 4
+    },
+    {
+      "date": "2026-06-24",
+      "total": 2,
+      "workspace": 2,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 2
+    },
+    {
+      "date": "2026-06-25",
+      "total": 5,
+      "workspace": 5,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 5
+    },
+    {
+      "date": "2026-06-29",
+      "total": 6,
+      "workspace": 6,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 6
+    },
+    {
+      "date": "2026-07-06",
+      "total": 4,
+      "workspace": 4,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 4
+    },
+    {
+      "date": "2026-07-09",
+      "total": 6,
+      "workspace": 6,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 6
+    },
+    {
+      "date": "2026-07-10",
+      "total": 3,
+      "workspace": 3,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 3
+    },
+    {
+      "date": "2026-07-13",
+      "total": 1,
+      "workspace": 1,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 1
+    },
+    {
+      "date": "2026-07-14",
+      "total": 3,
+      "workspace": 3,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 3
+    },
+    {
+      "date": "2026-07-15",
+      "total": 5,
+      "workspace": 5,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 5
+    },
+    {
+      "date": "2026-07-16",
+      "total": 6,
+      "workspace": 6,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 6
+    },
+    {
+      "date": "2026-07-17",
+      "total": 4,
+      "workspace": 4,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 4
+    },
+    {
+      "date": "2026-07-20",
+      "total": 11,
+      "workspace": 11,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 11
+    },
+    {
+      "date": "2026-07-21",
+      "total": 8,
+      "workspace": 8,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 8
+    },
+    {
+      "date": "2026-07-22",
+      "total": 14,
+      "workspace": 14,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 14
+    },
+    {
+      "date": "2026-07-23",
+      "total": 7,
+      "workspace": 7,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 7
+    },
+    {
+      "date": "2026-07-24",
+      "total": 8,
+      "workspace": 8,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 8
+    },
+    {
+      "date": "2026-07-25",
+      "total": 14,
+      "workspace": 14,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 14
+    },
+    {
+      "date": "2026-07-27",
+      "total": 5,
+      "workspace": 5,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 5
+    },
+    {
+      "date": "2026-07-28",
+      "total": 2,
+      "workspace": 2,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 2
+    },
+    {
+      "date": "2026-07-29",
+      "total": 14,
+      "workspace": 14,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 14
+    },
+    {
+      "date": "2026-07-30",
+      "total": 5,
+      "workspace": 5,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 5
+    },
+    {
+      "date": "2026-07-31",
+      "total": 2,
+      "workspace": 2,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 2
+    },
+    {
+      "date": "2026-08-03",
+      "total": 7,
+      "workspace": 7,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 7
+    },
+    {
+      "date": "2026-08-04",
+      "total": 15,
+      "workspace": 15,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 15
+    },
+    {
+      "date": "2026-08-05",
+      "total": 4,
+      "workspace": 4,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 4
+    },
+    {
+      "date": "2026-08-06",
+      "total": 1,
+      "workspace": 1,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 1
+    },
+    {
+      "date": "2026-08-07",
+      "total": 5,
+      "workspace": 5,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 5
+    },
+    {
+      "date": "2026-08-10",
+      "total": 1,
+      "workspace": 1,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 1
+    },
+    {
+      "date": "2026-08-11",
+      "total": 8,
+      "workspace": 8,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 8
+    },
+    {
+      "date": "2026-08-12",
+      "total": 1,
+      "workspace": 1,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 1
+    },
+    {
+      "date": "2026-08-14",
+      "total": 2,
+      "workspace": 2,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 2
+    },
+    {
+      "date": "2026-08-19",
+      "total": 2,
+      "workspace": 2,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 2
+    },
+    {
+      "date": "2026-08-20",
+      "total": 1,
+      "workspace": 1,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 1
+    },
+    {
+      "date": "2026-08-21",
+      "total": 1,
+      "workspace": 1,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 1
+    },
+    {
+      "date": "2026-08-25",
+      "total": 17,
+      "workspace": 17,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 17
+    },
+    {
+      "date": "2026-08-26",
+      "total": 5,
+      "workspace": 5,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 5
+    },
+    {
+      "date": "2026-08-27",
+      "total": 10,
+      "workspace": 3,
+      "notebook": 7,
+      "agentic": 0,
+      "userInitiated": 10
+    },
+    {
+      "date": "2026-08-28",
+      "total": 2,
+      "workspace": 2,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 2
+    },
+    {
+      "date": "2026-09-01",
+      "total": 1,
+      "workspace": 1,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 1
+    },
+    {
+      "date": "2026-09-02",
+      "total": 1,
+      "workspace": 1,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 1
+    },
+    {
+      "date": "2026-09-04",
+      "total": 6,
+      "workspace": 6,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 6
+    },
+    {
+      "date": "2026-09-07",
+      "total": 6,
+      "workspace": 6,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 6
+    },
+    {
+      "date": "2026-09-09",
+      "total": 3,
+      "workspace": 3,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 3
+    },
+    {
+      "date": "2026-09-11",
+      "total": 1,
+      "workspace": 1,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 1
+    },
+    {
+      "date": "2026-09-12",
+      "total": 3,
+      "workspace": 3,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 3
+    },
+    {
+      "date": "2026-09-13",
+      "total": 1,
+      "workspace": 1,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 1
+    },
+    {
+      "date": "2026-09-15",
+      "total": 6,
+      "workspace": 2,
+      "notebook": 4,
+      "agentic": 0,
+      "userInitiated": 6
+    },
+    {
+      "date": "2026-09-16",
+      "total": 3,
+      "workspace": 1,
+      "notebook": 2,
+      "agentic": 0,
+      "userInitiated": 3
+    },
+    {
+      "date": "2026-09-22",
+      "total": 1,
+      "workspace": 1,
+      "notebook": 0,
+      "agentic": 0,
+      "userInitiated": 1
+    },
+    {
+      "date": "2026-09-23",
+      "total": 2,
+      "workspace": 2,
+      "notebook": 0,
+      "agentic": 2,
+      "userInitiated": 0
+    },
+    {
+      "date": "2026-09-24",
+      "total": 2,
+      "workspace": 2,
+      "notebook": 0,
+      "agentic": 2,
+      "userInitiated": 0
+    },
+    {
+      "date": "2026-09-25",
+      "total": 5,
+      "workspace": 5,
+      "notebook": 0,
+      "agentic": 2,
+      "userInitiated": 3
+    },
+    {
+      "date": "2026-09-28",
+      "total": 2,
+      "workspace": 2,
+      "notebook": 0,
+      "agentic": 2,
+      "userInitiated": 0
+    },
+    {
+      "date": "2026-09-29",
+      "total": 3,
+      "workspace": 3,
+      "notebook": 0,
+      "agentic": 2,
+      "userInitiated": 1
+    },
+    {
+      "date": "2026-09-30",
+      "total": 22,
+      "workspace": 4,
+      "notebook": 18,
+      "agentic": 2,
+      "userInitiated": 20
+    },
+    {
+      "date": "2026-10-01",
+      "total": 2,
+      "workspace": 2,
+      "notebook": 0,
+      "agentic": 2,
+      "userInitiated": 0
+    },
+    {
+      "date": "2026-10-02",
+      "total": 4,
+      "workspace": 4,
+      "notebook": 0,
+      "agentic": 2,
+      "userInitiated": 2
+    }
+  ],
+  "userLeaderboard": [
+    {
+      "email": "plutt@gafe.co.za",
+      "workspaceEvents": 139,
+      "notebookEvents": 0,
+      "totalEvents": 139,
+      "agenticEvents": 0,
+      "appsUsed": [
+        "gemini_app",
+        "slides",
+        "vids",
+        "classroom"
+      ],
+      "lastActive": "2026-06-19T11:49:21.000Z"
+    },
+    {
+      "email": "themba@gafe.co.za",
+      "workspaceEvents": 129,
+      "notebookEvents": 7,
+      "totalEvents": 136,
+      "agenticEvents": 0,
+      "appsUsed": [
+        "gmail",
+        "classroom",
+        "gemini_app",
+        "meet",
+        "docs",
+        "forms",
+        "slides",
+        "vids",
+        "notebooklm"
+      ],
+      "lastActive": "2026-09-11T15:55:41.122Z"
+    },
+    {
+      "email": "mickey@gafe.co.za",
+      "workspaceEvents": 91,
+      "notebookEvents": 0,
+      "totalEvents": 91,
+      "agenticEvents": 0,
+      "appsUsed": [
+        "workflows",
+        "meet"
+      ],
+      "lastActive": "2026-10-02T11:20:07.034Z"
+    },
+    {
+      "email": "alister@gafe.co.za",
+      "workspaceEvents": 49,
+      "notebookEvents": 20,
+      "totalEvents": 69,
+      "agenticEvents": 0,
+      "appsUsed": [
+        "gemini_app",
+        "notebooklm"
+      ],
+      "lastActive": "2026-09-30T13:02:42.048Z"
+    },
+    {
+      "email": "karien@gafe.co.za",
+      "workspaceEvents": 34,
+      "notebookEvents": 4,
+      "totalEvents": 38,
+      "agenticEvents": 0,
+      "appsUsed": [
+        "forms",
+        "gemini_app",
+        "classroom",
+        "slides",
+        "notebooklm"
+      ],
+      "lastActive": "2026-09-30T12:15:44.242Z"
+    },
+    {
+      "email": "farrakhan@gafe.co.za",
+      "workspaceEvents": 36,
+      "notebookEvents": 0,
+      "totalEvents": 36,
+      "agenticEvents": 0,
+      "appsUsed": [
+        "gemini_app"
+      ],
+      "lastActive": "2026-08-05T07:05:50.237Z"
+    },
+    {
+      "email": "darklighter@gafe.co.za",
+      "workspaceEvents": 36,
+      "notebookEvents": 0,
+      "totalEvents": 36,
+      "agenticEvents": 0,
+      "appsUsed": [
+        "slides",
+        "classroom",
+        "gemini_app",
+        "docs"
+      ],
+      "lastActive": "2026-05-16T09:36:38.123Z"
+    },
+    {
+      "email": "kevin@gafe.co.za",
+      "workspaceEvents": 31,
+      "notebookEvents": 0,
+      "totalEvents": 31,
+      "agenticEvents": 0,
+      "appsUsed": [
+        "gemini_app",
+        "slides",
+        "docs",
+        "workflows"
+      ],
+      "lastActive": "2026-09-07T09:09:06.934Z"
+    },
+    {
+      "email": "deidre@gafe.co.za",
+      "workspaceEvents": 17,
+      "notebookEvents": 0,
+      "totalEvents": 17,
+      "agenticEvents": 16,
+      "appsUsed": [
+        "workflows"
+      ],
+      "lastActive": "2026-10-02T05:17:23.309Z"
+    },
+    {
+      "email": "mazk@gafe.co.za",
+      "workspaceEvents": 16,
+      "notebookEvents": 0,
+      "totalEvents": 16,
+      "agenticEvents": 0,
+      "appsUsed": [
+        "gemini_app",
+        "classroom"
+      ],
+      "lastActive": "2026-05-19T12:44:10.722Z"
+    },
+    {
+      "email": "holdo@gafe.co.za",
+      "workspaceEvents": 16,
+      "notebookEvents": 0,
+      "totalEvents": 16,
+      "agenticEvents": 0,
+      "appsUsed": [
+        "slides",
+        "classroom",
+        "docs"
+      ],
+      "lastActive": "2026-05-16T08:43:02.745Z"
+    },
+    {
+      "email": "shand@gafe.co.za",
+      "workspaceEvents": 15,
+      "notebookEvents": 0,
+      "totalEvents": 15,
+      "agenticEvents": 0,
+      "appsUsed": [
+        "slides",
+        "classroom",
+        "gemini_app"
+      ],
+      "lastActive": "2026-05-16T09:31:16.902Z"
+    },
+    {
+      "email": "snoke@gafe.co.za",
+      "workspaceEvents": 13,
+      "notebookEvents": 0,
+      "totalEvents": 13,
+      "agenticEvents": 0,
+      "appsUsed": [
+        "slides",
+        "gemini_app",
+        "classroom"
+      ],
+      "lastActive": "2026-05-16T09:51:26.683Z"
+    },
+    {
+      "email": "ren@gafe.co.za",
+      "workspaceEvents": 10,
+      "notebookEvents": 0,
+      "totalEvents": 10,
+      "agenticEvents": 0,
+      "appsUsed": [
+        "gemini_app",
+        "slides",
+        "classroom"
+      ],
+      "lastActive": "2026-05-15T09:42:03.680Z"
+    },
+    {
+      "email": "iostest@gafe.co.za",
+      "workspaceEvents": 8,
+      "notebookEvents": 0,
+      "totalEvents": 8,
+      "agenticEvents": 0,
+      "appsUsed": [
+        "gemini_app"
+      ],
+      "lastActive": "2026-07-22T19:40:04.462Z"
+    },
+    {
+      "email": "w.smith@gafe.co.za",
+      "workspaceEvents": 6,
+      "notebookEvents": 0,
+      "totalEvents": 6,
+      "agenticEvents": 0,
+      "appsUsed": [
+        "gemini_app"
+      ],
+      "lastActive": "2026-08-27T06:51:12.964Z"
+    },
+    {
+      "email": "nu@gafe.co.za",
+      "workspaceEvents": 6,
+      "notebookEvents": 0,
+      "totalEvents": 6,
+      "agenticEvents": 0,
+      "appsUsed": [
+        "slides",
+        "classroom",
+        "docs"
+      ],
+      "lastActive": "2026-05-16T07:44:07.673Z"
+    },
+    {
+      "email": "lars@gafe.co.za",
+      "workspaceEvents": 5,
+      "notebookEvents": 0,
+      "totalEvents": 5,
+      "agenticEvents": 0,
+      "appsUsed": [
+        "classroom"
+      ],
+      "lastActive": "2026-05-16T07:40:17.599Z"
+    },
+    {
+      "email": "askywalker@gafe.co.za",
+      "workspaceEvents": 5,
+      "notebookEvents": 0,
+      "totalEvents": 5,
+      "agenticEvents": 0,
+      "appsUsed": [
+        "classroom",
+        "slides"
+      ],
+      "lastActive": "2026-05-15T09:41:27.025Z"
+    },
+    {
+      "email": "fisto@gafe.co.za",
+      "workspaceEvents": 4,
+      "notebookEvents": 0,
+      "totalEvents": 4,
+      "agenticEvents": 0,
+      "appsUsed": [
+        "classroom",
+        "slides"
+      ],
+      "lastActive": "2026-05-15T08:54:36.828Z"
+    },
+    {
+      "email": "calrissian@gafe.co.za",
+      "workspaceEvents": 4,
+      "notebookEvents": 0,
+      "totalEvents": 4,
+      "agenticEvents": 0,
+      "appsUsed": [
+        "classroom"
+      ],
+      "lastActive": "2026-05-15T08:52:59.199Z"
+    },
+    {
+      "email": "jyn@gafe.co.za",
+      "workspaceEvents": 3,
+      "notebookEvents": 0,
+      "totalEvents": 3,
+      "agenticEvents": 0,
+      "appsUsed": [
+        "gemini_app"
+      ],
+      "lastActive": "2026-07-25T12:49:15.756Z"
+    },
+    {
+      "email": "karga@gafe.co.za",
+      "workspaceEvents": 2,
+      "notebookEvents": 0,
+      "totalEvents": 2,
+      "agenticEvents": 0,
+      "appsUsed": [
+        "gemini_app"
+      ],
+      "lastActive": "2026-05-15T09:57:44.182Z"
+    },
+    {
+      "email": "amidala@gafe.co.za",
+      "workspaceEvents": 2,
+      "notebookEvents": 0,
+      "totalEvents": 2,
+      "agenticEvents": 0,
+      "appsUsed": [
+        "slides"
+      ],
+      "lastActive": "2026-05-15T09:40:32.003Z"
+    },
+    {
+      "email": "yularen@gafe.co.za",
+      "workspaceEvents": 1,
+      "notebookEvents": 0,
+      "totalEvents": 1,
+      "agenticEvents": 0,
+      "appsUsed": [
+        "classroom"
+      ],
+      "lastActive": "2026-05-16T07:36:59.366Z"
+    },
+    {
+      "email": "dameron@gafe.co.za",
+      "workspaceEvents": 1,
+      "notebookEvents": 0,
+      "totalEvents": 1,
+      "agenticEvents": 0,
+      "appsUsed": [
+        "slides"
+      ],
+      "lastActive": "2026-05-15T09:00:01.850Z"
+    },
+    {
+      "email": "vadar@gafe.co.za",
+      "workspaceEvents": 1,
+      "notebookEvents": 0,
+      "totalEvents": 1,
+      "agenticEvents": 0,
+      "appsUsed": [
+        "classroom"
+      ],
+      "lastActive": "2026-05-15T08:59:37.110Z"
+    },
+    {
+      "email": "reeves@gafe.co.za",
+      "workspaceEvents": 1,
+      "notebookEvents": 0,
+      "totalEvents": 1,
+      "agenticEvents": 0,
+      "appsUsed": [
+        "classroom"
+      ],
+      "lastActive": "2026-05-15T07:53:37.901Z"
+    },
+    {
+      "email": "grogu@gafe.co.za",
+      "workspaceEvents": 1,
+      "notebookEvents": 0,
+      "totalEvents": 1,
+      "agenticEvents": 0,
+      "appsUsed": [
+        "classroom"
+      ],
+      "lastActive": "2026-05-15T07:33:11.386Z"
+    },
+    {
+      "email": "maul@gafe.co.za",
+      "workspaceEvents": 1,
+      "notebookEvents": 0,
+      "totalEvents": 1,
+      "agenticEvents": 0,
+      "appsUsed": [
+        "slides"
+      ],
+      "lastActive": "2026-05-15T07:07:07.940Z"
+    }
+  ],
+  "notebooks": [
+    {
+      "id": "49d9eaae-fc07-42c3-ad39-b4070cbb9e77",
+      "title": "Analysis of the 2019 Ransomware Attack at Maastricht University",
+      "ownerEmail": "alister@gafe.co.za",
+      "visibility": "private",
+      "aiPlanTier": "plus",
+      "firstSeen": "2026-09-30T13:00:32.778Z",
+      "lastActive": "2026-09-30T13:02:42.048Z",
+      "eventCount": 14,
+      "actions": {
+        "generate_studio_artifact": 2,
+        "view_notebook": 1,
+        "rename_notebook": 1,
+        "add_source": 8,
+        "discover_sources": 1,
+        "create_notebook": 1
+      },
+      "artifacts": [
+        {
+          "artifactId": "f4a36944-c2db-45f0-a190-3a15e330e765",
+          "name": "Untitled Audio Overview",
+          "type": "audio_overview",
+          "notebookId": "49d9eaae-fc07-42c3-ad39-b4070cbb9e77",
+          "notebookTitle": "Analysis of the 2019 Ransomware Attack at Maastricht University",
+          "createdTime": "2026-09-30T13:02:42.048Z",
+          "userEmail": "alister@gafe.co.za",
+          "visibility": "private"
+        },
+        {
+          "artifactId": "c6887d8f-2d81-4f4a-b47e-f64f7cb9125f",
+          "name": "Untitled Mind Map",
+          "type": "mind_map",
+          "notebookId": "49d9eaae-fc07-42c3-ad39-b4070cbb9e77",
+          "notebookTitle": "Analysis of the 2019 Ransomware Attack at Maastricht University",
+          "createdTime": "2026-09-30T13:02:36.171Z",
+          "userEmail": "alister@gafe.co.za",
+          "visibility": "private"
+        }
+      ],
+      "sources": [
+        {
+          "sourceId": "77c00ad5-f1fc-4ae7-9ff2-d8a7f492e0e8",
+          "name": "Cybersecurity Challenges in Higher Education - AICUP",
+          "type": "url",
+          "url": "https://aicup.org/wp-content/uploads/2023/11/Cybersecurity-IHE.pdf",
+          "notebookId": "49d9eaae-fc07-42c3-ad39-b4070cbb9e77",
+          "notebookTitle": "Analysis of the 2019 Ransomware Attack at Maastricht University",
+          "addedTime": "2026-09-30T13:01:28.296Z",
+          "userEmail": "alister@gafe.co.za"
+        },
+        {
+          "sourceId": "45f68517-e7d0-43de-ab2e-fd614fedd4b9",
+          "name": "Cyber security breaches survey 2025/2026: education institutions findings - GOV.UK",
+          "type": "url",
+          "url": "https://www.gov.uk/government/statistics/cyber-security-breaches-survey-20252026/cyber-security-breaches-survey-20252026-education-institutions-findings",
+          "notebookId": "49d9eaae-fc07-42c3-ad39-b4070cbb9e77",
+          "notebookTitle": "Analysis of the 2019 Ransomware Attack at Maastricht University",
+          "addedTime": "2026-09-30T13:01:28.296Z",
+          "userEmail": "alister@gafe.co.za"
+        },
+        {
+          "sourceId": "e36e679f-0211-4e7a-9f33-2926c1253060",
+          "name": "ANALYSIS OF THE 2019 RANSOMWARE ATTACK AT THE MAASTRICHT UNIVERSITY - Centri — Manage",
+          "type": "url",
+          "url": "https://centri.unibo.it/computational-social-science/en/our-work/our-students-papers/antonini-giulia-analysis-of-the-2019-ransomware.pdf/@@download/file/Antonini%20Giulia%20-%20ANALYSIS%20OF%20THE%202019%20RANSOMWARE.pdf",
+          "notebookId": "49d9eaae-fc07-42c3-ad39-b4070cbb9e77",
+          "notebookTitle": "Analysis of the 2019 Ransomware Attack at Maastricht University",
+          "addedTime": "2026-09-30T13:01:28.296Z",
+          "userEmail": "alister@gafe.co.za"
+        },
+        {
+          "sourceId": "e4277956-2338-4f65-9b90-9af8d2de621b",
+          "name": "Zero Trust Architecture - NIST Technical Series Publications",
+          "type": "url",
+          "url": "https://nvlpubs.nist.gov/nistpubs/specialpublications/NIST.SP.800-207.pdf",
+          "notebookId": "49d9eaae-fc07-42c3-ad39-b4070cbb9e77",
+          "notebookTitle": "Analysis of the 2019 Ransomware Attack at Maastricht University",
+          "addedTime": "2026-09-30T13:01:28.296Z",
+          "userEmail": "alister@gafe.co.za"
+        },
+        {
+          "sourceId": "fb243d8d-500a-4531-a9ee-e95233a57ded",
+          "name": "NIST SP 800-171 Compliance Guide for Colleges & Universities - UpGuard",
+          "type": "url",
+          "url": "https://www.upguard.com/blog/nist-sp-800-171-compliance-guide-for-colleges-universities",
+          "notebookId": "49d9eaae-fc07-42c3-ad39-b4070cbb9e77",
+          "notebookTitle": "Analysis of the 2019 Ransomware Attack at Maastricht University",
+          "addedTime": "2026-09-30T13:01:28.296Z",
+          "userEmail": "alister@gafe.co.za"
+        },
+        {
+          "sourceId": "d0ec7f13-c1e0-40a2-9f21-9ac38b34eb49",
+          "name": "Multi-Factor Authentication: Why It Matters for Higher Education and Research - IU Blogs",
+          "type": "url",
+          "url": "https://blogs.iu.edu/renisac/2025/08/02/multi-factor-authentication-why-it-matters-for-higher-education-and-research/",
+          "notebookId": "49d9eaae-fc07-42c3-ad39-b4070cbb9e77",
+          "notebookTitle": "Analysis of the 2019 Ransomware Attack at Maastricht University",
+          "addedTime": "2026-09-30T13:01:28.296Z",
+          "userEmail": "alister@gafe.co.za"
+        },
+        {
+          "sourceId": "2d4c926f-7937-4ac0-ad62-d8a0f4a777c6",
+          "name": "Data Breach Response Checklist - | Protecting Student Privacy",
+          "type": "url",
+          "url": "https://studentprivacy.ed.gov/sites/default/files/resource_document/file/checklist_data_breach_response_092012_0.pdf",
+          "notebookId": "49d9eaae-fc07-42c3-ad39-b4070cbb9e77",
+          "notebookTitle": "Analysis of the 2019 Ransomware Attack at Maastricht University",
+          "addedTime": "2026-09-30T13:01:28.296Z",
+          "userEmail": "alister@gafe.co.za"
+        },
+        {
+          "sourceId": "fcd8e582-d113-4ec3-92b3-7224edfdcd2e",
+          "name": "Cost of a Data Breach Report 2025 The AI Oversight Gap - Baker Donelson",
+          "type": "url",
+          "url": "https://www.bakerdonelson.com/webfiles/Publications/20250822_Cost-of-a-Data-Breach-Report-2025.pdf",
+          "notebookId": "49d9eaae-fc07-42c3-ad39-b4070cbb9e77",
+          "notebookTitle": "Analysis of the 2019 Ransomware Attack at Maastricht University",
+          "addedTime": "2026-09-30T13:01:28.296Z",
+          "userEmail": "alister@gafe.co.za"
+        }
+      ]
+    },
+    {
+      "id": "36e66629-a9a5-436d-9f5d-b2236d10ee33",
+      "title": "[Training] Senior Phase Coding and Robotics Curriculum",
+      "ownerEmail": "karien@gafe.co.za",
+      "visibility": "shared_internally",
+      "aiPlanTier": "plus",
+      "firstSeen": "2026-09-30T12:15:41.040Z",
+      "lastActive": "2026-09-30T12:15:44.242Z",
+      "eventCount": 2,
+      "actions": {
+        "view_studio_artifact": 1,
+        "view_notebook": 1
+      },
+      "artifacts": [
+        {
+          "artifactId": "54da2ace-1235-4775-b874-f19e9a24c58b",
+          "name": "KABV Padkaart: Kodering en Robotika se Toekomsvisie vir Graad 7-9 Leerders",
+          "type": "audio_overview",
+          "notebookId": "36e66629-a9a5-436d-9f5d-b2236d10ee33",
+          "notebookTitle": "[Training] Senior Phase Coding and Robotics Curriculum",
+          "createdTime": "2026-09-30T12:15:44.242Z",
+          "userEmail": "karien@gafe.co.za",
+          "visibility": "shared_internally"
+        }
+      ],
+      "sources": []
+    },
+    {
+      "id": "2ab93a0c-51fe-47ba-8423-5ba4d6335457",
+      "title": "[Training] The Boy in the Striped Pajamas",
+      "ownerEmail": "karien@gafe.co.za",
+      "visibility": "shared_internally",
+      "aiPlanTier": "plus",
+      "firstSeen": "2026-09-30T12:14:01.529Z",
+      "lastActive": "2026-09-30T12:14:59.258Z",
+      "eventCount": 2,
+      "actions": {
+        "view_studio_artifact": 1,
+        "view_notebook": 1
+      },
+      "artifacts": [
+        {
+          "artifactId": "7702eaf9-8260-4d40-b0de-4a6500cf4b74",
+          "name": "Analysis of The Boy in the Striped Pajamas",
+          "type": "mind_map",
+          "notebookId": "2ab93a0c-51fe-47ba-8423-5ba4d6335457",
+          "notebookTitle": "[Training] The Boy in the Striped Pajamas",
+          "createdTime": "2026-09-30T12:14:59.258Z",
+          "userEmail": "karien@gafe.co.za",
+          "visibility": "shared_internally"
+        }
+      ],
+      "sources": []
+    },
+    {
+      "id": "53452752-e0e7-4089-b9e2-5ac1ec83f7af",
+      "title": "Untitled notebook",
+      "ownerEmail": "alister@gafe.co.za",
+      "visibility": "private",
+      "aiPlanTier": "plus",
+      "firstSeen": "2026-09-16T13:44:01.389Z",
+      "lastActive": "2026-09-16T13:44:01.389Z",
+      "eventCount": 1,
+      "actions": {
+        "create_notebook": 1
+      },
+      "artifacts": [],
+      "sources": []
+    },
+    {
+      "id": "b2b9d01f-2d98-4fcb-b996-edfbfe3c3758",
+      "title": "Gemini for Teachers and Google Apps Manager Guide",
+      "ownerEmail": "alister@gafe.co.za",
+      "visibility": "private",
+      "aiPlanTier": "plus",
+      "firstSeen": "2026-09-15T11:33:15.727Z",
+      "lastActive": "2026-09-16T13:38:29.186Z",
+      "eventCount": 4,
+      "actions": {
+        "view_notebook": 2,
+        "chat": 1,
+        "view_studio_artifact": 1
+      },
+      "artifacts": [
+        {
+          "artifactId": "ccfc061a-f2fa-466e-b3c2-1a0c58167511",
+          "name": "Education Mindmap",
+          "type": "mind_map",
+          "notebookId": "b2b9d01f-2d98-4fcb-b996-edfbfe3c3758",
+          "notebookTitle": "Gemini for Teachers and Google Apps Manager Guide",
+          "createdTime": "2026-09-15T11:33:49.693Z",
+          "userEmail": "alister@gafe.co.za",
+          "visibility": "private"
+        }
+      ],
+      "sources": []
+    },
+    {
+      "id": "ca537df6-c59d-4cd0-bb26-5f6c967a0372",
+      "title": "Untitled notebook",
+      "ownerEmail": "alister@gafe.co.za",
+      "visibility": "private",
+      "aiPlanTier": "plus",
+      "firstSeen": "2026-09-15T11:32:32.092Z",
+      "lastActive": "2026-09-15T11:32:32.092Z",
+      "eventCount": 1,
+      "actions": {
+        "create_notebook": 1
+      },
+      "artifacts": [],
+      "sources": []
+    },
+    {
+      "id": "59e6719b-0aa3-4e63-b0ff-672d3fafe937",
+      "title": "EGD Notebook",
+      "ownerEmail": "themba@gafe.co.za",
+      "visibility": "private",
+      "aiPlanTier": "plus",
+      "firstSeen": "2026-08-27T14:30:04.187Z",
+      "lastActive": "2026-08-27T14:36:51.058Z",
+      "eventCount": 5,
+      "actions": {
+        "view_studio_artifact": 1,
+        "generate_studio_artifact": 1,
+        "add_source": 1,
+        "rename_notebook": 1,
+        "create_notebook": 1
+      },
+      "artifacts": [
+        {
+          "artifactId": "dbe9ec47-1191-4e23-abee-5d11c3991f84",
+          "name": "EGD Mindmap",
+          "type": "mind_map",
+          "notebookId": "59e6719b-0aa3-4e63-b0ff-672d3fafe937",
+          "notebookTitle": "EGD Notebook",
+          "createdTime": "2026-08-27T14:36:51.058Z",
+          "userEmail": "themba@gafe.co.za",
+          "visibility": "private"
+        },
+        {
+          "artifactId": "dbe9ec47-1191-4e23-abee-5d11c3991f84",
+          "name": "Untitled Mind Map",
+          "type": "mind_map",
+          "notebookId": "59e6719b-0aa3-4e63-b0ff-672d3fafe937",
+          "notebookTitle": "EGD Notebook",
+          "createdTime": "2026-08-27T14:35:52.082Z",
+          "userEmail": "themba@gafe.co.za",
+          "visibility": "private"
+        }
+      ],
+      "sources": [
+        {
+          "sourceId": "8729e799-e888-4fcf-a43c-96060feb6334",
+          "name": "CAPS FET _ ENGINEERING GRAPICHS & DESIGN _ GR 10-12 _ Web_8899.pdf",
+          "type": "local_upload",
+          "url": null,
+          "notebookId": "59e6719b-0aa3-4e63-b0ff-672d3fafe937",
+          "notebookTitle": "EGD Notebook",
+          "addedTime": "2026-08-27T14:31:57.160Z",
+          "userEmail": "themba@gafe.co.za"
+        }
+      ]
+    },
+    {
+      "id": "5832ff16-73f1-482e-bdfa-6c80670b1702",
+      "title": "Untitled notebook",
+      "ownerEmail": "themba@gafe.co.za",
+      "visibility": "private",
+      "aiPlanTier": "plus",
+      "firstSeen": "2026-08-27T14:29:58.829Z",
+      "lastActive": "2026-08-27T14:29:58.829Z",
+      "eventCount": 1,
+      "actions": {
+        "delete_notebook": 1
+      },
+      "artifacts": [],
+      "sources": []
+    },
+    {
+      "id": "bfa77d6d-acc2-4a0a-a04b-c36e4b86f10a",
+      "title": "Untitled notebook",
+      "ownerEmail": "themba@gafe.co.za",
+      "visibility": "private",
+      "aiPlanTier": "plus",
+      "firstSeen": "2026-08-27T14:29:51.346Z",
+      "lastActive": "2026-08-27T14:29:51.346Z",
+      "eventCount": 1,
+      "actions": {
+        "delete_notebook": 1
+      },
+      "artifacts": [],
+      "sources": []
+    }
+  ],
+  "artifacts": [
+    {
+      "artifactId": "f4a36944-c2db-45f0-a190-3a15e330e765",
+      "name": "Untitled Audio Overview",
+      "type": "audio_overview",
+      "notebookId": "49d9eaae-fc07-42c3-ad39-b4070cbb9e77",
+      "notebookTitle": "Analysis of the 2019 Ransomware Attack at Maastricht University",
+      "createdTime": "2026-09-30T13:02:42.048Z",
+      "userEmail": "alister@gafe.co.za",
+      "visibility": "private"
+    },
+    {
+      "artifactId": "c6887d8f-2d81-4f4a-b47e-f64f7cb9125f",
+      "name": "Untitled Mind Map",
+      "type": "mind_map",
+      "notebookId": "49d9eaae-fc07-42c3-ad39-b4070cbb9e77",
+      "notebookTitle": "Analysis of the 2019 Ransomware Attack at Maastricht University",
+      "createdTime": "2026-09-30T13:02:36.171Z",
+      "userEmail": "alister@gafe.co.za",
+      "visibility": "private"
+    },
+    {
+      "artifactId": "54da2ace-1235-4775-b874-f19e9a24c58b",
+      "name": "KABV Padkaart: Kodering en Robotika se Toekomsvisie vir Graad 7-9 Leerders",
+      "type": "audio_overview",
+      "notebookId": "36e66629-a9a5-436d-9f5d-b2236d10ee33",
+      "notebookTitle": "[Training] Senior Phase Coding and Robotics Curriculum",
+      "createdTime": "2026-09-30T12:15:44.242Z",
+      "userEmail": "karien@gafe.co.za",
+      "visibility": "shared_internally"
+    },
+    {
+      "artifactId": "7702eaf9-8260-4d40-b0de-4a6500cf4b74",
+      "name": "Analysis of The Boy in the Striped Pajamas",
+      "type": "mind_map",
+      "notebookId": "2ab93a0c-51fe-47ba-8423-5ba4d6335457",
+      "notebookTitle": "[Training] The Boy in the Striped Pajamas",
+      "createdTime": "2026-09-30T12:14:59.258Z",
+      "userEmail": "karien@gafe.co.za",
+      "visibility": "shared_internally"
+    },
+    {
+      "artifactId": "ccfc061a-f2fa-466e-b3c2-1a0c58167511",
+      "name": "Education Mindmap",
+      "type": "mind_map",
+      "notebookId": "b2b9d01f-2d98-4fcb-b996-edfbfe3c3758",
+      "notebookTitle": "Gemini for Teachers and Google Apps Manager Guide",
+      "createdTime": "2026-09-15T11:33:49.693Z",
+      "userEmail": "alister@gafe.co.za",
+      "visibility": "private"
+    },
+    {
+      "artifactId": "dbe9ec47-1191-4e23-abee-5d11c3991f84",
+      "name": "EGD Mindmap",
+      "type": "mind_map",
+      "notebookId": "59e6719b-0aa3-4e63-b0ff-672d3fafe937",
+      "notebookTitle": "EGD Notebook",
+      "createdTime": "2026-08-27T14:36:51.058Z",
+      "userEmail": "themba@gafe.co.za",
+      "visibility": "private"
+    },
+    {
+      "artifactId": "dbe9ec47-1191-4e23-abee-5d11c3991f84",
+      "name": "Untitled Mind Map",
+      "type": "mind_map",
+      "notebookId": "59e6719b-0aa3-4e63-b0ff-672d3fafe937",
+      "notebookTitle": "EGD Notebook",
+      "createdTime": "2026-08-27T14:35:52.082Z",
+      "userEmail": "themba@gafe.co.za",
+      "visibility": "private"
+    }
+  ],
+  "sources": [
+    {
+      "sourceId": "77c00ad5-f1fc-4ae7-9ff2-d8a7f492e0e8",
+      "name": "Cybersecurity Challenges in Higher Education - AICUP",
+      "type": "url",
+      "url": "https://aicup.org/wp-content/uploads/2023/11/Cybersecurity-IHE.pdf",
+      "notebookId": "49d9eaae-fc07-42c3-ad39-b4070cbb9e77",
+      "notebookTitle": "Analysis of the 2019 Ransomware Attack at Maastricht University",
+      "addedTime": "2026-09-30T13:01:28.296Z",
+      "userEmail": "alister@gafe.co.za"
+    },
+    {
+      "sourceId": "45f68517-e7d0-43de-ab2e-fd614fedd4b9",
+      "name": "Cyber security breaches survey 2025/2026: education institutions findings - GOV.UK",
+      "type": "url",
+      "url": "https://www.gov.uk/government/statistics/cyber-security-breaches-survey-20252026/cyber-security-breaches-survey-20252026-education-institutions-findings",
+      "notebookId": "49d9eaae-fc07-42c3-ad39-b4070cbb9e77",
+      "notebookTitle": "Analysis of the 2019 Ransomware Attack at Maastricht University",
+      "addedTime": "2026-09-30T13:01:28.296Z",
+      "userEmail": "alister@gafe.co.za"
+    },
+    {
+      "sourceId": "e36e679f-0211-4e7a-9f33-2926c1253060",
+      "name": "ANALYSIS OF THE 2019 RANSOMWARE ATTACK AT THE MAASTRICHT UNIVERSITY - Centri — Manage",
+      "type": "url",
+      "url": "https://centri.unibo.it/computational-social-science/en/our-work/our-students-papers/antonini-giulia-analysis-of-the-2019-ransomware.pdf/@@download/file/Antonini%20Giulia%20-%20ANALYSIS%20OF%20THE%202019%20RANSOMWARE.pdf",
+      "notebookId": "49d9eaae-fc07-42c3-ad39-b4070cbb9e77",
+      "notebookTitle": "Analysis of the 2019 Ransomware Attack at Maastricht University",
+      "addedTime": "2026-09-30T13:01:28.296Z",
+      "userEmail": "alister@gafe.co.za"
+    },
+    {
+      "sourceId": "e4277956-2338-4f65-9b90-9af8d2de621b",
+      "name": "Zero Trust Architecture - NIST Technical Series Publications",
+      "type": "url",
+      "url": "https://nvlpubs.nist.gov/nistpubs/specialpublications/NIST.SP.800-207.pdf",
+      "notebookId": "49d9eaae-fc07-42c3-ad39-b4070cbb9e77",
+      "notebookTitle": "Analysis of the 2019 Ransomware Attack at Maastricht University",
+      "addedTime": "2026-09-30T13:01:28.296Z",
+      "userEmail": "alister@gafe.co.za"
+    },
+    {
+      "sourceId": "fb243d8d-500a-4531-a9ee-e95233a57ded",
+      "name": "NIST SP 800-171 Compliance Guide for Colleges & Universities - UpGuard",
+      "type": "url",
+      "url": "https://www.upguard.com/blog/nist-sp-800-171-compliance-guide-for-colleges-universities",
+      "notebookId": "49d9eaae-fc07-42c3-ad39-b4070cbb9e77",
+      "notebookTitle": "Analysis of the 2019 Ransomware Attack at Maastricht University",
+      "addedTime": "2026-09-30T13:01:28.296Z",
+      "userEmail": "alister@gafe.co.za"
+    },
+    {
+      "sourceId": "d0ec7f13-c1e0-40a2-9f21-9ac38b34eb49",
+      "name": "Multi-Factor Authentication: Why It Matters for Higher Education and Research - IU Blogs",
+      "type": "url",
+      "url": "https://blogs.iu.edu/renisac/2025/08/02/multi-factor-authentication-why-it-matters-for-higher-education-and-research/",
+      "notebookId": "49d9eaae-fc07-42c3-ad39-b4070cbb9e77",
+      "notebookTitle": "Analysis of the 2019 Ransomware Attack at Maastricht University",
+      "addedTime": "2026-09-30T13:01:28.296Z",
+      "userEmail": "alister@gafe.co.za"
+    },
+    {
+      "sourceId": "2d4c926f-7937-4ac0-ad62-d8a0f4a777c6",
+      "name": "Data Breach Response Checklist - | Protecting Student Privacy",
+      "type": "url",
+      "url": "https://studentprivacy.ed.gov/sites/default/files/resource_document/file/checklist_data_breach_response_092012_0.pdf",
+      "notebookId": "49d9eaae-fc07-42c3-ad39-b4070cbb9e77",
+      "notebookTitle": "Analysis of the 2019 Ransomware Attack at Maastricht University",
+      "addedTime": "2026-09-30T13:01:28.296Z",
+      "userEmail": "alister@gafe.co.za"
+    },
+    {
+      "sourceId": "fcd8e582-d113-4ec3-92b3-7224edfdcd2e",
+      "name": "Cost of a Data Breach Report 2025 The AI Oversight Gap - Baker Donelson",
+      "type": "url",
+      "url": "https://www.bakerdonelson.com/webfiles/Publications/20250822_Cost-of-a-Data-Breach-Report-2025.pdf",
+      "notebookId": "49d9eaae-fc07-42c3-ad39-b4070cbb9e77",
+      "notebookTitle": "Analysis of the 2019 Ransomware Attack at Maastricht University",
+      "addedTime": "2026-09-30T13:01:28.296Z",
+      "userEmail": "alister@gafe.co.za"
+    },
+    {
+      "sourceId": "8729e799-e888-4fcf-a43c-96060feb6334",
+      "name": "CAPS FET _ ENGINEERING GRAPICHS & DESIGN _ GR 10-12 _ Web_8899.pdf",
+      "type": "local_upload",
+      "url": null,
+      "notebookId": "59e6719b-0aa3-4e63-b0ff-672d3fafe937",
+      "notebookTitle": "EGD Notebook",
+      "addedTime": "2026-08-27T14:31:57.160Z",
+      "userEmail": "themba@gafe.co.za"
+    }
+  ],
+  "recentWorkspaceEvents": [
+    {
+      "id": "-1510620417130302399_0",
+      "time": "2026-10-02T11:20:07.034Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "workflows",
+      "action": "evaluate_natural_language_condition",
+      "category": "active_generate",
+      "featureSource": "workflows_execution",
+      "clientAppName": "Google Calendar for Workspace Studio",
+      "isAgenticAction": false
+    },
+    {
+      "id": "2633028739590358077_0",
+      "time": "2026-10-02T11:20:01.186Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "workflows",
+      "action": "classic_use_case_workspace_studio_flow_execution",
+      "category": "active_generate",
+      "featureSource": "feature_source_unspecified",
+      "clientAppName": "Google Calendar for Workspace Studio",
+      "isAgenticAction": false
+    },
+    {
+      "id": "-843889236327718709_0",
+      "time": "2026-10-02T05:17:23.309Z",
+      "userEmail": "deidre@gafe.co.za",
+      "appName": "workflows",
+      "action": "summarize_unreads",
+      "category": "active_generate",
+      "featureSource": "workflows_execution",
+      "clientAppName": "Get a daily summary of unread emails",
+      "isAgenticAction": true
+    },
+    {
+      "id": "-7815816301208625759_0",
+      "time": "2026-10-02T05:17:11.572Z",
+      "userEmail": "deidre@gafe.co.za",
+      "appName": "workflows",
+      "action": "classic_use_case_workspace_studio_flow_execution",
+      "category": "active_generate",
+      "featureSource": "feature_source_unspecified",
+      "clientAppName": "Get a daily summary of unread emails",
+      "isAgenticAction": true
+    },
+    {
+      "id": "-7797075363200253831_0",
+      "time": "2026-10-01T05:17:20.905Z",
+      "userEmail": "deidre@gafe.co.za",
+      "appName": "workflows",
+      "action": "summarize_unreads",
+      "category": "active_generate",
+      "featureSource": "workflows_execution",
+      "clientAppName": "Get a daily summary of unread emails",
+      "isAgenticAction": true
+    },
+    {
+      "id": "7346959041020131108_0",
+      "time": "2026-10-01T05:17:11.538Z",
+      "userEmail": "deidre@gafe.co.za",
+      "appName": "workflows",
+      "action": "classic_use_case_workspace_studio_flow_execution",
+      "category": "active_generate",
+      "featureSource": "feature_source_unspecified",
+      "clientAppName": "Get a daily summary of unread emails",
+      "isAgenticAction": true
+    },
+    {
+      "id": "-7356744776781117755_0",
+      "time": "2026-09-30T13:00:05.057Z",
+      "userEmail": "alister@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "1949922725255888056_0",
+      "time": "2026-09-30T08:38:07.570Z",
+      "userEmail": "karien@gafe.co.za",
+      "appName": "forms",
+      "action": "summarize_proactive",
+      "category": "inactive",
+      "featureSource": "summarize_responses",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-8321897474154535793_0",
+      "time": "2026-09-30T05:17:19.802Z",
+      "userEmail": "deidre@gafe.co.za",
+      "appName": "workflows",
+      "action": "summarize_unreads",
+      "category": "active_generate",
+      "featureSource": "workflows_execution",
+      "clientAppName": "Get a daily summary of unread emails",
+      "isAgenticAction": true
+    },
+    {
+      "id": "-7472328979717814212_0",
+      "time": "2026-09-30T05:17:11.542Z",
+      "userEmail": "deidre@gafe.co.za",
+      "appName": "workflows",
+      "action": "classic_use_case_workspace_studio_flow_execution",
+      "category": "active_generate",
+      "featureSource": "feature_source_unspecified",
+      "clientAppName": "Get a daily summary of unread emails",
+      "isAgenticAction": true
+    },
+    {
+      "id": "3745274222667505360_0",
+      "time": "2026-09-29T07:33:40.459Z",
+      "userEmail": "alister@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "7054887173275932287_0",
+      "time": "2026-09-29T05:17:27.194Z",
+      "userEmail": "deidre@gafe.co.za",
+      "appName": "workflows",
+      "action": "summarize_unreads",
+      "category": "active_generate",
+      "featureSource": "workflows_execution",
+      "clientAppName": "Get a daily summary of unread emails",
+      "isAgenticAction": true
+    },
+    {
+      "id": "3238325735848519932_0",
+      "time": "2026-09-29T05:17:11.576Z",
+      "userEmail": "deidre@gafe.co.za",
+      "appName": "workflows",
+      "action": "classic_use_case_workspace_studio_flow_execution",
+      "category": "active_generate",
+      "featureSource": "feature_source_unspecified",
+      "clientAppName": "Get a daily summary of unread emails",
+      "isAgenticAction": true
+    },
+    {
+      "id": "8543803335828273045_0",
+      "time": "2026-09-28T05:17:21.486Z",
+      "userEmail": "deidre@gafe.co.za",
+      "appName": "workflows",
+      "action": "summarize_unreads",
+      "category": "active_generate",
+      "featureSource": "workflows_execution",
+      "clientAppName": "Get a daily summary of unread emails",
+      "isAgenticAction": true
+    },
+    {
+      "id": "5910471591449958952_0",
+      "time": "2026-09-28T05:17:11.529Z",
+      "userEmail": "deidre@gafe.co.za",
+      "appName": "workflows",
+      "action": "classic_use_case_workspace_studio_flow_execution",
+      "category": "active_generate",
+      "featureSource": "feature_source_unspecified",
+      "clientAppName": "Get a daily summary of unread emails",
+      "isAgenticAction": true
+    },
+    {
+      "id": "-6205386866938596024_0",
+      "time": "2026-09-25T19:58:26.336Z",
+      "userEmail": "alister@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "3991545776048434214_0",
+      "time": "2026-09-25T19:58:13.827Z",
+      "userEmail": "alister@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-1972286788097208284_0",
+      "time": "2026-09-25T19:57:45.893Z",
+      "userEmail": "alister@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-6156167629318224053_0",
+      "time": "2026-09-25T05:17:23.538Z",
+      "userEmail": "deidre@gafe.co.za",
+      "appName": "workflows",
+      "action": "summarize_unreads",
+      "category": "active_generate",
+      "featureSource": "workflows_execution",
+      "clientAppName": "Get a daily summary of unread emails",
+      "isAgenticAction": true
+    },
+    {
+      "id": "-9193856753738338356_0",
+      "time": "2026-09-25T05:17:11.537Z",
+      "userEmail": "deidre@gafe.co.za",
+      "appName": "workflows",
+      "action": "classic_use_case_workspace_studio_flow_execution",
+      "category": "active_generate",
+      "featureSource": "feature_source_unspecified",
+      "clientAppName": "Get a daily summary of unread emails",
+      "isAgenticAction": true
+    },
+    {
+      "id": "-332571150706327418_0",
+      "time": "2026-09-24T05:17:22.877Z",
+      "userEmail": "deidre@gafe.co.za",
+      "appName": "workflows",
+      "action": "summarize_unreads",
+      "category": "active_generate",
+      "featureSource": "workflows_execution",
+      "clientAppName": "Get a daily summary of unread emails",
+      "isAgenticAction": true
+    },
+    {
+      "id": "-7052135161518042006_0",
+      "time": "2026-09-24T05:17:11.523Z",
+      "userEmail": "deidre@gafe.co.za",
+      "appName": "workflows",
+      "action": "classic_use_case_workspace_studio_flow_execution",
+      "category": "active_generate",
+      "featureSource": "feature_source_unspecified",
+      "clientAppName": "Get a daily summary of unread emails",
+      "isAgenticAction": true
+    },
+    {
+      "id": "-7101469235706841673_0",
+      "time": "2026-09-23T05:17:23.853Z",
+      "userEmail": "deidre@gafe.co.za",
+      "appName": "workflows",
+      "action": "summarize_unreads",
+      "category": "active_generate",
+      "featureSource": "workflows_execution",
+      "clientAppName": "Get a daily summary of unread emails",
+      "isAgenticAction": true
+    },
+    {
+      "id": "-631444189331202994_0",
+      "time": "2026-09-23T05:17:11.690Z",
+      "userEmail": "deidre@gafe.co.za",
+      "appName": "workflows",
+      "action": "classic_use_case_workspace_studio_flow_execution",
+      "category": "active_generate",
+      "featureSource": "feature_source_unspecified",
+      "clientAppName": "Get a daily summary of unread emails",
+      "isAgenticAction": true
+    },
+    {
+      "id": "1943911357883524309_0",
+      "time": "2026-09-22T10:42:07.103Z",
+      "userEmail": "deidre@gafe.co.za",
+      "appName": "workflows",
+      "action": "summarize_unreads",
+      "category": "active_generate",
+      "featureSource": "workflows_execution",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-6604482440839534086_0",
+      "time": "2026-09-16T13:42:08.282Z",
+      "userEmail": "alister@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-516657377287450470_0",
+      "time": "2026-09-15T11:30:20.377Z",
+      "userEmail": "alister@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-637233098204817692_0",
+      "time": "2026-09-15T11:25:33.274Z",
+      "userEmail": "alister@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-5609906135255813861_0",
+      "time": "2026-09-13T18:23:46.975Z",
+      "userEmail": "alister@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-7288298756642265_0",
+      "time": "2026-09-12T15:18:26.152Z",
+      "userEmail": "alister@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "6740289349312211023_0",
+      "time": "2026-09-12T15:17:51.285Z",
+      "userEmail": "alister@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "3219238280342302709_0",
+      "time": "2026-09-12T15:16:19.249Z",
+      "userEmail": "alister@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-5472655884065990131_0",
+      "time": "2026-09-11T15:55:41.122Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gmail",
+      "action": "summarize_proactive",
+      "category": "inactive",
+      "featureSource": "side_panel",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "5554474939179210548_0",
+      "time": "2026-09-09T14:12:26.585Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gmail",
+      "action": "summarize_proactive",
+      "category": "inactive",
+      "featureSource": "side_panel",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-1619640761371128692_0",
+      "time": "2026-09-09T14:00:43.944Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gmail",
+      "action": "summarize_proactive",
+      "category": "inactive",
+      "featureSource": "side_panel",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-7344989328506682038_0",
+      "time": "2026-09-09T13:19:07.488Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gmail",
+      "action": "summarize_proactive",
+      "category": "inactive",
+      "featureSource": "side_panel",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-6348865184177685436_0",
+      "time": "2026-09-07T09:09:06.934Z",
+      "userEmail": "kevin@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-6067462147552979936_0",
+      "time": "2026-09-07T09:08:31.597Z",
+      "userEmail": "kevin@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-2634887568031014881_0",
+      "time": "2026-09-07T09:07:33.344Z",
+      "userEmail": "kevin@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-6356460644393773762_0",
+      "time": "2026-09-07T09:06:29.150Z",
+      "userEmail": "kevin@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "2792720744446977200_0",
+      "time": "2026-09-07T09:05:25.079Z",
+      "userEmail": "kevin@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "373896626209476043_0",
+      "time": "2026-09-07T09:04:06.796Z",
+      "userEmail": "kevin@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-1826104692756530034_0",
+      "time": "2026-09-04T11:08:20.503Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "meet",
+      "action": "classic_use_case_meet_studio_sound",
+      "category": "inactive",
+      "featureSource": "studio_sound",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "8448572894865178062_0",
+      "time": "2026-09-04T11:05:07.930Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "workflows",
+      "action": "evaluate_natural_language_condition",
+      "category": "active_generate",
+      "featureSource": "workflows_execution",
+      "clientAppName": "Google Calendar for Workspace Studio",
+      "isAgenticAction": false
+    },
+    {
+      "id": "-2287717693798335398_0",
+      "time": "2026-09-04T11:05:01.152Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "workflows",
+      "action": "classic_use_case_workspace_studio_flow_execution",
+      "category": "active_generate",
+      "featureSource": "feature_source_unspecified",
+      "clientAppName": "Google Calendar for Workspace Studio",
+      "isAgenticAction": false
+    },
+    {
+      "id": "3513101256432842908_0",
+      "time": "2026-09-04T09:12:43.595Z",
+      "userEmail": "kevin@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-5550824281591142681_0",
+      "time": "2026-09-04T09:12:11.519Z",
+      "userEmail": "kevin@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "1780020066553816107_0",
+      "time": "2026-09-04T09:10:18.370Z",
+      "userEmail": "kevin@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "3804783713004055454_0",
+      "time": "2026-09-02T08:00:11.824Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gmail",
+      "action": "summarize_proactive",
+      "category": "inactive",
+      "featureSource": "side_panel",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-8575451868992915601_0",
+      "time": "2026-09-01T06:21:10.892Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gmail",
+      "action": "summarize_proactive",
+      "category": "inactive",
+      "featureSource": "side_panel",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "7421628569375952977_0",
+      "time": "2026-08-28T11:05:08.987Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "workflows",
+      "action": "evaluate_natural_language_condition",
+      "category": "active_generate",
+      "featureSource": "workflows_execution",
+      "clientAppName": "Google Calendar for Workspace Studio",
+      "isAgenticAction": false
+    },
+    {
+      "id": "-5513762273566805078_0",
+      "time": "2026-08-28T11:05:01.072Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "workflows",
+      "action": "classic_use_case_workspace_studio_flow_execution",
+      "category": "active_generate",
+      "featureSource": "feature_source_unspecified",
+      "clientAppName": "Google Calendar for Workspace Studio",
+      "isAgenticAction": false
+    },
+    {
+      "id": "-1178558409341426812_0",
+      "time": "2026-08-27T14:55:46.724Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "classroom",
+      "action": "classic_use_case_generate_questions",
+      "category": "active_generate",
+      "featureSource": "classroom_gemini_education",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-7479852981632893885_0",
+      "time": "2026-08-27T13:59:20.386Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "5587607295050710779_0",
+      "time": "2026-08-27T06:51:12.964Z",
+      "userEmail": "w.smith@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "6718535862475743536_0",
+      "time": "2026-08-26T12:20:08.363Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "workflows",
+      "action": "evaluate_natural_language_condition",
+      "category": "active_generate",
+      "featureSource": "workflows_execution",
+      "clientAppName": "Google Calendar for Workspace Studio",
+      "isAgenticAction": false
+    },
+    {
+      "id": "-2696250739662915788_0",
+      "time": "2026-08-26T12:20:01.384Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "workflows",
+      "action": "classic_use_case_workspace_studio_flow_execution",
+      "category": "active_generate",
+      "featureSource": "feature_source_unspecified",
+      "clientAppName": "Google Calendar for Workspace Studio",
+      "isAgenticAction": false
+    },
+    {
+      "id": "-2066116993482240615_0",
+      "time": "2026-08-26T12:16:38.256Z",
+      "userEmail": "karien@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-6254709574668512651_0",
+      "time": "2026-08-26T12:14:28.944Z",
+      "userEmail": "karien@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-2362483122750013510_0",
+      "time": "2026-08-26T12:14:10.214Z",
+      "userEmail": "karien@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-5877880562564011539_0",
+      "time": "2026-08-25T14:43:53.530Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-3351922463483747427_0",
+      "time": "2026-08-25T13:20:42.978Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "5475443507767189215_0",
+      "time": "2026-08-25T13:20:10.766Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "8266488646996220913_0",
+      "time": "2026-08-25T13:18:36.888Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-2052494284190167656_0",
+      "time": "2026-08-25T13:17:59.648Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-7059019781700567496_0",
+      "time": "2026-08-25T13:07:41.623Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-461119778304836345_0",
+      "time": "2026-08-25T12:30:01.429Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "8927620786365492870_0",
+      "time": "2026-08-25T12:29:08.714Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "6899959777404223755_0",
+      "time": "2026-08-25T12:28:24.384Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-3404164674177636645_0",
+      "time": "2026-08-25T12:27:53.638Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "3198227005414330482_0",
+      "time": "2026-08-25T12:20:12.650Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "workflows",
+      "action": "evaluate_natural_language_condition",
+      "category": "active_generate",
+      "featureSource": "workflows_execution",
+      "clientAppName": "Google Calendar for Workspace Studio",
+      "isAgenticAction": false
+    },
+    {
+      "id": "-4438415597176082125_0",
+      "time": "2026-08-25T12:20:03.453Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "workflows",
+      "action": "classic_use_case_workspace_studio_flow_execution",
+      "category": "active_generate",
+      "featureSource": "feature_source_unspecified",
+      "clientAppName": "Google Calendar for Workspace Studio",
+      "isAgenticAction": false
+    },
+    {
+      "id": "8407152108948557077_0",
+      "time": "2026-08-25T12:07:48.998Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "2838689456107204404_0",
+      "time": "2026-08-25T12:06:49.787Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "1474819582124189566_0",
+      "time": "2026-08-25T12:03:01.231Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "3513787943016152913_0",
+      "time": "2026-08-25T12:02:04.442Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-2491600351549040345_0",
+      "time": "2026-08-25T12:01:40.710Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-6840300075442950734_0",
+      "time": "2026-08-21T10:37:09.661Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gmail",
+      "action": "summarize_proactive",
+      "category": "inactive",
+      "featureSource": "side_panel",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "324699689708301063_0",
+      "time": "2026-08-20T06:48:27.237Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gmail",
+      "action": "summarize_proactive",
+      "category": "inactive",
+      "featureSource": "side_panel",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-6577398395180319074_0",
+      "time": "2026-08-19T13:55:30.712Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "5132666217832482101_0",
+      "time": "2026-08-19T12:05:01.313Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "workflows",
+      "action": "classic_use_case_workspace_studio_flow_execution",
+      "category": "active_generate",
+      "featureSource": "feature_source_unspecified",
+      "clientAppName": "Google Calendar for Workspace Studio",
+      "isAgenticAction": false
+    },
+    {
+      "id": "5931963413587043633_0",
+      "time": "2026-08-14T11:05:05.596Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "workflows",
+      "action": "evaluate_natural_language_condition",
+      "category": "active_generate",
+      "featureSource": "workflows_execution",
+      "clientAppName": "Google Calendar for Workspace Studio",
+      "isAgenticAction": false
+    },
+    {
+      "id": "6663643583026523298_0",
+      "time": "2026-08-14T11:05:00.809Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "workflows",
+      "action": "classic_use_case_workspace_studio_flow_execution",
+      "category": "active_generate",
+      "featureSource": "feature_source_unspecified",
+      "clientAppName": "Google Calendar for Workspace Studio",
+      "isAgenticAction": false
+    },
+    {
+      "id": "1892998187295362330_0",
+      "time": "2026-08-12T11:22:13.367Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gmail",
+      "action": "summarize_proactive",
+      "category": "inactive",
+      "featureSource": "side_panel",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-27877749438235358_0",
+      "time": "2026-08-11T17:37:35.581Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gmail",
+      "action": "summarize_proactive",
+      "category": "inactive",
+      "featureSource": "side_panel",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "3476767110721937659_0",
+      "time": "2026-08-11T15:11:56.726Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "meet",
+      "action": "classic_use_case_meet_studio_sound",
+      "category": "inactive",
+      "featureSource": "studio_sound",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "4178923089498331432_0",
+      "time": "2026-08-11T15:02:15.252Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "meet",
+      "action": "classic_use_case_meet_studio_sound",
+      "category": "inactive",
+      "featureSource": "studio_sound",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "5300645503022038082_0",
+      "time": "2026-08-11T14:58:20.547Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "meet",
+      "action": "classic_use_case_meet_studio_sound",
+      "category": "inactive",
+      "featureSource": "studio_sound",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "545938637410391279_0",
+      "time": "2026-08-11T12:01:58.644Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "meet",
+      "action": "classic_use_case_meet_studio_sound",
+      "category": "inactive",
+      "featureSource": "studio_sound",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-2748883556565044895_0",
+      "time": "2026-08-11T12:01:58.236Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "meet",
+      "action": "classic_use_case_meet_studio_sound",
+      "category": "inactive",
+      "featureSource": "studio_sound",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-3242692222813341073_0",
+      "time": "2026-08-11T08:42:42.559Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "meet",
+      "action": "classic_use_case_meet_studio_sound",
+      "category": "inactive",
+      "featureSource": "studio_sound",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-8149766954529883696_0",
+      "time": "2026-08-11T08:30:09.214Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "meet",
+      "action": "classic_use_case_meet_studio_sound",
+      "category": "inactive",
+      "featureSource": "studio_sound",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "9162805522285473439_0",
+      "time": "2026-08-10T15:50:25.130Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gmail",
+      "action": "summarize_proactive",
+      "category": "inactive",
+      "featureSource": "side_panel",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-2891978171622999341_0",
+      "time": "2026-08-07T14:18:30.629Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "meet",
+      "action": "classic_use_case_meet_studio_sound",
+      "category": "inactive",
+      "featureSource": "studio_sound",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-6125311433792600988_0",
+      "time": "2026-08-07T14:09:21.072Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "meet",
+      "action": "classic_use_case_meet_studio_sound",
+      "category": "inactive",
+      "featureSource": "studio_sound",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "756217829795158800_0",
+      "time": "2026-08-07T13:56:43.709Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "meet",
+      "action": "classic_use_case_meet_studio_sound",
+      "category": "inactive",
+      "featureSource": "studio_sound",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-3708426393068305193_0",
+      "time": "2026-08-07T11:05:05.906Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "workflows",
+      "action": "evaluate_natural_language_condition",
+      "category": "active_generate",
+      "featureSource": "workflows_execution",
+      "clientAppName": "Google Calendar for Workspace Studio",
+      "isAgenticAction": false
+    },
+    {
+      "id": "-5993855555837677108_0",
+      "time": "2026-08-07T11:05:01.118Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "workflows",
+      "action": "classic_use_case_workspace_studio_flow_execution",
+      "category": "active_generate",
+      "featureSource": "feature_source_unspecified",
+      "clientAppName": "Google Calendar for Workspace Studio",
+      "isAgenticAction": false
+    },
+    {
+      "id": "8273241339139064002_0",
+      "time": "2026-08-06T12:11:30.606Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "meet",
+      "action": "classic_use_case_meet_studio_sound",
+      "category": "inactive",
+      "featureSource": "studio_sound",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-2194325383198402115_0",
+      "time": "2026-08-05T12:20:07.002Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "workflows",
+      "action": "evaluate_natural_language_condition",
+      "category": "active_generate",
+      "featureSource": "workflows_execution",
+      "clientAppName": "Google Calendar for Workspace Studio",
+      "isAgenticAction": false
+    },
+    {
+      "id": "-8472673553101954764_0",
+      "time": "2026-08-05T12:20:01.191Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "workflows",
+      "action": "classic_use_case_workspace_studio_flow_execution",
+      "category": "active_generate",
+      "featureSource": "feature_source_unspecified",
+      "clientAppName": "Google Calendar for Workspace Studio",
+      "isAgenticAction": false
+    },
+    {
+      "id": "-1311917870050392411_0",
+      "time": "2026-08-05T07:05:50.237Z",
+      "userEmail": "farrakhan@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-4666251008650731794_0",
+      "time": "2026-08-05T07:05:10.166Z",
+      "userEmail": "farrakhan@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "7640261465488275385_0",
+      "time": "2026-08-04T13:31:14.693Z",
+      "userEmail": "farrakhan@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "84811085581977918_0",
+      "time": "2026-08-04T13:29:43.080Z",
+      "userEmail": "farrakhan@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "2530245396752236344_0",
+      "time": "2026-08-04T13:22:05.628Z",
+      "userEmail": "farrakhan@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "6075702356702309509_0",
+      "time": "2026-08-04T13:03:30.115Z",
+      "userEmail": "farrakhan@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-6971864490239494661_0",
+      "time": "2026-08-04T13:00:57.509Z",
+      "userEmail": "farrakhan@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "5686169466371170548_0",
+      "time": "2026-08-04T12:56:42.126Z",
+      "userEmail": "farrakhan@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "2054059081422933817_0",
+      "time": "2026-08-04T12:53:21.692Z",
+      "userEmail": "farrakhan@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-5513379426600418133_0",
+      "time": "2026-08-04T12:26:21.182Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "meet",
+      "action": "classic_use_case_meet_studio_sound",
+      "category": "inactive",
+      "featureSource": "studio_sound",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-4755894592190963129_0",
+      "time": "2026-08-04T12:26:20.020Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "meet",
+      "action": "classic_use_case_meet_studio_sound",
+      "category": "inactive",
+      "featureSource": "studio_sound",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "6654304681214108405_0",
+      "time": "2026-08-04T12:20:07.212Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "workflows",
+      "action": "evaluate_natural_language_condition",
+      "category": "active_generate",
+      "featureSource": "workflows_execution",
+      "clientAppName": "Google Calendar for Workspace Studio",
+      "isAgenticAction": false
+    },
+    {
+      "id": "-326074295356764440_0",
+      "time": "2026-08-04T12:20:01.339Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "workflows",
+      "action": "classic_use_case_workspace_studio_flow_execution",
+      "category": "active_generate",
+      "featureSource": "feature_source_unspecified",
+      "clientAppName": "Google Calendar for Workspace Studio",
+      "isAgenticAction": false
+    },
+    {
+      "id": "-6883774148616647082_0",
+      "time": "2026-08-04T11:27:51.702Z",
+      "userEmail": "farrakhan@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "6190835395425244033_0",
+      "time": "2026-08-04T11:26:12.628Z",
+      "userEmail": "farrakhan@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-6624545274636210675_0",
+      "time": "2026-08-04T11:22:39.354Z",
+      "userEmail": "farrakhan@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "6908979639836086615_0",
+      "time": "2026-08-04T11:21:24.555Z",
+      "userEmail": "farrakhan@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-2120006844761029839_0",
+      "time": "2026-08-03T12:57:45.345Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "meet",
+      "action": "classic_use_case_meet_studio_sound",
+      "category": "inactive",
+      "featureSource": "studio_sound",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "993646169957146274_0",
+      "time": "2026-08-03T12:57:45.233Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "meet",
+      "action": "classic_use_case_meet_studio_sound",
+      "category": "inactive",
+      "featureSource": "studio_sound",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "2900362538577263884_0",
+      "time": "2026-08-03T12:20:06.482Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "workflows",
+      "action": "evaluate_natural_language_condition",
+      "category": "active_generate",
+      "featureSource": "workflows_execution",
+      "clientAppName": "Google Calendar for Workspace Studio",
+      "isAgenticAction": false
+    },
+    {
+      "id": "7600595173264351860_0",
+      "time": "2026-08-03T12:20:01.006Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "workflows",
+      "action": "classic_use_case_workspace_studio_flow_execution",
+      "category": "active_generate",
+      "featureSource": "feature_source_unspecified",
+      "clientAppName": "Google Calendar for Workspace Studio",
+      "isAgenticAction": false
+    },
+    {
+      "id": "2690105888039906035_0",
+      "time": "2026-08-03T09:48:57.892Z",
+      "userEmail": "farrakhan@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-5540086563744310404_0",
+      "time": "2026-08-03T09:22:42.620Z",
+      "userEmail": "farrakhan@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "5592417536635412554_0",
+      "time": "2026-08-03T09:21:56.367Z",
+      "userEmail": "farrakhan@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-3093479355443846647_0",
+      "time": "2026-07-31T12:20:06.870Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "workflows",
+      "action": "evaluate_natural_language_condition",
+      "category": "active_generate",
+      "featureSource": "workflows_execution",
+      "clientAppName": "Google Calendar for Workspace Studio",
+      "isAgenticAction": false
+    },
+    {
+      "id": "-5598407249901719512_0",
+      "time": "2026-07-31T12:20:00.741Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "workflows",
+      "action": "classic_use_case_workspace_studio_flow_execution",
+      "category": "active_generate",
+      "featureSource": "feature_source_unspecified",
+      "clientAppName": "Google Calendar for Workspace Studio",
+      "isAgenticAction": false
+    },
+    {
+      "id": "1497827462092077938_0",
+      "time": "2026-07-30T13:43:58.732Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "meet",
+      "action": "classic_use_case_meet_studio_sound",
+      "category": "inactive",
+      "featureSource": "studio_sound",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "4925804662153508745_0",
+      "time": "2026-07-30T12:20:07.789Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "workflows",
+      "action": "evaluate_natural_language_condition",
+      "category": "active_generate",
+      "featureSource": "workflows_execution",
+      "clientAppName": "Google Calendar for Workspace Studio",
+      "isAgenticAction": false
+    },
+    {
+      "id": "6047401924416684154_0",
+      "time": "2026-07-30T12:20:00.883Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "workflows",
+      "action": "classic_use_case_workspace_studio_flow_execution",
+      "category": "active_generate",
+      "featureSource": "feature_source_unspecified",
+      "clientAppName": "Google Calendar for Workspace Studio",
+      "isAgenticAction": false
+    },
+    {
+      "id": "-7511123502496296029_0",
+      "time": "2026-07-30T12:14:24.513Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "meet",
+      "action": "classic_use_case_meet_studio_sound",
+      "category": "inactive",
+      "featureSource": "studio_sound",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "4812267890737232631_0",
+      "time": "2026-07-30T12:12:02.773Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "meet",
+      "action": "classic_use_case_meet_studio_sound",
+      "category": "inactive",
+      "featureSource": "studio_sound",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-6726895824951451912_0",
+      "time": "2026-07-29T12:50:27.719Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "workflows",
+      "action": "evaluate_natural_language_condition",
+      "category": "active_generate",
+      "featureSource": "workflows_execution",
+      "clientAppName": "Google Calendar for Workspace Studio",
+      "isAgenticAction": false
+    },
+    {
+      "id": "-2238475225976236296_0",
+      "time": "2026-07-29T12:50:02.521Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "workflows",
+      "action": "classic_use_case_workspace_studio_flow_execution",
+      "category": "active_generate",
+      "featureSource": "feature_source_unspecified",
+      "clientAppName": "Google Calendar for Workspace Studio",
+      "isAgenticAction": false
+    },
+    {
+      "id": "7950159127136913135_0",
+      "time": "2026-07-29T12:26:28.743Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "meet",
+      "action": "classic_use_case_meet_studio_sound",
+      "category": "inactive",
+      "featureSource": "studio_sound",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "4162178986520252495_0",
+      "time": "2026-07-29T09:09:37.057Z",
+      "userEmail": "alister@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "9152955554336883086_0",
+      "time": "2026-07-29T09:08:01.814Z",
+      "userEmail": "alister@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "4501024386339512345_0",
+      "time": "2026-07-29T09:07:02.026Z",
+      "userEmail": "alister@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "8537628091493911562_0",
+      "time": "2026-07-29T09:06:03.900Z",
+      "userEmail": "alister@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-5941956300318952121_0",
+      "time": "2026-07-29T06:28:33.243Z",
+      "userEmail": "farrakhan@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-1840131372511171883_0",
+      "time": "2026-07-29T06:28:02.328Z",
+      "userEmail": "farrakhan@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-8491063507577845753_0",
+      "time": "2026-07-29T06:27:49.858Z",
+      "userEmail": "farrakhan@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-3875894883731586106_0",
+      "time": "2026-07-29T06:25:55.731Z",
+      "userEmail": "farrakhan@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-7794041769987330529_0",
+      "time": "2026-07-29T06:25:23.364Z",
+      "userEmail": "farrakhan@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-4569324522935146887_0",
+      "time": "2026-07-29T06:24:26.613Z",
+      "userEmail": "farrakhan@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-6746629035895667295_0",
+      "time": "2026-07-29T06:24:17.228Z",
+      "userEmail": "farrakhan@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "8498156206985625228_0",
+      "time": "2026-07-28T12:50:06.807Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "workflows",
+      "action": "evaluate_natural_language_condition",
+      "category": "active_generate",
+      "featureSource": "workflows_execution",
+      "clientAppName": "Google Calendar for Workspace Studio",
+      "isAgenticAction": false
+    },
+    {
+      "id": "332419749129642823_0",
+      "time": "2026-07-28T12:50:00.608Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "workflows",
+      "action": "classic_use_case_workspace_studio_flow_execution",
+      "category": "active_generate",
+      "featureSource": "feature_source_unspecified",
+      "clientAppName": "Google Calendar for Workspace Studio",
+      "isAgenticAction": false
+    },
+    {
+      "id": "8668853601697803590_0",
+      "time": "2026-07-27T13:06:59.259Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "meet",
+      "action": "classic_use_case_meet_studio_sound",
+      "category": "inactive",
+      "featureSource": "studio_sound",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "2771955388906202917_0",
+      "time": "2026-07-27T13:05:58.752Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "meet",
+      "action": "classic_use_case_meet_studio_sound",
+      "category": "inactive",
+      "featureSource": "studio_sound",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "4208812271888882693_0",
+      "time": "2026-07-27T12:58:03.334Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "meet",
+      "action": "classic_use_case_meet_studio_sound",
+      "category": "inactive",
+      "featureSource": "studio_sound",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-7320658747699733137_0",
+      "time": "2026-07-27T12:05:08.152Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "workflows",
+      "action": "evaluate_natural_language_condition",
+      "category": "active_generate",
+      "featureSource": "workflows_execution",
+      "clientAppName": "Google Calendar for Workspace Studio",
+      "isAgenticAction": false
+    },
+    {
+      "id": "-8185615126137169931_0",
+      "time": "2026-07-27T12:05:02.565Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "workflows",
+      "action": "classic_use_case_workspace_studio_flow_execution",
+      "category": "active_generate",
+      "featureSource": "feature_source_unspecified",
+      "clientAppName": "Google Calendar for Workspace Studio",
+      "isAgenticAction": false
+    },
+    {
+      "id": "3458209345765510969_0",
+      "time": "2026-07-25T13:27:47.343Z",
+      "userEmail": "kevin@gafe.co.za",
+      "appName": "slides",
+      "action": "edit_image",
+      "category": "active_generate",
+      "featureSource": "help_me_visualize",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-7993410655777470112_0",
+      "time": "2026-07-25T13:24:38.695Z",
+      "userEmail": "kevin@gafe.co.za",
+      "appName": "slides",
+      "action": "edit_image",
+      "category": "active_generate",
+      "featureSource": "help_me_visualize",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-8274389867161277897_0",
+      "time": "2026-07-25T13:16:14.315Z",
+      "userEmail": "kevin@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-5840295645788560168_0",
+      "time": "2026-07-25T13:16:05.123Z",
+      "userEmail": "kevin@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-771727194801516190_0",
+      "time": "2026-07-25T13:15:35.308Z",
+      "userEmail": "kevin@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "2427977340238330088_0",
+      "time": "2026-07-25T13:15:25.108Z",
+      "userEmail": "kevin@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-6639344634597939065_0",
+      "time": "2026-07-25T13:14:25.953Z",
+      "userEmail": "kevin@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-28822359585085821_0",
+      "time": "2026-07-25T12:49:15.756Z",
+      "userEmail": "jyn@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-48317035126739829_0",
+      "time": "2026-07-25T12:40:24.553Z",
+      "userEmail": "jyn@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "526984577855068182_0",
+      "time": "2026-07-25T12:38:42.816Z",
+      "userEmail": "jyn@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "791481188622968503_0",
+      "time": "2026-07-25T10:09:10.051Z",
+      "userEmail": "kevin@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "1798550998396018653_0",
+      "time": "2026-07-25T10:08:35.553Z",
+      "userEmail": "kevin@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-2431194880456168500_0",
+      "time": "2026-07-25T10:08:16.371Z",
+      "userEmail": "kevin@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-6695589863624636061_0",
+      "time": "2026-07-25T10:07:40.653Z",
+      "userEmail": "kevin@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "3524678789014895030_0",
+      "time": "2026-07-24T17:35:54.379Z",
+      "userEmail": "kevin@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "6148275867902665328_0",
+      "time": "2026-07-24T17:33:30.451Z",
+      "userEmail": "kevin@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "6067764697116916221_0",
+      "time": "2026-07-24T17:31:59.151Z",
+      "userEmail": "kevin@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "7434227076077991755_0",
+      "time": "2026-07-24T17:30:20.850Z",
+      "userEmail": "kevin@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-2278451988697985747_0",
+      "time": "2026-07-24T17:28:46.129Z",
+      "userEmail": "kevin@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-3048600501079024520_0",
+      "time": "2026-07-24T17:28:05.601Z",
+      "userEmail": "kevin@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-5083306014173017233_0",
+      "time": "2026-07-24T17:27:40.598Z",
+      "userEmail": "kevin@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-3107090603295225610_0",
+      "time": "2026-07-24T17:26:38.249Z",
+      "userEmail": "kevin@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-5728299152724999418_0",
+      "time": "2026-07-23T10:57:42.867Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gmail",
+      "action": "summarize_proactive",
+      "category": "inactive",
+      "featureSource": "side_panel",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-8537972399999187721_0",
+      "time": "2026-07-23T10:08:58.094Z",
+      "userEmail": "farrakhan@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-8366559043910407055_0",
+      "time": "2026-07-23T10:06:29.543Z",
+      "userEmail": "farrakhan@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-5644613050716244246_0",
+      "time": "2026-07-23T10:01:34.278Z",
+      "userEmail": "farrakhan@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-9210130345713309149_0",
+      "time": "2026-07-23T09:58:33.629Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gmail",
+      "action": "summarize_proactive",
+      "category": "inactive",
+      "featureSource": "side_panel",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-1574213985052629142_0",
+      "time": "2026-07-23T09:56:04.533Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-2643258023528019371_0",
+      "time": "2026-07-23T09:48:52.498Z",
+      "userEmail": "farrakhan@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-90849559678870684_0",
+      "time": "2026-07-22T19:40:04.462Z",
+      "userEmail": "iostest@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "5616469576205297355_0",
+      "time": "2026-07-22T18:03:35.214Z",
+      "userEmail": "iostest@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "7161513682380665774_0",
+      "time": "2026-07-22T17:52:52.404Z",
+      "userEmail": "iostest@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "9193032955757008050_0",
+      "time": "2026-07-22T17:38:33.960Z",
+      "userEmail": "iostest@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "8156911294064731691_0",
+      "time": "2026-07-22T17:33:36.736Z",
+      "userEmail": "iostest@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "7874755594718506425_0",
+      "time": "2026-07-22T17:30:27.393Z",
+      "userEmail": "iostest@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-6670403711473670776_0",
+      "time": "2026-07-22T17:27:45.681Z",
+      "userEmail": "iostest@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "1638598148182972368_0",
+      "time": "2026-07-22T17:24:41.970Z",
+      "userEmail": "iostest@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "6456089494192360998_0",
+      "time": "2026-07-22T16:35:17.248Z",
+      "userEmail": "kevin@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-6011720044249309809_0",
+      "time": "2026-07-22T13:41:45.575Z",
+      "userEmail": "farrakhan@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "5556846737347938667_0",
+      "time": "2026-07-22T12:31:10.545Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "meet",
+      "action": "classic_use_case_meet_studio_sound",
+      "category": "inactive",
+      "featureSource": "studio_sound",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-3605770457256726700_0",
+      "time": "2026-07-22T12:20:06.082Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "workflows",
+      "action": "evaluate_natural_language_condition",
+      "category": "active_generate",
+      "featureSource": "workflows_execution",
+      "clientAppName": "Google Calendar for Workspace Studio",
+      "isAgenticAction": false
+    },
+    {
+      "id": "-7514854964787998964_0",
+      "time": "2026-07-22T12:20:00.821Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "workflows",
+      "action": "classic_use_case_workspace_studio_flow_execution",
+      "category": "active_generate",
+      "featureSource": "feature_source_unspecified",
+      "clientAppName": "Google Calendar for Workspace Studio",
+      "isAgenticAction": false
+    },
+    {
+      "id": "346593581988022505_0",
+      "time": "2026-07-22T11:35:03.716Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "meet",
+      "action": "classic_use_case_meet_studio_sound",
+      "category": "inactive",
+      "featureSource": "studio_sound",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-6611751068873586392_0",
+      "time": "2026-07-21T11:24:24.663Z",
+      "userEmail": "farrakhan@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-6650274483644270625_0",
+      "time": "2026-07-21T11:22:40.258Z",
+      "userEmail": "farrakhan@gafe.co.za",
+      "appName": "gemini_app",
+      "action": "classic_use_case_gemini_app",
+      "category": "active_conversations",
+      "featureSource": "chat_with_gemini",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-8151269240906533096_0",
+      "time": "2026-07-21T10:00:52.660Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gmail",
+      "action": "summarize_proactive",
+      "category": "inactive",
+      "featureSource": "side_panel",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "8485741486495104130_0",
+      "time": "2026-07-21T10:00:01.936Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gmail",
+      "action": "summarize_proactive",
+      "category": "inactive",
+      "featureSource": "side_panel",
+      "clientAppName": null,
+      "isAgenticAction": false
+    }
+  ],
+  "recentNotebookEvents": [
+    {
+      "id": "-5347778369896955230_0",
+      "time": "2026-09-30T13:02:42.048Z",
+      "userEmail": "alister@gafe.co.za",
+      "eventName": "generate_studio_artifact",
+      "notebookTitle": "Analysis of the 2019 Ransomware Attack at Maastricht University",
+      "visibility": "private",
+      "artifactType": "audio_overview",
+      "artifactName": "Untitled Audio Overview",
+      "sourceName": null,
+      "sourceType": null,
+      "sourceUrl": null,
+      "ipAddress": "169.0.120.229",
+      "country": "ZA"
+    },
+    {
+      "id": "-5635244562433290564_0",
+      "time": "2026-09-30T13:02:36.171Z",
+      "userEmail": "alister@gafe.co.za",
+      "eventName": "generate_studio_artifact",
+      "notebookTitle": "Analysis of the 2019 Ransomware Attack at Maastricht University",
+      "visibility": "private",
+      "artifactType": "mind_map",
+      "artifactName": "Untitled Mind Map",
+      "sourceName": null,
+      "sourceType": null,
+      "sourceUrl": null,
+      "ipAddress": "169.0.120.229",
+      "country": "ZA"
+    },
+    {
+      "id": "9012200057119785802_0",
+      "time": "2026-09-30T13:01:54.289Z",
+      "userEmail": "alister@gafe.co.za",
+      "eventName": "view_notebook",
+      "notebookTitle": "Analysis of the 2019 Ransomware Attack at Maastricht University",
+      "visibility": "private",
+      "artifactType": null,
+      "artifactName": null,
+      "sourceName": null,
+      "sourceType": null,
+      "sourceUrl": null,
+      "ipAddress": "169.0.120.229",
+      "country": "ZA"
+    },
+    {
+      "id": "9002287388639643669_0",
+      "time": "2026-09-30T13:01:31.512Z",
+      "userEmail": "alister@gafe.co.za",
+      "eventName": "rename_notebook",
+      "notebookTitle": "Analysis of the 2019 Ransomware Attack at Maastricht University",
+      "visibility": "private",
+      "artifactType": null,
+      "artifactName": null,
+      "sourceName": null,
+      "sourceType": null,
+      "sourceUrl": null,
+      "ipAddress": "169.0.120.229",
+      "country": "ZA"
+    },
+    {
+      "id": "5301566709774045006_0",
+      "time": "2026-09-30T13:01:28.296Z",
+      "userEmail": "alister@gafe.co.za",
+      "eventName": "add_source",
+      "notebookTitle": "Untitled notebook",
+      "visibility": "private",
+      "artifactType": null,
+      "artifactName": null,
+      "sourceName": "Cybersecurity Challenges in Higher Education - AICUP",
+      "sourceType": "url",
+      "sourceUrl": "https://aicup.org/wp-content/uploads/2023/11/Cybersecurity-IHE.pdf",
+      "ipAddress": "169.0.120.229",
+      "country": "ZA"
+    },
+    {
+      "id": "-5537895809354281914_0",
+      "time": "2026-09-30T13:01:28.296Z",
+      "userEmail": "alister@gafe.co.za",
+      "eventName": "add_source",
+      "notebookTitle": "Untitled notebook",
+      "visibility": "private",
+      "artifactType": null,
+      "artifactName": null,
+      "sourceName": "Cyber security breaches survey 2025/2026: education institutions findings - GOV.UK",
+      "sourceType": "url",
+      "sourceUrl": "https://www.gov.uk/government/statistics/cyber-security-breaches-survey-20252026/cyber-security-breaches-survey-20252026-education-institutions-findings",
+      "ipAddress": "169.0.120.229",
+      "country": "ZA"
+    },
+    {
+      "id": "-7341146287531472989_0",
+      "time": "2026-09-30T13:01:28.296Z",
+      "userEmail": "alister@gafe.co.za",
+      "eventName": "add_source",
+      "notebookTitle": "Untitled notebook",
+      "visibility": "private",
+      "artifactType": null,
+      "artifactName": null,
+      "sourceName": "ANALYSIS OF THE 2019 RANSOMWARE ATTACK AT THE MAASTRICHT UNIVERSITY - Centri — Manage",
+      "sourceType": "url",
+      "sourceUrl": "https://centri.unibo.it/computational-social-science/en/our-work/our-students-papers/antonini-giulia-analysis-of-the-2019-ransomware.pdf/@@download/file/Antonini%20Giulia%20-%20ANALYSIS%20OF%20THE%202019%20RANSOMWARE.pdf",
+      "ipAddress": "169.0.120.229",
+      "country": "ZA"
+    },
+    {
+      "id": "2980072755075498545_0",
+      "time": "2026-09-30T13:01:28.296Z",
+      "userEmail": "alister@gafe.co.za",
+      "eventName": "add_source",
+      "notebookTitle": "Untitled notebook",
+      "visibility": "private",
+      "artifactType": null,
+      "artifactName": null,
+      "sourceName": "Zero Trust Architecture - NIST Technical Series Publications",
+      "sourceType": "url",
+      "sourceUrl": "https://nvlpubs.nist.gov/nistpubs/specialpublications/NIST.SP.800-207.pdf",
+      "ipAddress": "169.0.120.229",
+      "country": "ZA"
+    },
+    {
+      "id": "-1128179333136887939_0",
+      "time": "2026-09-30T13:01:28.296Z",
+      "userEmail": "alister@gafe.co.za",
+      "eventName": "add_source",
+      "notebookTitle": "Untitled notebook",
+      "visibility": "private",
+      "artifactType": null,
+      "artifactName": null,
+      "sourceName": "NIST SP 800-171 Compliance Guide for Colleges & Universities - UpGuard",
+      "sourceType": "url",
+      "sourceUrl": "https://www.upguard.com/blog/nist-sp-800-171-compliance-guide-for-colleges-universities",
+      "ipAddress": "169.0.120.229",
+      "country": "ZA"
+    },
+    {
+      "id": "-4406425284640945436_0",
+      "time": "2026-09-30T13:01:28.296Z",
+      "userEmail": "alister@gafe.co.za",
+      "eventName": "add_source",
+      "notebookTitle": "Untitled notebook",
+      "visibility": "private",
+      "artifactType": null,
+      "artifactName": null,
+      "sourceName": "Multi-Factor Authentication: Why It Matters for Higher Education and Research - IU Blogs",
+      "sourceType": "url",
+      "sourceUrl": "https://blogs.iu.edu/renisac/2025/08/02/multi-factor-authentication-why-it-matters-for-higher-education-and-research/",
+      "ipAddress": "169.0.120.229",
+      "country": "ZA"
+    },
+    {
+      "id": "-8121580674562047951_0",
+      "time": "2026-09-30T13:01:28.296Z",
+      "userEmail": "alister@gafe.co.za",
+      "eventName": "add_source",
+      "notebookTitle": "Untitled notebook",
+      "visibility": "private",
+      "artifactType": null,
+      "artifactName": null,
+      "sourceName": "Data Breach Response Checklist - | Protecting Student Privacy",
+      "sourceType": "url",
+      "sourceUrl": "https://studentprivacy.ed.gov/sites/default/files/resource_document/file/checklist_data_breach_response_092012_0.pdf",
+      "ipAddress": "169.0.120.229",
+      "country": "ZA"
+    },
+    {
+      "id": "-6422332142527036717_0",
+      "time": "2026-09-30T13:01:28.296Z",
+      "userEmail": "alister@gafe.co.za",
+      "eventName": "add_source",
+      "notebookTitle": "Untitled notebook",
+      "visibility": "private",
+      "artifactType": null,
+      "artifactName": null,
+      "sourceName": "Cost of a Data Breach Report 2025 The AI Oversight Gap - Baker Donelson",
+      "sourceType": "url",
+      "sourceUrl": "https://www.bakerdonelson.com/webfiles/Publications/20250822_Cost-of-a-Data-Breach-Report-2025.pdf",
+      "ipAddress": "169.0.120.229",
+      "country": "ZA"
+    },
+    {
+      "id": "4671631117351602827_0",
+      "time": "2026-09-30T13:01:08.966Z",
+      "userEmail": "alister@gafe.co.za",
+      "eventName": "discover_sources",
+      "notebookTitle": "Untitled notebook",
+      "visibility": "private",
+      "artifactType": null,
+      "artifactName": null,
+      "sourceName": null,
+      "sourceType": null,
+      "sourceUrl": null,
+      "ipAddress": "169.0.120.229",
+      "country": "ZA"
+    },
+    {
+      "id": "-8006929612958775444_0",
+      "time": "2026-09-30T13:00:32.778Z",
+      "userEmail": "alister@gafe.co.za",
+      "eventName": "create_notebook",
+      "notebookTitle": "Untitled notebook",
+      "visibility": "private",
+      "artifactType": null,
+      "artifactName": null,
+      "sourceName": null,
+      "sourceType": null,
+      "sourceUrl": null,
+      "ipAddress": "169.0.120.229",
+      "country": "ZA"
+    },
+    {
+      "id": "8653029942846308365_0",
+      "time": "2026-09-30T12:15:44.242Z",
+      "userEmail": "karien@gafe.co.za",
+      "eventName": "view_studio_artifact",
+      "notebookTitle": "[Training] Senior Phase Coding and Robotics Curriculum",
+      "visibility": "shared_internally",
+      "artifactType": "audio_overview",
+      "artifactName": "KABV Padkaart: Kodering en Robotika se Toekomsvisie vir Graad 7-9 Leerders",
+      "sourceName": null,
+      "sourceType": null,
+      "sourceUrl": null,
+      "ipAddress": "102.38.93.133",
+      "country": "ZA"
+    },
+    {
+      "id": "3753545413461557978_0",
+      "time": "2026-09-30T12:15:41.040Z",
+      "userEmail": "karien@gafe.co.za",
+      "eventName": "view_notebook",
+      "notebookTitle": "[Training] Senior Phase Coding and Robotics Curriculum",
+      "visibility": "shared_internally",
+      "artifactType": null,
+      "artifactName": null,
+      "sourceName": null,
+      "sourceType": null,
+      "sourceUrl": null,
+      "ipAddress": "102.38.93.133",
+      "country": "ZA"
+    },
+    {
+      "id": "7923230773844331779_0",
+      "time": "2026-09-30T12:14:59.258Z",
+      "userEmail": "karien@gafe.co.za",
+      "eventName": "view_studio_artifact",
+      "notebookTitle": "[Training] The Boy in the Striped Pajamas",
+      "visibility": "shared_internally",
+      "artifactType": "mind_map",
+      "artifactName": "Analysis of The Boy in the Striped Pajamas",
+      "sourceName": null,
+      "sourceType": null,
+      "sourceUrl": null,
+      "ipAddress": "102.38.93.133",
+      "country": "ZA"
+    },
+    {
+      "id": "1900247865635391539_0",
+      "time": "2026-09-30T12:14:01.529Z",
+      "userEmail": "karien@gafe.co.za",
+      "eventName": "view_notebook",
+      "notebookTitle": "[Training] The Boy in the Striped Pajamas",
+      "visibility": "shared_internally",
+      "artifactType": null,
+      "artifactName": null,
+      "sourceName": null,
+      "sourceType": null,
+      "sourceUrl": null,
+      "ipAddress": "102.38.93.133",
+      "country": "ZA"
+    },
+    {
+      "id": "-5955200562486818620_0",
+      "time": "2026-09-16T13:44:01.389Z",
+      "userEmail": "alister@gafe.co.za",
+      "eventName": "create_notebook",
+      "notebookTitle": "Untitled notebook",
+      "visibility": "private",
+      "artifactType": null,
+      "artifactName": null,
+      "sourceName": null,
+      "sourceType": null,
+      "sourceUrl": null,
+      "ipAddress": "197.155.22.16",
+      "country": "ZA"
+    },
+    {
+      "id": "-2589548363251955352_0",
+      "time": "2026-09-16T13:38:29.186Z",
+      "userEmail": "alister@gafe.co.za",
+      "eventName": "view_notebook",
+      "notebookTitle": "Gemini for Teachers and Google Apps Manager Guide",
+      "visibility": "private",
+      "artifactType": null,
+      "artifactName": null,
+      "sourceName": null,
+      "sourceType": null,
+      "sourceUrl": null,
+      "ipAddress": "197.155.22.16",
+      "country": "ZA"
+    },
+    {
+      "id": "-1029124004404707250_0",
+      "time": "2026-09-15T11:34:21.906Z",
+      "userEmail": "alister@gafe.co.za",
+      "eventName": "chat",
+      "notebookTitle": "Gemini for Teachers and Google Apps Manager Guide",
+      "visibility": "private",
+      "artifactType": null,
+      "artifactName": null,
+      "sourceName": null,
+      "sourceType": null,
+      "sourceUrl": null,
+      "ipAddress": "102.221.27.89",
+      "country": "ZA"
+    },
+    {
+      "id": "5654142631540311521_0",
+      "time": "2026-09-15T11:33:49.693Z",
+      "userEmail": "alister@gafe.co.za",
+      "eventName": "view_studio_artifact",
+      "notebookTitle": "Gemini for Teachers and Google Apps Manager Guide",
+      "visibility": "private",
+      "artifactType": "mind_map",
+      "artifactName": "Education Mindmap",
+      "sourceName": null,
+      "sourceType": null,
+      "sourceUrl": null,
+      "ipAddress": "102.221.27.89",
+      "country": "ZA"
+    },
+    {
+      "id": "127147921092267462_0",
+      "time": "2026-09-15T11:33:15.727Z",
+      "userEmail": "alister@gafe.co.za",
+      "eventName": "view_notebook",
+      "notebookTitle": "Gemini for Teachers and Google Apps Manager Guide",
+      "visibility": "private",
+      "artifactType": null,
+      "artifactName": null,
+      "sourceName": null,
+      "sourceType": null,
+      "sourceUrl": null,
+      "ipAddress": "102.221.27.89",
+      "country": "ZA"
+    },
+    {
+      "id": "5467778045327985390_0",
+      "time": "2026-09-15T11:32:32.092Z",
+      "userEmail": "alister@gafe.co.za",
+      "eventName": "create_notebook",
+      "notebookTitle": "Untitled notebook",
+      "visibility": "private",
+      "artifactType": null,
+      "artifactName": null,
+      "sourceName": null,
+      "sourceType": null,
+      "sourceUrl": null,
+      "ipAddress": "102.221.27.89",
+      "country": "ZA"
+    },
+    {
+      "id": "5024099903708022676_0",
+      "time": "2026-08-27T14:36:51.058Z",
+      "userEmail": "themba@gafe.co.za",
+      "eventName": "view_studio_artifact",
+      "notebookTitle": "EGD Notebook",
+      "visibility": "private",
+      "artifactType": "mind_map",
+      "artifactName": "EGD Mindmap",
+      "sourceName": null,
+      "sourceType": null,
+      "sourceUrl": null,
+      "ipAddress": "41.193.194.125",
+      "country": "ZA"
+    },
+    {
+      "id": "-2425971770551155544_0",
+      "time": "2026-08-27T14:35:52.082Z",
+      "userEmail": "themba@gafe.co.za",
+      "eventName": "generate_studio_artifact",
+      "notebookTitle": "EGD Notebook",
+      "visibility": "private",
+      "artifactType": "mind_map",
+      "artifactName": "Untitled Mind Map",
+      "sourceName": null,
+      "sourceType": null,
+      "sourceUrl": null,
+      "ipAddress": "41.193.194.125",
+      "country": "ZA"
+    },
+    {
+      "id": "-5898512388066295141_0",
+      "time": "2026-08-27T14:31:57.160Z",
+      "userEmail": "themba@gafe.co.za",
+      "eventName": "add_source",
+      "notebookTitle": "EGD Notebook",
+      "visibility": "private",
+      "artifactType": null,
+      "artifactName": null,
+      "sourceName": "CAPS FET _ ENGINEERING GRAPICHS & DESIGN _ GR 10-12 _ Web_8899.pdf",
+      "sourceType": "local_upload",
+      "sourceUrl": null,
+      "ipAddress": null,
+      "country": null
+    },
+    {
+      "id": "5861902529699005535_0",
+      "time": "2026-08-27T14:31:38.864Z",
+      "userEmail": "themba@gafe.co.za",
+      "eventName": "rename_notebook",
+      "notebookTitle": "EGD Notebook",
+      "visibility": "private",
+      "artifactType": null,
+      "artifactName": null,
+      "sourceName": null,
+      "sourceType": null,
+      "sourceUrl": null,
+      "ipAddress": "41.193.194.125",
+      "country": "ZA"
+    },
+    {
+      "id": "-7408380479369100110_0",
+      "time": "2026-08-27T14:30:04.187Z",
+      "userEmail": "themba@gafe.co.za",
+      "eventName": "create_notebook",
+      "notebookTitle": "Untitled notebook",
+      "visibility": "private",
+      "artifactType": null,
+      "artifactName": null,
+      "sourceName": null,
+      "sourceType": null,
+      "sourceUrl": null,
+      "ipAddress": "41.193.194.125",
+      "country": "ZA"
+    },
+    {
+      "id": "9053992057808047032_0",
+      "time": "2026-08-27T14:29:58.829Z",
+      "userEmail": "themba@gafe.co.za",
+      "eventName": "delete_notebook",
+      "notebookTitle": "Untitled notebook",
+      "visibility": "private",
+      "artifactType": null,
+      "artifactName": null,
+      "sourceName": null,
+      "sourceType": null,
+      "sourceUrl": null,
+      "ipAddress": "41.193.194.125",
+      "country": "ZA"
+    },
+    {
+      "id": "84027512153919300_0",
+      "time": "2026-08-27T14:29:51.346Z",
+      "userEmail": "themba@gafe.co.za",
+      "eventName": "delete_notebook",
+      "notebookTitle": "Untitled notebook",
+      "visibility": "private",
+      "artifactType": null,
+      "artifactName": null,
+      "sourceName": null,
+      "sourceType": null,
+      "sourceUrl": null,
+      "ipAddress": "41.193.194.125",
+      "country": "ZA"
+    }
+  ]
+}

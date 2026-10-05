@@ -155,3 +155,68 @@ CREATE TABLE IF NOT EXISTS google_services (
 
 CREATE INDEX IF NOT EXISTS idx_google_services_name ON google_services(service_name);
 CREATE INDEX IF NOT EXISTS idx_google_services_access ON google_services(access_setting);
+
+-- ==========================================================
+-- Generative AI & Gemini Intelligence Telemetry
+-- ==========================================================
+CREATE TABLE IF NOT EXISTS gemini_workspace_events (
+    id TEXT PRIMARY KEY,
+    event_time TEXT NOT NULL,
+    unique_qualifier TEXT,
+    customer_id TEXT,
+    user_email TEXT NOT NULL,
+    user_profile_id TEXT,
+    caller_type TEXT,
+    client_app_name TEXT,
+    client_id TEXT,
+    is_agentic_action INTEGER DEFAULT 0,
+    event_name TEXT NOT NULL,
+    event_type TEXT NOT NULL,
+    app_name TEXT,
+    feature_source TEXT,
+    action TEXT,
+    event_category TEXT,
+    raw_json TEXT,
+    created_at TEXT DEFAULT (datetime('now'))
+);
+
+CREATE TABLE IF NOT EXISTS gemini_notebook_events (
+    id TEXT PRIMARY KEY,
+    event_time TEXT NOT NULL,
+    unique_qualifier TEXT,
+    customer_id TEXT,
+    user_email TEXT NOT NULL,
+    user_profile_id TEXT,
+    caller_type TEXT,
+    ip_address TEXT,
+    country_code TEXT,
+    region_code TEXT,
+    is_agentic_action INTEGER DEFAULT 0,
+    event_name TEXT NOT NULL,
+    event_type TEXT NOT NULL,
+    event_status TEXT,
+    notebook_id TEXT,
+    notebook_title TEXT,
+    notebook_visibility TEXT,
+    ai_plan_tier TEXT,
+    source_id TEXT,
+    source_name TEXT,
+    source_type TEXT,
+    source_url TEXT,
+    studio_artifact_id TEXT,
+    studio_artifact_name TEXT,
+    studio_artifact_type TEXT,
+    raw_json TEXT,
+    created_at TEXT DEFAULT (datetime('now'))
+);
+
+CREATE INDEX IF NOT EXISTS idx_genai_ws_time ON gemini_workspace_events(event_time);
+CREATE INDEX IF NOT EXISTS idx_genai_ws_user ON gemini_workspace_events(user_email);
+CREATE INDEX IF NOT EXISTS idx_genai_ws_app ON gemini_workspace_events(app_name);
+CREATE INDEX IF NOT EXISTS idx_genai_ws_action ON gemini_workspace_events(action);
+CREATE INDEX IF NOT EXISTS idx_genai_ws_agentic ON gemini_workspace_events(is_agentic_action);
+
+CREATE INDEX IF NOT EXISTS idx_genai_nb_time ON gemini_notebook_events(event_time);
+CREATE INDEX IF NOT EXISTS idx_genai_nb_user ON gemini_notebook_events(user_email);
+CREATE INDEX IF NOT EXISTS idx_genai_nb_notebook ON gemini_notebook_events(notebook_id);
+CREATE INDEX IF NOT EXISTS idx_genai_nb_event ON gemini_notebook_events(event_name);

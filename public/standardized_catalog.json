@@ -575,12 +575,12 @@
         "grantedScopes": []
       }
     ],
-    "firstSeen": "2026-09-27T00:15:00.174Z",
-    "lastActive": "2026-09-28T00:00:13.750Z",
-    "lastActiveFormatted": "28/09/2026",
+    "firstSeen": "2026-10-03T13:00:02.687Z",
+    "lastActive": "2026-10-05T00:00:07.819Z",
+    "lastActiveFormatted": "05/10/2026",
     "isStale": false,
     "isNew": true,
-    "totalActivityEvents": 297
+    "totalActivityEvents": 434
   },
   {
     "id": "106759852332254522248",
@@ -674,12 +674,12 @@
         "grantedScopes": []
       }
     ],
-    "firstSeen": "2026-09-27T00:05:00.308Z",
-    "lastActive": "2026-09-28T00:00:05.496Z",
-    "lastActiveFormatted": "28/09/2026",
+    "firstSeen": "2026-10-03T13:00:00.772Z",
+    "lastActive": "2026-10-05T00:00:05.227Z",
+    "lastActiveFormatted": "05/10/2026",
     "isStale": false,
     "isNew": true,
-    "totalActivityEvents": 300
+    "totalActivityEvents": 433
   },
   {
     "id": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
@@ -1755,12 +1755,12 @@
         ]
       }
     ],
-    "firstSeen": "2026-09-27T00:28:37.047Z",
-    "lastActive": "2026-09-27T22:30:13.294Z",
-    "lastActiveFormatted": "28/09/2026",
+    "firstSeen": "2026-10-03T13:42:31.409Z",
+    "lastActive": "2026-10-04T23:43:47.751Z",
+    "lastActiveFormatted": "05/10/2026",
     "isStale": false,
     "isNew": true,
-    "totalActivityEvents": 52
+    "totalActivityEvents": 71
   },
   {
     "id": "946018238758-bi6ni53dfoddlgn97pk3b8i7nphige40.apps.googleusercontent.com",
@@ -2436,7 +2436,7 @@
     ],
     "breachPenalty": 0.1,
     "breachBracket": "HISTORICAL",
-    "breachDaysElapsed": 4526,
+    "breachDaysElapsed": 4533,
     "verificationPenalty": 0,
     "scopeRiskScore": 1,
     "isVerified": true,
@@ -2659,7 +2659,7 @@
     ],
     "breachPenalty": 0.1,
     "breachBracket": "HISTORICAL",
-    "breachDaysElapsed": 2684,
+    "breachDaysElapsed": 2691,
     "verificationPenalty": 0,
     "scopeRiskScore": 3.05,
     "isVerified": true,
@@ -2809,7 +2809,7 @@
     ],
     "breachPenalty": 0.1,
     "breachBracket": "HISTORICAL",
-    "breachDaysElapsed": 2684,
+    "breachDaysElapsed": 2691,
     "verificationPenalty": 0,
     "scopeRiskScore": 1,
     "isVerified": true,
@@ -3092,12 +3092,12 @@
         ]
       }
     ],
-    "firstSeen": "2026-09-27T03:29:19.393Z",
-    "lastActive": "2026-09-27T08:56:42.375Z",
-    "lastActiveFormatted": "27/09/2026",
-    "isStale": false,
+    "firstSeen": null,
+    "lastActive": null,
+    "lastActiveFormatted": "12/09/2026",
+    "isStale": true,
     "isNew": false,
-    "totalActivityEvents": 2
+    "totalActivityEvents": 0
   },
   {
     "id": "779010036194-2tkv9r6fe23c6ea2ipj43auehhaj9eec.apps.googleusercontent.com",
@@ -3131,7 +3131,7 @@
     ],
     "breachPenalty": 0.1,
     "breachBracket": "HISTORICAL",
-    "breachDaysElapsed": 2684,
+    "breachDaysElapsed": 2691,
     "verificationPenalty": 0,
     "scopeRiskScore": 1,
     "isVerified": true,
@@ -3242,7 +3242,7 @@
     ],
     "breachPenalty": 0.1,
     "breachBracket": "HISTORICAL",
-    "breachDaysElapsed": 2684,
+    "breachDaysElapsed": 2691,
     "verificationPenalty": 0,
     "scopeRiskScore": 1,
     "isVerified": true,
@@ -4245,12 +4245,12 @@
         ]
       }
     ],
-    "firstSeen": null,
-    "lastActive": null,
-    "lastActiveFormatted": "12/09/2026",
-    "isStale": true,
-    "isNew": false,
-    "totalActivityEvents": 0
+    "firstSeen": "2026-10-04T11:17:02.676Z",
+    "lastActive": "2026-10-04T11:17:02.676Z",
+    "lastActiveFormatted": "04/10/2026",
+    "isStale": false,
+    "isNew": true,
+    "totalActivityEvents": 1
   },
   {
     "id": "532352704633-6pkces9iboppp465idnovkcqtlsa8j7t.apps.googleusercontent.com",
@@ -6546,12 +6546,12 @@
         "grantedScopes": []
       }
     ],
-    "firstSeen": "2026-09-27T00:00:24.128Z",
-    "lastActive": "2026-09-28T00:01:48.262Z",
-    "lastActiveFormatted": "28/09/2026",
+    "firstSeen": "2026-10-05T00:00:10.337Z",
+    "lastActive": "2026-10-05T00:01:09.069Z",
+    "lastActiveFormatted": "05/10/2026",
     "isStale": false,
     "isNew": true,
-    "totalActivityEvents": 339
+    "totalActivityEvents": 53
   },
   {
     "id": "585538275436-5k5co106krror5jgc4f4dpjib0efeb7o.apps.googleusercontent.com",
@@ -6938,16 +6938,6 @@
         "service": "Google Calendar"
       },
       {
-        "scope": "https://www.googleapis.com/auth/gmail.readonly",
-        "riskLevel": "LOW",
-        "description": "Bulk Email Exfiltration",
-        "threatImpact": "Read all historical messages, sensitive corporate contracts, passwords, and reset links without edit rights.",
-        "adminScore": 4,
-        "adminColor": "Orange",
-        "googleTier": "Restricted",
-        "service": "Gmail"
-      },
-      {
         "scope": "https://www.googleapis.com/auth/userinfo.profile",
         "riskLevel": "LOW",
         "description": "Basic Profile Assertion",
@@ -6976,16 +6966,6 @@
         "adminColor": "Blue",
         "googleTier": "Non-Sensitive",
         "service": "Identity & SSO"
-      },
-      {
-        "scope": "https://www.googleapis.com/auth/gmail.send",
-        "riskLevel": "LOW",
-        "description": "Direct Mail Transmission",
-        "threatImpact": "Send messages on the user's behalf without read access to existing email history.",
-        "adminScore": 3,
-        "adminColor": "Yellow",
-        "googleTier": "Sensitive",
-        "service": "Gmail"
       },
       {
         "scope": "openid",
@@ -7038,6 +7018,16 @@
         "service": "Google Drive & Docs"
       },
       {
+        "scope": "https://www.googleapis.com/auth/drive.appdata",
+        "riskLevel": "HIGH",
+        "description": "Isolated App Configuration Storage",
+        "threatImpact": "Accesses only a dedicated hidden app folder. Cannot touch or see regular corporate user files.",
+        "adminScore": 2,
+        "adminColor": "Green",
+        "googleTier": "Sensitive",
+        "service": "Google Drive & Docs"
+      },
+      {
         "scope": "https://www.googleapis.com/auth/gmail.modify",
         "riskLevel": "LOW",
         "description": "Message Manipulation & Exfiltration",
@@ -7048,21 +7038,31 @@
         "service": "Gmail"
       },
       {
-        "scope": "https://www.googleapis.com/auth/drive.appdata",
-        "riskLevel": "HIGH",
-        "description": "Isolated App Configuration Storage",
-        "threatImpact": "Accesses only a dedicated hidden app folder. Cannot touch or see regular corporate user files.",
-        "adminScore": 2,
-        "adminColor": "Green",
+        "scope": "https://www.googleapis.com/auth/gmail.readonly",
+        "riskLevel": "LOW",
+        "description": "Bulk Email Exfiltration",
+        "threatImpact": "Read all historical messages, sensitive corporate contracts, passwords, and reset links without edit rights.",
+        "adminScore": 4,
+        "adminColor": "Orange",
+        "googleTier": "Restricted",
+        "service": "Gmail"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/gmail.send",
+        "riskLevel": "LOW",
+        "description": "Direct Mail Transmission",
+        "threatImpact": "Send messages on the user's behalf without read access to existing email history.",
+        "adminScore": 3,
+        "adminColor": "Yellow",
         "googleTier": "Sensitive",
-        "service": "Google Drive & Docs"
+        "service": "Gmail"
       }
     ],
     "servicesTouched": [
       "Calendar",
-      "Gmail",
       "Contacts",
-      "Google Drive"
+      "Google Drive",
+      "Gmail"
     ],
     "users": [
       {
@@ -7072,26 +7072,23 @@
         "isAdmin": true,
         "grantedScopes": [
           "https://www.googleapis.com/auth/calendar.events",
-          "https://www.googleapis.com/auth/gmail.readonly",
           "https://www.googleapis.com/auth/userinfo.profile",
           "https://www.googleapis.com/auth/contacts.readonly",
           "https://www.googleapis.com/auth/userinfo.email",
-          "https://www.googleapis.com/auth/gmail.send",
           "openid",
           "https://www.googleapis.com/auth/drive.file",
           "https://www.googleapis.com/auth/calendar.readonly",
           "https://www.googleapis.com/auth/drive.appfolder",
-          "https://www.googleapis.com/auth/drive",
-          "https://www.googleapis.com/auth/gmail.modify"
+          "https://www.googleapis.com/auth/drive"
         ]
       }
     ],
-    "firstSeen": null,
-    "lastActive": null,
-    "lastActiveFormatted": "12/09/2026",
-    "isStale": true,
-    "isNew": false,
-    "totalActivityEvents": 0
+    "firstSeen": "2026-10-04T12:22:29.141Z",
+    "lastActive": "2026-10-04T12:22:29.141Z",
+    "lastActiveFormatted": "04/10/2026",
+    "isStale": false,
+    "isNew": true,
+    "totalActivityEvents": 1
   },
   {
     "id": "526554529059-bpm1k15t6a60h9u79tjhmpnutblkmalu.apps.googleusercontent.com",
@@ -7271,16 +7268,6 @@
         "service": "Google Drive & Docs"
       },
       {
-        "scope": "https://www.googleapis.com/auth/drive",
-        "riskLevel": "HIGH",
-        "description": "Full Cloud Storage Compromise",
-        "threatImpact": "Read, edit, create, and permanently delete all files in My Drive and Shared Drives. Severe ransomware and wipeout risk.",
-        "adminScore": 5,
-        "adminColor": "Red",
-        "googleTier": "Restricted",
-        "service": "Google Drive & Docs"
-      },
-      {
         "scope": "https://www.googleapis.com/auth/gmail.modify",
         "riskLevel": "LOW",
         "description": "Message Manipulation & Exfiltration",
@@ -7289,6 +7276,16 @@
         "adminColor": "Red",
         "googleTier": "Restricted",
         "service": "Gmail"
+      },
+      {
+        "scope": "https://www.googleapis.com/auth/drive",
+        "riskLevel": "HIGH",
+        "description": "Full Cloud Storage Compromise",
+        "threatImpact": "Read, edit, create, and permanently delete all files in My Drive and Shared Drives. Severe ransomware and wipeout risk.",
+        "adminScore": 5,
+        "adminColor": "Red",
+        "googleTier": "Restricted",
+        "service": "Google Drive & Docs"
       },
       {
         "scope": "https://www.googleapis.com/auth/drive.appdata",
@@ -7324,8 +7321,8 @@
           "https://www.googleapis.com/auth/drive.file",
           "https://www.googleapis.com/auth/calendar.readonly",
           "https://www.googleapis.com/auth/drive.appfolder",
-          "https://www.googleapis.com/auth/drive",
-          "https://www.googleapis.com/auth/gmail.modify"
+          "https://www.googleapis.com/auth/gmail.modify",
+          "https://www.googleapis.com/auth/drive"
         ]
       }
     ],
@@ -8015,7 +8012,7 @@
     "projectNumbers": [
       "77185425430.apps.googleusercontent.com"
     ],
-    "totalUsersCount": 69,
+    "totalUsersCount": 70,
     "adminUsersCount": 10,
     "scopesCount": 1,
     "scopes": [
@@ -8483,6 +8480,15 @@
         ]
       },
       {
+        "email": "mickey@gafe.co.za",
+        "name": "Mickey Durr",
+        "orgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+        "isAdmin": false,
+        "grantedScopes": [
+          "https://www.google.com/accounts/OAuthLogin"
+        ]
+      },
+      {
         "email": "mskywalker@gafe.co.za",
         "name": "Mara Skywalker",
         "orgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
@@ -8654,12 +8660,12 @@
         ]
       }
     ],
-    "firstSeen": "2026-09-27T03:38:47.213Z",
-    "lastActive": "2026-09-27T14:42:10.290Z",
-    "lastActiveFormatted": "27/09/2026",
+    "firstSeen": "2026-10-04T10:44:21.842Z",
+    "lastActive": "2026-10-04T14:17:58.265Z",
+    "lastActiveFormatted": "04/10/2026",
     "isStale": false,
     "isNew": false,
-    "totalActivityEvents": 5
+    "totalActivityEvents": 3
   },
   {
     "id": "947318989803-6bn6qk8qdgf4n4g3pfee6491hc0brc4i.apps.googleusercontent.com",
@@ -12603,12 +12609,12 @@
         ]
       }
     ],
-    "firstSeen": "2026-09-27T10:20:13.305Z",
-    "lastActive": "2026-09-27T11:03:24.708Z",
-    "lastActiveFormatted": "27/09/2026",
+    "firstSeen": "2026-10-04T16:30:56.642Z",
+    "lastActive": "2026-10-04T16:30:56.642Z",
+    "lastActiveFormatted": "04/10/2026",
     "isStale": false,
     "isNew": true,
-    "totalActivityEvents": 2
+    "totalActivityEvents": 1
   },
   {
     "id": "86031167857-hapr09njcucvm0jv3hbpd7p0t75qjnm5.apps.googleusercontent.com",
@@ -14134,6 +14140,16 @@
         "service": "Identity & SSO"
       },
       {
+        "scope": "https://www.googleapis.com/auth/userinfo.email",
+        "riskLevel": "LOW",
+        "description": "Primary Email Verification",
+        "threatImpact": "View the user's primary email address for SSO sign-in.",
+        "adminScore": 1,
+        "adminColor": "Blue",
+        "googleTier": "Non-Sensitive",
+        "service": "Identity & SSO"
+      },
+      {
         "scope": "https://www.googleapis.com/auth/admin.directory.group.readonly",
         "riskLevel": "CRITICAL",
         "description": "Security Group Enumeration",
@@ -14152,16 +14168,6 @@
         "adminColor": "Green",
         "googleTier": "Non-Sensitive",
         "service": "Google Chat & Classroom"
-      },
-      {
-        "scope": "https://www.googleapis.com/auth/userinfo.email",
-        "riskLevel": "LOW",
-        "description": "Primary Email Verification",
-        "threatImpact": "View the user's primary email address for SSO sign-in.",
-        "adminScore": 1,
-        "adminColor": "Blue",
-        "googleTier": "Non-Sensitive",
-        "service": "Identity & SSO"
       },
       {
         "scope": "openid",
@@ -14230,9 +14236,9 @@
           "https://www.googleapis.com/auth/classroom.courses",
           "https://www.googleapis.com/auth/classroom.coursework.students",
           "https://www.googleapis.com/auth/userinfo.profile",
+          "https://www.googleapis.com/auth/userinfo.email",
           "https://www.googleapis.com/auth/admin.directory.group.readonly",
           "https://www.googleapis.com/auth/classroom.profile.emails",
-          "https://www.googleapis.com/auth/userinfo.email",
           "openid",
           "https://www.googleapis.com/auth/classroom.announcements",
           "https://www.googleapis.com/auth/drive.file",
@@ -14646,25 +14652,25 @@
     "projectNumbers": [
       "1098397018324"
     ],
-    "totalUsersCount": 1,
-    "adminUsersCount": 1,
+    "totalUsersCount": 0,
+    "adminUsersCount": 0,
     "scopesCount": 3,
     "scopes": [
       {
-        "scope": "https://www.googleapis.com/auth/userinfo.profile",
+        "scope": "https://www.googleapis.com/auth/userinfo.email",
         "riskLevel": "LOW",
-        "description": "Basic Profile Assertion",
-        "threatImpact": "View the user's display name and profile avatar URL.",
+        "description": "Primary Email Verification",
+        "threatImpact": "View the user's primary email address for SSO sign-in.",
         "adminScore": 1,
         "adminColor": "Blue",
         "googleTier": "Non-Sensitive",
         "service": "Identity & SSO"
       },
       {
-        "scope": "https://www.googleapis.com/auth/userinfo.email",
+        "scope": "https://www.googleapis.com/auth/userinfo.profile",
         "riskLevel": "LOW",
-        "description": "Primary Email Verification",
-        "threatImpact": "View the user's primary email address for SSO sign-in.",
+        "description": "Basic Profile Assertion",
+        "threatImpact": "View the user's display name and profile avatar URL.",
         "adminScore": 1,
         "adminColor": "Blue",
         "googleTier": "Non-Sensitive",
@@ -14682,19 +14688,7 @@
       }
     ],
     "servicesTouched": [],
-    "users": [
-      {
-        "email": "deidre@gafe.co.za",
-        "name": "Deïdrè Hugo",
-        "orgUnit": "/deidre Testing OU",
-        "isAdmin": true,
-        "grantedScopes": [
-          "https://www.googleapis.com/auth/userinfo.profile",
-          "https://www.googleapis.com/auth/userinfo.email",
-          "openid"
-        ]
-      }
-    ],
+    "users": [],
     "firstSeen": null,
     "lastActive": null,
     "lastActiveFormatted": "12/09/2026",
@@ -14850,9 +14844,9 @@
         ]
       }
     ],
-    "firstSeen": "2026-09-27T00:01:02.290Z",
-    "lastActive": "2026-09-28T00:01:00.362Z",
-    "lastActiveFormatted": "28/09/2026",
+    "firstSeen": "2026-10-04T00:01:03.256Z",
+    "lastActive": "2026-10-05T00:01:02.730Z",
+    "lastActiveFormatted": "05/10/2026",
     "isStale": false,
     "isNew": true,
     "totalActivityEvents": 3

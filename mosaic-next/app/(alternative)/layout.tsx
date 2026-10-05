@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+
 import Header from "@/components/ui/header";
 import Sidebar from "@/components/ui/sidebar";
 
@@ -5,7 +7,9 @@ export default function AlternativeLayout({ children }: { children: React.ReactN
   return (
     <div className="flex h-[100dvh] overflow-hidden">
       {/* Sidebar */}
-      <Sidebar variant="v2" />
+      <Suspense fallback={null}>
+        <Sidebar variant="v2" />
+      </Suspense>
 
       {/* Content area */}
       <div className="relative flex flex-1 flex-col overflow-x-hidden overflow-y-auto">
