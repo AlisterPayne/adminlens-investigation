@@ -32,14 +32,12 @@ export interface DailyTimelineItem {
 
 interface GenAiTimelineChartProps {
   timeline: DailyTimelineItem[];
-  height?: number;
-  onRemove?: () => void;
 }
 
-export default function GenAiTimelineChart({ timeline = [], height = 280, onRemove }: GenAiTimelineChartProps) {
+export default function GenAiTimelineChart({ timeline = [] }: GenAiTimelineChartProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const chartInstance = useRef<Chart | null>(null);
-  const [metricView, setMetricView] = useState<"execution" | "platform">("execution");
+  const [metricView, setMetricView] = useState<"platform" | "execution">("platform");
   const { theme } = useTheme();
   const darkMode = theme === "dark";
 
@@ -71,69 +69,70 @@ export default function GenAiTimelineChart({ timeline = [], height = 280, onRemo
   const chartData: ChartData<"line"> = useMemo(() => {
     const labels = timeline.map((d) => d.date);
 
-    if (metricView === "execution") {
+    if (metricView === "platform") {
+      // Platform view: Workspace Apps vs Gemini Notebook
       return {
         labels,
         datasets: [
           {
-            label: "User-Initiated",
-            data: timeline.map((d) => d.userInitiated),
-            borderColor: "#3b82f6", // Blue 500
-            backgroundColor: "rgba(59, 130, 246, 0.12)",
+            label: "Workspace Apps",
+            data: timeline.map((d) => d.workspace),
+            borderColor: "#4f46e5", // Indigo 600 (richer, more visible)
+            backgroundColor: "rgba(79, 70, 229, 0.18)",
             fill: true,
-            borderWidth: 2,
-            pointRadius: 0,
-            pointHoverRadius: 4,
-            pointBackgroundColor: "#3b82f6",
-            pointHoverBackgroundColor: "#2563eb",
-            tension: 0.3,
+            borderWidth: 2.5,
+            pointRadius: 1,
+            pointHoverRadius: 5,
+            pointBackgroundColor: "#4f46e5",
+            pointHoverBackgroundColor: "#4338ca",
+            tension: 0.25,
           },
           {
-            label: "Autonomous / Agentic",
-            data: timeline.map((d) => d.agentic),
-            borderColor: "#f59e0b", // Amber 500
-            backgroundColor: "rgba(245, 158, 11, 0.16)",
+            label: "Gemini Notebook",
+            data: timeline.map((d) => d.notebook),
+            borderColor: "#059669", // Emerald 600 (crisp contrast)
+            backgroundColor: "rgba(5, 150, 105, 0.22)",
             fill: true,
-            borderWidth: 2,
-            pointRadius: 0,
-            pointHoverRadius: 4,
-            pointBackgroundColor: "#f59e0b",
-            pointHoverBackgroundColor: "#d97706",
-            tension: 0.3,
+            borderWidth: 2.5,
+            pointRadius: 1,
+            pointHoverRadius: 5,
+            pointBackgroundColor: "#059669",
+            pointHoverBackgroundColor: "#047857",
+            tension: 0.25,
           },
         ],
       };
     }
 
-    // Platform view: Workspace Apps vs NotebookLM
+    // Execution view: User-Initiated vs Autonomous / Agentic
     return {
       labels,
       datasets: [
         {
-          label: "Workspace Apps",
-          data: timeline.map((d) => d.workspace),
-          borderColor: "#6366f1", // Indigo 500
-          backgroundColor: "rgba(99, 102, 241, 0.12)",
+          label: "User-Initiated",
+          data: timeline.map((d) => d.userInitiated),
+          borderColor: "#2563eb", // Blue 600
+          backgroundColor: "rgba(37, 99, 235, 0.16)",
           fill: true,
-          borderWidth: 2,
-          pointRadius: 0,
-          pointHoverRadius: 4,
-          pointBackgroundColor: "#6366f1",
-          pointHoverBackgroundColor: "#4f46e5",
-          tension: 0.3,
+          borderWidth: 2.5,
+          pointRadius: 1,
+          pointHoverRadius: 5,
+          pointBackgroundColor: "#2563eb",
+          pointHoverBackgroundColor: "#1d4ed8",
+          tension: 0.25,
         },
         {
-          label: "NotebookLM",
-          data: timeline.map((d) => d.notebook),
-          borderColor: "#10b981", // Emerald 500
-          backgroundColor: "rgba(16, 185, 129, 0.15)",
+          label: "Autonomous / Agentic",
+          data: timeline.map((d) => d.agentic),
+          borderColor: "#d97706", // Amber 600
+          backgroundColor: "rgba(217, 119, 6, 0.2)",
           fill: true,
-          borderWidth: 2,
-          pointRadius: 0,
-          pointHoverRadius: 4,
-          pointBackgroundColor: "#10b981",
-          pointHoverBackgroundColor: "#059669",
-          tension: 0.3,
+          borderWidth: 2.5,
+          pointRadius: 1,
+          pointHoverRadius: 5,
+          pointBackgroundColor: "#d97706",
+          pointHoverBackgroundColor: "#b45309",
+          tension: 0.25,
         },
       ],
     };
@@ -258,26 +257,32 @@ export default function GenAiTimelineChart({ timeline = [], height = 280, onRemo
   }, [theme, darkMode]);
 
   return (
-    <div className="flex flex-col bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700/60 shadow-xs p-5">
+    <div className="flex flex-col h-full bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700/60 shadow-xs p-5">
       {/* Card Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-3 border-b border-gray-100 dark:border-gray-700/60">
         <div>
-          <div className="flex items-center gap-2">
-            <h3 className="text-sm font-bold text-gray-900 dark:text-gray-100">
-              Generative AI Activity Trend
-            </h3>
-            <span className="text-[10px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300">
-              Telemetry
-            </span>
-          </div>
+          <h3 className="text-sm font-bold text-gray-900 dark:text-gray-100">
+            Generative AI Activity
+          </h3>
           <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
-            Daily event activity volume across the domain (Apr – Oct 2026).
+            Daily event activity across the domain.
           </p>
         </div>
 
         <div className="flex items-center gap-2">
           {/* View Switcher Controls */}
           <div className="flex items-center gap-1 p-0.5 bg-gray-100 dark:bg-gray-700/70 rounded-lg self-start sm:self-auto">
+            <button
+              type="button"
+              onClick={() => setMetricView("platform")}
+              className={`px-2.5 py-1 text-xs font-semibold rounded-md transition cursor-pointer ${
+                metricView === "platform"
+                  ? "bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-2xs"
+                  : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+              }`}
+            >
+              Workspace vs Gemini Notebook
+            </button>
             <button
               type="button"
               onClick={() => setMetricView("execution")}
@@ -289,32 +294,7 @@ export default function GenAiTimelineChart({ timeline = [], height = 280, onRemo
             >
               User vs Agentic
             </button>
-            <button
-              type="button"
-              onClick={() => setMetricView("platform")}
-              className={`px-2.5 py-1 text-xs font-semibold rounded-md transition cursor-pointer ${
-                metricView === "platform"
-                  ? "bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-2xs"
-                  : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
-              }`}
-            >
-              Workspace vs NotebookLM
-            </button>
           </div>
-
-          {onRemove && (
-            <button
-              type="button"
-              onClick={onRemove}
-              className="text-gray-400 hover:text-red-500 p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition"
-              title="Remove this graph from view"
-              aria-label="Remove this graph"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          )}
         </div>
       </div>
 
@@ -364,7 +344,7 @@ export default function GenAiTimelineChart({ timeline = [], height = 280, onRemo
             <div>
               <div className="text-[10px] uppercase font-semibold text-gray-400 dark:text-gray-500 flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-                NotebookLM
+                Gemini Notebook
               </div>
               <div className="text-lg font-bold text-gray-900 dark:text-gray-100 mt-0.5">
                 {summary.notebook.toLocaleString()}{" "}
@@ -390,7 +370,7 @@ export default function GenAiTimelineChart({ timeline = [], height = 280, onRemo
       </div>
 
       {/* Chart Canvas */}
-      <div className="grow" style={{ height: `${height}px` }}>
+      <div className="grow flex items-center min-h-[280px]">
         <canvas ref={canvasRef} className="w-full h-full"></canvas>
       </div>
     </div>

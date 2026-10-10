@@ -6,7 +6,7 @@ import GenerativeAiClient from "./generative-ai-client";
 
 export const metadata = {
   title: "Generative AI & Gemini Telemetry — Admin Lens",
-  description: "Comprehensive executive dashboard monitoring Generative AI, Gemini, and NotebookLM adoption, knowledge sources, and autonomous agents across Google Workspace.",
+  description: "Comprehensive executive dashboard monitoring Generative AI, Gemini, and Gemini Notebook adoption, knowledge sources, and autonomous agents across Google Workspace.",
 };
 
 export default function GenerativeAiPage() {

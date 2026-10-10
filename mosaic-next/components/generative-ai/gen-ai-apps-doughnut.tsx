@@ -20,7 +20,6 @@ interface AppDataEntry {
 interface GenAiAppsDoughnutProps {
   appCounts: Record<string, number>;
   notebookEventsCount?: number;
-  onRemove?: () => void;
 }
 
 const APP_META: Record<string, { name: string; color: string; hoverColor: string }> = {
@@ -29,7 +28,7 @@ const APP_META: Record<string, { name: string; color: string; hoverColor: string
   slides: { name: "Google Slides", color: "#f97316", hoverColor: "#ea580c" },
   gmail: { name: "Gmail", color: "#ef4444", hoverColor: "#dc2626" },
   classroom: { name: "Classroom", color: "#10b981", hoverColor: "#059669" },
-  notebooklm: { name: "NotebookLM", color: "#8b5cf6", hoverColor: "#7c3aed" },
+  notebooklm: { name: "Gemini Notebook", color: "#8b5cf6", hoverColor: "#7c3aed" },
   vids: { name: "Google Vids", color: "#a855f7", hoverColor: "#9333ea" },
   meet: { name: "Google Meet", color: "#14b8a6", hoverColor: "#0d9488" },
   docs: { name: "Google Docs", color: "#0ea5e9", hoverColor: "#0284c7" },
@@ -39,7 +38,6 @@ const APP_META: Record<string, { name: string; color: string; hoverColor: string
 export default function GenAiAppsDoughnut({
   appCounts = {},
   notebookEventsCount = 31,
-  onRemove,
 }: GenAiAppsDoughnutProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const chartInstance = useRef<Chart | null>(null);
@@ -213,41 +211,22 @@ export default function GenAiAppsDoughnut({
   }, [theme, darkMode]);
 
   return (
-    <div className="flex flex-col bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700/60 shadow-xs p-5">
+    <div className="flex flex-col h-full bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700/60 shadow-xs p-5">
       {/* Card Header */}
       <div className="flex items-center justify-between pb-3 border-b border-gray-100 dark:border-gray-700/60">
         <div>
-          <div className="flex items-center gap-2">
-            <h3 className="text-sm font-bold text-gray-900 dark:text-gray-100">
-              AI Activity by Application
-            </h3>
-            <span className="text-[10px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300">
-              Distribution
-            </span>
-          </div>
+          <h3 className="text-sm font-bold text-gray-900 dark:text-gray-100">
+            AI Activity by Application
+          </h3>
           <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
-            Share of generative AI events across connected Google Workspace tools.
+            Generative AI events across connected Workspace tools.
           </p>
         </div>
-
-        {onRemove && (
-          <button
-            type="button"
-            onClick={onRemove}
-            className="text-gray-400 hover:text-red-500 p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition"
-            title="Remove this graph from view"
-            aria-label="Remove this graph"
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        )}
       </div>
 
       {/* Relative container with Center Total Badge */}
-      <div className="relative flex items-center justify-center my-3" style={{ height: "230px" }}>
-        <canvas ref={canvasRef} className="w-full h-full"></canvas>
+      <div className="grow flex items-center justify-center my-3 relative min-h-[280px]">
+        <canvas ref={canvasRef} className="w-full h-full max-h-[280px]"></canvas>
         <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
           <div className="text-2xl font-black text-gray-900 dark:text-gray-100 tracking-tight">
             {totalEvents.toLocaleString()}
@@ -259,7 +238,7 @@ export default function GenAiAppsDoughnut({
       </div>
 
       {/* Interactive Legend Pills */}
-      <div className="pt-2 border-t border-gray-100 dark:border-gray-700/60">
+      <div className="pt-2 border-t border-gray-100 dark:border-gray-700/60 mt-auto">
         <ul ref={legendRef} className="flex flex-wrap justify-center -m-1"></ul>
       </div>
     </div>

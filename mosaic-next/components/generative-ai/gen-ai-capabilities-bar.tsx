@@ -12,8 +12,6 @@ Chart.register(BarController, BarElement, LinearScale, CategoryScale, Tooltip, L
 interface GenAiCapabilitiesBarProps {
   actionCounts?: Record<string, number>;
   notebookEventsCount?: number;
-  height?: number;
-  onRemove?: () => void;
 }
 
 interface CapabilityItem {
@@ -28,8 +26,6 @@ interface CapabilityItem {
 export default function GenAiCapabilitiesBarChart({
   actionCounts = {},
   notebookEventsCount = 31,
-  height = 300,
-  onRemove,
 }: GenAiCapabilitiesBarProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const chartInstance = useRef<Chart | null>(null);
@@ -151,7 +147,7 @@ export default function GenAiCapabilitiesBarChart({
       },
       {
         key: "research",
-        label: "Grounded NotebookLM Research",
+        label: "Grounded Gemini Notebook Research",
         category: "Synthesis",
         count: notebookCount,
         color: "#14b8a6", // Teal 500
@@ -207,7 +203,7 @@ export default function GenAiCapabilitiesBarChart({
     if (notebookEventsCount > 0) {
       list.push({
         key: "notebooklm_events",
-        label: "NotebookLM Synthesis & Query",
+        label: "Gemini Notebook Synthesis & Query",
         category: "Notebook",
         count: notebookEventsCount,
         color: "#14b8a6",
@@ -220,6 +216,18 @@ export default function GenAiCapabilitiesBarChart({
 
   const activeItems = viewMode === "pillars" ? pillarData : granularData;
   const totalTracked = useMemo(() => activeItems.reduce((acc, i) => acc + i.count, 0), [activeItems]);
+
+  const pillarSummary = useMemo(() => {
+    const total = pillarData.reduce((acc, i) => acc + i.count, 0) || 1;
+    const top = pillarData.reduce<CapabilityItem | null>((best, i) => (!best || i.count > best.count ? i : best), null);
+    const automationCount = pillarData.find((i) => i.key === "automation")?.count ?? 0;
+    return {
+      top,
+      topPct: top ? ((top.count / total) * 100).toFixed(1) : "0",
+      automationCount,
+      automationPct: ((automationCount / total) * 100).toFixed(1),
+    };
+  }, [pillarData]);
 
   const chartData: ChartData<"bar"> = useMemo(() => {
     return {
@@ -329,20 +337,15 @@ export default function GenAiCapabilitiesBarChart({
   }, [theme, darkMode]);
 
   return (
-    <div className="flex flex-col bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700/60 shadow-xs p-5">
+    <div className="flex flex-col h-full bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700/60 shadow-xs p-5">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-3 border-b border-gray-100 dark:border-gray-700/60">
         <div>
-          <div className="flex items-center gap-2">
-            <h3 className="text-sm font-bold text-gray-900 dark:text-gray-100">
-              AI Capabilities & Functional Use Cases
-            </h3>
-            <span className="text-[10px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded bg-violet-50 text-violet-700 dark:bg-violet-900/40 dark:text-violet-300">
-              Workload Split
-            </span>
-          </div>
+          <h3 className="text-sm font-bold text-gray-900 dark:text-gray-100">
+            AI Capabilities & Tasks
+          </h3>
           <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
-            What tasks employees and automated agents are delegating to Generative AI.
+            What tasks users and agents are delegating to Generative AI.
           </p>
         </div>
 
@@ -372,21 +375,6 @@ export default function GenAiCapabilitiesBarChart({
               Top Actions
             </button>
           </div>
-
-          {/* Remove / Chop Button */}
-          {onRemove && (
-            <button
-              type="button"
-              onClick={onRemove}
-              className="text-gray-400 hover:text-red-500 p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition"
-              title="Remove this graph from view"
-              aria-label="Remove this graph"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          )}
         </div>
       </div>
 
@@ -394,17 +382,17 @@ export default function GenAiCapabilitiesBarChart({
       <div className="flex flex-wrap items-center gap-2 py-2.5 border-b border-gray-100 dark:border-gray-700/60 text-xs text-gray-600 dark:text-gray-300">
         <span className="font-semibold text-gray-900 dark:text-gray-100">Top Driver:</span>
         <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-[11px] font-medium">
-          Conversational Reasoning (46.1%)
+          {pillarSummary.top ? `${pillarSummary.top.label} (${pillarSummary.topPct}%)` : "—"}
         </span>
         <span className="text-gray-300 dark:text-gray-600">·</span>
         <span className="font-semibold text-gray-900 dark:text-gray-100">Autonomous Automation:</span>
         <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 text-[11px] font-medium">
-          99 Studio Actions (13.9%)
+          {pillarSummary.automationCount} Studio Actions ({pillarSummary.automationPct}%)
         </span>
       </div>
 
       {/* Canvas */}
-      <div className="grow mt-2" style={{ height: `${height}px` }}>
+      <div className="grow mt-2 flex items-center min-h-[280px]">
         <canvas ref={canvasRef} className="w-full h-full"></canvas>
       </div>
     </div>

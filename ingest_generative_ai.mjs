@@ -454,7 +454,7 @@ export async function ingestGenerativeAIData() {
     notebooks: Array.from(notebookMap.values()),
     artifacts: artifactsList,
     sources: sourcesList,
-    recentWorkspaceEvents: wsEvents.slice(0, 200).map(e => ({
+    recentWorkspaceEvents: wsEvents.map(e => ({
       id: e.id,
       time: e.event_time,
       userEmail: e.user_email,
@@ -465,7 +465,7 @@ export async function ingestGenerativeAIData() {
       clientAppName: e.client_app_name,
       isAgenticAction: Boolean(e.is_agentic_action)
     })),
-    recentNotebookEvents: nbEvents.slice(0, 100).map(e => ({
+    recentNotebookEvents: nbEvents.map(e => ({
       id: e.id,
       time: e.event_time,
       userEmail: e.user_email,

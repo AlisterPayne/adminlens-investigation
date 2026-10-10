@@ -316,25 +316,20 @@ function SidebarContent({ variant = "default" }: { variant?: string }) {
                 </SidebarLink>
               </li>
 
-              {/* Sub-menu 2: NotebookLM */}
-              <li className={`px-3 py-1.5 rounded-lg transition-colors ${isGenAINotebooksActive ? "bg-white text-slate-900 font-semibold shadow-2xs border border-slate-200" : "hover:bg-white/80 text-gray-600 hover:text-gray-900"}`}>
-                <SidebarLink href="/generative-ai?tab=notebooks">
-                  <div className="flex items-center justify-between w-full">
-                    <span className="text-sm">
-                      NotebookLM
-                    </span>
-                    <span className="text-[11px] font-bold px-1.5 py-0.5 rounded-full bg-slate-200/70 text-slate-700">
-                      9
-                    </span>
-                  </div>
-                </SidebarLink>
-              </li>
-
-              {/* Sub-menu 3: Applications */}
+              {/* Sub-menu 2: Gemini in Workspace */}
               <li className={`px-3 py-1.5 rounded-lg transition-colors ${isGenAIAppsActive ? "bg-white text-slate-900 font-semibold shadow-2xs border border-slate-200" : "hover:bg-white/80 text-gray-600 hover:text-gray-900"}`}>
                 <SidebarLink href="/generative-ai?tab=apps">
                   <span className="text-sm">
-                    Applications
+                    Gemini in Workspace
+                  </span>
+                </SidebarLink>
+              </li>
+
+              {/* Sub-menu 3: Gemini Notebook */}
+              <li className={`px-3 py-1.5 rounded-lg transition-colors ${isGenAINotebooksActive ? "bg-white text-slate-900 font-semibold shadow-2xs border border-slate-200" : "hover:bg-white/80 text-gray-600 hover:text-gray-900"}`}>
+                <SidebarLink href="/generative-ai?tab=notebooks">
+                  <span className="text-sm">
+                    Gemini Notebook
                   </span>
                 </SidebarLink>
               </li>
