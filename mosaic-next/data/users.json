@@ -2661,7 +2661,7 @@
     },
     "isAdmin": true,
     "isDelegatedAdmin": false,
-    "suspended": true,
+    "suspended": false,
     "orgUnitPath": "/"
   },
   {
