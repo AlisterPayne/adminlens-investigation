@@ -56,9 +56,3 @@ This page is the **full list of every single AI action**, newest first. Most peo
 - **Search box** — find a person, app, or action.
 - **Filters** — show one app only, active use vs background use, or people vs automated actions.
 - **View** — click this on any line to see all the details of that one action.
-
-## Good to know
-
-- **The numbers are a snapshot.** They come from Google's records and change when the website is updated.
-- **The pages show activity, not content.** You can see *that* someone used Gemini to summarise an email, but not what the email said.
-- **"Agentic" numbers are reported by Google.** They show work done by automated AI tasks, not by a person at the keyboard.
