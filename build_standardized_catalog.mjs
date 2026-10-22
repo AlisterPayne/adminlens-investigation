@@ -16,6 +16,9 @@ for (const s of OAUTH_SCOPES_DATA) {
 
 const activeTokens = JSON.parse(fs.readFileSync('./extracted_data/active_tokens.json', 'utf8'));
 const auditEvents = JSON.parse(fs.readFileSync('./extracted_data/token_audit_events.json', 'utf8'));
+const adminAuditEvents = fs.existsSync('./extracted_data/admin_audit_events.json')
+  ? JSON.parse(fs.readFileSync('./extracted_data/admin_audit_events.json', 'utf8'))
+  : [];
 const users = JSON.parse(fs.readFileSync('./extracted_data/users.json', 'utf8'));
 
 // Build user lookup map for fast details
@@ -257,6 +260,9 @@ function getOrCreateDeploymentRecord(appName, clientId, owlType = null, verified
       projectNumbers: new Set(projNum !== 'unknown' ? [projNum] : []),
       users: new Map(),
       scopes: new Map(),
+      scopeMeta: new Map(),
+      newlyRequestedScopes: new Set(),
+      scopeExpansionHistory: [],
       servicesTouched: new Set(),
       maxRisk: 'LOW',
       riskReasons: new Set(),
@@ -313,6 +319,43 @@ function getOrCreateDeploymentRecord(appName, clientId, owlType = null, verified
   return record;
 }
 
+function addScopeToRecord(record, scopeUrl, source = 'ACTIVE_TOKEN', timestamp = null, actorEmail = null) {
+  if (!scopeUrl || typeof scopeUrl !== 'string') return;
+  const s = scopeUrl.trim();
+  if (!s) return;
+
+  const risk = assessScopeRisk(s);
+  record.scopes.set(s, risk);
+  record.riskReasons.add(risk.reason);
+
+  const srv = detectServiceBucket(s);
+  if (srv) record.servicesTouched.add(srv);
+
+  const order = { CRITICAL: 4, HIGH: 3, MEDIUM: 2, LOW: 1 };
+  if (order[risk.level] > order[record.maxRisk]) {
+    record.maxRisk = risk.level;
+  }
+
+  if (!record.scopeMeta.has(s)) {
+    record.scopeMeta.set(s, {
+      sources: new Set([source]),
+      firstSeenAt: timestamp || null,
+      lastAuthorizedAt: timestamp || null,
+      authorizedBy: actorEmail || null,
+    });
+  } else {
+    const meta = record.scopeMeta.get(s);
+    meta.sources.add(source);
+    if (timestamp) {
+      if (!meta.firstSeenAt || timestamp < meta.firstSeenAt) meta.firstSeenAt = timestamp;
+      if (!meta.lastAuthorizedAt || timestamp >= meta.lastAuthorizedAt) {
+        meta.lastAuthorizedAt = timestamp;
+        if (actorEmail) meta.authorizedBy = actorEmail;
+      }
+    }
+  }
+}
+
 // 1. Ingest Active Tokens (Directory API)
 for (const token of activeTokens) {
   // If the name is mentioned in the CSV uploads and the IDs match, the CSV name MUST override what is in the database from the API pull
@@ -346,51 +389,171 @@ for (const token of activeTokens) {
   }
 
   for (const s of (token.scopes || [])) {
-    const risk = assessScopeRisk(s);
-    record.scopes.set(s, risk);
-    record.riskReasons.add(risk.reason);
-
-    const srv = detectServiceBucket(s);
-    if (srv) record.servicesTouched.add(srv);
-
-    const order = { CRITICAL: 4, HIGH: 3, MEDIUM: 2, LOW: 1 };
-    if (order[risk.level] > order[record.maxRisk]) {
-      record.maxRisk = risk.level;
-    }
+    addScopeToRecord(record, s, 'ACTIVE_TOKEN', null, token.userEmail);
   }
 }
 
-// 2. Ingest Audit Activity (Reports API)
+// 2. Ingest Audit Activity & Scope Authorizations (Reports API: token & admin logs)
+const chronologicalScopeEvents = [];
+
 for (const event of auditEvents) {
   for (const e of (event.events || [])) {
     let cid = null;
     let appName = null;
+    const eventScopes = new Set();
+
     for (const p of (e.parameters || [])) {
       if (p.name === 'client_id') cid = p.value;
       if (p.name === 'app_name') appName = p.value;
+      if (p.name === 'scope') {
+        if (Array.isArray(p.multiValue)) p.multiValue.forEach(s => eventScopes.add(s));
+        else if (p.value) eventScopes.add(p.value);
+      }
+      if (p.name === 'scope_data' && Array.isArray(p.multiMessageValue)) {
+        for (const msg of p.multiMessageValue) {
+          for (const inner of (msg.parameter || [])) {
+            if (inner.name === 'scope_name' && inner.value) {
+              eventScopes.add(inner.value);
+            }
+          }
+        }
+      }
     }
 
     if (cid || appName) {
-      const record = getOrCreateDeploymentRecord(appName, cid);
+      const csvMatch = cid ? csvAppMap.get(cid) : null;
+      const effectiveName = (csvMatch && isDescriptiveAppName(csvMatch.appName)) ? csvMatch.appName : appName;
+      const record = getOrCreateDeploymentRecord(effectiveName, cid, csvMatch?.rawType || null, csvMatch?.verificationStatus || null);
       record.totalActivityEvents++;
       const time = event.id?.time;
+      const actorEmail = event.actor?.email;
       if (time) {
         if (!record.firstSeen || time < record.firstSeen) record.firstSeen = time;
         if (!record.lastActive || time > record.lastActive) record.lastActive = time;
       }
-      if (event.actor?.email && !record.users.has(event.actor.email)) {
-        const u = userMap.get(event.actor.email) || {
-          id: 'unknown',
-          email: event.actor.email,
-          name: event.actor.email,
-          orgUnit: '/',
-          isAdmin: false,
-        };
-        record.users.set(event.actor.email, {
-          ...u,
-          grantedScopes: new Set(),
-        });
+      if (actorEmail) {
+        if (!record.users.has(actorEmail)) {
+          const u = userMap.get(actorEmail) || {
+            id: 'unknown',
+            email: actorEmail,
+            name: actorEmail,
+            orgUnit: '/',
+            isAdmin: false,
+          };
+          record.users.set(actorEmail, {
+            ...u,
+            grantedScopes: new Set(),
+          });
+        }
+        const userEntry = record.users.get(actorEmail);
+        for (const s of eventScopes) {
+          userEntry.grantedScopes.add(s);
+        }
       }
+
+      if (eventScopes.size > 0) {
+        const scopesArr = Array.from(eventScopes);
+        for (const s of scopesArr) {
+          addScopeToRecord(record, s, 'AUDIT_LOG_AUTHORIZE', time, actorEmail);
+        }
+        if (e.name === 'authorize') {
+          chronologicalScopeEvents.push({
+            id: `${event.id?.uniqueQualifier || Date.now()}_token_auth`,
+            time: time || new Date().toISOString(),
+            source: 'TOKEN_AUDIT_LOG',
+            eventName: 'auth:authorize',
+            actorEmail: actorEmail || 'unknown',
+            clientId: cid || record.id,
+            deploymentKey: record.id,
+            appName: record.displayName || effectiveName || cid,
+            scopes: scopesArr,
+            ipAddress: event.ipAddress || null,
+          });
+        }
+      }
+    }
+  }
+}
+
+// 2b. Ingest Admin Audit Logs for Domain-Wide Delegation Scope Grants (AUTHORIZE_API_CLIENT_ACCESS)
+for (const event of adminAuditEvents) {
+  for (const e of (event.events || [])) {
+    if (e.name !== 'AUTHORIZE_API_CLIENT_ACCESS') continue;
+    let cid = null;
+    let appName = null;
+    let apiScopesStr = '';
+    for (const p of (e.parameters || [])) {
+      if (p.name === 'API_CLIENT_NAME') cid = p.value;
+      if (p.name === 'DOMAIN_NAME') appName = p.value;
+      if (p.name === 'API_SCOPES') apiScopesStr = p.value || (p.multiValue || []).join(',');
+    }
+    const scopesArr = apiScopesStr.split(',').map(s => s.trim()).filter(Boolean);
+    if ((cid || appName) && scopesArr.length > 0) {
+      const csvMatch = cid ? csvAppMap.get(cid) : null;
+      const effectiveName = (csvMatch && isDescriptiveAppName(csvMatch.appName)) ? csvMatch.appName : appName;
+      const record = getOrCreateDeploymentRecord(effectiveName, cid, csvMatch?.rawType || null, csvMatch?.verificationStatus || null);
+      const time = event.id?.time;
+      const actorEmail = event.actor?.email;
+      if (time) {
+        if (!record.firstSeen || time < record.firstSeen) record.firstSeen = time;
+        if (!record.lastActive || time > record.lastActive) record.lastActive = time;
+      }
+      for (const s of scopesArr) {
+        addScopeToRecord(record, s, 'DOMAIN_WIDE_DELEGATION', time, actorEmail);
+      }
+      chronologicalScopeEvents.push({
+        id: `${event.id?.uniqueQualifier || Date.now()}_dwd_auth`,
+        time: time || new Date().toISOString(),
+        source: 'ADMIN_AUDIT_LOG',
+        eventName: 'DOMAIN_SETTINGS:AUTHORIZE_API_CLIENT_ACCESS',
+        actorEmail: actorEmail || 'admin@gafe.co.za',
+        clientId: cid || record.id,
+        deploymentKey: record.id,
+        appName: record.displayName || effectiveName || cid,
+        scopes: scopesArr,
+        ipAddress: event.ipAddress || null,
+      });
+    }
+  }
+}
+
+// 2c. Analyze Chronological Scope Progression to Detect Newly Requested / Incremental Scopes
+chronologicalScopeEvents.sort((a, b) => new Date(a.time).getTime() - new Date(b.time).getTime());
+const seenScopesPerDeployment = new Map();
+const scopeExpansionEvents = [];
+
+for (const ev of chronologicalScopeEvents) {
+  const key = ev.deploymentKey;
+  const record = catalog.get(key);
+  if (!seenScopesPerDeployment.has(key)) {
+    seenScopesPerDeployment.set(key, new Set(ev.scopes));
+    const entry = {
+      ...ev,
+      changeType: 'INITIAL_SCOPE_GRANT',
+      newScopes: ev.scopes,
+      previousScopesCount: 0,
+      totalScopesCount: ev.scopes.length,
+    };
+    scopeExpansionEvents.push(entry);
+    if (record) record.scopeExpansionHistory.push(entry);
+  } else {
+    const known = seenScopesPerDeployment.get(key);
+    const added = ev.scopes.filter(s => !known.has(s));
+    if (added.length > 0) {
+      const prevCount = known.size;
+      added.forEach(s => {
+        known.add(s);
+        if (record) record.newlyRequestedScopes.add(s);
+      });
+      const entry = {
+        ...ev,
+        changeType: 'NEW_SCOPE_REQUESTED',
+        newScopes: added,
+        previousScopesCount: prevCount,
+        totalScopesCount: known.size,
+      };
+      scopeExpansionEvents.push(entry);
+      if (record) record.scopeExpansionHistory.push(entry);
     }
   }
 }
@@ -449,17 +612,7 @@ if (accessedCsvPath) {
       }
 
       for (const s of scopes) {
-        if (!record.scopes.has(s)) {
-          const risk = assessScopeRisk(s);
-          record.scopes.set(s, risk);
-          record.riskReasons.add(risk.reason);
-          const srv = detectServiceBucket(s);
-          if (srv) record.servicesTouched.add(srv);
-          const order = { CRITICAL: 4, HIGH: 3, MEDIUM: 2, LOW: 1 };
-          if (order[risk.level] > order[record.maxRisk]) {
-            record.maxRisk = risk.level;
-          }
-        }
+        addScopeToRecord(record, s, 'ADMIN_CSV');
       }
     }
   }
@@ -515,17 +668,7 @@ if (configuredCsvPath) {
         }
 
         for (const s of scopes) {
-          if (!record.scopes.has(s)) {
-            const risk = assessScopeRisk(s);
-            record.scopes.set(s, risk);
-            record.riskReasons.add(risk.reason);
-            const srv = detectServiceBucket(s);
-            if (srv) record.servicesTouched.add(srv);
-            const order = { CRITICAL: 4, HIGH: 3, MEDIUM: 2, LOW: 1 };
-            if (order[risk.level] > order[record.maxRisk]) {
-              record.maxRisk = risk.level;
-            }
-          }
+          addScopeToRecord(record, s, 'ADMIN_CSV');
         }
       }
     }
@@ -565,6 +708,8 @@ for (const [id, app] of catalog.entries()) {
     const adminScore = ref ? ref.admin_score : 1;
     const adminColor = ref ? ref.admin_color : 'Blue';
     const googleTier = ref ? ref.google_tier : 'Non-Sensitive';
+    const meta = app.scopeMeta.get(scope);
+    const isNewlyRequested = app.newlyRequestedScopes.has(scope);
     return {
       scope,
       riskLevel: risk.level,
@@ -573,7 +718,12 @@ for (const [id, app] of catalog.entries()) {
       adminScore,
       adminColor,
       googleTier,
-      service: ref ? ref.service_name : detectServiceBucket(scope)
+      service: ref ? ref.service_name : detectServiceBucket(scope),
+      isNewlyRequested,
+      sources: meta ? Array.from(meta.sources) : ['ACTIVE_TOKEN'],
+      firstSeenAt: meta?.firstSeenAt || null,
+      lastAuthorizedAt: meta?.lastAuthorizedAt || null,
+      authorizedBy: meta?.authorizedBy || null,
     };
   });
 
@@ -640,10 +790,211 @@ for (const [id, app] of catalog.entries()) {
       maxRisk: d.maxRisk
     }));
 
+  const newlyRequestedArr = Array.from(app.newlyRequestedScopes);
+  const scopeExpansionReasons = newlyRequestedArr.length > 0
+    ? [`Incremental Scope Expansion: ${newlyRequestedArr.length} new scope(s) requested (${newlyRequestedArr.map(s => s.split('/').pop()).join(', ')})`]
+    : [];
+
   const combinedRiskReasons = Array.from(new Set([
     ...inherentRisk.riskReasons,
-    ...Array.from(app.riskReasons)
+    ...Array.from(app.riskReasons),
+    ...scopeExpansionReasons
   ]));
+
+  // -------------------------------------------------------------------------
+  // ADMINLENS GOVERNANCE DECISION TREE EVALUATION
+  // Root Gate ➔ Secured Baseline vs Branch A (Trusted: Gates T1–T4) vs Branch B (Unconfigured: Gates U1–U3 ➔ Tiers 1–4)
+  // -------------------------------------------------------------------------
+  const REF_NOW_MS = new Date('2026-09-26T00:00:00Z').getTime();
+  const SIX_MONTHS_MS = 180 * 24 * 60 * 60 * 1000;
+  const lastActiveMs = app.lastActive ? new Date(app.lastActive).getTime() : null;
+  const isRecent30d = lastActiveMs !== null
+    ? (REF_NOW_MS - lastActiveMs) <= 30 * 24 * 60 * 60 * 1000
+    : !isStale;
+
+  const policyUpper = (adminAccessLevel || 'UNCONFIGURED').toUpperCase();
+  const isSecuredPolicy = policyUpper === 'SPECIFIC_DATA' || policyUpper === 'BLOCKED' || policyUpper === 'LIMITED';
+  const isTrustedPolicy = policyUpper === 'TRUSTED';
+  const isHighOrCritRisk = calculatedRiskLevel === 'CRITICAL' || calculatedRiskLevel === 'HIGH' || calculatedRiskScore > 3.0;
+  const isCritRisk = calculatedRiskLevel === 'CRITICAL' || calculatedRiskScore >= 4.0;
+  const totalUsersCountVal = usersList.length;
+  const adminUsersCountVal = usersList.filter(u => u.isAdmin).length;
+  const hasSprawlVal = totalUsersCountVal > 1 || adminUsersCountVal > 0;
+  const hasNewScopesVal = newlyRequestedArr.length > 0;
+
+  let decisionTree = {
+    branch: 'UNCONFIGURED',
+    triageTier: 'TIER_4',
+    triageBadge: '⚪ TIER 4: DORMANT SHADOW IT',
+    gatePath: 'Gate U1 (Score 1–3) ➔ Gate U3 (Dormant >30d) ➔ Tier 4',
+    recommendedPolicy: 'SPECIFIC_DATA',
+    recommendedPolicyLabel: 'Specific Google Data (The Holy Grail)',
+    recommendationSeverity: 'LOW',
+    needsAction: true,
+    directive: "Recommended Action: Review in Google Admin Console and configure to 'Specific Google Data' (The Holy Grail) to lock the baseline scope footprint. (Never set to Trusted; 'Limited' is case-by-case only.)",
+    trustedGateReason: null,
+    trustedScopeCategory: null,
+  };
+
+  if (isSecuredPolicy) {
+    decisionTree = {
+      branch: 'SECURED',
+      triageTier: 'SECURED',
+      triageBadge: '🏆 Secured Baseline',
+      gatePath: `Root Gate (${policyUpper}) ➔ Secured Baseline`,
+      recommendedPolicy: 'NONE',
+      recommendedPolicyLabel: 'Already Secured (No Action)',
+      recommendationSeverity: 'NONE',
+      needsAction: false,
+      directive: 'Compliant. Locked to Specific Google Data (The Holy Grail) or configured policy. Zero recommendations generated.',
+      trustedGateReason: null,
+      trustedScopeCategory: null,
+    };
+  } else if (isTrustedPolicy) {
+    const newScopeObjs = scopesList.filter(s => s.isNewlyRequested || newlyRequestedArr.includes(s.scope));
+    const lastReviewedStr = app.lastReviewedAt || null;
+    const reviewedWithinSixMonths = lastReviewedStr
+      ? (Date.now() - new Date(lastReviewedStr).getTime()) <= SIX_MONTHS_MS
+      : false;
+
+    if (hasNewScopesVal) {
+      const hasRestricted = newScopeObjs.some(s => s.googleTier === 'Restricted');
+      const hasSensitive = newScopeObjs.some(s => s.googleTier === 'Sensitive');
+      let sev = 'MEDIUM';
+      let cat = 'Non-Sensitive';
+      if (hasRestricted) {
+        sev = 'CRITICAL';
+        cat = 'Restricted';
+      } else if (hasSensitive) {
+        sev = 'HIGH';
+        cat = 'Sensitive';
+      }
+      const reason = `Gate T1 (New Scope: YES) ➔ Gate T2 (Google '${cat}' Criteria) ➔ ${sev} Recommendation`;
+      decisionTree = {
+        branch: 'TRUSTED',
+        triageTier: 'TRUSTED',
+        triageBadge: `⚠️ ${sev} Trusted Review`,
+        gatePath: reason,
+        recommendedPolicy: 'SPECIFIC_DATA',
+        recommendedPolicyLabel: 'Specific Google Data (The Holy Grail)',
+        recommendationSeverity: sev,
+        needsAction: true,
+        directive: `Trusted app requested ${newScopeObjs.length} new ${cat} scope(s). Transition from blanket 'Trusted' to 'Specific Google Data' (The Holy Grail) — or 'Blocked' ONLY if there is an extreme, known school safety issue.`,
+        trustedGateReason: reason,
+        trustedScopeCategory: cat,
+      };
+    } else if (reviewedWithinSixMonths) {
+      const reason = `Gate T1 (No New Scopes) ➔ Gate T3 (Reviewed < 6 Months) ➔ No Recommendation`;
+      decisionTree = {
+        branch: 'TRUSTED',
+        triageTier: 'TRUSTED',
+        triageBadge: '✓ Compliant Trusted',
+        gatePath: reason,
+        recommendedPolicy: 'NONE',
+        recommendedPolicyLabel: 'Compliant (< 6 Months Review)',
+        recommendationSeverity: 'NONE',
+        needsAction: false,
+        directive: reason,
+        trustedGateReason: reason,
+        trustedScopeCategory: null,
+      };
+    } else if (isHighOrCritRisk) {
+      const sev = isCritRisk ? 'CRITICAL' : 'HIGH';
+      const reason = `Gate T1 (No New Scopes) ➔ Gate T3 (≥ 6 Months) ➔ Gate T4 (${calculatedRiskLevel} Risk, Score ${calculatedRiskScore.toFixed(1)}) ➔ Review Again`;
+      decisionTree = {
+        branch: 'TRUSTED',
+        triageTier: 'TRUSTED',
+        triageBadge: `⚠️ ${sev} Trusted Review`,
+        gatePath: reason,
+        recommendedPolicy: 'SPECIFIC_DATA',
+        recommendedPolicyLabel: 'Specific Google Data (The Holy Grail)',
+        recommendationSeverity: sev,
+        needsAction: true,
+        directive: `${reason}. Recommended Action: Transition from blanket 'Trusted' to 'Specific Google Data' (The Holy Grail) — we never recommend keeping blanket Trusted access.`,
+        trustedGateReason: reason,
+        trustedScopeCategory: null,
+      };
+    } else {
+      const reason = `Gate T1 (No New Scopes) ➔ Gate T3 (≥ 6 Months) ➔ Gate T4 (Score ${calculatedRiskScore.toFixed(1)} ≤ 3.0 Low/Mod Risk) ➔ Fine (No Recommendation)`;
+      decisionTree = {
+        branch: 'TRUSTED',
+        triageTier: 'TRUSTED',
+        triageBadge: '✓ Compliant Trusted (Score 1–3)',
+        gatePath: reason,
+        recommendedPolicy: 'NONE',
+        recommendedPolicyLabel: 'Fine (Score 1–3, No Action)',
+        recommendationSeverity: 'NONE',
+        needsAction: false,
+        directive: reason,
+        trustedGateReason: reason,
+        trustedScopeCategory: null,
+      };
+    }
+  } else {
+    // UNCONFIGURED BRANCH B: Gates U1 ➔ U2 / U3 ➔ 4 Priority Tiers
+    if (isHighOrCritRisk && (!effectiveVerified || !isRecent30d || totalUsersCountVal <= 1)) {
+      const contextTriggers = [
+        !effectiveVerified ? 'Unverified' : null,
+        totalUsersCountVal <= 1 ? 'Single-User (≤1)' : null,
+        !isRecent30d ? 'Dormant (>30d)' : null,
+      ].filter(Boolean).join(' / ');
+      decisionTree = {
+        branch: 'UNCONFIGURED',
+        triageTier: 'TIER_1',
+        triageBadge: '🚨 TIER 1: CRITICAL UNVERIFIED / HIGH RISK',
+        gatePath: `Gate U1 (Score ${calculatedRiskScore.toFixed(1)} High/Crit) ➔ Gate U2 (${contextTriggers}) ➔ Tier 1`,
+        recommendedPolicy: 'SPECIFIC_DATA',
+        recommendedPolicyLabel: 'Specific Google Data (The Holy Grail) — or Rare Block if Known School Issue',
+        recommendationSeverity: 'CRITICAL',
+        needsAction: true,
+        directive: "Recommended Action: Set to 'Specific Google Data' (The Holy Grail) if validated for school use. Reserve 'Blocked' ONLY for the very few apps with extreme risk and a known issue for the school environment. (Never set to Trusted.)",
+        trustedGateReason: null,
+        trustedScopeCategory: null,
+      };
+    } else if (isHighOrCritRisk && hasSprawlVal && isRecent30d) {
+      decisionTree = {
+        branch: 'UNCONFIGURED',
+        triageTier: 'TIER_2',
+        triageBadge: '🟠 TIER 2: HIGH RISK SPRAWL',
+        gatePath: `Gate U1 (Score ${calculatedRiskScore.toFixed(1)} High/Crit) ➔ Gate U2 (Verified & Active ≤30d, ${totalUsersCountVal} Users) ➔ Tier 2`,
+        recommendedPolicy: 'SPECIFIC_DATA',
+        recommendedPolicyLabel: 'Specific Google Data (The Holy Grail)',
+        recommendationSeverity: 'HIGH',
+        needsAction: true,
+        directive: "Recommended Action: Configure to 'Specific Google Data' (The Holy Grail) to approve exact current scopes while blocking future scope escalation. (Never set to Trusted.)",
+        trustedGateReason: null,
+        trustedScopeCategory: null,
+      };
+    } else if (isRecent30d && totalUsersCountVal > 0) {
+      decisionTree = {
+        branch: 'UNCONFIGURED',
+        triageTier: 'TIER_3',
+        triageBadge: '🟡 TIER 3: MODERATE / LOW SPRAWL',
+        gatePath: `Gate U1 (Score ${calculatedRiskScore.toFixed(1)} Mod/Low) ➔ Gate U3 (Active ≤30d, ${totalUsersCountVal} Users) ➔ Tier 3`,
+        recommendedPolicy: 'SPECIFIC_DATA',
+        recommendedPolicyLabel: 'Specific Google Data (The Holy Grail)',
+        recommendationSeverity: 'MEDIUM',
+        needsAction: true,
+        directive: "Recommended Action: Configure to 'Specific Google Data' (The Holy Grail) to lock current scope footprint. ('Limited' is case-by-case only; never set to Trusted.)",
+        trustedGateReason: null,
+        trustedScopeCategory: null,
+      };
+    } else {
+      decisionTree = {
+        branch: 'UNCONFIGURED',
+        triageTier: 'TIER_4',
+        triageBadge: '⚪ TIER 4: DORMANT SHADOW IT',
+        gatePath: `Gate U1 (Score ${calculatedRiskScore.toFixed(1)} Mod/Low) ➔ Gate U3 (Dormant >30d) ➔ Tier 4`,
+        recommendedPolicy: 'SPECIFIC_DATA',
+        recommendedPolicyLabel: 'Specific Google Data (The Holy Grail)',
+        recommendationSeverity: 'LOW',
+        needsAction: true,
+        directive: "Recommended Action: Review in Google Admin Console and configure to 'Specific Google Data' (The Holy Grail) to lock the baseline scope footprint. (Never set to Trusted; 'Limited' is case-by-case only.)",
+        trustedGateReason: null,
+        trustedScopeCategory: null,
+      };
+    }
+  }
 
   const finalApp = enrichApplicationRecord({
     id: app.id,
@@ -679,6 +1030,11 @@ for (const [id, app] of catalog.entries()) {
     riskReasons: combinedRiskReasons,
     adminAccessLevel: adminAccessLevel,
     accessPolicy: appPolicy,
+    decisionTree,
+    triageTier: decisionTree.triageTier,
+    triageBadge: decisionTree.triageBadge,
+    triageDirective: decisionTree.directive,
+    gatePath: decisionTree.gatePath,
     multiClientMapped: siblingDeployments.length > 0,
     familyDeploymentsCount: (familyGroup?.deployments.length) || 1,
     siblingDeployments: siblingDeployments,
@@ -689,6 +1045,10 @@ for (const [id, app] of catalog.entries()) {
     adminUsersCount: usersList.filter(u => u.isAdmin).length,
     scopesCount: scopesList.length,
     scopes: scopesList,
+    hasNewScopes: newlyRequestedArr.length > 0,
+    newlyRequestedScopesCount: newlyRequestedArr.length,
+    newlyRequestedScopes: newlyRequestedArr,
+    scopeExpansionHistory: app.scopeExpansionHistory,
     servicesTouched: Array.from(app.servicesTouched),
     users: usersList,
     firstSeen: app.firstSeen,
@@ -749,6 +1109,8 @@ const metrics = {
   mediumRiskApps: finalizedApps.filter(a => a.riskLevel === 'MEDIUM').length,
   minorRiskApps: finalizedApps.filter(a => a.riskLevel === 'MINOR').length,
   lowRiskApps: finalizedApps.filter(a => a.riskLevel === 'LOW').length,
+  appsWithNewScopesCount: finalizedApps.filter(a => a.hasNewScopes).length,
+  totalScopeExpansionEvents: scopeExpansionEvents.filter(e => e.changeType === 'NEW_SCOPE_REQUESTED').length,
   configuredAppsCount: finalizedApps.filter(a => a.adminAccessLevel && a.adminAccessLevel !== 'UNCONFIGURED').length,
   trustedAppsCount: finalizedApps.filter(a => a.adminAccessLevel === 'TRUSTED').length,
   blockedAppsCount: finalizedApps.filter(a => a.adminAccessLevel === 'BLOCKED').length,
@@ -764,6 +1126,11 @@ const outputDir = './standardized_catalog';
 fs.writeFileSync(path.join(outputDir, 'applications_catalog.json'), JSON.stringify(finalizedApps, null, 2));
 fs.writeFileSync(path.join(outputDir, 'product_families.json'), JSON.stringify(productFamiliesSummary, null, 2));
 fs.writeFileSync(path.join(outputDir, 'metrics.json'), JSON.stringify(metrics, null, 2));
+fs.writeFileSync(path.join(outputDir, 'scope_expansion_events.json'), JSON.stringify(scopeExpansionEvents, null, 2));
+
+if (fs.existsSync('./extracted_data')) {
+  fs.writeFileSync(path.join('./extracted_data', 'scope_expansion_events.json'), JSON.stringify(scopeExpansionEvents, null, 2));
+}
 
 // Copy into mosaic-next/data/
 const mosaicDataDir = './mosaic-next/data';
@@ -771,6 +1138,7 @@ if (fs.existsSync(mosaicDataDir)) {
   fs.writeFileSync(path.join(mosaicDataDir, 'applications_catalog.json'), JSON.stringify(finalizedApps, null, 2));
   fs.writeFileSync(path.join(mosaicDataDir, 'product_families.json'), JSON.stringify(productFamiliesSummary, null, 2));
   fs.writeFileSync(path.join(mosaicDataDir, 'metrics.json'), JSON.stringify(metrics, null, 2));
+  fs.writeFileSync(path.join(mosaicDataDir, 'scope_expansion_events.json'), JSON.stringify(scopeExpansionEvents, null, 2));
   if (fs.existsSync('./recommendations/recommendations.json')) {
     fs.copyFileSync('./recommendations/recommendations.json', path.join(mosaicDataDir, 'recommendations.json'));
   }
@@ -786,5 +1154,6 @@ if (fs.existsSync('./public')) {
 }
 
 console.log(`✓ Rebuilt catalog with Hierarchical Platform Deployments: ${finalizedApps.length} distinct deployments across ${productFamiliesSummary.length} product families.`);
+console.log(`✓ Scope Intelligence: ${scopeExpansionEvents.length} scope grant milestones (${metrics.totalScopeExpansionEvents} incremental scope expansions across ${metrics.appsWithNewScopesCount} apps).`);
 console.log(`✓ Metrics: ${metrics.trustedAppsCount} trusted deployments, ${metrics.criticalRiskApps} critical, ${metrics.multiClientFamiliesCount} multi-deployment families.`);
 console.log(`✓ Synced data files to ${mosaicDataDir}/ and public/`);

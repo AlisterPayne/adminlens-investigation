@@ -53,6 +53,7 @@ async function runDailySync() {
             const ref = srMap.get(scUrl);
             if (ref) {
               app.scopes[i] = {
+                ...(typeof sc === 'object' ? sc : {}),
                 scope: scUrl,
                 riskLevel: ref.admin_score >= 5 ? 'CRITICAL' : ref.admin_score === 4 ? 'HIGH' : ref.admin_score === 3 ? 'MEDIUM' : 'LOW',
                 description: ref.rationale || (typeof sc === 'object' ? sc.description : ''),

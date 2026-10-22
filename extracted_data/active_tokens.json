@@ -13,7 +13,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/06cFMmk2bA3EgwjwHa-Ws4VGegA\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/06cFMmk2bA3EgwjwHa-Ws4VGegA\""
   },
   {
     "userEmail": "ackbar@gafe.co.za",
@@ -27,7 +27,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/eMnkeVA5ilRpzISUXRAWP5Afs6U\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/eMnkeVA5ilRpzISUXRAWP5Afs6U\""
   },
   {
     "userEmail": "ackbar@gafe.co.za",
@@ -43,7 +43,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/lW-gNqM45YwsxELtNFi7fa14dj8\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/lW-gNqM45YwsxELtNFi7fa14dj8\""
   },
   {
     "userEmail": "ackbar@gafe.co.za",
@@ -57,7 +57,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/ElrpJac6VzRwpR0P9DfMxi9bFZk\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/ElrpJac6VzRwpR0P9DfMxi9bFZk\""
   },
   {
     "userEmail": "adaobi@gafe.co.za",
@@ -71,7 +71,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/ND3m073qE3cEK8uQ_XBROjnS3tk\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/ND3m073qE3cEK8uQ_XBROjnS3tk\""
   },
   {
     "userEmail": "adaobi@gafe.co.za",
@@ -93,7 +93,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/RBQkDJcpo_98zaLgbKznrPRmwDU\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/RBQkDJcpo_98zaLgbKznrPRmwDU\""
   },
   {
     "userEmail": "alister@gafe.co.za",
@@ -109,7 +109,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/peXkN7IhbhxJazFVxWf7eYmg9EE\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/peXkN7IhbhxJazFVxWf7eYmg9EE\""
   },
   {
     "userEmail": "alister@gafe.co.za",
@@ -124,7 +124,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/Gp4BXMKgkMVhY5i8FSnB_15oKE8\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/Gp4BXMKgkMVhY5i8FSnB_15oKE8\""
   },
   {
     "userEmail": "alister@gafe.co.za",
@@ -138,7 +138,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/cAOiOFoVZk-cNujunG0TsBoILNk\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/cAOiOFoVZk-cNujunG0TsBoILNk\""
   },
   {
     "userEmail": "alister@gafe.co.za",
@@ -154,21 +154,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/b3z-3VHDDlOyUv2eZthaXqvFFNg\""
-  },
-  {
-    "userEmail": "alister@gafe.co.za",
-    "userId": "102305463948441239613",
-    "userOrgUnit": "/CloudEDU Technical",
-    "isUserAdmin": true,
-    "clientId": "297408095146-fug707qsjv4ikron0hugpevbrjhkmsk7.apps.googleusercontent.com",
-    "displayText": "GAM Project Creation",
-    "scopes": [
-      "https://www.googleapis.com/auth/cloud-platform"
-    ],
-    "nativeApp": false,
-    "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/0tn9qpZccFxrsX245OvYpJ8T_Fg\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/b3z-3VHDDlOyUv2eZthaXqvFFNg\""
   },
   {
     "userEmail": "alister@gafe.co.za",
@@ -183,22 +169,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/rCt-iUb6ewrFfguV62wkp5-gXGc\""
-  },
-  {
-    "userEmail": "alister@gafe.co.za",
-    "userId": "102305463948441239613",
-    "userOrgUnit": "/CloudEDU Technical",
-    "isUserAdmin": true,
-    "clientId": "823511539352-ojaretejk1s95sdvkic0te923pt7knpu.apps.googleusercontent.com",
-    "displayText": "Google AI Studio",
-    "scopes": [
-      "https://www.googleapis.com/auth/drive.install",
-      "https://www.googleapis.com/auth/drive"
-    ],
-    "nativeApp": false,
-    "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/aDUiL5fPilPQfx9B0Hnp7KchQk4\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/rCt-iUb6ewrFfguV62wkp5-gXGc\""
   },
   {
     "userEmail": "alister@gafe.co.za",
@@ -215,7 +186,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/DEHhnIxba4CmVc7afwdQWXRGeJY\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/DEHhnIxba4CmVc7afwdQWXRGeJY\""
   },
   {
     "userEmail": "alister@gafe.co.za",
@@ -230,39 +201,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/QUUqzilGsVkEKcWUQGnS-09xfg4\""
-  },
-  {
-    "userEmail": "alister@gafe.co.za",
-    "userId": "102305463948441239613",
-    "userOrgUnit": "/CloudEDU Technical",
-    "isUserAdmin": true,
-    "clientId": "779010036194-lf6spugv22vvj41pqjdj4d8k2tq7o5fd.apps.googleusercontent.com",
-    "displayText": "Canva",
-    "scopes": [
-      "https://www.googleapis.com/auth/userinfo.profile",
-      "https://www.googleapis.com/auth/userinfo.email",
-      "openid"
-    ],
-    "nativeApp": false,
-    "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/Cj6_sG1mmTpf32xs0H6Mfd73HKY\""
-  },
-  {
-    "userEmail": "alister@gafe.co.za",
-    "userId": "102305463948441239613",
-    "userOrgUnit": "/CloudEDU Technical",
-    "isUserAdmin": true,
-    "clientId": "476257776955-t129f3c8h8tgq60g7rp4cmganf4n7dn7.apps.googleusercontent.com",
-    "displayText": "dev.adminlens.io",
-    "scopes": [
-      "https://www.googleapis.com/auth/userinfo.profile",
-      "https://www.googleapis.com/auth/userinfo.email",
-      "openid"
-    ],
-    "nativeApp": false,
-    "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/mLugRQOTCbQNBE0NY2aqcOh7hZg\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/QUUqzilGsVkEKcWUQGnS-09xfg4\""
   },
   {
     "userEmail": "alister@gafe.co.za",
@@ -278,7 +217,39 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/fwneAIu6atbLc2nc_bUwnvCIQSI\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/fwneAIu6atbLc2nc_bUwnvCIQSI\""
+  },
+  {
+    "userEmail": "alister@gafe.co.za",
+    "userId": "102305463948441239613",
+    "userOrgUnit": "/CloudEDU Technical",
+    "isUserAdmin": true,
+    "clientId": "779010036194-lf6spugv22vvj41pqjdj4d8k2tq7o5fd.apps.googleusercontent.com",
+    "displayText": "Canva",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/Cj6_sG1mmTpf32xs0H6Mfd73HKY\""
+  },
+  {
+    "userEmail": "alister@gafe.co.za",
+    "userId": "102305463948441239613",
+    "userOrgUnit": "/CloudEDU Technical",
+    "isUserAdmin": true,
+    "clientId": "476257776955-t129f3c8h8tgq60g7rp4cmganf4n7dn7.apps.googleusercontent.com",
+    "displayText": "dev.adminlens.io",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/mLugRQOTCbQNBE0NY2aqcOh7hZg\""
   },
   {
     "userEmail": "alister@gafe.co.za",
@@ -301,7 +272,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/V6HK0wvn2w-egQ6pEH84PE28xGg\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/V6HK0wvn2w-egQ6pEH84PE28xGg\""
   },
   {
     "userEmail": "alister@gafe.co.za",
@@ -361,7 +332,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/bP9PV3pI7yuUNN0ZR7zrLBLeCKc\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/bP9PV3pI7yuUNN0ZR7zrLBLeCKc\""
   },
   {
     "userEmail": "alister@gafe.co.za",
@@ -375,31 +346,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/Uey1kI2sHNDjzfDsn79xWDWwInY\""
-  },
-  {
-    "userEmail": "alister@gafe.co.za",
-    "userId": "102305463948441239613",
-    "userOrgUnit": "/CloudEDU Technical",
-    "isUserAdmin": true,
-    "clientId": "172700529642-48obmiqhk5joviftkt87d0po0bnbunbu.apps.googleusercontent.com",
-    "displayText": "project-172700529642",
-    "scopes": [
-      "https://www.googleapis.com/auth/user.organization.read",
-      "https://www.googleapis.com/auth/userinfo.profile",
-      "https://www.googleapis.com/auth/userinfo.email",
-      "https://www.googleapis.com/auth/admin.directory.group.readonly",
-      "https://www.googleapis.com/auth/admin.directory.group.member.readonly",
-      "https://www.googleapis.com/auth/gmail.settings.basic",
-      "openid",
-      "https://www.googleapis.com/auth/admin.directory.orgunit.readonly",
-      "https://www.googleapis.com/auth/gmail.settings.sharing",
-      "https://www.googleapis.com/auth/user.phonenumbers.read",
-      "https://www.googleapis.com/auth/admin.directory.user.readonly"
-    ],
-    "nativeApp": false,
-    "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/6w9qfF1FcYvvOuQOPYNd69hT5AM\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/Uey1kI2sHNDjzfDsn79xWDWwInY\""
   },
   {
     "userEmail": "alister@gafe.co.za",
@@ -415,7 +362,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/n1mObE7K3Leeplx3vzw8Qc212Z0\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/n1mObE7K3Leeplx3vzw8Qc212Z0\""
   },
   {
     "userEmail": "alister@gafe.co.za",
@@ -429,7 +376,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/MSog-89EATkF4inhcW-s_d1iTzY\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/MSog-89EATkF4inhcW-s_d1iTzY\""
   },
   {
     "userEmail": "alister@gafe.co.za",
@@ -439,19 +386,13 @@
     "clientId": "526554529059-bpm1k15t6a60h9u79tjhmpnutblkmalu.apps.googleusercontent.com",
     "displayText": "gemini-enterprise",
     "scopes": [
-      "https://www.googleapis.com/auth/calendar.events",
-      "https://www.googleapis.com/auth/userinfo.profile",
-      "https://www.googleapis.com/auth/contacts.readonly",
-      "https://www.googleapis.com/auth/userinfo.email",
-      "openid",
       "https://www.googleapis.com/auth/drive.file",
-      "https://www.googleapis.com/auth/calendar.readonly",
       "https://www.googleapis.com/auth/drive.appfolder",
       "https://www.googleapis.com/auth/drive"
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/1PWiwOCb4i1URojKzOW7DKJKifk\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/8tgqFuUFsjuNw3tm5rMqIfIFIFc\""
   },
   {
     "userEmail": "alister@gafe.co.za",
@@ -511,7 +452,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/WK72fby1r-piGXsPVZmbdNZvEJ0\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/WK72fby1r-piGXsPVZmbdNZvEJ0\""
   },
   {
     "userEmail": "alister@gafe.co.za",
@@ -529,22 +470,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/hAjOtAedGn29TmsTh4HUpxxksME\""
-  },
-  {
-    "userEmail": "alister@gafe.co.za",
-    "userId": "102305463948441239613",
-    "userOrgUnit": "/CloudEDU Technical",
-    "isUserAdmin": true,
-    "clientId": "74140984847-ev97f2i1adth1ivc40prputvbv8auunq.apps.googleusercontent.com",
-    "displayText": "Untitled project",
-    "scopes": [
-      "https://www.googleapis.com/auth/spreadsheets",
-      "https://www.googleapis.com/auth/admin.directory.user.readonly"
-    ],
-    "nativeApp": false,
-    "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/_s1DR0d2jG8yQGOdZipXxFG3APw\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/hAjOtAedGn29TmsTh4HUpxxksME\""
   },
   {
     "userEmail": "alister@gafe.co.za",
@@ -559,7 +485,22 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/jo0oj5dJJk8PcYTS1awArhCTfr8\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/jo0oj5dJJk8PcYTS1awArhCTfr8\""
+  },
+  {
+    "userEmail": "alister@gafe.co.za",
+    "userId": "102305463948441239613",
+    "userOrgUnit": "/CloudEDU Technical",
+    "isUserAdmin": true,
+    "clientId": "74140984847-ev97f2i1adth1ivc40prputvbv8auunq.apps.googleusercontent.com",
+    "displayText": "Untitled project",
+    "scopes": [
+      "https://www.googleapis.com/auth/spreadsheets",
+      "https://www.googleapis.com/auth/admin.directory.user.readonly"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/_s1DR0d2jG8yQGOdZipXxFG3APw\""
   },
   {
     "userEmail": "alister@gafe.co.za",
@@ -578,7 +519,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/xepeuTxQ87K508rDkhb7YtROk_o\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/xepeuTxQ87K508rDkhb7YtROk_o\""
   },
   {
     "userEmail": "androidmdm@gafe.co.za",
@@ -592,7 +533,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/d0Ccjer7OdYZ6RSR7YCdqkuesHw\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/d0Ccjer7OdYZ6RSR7YCdqkuesHw\""
   },
   {
     "userEmail": "applemdm@gafe.co.za",
@@ -608,7 +549,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/-o1aMilR0_WjgxDOz3HOiNtEakY\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/-o1aMilR0_WjgxDOz3HOiNtEakY\""
   },
   {
     "userEmail": "artem@gafe.co.za",
@@ -624,7 +565,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/PpZvjtiQ1mQF77iACDf5oqThmzo\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/PpZvjtiQ1mQF77iACDf5oqThmzo\""
   },
   {
     "userEmail": "artem@gafe.co.za",
@@ -640,7 +581,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/K-Yc9xaStrciEUd73yE4fyNKdyI\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/K-Yc9xaStrciEUd73yE4fyNKdyI\""
   },
   {
     "userEmail": "askywalker@gafe.co.za",
@@ -656,7 +597,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/3j--IZkRW0HzZ95RaCIfvByDPo4\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/3j--IZkRW0HzZ95RaCIfvByDPo4\""
   },
   {
     "userEmail": "askywalker@gafe.co.za",
@@ -670,7 +611,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/3nGqS81tkqZ9RfCAcs-f8iqG9xo\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/3nGqS81tkqZ9RfCAcs-f8iqG9xo\""
   },
   {
     "userEmail": "askywalker@gafe.co.za",
@@ -686,7 +627,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/D8TvVrx229rBsbYqO47sfAnCFYA\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/D8TvVrx229rBsbYqO47sfAnCFYA\""
   },
   {
     "userEmail": "askywalker@gafe.co.za",
@@ -700,7 +641,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/rSOxm6lBFNXjLydQK02o6GA8b9E\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/rSOxm6lBFNXjLydQK02o6GA8b9E\""
   },
   {
     "userEmail": "azelinskova7259@gafe.co.za",
@@ -714,7 +655,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/xOO0Xkgzflzx6mymoHT9aStXPA0\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/xOO0Xkgzflzx6mymoHT9aStXPA0\""
   },
   {
     "userEmail": "babbot9232@gafe.co.za",
@@ -728,7 +669,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/i2wOnpLHeGNx212NUQ7afGVdC88\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/i2wOnpLHeGNx212NUQ7afGVdC88\""
   },
   {
     "userEmail": "billaba@gafe.co.za",
@@ -742,7 +683,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/vFrS7tC39T2dukAJd1MfEhLI0Z8\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/vFrS7tC39T2dukAJd1MfEhLI0Z8\""
   },
   {
     "userEmail": "billaba@gafe.co.za",
@@ -756,7 +697,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/KxwtoUsNHejHtUNOR985EeTfP4E\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/KxwtoUsNHejHtUNOR985EeTfP4E\""
   },
   {
     "userEmail": "binks@gafe.co.za",
@@ -770,7 +711,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/iCYEki22FKyfyfkHNerd3knMuWE\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/iCYEki22FKyfyfkHNerd3knMuWE\""
   },
   {
     "userEmail": "binks@gafe.co.za",
@@ -784,7 +725,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/uEHpEqz8InYA0h86JKx6H7_m73U\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/uEHpEqz8InYA0h86JKx6H7_m73U\""
   },
   {
     "userEmail": "bliss@gafe.co.za",
@@ -800,7 +741,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/cS8QHGCZ_kheTpQNSjuGfIDGgWc\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/cS8QHGCZ_kheTpQNSjuGfIDGgWc\""
   },
   {
     "userEmail": "c3p0@gafe.co.za",
@@ -814,7 +755,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/bL9j_DhWMMOAGCom07K8aAonmps\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/bL9j_DhWMMOAGCom07K8aAonmps\""
   },
   {
     "userEmail": "c3p0@gafe.co.za",
@@ -828,7 +769,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/PYlahPqmlff0M0IWI3iUky79izI\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/PYlahPqmlff0M0IWI3iUky79izI\""
   },
   {
     "userEmail": "calrissian@gafe.co.za",
@@ -842,7 +783,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/4G-u79brCtMDlBLkjWzrCs4E4is\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/4G-u79brCtMDlBLkjWzrCs4E4is\""
   },
   {
     "userEmail": "calrissian@gafe.co.za",
@@ -856,7 +797,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/of9Cq6goyFWAIaq7TNujyv8Jp8Q\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/of9Cq6goyFWAIaq7TNujyv8Jp8Q\""
   },
   {
     "userEmail": "cameyo@gafe.co.za",
@@ -870,7 +811,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/g60bq4T2Wq9p0P4ACTYnaiJ2A28\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/g60bq4T2Wq9p0P4ACTYnaiJ2A28\""
   },
   {
     "userEmail": "cheri@gafe.co.za",
@@ -884,7 +825,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/OU_I2kSpYIpcgRi_OK9crz0_HYA\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/OU_I2kSpYIpcgRi_OK9crz0_HYA\""
   },
   {
     "userEmail": "cheri@gafe.co.za",
@@ -901,7 +842,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/TKfx-etFN7Oc9cV87TUNnJSDFpY\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/TKfx-etFN7Oc9cV87TUNnJSDFpY\""
   },
   {
     "userEmail": "cheri@gafe.co.za",
@@ -915,7 +856,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/qeDtsIN3yaMX0zqAkWwI-iHUFWw\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/qeDtsIN3yaMX0zqAkWwI-iHUFWw\""
   },
   {
     "userEmail": "cheri@gafe.co.za",
@@ -934,7 +875,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/1YhUaBZi5SBR6JQ6bEJCBVWtdEI\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/1YhUaBZi5SBR6JQ6bEJCBVWtdEI\""
   },
   {
     "userEmail": "cheri@gafe.co.za",
@@ -950,7 +891,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/hh_NUzhiOd1x5wvYlUR-Qr9Sr3I\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/hh_NUzhiOd1x5wvYlUR-Qr9Sr3I\""
   },
   {
     "userEmail": "chewbacca@gafe.co.za",
@@ -964,7 +905,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/2oMsq8-ojW8RWIh8kQks3X7oGTY\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/2oMsq8-ojW8RWIh8kQks3X7oGTY\""
   },
   {
     "userEmail": "chewbacca@gafe.co.za",
@@ -978,7 +919,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/-JF2FtTWvq4dBGb6v_mgfEr1ZoM\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/-JF2FtTWvq4dBGb6v_mgfEr1ZoM\""
   },
   {
     "userEmail": "clarissa@gafe.co.za",
@@ -992,7 +933,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/na7_UtRyuZzH5_Ghuw0uh66OzJI\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/na7_UtRyuZzH5_Ghuw0uh66OzJI\""
   },
   {
     "userEmail": "clarissa@gafe.co.za",
@@ -1006,7 +947,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/ddcZrlBPxzsiJWYff1B7W41UFO8\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/ddcZrlBPxzsiJWYff1B7W41UFO8\""
   },
   {
     "userEmail": "d.chen@gafe.co.za",
@@ -1022,7 +963,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/UCgjzgW9WYDoUGdhpjSMVdEUhWw\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/UCgjzgW9WYDoUGdhpjSMVdEUhWw\""
   },
   {
     "userEmail": "dameron@gafe.co.za",
@@ -1036,7 +977,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/dI8ToDwnFacSCSdwmDnHuxa_0yY\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/dI8ToDwnFacSCSdwmDnHuxa_0yY\""
   },
   {
     "userEmail": "dameron@gafe.co.za",
@@ -1050,7 +991,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/I1QT00ReIVjxwYO_Rz_B1wYykm0\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/I1QT00ReIVjxwYO_Rz_B1wYykm0\""
   },
   {
     "userEmail": "darklighter@gafe.co.za",
@@ -1064,7 +1005,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/Av2gyMM7xWPYY_Pb2WPL4o9UTFU\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/Av2gyMM7xWPYY_Pb2WPL4o9UTFU\""
   },
   {
     "userEmail": "darklighter@gafe.co.za",
@@ -1078,12 +1019,12 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/cDCwbB-B3PGyB0K0TEMsde58uxM\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/cDCwbB-B3PGyB0K0TEMsde58uxM\""
   },
   {
     "userEmail": "deidre@gafe.co.za",
     "userId": "108529170927100956427",
-    "userOrgUnit": "/deidre Testing OU",
+    "userOrgUnit": "/Jacaranda Academy/Staff",
     "isUserAdmin": true,
     "clientId": "936475272427.apps.googleusercontent.com",
     "displayText": "iOS Account Manager",
@@ -1095,12 +1036,12 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/ycHf3eKMp48eRbGgB09zBa34QvY\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/ycHf3eKMp48eRbGgB09zBa34QvY\""
   },
   {
     "userEmail": "deidre@gafe.co.za",
     "userId": "108529170927100956427",
-    "userOrgUnit": "/deidre Testing OU",
+    "userOrgUnit": "/Jacaranda Academy/Staff",
     "isUserAdmin": true,
     "clientId": "900360109870-ctveqiiu7np4uilcnphj4m42kv1njukq.apps.googleusercontent.com",
     "displayText": "deidre@cloudedu.co.za's Apps",
@@ -1111,12 +1052,12 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/Sq1nk8o2FE1SsN3dgm617M5s0kw\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/Sq1nk8o2FE1SsN3dgm617M5s0kw\""
   },
   {
     "userEmail": "deidre@gafe.co.za",
     "userId": "108529170927100956427",
-    "userOrgUnit": "/deidre Testing OU",
+    "userOrgUnit": "/Jacaranda Academy/Staff",
     "isUserAdmin": true,
     "clientId": "296758037454-ssrceub8i8moppipckhk61mk8go2kk6t.apps.googleusercontent.com",
     "displayText": "Gemini for Workspace Studio",
@@ -1128,12 +1069,12 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/DbslX2iGVbN2KuDVc4uOFdusnrw\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/DbslX2iGVbN2KuDVc4uOFdusnrw\""
   },
   {
     "userEmail": "deidre@gafe.co.za",
     "userId": "108529170927100956427",
-    "userOrgUnit": "/deidre Testing OU",
+    "userOrgUnit": "/Jacaranda Academy/Staff",
     "isUserAdmin": true,
     "clientId": "718809722883-l2mt5r2m2omka59ahjm1js78slbubsd7.apps.googleusercontent.com",
     "displayText": "InactiveUserInventory",
@@ -1149,12 +1090,12 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/CEjPYa-7mXB8EsoapDkL8w6Y5aA\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/CEjPYa-7mXB8EsoapDkL8w6Y5aA\""
   },
   {
     "userEmail": "deidre@gafe.co.za",
     "userId": "108529170927100956427",
-    "userOrgUnit": "/deidre Testing OU",
+    "userOrgUnit": "/Jacaranda Academy/Staff",
     "isUserAdmin": true,
     "clientId": "779010036194-lf6spugv22vvj41pqjdj4d8k2tq7o5fd.apps.googleusercontent.com",
     "displayText": "Canva",
@@ -1165,12 +1106,31 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/wpo5hlSN6gEg1cINcAu4DVqgs5c\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/wpo5hlSN6gEg1cINcAu4DVqgs5c\""
   },
   {
     "userEmail": "deidre@gafe.co.za",
     "userId": "108529170927100956427",
-    "userOrgUnit": "/deidre Testing OU",
+    "userOrgUnit": "/Jacaranda Academy/Staff",
+    "isUserAdmin": true,
+    "clientId": "188883250313-8nmnraov1542echfae84q33gmdi5k54g.apps.googleusercontent.com",
+    "displayText": "MyLogin",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.googleapis.com/auth/admin.directory.orgunit.readonly",
+      "https://www.googleapis.com/auth/admin.directory.domain.readonly",
+      "https://www.googleapis.com/auth/admin.directory.user.readonly"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/3f7Gpac6H8CeJFqqmMyebopIAio\""
+  },
+  {
+    "userEmail": "deidre@gafe.co.za",
+    "userId": "108529170927100956427",
+    "userOrgUnit": "/Jacaranda Academy/Staff",
     "isUserAdmin": true,
     "clientId": "871655740233-iad5enbpe9r7o18h2ajle4vdd51vhflp.apps.googleusercontent.com",
     "displayText": "Chromebook Getter",
@@ -1188,31 +1148,12 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/4IEwzScb8Oy3tp6jk5TRJ_lQQyA\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/4IEwzScb8Oy3tp6jk5TRJ_lQQyA\""
   },
   {
     "userEmail": "deidre@gafe.co.za",
     "userId": "108529170927100956427",
-    "userOrgUnit": "/deidre Testing OU",
-    "isUserAdmin": true,
-    "clientId": "188883250313-8nmnraov1542echfae84q33gmdi5k54g.apps.googleusercontent.com",
-    "displayText": "MyLogin",
-    "scopes": [
-      "https://www.googleapis.com/auth/userinfo.profile",
-      "https://www.googleapis.com/auth/userinfo.email",
-      "openid",
-      "https://www.googleapis.com/auth/admin.directory.orgunit.readonly",
-      "https://www.googleapis.com/auth/admin.directory.domain.readonly",
-      "https://www.googleapis.com/auth/admin.directory.user.readonly"
-    ],
-    "nativeApp": false,
-    "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/3f7Gpac6H8CeJFqqmMyebopIAio\""
-  },
-  {
-    "userEmail": "deidre@gafe.co.za",
-    "userId": "108529170927100956427",
-    "userOrgUnit": "/deidre Testing OU",
+    "userOrgUnit": "/Jacaranda Academy/Staff",
     "isUserAdmin": true,
     "clientId": "873507009103-gi4ff8nkju6ggaurt6ebbiqrfmr0c79j.apps.googleusercontent.com",
     "displayText": "Google Chat for Workspace Studio",
@@ -1227,12 +1168,12 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/My5qdmEYtfM8b6tEbNugjucvfz0\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/My5qdmEYtfM8b6tEbNugjucvfz0\""
   },
   {
     "userEmail": "deidre@gafe.co.za",
     "userId": "108529170927100956427",
-    "userOrgUnit": "/deidre Testing OU",
+    "userOrgUnit": "/Jacaranda Academy/Staff",
     "isUserAdmin": true,
     "clientId": "777045243888-mrs2ah6saspk0q3tcd9650ptjbks7buh.apps.googleusercontent.com",
     "displayText": "Bark for Schools",
@@ -1243,12 +1184,12 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/MhLe_4Pusuliz5gH5Rn2ZYUEGrM\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/MhLe_4Pusuliz5gH5Rn2ZYUEGrM\""
   },
   {
     "userEmail": "deidre@gafe.co.za",
     "userId": "108529170927100956427",
-    "userOrgUnit": "/deidre Testing OU",
+    "userOrgUnit": "/Jacaranda Academy/Staff",
     "isUserAdmin": true,
     "clientId": "77185425430.apps.googleusercontent.com",
     "displayText": "Google Chrome",
@@ -1257,31 +1198,12 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/xae38W6NHh1unm5ME-VPDh5CnLA\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/xae38W6NHh1unm5ME-VPDh5CnLA\""
   },
   {
     "userEmail": "deidre@gafe.co.za",
     "userId": "108529170927100956427",
-    "userOrgUnit": "/deidre Testing OU",
-    "isUserAdmin": true,
-    "clientId": "946018238758-bi6ni53dfoddlgn97pk3b8i7nphige40.apps.googleusercontent.com",
-    "displayText": "macOS",
-    "scopes": [
-      "https://www.googleapis.com/auth/carddav",
-      "https://www.googleapis.com/auth/userinfo.profile",
-      "https://www.googleapis.com/auth/userinfo.email",
-      "openid",
-      "https://www.googleapis.com/auth/calendar",
-      "https://mail.google.com/"
-    ],
-    "nativeApp": false,
-    "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/wJtsE6Pck-m3vt9UjYg6U6vReKQ\""
-  },
-  {
-    "userEmail": "deidre@gafe.co.za",
-    "userId": "108529170927100956427",
-    "userOrgUnit": "/deidre Testing OU",
+    "userOrgUnit": "/Jacaranda Academy/Staff",
     "isUserAdmin": true,
     "clientId": "626051926611-uisg6tp5g4e2be4pbs1f8dagkmv7o9s8.apps.googleusercontent.com",
     "displayText": "Get a daily summary of unread emails",
@@ -1300,12 +1222,31 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/F-5GXJZC6mcbXZNg1TTM2H1Vbh0\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/F-5GXJZC6mcbXZNg1TTM2H1Vbh0\""
   },
   {
     "userEmail": "deidre@gafe.co.za",
     "userId": "108529170927100956427",
-    "userOrgUnit": "/deidre Testing OU",
+    "userOrgUnit": "/Jacaranda Academy/Staff",
+    "isUserAdmin": true,
+    "clientId": "946018238758-bi6ni53dfoddlgn97pk3b8i7nphige40.apps.googleusercontent.com",
+    "displayText": "macOS",
+    "scopes": [
+      "https://www.googleapis.com/auth/carddav",
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.googleapis.com/auth/calendar",
+      "https://mail.google.com/"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/wJtsE6Pck-m3vt9UjYg6U6vReKQ\""
+  },
+  {
+    "userEmail": "deidre@gafe.co.za",
+    "userId": "108529170927100956427",
+    "userOrgUnit": "/Jacaranda Academy/Staff",
     "isUserAdmin": true,
     "clientId": "172700529642-48obmiqhk5joviftkt87d0po0bnbunbu.apps.googleusercontent.com",
     "displayText": "project-172700529642",
@@ -1320,12 +1261,12 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/g-Vuuy0_jY0i6FAI_aT7ho9y_U8\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/g-Vuuy0_jY0i6FAI_aT7ho9y_U8\""
   },
   {
     "userEmail": "deidre@gafe.co.za",
     "userId": "108529170927100956427",
-    "userOrgUnit": "/deidre Testing OU",
+    "userOrgUnit": "/Jacaranda Academy/Staff",
     "isUserAdmin": true,
     "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
     "displayText": "Android device",
@@ -1334,12 +1275,12 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/VgoBehB3Erv86fCATXIPHGJVqvI\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/VgoBehB3Erv86fCATXIPHGJVqvI\""
   },
   {
     "userEmail": "deidre@gafe.co.za",
     "userId": "108529170927100956427",
-    "userOrgUnit": "/deidre Testing OU",
+    "userOrgUnit": "/Jacaranda Academy/Staff",
     "isUserAdmin": true,
     "clientId": "122846605100-d4jhvnotnvqprrtasnrgrahea3015vrn.apps.googleusercontent.com",
     "displayText": "Workspace Studio",
@@ -1348,12 +1289,12 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/7Dj_2bwQNiqu0y_WCwjwHEHxgEM\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/7Dj_2bwQNiqu0y_WCwjwHEHxgEM\""
   },
   {
     "userEmail": "deidre@gafe.co.za",
     "userId": "108529170927100956427",
-    "userOrgUnit": "/deidre Testing OU",
+    "userOrgUnit": "/Jacaranda Academy/Staff",
     "isUserAdmin": true,
     "clientId": "953348912797-h2fo9tmk42mnrkk0kc6gula9i8ipv3re.apps.googleusercontent.com",
     "displayText": "Google AppSheet",
@@ -1367,28 +1308,12 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/mE6PqYvvWoOo5EuhWZ3uEljdn-k\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/mE6PqYvvWoOo5EuhWZ3uEljdn-k\""
   },
   {
     "userEmail": "deidre@gafe.co.za",
     "userId": "108529170927100956427",
-    "userOrgUnit": "/deidre Testing OU",
-    "isUserAdmin": true,
-    "clientId": "108309815588-d8c3litltbdoibd7vr078iu6njc2292u.apps.googleusercontent.com",
-    "displayText": "PDFSimpli",
-    "scopes": [
-      "https://www.googleapis.com/auth/userinfo.profile",
-      "https://www.googleapis.com/auth/userinfo.email",
-      "openid"
-    ],
-    "nativeApp": false,
-    "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/q1a4GKCBl1aMWuPmSLYpQJe4wLs\""
-  },
-  {
-    "userEmail": "deidre@gafe.co.za",
-    "userId": "108529170927100956427",
-    "userOrgUnit": "/deidre Testing OU",
+    "userOrgUnit": "/Jacaranda Academy/Staff",
     "isUserAdmin": true,
     "clientId": "690997610676-l8hvunsob913lqf9315ogsolip0pbs7o.apps.googleusercontent.com",
     "displayText": "DelCal by AliceKeeler",
@@ -1403,7 +1328,23 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/CTV90e8WFN7vmuOBchQcWqGU5mc\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/CTV90e8WFN7vmuOBchQcWqGU5mc\""
+  },
+  {
+    "userEmail": "deidre@gafe.co.za",
+    "userId": "108529170927100956427",
+    "userOrgUnit": "/Jacaranda Academy/Staff",
+    "isUserAdmin": true,
+    "clientId": "108309815588-d8c3litltbdoibd7vr078iu6njc2292u.apps.googleusercontent.com",
+    "displayText": "PDFSimpli",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/q1a4GKCBl1aMWuPmSLYpQJe4wLs\""
   },
   {
     "userEmail": "deidretest@gafe.co.za",
@@ -1417,7 +1358,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/1rpKpppvrZ6JYOSnkMSDy44MI7o\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/1rpKpppvrZ6JYOSnkMSDy44MI7o\""
   },
   {
     "userEmail": "deidretest@gafe.co.za",
@@ -1431,7 +1372,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/A0EwctPLtQdK9X9l62eKtpOp-Fw\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/A0EwctPLtQdK9X9l62eKtpOp-Fw\""
   },
   {
     "userEmail": "dooku@gafe.co.za",
@@ -1445,7 +1386,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/1aV_TnZZNYX67ZyP_b5D0PdLaYU\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/1aV_TnZZNYX67ZyP_b5D0PdLaYU\""
   },
   {
     "userEmail": "dooku@gafe.co.za",
@@ -1459,7 +1400,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/PZlqKNj8hx5gu0FGHm6dx5n__JU\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/PZlqKNj8hx5gu0FGHm6dx5n__JU\""
   },
   {
     "userEmail": "dune@gafe.co.za",
@@ -1473,7 +1414,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/ejroAWj2jw7UXEoOVOA6N6SjNAw\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/ejroAWj2jw7UXEoOVOA6N6SjNAw\""
   },
   {
     "userEmail": "e.johnson@gafe.co.za",
@@ -1489,7 +1430,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/ccmnn95129ULNykC7u8ZZqhrEqI\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/ccmnn95129ULNykC7u8ZZqhrEqI\""
   },
   {
     "userEmail": "e.johnson@gafe.co.za",
@@ -1503,28 +1444,12 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/087UUCPZ_Tq85yhzpKzRUebloFA\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/087UUCPZ_Tq85yhzpKzRUebloFA\""
   },
   {
     "userEmail": "farrakhan@gafe.co.za",
     "userId": "105221937046664268034",
-    "userOrgUnit": "/",
-    "isUserAdmin": true,
-    "clientId": "936475272427.apps.googleusercontent.com",
-    "displayText": "iOS Account Manager",
-    "scopes": [
-      "https://www.googleapis.com/auth/userinfo.email",
-      "openid",
-      "https://www.google.com/accounts/OAuthLogin"
-    ],
-    "nativeApp": false,
-    "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/UQXUkTfx66k77U7yNWtOTWeGrV4\""
-  },
-  {
-    "userEmail": "farrakhan@gafe.co.za",
-    "userId": "105221937046664268034",
-    "userOrgUnit": "/",
+    "userOrgUnit": "/Jacaranda Academy/Staff",
     "isUserAdmin": true,
     "clientId": "742713087391-4otjds6c701o8q958uhcku0c40r48vjk.apps.googleusercontent.com",
     "displayText": "Untitled project",
@@ -1535,12 +1460,12 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/F7yIBocOhHeOe6ja5eKbfHo_IHU\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/F7yIBocOhHeOe6ja5eKbfHo_IHU\""
   },
   {
     "userEmail": "farrakhan@gafe.co.za",
     "userId": "105221937046664268034",
-    "userOrgUnit": "/",
+    "userOrgUnit": "/Jacaranda Academy/Staff",
     "isUserAdmin": true,
     "clientId": "579706874471-v1v2akhe8lqriu4hhrm58rb1e1tpo6fn.apps.googleusercontent.com",
     "displayText": "Annual Leave ",
@@ -1551,12 +1476,28 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/lrG2iTGgyVNSj_RqE9HiiLkzJxM\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/lrG2iTGgyVNSj_RqE9HiiLkzJxM\""
   },
   {
     "userEmail": "farrakhan@gafe.co.za",
     "userId": "105221937046664268034",
-    "userOrgUnit": "/",
+    "userOrgUnit": "/Jacaranda Academy/Staff",
+    "isUserAdmin": true,
+    "clientId": "936475272427.apps.googleusercontent.com",
+    "displayText": "iOS Account Manager",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/UQXUkTfx66k77U7yNWtOTWeGrV4\""
+  },
+  {
+    "userEmail": "farrakhan@gafe.co.za",
+    "userId": "105221937046664268034",
+    "userOrgUnit": "/Jacaranda Academy/Staff",
     "isUserAdmin": true,
     "clientId": "657959631782-gig0qdc3vaieq93qtv1mubvj0c4mjdfl.apps.googleusercontent.com",
     "displayText": "Collaborative Whiteboard",
@@ -1567,26 +1508,12 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/ttXWcFDT2zdSrD-52pXjpbVsEJg\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/ttXWcFDT2zdSrD-52pXjpbVsEJg\""
   },
   {
     "userEmail": "farrakhan@gafe.co.za",
     "userId": "105221937046664268034",
-    "userOrgUnit": "/",
-    "isUserAdmin": true,
-    "clientId": "297408095146-fug707qsjv4ikron0hugpevbrjhkmsk7.apps.googleusercontent.com",
-    "displayText": "GAM Project Creation",
-    "scopes": [
-      "https://www.googleapis.com/auth/cloud-platform"
-    ],
-    "nativeApp": false,
-    "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/CQnKLKyervh6ojIhyTip9LLBhhc\""
-  },
-  {
-    "userEmail": "farrakhan@gafe.co.za",
-    "userId": "105221937046664268034",
-    "userOrgUnit": "/",
+    "userOrgUnit": "/Jacaranda Academy/Staff",
     "isUserAdmin": true,
     "clientId": "657959631782-i9cm367mk2m810gc99sp2lsie03vo4u3.apps.googleusercontent.com",
     "displayText": "Collaborative Whiteboard",
@@ -1597,12 +1524,26 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/oLMWjS22tCm78Rixj-UkiUIMQqc\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/oLMWjS22tCm78Rixj-UkiUIMQqc\""
   },
   {
     "userEmail": "farrakhan@gafe.co.za",
     "userId": "105221937046664268034",
-    "userOrgUnit": "/",
+    "userOrgUnit": "/Jacaranda Academy/Staff",
+    "isUserAdmin": true,
+    "clientId": "297408095146-fug707qsjv4ikron0hugpevbrjhkmsk7.apps.googleusercontent.com",
+    "displayText": "GAM Project Creation",
+    "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/CQnKLKyervh6ojIhyTip9LLBhhc\""
+  },
+  {
+    "userEmail": "farrakhan@gafe.co.za",
+    "userId": "105221937046664268034",
+    "userOrgUnit": "/Jacaranda Academy/Staff",
     "isUserAdmin": true,
     "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
     "displayText": "Android device",
@@ -1611,12 +1552,12 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/aI0hIzEtHgXIwc0WIcqgMp5dYHA\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/aI0hIzEtHgXIwc0WIcqgMp5dYHA\""
   },
   {
     "userEmail": "farrakhan@gafe.co.za",
     "userId": "105221937046664268034",
-    "userOrgUnit": "/",
+    "userOrgUnit": "/Jacaranda Academy/Staff",
     "isUserAdmin": true,
     "clientId": "779010036194-lf6spugv22vvj41pqjdj4d8k2tq7o5fd.apps.googleusercontent.com",
     "displayText": "Canva",
@@ -1627,12 +1568,12 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/jYQMObecImVWLH-Y0vtV1WqwdEY\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/jYQMObecImVWLH-Y0vtV1WqwdEY\""
   },
   {
     "userEmail": "farrakhan@gafe.co.za",
     "userId": "105221937046664268034",
-    "userOrgUnit": "/",
+    "userOrgUnit": "/Jacaranda Academy/Staff",
     "isUserAdmin": true,
     "clientId": "585538275436-4lk6emnir2l22atsdk61fstd4nhkgbku.apps.googleusercontent.com",
     "displayText": "GAM",
@@ -1687,12 +1628,12 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/_-II5SzcGqKkJRa6hgPcCqcKcXo\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/_-II5SzcGqKkJRa6hgPcCqcKcXo\""
   },
   {
     "userEmail": "farrakhan@gafe.co.za",
     "userId": "105221937046664268034",
-    "userOrgUnit": "/",
+    "userOrgUnit": "/Jacaranda Academy/Staff",
     "isUserAdmin": true,
     "clientId": "77185425430.apps.googleusercontent.com",
     "displayText": "Google Chrome",
@@ -1701,12 +1642,12 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/r6moaKvE57Ptn6A_b1B2qUx1INI\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/r6moaKvE57Ptn6A_b1B2qUx1INI\""
   },
   {
     "userEmail": "farrakhan@gafe.co.za",
     "userId": "105221937046664268034",
-    "userOrgUnit": "/",
+    "userOrgUnit": "/Jacaranda Academy/Staff",
     "isUserAdmin": true,
     "clientId": "64634722053-udlis9tvkf8tuh5r1r3jgbfsh1b29e00.apps.googleusercontent.com",
     "displayText": "BulkSignature",
@@ -1717,7 +1658,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/lXGRnVy7H-oALK3UpzfMEqHqPW8\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/lXGRnVy7H-oALK3UpzfMEqHqPW8\""
   },
   {
     "userEmail": "fett@gafe.co.za",
@@ -1731,7 +1672,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/OpmFshRfm5HgwYdHGThCD3OV-_U\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/OpmFshRfm5HgwYdHGThCD3OV-_U\""
   },
   {
     "userEmail": "fett@gafe.co.za",
@@ -1745,7 +1686,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/V2l_0P1gr8c819_pCgFP2p_pAIg\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/V2l_0P1gr8c819_pCgFP2p_pAIg\""
   },
   {
     "userEmail": "finn@gafe.co.za",
@@ -1761,7 +1702,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/Hr-kYoVUAwztJqI-gT4oAmwVfws\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/Hr-kYoVUAwztJqI-gT4oAmwVfws\""
   },
   {
     "userEmail": "finn@gafe.co.za",
@@ -1775,7 +1716,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/CyQh2Z4pj-46y_LrSAM1vMt51Xo\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/CyQh2Z4pj-46y_LrSAM1vMt51Xo\""
   },
   {
     "userEmail": "finn@gafe.co.za",
@@ -1789,7 +1730,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/-GoJZbZUQ0MNoTXZ73eOhEpGyUc\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/-GoJZbZUQ0MNoTXZ73eOhEpGyUc\""
   },
   {
     "userEmail": "fisto@gafe.co.za",
@@ -1803,7 +1744,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/VCo9B2KKima5fNwmsYJV1N0ycE8\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/VCo9B2KKima5fNwmsYJV1N0ycE8\""
   },
   {
     "userEmail": "fisto@gafe.co.za",
@@ -1819,7 +1760,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/OeP-ozPP7E9vVRpMhmnaLLOHekg\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/OeP-ozPP7E9vVRpMhmnaLLOHekg\""
   },
   {
     "userEmail": "fisto@gafe.co.za",
@@ -1833,7 +1774,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/xVqTy2Kc8t_Cj9RrXSkmf1agp0U\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/xVqTy2Kc8t_Cj9RrXSkmf1agp0U\""
   },
   {
     "userEmail": "fortuna@gafe.co.za",
@@ -1847,7 +1788,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/uHPYFU952iCL6ez0GRjvLZaEhNY\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/uHPYFU952iCL6ez0GRjvLZaEhNY\""
   },
   {
     "userEmail": "fortuna@gafe.co.za",
@@ -1861,7 +1802,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/-HO_fVzMUcs-YvKbxVzhlFuyrnA\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/-HO_fVzMUcs-YvKbxVzhlFuyrnA\""
   },
   {
     "userEmail": "gafe10@gafe.co.za",
@@ -1875,7 +1816,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/cEYNrM1AQpRwPVMoxLQULsUNEaU\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/cEYNrM1AQpRwPVMoxLQULsUNEaU\""
   },
   {
     "userEmail": "gafe11@gafe.co.za",
@@ -1889,7 +1830,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/yrTfG7pF8-LGWK-Pb4erWMlyGrY\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/yrTfG7pF8-LGWK-Pb4erWMlyGrY\""
   },
   {
     "userEmail": "gafe12@gafe.co.za",
@@ -1905,7 +1846,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/c7olWX9msKhkRu7EWD53ChuPNnA\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/c7olWX9msKhkRu7EWD53ChuPNnA\""
   },
   {
     "userEmail": "gafe14@gafe.co.za",
@@ -1919,7 +1860,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/-TEkEhsx59mWFQCLPL8lblTAECc\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/-TEkEhsx59mWFQCLPL8lblTAECc\""
   },
   {
     "userEmail": "gafe14@gafe.co.za",
@@ -1933,7 +1874,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/WjJwr9wOyF45eiINdCPxKb1j4XI\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/WjJwr9wOyF45eiINdCPxKb1j4XI\""
   },
   {
     "userEmail": "gafe15@gafe.co.za",
@@ -1947,7 +1888,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/M8erKdQ3zDBqrQ8ostHskASSAXg\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/M8erKdQ3zDBqrQ8ostHskASSAXg\""
   },
   {
     "userEmail": "gafe15@gafe.co.za",
@@ -1961,7 +1902,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/WGLUkZ37KLY8x1C_FUL6oOLIMBQ\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/WGLUkZ37KLY8x1C_FUL6oOLIMBQ\""
   },
   {
     "userEmail": "gafe16@gafe.co.za",
@@ -1975,7 +1916,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/0AetkVg6Tf0wgGYbmQa___AqzwA\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/0AetkVg6Tf0wgGYbmQa___AqzwA\""
   },
   {
     "userEmail": "gafe17@gafe.co.za",
@@ -1989,7 +1930,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/46sTzWvl9X_Z2KNQZ4lWJJVxnuU\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/46sTzWvl9X_Z2KNQZ4lWJJVxnuU\""
   },
   {
     "userEmail": "gafe18@gafe.co.za",
@@ -2003,7 +1944,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/i879DWo_lU-DF6OB5A_NuNFkP10\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/i879DWo_lU-DF6OB5A_NuNFkP10\""
   },
   {
     "userEmail": "gafe19@gafe.co.za",
@@ -2017,7 +1958,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/iNpRkWo8obLce-PA7j3OdV_FHRU\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/iNpRkWo8obLce-PA7j3OdV_FHRU\""
   },
   {
     "userEmail": "gafe19@gafe.co.za",
@@ -2031,7 +1972,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/f17awfuP_JAD6hyuYTGWPaQjn1I\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/f17awfuP_JAD6hyuYTGWPaQjn1I\""
   },
   {
     "userEmail": "gafe1@gafe.co.za",
@@ -2045,7 +1986,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/J8MDaYQmLiwwRWj-XYWevxW2ojA\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/J8MDaYQmLiwwRWj-XYWevxW2ojA\""
   },
   {
     "userEmail": "gafe1@gafe.co.za",
@@ -2059,7 +2000,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/CmWtYxyEphrLhS1-1nIit33aZ-Y\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/CmWtYxyEphrLhS1-1nIit33aZ-Y\""
   },
   {
     "userEmail": "gafe20@gafe.co.za",
@@ -2073,7 +2014,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/ll1NB_NVeVkPCEVTJoTyHnVOJiQ\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/ll1NB_NVeVkPCEVTJoTyHnVOJiQ\""
   },
   {
     "userEmail": "gafe20@gafe.co.za",
@@ -2087,7 +2028,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/bvEkIVgJ0QD8IJSOaazhvKJlKlw\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/bvEkIVgJ0QD8IJSOaazhvKJlKlw\""
   },
   {
     "userEmail": "gafe2@gafe.co.za",
@@ -2101,7 +2042,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/Z_NAqOVupc2iv2NDvRfUwruwRLY\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/Z_NAqOVupc2iv2NDvRfUwruwRLY\""
   },
   {
     "userEmail": "gafe2@gafe.co.za",
@@ -2115,7 +2056,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/D-AhqZrFdTmKpznosaFs9dYM0bk\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/D-AhqZrFdTmKpznosaFs9dYM0bk\""
   },
   {
     "userEmail": "gafe4@gafe.co.za",
@@ -2129,7 +2070,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/YcGZ3ep_E2nBR5m9mUyIsB2qrB8\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/YcGZ3ep_E2nBR5m9mUyIsB2qrB8\""
   },
   {
     "userEmail": "gafe4@gafe.co.za",
@@ -2143,7 +2084,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/RAYK7q50ulkbugv6teymHADgaJc\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/RAYK7q50ulkbugv6teymHADgaJc\""
   },
   {
     "userEmail": "gafe5@gafe.co.za",
@@ -2157,7 +2098,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/HA_2HQL9JV6P1MuanCnufW7Elp8\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/HA_2HQL9JV6P1MuanCnufW7Elp8\""
   },
   {
     "userEmail": "gafe5@gafe.co.za",
@@ -2171,7 +2112,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/BS-RR0gwziA534nx0Irkt4oN0Xw\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/BS-RR0gwziA534nx0Irkt4oN0Xw\""
   },
   {
     "userEmail": "gafe6@gafe.co.za",
@@ -2185,7 +2126,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/5Wi34Onio5_feP5e2A1Eun3dmeY\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/5Wi34Onio5_feP5e2A1Eun3dmeY\""
   },
   {
     "userEmail": "gafe7@gafe.co.za",
@@ -2199,7 +2140,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/EIaMzppwuDI_jZeUwzpjTL9LnKw\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/EIaMzppwuDI_jZeUwzpjTL9LnKw\""
   },
   {
     "userEmail": "gafe7@gafe.co.za",
@@ -2213,7 +2154,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/jxVhxQ-LnH6g3DZuBkRMe8o5b1k\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/jxVhxQ-LnH6g3DZuBkRMe8o5b1k\""
   },
   {
     "userEmail": "gafe8@gafe.co.za",
@@ -2227,7 +2168,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/y7-hx30hpVX1ocWIgxz8_KYtn1w\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/y7-hx30hpVX1ocWIgxz8_KYtn1w\""
   },
   {
     "userEmail": "gafe8@gafe.co.za",
@@ -2241,7 +2182,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/AwD8I2cQVhR3eBN654xrlLiBi6A\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/AwD8I2cQVhR3eBN654xrlLiBi6A\""
   },
   {
     "userEmail": "gafe9@gafe.co.za",
@@ -2255,43 +2196,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/OyBL7Bt8GfsvCp9i_fObAoStvVI\""
-  },
-  {
-    "userEmail": "gamu@gafe.co.za",
-    "userId": "111749199120022399733",
-    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
-    "isUserAdmin": false,
-    "clientId": "961782772109-gr6rmo3pe7iibrmjifhhar5iu2mjin9r.apps.googleusercontent.com",
-    "displayText": "Lusha",
-    "scopes": [
-      "https://www.googleapis.com/auth/calendar.events",
-      "https://www.googleapis.com/auth/gmail.readonly",
-      "https://www.googleapis.com/auth/contacts.other.readonly",
-      "https://www.googleapis.com/auth/userinfo.profile",
-      "https://www.googleapis.com/auth/contacts.readonly",
-      "https://www.googleapis.com/auth/gmail.send",
-      "https://www.googleapis.com/auth/userinfo.email",
-      "openid",
-      "https://www.googleapis.com/auth/directory.readonly"
-    ],
-    "nativeApp": false,
-    "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/S8F3Y5PXzAHyFb-DyZ7ppmFKgr0\""
-  },
-  {
-    "userEmail": "gamu@gafe.co.za",
-    "userId": "111749199120022399733",
-    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
-    "isUserAdmin": false,
-    "clientId": "77185425430.apps.googleusercontent.com",
-    "displayText": "Google Chrome",
-    "scopes": [
-      "https://www.google.com/accounts/OAuthLogin"
-    ],
-    "nativeApp": false,
-    "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/d9XQFHBg4tUthYrkqoLkfFxXE2s\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/OyBL7Bt8GfsvCp9i_fObAoStvVI\""
   },
   {
     "userEmail": "gde@gafe.co.za",
@@ -2305,7 +2210,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/6Hqa2xRQFX4-Yar56KEGYTIAzwk\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/6Hqa2xRQFX4-Yar56KEGYTIAzwk\""
   },
   {
     "userEmail": "heidi@gafe.co.za",
@@ -2321,7 +2226,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/FhbvNstU89AkUFJtOzVwK1c-Rxg\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/FhbvNstU89AkUFJtOzVwK1c-Rxg\""
   },
   {
     "userEmail": "holdo@gafe.co.za",
@@ -2335,7 +2240,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/DId09MSxmYuuVVnpeA0yPsgmJ08\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/xP7ddY0-aHfNJjERvJ08C2ifP6g\""
   },
   {
     "userEmail": "holdo@gafe.co.za",
@@ -2349,7 +2254,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/j6sIdyIMdIMZCVwGuv22Wxe7_WA\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/j6sIdyIMdIMZCVwGuv22Wxe7_WA\""
   },
   {
     "userEmail": "hutt@gafe.co.za",
@@ -2363,7 +2268,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/1-brGlqY1ccGrgDVmSWnTDH9yC0\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/1-brGlqY1ccGrgDVmSWnTDH9yC0\""
   },
   {
     "userEmail": "hutt@gafe.co.za",
@@ -2377,7 +2282,23 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/NXoQyAPe5MBLMSHhqsO2IiCS7ss\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/NXoQyAPe5MBLMSHhqsO2IiCS7ss\""
+  },
+  {
+    "userEmail": "iostest@gafe.co.za",
+    "userId": "113196880693862690559",
+    "userOrgUnit": "/Jacaranda Academy/Resources/iOS",
+    "isUserAdmin": false,
+    "clientId": "936475272427.apps.googleusercontent.com",
+    "displayText": "iOS Account Manager",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/I8mioqKVvzKv5MtVakn2TTQHfEU\""
   },
   {
     "userEmail": "iostest@gafe.co.za",
@@ -2396,23 +2317,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/LLDP8aALoLTaO_8xn6PCQG1QN_0\""
-  },
-  {
-    "userEmail": "iostest@gafe.co.za",
-    "userId": "113196880693862690559",
-    "userOrgUnit": "/Jacaranda Academy/Resources/iOS",
-    "isUserAdmin": false,
-    "clientId": "936475272427.apps.googleusercontent.com",
-    "displayText": "iOS Account Manager",
-    "scopes": [
-      "https://www.googleapis.com/auth/userinfo.email",
-      "openid",
-      "https://www.google.com/accounts/OAuthLogin"
-    ],
-    "nativeApp": false,
-    "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/I8mioqKVvzKv5MtVakn2TTQHfEU\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/LLDP8aALoLTaO_8xn6PCQG1QN_0\""
   },
   {
     "userEmail": "iostest@gafe.co.za",
@@ -2428,7 +2333,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/fuWQFhIlCDq-Tokn1eepHZp4D2o\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/fuWQFhIlCDq-Tokn1eepHZp4D2o\""
   },
   {
     "userEmail": "iostest@gafe.co.za",
@@ -2444,7 +2349,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/CrF8pG7MEDOii23lfyLrLi1Iz8s\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/CrF8pG7MEDOii23lfyLrLi1Iz8s\""
   },
   {
     "userEmail": "iostest@gafe.co.za",
@@ -2460,7 +2365,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/-BO-9n4PU9wueE8aIGlEIKiIVcM\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/-BO-9n4PU9wueE8aIGlEIKiIVcM\""
   },
   {
     "userEmail": "jamie@gafe.co.za",
@@ -2474,7 +2379,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/X6fOPTtT5utwLsRIeu3zwPUZ4g8\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/X6fOPTtT5utwLsRIeu3zwPUZ4g8\""
   },
   {
     "userEmail": "jamie@gafe.co.za",
@@ -2490,7 +2395,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/o2sNjlfUivlcBTEFgNOJfuf2jbI\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/o2sNjlfUivlcBTEFgNOJfuf2jbI\""
   },
   {
     "userEmail": "jamie@gafe.co.za",
@@ -2506,7 +2411,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/G_AlNAu9SIul1pGTPDGlOQzBSXc\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/G_AlNAu9SIul1pGTPDGlOQzBSXc\""
   },
   {
     "userEmail": "jamie@gafe.co.za",
@@ -2520,7 +2425,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/hOfE1DuwFgCRfXmY3H025uERTeE\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/hOfE1DuwFgCRfXmY3H025uERTeE\""
   },
   {
     "userEmail": "jinn@gafe.co.za",
@@ -2536,7 +2441,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/OkBgdw564QTNWCXu1MOS3zXNc08\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/OkBgdw564QTNWCXu1MOS3zXNc08\""
   },
   {
     "userEmail": "karga@gafe.co.za",
@@ -2550,7 +2455,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/vpbykQcF-ZJs-VDdrirURE7lkT8\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/TzaYL9_rcIJRZE8-7ugep0zViMo\""
   },
   {
     "userEmail": "karga@gafe.co.za",
@@ -2564,7 +2469,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/jxZ8hLFXRYNsY2AtxjhLpB-VkUA\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/jxZ8hLFXRYNsY2AtxjhLpB-VkUA\""
   },
   {
     "userEmail": "karien@gafe.co.za",
@@ -2580,7 +2485,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/095Ml5fOQijPLjjKz5ICc9Md7ZY\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/095Ml5fOQijPLjjKz5ICc9Md7ZY\""
   },
   {
     "userEmail": "karien@gafe.co.za",
@@ -2596,21 +2501,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/DGb2vKBULSoPj6tD7qQWvXtEhA8\""
-  },
-  {
-    "userEmail": "karien@gafe.co.za",
-    "userId": "104163325107308236111",
-    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
-    "isUserAdmin": true,
-    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
-    "displayText": "Android device",
-    "scopes": [
-      "https://www.google.com/accounts/OAuthLogin"
-    ],
-    "nativeApp": false,
-    "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/Mpaicki68dMiGabktkj1anlrOxs\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/DGb2vKBULSoPj6tD7qQWvXtEhA8\""
   },
   {
     "userEmail": "karien@gafe.co.za",
@@ -2624,9 +2515,9 @@
       "https://www.googleapis.com/auth/classroom.courses",
       "https://www.googleapis.com/auth/classroom.coursework.students",
       "https://www.googleapis.com/auth/userinfo.profile",
-      "https://www.googleapis.com/auth/userinfo.email",
       "https://www.googleapis.com/auth/admin.directory.group.readonly",
       "https://www.googleapis.com/auth/classroom.profile.emails",
+      "https://www.googleapis.com/auth/userinfo.email",
       "openid",
       "https://www.googleapis.com/auth/classroom.announcements",
       "https://www.googleapis.com/auth/drive.file",
@@ -2635,7 +2526,21 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/dqYC5e1RV0yFUkV5GYmxaP4Qxyk\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/9KoHCyvtKKjR_CiW81yqOK2uB4k\""
+  },
+  {
+    "userEmail": "karien@gafe.co.za",
+    "userId": "104163325107308236111",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": true,
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/Mpaicki68dMiGabktkj1anlrOxs\""
   },
   {
     "userEmail": "karien@gafe.co.za",
@@ -2650,7 +2555,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/V8Qnw9rjzsREph-m4YCPfLFsmpg\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/V8Qnw9rjzsREph-m4YCPfLFsmpg\""
   },
   {
     "userEmail": "karien@gafe.co.za",
@@ -2666,7 +2571,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/J-5NThUEfWG0FwF1krDc-E_SUEU\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/LFNIyB0sLQIeX5oTLCWcm31LSmo\""
   },
   {
     "userEmail": "karien@gafe.co.za",
@@ -2682,7 +2587,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/5H8BHHOUhHnBWWbrBodPbO5Tsvw\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/5H8BHHOUhHnBWWbrBodPbO5Tsvw\""
   },
   {
     "userEmail": "karien@gafe.co.za",
@@ -2705,7 +2610,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/PQwZiBLddU6JbgNaDJ5BlrXTa9c\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/PQwZiBLddU6JbgNaDJ5BlrXTa9c\""
   },
   {
     "userEmail": "karien@gafe.co.za",
@@ -2721,7 +2626,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/fpNZrtEu1GfABbDliUeOk2POENI\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/fpNZrtEu1GfABbDliUeOk2POENI\""
   },
   {
     "userEmail": "karien@gafe.co.za",
@@ -2735,7 +2640,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/CWCrSdiE15QDmqw2k6bzPbP6I4g\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/CWCrSdiE15QDmqw2k6bzPbP6I4g\""
   },
   {
     "userEmail": "kenobi@gafe.co.za",
@@ -2751,7 +2656,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/TZdBuFiWtjivtlBh5G5gzMYycRI\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/TZdBuFiWtjivtlBh5G5gzMYycRI\""
   },
   {
     "userEmail": "kenobi@gafe.co.za",
@@ -2765,23 +2670,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/wezPw0ao7xySAeXOfOiOWtC-e0Q\""
-  },
-  {
-    "userEmail": "kenobi@gafe.co.za",
-    "userId": "116909570289613988756",
-    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Training/InnovateEDU 2026",
-    "isUserAdmin": false,
-    "clientId": "476257776955-t129f3c8h8tgq60g7rp4cmganf4n7dn7.apps.googleusercontent.com",
-    "displayText": "dev.adminlens.io",
-    "scopes": [
-      "https://www.googleapis.com/auth/userinfo.profile",
-      "https://www.googleapis.com/auth/userinfo.email",
-      "openid"
-    ],
-    "nativeApp": false,
-    "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/InuTHHQl1kNB6gce6FABbJNUs4I\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/wezPw0ao7xySAeXOfOiOWtC-e0Q\""
   },
   {
     "userEmail": "kenobi@gafe.co.za",
@@ -2795,23 +2684,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/KxqI53gfINTOvv6IfnikeUUCmvo\""
-  },
-  {
-    "userEmail": "kevin@gafe.co.za",
-    "userId": "110373738102602631270",
-    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
-    "isUserAdmin": true,
-    "clientId": "936475272427.apps.googleusercontent.com",
-    "displayText": "iOS Account Manager",
-    "scopes": [
-      "https://www.googleapis.com/auth/userinfo.email",
-      "https://www.googleapis.com/auth/plus.me",
-      "https://www.google.com/accounts/OAuthLogin"
-    ],
-    "nativeApp": true,
-    "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/fxqfkTbT0h1dyXj2xuQst6Z5oPU\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/KxqI53gfINTOvv6IfnikeUUCmvo\""
   },
   {
     "userEmail": "kevin@gafe.co.za",
@@ -2827,7 +2700,23 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/a12hXJ2eNWPtbABbO_v6PtbOyWQ\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/a12hXJ2eNWPtbABbO_v6PtbOyWQ\""
+  },
+  {
+    "userEmail": "kevin@gafe.co.za",
+    "userId": "110373738102602631270",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": true,
+    "clientId": "936475272427.apps.googleusercontent.com",
+    "displayText": "iOS Account Manager",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "https://www.googleapis.com/auth/plus.me",
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": true,
+    "anonymous": false,
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/fxqfkTbT0h1dyXj2xuQst6Z5oPU\""
   },
   {
     "userEmail": "kevin@gafe.co.za",
@@ -2842,7 +2731,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/3dWW86Y6LhW70Hly6yjGG_vFGW0\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/3dWW86Y6LhW70Hly6yjGG_vFGW0\""
   },
   {
     "userEmail": "kevin@gafe.co.za",
@@ -2859,15 +2748,29 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/zb1O7BRvBPIVzUabpk35omyIHyQ\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/zb1O7BRvBPIVzUabpk35omyIHyQ\""
   },
   {
     "userEmail": "kevin@gafe.co.za",
     "userId": "110373738102602631270",
     "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
     "isUserAdmin": true,
-    "clientId": "779010036194-lf6spugv22vvj41pqjdj4d8k2tq7o5fd.apps.googleusercontent.com",
-    "displayText": "Canva",
+    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
+    "displayText": "Android device",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/-G8yOIJ7WgZ11TLWQ0AhhFK0XbA\""
+  },
+  {
+    "userEmail": "kevin@gafe.co.za",
+    "userId": "110373738102602631270",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": true,
+    "clientId": "1062961139910-l2m55cb9h51u5cuc9c56eb3fevouidh9.apps.googleusercontent.com",
+    "displayText": "Claude",
     "scopes": [
       "https://www.googleapis.com/auth/userinfo.profile",
       "https://www.googleapis.com/auth/userinfo.email",
@@ -2875,23 +2778,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/2Q6Aqn1t0BYsz0tCVhyao9p5xDE\""
-  },
-  {
-    "userEmail": "kevin@gafe.co.za",
-    "userId": "110373738102602631270",
-    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
-    "isUserAdmin": true,
-    "clientId": "476257776955-t129f3c8h8tgq60g7rp4cmganf4n7dn7.apps.googleusercontent.com",
-    "displayText": "dev.adminlens.io",
-    "scopes": [
-      "https://www.googleapis.com/auth/userinfo.profile",
-      "https://www.googleapis.com/auth/userinfo.email",
-      "openid"
-    ],
-    "nativeApp": false,
-    "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/Uy-JbTGgkeOtf1v5lpDzURgA9dI\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/GZItn_xDs3R4sx-aXaTsvj7c2fY\""
   },
   {
     "userEmail": "kevin@gafe.co.za",
@@ -2910,7 +2797,55 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/dH08xX4FKojJpntS3AF1urcBynI\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/dH08xX4FKojJpntS3AF1urcBynI\""
+  },
+  {
+    "userEmail": "kevin@gafe.co.za",
+    "userId": "110373738102602631270",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": true,
+    "clientId": "779010036194-lf6spugv22vvj41pqjdj4d8k2tq7o5fd.apps.googleusercontent.com",
+    "displayText": "Canva",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/2Q6Aqn1t0BYsz0tCVhyao9p5xDE\""
+  },
+  {
+    "userEmail": "kevin@gafe.co.za",
+    "userId": "110373738102602631270",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": true,
+    "clientId": "476257776955-t129f3c8h8tgq60g7rp4cmganf4n7dn7.apps.googleusercontent.com",
+    "displayText": "dev.adminlens.io",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/Uy-JbTGgkeOtf1v5lpDzURgA9dI\""
+  },
+  {
+    "userEmail": "kevin@gafe.co.za",
+    "userId": "110373738102602631270",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": true,
+    "clientId": "104648517694-6cbvg9ida7ivm77gj2cbdee67o29vhe4.apps.googleusercontent.com",
+    "displayText": "Howdou",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/TfQNDHaQnLUCACUDYNJ8IFV8r34\""
   },
   {
     "userEmail": "kevin@gafe.co.za",
@@ -2930,7 +2865,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/Etvg762mqlINE6paoEKYOP7fVQ0\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/Etvg762mqlINE6paoEKYOP7fVQ0\""
   },
   {
     "userEmail": "kevin@gafe.co.za",
@@ -2944,69 +2879,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/1exAMc_uX-Rcs6rhTkMDgsIJkjs\""
-  },
-  {
-    "userEmail": "kevin@gafe.co.za",
-    "userId": "110373738102602631270",
-    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
-    "isUserAdmin": true,
-    "clientId": "489890094529-ueegekuf9mubvv4sc6bh57op2rkjok62.apps.googleusercontent.com",
-    "displayText": "Bitly",
-    "scopes": [
-      "https://www.googleapis.com/auth/userinfo.profile",
-      "https://www.googleapis.com/auth/userinfo.email",
-      "openid"
-    ],
-    "nativeApp": false,
-    "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/kaDHgf63CXIC5S8w-603k3m41pw\""
-  },
-  {
-    "userEmail": "kevin@gafe.co.za",
-    "userId": "110373738102602631270",
-    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
-    "isUserAdmin": true,
-    "clientId": "1070009224336-sdh77n7uot3oc99ais00jmuft6sk2fg9.apps.googleusercontent.com",
-    "displayText": "Android device",
-    "scopes": [
-      "https://www.google.com/accounts/OAuthLogin"
-    ],
-    "nativeApp": false,
-    "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/-G8yOIJ7WgZ11TLWQ0AhhFK0XbA\""
-  },
-  {
-    "userEmail": "kevin@gafe.co.za",
-    "userId": "110373738102602631270",
-    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
-    "isUserAdmin": true,
-    "clientId": "1062961139910-l2m55cb9h51u5cuc9c56eb3fevouidh9.apps.googleusercontent.com",
-    "displayText": "Claude",
-    "scopes": [
-      "https://www.googleapis.com/auth/userinfo.profile",
-      "https://www.googleapis.com/auth/userinfo.email",
-      "openid"
-    ],
-    "nativeApp": false,
-    "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/GZItn_xDs3R4sx-aXaTsvj7c2fY\""
-  },
-  {
-    "userEmail": "kevin@gafe.co.za",
-    "userId": "110373738102602631270",
-    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
-    "isUserAdmin": true,
-    "clientId": "104648517694-6cbvg9ida7ivm77gj2cbdee67o29vhe4.apps.googleusercontent.com",
-    "displayText": "Howdou",
-    "scopes": [
-      "https://www.googleapis.com/auth/userinfo.profile",
-      "https://www.googleapis.com/auth/userinfo.email",
-      "openid"
-    ],
-    "nativeApp": false,
-    "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/TfQNDHaQnLUCACUDYNJ8IFV8r34\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/1exAMc_uX-Rcs6rhTkMDgsIJkjs\""
   },
   {
     "userEmail": "louise@gafe.co.za",
@@ -3022,7 +2895,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/WNLfUrxJrWTpd3xSwheXYnL8BBY\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/WNLfUrxJrWTpd3xSwheXYnL8BBY\""
   },
   {
     "userEmail": "louise@gafe.co.za",
@@ -3039,7 +2912,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/TQ1eCAqCFxWFdwBXdQ3AsdwZhe4\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/TQ1eCAqCFxWFdwBXdQ3AsdwZhe4\""
   },
   {
     "userEmail": "louise@gafe.co.za",
@@ -3053,7 +2926,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/3OFpZZNVqDvi4T1Jgeef218ISlw\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/3OFpZZNVqDvi4T1Jgeef218ISlw\""
   },
   {
     "userEmail": "louise@gafe.co.za",
@@ -3069,7 +2942,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/CWZkylBPpvhOdrsOYhCjFdc-m24\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/8Sf_SjS6TpwfDGJDcUBl1KQoEds\""
   },
   {
     "userEmail": "louise@gafe.co.za",
@@ -3085,7 +2958,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/Sx1lnk37bOM34RHn2K-OECqbCrg\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/Sx1lnk37bOM34RHn2K-OECqbCrg\""
   },
   {
     "userEmail": "louise@gafe.co.za",
@@ -3099,7 +2972,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/NPB-3xRoOXYBwBWG2olm2AMBPP8\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/NPB-3xRoOXYBwBWG2olm2AMBPP8\""
   },
   {
     "userEmail": "louise@gafe.co.za",
@@ -3115,7 +2988,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/2tdHn2GMRxc54CFfiHym-8oJA6w\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/2tdHn2GMRxc54CFfiHym-8oJA6w\""
   },
   {
     "userEmail": "lskywalker@gafe.co.za",
@@ -3129,7 +3002,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/CDW2LBfZRNAyS_KAQ_rvWG4fIzw\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/CDW2LBfZRNAyS_KAQ_rvWG4fIzw\""
   },
   {
     "userEmail": "lskywalker@gafe.co.za",
@@ -3145,7 +3018,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/WG2sN2LDuw8Ntxyvgh3De265emM\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/WG2sN2LDuw8Ntxyvgh3De265emM\""
   },
   {
     "userEmail": "lskywalker@gafe.co.za",
@@ -3159,7 +3032,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/xfdHPaGnRWFNtVsZzHMApP8dYGI\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/xfdHPaGnRWFNtVsZzHMApP8dYGI\""
   },
   {
     "userEmail": "m.davis@gafe.co.za",
@@ -3175,7 +3048,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/NV2oPWI0AJLeklBcgEhM_KgSn-U\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/NV2oPWI0AJLeklBcgEhM_KgSn-U\""
   },
   {
     "userEmail": "m.davis@gafe.co.za",
@@ -3191,7 +3064,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/ayKQWLLBYqBWD1OQEkI4KFoSemU\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/ayKQWLLBYqBWD1OQEkI4KFoSemU\""
   },
   {
     "userEmail": "m.davis@gafe.co.za",
@@ -3207,7 +3080,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/H563GIb8o-ybkO9AwDBnROZWWNs\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/H563GIb8o-ybkO9AwDBnROZWWNs\""
   },
   {
     "userEmail": "m.davis@gafe.co.za",
@@ -3221,7 +3094,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/apxKnZpAi9q8D2U69LYo7DGeRd4\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/apxKnZpAi9q8D2U69LYo7DGeRd4\""
   },
   {
     "userEmail": "m.davis@gafe.co.za",
@@ -3237,7 +3110,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/Ii7UBTuSTPoHKNy3cDJrWbvCEZo\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/Ii7UBTuSTPoHKNy3cDJrWbvCEZo\""
   },
   {
     "userEmail": "mantest2@gafe.co.za",
@@ -3253,7 +3126,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/kwVpINmssnE6FtjTxh1DkeW9si4\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/kwVpINmssnE6FtjTxh1DkeW9si4\""
   },
   {
     "userEmail": "marinus@gafe.co.za",
@@ -3269,7 +3142,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/eXs8lFPQvcsVajfbtfxxl3WHcW0\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/eXs8lFPQvcsVajfbtfxxl3WHcW0\""
   },
   {
     "userEmail": "maul@gafe.co.za",
@@ -3283,7 +3156,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/Vvi5OVzzPzINXKTFWunRVrMfIug\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/Vvi5OVzzPzINXKTFWunRVrMfIug\""
   },
   {
     "userEmail": "maul@gafe.co.za",
@@ -3297,7 +3170,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/XxsVAyAeWd-I5_0tYwaRKzl4Sfg\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/XxsVAyAeWd-I5_0tYwaRKzl4Sfg\""
   },
   {
     "userEmail": "mickey@gafe.co.za",
@@ -3312,7 +3185,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/fqQXQcYBWdqdhZxgsu8ybOjMXWQ\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/fqQXQcYBWdqdhZxgsu8ybOjMXWQ\""
   },
   {
     "userEmail": "mickey@gafe.co.za",
@@ -3329,7 +3202,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/HNV_y-RauzHE8u2mwhnF0Lb7Ffk\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/HNV_y-RauzHE8u2mwhnF0Lb7Ffk\""
   },
   {
     "userEmail": "mickey@gafe.co.za",
@@ -3343,7 +3216,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/RC1s-XSdnssURtuxRcePwwNl_G8\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/RC1s-XSdnssURtuxRcePwwNl_G8\""
   },
   {
     "userEmail": "mickey@gafe.co.za",
@@ -3363,7 +3236,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/fFGtuPUHT-Ax4jaNGKvio7IrWR8\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/fFGtuPUHT-Ax4jaNGKvio7IrWR8\""
   },
   {
     "userEmail": "mickey@gafe.co.za",
@@ -3377,7 +3250,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/EJnv_Hn6p-w1N1vV8RPrDPpPZq0\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/EJnv_Hn6p-w1N1vV8RPrDPpPZq0\""
   },
   {
     "userEmail": "migrate@gafe.co.za",
@@ -3391,7 +3264,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/JFkDCPldECriISvFqCH8_3hVqRg\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/JFkDCPldECriISvFqCH8_3hVqRg\""
   },
   {
     "userEmail": "mskywalker@gafe.co.za",
@@ -3407,7 +3280,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/buPj5dQs1WE62ZFWcIJ2twAC8Cs\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/buPj5dQs1WE62ZFWcIJ2twAC8Cs\""
   },
   {
     "userEmail": "mskywalker@gafe.co.za",
@@ -3421,7 +3294,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/5kElJ8sGJjc3BMNp1Ec7tj0McWU\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/5kElJ8sGJjc3BMNp1Ec7tj0McWU\""
   },
   {
     "userEmail": "mskywalker@gafe.co.za",
@@ -3435,7 +3308,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/Fh2DVMcJgRyuDUkCWF0D1C-5UUY\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/Fh2DVMcJgRyuDUkCWF0D1C-5UUY\""
   },
   {
     "userEmail": "nontokozo@gafe.co.za",
@@ -3451,7 +3324,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/myHjk3RKw84EC1i_X7YJBISy2kQ\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/myHjk3RKw84EC1i_X7YJBISy2kQ\""
   },
   {
     "userEmail": "nontokozo@gafe.co.za",
@@ -3465,7 +3338,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/nLgZz5ese8TCowRK9zDyZ67MCTk\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/nLgZz5ese8TCowRK9zDyZ67MCTk\""
   },
   {
     "userEmail": "nu@gafe.co.za",
@@ -3479,7 +3352,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/vbinDaabyxxgzIHlB8k8durHOl0\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/vbinDaabyxxgzIHlB8k8durHOl0\""
   },
   {
     "userEmail": "nu@gafe.co.za",
@@ -3493,7 +3366,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/2wleApq-l1sUfJ2PYSlk0sPxXKA\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/2wleApq-l1sUfJ2PYSlk0sPxXKA\""
   },
   {
     "userEmail": "panaka@gafe.co.za",
@@ -3507,7 +3380,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/Zvx5xaQynHjKwEfJCB7ddKlaUiM\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/Zvx5xaQynHjKwEfJCB7ddKlaUiM\""
   },
   {
     "userEmail": "panaka@gafe.co.za",
@@ -3523,7 +3396,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/Nf8gppJreOGFsEiWEGv9LJGaKok\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/Nf8gppJreOGFsEiWEGv9LJGaKok\""
   },
   {
     "userEmail": "panaka@gafe.co.za",
@@ -3537,7 +3410,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/jHtN6Pcz5r43zIrbzrtOH2qdOOU\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/jHtN6Pcz5r43zIrbzrtOH2qdOOU\""
   },
   {
     "userEmail": "paploo@gafe.co.za",
@@ -3551,7 +3424,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/plsH9dGEat9B2CWV3YhbRDUkTRY\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/plsH9dGEat9B2CWV3YhbRDUkTRY\""
   },
   {
     "userEmail": "paploo@gafe.co.za",
@@ -3565,7 +3438,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/8sFz-1kwdRDu7K1UB_yStIgahc8\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/8sFz-1kwdRDu7K1UB_yStIgahc8\""
   },
   {
     "userEmail": "parent_calendar@gafe.co.za",
@@ -3579,7 +3452,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/TLVU_xIB6shHHMkibdR_xBmHF94\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/TLVU_xIB6shHHMkibdR_xBmHF94\""
   },
   {
     "userEmail": "pavel@gafe.co.za",
@@ -3595,7 +3468,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/FAFNyVj4MyQUeehtrvwfQrVo7cQ\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/FAFNyVj4MyQUeehtrvwfQrVo7cQ\""
   },
   {
     "userEmail": "pavel@gafe.co.za",
@@ -3611,7 +3484,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/bnI6o_IduhDIPrhFmvEZahXFypI\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/bnI6o_IduhDIPrhFmvEZahXFypI\""
   },
   {
     "userEmail": "pavel@gafe.co.za",
@@ -3627,7 +3500,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/TkvYgab824wDt6fGPW1IV9B5kJI\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/TkvYgab824wDt6fGPW1IV9B5kJI\""
   },
   {
     "userEmail": "pavel@gafe.co.za",
@@ -3641,7 +3514,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/OtrpPmsghgxili4vse9oWzUM4Kw\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/gKs70LcWfaqndywuoAPyKcLzgp8\""
   },
   {
     "userEmail": "pylyp@gafe.co.za",
@@ -3657,7 +3530,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/fOEvz7mBcO98XL3owUShmAVUFrU\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/fOEvz7mBcO98XL3owUShmAVUFrU\""
   },
   {
     "userEmail": "pylyp@gafe.co.za",
@@ -3671,7 +3544,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/d6zRmeWuD14EnTFlv-QrOXWj_AQ\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/61rOerobVL0aR5wvwO1KJ1k2kkk\""
   },
   {
     "userEmail": "r2d2@gafe.co.za",
@@ -3685,7 +3558,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/AlT8_ksydQS_mfuKwZntdWbX0Xc\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/AlT8_ksydQS_mfuKwZntdWbX0Xc\""
   },
   {
     "userEmail": "r2d2@gafe.co.za",
@@ -3699,7 +3572,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/ghHmCNUkp3usu22yR9fTp38JApY\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/ghHmCNUkp3usu22yR9fTp38JApY\""
   },
   {
     "userEmail": "reeves@gafe.co.za",
@@ -3713,7 +3586,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/d-9xRDpc9Z9iKYY8WFW4qEcqzyc\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/d-9xRDpc9Z9iKYY8WFW4qEcqzyc\""
   },
   {
     "userEmail": "reeves@gafe.co.za",
@@ -3727,7 +3600,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/KoWH4EGTU_e7X_aDZD-EDyCvC1o\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/KoWH4EGTU_e7X_aDZD-EDyCvC1o\""
   },
   {
     "userEmail": "ren@gafe.co.za",
@@ -3741,7 +3614,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/cG2ROajBYz5GgwFHoRHwHPYGJnA\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/cG2ROajBYz5GgwFHoRHwHPYGJnA\""
   },
   {
     "userEmail": "ren@gafe.co.za",
@@ -3755,7 +3628,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/fKyi86H2Ch8Q3huQ3tQl9PXTBbE\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/fKyi86H2Ch8Q3huQ3tQl9PXTBbE\""
   },
   {
     "userEmail": "rey@gafe.co.za",
@@ -3771,7 +3644,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/-SzE3cZ0N_iNL7Q-g2pdDgtmZwk\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/-SzE3cZ0N_iNL7Q-g2pdDgtmZwk\""
   },
   {
     "userEmail": "s.bones@gafe.co.za",
@@ -3787,7 +3660,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/T4qgdwe78e9YN9R7Lc9w8zh0-W4\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/T4qgdwe78e9YN9R7Lc9w8zh0-W4\""
   },
   {
     "userEmail": "samram2566@gafe.co.za",
@@ -3801,7 +3674,21 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/ZpWHv0A-NULSmXDRD7Gr9gz_TDw\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/ZpWHv0A-NULSmXDRD7Gr9gz_TDw\""
+  },
+  {
+    "userEmail": "school_calendar@gafe.co.za",
+    "userId": "104711847174635317348",
+    "userOrgUnit": "/CloudEDU Technical/Demo",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/CpT_Iz_UBEOAILqDG6gLwdFcmbU\""
   },
   {
     "userEmail": "sharon@gafe.co.za",
@@ -3815,7 +3702,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/tHHTbGwY9T8j3hlKtnGIMVW5EuM\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/tHHTbGwY9T8j3hlKtnGIMVW5EuM\""
   },
   {
     "userEmail": "signafly@gafe.co.za",
@@ -3835,7 +3722,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/KmALNUDHm0oO0jH_AUOh8CA0rOI\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/KmALNUDHm0oO0jH_AUOh8CA0rOI\""
   },
   {
     "userEmail": "solo@gafe.co.za",
@@ -3851,7 +3738,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/OQqjWoIcPvBQVvj35AuW1yreWl8\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/OQqjWoIcPvBQVvj35AuW1yreWl8\""
   },
   {
     "userEmail": "solo@gafe.co.za",
@@ -3865,7 +3752,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/5RviqJjE9R1xy-M9bpJNuMMXOKA\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/5RviqJjE9R1xy-M9bpJNuMMXOKA\""
   },
   {
     "userEmail": "solo@gafe.co.za",
@@ -3881,7 +3768,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/Pgy3orHudNFpxXbrxYU6_LXmG5E\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/Pgy3orHudNFpxXbrxYU6_LXmG5E\""
   },
   {
     "userEmail": "solo@gafe.co.za",
@@ -3896,7 +3783,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/6zWe0b25EgU7r9mG12MwQ1DnhPI\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/6zWe0b25EgU7r9mG12MwQ1DnhPI\""
   },
   {
     "userEmail": "solo@gafe.co.za",
@@ -3912,7 +3799,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/a9DLZNem9NDITcPBd8qV1NocVzk\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/a9DLZNem9NDITcPBd8qV1NocVzk\""
   },
   {
     "userEmail": "solo@gafe.co.za",
@@ -3926,7 +3813,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/4mtfqPh5HZPkjIRlR2ZztiVm3Gg\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/MZGbaKaxGig7-7vZkmTC8kNR-1g\""
   },
   {
     "userEmail": "syates1142@gafe.co.za",
@@ -3940,7 +3827,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/pWe2k_XKgNFDctfMBUmtVxfBgGY\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/pWe2k_XKgNFDctfMBUmtVxfBgGY\""
   },
   {
     "userEmail": "tetiana_kaminska@gafe.co.za",
@@ -3956,7 +3843,52 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/ParseE5S2zscJcEonOpVPyXjNKE\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/ParseE5S2zscJcEonOpVPyXjNKE\""
+  },
+  {
+    "userEmail": "tetiana_kaminska@gafe.co.za",
+    "userId": "117699704439186118473",
+    "userOrgUnit": "/Existek",
+    "isUserAdmin": true,
+    "clientId": "292824132082.apps.googleusercontent.com",
+    "displayText": "Google APIs Explorer",
+    "scopes": [
+      "openid",
+      "https://www.googleapis.com/auth/admin.reports.audit.readonly"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/GzgpljD3yf2uCivJqsYfra745PE\""
+  },
+  {
+    "userEmail": "tetiana_kaminska@gafe.co.za",
+    "userId": "117699704439186118473",
+    "userOrgUnit": "/Existek",
+    "isUserAdmin": true,
+    "clientId": "36169664182-5eqhquc7nm7tb1ehm4knepe4i83ai7c1.apps.googleusercontent.com",
+    "displayText": "Files Editor",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.googleapis.com/auth/admin.directory.orgunit.readonly"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/UuT5aGgh-FTB5S7otVArJxDCuag\""
+  },
+  {
+    "userEmail": "tetiana_kaminska@gafe.co.za",
+    "userId": "117699704439186118473",
+    "userOrgUnit": "/Existek",
+    "isUserAdmin": true,
+    "clientId": "36169664182-nien1e2ojhjqci440vbogoa1btl7a6r4.apps.googleusercontent.com",
+    "displayText": "Files Editor",
+    "scopes": [
+      "https://www.googleapis.com/auth/calendar.readonly"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/59A1W4f0ZSztxji0b_6GP83Dfss\""
   },
   {
     "userEmail": "tetiana_kaminska@gafe.co.za",
@@ -3972,7 +3904,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/9BZZsG67991eg7uloIwnbZd9gwg\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/9BZZsG67991eg7uloIwnbZd9gwg\""
   },
   {
     "userEmail": "tetiana_kaminska@gafe.co.za",
@@ -3988,7 +3920,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/NFx3X4TyI_F9LKoGsKT7Q6-04fE\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/NFx3X4TyI_F9LKoGsKT7Q6-04fE\""
   },
   {
     "userEmail": "tetiana_kaminska@gafe.co.za",
@@ -4004,23 +3936,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/dM79jRcO74aWe0GkLH_I516Kvj4\""
-  },
-  {
-    "userEmail": "tetiana_kaminska@gafe.co.za",
-    "userId": "117699704439186118473",
-    "userOrgUnit": "/Existek",
-    "isUserAdmin": true,
-    "clientId": "391416317693.apps.googleusercontent.com",
-    "displayText": "Dictanote",
-    "scopes": [
-      "https://www.googleapis.com/auth/userinfo.profile",
-      "https://www.googleapis.com/auth/userinfo.email",
-      "openid"
-    ],
-    "nativeApp": false,
-    "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/esErMg2A_r766XXYeDylvj0mjmA\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/dM79jRcO74aWe0GkLH_I516Kvj4\""
   },
   {
     "userEmail": "tetiana_kaminska@gafe.co.za",
@@ -4034,7 +3950,23 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/128-qBmpqiwpfXybbpRG5KVOSr8\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/53yj8p9vDLrchBgNWeLqq4OLm10\""
+  },
+  {
+    "userEmail": "tetiana_kaminska@gafe.co.za",
+    "userId": "117699704439186118473",
+    "userOrgUnit": "/Existek",
+    "isUserAdmin": true,
+    "clientId": "685439359098-o4gtsi4d97buj0v0124p3uledd21n3n5.apps.googleusercontent.com",
+    "displayText": "Raindrop.io",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/GXlqJNahGIYXrIijMs9AC-mWV3c\""
   },
   {
     "userEmail": "themba@gafe.co.za",
@@ -4050,7 +3982,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/6COBGZ2Qo2_uj9CsXnudrqwoBi4\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/6COBGZ2Qo2_uj9CsXnudrqwoBi4\""
   },
   {
     "userEmail": "themba@gafe.co.za",
@@ -4058,7 +3990,7 @@
     "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
     "isUserAdmin": true,
     "clientId": "99790332366-7jbqgn7andc12kui6o7810gk03le7asr.apps.googleusercontent.com",
-    "displayText": "Edu Launchpad",
+    "displayText": "Google for Education Launchpad",
     "scopes": [
       "https://www.googleapis.com/auth/userinfo.profile",
       "https://www.googleapis.com/auth/userinfo.email",
@@ -4066,7 +3998,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/z2UlsgZZ6eqMNEwHrQNbDwCiPIQ\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/x5y5BX-kGaEKmqRRelZaRFdbeg4\""
   },
   {
     "userEmail": "themba@gafe.co.za",
@@ -4080,7 +4012,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/dLcrcVnAR30ZUQDrrzPKz74DGSQ\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/dLcrcVnAR30ZUQDrrzPKz74DGSQ\""
   },
   {
     "userEmail": "themba@gafe.co.za",
@@ -4096,7 +4028,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/FcE0XoTSscyvjOsUGmOEej0kHVI\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/FcE0XoTSscyvjOsUGmOEej0kHVI\""
   },
   {
     "userEmail": "themba@gafe.co.za",
@@ -4110,7 +4042,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/XWkqRCLYZ-b-huDZF09weI57UYc\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/XWkqRCLYZ-b-huDZF09weI57UYc\""
   },
   {
     "userEmail": "vadar@gafe.co.za",
@@ -4124,7 +4056,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/OpqA0ou5_dtZnPc4XbMoIjLzLGw\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/OpqA0ou5_dtZnPc4XbMoIjLzLGw\""
   },
   {
     "userEmail": "vadar@gafe.co.za",
@@ -4138,7 +4070,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/ZF3sG0fp4Eb1wdG_W_SILydnsPc\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/ZF3sG0fp4Eb1wdG_W_SILydnsPc\""
   },
   {
     "userEmail": "w.smith@gafe.co.za",
@@ -4152,7 +4084,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/oPp86fXjrhsJNThnnnri4xAwbjs\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/oPp86fXjrhsJNThnnnri4xAwbjs\""
   },
   {
     "userEmail": "warrick@gafe.co.za",
@@ -4166,7 +4098,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/P5Cjx6-fjtULx8YfhpbTGQ-ybTk\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/P5Cjx6-fjtULx8YfhpbTGQ-ybTk\""
   },
   {
     "userEmail": "warrick@gafe.co.za",
@@ -4180,7 +4112,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/dGV6GfcD3HWES0vOcOB_pJDcoNQ\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/dGV6GfcD3HWES0vOcOB_pJDcoNQ\""
   },
   {
     "userEmail": "wayground1@gafe.co.za",
@@ -4196,7 +4128,56 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/w0cXYC1kabbFmi1yl4-rXPbhb0I\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/w0cXYC1kabbFmi1yl4-rXPbhb0I\""
+  },
+  {
+    "userEmail": "will@gafe.co.za",
+    "userId": "101889966858648599838",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": false,
+    "clientId": "450232826690-0rm6bs9d2fps9tifvk2oodh3tasd7vl7.apps.googleusercontent.com",
+    "displayText": "iOS",
+    "scopes": [
+      "https://www.googleapis.com/auth/carddav",
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.googleapis.com/auth/calendar",
+      "https://mail.google.com/"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/hReGhnt82L2-aA42CzjK1QRuK7A\""
+  },
+  {
+    "userEmail": "will@gafe.co.za",
+    "userId": "101889966858648599838",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": false,
+    "clientId": "936475272427.apps.googleusercontent.com",
+    "displayText": "iOS Account Manager",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "openid",
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/iF3oC2P8yuwcrv-Up0sPQA2ChKc\""
+  },
+  {
+    "userEmail": "will@gafe.co.za",
+    "userId": "101889966858648599838",
+    "userOrgUnit": "/⛔ CloudEDU Training ⛔/CloudEd Trainers",
+    "isUserAdmin": false,
+    "clientId": "77185425430.apps.googleusercontent.com",
+    "displayText": "Google Chrome",
+    "scopes": [
+      "https://www.google.com/accounts/OAuthLogin"
+    ],
+    "nativeApp": false,
+    "anonymous": false,
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/Mh4_QCJOQGQg-tjTfP4Awd-WBXo\""
   },
   {
     "userEmail": "yoda@gafe.co.za",
@@ -4210,7 +4191,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/185LCZLTLc9j_IF4uYAFgSAQy4A\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/185LCZLTLc9j_IF4uYAFgSAQy4A\""
   },
   {
     "userEmail": "yoda@gafe.co.za",
@@ -4224,7 +4205,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/EzkQlXdePOQUN6NP6q3IsokZTGw\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/EzkQlXdePOQUN6NP6q3IsokZTGw\""
   },
   {
     "userEmail": "yularen@gafe.co.za",
@@ -4238,7 +4219,7 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/LQbwSggffoRAyqlwOmYAUMo3-6c\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/LQbwSggffoRAyqlwOmYAUMo3-6c\""
   },
   {
     "userEmail": "yularen@gafe.co.za",
@@ -4252,6 +4233,6 @@
     ],
     "nativeApp": false,
     "anonymous": false,
-    "etag": "\"Liovub_24vV6SxsbeFFQ0V6B6-t_9h1DvC3i6_SXaaU/mPgWghBJb2DLAZ76yIEvNFoGhl0\""
+    "etag": "\"qIO3eSA2z2CEYUFlG-swGywzj54Z2O5lWhhjBAK9F6c/mPgWghBJb2DLAZ76yIEvNFoGhl0\""
   }
 ]

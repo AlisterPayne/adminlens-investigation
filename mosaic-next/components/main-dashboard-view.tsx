@@ -252,7 +252,7 @@ export default function MainDashboardView({
           </div>
 
           <div className="pt-3 border-t border-amber-100/80 flex items-center justify-between text-xs text-amber-900 font-medium">
-            <span>Target: 100% when all apps are Blocked, Limited, or Specific Data.</span>
+            <span>Target: 100% when apps are locked to Specific Google Data (The Holy Grail).</span>
             <button
               onClick={() => onNavigateToTab?.("recs")}
               className="text-amber-800 hover:text-amber-950 font-bold hover:underline"
@@ -273,12 +273,12 @@ export default function MainDashboardView({
                 </h3>
               </div>
               <span className="text-xs font-bold text-slate-500">
-                Phase 1 Active
+                Decision Tree Active
               </span>
             </div>
 
             <p className="text-xs text-gray-500 mb-4">
-              Roadmap to transition third-party OAuth access from open exposure to 100% hardened least-privilege governance.
+              Roadmap to transition third-party OAuth access to <strong>Specific Google Data (The Holy Grail)</strong> across Unconfigured Tiers 1–4 and Trusted Gates T1–T4.
             </p>
 
             <div className="space-y-3.5">
@@ -289,11 +289,11 @@ export default function MainDashboardView({
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between">
-                    <h4 className="text-xs font-bold text-emerald-900">Stage 1: Active Domain Baseline</h4>
+                    <h4 className="text-xs font-bold text-emerald-900">Stage 1: Secured Baseline (&quot;The Holy Grail&quot;)</h4>
                     <span className="text-[11px] font-mono font-bold text-emerald-800">52% Achieved</span>
                   </div>
                   <p className="text-[11px] text-emerald-700 mt-0.5">
-                    35 baseline applications governed under least-privilege policies.
+                    Baseline applications locked to Specific Google Data (or rare school-safety Blocks).
                   </p>
                 </div>
               </div>
@@ -305,11 +305,11 @@ export default function MainDashboardView({
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between">
-                    <h4 className="text-xs font-bold text-amber-900">Stage 2: Restrict Critical Unconfigured Apps</h4>
+                    <h4 className="text-xs font-bold text-amber-900">Stage 2: Triage Unconfigured Tiers 1 &amp; 2 (Gates U1–U2)</h4>
                     <span className="text-[11px] font-mono font-bold text-amber-800">Target 75% (+23%)</span>
                   </div>
                   <p className="text-[11px] text-amber-700 mt-0.5">
-                    Apply explicit tenant policies to 18 critical applications holding full Drive, Mail, or Admin scopes.
+                    Configure validated High/Critical apps to Specific Google Data; Block only rare apps with a known school issue.
                   </p>
                 </div>
               </div>
@@ -321,11 +321,11 @@ export default function MainDashboardView({
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between">
-                    <h4 className="text-xs font-bold text-slate-800">Stage 3: Audit Blanket-Trusted Applications</h4>
+                    <h4 className="text-xs font-bold text-slate-800">Stage 3: Trusted Governance (Gates T1–T4)</h4>
                     <span className="text-[11px] font-mono font-bold text-slate-600">Target 90% (+15%)</span>
                   </div>
                   <p className="text-[11px] text-slate-600 mt-0.5">
-                    Review 20 trusted apps and scope them to specific data to prevent future authorization creep.
+                    Audit Trusted apps requesting new scopes (T1➔T2) or ≥6mo High/Critical risk (T3➔T4); transition to Specific Google Data.
                   </p>
                 </div>
               </div>
@@ -337,11 +337,11 @@ export default function MainDashboardView({
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between">
-                    <h4 className="text-xs font-bold text-slate-700">Stage 4: Full Perimeter Hardening</h4>
+                    <h4 className="text-xs font-bold text-slate-700">Stage 4: Lock Tiers 3 &amp; 4 to Specific Google Data</h4>
                     <span className="text-[11px] font-mono font-bold text-emerald-700">Goal 100%</span>
                   </div>
                   <p className="text-[11px] text-slate-500 mt-0.5">
-                    All connected software operates under explicit Blocked, Limited, or Specific Data controls.
+                    Lock Moderate/Low active and dormant apps to Specific Google Data (Never recommend Trusted; Limited is case-by-case).
                   </p>
                 </div>
               </div>

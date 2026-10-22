@@ -119,11 +119,14 @@ export default function GenerativeAiClient({ initialData }: GenerativeAiClientPr
   const [auditPage, setAuditPage] = useState(0);
   const [auditPageSize, setAuditPageSize] = useState(50);
 
-  // Pagination for Gemini Notebook Tab
+  // Pagination & Filter states for Gemini Notebook Tab
   const [notebooksPage, setNotebooksPage] = useState(0);
   const [notebooksPageSize, setNotebooksPageSize] = useState(10);
-  const [sourcesPage, setSourcesPage] = useState(0);
-  const [sourcesPageSize, setSourcesPageSize] = useState(10);
+  const [nbSourceTypeFilter, setNbSourceTypeFilter] = useState<"ALL" | "PDF" | "EXTERNAL_LINK" | "UPLOADED">("ALL");
+  const [nbSearchQuery, setNbSearchQuery] = useState<string>("");
+  const [expandedOwnerEmails, setExpandedOwnerEmails] = useState<Record<string, boolean>>({});
+  const [expandedNotebookIds, setExpandedNotebookIds] = useState<Record<string, boolean>>({});
+  const [showEmptyNotebooks, setShowEmptyNotebooks] = useState<boolean>(false);
 
   // Sorting states for Applications tab
   const [appUsageSortField, setAppUsageSortField] = useState<"name" | "events">("events");
@@ -280,19 +283,300 @@ export default function GenerativeAiClient({ initialData }: GenerativeAiClientPr
   const auditTo = Math.min(filteredLogs.length, (auditPage + 1) * auditPageSize);
   const pagedLogs = filteredLogs.slice(auditPage * auditPageSize, (auditPage + 1) * auditPageSize);
 
-  // Paged Notebooks
-  const allNotebooks = data?.notebooks || [];
-  const notebooksTotalPages = Math.max(1, Math.ceil(allNotebooks.length / notebooksPageSize));
-  const notebooksFrom = allNotebooks.length === 0 ? 0 : notebooksPage * notebooksPageSize + 1;
-  const notebooksTo = Math.min(allNotebooks.length, (notebooksPage + 1) * notebooksPageSize);
-  const pagedNotebooks = allNotebooks.slice(notebooksPage * notebooksPageSize, (notebooksPage + 1) * notebooksPageSize);
+  // Source Classification Helpers for Gemini Notebook
+  const isPdfSource = (src: { name?: string; url?: string | null; type?: string }) => {
+    const nameStr = (src.name || "").toLowerCase();
+    const urlStr = (src.url || "").toLowerCase();
+    return nameStr.endsWith(".pdf") || /\.pdf($|\?|#|\/)/i.test(urlStr);
+  };
 
-  // Paged Ingested Sources
-  const allSources = data?.sources || [];
-  const sourcesTotalPages = Math.max(1, Math.ceil(allSources.length / sourcesPageSize));
-  const sourcesFrom = allSources.length === 0 ? 0 : sourcesPage * sourcesPageSize + 1;
-  const sourcesTo = Math.min(allSources.length, (sourcesPage + 1) * sourcesPageSize);
-  const pagedSources = allSources.slice(sourcesPage * sourcesPageSize, (sourcesPage + 1) * sourcesPageSize);
+  const isExternalLinkSource = (src: { type?: string; url?: string | null }) => {
+    return (src.type || "").toLowerCase() === "url" || Boolean(src.url);
+  };
+
+  const isUploadedFileSource = (src: { type?: string }) => {
+    return (src.type || "").toLowerCase() === "local_upload";
+  };
+
+  const getEnrichedSourceBadge = (src: { name?: string; url?: string | null; type?: string }) => {
+    const pdf = isPdfSource(src);
+    const uploaded = isUploadedFileSource(src);
+    const external = isExternalLinkSource(src);
+
+    if (uploaded && pdf) {
+      return {
+        label: "Uploaded PDF",
+        className: "bg-rose-50 text-rose-700 border border-rose-200",
+        dotClass: "bg-rose-500",
+      };
+    }
+    if (external && pdf) {
+      return {
+        label: "External PDF",
+        className: "bg-amber-50 text-amber-700 border border-amber-200",
+        dotClass: "bg-amber-500",
+      };
+    }
+    if (uploaded) {
+      return {
+        label: "Local Upload",
+        className: "bg-purple-50 text-purple-700 border border-purple-200",
+        dotClass: "bg-purple-500",
+      };
+    }
+    return {
+      label: "Web URL",
+      className: "bg-blue-50 text-blue-700 border border-blue-200",
+      dotClass: "bg-blue-500",
+    };
+  };
+
+  const matchesSourceTypeFilter = (
+    src: { name?: string; url?: string | null; type?: string },
+    filterType: "ALL" | "PDF" | "EXTERNAL_LINK" | "UPLOADED"
+  ) => {
+    if (filterType === "ALL") return true;
+    if (filterType === "PDF") return isPdfSource(src);
+    if (filterType === "EXTERNAL_LINK") return isExternalLinkSource(src);
+    if (filterType === "UPLOADED") return isUploadedFileSource(src);
+    return true;
+  };
+
+  const allNotebooks = data?.notebooks || [];
+
+  // Source counts for filter pills (scoped to search query)
+  const sourceFilterCounts = useMemo(() => {
+    const q = nbSearchQuery.trim().toLowerCase();
+    const matchingSourcesList: Array<{ name?: string; url?: string | null; type?: string }> = [];
+
+    allNotebooks.forEach((nb) => {
+      const rawSources = nb.sources || [];
+      const rawArtifacts = nb.artifacts || [];
+      const nbMatches = q
+        ? nb.title?.toLowerCase().includes(q) ||
+          nb.ownerEmail?.toLowerCase().includes(q) ||
+          rawArtifacts.some(
+            (a) =>
+              a.name?.toLowerCase().includes(q) ||
+              a.userEmail?.toLowerCase().includes(q)
+          )
+        : true;
+
+      rawSources.forEach((src) => {
+        if (q) {
+          const srcMatches =
+            src.name?.toLowerCase().includes(q) ||
+            src.url?.toLowerCase().includes(q) ||
+            src.userEmail?.toLowerCase().includes(q);
+          if (!nbMatches && !srcMatches) return;
+        }
+        matchingSourcesList.push(src);
+      });
+    });
+
+    return {
+      ALL: matchingSourcesList.length,
+      PDF: matchingSourcesList.filter((s) => isPdfSource(s)).length,
+      EXTERNAL_LINK: matchingSourcesList.filter((s) => isExternalLinkSource(s)).length,
+      UPLOADED: matchingSourcesList.filter((s) => isUploadedFileSource(s)).length,
+    };
+  }, [allNotebooks, nbSearchQuery]);
+
+  // Filtered Notebooks with their matching sources
+  const filteredNotebooksWithSources = useMemo(() => {
+    const q = nbSearchQuery.trim().toLowerCase();
+    return allNotebooks
+      .map((nb) => {
+        const rawSources = nb.sources || [];
+        const rawArtifacts = nb.artifacts || [];
+        const nbMatches = q
+          ? nb.title?.toLowerCase().includes(q) ||
+            nb.ownerEmail?.toLowerCase().includes(q) ||
+            rawArtifacts.some(
+              (a) =>
+                a.name?.toLowerCase().includes(q) ||
+                a.userEmail?.toLowerCase().includes(q)
+            )
+          : true;
+
+        const matchingSources = rawSources.filter((src) => {
+          if (!matchesSourceTypeFilter(src, nbSourceTypeFilter)) return false;
+          if (q) {
+            const srcMatches =
+              src.name?.toLowerCase().includes(q) ||
+              src.url?.toLowerCase().includes(q) ||
+              src.userEmail?.toLowerCase().includes(q);
+            return nbMatches || srcMatches;
+          }
+          return true;
+        });
+
+        const pdfCount = rawSources.filter((s) => isPdfSource(s)).length;
+        const externalLinkCount = rawSources.filter((s) => isExternalLinkSource(s)).length;
+        const uploadedCount = rawSources.filter((s) => isUploadedFileSource(s)).length;
+
+        return {
+          ...nb,
+          totalSourcesCount: rawSources.length,
+          matchingSources,
+          nbMatches,
+          pdfCount,
+          externalLinkCount,
+          uploadedCount,
+        };
+      })
+      .filter((nb) => {
+        // By default only show notebooks that have sources; show empty notebooks when checkbox is checked
+        if (!showEmptyNotebooks && nb.totalSourcesCount === 0) return false;
+        // When a specific source type filter is active, only show notebooks that have matching sources
+        if (nbSourceTypeFilter !== "ALL" && nb.matchingSources.length === 0) return false;
+        if (q) {
+          return nb.nbMatches || nb.matchingSources.length > 0;
+        }
+        return true;
+      });
+  }, [allNotebooks, nbSourceTypeFilter, nbSearchQuery, showEmptyNotebooks]);
+
+  // Group filtered notebooks by Owner (Level 1: Owner -> Level 2: Notebooks -> Level 3: Sources)
+  const groupedOwners = useMemo(() => {
+    const map = new Map<
+      string,
+      {
+        ownerEmail: string;
+        notebooks: typeof filteredNotebooksWithSources;
+        totalSourcesCount: number;
+        matchingSourcesCount: number;
+        pdfCount: number;
+        externalLinkCount: number;
+        uploadedCount: number;
+        sharedCount: number;
+        privateCount: number;
+        artifacts: Array<{ name: string; type: string; userEmail: string; createdTime: string }>;
+        totalEvents: number;
+        lastActive: string;
+      }
+    >();
+
+    filteredNotebooksWithSources.forEach((nb) => {
+      const email = nb.ownerEmail || "unknown";
+      if (!map.has(email)) {
+        map.set(email, {
+          ownerEmail: email,
+          notebooks: [],
+          totalSourcesCount: 0,
+          matchingSourcesCount: 0,
+          pdfCount: 0,
+          externalLinkCount: 0,
+          uploadedCount: 0,
+          sharedCount: 0,
+          privateCount: 0,
+          artifacts: [],
+          totalEvents: 0,
+          lastActive: nb.lastActive || "",
+        });
+      }
+      const group = map.get(email)!;
+      group.notebooks.push(nb);
+      group.totalSourcesCount += nb.totalSourcesCount;
+      group.matchingSourcesCount += nb.matchingSources.length;
+      group.pdfCount += nb.pdfCount;
+      group.externalLinkCount += nb.externalLinkCount;
+      group.uploadedCount += nb.uploadedCount;
+      if (nb.visibility?.toLowerCase().includes("shared")) {
+        group.sharedCount += 1;
+      } else {
+        group.privateCount += 1;
+      }
+      if (nb.artifacts && nb.artifacts.length > 0) {
+        group.artifacts.push(...nb.artifacts);
+      }
+      group.totalEvents += nb.eventCount || 0;
+      if (
+        nb.lastActive &&
+        (!group.lastActive || new Date(nb.lastActive).getTime() > new Date(group.lastActive).getTime())
+      ) {
+        group.lastActive = nb.lastActive;
+      }
+    });
+
+    return Array.from(map.values()).sort(
+      (a, b) =>
+        b.totalSourcesCount - a.totalSourcesCount ||
+        new Date(b.lastActive || 0).getTime() - new Date(a.lastActive || 0).getTime()
+    );
+  }, [filteredNotebooksWithSources]);
+
+  // Total matching sources across filtered notebooks
+  const filteredFlatSources = useMemo(() => {
+    return filteredNotebooksWithSources.flatMap((nb) => nb.matchingSources);
+  }, [filteredNotebooksWithSources]);
+
+  // Reset pagination and auto-expand owners + notebooks with matching sources when search/filter changes
+  useEffect(() => {
+    setNotebooksPage(0);
+    if (nbSourceTypeFilter !== "ALL" || nbSearchQuery.trim() !== "") {
+      const nextOwners: Record<string, boolean> = {};
+      const nextNotebooks: Record<string, boolean> = {};
+      filteredNotebooksWithSources.forEach((nb) => {
+        nextOwners[nb.ownerEmail || "unknown"] = true;
+        if (nb.matchingSources.length > 0) {
+          nextNotebooks[nb.id] = true;
+        }
+      });
+      setExpandedOwnerEmails(nextOwners);
+      setExpandedNotebookIds(nextNotebooks);
+    }
+  }, [nbSourceTypeFilter, nbSearchQuery, showEmptyNotebooks]);
+
+  const notebooksTotalPages = Math.max(1, Math.ceil(groupedOwners.length / notebooksPageSize));
+  const notebooksFrom = groupedOwners.length === 0 ? 0 : notebooksPage * notebooksPageSize + 1;
+  const notebooksTo = Math.min(groupedOwners.length, (notebooksPage + 1) * notebooksPageSize);
+  const pagedOwners = groupedOwners.slice(
+    notebooksPage * notebooksPageSize,
+    (notebooksPage + 1) * notebooksPageSize
+  );
+
+  const toggleOwnerExpand = (ownerEmail: string) => {
+    setExpandedOwnerEmails((prev) => ({
+      ...prev,
+      [ownerEmail]: !prev[ownerEmail],
+    }));
+  };
+
+  const toggleNotebookExpand = (notebookId: string) => {
+    setExpandedNotebookIds((prev) => ({
+      ...prev,
+      [notebookId]: !prev[notebookId],
+    }));
+  };
+
+  const expandableNotebooks = useMemo(
+    () => filteredNotebooksWithSources.filter((nb) => nb.matchingSources.length > 0 || (nb.artifacts && nb.artifacts.length > 0)),
+    [filteredNotebooksWithSources]
+  );
+
+  const areAllExpanded =
+    groupedOwners.length > 0 &&
+    groupedOwners.every((g) => Boolean(expandedOwnerEmails[g.ownerEmail])) &&
+    expandableNotebooks.every((nb) => Boolean(expandedNotebookIds[nb.id]));
+
+  const handleToggleExpandAll = () => {
+    if (areAllExpanded) {
+      setExpandedOwnerEmails({});
+      setExpandedNotebookIds({});
+    } else {
+      const nextOwners: Record<string, boolean> = {};
+      groupedOwners.forEach((g) => {
+        nextOwners[g.ownerEmail] = true;
+      });
+      const nextNotebooks: Record<string, boolean> = {};
+      expandableNotebooks.forEach((nb) => {
+        nextNotebooks[nb.id] = true;
+      });
+      setExpandedOwnerEmails(nextOwners);
+      setExpandedNotebookIds(nextNotebooks);
+    }
+  };
 
   // Sorted Application Usage list
   const sortedAppUsage = useMemo(() => {
@@ -820,77 +1104,511 @@ export default function GenerativeAiClient({ initialData }: GenerativeAiClientPr
               </div>
             </div>
           </div>
-          {/* Notebooks Table */}
+
+          {/* ── Unified Single-Line Filter & Search Toolbar ──────────────── */}
+          <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-xs">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+              {/* Left Side: Search Input */}
+              <div className="relative w-full lg:w-96 shrink-0">
+                <input
+                  type="text"
+                  placeholder="Search user, notebook title, source name, or URL..."
+                  value={nbSearchQuery}
+                  onChange={(e) => setNbSearchQuery(e.target.value)}
+                  className="w-full pl-9 pr-8 py-2 border border-gray-300 rounded-lg text-xs focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400"
+                />
+                <svg
+                  className="w-4 h-4 text-gray-400 absolute left-3 top-2.5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+                {nbSearchQuery && (
+                  <button
+                    type="button"
+                    onClick={() => setNbSearchQuery("")}
+                    className="absolute right-2.5 top-2 text-gray-400 hover:text-gray-600 text-xs"
+                  >
+                    ✕
+                  </button>
+                )}
+              </div>
+
+              {/* Right Side: Source Category Filter Pills + Show Empty Notebooks Checkbox */}
+              <div className="flex flex-wrap items-center lg:justify-end gap-3">
+                <div className="flex flex-wrap items-center gap-1.5">
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-gray-400 mr-1">
+                    Source Filter:
+                  </span>
+                  {[
+                    { id: "ALL" as const, label: "All Sources", count: sourceFilterCounts.ALL },
+                    { id: "PDF" as const, label: "PDFs", count: sourceFilterCounts.PDF },
+                    { id: "EXTERNAL_LINK" as const, label: "External Links", count: sourceFilterCounts.EXTERNAL_LINK },
+                    { id: "UPLOADED" as const, label: "Uploaded Files", count: sourceFilterCounts.UPLOADED },
+                  ].map((pill) => {
+                    const active = nbSourceTypeFilter === pill.id;
+                    return (
+                      <button
+                        key={pill.id}
+                        type="button"
+                        onClick={() => setNbSourceTypeFilter(pill.id)}
+                        className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold transition cursor-pointer border ${
+                          active
+                            ? "bg-blue-50 text-blue-700 border-blue-200 shadow-2xs"
+                            : "bg-white text-gray-600 border-gray-200 hover:bg-gray-50"
+                        }`}
+                      >
+                        <span>{pill.label}</span>
+                        <span
+                          className={`text-[10px] font-mono px-1.5 py-0.5 rounded-md ${
+                            active ? "bg-blue-100 text-blue-800" : "bg-gray-100 text-gray-600"
+                          }`}
+                        >
+                          {pill.count}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                <div className="hidden sm:block h-4 w-px bg-gray-200" />
+
+                <div className="flex items-center gap-3">
+                  <label className="inline-flex items-center gap-1.5 text-xs text-gray-600 cursor-pointer select-none whitespace-nowrap">
+                    <input
+                      type="checkbox"
+                      checked={showEmptyNotebooks}
+                      onChange={(e) => setShowEmptyNotebooks(e.target.checked)}
+                      className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 h-3.5 w-3.5"
+                    />
+                    <span>Show empty notebooks</span>
+                  </label>
+
+                  {(nbSourceTypeFilter !== "ALL" || nbSearchQuery.trim() !== "" || showEmptyNotebooks) && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setNbSourceTypeFilter("ALL");
+                        setNbSearchQuery("");
+                        setShowEmptyNotebooks(false);
+                      }}
+                      className="text-xs font-semibold text-blue-600 hover:text-blue-800 hover:underline cursor-pointer whitespace-nowrap"
+                    >
+                      Reset filters
+                    </button>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* ============================================================== */}
+          {/* GROUPED BY OWNER (Owner → Notebooks → Sources)                 */}
+          {/* ============================================================== */}
           <div className="bg-white rounded-xl border border-gray-200 shadow-xs overflow-hidden">
-            <div className="p-4 border-b border-gray-200">
-              <h3 className="text-sm font-bold text-gray-900">Notebooks</h3>
-              <p className="text-xs text-gray-500 mt-0.5">
-                Active notebooks created and managed in the domain.
-              </p>
+            <div className="p-4 border-b border-gray-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <div className="flex items-center gap-2">
+                  <h3 className="text-sm font-bold text-gray-900">
+                    Ingested Sources
+                  </h3>
+                  <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-gray-100 text-gray-700">
+                    {groupedOwners.length} {groupedOwners.length === 1 ? "owner" : "owners"} · {filteredNotebooksWithSources.length} {filteredNotebooksWithSources.length === 1 ? "notebook" : "notebooks"} · {filteredFlatSources.length} matching {filteredFlatSources.length === 1 ? "source" : "sources"}
+                  </span>
+                </div>
+                <p className="text-xs text-gray-500 mt-0.5">
+                  Click any owner row to unpack their notebooks, then click a notebook to unpack its ingested sources and studio artifacts.
+                </p>
+              </div>
+
+              {groupedOwners.length > 0 && (
+                <button
+                  type="button"
+                  onClick={handleToggleExpandAll}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 transition cursor-pointer self-start sm:self-auto"
+                >
+                  <svg className="w-3.5 h-3.5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    {areAllExpanded ? (
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 15l7-7 7 7" />
+                    ) : (
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    )}
+                  </svg>
+                  <span>{areAllExpanded ? "Collapse All" : "Expand All with Content"}</span>
+                </button>
+              )}
             </div>
 
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200 text-xs text-left">
                 <thead className="bg-gray-50 text-gray-500 uppercase font-semibold text-[11px] tracking-wider">
                   <tr>
+                    <th className="py-2.5 pl-4 pr-2 w-8"></th>
+                    <th className="py-2.5 px-3">Owner</th>
                     <th className="py-2.5 px-4">Notebook Title</th>
-                    <th className="py-2.5 px-4">Owner</th>
                     <th className="py-2.5 px-4">Visibility</th>
-                    <th className="py-2.5 px-4">Sources</th>
-                    <th className="py-2.5 px-4">Artifacts</th>
+                    <th className="py-2.5 px-4">Ingested Sources</th>
+                    <th className="py-2.5 px-4">Studio Artifacts</th>
                     <th className="py-2.5 px-4">Events</th>
                     <th className="py-2.5 px-4">Last Active</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100 bg-white">
-                  {pagedNotebooks.map((nb) => {
-                    const isShared = nb.visibility?.toLowerCase().includes("shared");
+                  {pagedOwners.map((ownerGroup) => {
+                    const isOwnerExpanded = Boolean(expandedOwnerEmails[ownerGroup.ownerEmail]);
+                    const hasOwnerArtifacts = ownerGroup.artifacts.length > 0;
+
                     return (
-                      <tr key={nb.id} className="hover:bg-gray-50/80 transition-colors">
-                        <td className="py-3 px-4 font-semibold text-gray-900">
-                          {nb.title}
-                        </td>
-                        <td className="py-3 px-4 text-gray-600">{nb.ownerEmail}</td>
-                        <td className="py-3 px-4">
-                          {isShared ? (
-                            <span className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
-                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                              Shared Internally
-                            </span>
-                          ) : (
-                            <span className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium bg-gray-100 text-gray-700 border border-gray-200">
-                              <span className="w-1.5 h-1.5 rounded-full bg-gray-400"></span>
-                              Private
-                            </span>
-                          )}
-                        </td>
-                        <td className="py-3 px-4 font-mono text-gray-600">
-                          {nb.sources?.length || 0}
-                        </td>
-                        <td className="py-3 px-4 text-gray-600">
-                          {(nb.artifacts || []).map((a, idx) => (
-                            <span
-                              key={idx}
-                              className="inline-block mr-1 mb-1 px-1.5 py-0.5 rounded text-[10px] font-medium bg-gray-100 text-gray-700"
+                      <React.Fragment key={ownerGroup.ownerEmail}>
+                        {/* ── LEVEL 1: OWNER ROW ─────────────────────────── */}
+                        <tr
+                          onClick={() => toggleOwnerExpand(ownerGroup.ownerEmail)}
+                          className={`transition-colors cursor-pointer ${
+                            isOwnerExpanded ? "bg-indigo-50/40 hover:bg-indigo-50/60" : "hover:bg-gray-50/80"
+                          }`}
+                        >
+                          <td className="py-3 pl-4 pr-2 text-gray-400">
+                            <button
+                              type="button"
+                              aria-expanded={isOwnerExpanded}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                toggleOwnerExpand(ownerGroup.ownerEmail);
+                              }}
+                              className="p-1 rounded hover:bg-gray-200/60 text-gray-500 transition-transform"
                             >
-                              {a.type === "audio_overview" ? "Audio Overview" : "Mind Map"}
+                              <svg
+                                className={`w-4 h-4 transition-transform duration-150 ${
+                                  isOwnerExpanded ? "rotate-90 text-indigo-600" : ""
+                                }`}
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                              </svg>
+                            </button>
+                          </td>
+                          <td className="py-3 px-3 font-semibold text-gray-900">
+                            <div className="flex items-center gap-2">
+                              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-bold uppercase shrink-0">
+                                {ownerGroup.ownerEmail.charAt(0)}
+                              </span>
+                              <span>{ownerGroup.ownerEmail}</span>
+                            </div>
+                          </td>
+                          <td className="py-3 px-4">
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-medium bg-gray-100 text-gray-700 border border-gray-200">
+                              {ownerGroup.notebooks.length}{" "}
+                              {ownerGroup.notebooks.length === 1 ? "notebook" : "notebooks"}
                             </span>
-                          ))}
-                          {(!nb.artifacts || nb.artifacts.length === 0) && "—"}
-                        </td>
-                        <td className="py-3 px-4 font-mono font-bold text-gray-900">{nb.eventCount}</td>
-                        <td className="py-3 px-4 text-gray-500">{formatDate(nb.lastActive)}</td>
-                      </tr>
+                          </td>
+                          <td className="py-3 px-4">
+                            <div className="flex flex-wrap items-center gap-1">
+                              {ownerGroup.sharedCount > 0 && (
+                                <span className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
+                                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                  {ownerGroup.privateCount > 0
+                                    ? `${ownerGroup.sharedCount} Shared`
+                                    : "Shared Internally"}
+                                </span>
+                              )}
+                              {ownerGroup.privateCount > 0 && (
+                                <span className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium bg-gray-100 text-gray-700 border border-gray-200">
+                                  <span className="w-1.5 h-1.5 rounded-full bg-gray-400"></span>
+                                  {ownerGroup.sharedCount > 0
+                                    ? `${ownerGroup.privateCount} Private`
+                                    : "Private"}
+                                </span>
+                              )}
+                            </div>
+                          </td>
+                          <td className="py-3 px-4">
+                            {ownerGroup.totalSourcesCount > 0 ? (
+                              <div className="flex flex-wrap items-center gap-1.5">
+                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-mono font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200">
+                                  {nbSourceTypeFilter !== "ALL" || nbSearchQuery.trim() !== ""
+                                    ? `${ownerGroup.matchingSourcesCount} / ${ownerGroup.totalSourcesCount}`
+                                    : ownerGroup.totalSourcesCount}{" "}
+                                  {ownerGroup.totalSourcesCount === 1 ? "source" : "sources"}
+                                </span>
+                                {ownerGroup.pdfCount > 0 && (
+                                  <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-amber-50 text-amber-700 border border-amber-200">
+                                    {ownerGroup.pdfCount} PDF
+                                  </span>
+                                )}
+                                {ownerGroup.externalLinkCount > 0 && (
+                                  <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-blue-50 text-blue-700 border border-blue-200">
+                                    {ownerGroup.externalLinkCount} URL
+                                  </span>
+                                )}
+                                {ownerGroup.uploadedCount > 0 && (
+                                  <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-purple-50 text-purple-700 border border-purple-200">
+                                    {ownerGroup.uploadedCount} Upload
+                                  </span>
+                                )}
+                              </div>
+                            ) : (
+                              <span className="text-gray-400 text-[11px]">0 sources</span>
+                            )}
+                          </td>
+                          <td className="py-3 px-4 text-gray-600">
+                            {ownerGroup.artifacts.map((a, idx) => (
+                              <span
+                                key={idx}
+                                className="inline-block mr-1 mb-1 px-1.5 py-0.5 rounded text-[10px] font-medium bg-gray-100 text-gray-700"
+                              >
+                                {a.type === "audio_overview" ? "Audio Overview" : "Mind Map"}
+                              </span>
+                            ))}
+                            {!hasOwnerArtifacts && <span className="text-gray-400">—</span>}
+                          </td>
+                          <td className="py-3 px-4 font-mono font-bold text-gray-900">
+                            {ownerGroup.totalEvents}
+                          </td>
+                          <td className="py-3 px-4 text-gray-500">
+                            {formatDate(ownerGroup.lastActive)}
+                          </td>
+                        </tr>
+
+                        {/* ── LEVEL 2: UNPACKED NOTEBOOKS UNDER THIS OWNER ── */}
+                        {isOwnerExpanded &&
+                          ownerGroup.notebooks.map((nb) => {
+                            const isShared = nb.visibility?.toLowerCase().includes("shared");
+                            const isNbExpanded = Boolean(expandedNotebookIds[nb.id]);
+                            const hasFilteredSources = nb.matchingSources.length > 0;
+                            const hasArtifacts = (nb.artifacts || []).length > 0;
+
+                            return (
+                              <React.Fragment key={nb.id}>
+                                <tr
+                                  onClick={() => toggleNotebookExpand(nb.id)}
+                                  className={`transition-colors cursor-pointer border-l-2 border-l-indigo-300 ${
+                                    isNbExpanded
+                                      ? "bg-indigo-50/25 hover:bg-indigo-50/40"
+                                      : "bg-slate-50/50 hover:bg-slate-100/70"
+                                  }`}
+                                >
+                                  <td className="py-2.5 pl-4 pr-2 text-gray-300"></td>
+                                  <td className="py-2.5 px-3 text-gray-400">
+                                    <div className="flex items-center gap-1.5 pl-2">
+                                      <span className="text-gray-300 font-mono select-none">└─</span>
+                                      <button
+                                        type="button"
+                                        aria-expanded={isNbExpanded}
+                                        onClick={(e) => {
+                                          e.stopPropagation();
+                                          toggleNotebookExpand(nb.id);
+                                        }}
+                                        className="p-0.5 rounded hover:bg-gray-200/60 text-gray-500 transition-transform"
+                                      >
+                                        <svg
+                                          className={`w-3.5 h-3.5 transition-transform duration-150 ${
+                                            isNbExpanded ? "rotate-90 text-indigo-600" : ""
+                                          }`}
+                                          fill="none"
+                                          stroke="currentColor"
+                                          viewBox="0 0 24 24"
+                                        >
+                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                                        </svg>
+                                      </button>
+                                      <span className="text-[11px] text-gray-500 font-medium">Notebook</span>
+                                    </div>
+                                  </td>
+                                  <td className="py-2.5 px-4 font-semibold text-gray-900">
+                                    <div className="flex items-center gap-2">
+                                      <span>{nb.title}</span>
+                                    </div>
+                                  </td>
+                                  <td className="py-2.5 px-4">
+                                    {isShared ? (
+                                      <span className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                        Shared Internally
+                                      </span>
+                                    ) : (
+                                      <span className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium bg-gray-100 text-gray-700 border border-gray-200">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400"></span>
+                                        Private
+                                      </span>
+                                    )}
+                                  </td>
+                                  <td className="py-2.5 px-4">
+                                    {nb.totalSourcesCount > 0 ? (
+                                      <div className="flex flex-wrap items-center gap-1.5">
+                                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-mono font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200">
+                                          {nbSourceTypeFilter !== "ALL" || nbSearchQuery.trim() !== ""
+                                            ? `${nb.matchingSources.length} / ${nb.totalSourcesCount}`
+                                            : nb.totalSourcesCount}{" "}
+                                          {nb.totalSourcesCount === 1 ? "source" : "sources"}
+                                        </span>
+                                        {nb.pdfCount > 0 && (
+                                          <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-amber-50 text-amber-700 border border-amber-200">
+                                            {nb.pdfCount} PDF
+                                          </span>
+                                        )}
+                                        {nb.externalLinkCount > 0 && (
+                                          <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-blue-50 text-blue-700 border border-blue-200">
+                                            {nb.externalLinkCount} URL
+                                          </span>
+                                        )}
+                                        {nb.uploadedCount > 0 && (
+                                          <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-purple-50 text-purple-700 border border-purple-200">
+                                            {nb.uploadedCount} Upload
+                                          </span>
+                                        )}
+                                      </div>
+                                    ) : (
+                                      <span className="text-gray-400 text-[11px]">0 sources</span>
+                                    )}
+                                  </td>
+                                  <td className="py-2.5 px-4 text-gray-600">
+                                    {(nb.artifacts || []).map((a, idx) => (
+                                      <span
+                                        key={idx}
+                                        className="inline-block mr-1 mb-1 px-1.5 py-0.5 rounded text-[10px] font-medium bg-gray-100 text-gray-700"
+                                      >
+                                        {a.type === "audio_overview" ? "Audio Overview" : "Mind Map"}
+                                      </span>
+                                    ))}
+                                    {!hasArtifacts && <span className="text-gray-400">—</span>}
+                                  </td>
+                                  <td className="py-2.5 px-4 font-mono font-bold text-gray-900">
+                                    {nb.eventCount}
+                                  </td>
+                                  <td className="py-2.5 px-4 text-gray-500">
+                                    {formatDate(nb.lastActive)}
+                                  </td>
+                                </tr>
+
+                                {/* ── LEVEL 3: UNPACKED SOURCES UNDER THIS NOTEBOOK ── */}
+                                {isNbExpanded && (
+                                  <tr className="bg-slate-50/90 border-l-2 border-l-indigo-300">
+                                    <td colSpan={8} className="pl-12 pr-6 py-4 border-b border-gray-200">
+                                      <div className="space-y-3">
+                                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                                          <div className="flex items-center gap-2">
+                                            <span className="text-xs font-bold text-gray-800">
+                                              Ingested Sources in &ldquo;{nb.title}&rdquo;
+                                            </span>
+                                            <span className="text-[11px] text-gray-500">
+                                              ({nb.matchingSources.length} {nb.matchingSources.length === 1 ? "source" : "sources"} shown)
+                                            </span>
+                                          </div>
+                                          {hasArtifacts && (
+                                            <div className="flex flex-wrap items-center gap-1.5 text-[11px] text-gray-600">
+                                              <span className="font-semibold text-gray-500">Generated Studio Artifacts:</span>
+                                              {(nb.artifacts || []).map((art, i) => (
+                                                <span
+                                                  key={i}
+                                                  className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-white border border-gray-200 text-gray-700 font-medium"
+                                                >
+                                                  <span>{art.name}</span>
+                                                  <span className="text-[10px] text-gray-400">
+                                                    ({art.type === "audio_overview" ? "Audio Overview" : "Mind Map"})
+                                                  </span>
+                                                </span>
+                                              ))}
+                                            </div>
+                                          )}
+                                        </div>
+
+                                        {hasFilteredSources ? (
+                                          <div className="bg-white rounded-lg border border-gray-200 overflow-hidden shadow-2xs">
+                                            <table className="min-w-full divide-y divide-gray-100 text-xs text-left">
+                                              <thead className="bg-gray-50/80 text-gray-500 uppercase font-semibold text-[10px] tracking-wider">
+                                                <tr>
+                                                  <th className="py-2 px-3">Document / Source Name</th>
+                                                  <th className="py-2 px-3">Category</th>
+                                                  <th className="py-2 px-3">Ingestion Channel</th>
+                                                  <th className="py-2 px-3">Added By</th>
+                                                  <th className="py-2 px-3">Added Date</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody className="divide-y divide-gray-100">
+                                                {nb.matchingSources.map((src, sIdx) => {
+                                                  const badge = getEnrichedSourceBadge(src);
+                                                  return (
+                                                    <tr key={src.sourceId || sIdx} className="hover:bg-gray-50/70">
+                                                      <td className="py-2.5 px-3">
+                                                        <span className="font-semibold text-gray-900 block">
+                                                          {src.name}
+                                                        </span>
+                                                        {src.url && (
+                                                          <a
+                                                            href={src.url}
+                                                            target="_blank"
+                                                            rel="noreferrer"
+                                                            className="text-[11px] text-blue-600 hover:underline truncate max-w-xl block mt-0.5"
+                                                          >
+                                                            {src.url}
+                                                          </a>
+                                                        )}
+                                                      </td>
+                                                      <td className="py-2.5 px-3 whitespace-nowrap">
+                                                        <span
+                                                          className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold ${badge.className}`}
+                                                        >
+                                                          <span className={`w-1.5 h-1.5 rounded-full ${badge.dotClass}`}></span>
+                                                          {badge.label}
+                                                        </span>
+                                                      </td>
+                                                      <td className="py-2.5 px-3 whitespace-nowrap">
+                                                        <span className="uppercase text-[10px] font-mono font-semibold text-gray-600 bg-gray-100 px-1.5 py-0.5 rounded">
+                                                          {src.type}
+                                                        </span>
+                                                      </td>
+                                                      <td className="py-2.5 px-3 text-gray-600 whitespace-nowrap">
+                                                        {src.userEmail}
+                                                      </td>
+                                                      <td className="py-2.5 px-3 text-gray-500 whitespace-nowrap">
+                                                        {formatDate(src.addedTime)}
+                                                      </td>
+                                                    </tr>
+                                                  );
+                                                })}
+                                              </tbody>
+                                            </table>
+                                          </div>
+                                        ) : (
+                                          <div className="bg-white rounded-lg border border-gray-200 p-4 text-center text-xs text-gray-400">
+                                            No ingested sources recorded for this notebook matching current filters.
+                                          </div>
+                                        )}
+                                      </div>
+                                    </td>
+                                  </tr>
+                                )}
+                              </React.Fragment>
+                            );
+                          })}
+                      </React.Fragment>
                     );
                   })}
+
+                  {pagedOwners.length === 0 && (
+                    <tr>
+                      <td colSpan={8} className="py-8 text-center text-gray-400 text-xs">
+                        No owners, notebooks, or sources match the selected filters.
+                      </td>
+                    </tr>
+                  )}
                 </tbody>
               </table>
             </div>
 
-            {/* Notebooks Table Pagination */}
+            {/* Grouped Owners Table Pagination */}
             <div className="p-3 border-t border-gray-100 flex flex-col sm:flex-row gap-2 justify-between items-center text-xs text-gray-500">
               <span>
-                Showing {notebooksFrom}–{notebooksTo} of {allNotebooks.length} notebooks
+                Showing {notebooksFrom}–{notebooksTo} of {groupedOwners.length} {groupedOwners.length === 1 ? "owner" : "owners"} ({filteredNotebooksWithSources.length} {filteredNotebooksWithSources.length === 1 ? "notebook" : "notebooks"})
               </span>
               <div className="flex items-center gap-2">
                 <select
@@ -922,99 +1640,6 @@ export default function GenerativeAiClient({ initialData }: GenerativeAiClientPr
                   type="button"
                   onClick={() => setNotebooksPage((p) => Math.min(notebooksTotalPages - 1, p + 1))}
                   disabled={notebooksPage >= notebooksTotalPages - 1}
-                  className="px-2.5 py-1 rounded-md border border-gray-300 bg-white hover:bg-gray-50 disabled:opacity-40"
-                >
-                  Next →
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Ingested Sources Table */}
-          <div className="bg-white rounded-xl border border-gray-200 shadow-xs overflow-hidden">
-            <div className="p-4 border-b border-gray-200">
-              <h3 className="text-sm font-bold text-gray-900">Ingested Sources</h3>
-              <p className="text-xs text-gray-500 mt-0.5">
-                External documents, URLs, and uploaded files attached to Gemini Notebook notebooks.
-              </p>
-            </div>
-
-            <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200 text-xs text-left">
-                <thead className="bg-gray-50 text-gray-500 uppercase font-semibold text-[11px] tracking-wider">
-                  <tr>
-                    <th className="py-2.5 px-4">Document / Source Name</th>
-                    <th className="py-2.5 px-4">Type</th>
-                    <th className="py-2.5 px-4">Target Notebook</th>
-                    <th className="py-2.5 px-4">User</th>
-                    <th className="py-2.5 px-4">Added Date</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-100 bg-white">
-                  {pagedSources.map((src, idx) => (
-                    <tr key={idx} className="hover:bg-gray-50/80 transition-colors">
-                      <td className="py-2.5 px-4">
-                        <span className="font-semibold text-gray-900 block">{src.name}</span>
-                        {src.url && (
-                          <a
-                            href={src.url}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="text-[11px] text-blue-600 hover:underline truncate max-w-lg block mt-0.5"
-                          >
-                            {src.url}
-                          </a>
-                        )}
-                      </td>
-                      <td className="py-2.5 px-4">
-                        <span className="uppercase text-[10px] font-semibold text-gray-600 bg-gray-100 px-1.5 py-0.5 rounded">
-                          {src.type}
-                        </span>
-                      </td>
-                      <td className="py-2.5 px-4 text-gray-700">{src.notebookTitle}</td>
-                      <td className="py-2.5 px-4 text-gray-500">{src.userEmail}</td>
-                      <td className="py-2.5 px-4 text-gray-500">{formatDate(src.addedTime)}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            {/* Ingested Sources Table Pagination */}
-            <div className="p-3 border-t border-gray-100 flex flex-col sm:flex-row gap-2 justify-between items-center text-xs text-gray-500">
-              <span>
-                Showing {sourcesFrom}–{sourcesTo} of {allSources.length} sources
-              </span>
-              <div className="flex items-center gap-2">
-                <select
-                  value={sourcesPageSize}
-                  onChange={(e) => {
-                    setSourcesPageSize(Number(e.target.value));
-                    setSourcesPage(0);
-                  }}
-                  className="border border-gray-300 rounded-md text-xs py-1 pl-2 pr-7 bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                >
-                  {[5, 10, 25, 50].map((s) => (
-                    <option key={s} value={s}>
-                      {s} per page
-                    </option>
-                  ))}
-                </select>
-                <button
-                  type="button"
-                  onClick={() => setSourcesPage((p) => Math.max(0, p - 1))}
-                  disabled={sourcesPage === 0}
-                  className="px-2.5 py-1 rounded-md border border-gray-300 bg-white hover:bg-gray-50 disabled:opacity-40"
-                >
-                  ← Prev
-                </button>
-                <span>
-                  Page {sourcesPage + 1} / {sourcesTotalPages}
-                </span>
-                <button
-                  type="button"
-                  onClick={() => setSourcesPage((p) => Math.min(sourcesTotalPages - 1, p + 1))}
-                  disabled={sourcesPage >= sourcesTotalPages - 1}
                   className="px-2.5 py-1 rounded-md border border-gray-300 bg-white hover:bg-gray-50 disabled:opacity-40"
                 >
                   Next →

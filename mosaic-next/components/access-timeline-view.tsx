@@ -23,6 +23,7 @@ export interface TimelineEvent {
   newPolicy?: string;
   previousState?: string;
   newState?: string;
+  newScopes?: string[];
   target?: string;
   orgUnit?: string;
   changeSummary?: string;
@@ -58,7 +59,7 @@ export default function AccessTimelineView({
     return Array.from(set).sort();
   }, [events]);
 
-  // Filter events strictly by administrator policy changes
+  // Filter events strictly by administrator policy changes & scope expansions
   const filteredEvents = useMemo(() => {
     return events.filter((ev) => {
       // Exclude CSV upload ingestion events from Google Admin audit timeline
@@ -73,7 +74,8 @@ export default function AccessTimelineView({
         ev.actorEmail?.toLowerCase().includes(term) ||
         ev.clientId?.toLowerCase().includes(term) ||
         summaryText.toLowerCase().includes(term) ||
-        ev.target?.toLowerCase().includes(term);
+        ev.target?.toLowerCase().includes(term) ||
+        (ev.newScopes || []).some(s => s.toLowerCase().includes(term));
 
       const matchesAdmin = selectedAdmin === "ALL" || ev.actorEmail === selectedAdmin;
 
@@ -88,6 +90,8 @@ export default function AccessTimelineView({
           matchesPolicy = eventState.includes("LIMIT") || eventState.includes("UNTRUST");
         } else if (selectedPolicy === "BLOCKED") {
           matchesPolicy = eventState.includes("BLOCK");
+        } else if (selectedPolicy === "SCOPE_EXPANSION") {
+          matchesPolicy = eventState.includes("SCOPE") || (ev.action || "").toUpperCase().includes("SCOPE");
         }
       }
 
@@ -164,7 +168,24 @@ export default function AccessTimelineView({
 
   const getPolicyBadge = (state?: string, action?: string) => {
     const upper = (state || action || "").toUpperCase();
+    const actUpper = (action || "").toUpperCase();
 
+    if (actUpper === "SCOPE_EXPANSION" || upper.includes("NEW SCOPE")) {
+      return (
+        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-purple-50 text-purple-700 border border-purple-200">
+          <span className="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
+          New Scope Requested
+        </span>
+      );
+    }
+    if (actUpper === "DWD_SCOPES" || upper.includes("DELEGATED")) {
+      return (
+        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200">
+          <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+          Scopes Delegated
+        </span>
+      );
+    }
     if (upper.includes("BLOCK")) {
       return (
         <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-rose-50 text-rose-700 border border-rose-200">
@@ -324,7 +345,8 @@ export default function AccessTimelineView({
               aria-label="Filter by access policy"
               className="w-full py-2 px-3 border border-gray-300 rounded-lg text-xs font-medium text-gray-700 bg-white focus:ring-2 focus:ring-blue-500"
             >
-              <option value="ALL">All Policies (Trusted, Specific Data, Limited, Blocked)</option>
+              <option value="ALL">All Policies &amp; Scope Grants</option>
+              <option value="SCOPE_EXPANSION">New Scope Requests &amp; Delegations</option>
               <option value="TRUSTED">Trusted</option>
               <option value="SPECIFIC_DATA">Specific Data</option>
               <option value="LIMITED">Limited</option>
@@ -525,9 +547,24 @@ export default function AccessTimelineView({
                       </div>
 
                       {/* Summary */}
-                      {(ev.changeSummary || (typeof ev.details === "string" && ev.details)) && (
-                        <div className="mt-3 pt-2.5 border-t border-gray-100 text-gray-700 text-xs leading-relaxed">
-                          {ev.changeSummary || (typeof ev.details === "string" ? ev.details : "")}
+                      {(ev.changeSummary || (typeof ev.details === "string" && ev.details) || (ev.newScopes && ev.newScopes.length > 0)) && (
+                        <div className="mt-3 pt-2.5 border-t border-gray-100 text-gray-700 text-xs leading-relaxed space-y-2">
+                          {(ev.changeSummary || (typeof ev.details === "string" && ev.details)) && (
+                            <div>{ev.changeSummary || (typeof ev.details === "string" ? ev.details : "")}</div>
+                          )}
+                          {ev.newScopes && ev.newScopes.length > 0 && (
+                            <div className="flex flex-wrap gap-1.5">
+                              {ev.newScopes.map((sc) => (
+                                <span
+                                  key={sc}
+                                  className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-mono bg-purple-50 text-purple-800 border border-purple-200"
+                                >
+                                  <span className="font-bold text-purple-600">+</span>
+                                  {sc}
+                                </span>
+                              ))}
+                            </div>
+                          )}
                         </div>
                       )}
                     </div>

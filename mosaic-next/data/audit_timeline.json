@@ -1,5 +1,231 @@
 [
   {
+    "id": "7831640182640628056_token_auth",
+    "timestamp": "2026-10-21T13:58:54.464Z",
+    "action": "SCOPE_EXPANSION",
+    "actionDisplay": "New Scope(s) Requested & Granted",
+    "actorEmail": "tetiana_kaminska@gafe.co.za",
+    "actorType": "USER",
+    "appName": "Google APIs Explorer (Web Application)",
+    "appId": "292824132082.apps.googleusercontent.com",
+    "clientId": "292824132082.apps.googleusercontent.com",
+    "appIconUrl": "https://ui-avatars.com/api/?name=Google%20APIs%20Explorer&background=3B82F6&color=fff&size=128&rounded=true",
+    "target": "gafe.co.za",
+    "previousState": "1 Scopes",
+    "newState": "New Scope Requested",
+    "newScopes": [
+      "https://www.googleapis.com/auth/admin.reports.audit.readonly"
+    ],
+    "changeSummary": "Application requested & acquired 1 new scope(s): admin.reports.audit.readonly (total scopes expanded from 1 ➔ 2)",
+    "details": {
+      "source": "TOKEN_AUDIT_LOG",
+      "eventName": "auth:authorize",
+      "newScopes": [
+        "https://www.googleapis.com/auth/admin.reports.audit.readonly"
+      ],
+      "previousScopesCount": 1,
+      "totalScopesCount": 2
+    },
+    "ipAddress": "149.88.27.187"
+  },
+  {
+    "id": "1995177963045982285_dwd_auth",
+    "timestamp": "2026-10-19T12:44:26.332Z",
+    "action": "SCOPE_EXPANSION",
+    "actionDisplay": "New Scope(s) Requested & Granted",
+    "actorEmail": "pavel@gafe.co.za",
+    "actorType": "ADMIN",
+    "appName": "dev.adminlens.io (Staging / Dev)",
+    "appId": "102695943947420816039",
+    "clientId": "102695943947420816039",
+    "appIconUrl": "https://www.google.com/s2/favicons?domain=adminlens.io&sz=128",
+    "target": "gafe.co.za",
+    "previousState": "8 Scopes",
+    "newState": "New Scope Requested",
+    "newScopes": [
+      "https://www.googleapis.com/auth/apps.licensing"
+    ],
+    "changeSummary": "Application requested & acquired 1 new scope(s): apps.licensing (total scopes expanded from 8 ➔ 9)",
+    "details": {
+      "source": "ADMIN_AUDIT_LOG",
+      "eventName": "DOMAIN_SETTINGS:AUTHORIZE_API_CLIENT_ACCESS",
+      "newScopes": [
+        "https://www.googleapis.com/auth/apps.licensing"
+      ],
+      "previousScopesCount": 8,
+      "totalScopesCount": 9
+    },
+    "ipAddress": "212.180.226.43"
+  },
+  {
+    "id": "-8008062330294949448_policy",
+    "timestamp": "2026-10-16T12:34:49.655Z",
+    "action": "SPECIFIC_DATA",
+    "actionDisplay": "Access Changed to Specific Data",
+    "actorEmail": "tetiana_kaminska@gafe.co.za",
+    "actorType": "ADMIN",
+    "appName": "Dictanote",
+    "appId": "391416317693.apps.googleusercontent.com",
+    "clientId": "391416317693.apps.googleusercontent.com",
+    "appIconUrl": null,
+    "target": "Existek",
+    "previousState": "Unconfigured",
+    "newState": "Specific Data",
+    "changeSummary": "Administrator changed application access policy from Unconfigured ➔ Specific Data for Existek",
+    "details": {
+      "ORG_UNIT_NAME": "Existek",
+      "OAUTH2_APP_NAME": "Dictanote",
+      "OAUTH2_APP_ID": "391416317693.apps.googleusercontent.com",
+      "OAUTH2_APP_TYPE": "WEB_CLIENT",
+      "OLD_VALUE": "Unconfigured",
+      "NEW_VALUE": "Specific Google data"
+    },
+    "ipAddress": "149.88.27.187"
+  },
+  {
+    "id": "191312283005490140_policy",
+    "timestamp": "2026-10-13T11:59:06.670Z",
+    "action": "TRUST",
+    "actionDisplay": "Access Changed to Trusted",
+    "actorEmail": "tetiana_kaminska@gafe.co.za",
+    "actorType": "ADMIN",
+    "appName": "dev.adminlens.io",
+    "appId": "476257776955-t129f3c8h8tgq60g7rp4cmganf4n7dn7.apps.googleusercontent.com",
+    "clientId": "476257776955-t129f3c8h8tgq60g7rp4cmganf4n7dn7.apps.googleusercontent.com",
+    "appIconUrl": "https://www.google.com/s2/favicons?domain=adminlens.io&sz=128",
+    "target": "Existek",
+    "previousState": "Unconfigured",
+    "newState": "Trusted",
+    "changeSummary": "Administrator changed application access policy from Unconfigured ➔ Trusted for Existek",
+    "details": {
+      "ORG_UNIT_NAME": "Existek",
+      "OAUTH2_APP_NAME": "dev.adminlens.io",
+      "OAUTH2_APP_ID": "476257776955-t129f3c8h8tgq60g7rp4cmganf4n7dn7.apps.googleusercontent.com",
+      "OAUTH2_APP_TYPE": "WEB_CLIENT",
+      "OLD_VALUE": "Unconfigured",
+      "NEW_VALUE": "Trusted"
+    },
+    "ipAddress": "149.88.27.187"
+  },
+  {
+    "id": "-6952531231542657221_policy",
+    "timestamp": "2026-10-13T06:58:09.923Z",
+    "action": "SPECIFIC_DATA",
+    "actionDisplay": "Access Changed to Specific Data",
+    "actorEmail": "tetiana_kaminska@gafe.co.za",
+    "actorType": "ADMIN",
+    "appName": "Files Editor",
+    "appId": "720620694790-amn4vkqa58hhlnv20uret8du5cfbatf3.apps.googleusercontent.com",
+    "clientId": "720620694790-amn4vkqa58hhlnv20uret8du5cfbatf3.apps.googleusercontent.com",
+    "appIconUrl": "https://ui-avatars.com/api/?name=Files%20Editor&background=3B82F6&color=fff&size=128&rounded=true",
+    "target": "gafe.co.za",
+    "previousState": "Unconfigured",
+    "newState": "Specific Data",
+    "changeSummary": "Administrator changed application access policy from Unconfigured ➔ Specific Data for gafe.co.za",
+    "details": {
+      "ORG_UNIT_NAME": "gafe.co.za",
+      "OAUTH2_APP_NAME": "Files Editor",
+      "OAUTH2_APP_ID": "720620694790-amn4vkqa58hhlnv20uret8du5cfbatf3.apps.googleusercontent.com",
+      "OAUTH2_APP_TYPE": "WEB_CLIENT",
+      "OLD_VALUE": "Unconfigured",
+      "NEW_VALUE": "Specific Google data"
+    },
+    "ipAddress": "149.88.27.187"
+  },
+  {
+    "id": "2424091559494233782_policy",
+    "timestamp": "2026-10-13T06:45:37.100Z",
+    "action": "SPECIFIC_DATA",
+    "actionDisplay": "Access Changed to Specific Data",
+    "actorEmail": "tetiana_kaminska@gafe.co.za",
+    "actorType": "ADMIN",
+    "appName": "Files Editor",
+    "appId": "720620694790-amn4vkqa58hhlnv20uret8du5cfbatf3.apps.googleusercontent.com",
+    "clientId": "720620694790-amn4vkqa58hhlnv20uret8du5cfbatf3.apps.googleusercontent.com",
+    "appIconUrl": "https://ui-avatars.com/api/?name=Files%20Editor&background=3B82F6&color=fff&size=128&rounded=true",
+    "target": "Existek",
+    "previousState": "Limited",
+    "newState": "Specific Data",
+    "changeSummary": "Administrator changed application access policy from Limited ➔ Specific Data for Existek",
+    "details": {
+      "ORG_UNIT_NAME": "Existek",
+      "OAUTH2_APP_NAME": "Files Editor",
+      "OAUTH2_APP_ID": "720620694790-amn4vkqa58hhlnv20uret8du5cfbatf3.apps.googleusercontent.com",
+      "OAUTH2_APP_TYPE": "WEB_CLIENT",
+      "OLD_VALUE": "Limited",
+      "NEW_VALUE": "Specific Google data"
+    },
+    "ipAddress": "149.88.27.187"
+  },
+  {
+    "id": "-7583076384361478397_policy",
+    "timestamp": "2026-10-13T06:36:46.946Z",
+    "action": "LIMIT",
+    "actionDisplay": "Access Changed to Limited",
+    "actorEmail": "tetiana_kaminska@gafe.co.za",
+    "actorType": "ADMIN",
+    "appName": "Files Editor",
+    "appId": "720620694790-amn4vkqa58hhlnv20uret8du5cfbatf3.apps.googleusercontent.com",
+    "clientId": "720620694790-amn4vkqa58hhlnv20uret8du5cfbatf3.apps.googleusercontent.com",
+    "appIconUrl": "https://ui-avatars.com/api/?name=Files%20Editor&background=3B82F6&color=fff&size=128&rounded=true",
+    "target": "Existek",
+    "previousState": "Unconfigured",
+    "newState": "Limited",
+    "changeSummary": "Administrator changed application access policy from Unconfigured ➔ Limited for Existek",
+    "details": {
+      "ORG_UNIT_NAME": "Existek",
+      "OAUTH2_APP_NAME": "Files Editor",
+      "OAUTH2_APP_ID": "720620694790-amn4vkqa58hhlnv20uret8du5cfbatf3.apps.googleusercontent.com",
+      "OAUTH2_APP_TYPE": "WEB_CLIENT",
+      "OLD_VALUE": "Unconfigured",
+      "NEW_VALUE": "Limited"
+    },
+    "ipAddress": "149.88.27.187"
+  },
+  {
+    "id": "-1908781010945383963_dwd_auth",
+    "timestamp": "2026-10-12T10:49:33.899Z",
+    "action": "DWD_SCOPES",
+    "actionDisplay": "Domain-Wide Delegation Scopes Authorized",
+    "actorEmail": "pavel@gafe.co.za",
+    "actorType": "ADMIN",
+    "appName": "dev.adminlens.io (Staging / Dev)",
+    "appId": "102695943947420816039",
+    "clientId": "102695943947420816039",
+    "appIconUrl": "https://www.google.com/s2/favicons?domain=adminlens.io&sz=128",
+    "target": "gafe.co.za",
+    "previousState": "Unconfigured",
+    "newState": "Scopes Delegated",
+    "newScopes": [
+      "https://www.googleapis.com/auth/cloud-identity.policies.readonly",
+      "https://www.googleapis.com/auth/admin.directory.orgunit.readonly",
+      "https://www.googleapis.com/auth/admin.reports.audit.readonly",
+      "https://www.googleapis.com/auth/admin.reports.usage.readonly",
+      "https://www.googleapis.com/auth/admin.directory.user.readonly",
+      "https://www.googleapis.com/auth/admin.directory.customer.readonly",
+      "https://www.googleapis.com/auth/admin.directory.domain.readonly",
+      "https://www.googleapis.com/auth/admin.directory.user.security"
+    ],
+    "changeSummary": "Administrator delegated 8 OAuth API scope(s) via Domain-Wide Delegation: cloud-identity.policies.readonly, admin.directory.orgunit.readonly, admin.reports.audit.readonly, admin.reports.usage.readonly, admin.directory.user.readonly, admin.directory.customer.readonly, admin.directory.domain.readonly, admin.directory.user.security",
+    "details": {
+      "source": "ADMIN_AUDIT_LOG",
+      "eventName": "DOMAIN_SETTINGS:AUTHORIZE_API_CLIENT_ACCESS",
+      "newScopes": [
+        "https://www.googleapis.com/auth/cloud-identity.policies.readonly",
+        "https://www.googleapis.com/auth/admin.directory.orgunit.readonly",
+        "https://www.googleapis.com/auth/admin.reports.audit.readonly",
+        "https://www.googleapis.com/auth/admin.reports.usage.readonly",
+        "https://www.googleapis.com/auth/admin.directory.user.readonly",
+        "https://www.googleapis.com/auth/admin.directory.customer.readonly",
+        "https://www.googleapis.com/auth/admin.directory.domain.readonly",
+        "https://www.googleapis.com/auth/admin.directory.user.security"
+      ],
+      "previousScopesCount": 0,
+      "totalScopesCount": 8
+    },
+    "ipAddress": "80.238.118.60"
+  },
+  {
     "id": "3433411071776294713_policy",
     "timestamp": "2026-09-22T10:40:01.263Z",
     "action": "LIMIT",

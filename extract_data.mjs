@@ -88,11 +88,44 @@ async function extractDirectoryTokens(auth) {
 async function extractReportAuditLogs(auth) {
   console.log('[3] Querying Reports API for Token Audit Activity (applicationName=token)...');
   const reports = google.admin({ version: 'reports_v1', auth });
+  const historicalStart = new Date(Date.now() - 180 * 24 * 60 * 60 * 1000).toISOString();
 
-  const activities = [];
+  const activitiesMap = new Map();
+  const addActivity = (item) => {
+    const key = `${item.id?.uniqueQualifier || ''}_${item.id?.time || ''}`;
+    if (!activitiesMap.has(key)) {
+      activitiesMap.set(key, item);
+    }
+  };
+
+  // 3a. Explicitly fetch all 'authorize' and 'revoke' events (180 days) so scope requests/grants are never crowded out by API activity
+  for (const eventName of ['authorize', 'revoke']) {
+    let pageToken = undefined;
+    let eventCount = 0;
+    try {
+      do {
+        const res = await reports.activities.list({
+          userKey: 'all',
+          applicationName: 'token',
+          eventName,
+          startTime: historicalStart,
+          maxResults: 500,
+          pageToken,
+        });
+        const items = res.data.items || [];
+        items.forEach(addActivity);
+        eventCount += items.length;
+        pageToken = res.data.nextPageToken;
+      } while (pageToken);
+      console.log(`  ✓ Fetched ${eventCount} token '${eventName}' events (180-day window).`);
+    } catch (err) {
+      console.warn(`  ! Error querying token '${eventName}' events: ${err.message}`);
+    }
+  }
+
+  // 3b. Fetch recent general token activity sample (up to 1000 events)
   let pageToken = undefined;
   let count = 0;
-
   try {
     do {
       const params = {
@@ -107,12 +140,12 @@ async function extractReportAuditLogs(auth) {
       const res = await reports.activities.list(params);
 
       if (res.data.items) {
-        activities.push(...res.data.items);
+        res.data.items.forEach(addActivity);
       }
       pageToken = res.data.nextPageToken;
       count += res.data.items ? res.data.items.length : 0;
       if (count >= 1000) {
-        console.log(`  Fetched ${count} audit events (sample threshold reached)...`);
+        console.log(`  Fetched ${count} general token activity events (sample threshold reached)...`);
         break;
       }
     } while (pageToken);
@@ -120,27 +153,36 @@ async function extractReportAuditLogs(auth) {
     console.error(`  ! Error querying Reports API: ${err.message}`);
   }
 
-  console.log(`✓ Total token audit activity events collected: ${activities.length}\n`);
+  const activities = Array.from(activitiesMap.values()).sort(
+    (a, b) => new Date(b.id?.time || 0).getTime() - new Date(a.id?.time || 0).getTime()
+  );
+  console.log(`✓ Total unique token audit events collected: ${activities.length}\n`);
   return activities;
 }
 
 async function extractAdminAuditLogs(auth) {
   console.log('[4] Querying Reports API for Admin Configuration Events (applicationName=admin)...');
   const reports = google.admin({ version: 'reports_v1', auth });
+  const historicalStart = new Date(Date.now() - 180 * 24 * 60 * 60 * 1000).toISOString();
 
   const activities = [];
   let pageToken = undefined;
 
   try {
-    const params = {
-      userKey: 'all',
-      applicationName: 'admin',
-      maxResults: 100,
-    };
-    const res = await reports.activities.list(params);
-    if (res.data.items) {
-      activities.push(...res.data.items);
-    }
+    do {
+      const params = {
+        userKey: 'all',
+        applicationName: 'admin',
+        startTime: historicalStart,
+        maxResults: 500,
+        pageToken,
+      };
+      const res = await reports.activities.list(params);
+      if (res.data.items) {
+        activities.push(...res.data.items);
+      }
+      pageToken = res.data.nextPageToken;
+    } while (pageToken);
   } catch (err) {
     console.warn(`  ! Could not fetch Admin audit logs: ${err.message}`);
   }

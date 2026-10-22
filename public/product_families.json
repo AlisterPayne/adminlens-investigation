@@ -5,7 +5,7 @@
     "vendor": "Internal / Google Apps Script",
     "iconUrl": "https://www.google.com/s2/favicons?domain=script.google.com&sz=128",
     "deploymentsCount": 10,
-    "totalUsersCount": 12,
+    "totalUsersCount": 11,
     "maxRisk": "CRITICAL",
     "avgRiskScore": 3.32,
     "deploymentIds": [
@@ -13,31 +13,12 @@
       "892359244178-5umuheruf74ttkti2115q78gkei82s0s.apps.googleusercontent.com",
       "807481657183-jdmu3o6ahn0m8efks7nrghqpe4mpst3g.apps.googleusercontent.com",
       "1051074958188-u3h5tcv96sm52jubv7cqnp1squird12f.apps.googleusercontent.com",
-      "172700529642-48obmiqhk5joviftkt87d0po0bnbunbu.apps.googleusercontent.com",
       "97402216672-ho80qpeolqdr24nltc29n6krpebk9ss3.apps.googleusercontent.com",
-      "74140984847-ev97f2i1adth1ivc40prputvbv8auunq.apps.googleusercontent.com",
       "705539309036-4ej1ri9jplb9a4791jsppcchjbvk74fp.apps.googleusercontent.com",
+      "74140984847-ev97f2i1adth1ivc40prputvbv8auunq.apps.googleusercontent.com",
+      "172700529642-48obmiqhk5joviftkt87d0po0bnbunbu.apps.googleusercontent.com",
       "742713087391-4otjds6c701o8q958uhcku0c40r48vjk.apps.googleusercontent.com",
       "579706874471-v1v2akhe8lqriu4hhrm58rb1e1tpo6fn.apps.googleusercontent.com"
-    ]
-  },
-  {
-    "familyId": "gam",
-    "familyName": "GAM (Google Apps Manager)",
-    "vendor": "GAM Open Source",
-    "iconUrl": "https://www.google.com/s2/favicons?domain=github.com&sz=128",
-    "deploymentsCount": 7,
-    "totalUsersCount": 7,
-    "maxRisk": "CRITICAL",
-    "avgRiskScore": 3.14,
-    "deploymentIds": [
-      "297408095146-fug707qsjv4ikron0hugpevbrjhkmsk7.apps.googleusercontent.com",
-      "458969862783-1smfdj4v8qbnibgarka1a99400lhsa13.apps.googleusercontent.com",
-      "521549528509-f17hlgjd91nbi5sooc73ia3d4dqln10s.apps.googleusercontent.com",
-      "585538275436-4lk6emnir2l22atsdk61fstd4nhkgbku.apps.googleusercontent.com",
-      "101367350966766396496",
-      "103840544298891091548",
-      "585538275436-5k5co106krror5jgc4f4dpjib0efeb7o.apps.googleusercontent.com"
     ]
   },
   {
@@ -57,6 +38,24 @@
       "243341882805-fav9vbuf7c132v7lkvav10h32o5gds7q.apps.googleusercontent.com",
       "243341882805-ah59e7mg9ccjnft0nu5mgopk60k4u2bs.apps.googleusercontent.com",
       "243341882805-4e3fs19mqa8olc5e8vt86chmk0eejpl1.apps.googleusercontent.com"
+    ]
+  },
+  {
+    "familyId": "gam",
+    "familyName": "GAM (Google Apps Manager)",
+    "vendor": "GAM Open Source",
+    "iconUrl": "https://www.google.com/s2/favicons?domain=github.com&sz=128",
+    "deploymentsCount": 6,
+    "totalUsersCount": 5,
+    "maxRisk": "CRITICAL",
+    "avgRiskScore": 4.02,
+    "deploymentIds": [
+      "458969862783-1smfdj4v8qbnibgarka1a99400lhsa13.apps.googleusercontent.com",
+      "521549528509-f17hlgjd91nbi5sooc73ia3d4dqln10s.apps.googleusercontent.com",
+      "297408095146-fug707qsjv4ikron0hugpevbrjhkmsk7.apps.googleusercontent.com",
+      "585538275436-4lk6emnir2l22atsdk61fstd4nhkgbku.apps.googleusercontent.com",
+      "101367350966766396496",
+      "585538275436-5k5co106krror5jgc4f4dpjib0efeb7o.apps.googleusercontent.com"
     ]
   },
   {
@@ -81,9 +80,9 @@
     "vendor": "Admin Lens",
     "iconUrl": "https://www.google.com/s2/favicons?domain=adminlens.io&sz=128",
     "deploymentsCount": 4,
-    "totalUsersCount": 14,
-    "maxRisk": "LOW",
-    "avgRiskScore": 1.35,
+    "totalUsersCount": 13,
+    "maxRisk": "CRITICAL",
+    "avgRiskScore": 2.73,
     "deploymentIds": [
       "539614054292-v48fp11ou2nrhh7lb47qgqq4k5d1fd8u.apps.googleusercontent.com",
       "476257776955-t129f3c8h8tgq60g7rp4cmganf4n7dn7.apps.googleusercontent.com",
@@ -97,12 +96,12 @@
     "vendor": "Google LLC",
     "iconUrl": "https://www.google.com/s2/favicons?domain=google.com&sz=128",
     "deploymentsCount": 4,
-    "totalUsersCount": 3,
-    "maxRisk": "CRITICAL",
-    "avgRiskScore": 1.75,
+    "totalUsersCount": 2,
+    "maxRisk": "LOW",
+    "avgRiskScore": 1,
     "deploymentIds": [
-      "823511539352-ojaretejk1s95sdvkic0te923pt7knpu.apps.googleusercontent.com",
       "1023251155897-tb54g624q9e77gtsrnemgv4c2ihekurv.apps.googleusercontent.com",
+      "823511539352-ojaretejk1s95sdvkic0te923pt7knpu.apps.googleusercontent.com",
       "com.google.DevicePolicy",
       "531246522847-cpii92d27guqb6mrvgtc8skipar03g1f.apps.googleusercontent.com"
     ]
@@ -144,7 +143,7 @@
     "vendor": "Apple Inc.",
     "iconUrl": "https://www.google.com/s2/favicons?domain=apple.com&sz=128",
     "deploymentsCount": 2,
-    "totalUsersCount": 25,
+    "totalUsersCount": 26,
     "maxRisk": "CRITICAL",
     "avgRiskScore": 3.59,
     "deploymentIds": [
@@ -158,7 +157,7 @@
     "vendor": "Lusha Systems Inc.",
     "iconUrl": "https://www.google.com/s2/favicons?domain=lusha.com&sz=128",
     "deploymentsCount": 2,
-    "totalUsersCount": 5,
+    "totalUsersCount": 4,
     "maxRisk": "HIGH",
     "avgRiskScore": 2.12,
     "deploymentIds": [
@@ -191,6 +190,19 @@
     "deploymentIds": [
       "657959631782-gig0qdc3vaieq93qtv1mubvj0c4mjdfl.apps.googleusercontent.com",
       "657959631782-i9cm367mk2m810gc99sp2lsie03vo4u3.apps.googleusercontent.com"
+    ]
+  },
+  {
+    "familyId": "gcp_proj_36169664182",
+    "familyName": "Files Editor",
+    "iconUrl": "https://ui-avatars.com/api/?name=Files%20Editor&background=3B82F6&color=fff&size=128&rounded=true",
+    "deploymentsCount": 2,
+    "totalUsersCount": 2,
+    "maxRisk": "MEDIUM",
+    "avgRiskScore": 2.36,
+    "deploymentIds": [
+      "36169664182-5eqhquc7nm7tb1ehm4knepe4i83ai7c1.apps.googleusercontent.com",
+      "36169664182-nien1e2ojhjqci440vbogoa1btl7a6r4.apps.googleusercontent.com"
     ]
   },
   {
@@ -396,6 +408,18 @@
     ]
   },
   {
+    "familyId": "gcp_proj_690997610676",
+    "familyName": "DelCal by AliceKeeler",
+    "iconUrl": "https://ui-avatars.com/api/?name=DelCal%20by%20AliceKeeler&background=3B82F6&color=fff&size=128&rounded=true",
+    "deploymentsCount": 1,
+    "totalUsersCount": 1,
+    "maxRisk": "HIGH",
+    "avgRiskScore": 3.14,
+    "deploymentIds": [
+      "690997610676-l8hvunsob913lqf9315ogsolip0pbs7o.apps.googleusercontent.com"
+    ]
+  },
+  {
     "familyId": "worksimpli-software-llc",
     "familyName": "WorkSimpli Software LLC",
     "vendor": "WorkSimpli Software LLC",
@@ -406,18 +430,6 @@
     "avgRiskScore": 1,
     "deploymentIds": [
       "108309815588-d8c3litltbdoibd7vr078iu6njc2292u.apps.googleusercontent.com"
-    ]
-  },
-  {
-    "familyId": "gcp_proj_690997610676",
-    "familyName": "DelCal by AliceKeeler",
-    "iconUrl": "https://ui-avatars.com/api/?name=DelCal%20by%20AliceKeeler&background=3B82F6&color=fff&size=128&rounded=true",
-    "deploymentsCount": 1,
-    "totalUsersCount": 1,
-    "maxRisk": "HIGH",
-    "avgRiskScore": 3.14,
-    "deploymentIds": [
-      "690997610676-l8hvunsob913lqf9315ogsolip0pbs7o.apps.googleusercontent.com"
     ]
   },
   {
@@ -438,7 +450,7 @@
     "familyName": "iOS",
     "iconUrl": "https://ui-avatars.com/api/?name=iOS&background=3B82F6&color=fff&size=128&rounded=true",
     "deploymentsCount": 1,
-    "totalUsersCount": 1,
+    "totalUsersCount": 2,
     "maxRisk": "CRITICAL",
     "avgRiskScore": 4.15,
     "deploymentIds": [
@@ -498,31 +510,6 @@
     ]
   },
   {
-    "familyId": "gcp_proj_153224154396",
-    "familyName": "Tartan App",
-    "iconUrl": "https://ui-avatars.com/api/?name=Tartan%20App&background=3B82F6&color=fff&size=128&rounded=true",
-    "deploymentsCount": 1,
-    "totalUsersCount": 1,
-    "maxRisk": "MEDIUM",
-    "avgRiskScore": 2.49,
-    "deploymentIds": [
-      "153224154396-lguurdshc9o2d319pellig0s2tpekn5s.apps.googleusercontent.com"
-    ]
-  },
-  {
-    "familyId": "bitly-inc-",
-    "familyName": "Bitly, Inc.",
-    "vendor": "Bitly, Inc.",
-    "iconUrl": "https://www.google.com/s2/favicons?domain=bitly.com&sz=128",
-    "deploymentsCount": 1,
-    "totalUsersCount": 1,
-    "maxRisk": "LOW",
-    "avgRiskScore": 1.1,
-    "deploymentIds": [
-      "489890094529-ueegekuf9mubvv4sc6bh57op2rkjok62.apps.googleusercontent.com"
-    ]
-  },
-  {
     "familyId": "anthropic",
     "familyName": "Anthropic",
     "vendor": "Anthropic",
@@ -533,6 +520,18 @@
     "avgRiskScore": 1,
     "deploymentIds": [
       "1062961139910-l2m55cb9h51u5cuc9c56eb3fevouidh9.apps.googleusercontent.com"
+    ]
+  },
+  {
+    "familyId": "gcp_proj_153224154396",
+    "familyName": "Tartan App",
+    "iconUrl": "https://ui-avatars.com/api/?name=Tartan%20App&background=3B82F6&color=fff&size=128&rounded=true",
+    "deploymentsCount": 1,
+    "totalUsersCount": 1,
+    "maxRisk": "MEDIUM",
+    "avgRiskScore": 2.49,
+    "deploymentIds": [
+      "153224154396-lguurdshc9o2d319pellig0s2tpekn5s.apps.googleusercontent.com"
     ]
   },
   {
@@ -587,6 +586,18 @@
     ]
   },
   {
+    "familyId": "gcp_proj_292824132082.apps.googleusercontent.com",
+    "familyName": "Google APIs Explorer",
+    "iconUrl": "https://ui-avatars.com/api/?name=Google%20APIs%20Explorer&background=3B82F6&color=fff&size=128&rounded=true",
+    "deploymentsCount": 1,
+    "totalUsersCount": 1,
+    "maxRisk": "HIGH",
+    "avgRiskScore": 3.36,
+    "deploymentIds": [
+      "292824132082.apps.googleusercontent.com"
+    ]
+  },
+  {
     "familyId": "gcp_proj_23031957720",
     "familyName": "Zendocs",
     "iconUrl": "https://ui-avatars.com/api/?name=Zendocs&background=3B82F6&color=fff&size=128&rounded=true",
@@ -611,15 +622,15 @@
     ]
   },
   {
-    "familyId": "gcp_proj_391416317693.apps.googleusercontent.com",
-    "familyName": "Dictanote",
-    "iconUrl": "https://ui-avatars.com/api/?name=Dictanote&background=3B82F6&color=fff&size=128&rounded=true",
+    "familyId": "gcp_proj_685439359098",
+    "familyName": "Raindrop.io",
+    "iconUrl": "https://ui-avatars.com/api/?name=Raindrop.io&background=3B82F6&color=fff&size=128&rounded=true",
     "deploymentsCount": 1,
     "totalUsersCount": 1,
     "maxRisk": "LOW",
     "avgRiskScore": 1.35,
     "deploymentIds": [
-      "391416317693.apps.googleusercontent.com"
+      "685439359098-o4gtsi4d97buj0v0124p3uledd21n3n5.apps.googleusercontent.com"
     ]
   },
   {
@@ -640,11 +651,23 @@
     "familyName": "Tartan App Shield",
     "iconUrl": "https://ui-avatars.com/api/?name=Tartan%20App%20Shield&background=3B82F6&color=fff&size=128&rounded=true",
     "deploymentsCount": 1,
-    "totalUsersCount": 3,
-    "maxRisk": "LOW",
-    "avgRiskScore": 1.35,
+    "totalUsersCount": 4,
+    "maxRisk": "HIGH",
+    "avgRiskScore": 3.41,
     "deploymentIds": [
       "889961976971-e94g9c0i8d5rha10e7mrlohshmstaa5c.apps.googleusercontent.com"
+    ]
+  },
+  {
+    "familyId": "gcp_proj_106081703606845154759",
+    "familyName": "Tartan App",
+    "iconUrl": "https://ui-avatars.com/api/?name=Tartan%20App&background=3B82F6&color=fff&size=128&rounded=true",
+    "deploymentsCount": 1,
+    "totalUsersCount": 2,
+    "maxRisk": "HIGH",
+    "avgRiskScore": 3.35,
+    "deploymentIds": [
+      "106081703606845154759"
     ]
   },
   {
@@ -658,6 +681,19 @@
     "avgRiskScore": 1,
     "deploymentIds": [
       "1098397018324-aqmj80n4sfufvbn3cg4bd7ugkcfpu21o.apps.googleusercontent.com"
+    ]
+  },
+  {
+    "familyId": "bitly-inc-",
+    "familyName": "Bitly, Inc.",
+    "vendor": "Bitly, Inc.",
+    "iconUrl": "https://www.google.com/s2/favicons?domain=bitly.com&sz=128",
+    "deploymentsCount": 1,
+    "totalUsersCount": 0,
+    "maxRisk": "LOW",
+    "avgRiskScore": 1.1,
+    "deploymentIds": [
+      "489890094529-ueegekuf9mubvv4sc6bh57op2rkjok62.apps.googleusercontent.com"
     ]
   },
   {

@@ -121,7 +121,6 @@ interface Recommendation {
   details: string;
   remediation: string;
   actionType: string;
-  gamCommand?: string;
   adminConsolePath?: string;
   familyId?: string;
   familyName?: string;
@@ -137,15 +136,12 @@ interface PlaybookTarget {
   findingsCount: number;
   affectedAccounts: string[];
   clientIds: string[];
-  gamCommands?: string[];
   items: Recommendation[];
 }
 
 interface AdminGroup {
   adminEmail: string;
   tokenCount: number;
-  gamCommands: string[];
-  batchGamScript: string;
   items: Recommendation[];
 }
 
@@ -159,7 +155,6 @@ interface Playbook {
   actionType: string;
   adminConsolePath?: string;
   remediationSummary: string;
-  batchGamScript?: string;
   metrics: {
     totalFindings: number;
     distinctAdmins?: number;
@@ -180,7 +175,6 @@ interface ByFamilyItem {
   findingsCount: number;
   clientIds: string[];
   affectedAccounts: string[];
-  gamCommands?: string[];
   findings: Recommendation[];
 }
 
@@ -193,7 +187,7 @@ interface InitialRecsData {
     criticalCount: number;
     highCount: number;
     mediumCount: number;
-    actionChannels: { GAM_CLI: number; GOOGLE_ADMIN_CONSOLE: number };
+    actionChannels: { GOOGLE_ADMIN_CONSOLE: number };
   };
   totalFindings: number;
   criticalCount: number;
@@ -1138,36 +1132,40 @@ export default function OAuthDashboardClient({
                 </div>
               </div>
 
-              {/* Critical Governance Recommendation Banner for Unverified & Unconfigured High/Critical Apps */}
+              {/* Tier 1 Critical Governance Recommendation Banner for Unverified & Unconfigured High/Critical Apps */}
               {((selectedApp.riskLevel === 'CRITICAL' || selectedApp.riskLevel === 'HIGH' || (selectedApp.riskScore !== undefined && selectedApp.riskScore >= 3.0)) && !selectedApp.isVerified && (!selectedApp.adminAccessLevel || selectedApp.adminAccessLevel === 'UNCONFIGURED')) && (
                 <div className="bg-red-50/80 border-2 border-red-300 rounded-xl p-4.5 space-y-3 shadow-xs">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2 text-red-950 font-bold text-sm">
                       <span className="text-base">🚨</span>
-                      <span>CRITICAL GOVERNANCE ACTION REQUIRED</span>
+                      <span>TIER 1 CRITICAL GOVERNANCE REVIEW (GATE U1 ➔ GATE U2)</span>
                     </div>
                     <span className="bg-red-600 text-white font-extrabold text-[10px] px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-2xs">
-                      Critical Review
+                      Tier 1 Priority
                     </span>
                   </div>
 
                   <p className="text-xs text-red-950 font-medium leading-relaxed">
-                    This application holds high-privilege access ({selectedApp.riskLevel} risk), is <strong>unverified by Google</strong>, and has <strong>not been configured or reviewed by an administrator</strong> in Google Workspace.
+                    This application holds high-privilege access ({selectedApp.riskLevel} risk), is <strong>unverified by Google</strong>, and is <strong>unconfigured</strong> in Google Workspace.
                   </p>
 
                   <div className="p-3.5 bg-white/90 rounded-lg border border-red-200/90 space-y-2.5 text-xs">
                     <div>
-                      <span className="font-bold text-red-900">Urgent Remediation:</span> Urgently review this application and contact the active user(s) utilizing it (<strong>{selectedApp.users?.map(u => u.email).join(', ') || 'Domain Users'}</strong>) to confirm if this access was intended, and ensure they build or establish a legitimate, documented business use case.
+                      <span className="font-bold text-red-900">Decision Tree Directive:</span> Review this application and contact the user(s) utilizing it (<strong>{selectedApp.users?.map(u => u.email).join(', ') || 'Domain Users'}</strong>) to verify its school use case.
                     </div>
                     <div className="pt-2 border-t border-red-100 space-y-1.5">
-                      <div className="font-bold text-gray-900">Security Recommendation based on Risk:</div>
+                      <div className="font-bold text-gray-900">AdminLens Policy Rules:</div>
                       <div className="flex items-start gap-2 text-gray-800">
-                        <span className="text-emerald-700 font-bold">✓</span>
-                        <span><strong>If the user has a strong, validated use case:</strong> Do not grant broad trust. In Google Admin Console API Controls, configure the policy to only allow <strong>&quot;Specific Google data&quot;</strong>.</span>
+                        <span className="text-emerald-700 font-bold">🏆</span>
+                        <span><strong>Primary Target — &quot;Specific Google data&quot; (The Holy Grail):</strong> Configure validated school applications to <strong>Specific Google data</strong> to approve exact current scopes and block future escalation.</span>
                       </div>
                       <div className="flex items-start gap-2 text-gray-800">
-                        <span className="text-red-700 font-bold">✗</span>
-                        <span><strong>If there is no good or approved use case:</strong> Immediately set the application policy to <strong>&quot;Blocked&quot;</strong>.</span>
+                        <span className="text-red-700 font-bold">🚨</span>
+                        <span><strong>Rare Exception — &quot;Blocked&quot;:</strong> Reserve <strong>Blocked</strong> ONLY for the very few apps that are extremely high-risk AND have a known security or safety issue for the school environment.</span>
+                      </div>
+                      <div className="flex items-start gap-2 text-gray-800">
+                        <span className="text-orange-700 font-bold">🚫</span>
+                        <span><strong>Never Recommend &quot;Trusted&quot;:</strong> AdminLens never recommends blanket Trusted access; &quot;Limited&quot; is case-by-case only.</span>
                       </div>
                     </div>
                   </div>
@@ -1180,9 +1178,9 @@ export default function OAuthDashboardClient({
                       className="inline-flex items-center gap-1.5 font-bold text-red-800 hover:text-red-950 underline"
                     >
                       <GoogleAdminIcon className="w-3.5 h-3.5" />
-                      Configure Access Policy in Google Admin Console ↗
+                      Configure Specific Google Data in Admin Console ↗
                     </a>
-                    <span className="text-[11px] text-gray-500 font-mono">Status: Unconfigured Shadow IT</span>
+                    <span className="text-[11px] text-gray-500 font-mono">Tier 1 Unconfigured</span>
                   </div>
                 </div>
               )}
@@ -1264,6 +1262,30 @@ export default function OAuthDashboardClient({
                         </div>
                       </div>
 
+                      {/* Decision Tree Gate Path & Directive Summary */}
+                      {((selectedApp as any).gatePath || (selectedApp as any).triageDirective) && (
+                        <div className="p-3 rounded-lg bg-white border border-slate-200/90 space-y-1.5 text-xs">
+                          <div className="flex flex-wrap items-center justify-between gap-2">
+                            <div className="flex flex-wrap items-center gap-1.5">
+                              <span className="font-extrabold text-slate-800">🗺️ Decision Tree Path:</span>
+                              <span className="font-mono text-[11px] px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200 font-semibold">
+                                {(selectedApp as any).gatePath}
+                              </span>
+                            </div>
+                            {(selectedApp as any).triageBadge && (
+                              <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-amber-50 text-amber-900 border border-amber-200">
+                                {(selectedApp as any).triageBadge}
+                              </span>
+                            )}
+                          </div>
+                          {(selectedApp as any).triageDirective && (
+                            <div className="text-gray-700 font-medium leading-relaxed">
+                              <strong className="text-gray-900">👉 Directive:</strong> {(selectedApp as any).triageDirective}
+                            </div>
+                          )}
+                        </div>
+                      )}
+
                       {/* 4 Radio Options List */}
                       <div className="divide-y divide-gray-100 rounded-lg border border-gray-200 bg-white overflow-hidden">
                         {/* 1. Trusted */}
@@ -1282,6 +1304,9 @@ export default function OAuthDashboardClient({
                               <div className="flex flex-wrap items-center gap-2">
                                 <span className="text-sm font-bold text-gray-900">Trusted</span>
                                 <span className="text-xs text-gray-600">— App can request access to all Google data</span>
+                                <span className="text-[10px] font-extrabold px-2 py-0.5 rounded bg-orange-100 text-orange-900 border border-orange-300 tracking-wide">
+                                  🚫 NEVER RECOMMENDED
+                                </span>
                                 {policyLevel === "TRUSTED" && (
                                   <span className="text-[10px] font-extrabold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 tracking-wide">
                                     ACTIVE
@@ -1315,6 +1340,9 @@ export default function OAuthDashboardClient({
                               <div className="flex flex-wrap items-center gap-2">
                                 <span className="text-sm font-bold text-gray-900">Limited</span>
                                 <span className="text-xs text-gray-600">— App can request access to unrestricted Google data only</span>
+                                <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-300 tracking-wide">
+                                  ⚪ CASE-BY-CASE ONLY
+                                </span>
                                 {policyLevel === "LIMITED" && (
                                   <span className="text-[10px] font-extrabold px-2 py-0.5 rounded bg-blue-100 text-blue-800 tracking-wide">
                                     ACTIVE
@@ -1328,12 +1356,12 @@ export default function OAuthDashboardClient({
                         {/* 3. Specific Google data */}
                         <div className={`p-3 px-3.5 transition-colors ${
                           policyLevel === "SPECIFIC_DATA" || policyLevel.includes("SPECIFIC")
-                            ? "bg-amber-50/40 border-l-4 border-l-amber-600"
-                            : "hover:bg-gray-50/60"
+                            ? "bg-emerald-50/50 border-l-4 border-l-emerald-600"
+                            : "bg-emerald-50/20 hover:bg-emerald-50/40 border-l-4 border-l-emerald-500"
                         }`}>
                           <div className="flex items-start gap-3">
                             <span className={`mt-0.5 w-4 h-4 rounded-full border shrink-0 flex items-center justify-center ${
-                              policyLevel === "SPECIFIC_DATA" || policyLevel.includes("SPECIFIC") ? "border-blue-600 bg-white" : "border-gray-300 bg-white"
+                              policyLevel === "SPECIFIC_DATA" || policyLevel.includes("SPECIFIC") ? "border-blue-600 bg-white" : "border-emerald-600 bg-white"
                             }`}>
                               {(policyLevel === "SPECIFIC_DATA" || policyLevel.includes("SPECIFIC")) && <span className="w-2 h-2 rounded-full bg-blue-600"></span>}
                             </span>
@@ -1342,6 +1370,9 @@ export default function OAuthDashboardClient({
                                 <div className="flex flex-wrap items-center gap-2">
                                   <span className="text-sm font-bold text-gray-900">Specific Google data</span>
                                   <span className="text-xs text-gray-600">— Restricted to specified services &amp; scopes only</span>
+                                  <span className="text-[10px] font-black px-2 py-0.5 rounded bg-emerald-600 text-white tracking-wide shadow-2xs">
+                                    🏆 RECOMMENDED (&quot;THE HOLY GRAIL&quot;)
+                                  </span>
                                   {(policyLevel === "SPECIFIC_DATA" || policyLevel.includes("SPECIFIC")) && (
                                     <span className="text-[10px] font-extrabold px-2 py-0.5 rounded bg-amber-100 text-amber-800 tracking-wide">
                                       ACTIVE
@@ -1391,6 +1422,9 @@ export default function OAuthDashboardClient({
                               <div className="flex flex-wrap items-center gap-2">
                                 <span className="text-sm font-bold text-gray-900">Blocked</span>
                                 <span className="text-xs text-gray-600">— Blocked from accessing any Google data</span>
+                                <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-red-50 text-red-800 border border-red-200 tracking-wide">
+                                  🚨 RARE EXCEPTION ONLY (EXTREME RISK + KNOWN SCHOOL ISSUE)
+                                </span>
                                 {policyLevel === "BLOCKED" && (
                                   <span className="text-[10px] font-extrabold px-2 py-0.5 rounded bg-red-100 text-red-800 tracking-wide">
                                     ACTIVE

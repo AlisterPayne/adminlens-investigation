@@ -972,7 +972,7 @@
     "isAdmin": true,
     "isDelegatedAdmin": false,
     "suspended": false,
-    "orgUnitPath": "/deidre Testing OU"
+    "orgUnitPath": "/Jacaranda Academy/Staff"
   },
   {
     "id": "111100226279784888657",
@@ -1245,7 +1245,7 @@
     "isAdmin": true,
     "isDelegatedAdmin": false,
     "suspended": false,
-    "orgUnitPath": "/"
+    "orgUnitPath": "/Jacaranda Academy/Staff"
   },
   {
     "id": "111862280074858733376",
@@ -1582,7 +1582,7 @@
     },
     "isAdmin": false,
     "isDelegatedAdmin": false,
-    "suspended": false,
+    "suspended": true,
     "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Trainers"
   },
   {
@@ -3781,6 +3781,19 @@
     "isDelegatedAdmin": false,
     "suspended": false,
     "orgUnitPath": "/Quizzes Users"
+  },
+  {
+    "id": "101889966858648599838",
+    "primaryEmail": "will@gafe.co.za",
+    "name": {
+      "givenName": "Will",
+      "familyName": "Vernell",
+      "fullName": "Will Vernell"
+    },
+    "isAdmin": false,
+    "isDelegatedAdmin": false,
+    "suspended": false,
+    "orgUnitPath": "/⛔ CloudEDU Training ⛔/CloudEd Trainers"
   },
   {
     "id": "111481680325599307571",

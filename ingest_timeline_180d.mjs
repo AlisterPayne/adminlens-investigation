@@ -68,11 +68,8 @@ function getAppIcon(appName, clientId, masterApps = []) {
 
 async function run180DayIngestion() {
   const pullStartTime = new Date();
-  console.log(`=== Starting AdminLens Access Policy Ingestion for ${DOMAIN} ===`);
+  console.log(`=== Starting AdminLens Access Policy & Scope Expansion Ingestion for ${DOMAIN} ===`);
   console.log(`Pull Initiated: ${pullStartTime.toISOString()}`);
-  
-  const auth = await authenticate();
-  const reports = google.admin({ version: 'reports_v1', auth });
 
   const historicalStart = new Date(Date.now() - 180 * 24 * 60 * 60 * 1000).toISOString();
   console.log(`Historical Horizon: 180 Days (from ${historicalStart})`);
@@ -80,25 +77,64 @@ async function run180DayIngestion() {
   // Load master apps catalog if present for icon enrichment
   let masterApps = [];
   try {
-    const catalogPath = './mosaic-next/data/master_applications_catalog.json';
+    const catalogPath = './mosaic-next/data/applications_catalog.json';
+    const fallbackPath = './mosaic-next/data/master_applications_catalog.json';
     if (fs.existsSync(catalogPath)) {
       masterApps = JSON.parse(fs.readFileSync(catalogPath, 'utf8'));
+    } else if (fs.existsSync(fallbackPath)) {
+      masterApps = JSON.parse(fs.readFileSync(fallbackPath, 'utf8'));
     }
   } catch (e) {
-    console.warn('Could not load master_applications_catalog.json for icon matching');
+    console.warn('Could not load applications catalog for icon matching');
   }
 
-  const events = [];
+  const eventsMap = new Map();
+  try {
+    if (fs.existsSync('./mosaic-next/data/audit_timeline.json')) {
+      const existing = JSON.parse(fs.readFileSync('./mosaic-next/data/audit_timeline.json', 'utf8'));
+      if (Array.isArray(existing)) {
+        for (const ev of existing) {
+          if (ev && ev.id) eventsMap.set(ev.id, ev);
+        }
+      }
+    }
+  } catch (e) {
+    // ignore
+  }
+  const addTimelineEvent = (ev) => {
+    if (ev && ev.id) {
+      eventsMap.set(ev.id, ev);
+    }
+  };
 
   // ==============================================================
-  // ADMIN AUDIT LOGS: Application Access Policy Changes Only
+  // 1. ADMIN AUDIT LOGS: Application Access Policy Changes
   // (Filter: Trusted, Specific Data, Limited, Blocked)
-  // Excludes 3rd-party user scope authorizations & general settings
   // ==============================================================
   console.log('\nFetching Admin Audit Logs for Application Access Policy changes...');
-  let pageToken;
-  let adminPage = 0;
-  let adminMatched = 0;
+  let adminItemsRaw = [];
+
+  try {
+    const auth = await authenticate();
+    const reports = google.admin({ version: 'reports_v1', auth });
+    let pageToken;
+    do {
+      const res = await reports.activities.list({
+        userKey: 'all',
+        applicationName: 'admin',
+        startTime: historicalStart,
+        maxResults: 100,
+        pageToken,
+      });
+      if (res.data.items) adminItemsRaw.push(...res.data.items);
+      pageToken = res.data.nextPageToken;
+    } while (pageToken);
+  } catch (e) {
+    console.warn(`Live API fetch unavailable (${e.message}), using local ./extracted_data/admin_audit_events.json...`);
+    if (fs.existsSync('./extracted_data/admin_audit_events.json')) {
+      adminItemsRaw = JSON.parse(fs.readFileSync('./extracted_data/admin_audit_events.json', 'utf8'));
+    }
+  }
 
   const APP_POLICY_EVENTS = new Set([
     'ADD_TO_TRUSTED_OAUTH2_APPS',
@@ -109,109 +145,141 @@ async function run180DayIngestion() {
     'UNTRUST_DOMAIN_OWNED_OAUTH2_APPS'
   ]);
 
-  do {
-    try {
-      const res = await reports.activities.list({
-        userKey: 'all',
-        applicationName: 'admin',
-        startTime: historicalStart,
-        maxResults: 100,
-        pageToken,
-      });
+  for (const item of adminItemsRaw) {
+    const policyEvs = (item.events || []).filter(e => APP_POLICY_EVENTS.has(e.name));
+    if (policyEvs.length === 0) continue;
 
-      const items = res.data.items || [];
-      for (const item of items) {
-        const policyEvs = (item.events || []).filter(e => APP_POLICY_EVENTS.has(e.name));
-        if (policyEvs.length === 0) continue;
-
-        adminMatched++;
-
-        // Consolidate parameters across events in this single activity
-        const combinedParams = {};
-        for (const ev of policyEvs) {
-          Object.assign(combinedParams, getParamMap(ev.parameters));
-        }
-
-        const p = combinedParams;
-        const appName = p.OAUTH2_APP_NAME || p.APPLICATION_NAME || p.APP_NAME || 'Domain OAuth Applications';
-        const clientId = p.OAUTH2_APP_ID || p.CLIENT_ID || p.APP_ID || '';
-        const target = p.ORG_UNIT_NAME || p.DISTRIBUTION_ENTITY_NAME || DOMAIN;
-        const timestamp = item.id?.time;
-        const ipAddress = item.ipAddress;
-        const actorEmail = item.actor?.email || ADMIN_USER;
-
-        let previousState = normalizePolicy(p.OLD_VALUE || p.OLD_ACCESS_TYPE);
-        let newState = normalizePolicy(p.NEW_VALUE || p.NEW_ACCESS_TYPE);
-
-        // Deduce from event names if not explicitly in parameters
-        if (!newState) {
-          if (policyEvs.some(e => e.name === 'ADD_TO_TRUSTED_OAUTH2_APPS')) newState = 'Trusted';
-          else if (policyEvs.some(e => e.name === 'ADD_TO_BLOCKED_OAUTH2_APPS')) newState = 'Blocked';
-          else if (policyEvs.some(e => e.name === 'ADD_TO_LIMITED_OAUTH2_APPS' || e.name === 'UNTRUST_DOMAIN_OWNED_OAUTH2_APPS')) newState = 'Limited';
-          else if (policyEvs.some(e => e.name === 'ADD_TO_TRUSTED_BY_OAUTH_SCOPE_OAUTH2_APPS')) newState = 'Specific Data';
-        }
-
-        if (!previousState) {
-          if (newState === 'Trusted') previousState = 'Limited';
-          else if (newState === 'Blocked') previousState = 'Trusted';
-          else if (newState === 'Limited') previousState = 'Trusted';
-          else if (newState === 'Specific Data') previousState = 'Trusted';
-        }
-
-        let action = 'POLICY_UPDATE';
-        let actionDisplay = 'Policy Changed';
-        if (newState === 'Trusted') {
-          action = 'TRUST';
-          actionDisplay = 'Access Changed to Trusted';
-        } else if (newState === 'Specific Data') {
-          action = 'SPECIFIC_DATA';
-          actionDisplay = 'Access Changed to Specific Data';
-        } else if (newState === 'Limited') {
-          action = 'LIMIT';
-          actionDisplay = 'Access Changed to Limited';
-        } else if (newState === 'Blocked') {
-          action = 'BLOCK';
-          actionDisplay = 'Access Changed to Blocked';
-        }
-
-        let changeSummary = '';
-        if (previousState && previousState !== newState) {
-          changeSummary = `Administrator changed application access policy from ${previousState} ➔ ${newState} for ${target}`;
-        } else {
-          changeSummary = `Administrator configured application access policy as ${newState} for ${target}`;
-        }
-
-        const appIconUrl = getAppIcon(appName, clientId, masterApps);
-
-        events.push({
-          id: `${item.id?.uniqueQualifier || Date.now()}_policy`,
-          timestamp,
-          action,
-          actionDisplay,
-          actorEmail,
-          actorType: 'ADMIN',
-          appName,
-          appId: clientId,
-          clientId,
-          appIconUrl,
-          target,
-          previousState,
-          newState,
-          changeSummary,
-          details: p,
-          ipAddress,
-        });
-      }
-
-      pageToken = res.data.nextPageToken;
-      adminPage++;
-    } catch (e) {
-      console.error(`Error querying admin activities (page ${adminPage}):`, e.message);
-      break;
+    // Consolidate parameters across events in this single activity
+    const combinedParams = {};
+    for (const ev of policyEvs) {
+      Object.assign(combinedParams, getParamMap(ev.parameters));
     }
-  } while (pageToken);
 
-  console.log(`✓ Admin Policy Ingestion complete: ${events.length} policy change events captured.`);
+    const p = combinedParams;
+    const appName = p.OAUTH2_APP_NAME || p.APPLICATION_NAME || p.APP_NAME || 'Domain OAuth Applications';
+    const clientId = p.OAUTH2_APP_ID || p.CLIENT_ID || p.APP_ID || '';
+    const target = p.ORG_UNIT_NAME || p.DISTRIBUTION_ENTITY_NAME || DOMAIN;
+    const timestamp = item.id?.time;
+    const ipAddress = item.ipAddress;
+    const actorEmail = item.actor?.email || ADMIN_USER;
+
+    let previousState = normalizePolicy(p.OLD_VALUE || p.OLD_ACCESS_TYPE);
+    let newState = normalizePolicy(p.NEW_VALUE || p.NEW_ACCESS_TYPE);
+
+    // Deduce from event names if not explicitly in parameters
+    if (!newState) {
+      if (policyEvs.some(e => e.name === 'ADD_TO_TRUSTED_OAUTH2_APPS')) newState = 'Trusted';
+      else if (policyEvs.some(e => e.name === 'ADD_TO_BLOCKED_OAUTH2_APPS')) newState = 'Blocked';
+      else if (policyEvs.some(e => e.name === 'ADD_TO_LIMITED_OAUTH2_APPS' || e.name === 'UNTRUST_DOMAIN_OWNED_OAUTH2_APPS')) newState = 'Limited';
+      else if (policyEvs.some(e => e.name === 'ADD_TO_TRUSTED_BY_OAUTH_SCOPE_OAUTH2_APPS')) newState = 'Specific Data';
+    }
+
+    if (!previousState) {
+      if (newState === 'Trusted') previousState = 'Limited';
+      else if (newState === 'Blocked') previousState = 'Trusted';
+      else if (newState === 'Limited') previousState = 'Trusted';
+      else if (newState === 'Specific Data') previousState = 'Trusted';
+    }
+
+    let action = 'POLICY_UPDATE';
+    let actionDisplay = 'Policy Changed';
+    if (newState === 'Trusted') {
+      action = 'TRUST';
+      actionDisplay = 'Access Changed to Trusted';
+    } else if (newState === 'Specific Data') {
+      action = 'SPECIFIC_DATA';
+      actionDisplay = 'Access Changed to Specific Data';
+    } else if (newState === 'Limited') {
+      action = 'LIMIT';
+      actionDisplay = 'Access Changed to Limited';
+    } else if (newState === 'Blocked') {
+      action = 'BLOCK';
+      actionDisplay = 'Access Changed to Blocked';
+    }
+
+    let changeSummary = '';
+    if (previousState && previousState !== newState) {
+      changeSummary = `Administrator changed application access policy from ${previousState} ➔ ${newState} for ${target}`;
+    } else {
+      changeSummary = `Administrator configured application access policy as ${newState} for ${target}`;
+    }
+
+    const appIconUrl = getAppIcon(appName, clientId, masterApps);
+
+    addTimelineEvent({
+      id: `${item.id?.uniqueQualifier || Date.now()}_policy`,
+      timestamp,
+      action,
+      actionDisplay,
+      actorEmail,
+      actorType: 'ADMIN',
+      appName,
+      appId: clientId,
+      clientId,
+      appIconUrl,
+      target,
+      previousState,
+      newState,
+      changeSummary,
+      details: p,
+      ipAddress,
+    });
+  }
+
+  // ==============================================================
+  // 2. INCREMENTAL SCOPE EXPANSIONS & DOMAIN-WIDE DELEGATION GRANTS
+  // ==============================================================
+  let scopeExpansionCount = 0;
+  const scopeEventsPath = './extracted_data/scope_expansion_events.json';
+  if (fs.existsSync(scopeEventsPath)) {
+    const scopeEvents = JSON.parse(fs.readFileSync(scopeEventsPath, 'utf8'));
+    for (const sev of scopeEvents) {
+      // Include all incremental scope requests (NEW_SCOPE_REQUESTED) and Domain-Wide Delegation authorizations
+      if (sev.changeType !== 'NEW_SCOPE_REQUESTED' && sev.source !== 'ADMIN_AUDIT_LOG') continue;
+
+      scopeExpansionCount++;
+      const shortScopes = (sev.newScopes || []).map(s => s.split('/').pop());
+      const isIncremental = sev.changeType === 'NEW_SCOPE_REQUESTED';
+      const action = isIncremental ? 'SCOPE_EXPANSION' : 'DWD_SCOPES';
+      const newState = isIncremental ? 'New Scope Requested' : 'Scopes Delegated';
+      const actionDisplay = isIncremental ? 'New Scope(s) Requested & Granted' : 'Domain-Wide Delegation Scopes Authorized';
+
+      const changeSummary = isIncremental
+        ? `Application requested & acquired ${sev.newScopes.length} new scope(s): ${shortScopes.join(', ')} (total scopes expanded from ${sev.previousScopesCount} ➔ ${sev.totalScopesCount})`
+        : `Administrator delegated ${sev.newScopes.length} OAuth API scope(s) via Domain-Wide Delegation: ${shortScopes.join(', ')}`;
+
+      const appIconUrl = getAppIcon(sev.appName, sev.clientId, masterApps);
+
+      addTimelineEvent({
+        id: sev.id || `${Date.now()}_scope_${scopeExpansionCount}`,
+        timestamp: sev.time,
+        action,
+        actionDisplay,
+        actorEmail: sev.actorEmail,
+        actorType: sev.source === 'ADMIN_AUDIT_LOG' ? 'ADMIN' : 'USER',
+        appName: sev.appName,
+        appId: sev.clientId,
+        clientId: sev.clientId,
+        appIconUrl,
+        target: DOMAIN,
+        previousState: isIncremental ? `${sev.previousScopesCount} Scopes` : 'Unconfigured',
+        newState,
+        newScopes: sev.newScopes,
+        changeSummary,
+        details: {
+          source: sev.source,
+          eventName: sev.eventName,
+          newScopes: sev.newScopes,
+          previousScopesCount: sev.previousScopesCount,
+          totalScopesCount: sev.totalScopesCount,
+        },
+        ipAddress: sev.ipAddress,
+      });
+    }
+  }
+
+  const events = Array.from(eventsMap.values());
+  console.log(`✓ Ingestion complete: ${events.length} total governance & scope events captured (${scopeExpansionCount} scope expansion/delegation events).`);
 
   // Sort chronologically descending (newest first)
   events.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
@@ -229,15 +297,16 @@ async function run180DayIngestion() {
       historicalHorizonDays: 180,
       historicalStartDate: historicalStart,
       adminPolicyEventsFound: events.length,
+      scopeExpansionEventsFound: scopeExpansionCount,
       retentionPolicy: 'Permanent database storage (preserves history beyond Google 180-day window)',
-      filterApplied: 'Administrator application access policy changes only (Trusted, Specific Data, Limited, Blocked)'
+      filterApplied: 'Administrator application access policy changes & incremental scope expansions'
     },
     events,
   }, null, 2));
 
   console.log('\n======================================================');
-  console.log('ACCESS POLICY TIMELINE INGESTION COMPLETED');
-  console.log(`Total Policy Events Saved: ${events.length}`);
+  console.log('ACCESS POLICY & SCOPE TIMELINE INGESTION COMPLETED');
+  console.log(`Total Timeline Events Saved: ${events.length}`);
   console.log(`Saved to: ${clientDataPath}`);
   console.log(`Backup saved to: ${extractPath}`);
   console.log('======================================================');

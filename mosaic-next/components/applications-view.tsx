@@ -15,6 +15,11 @@ export interface ApplicationScope {
   adminColor?: string;
   googleTier?: string;
   service?: string;
+  isNewlyRequested?: boolean;
+  sources?: string[];
+  firstSeenAt?: string | null;
+  lastAuthorizedAt?: string | null;
+  authorizedBy?: string | null;
 }
 
 export interface ApplicationItem {
@@ -51,6 +56,9 @@ export interface ApplicationItem {
   servicesTouched?: string[];
   scopesCount?: number;
   scopes?: ApplicationScope[];
+  hasNewScopes?: boolean;
+  newlyRequestedScopesCount?: number;
+  newlyRequestedScopes?: string[];
   totalUsersCount?: number;
   adminUsersCount?: number;
   adminAccessLevel?: string;
@@ -534,6 +542,7 @@ export default function ApplicationsView({
     defaultOpen?: boolean;
   }) => {
     const [open, setOpen] = useState(defaultOpen);
+    const newScopesCount = (scopes || []).filter((s) => s.isNewlyRequested).length;
     return (
       <div>
         <button
@@ -541,9 +550,16 @@ export default function ApplicationsView({
           onClick={() => setOpen((v) => !v)}
           className="flex w-full justify-between items-center mb-2 group focus:outline-none"
         >
-          <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500">
-            Requested Scopes ({scopesCount})
-          </h3>
+          <div className="flex items-center gap-2">
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+              Requested Scopes ({scopesCount})
+            </h3>
+            {newScopesCount > 0 && (
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-purple-50 text-purple-700 border border-purple-200">
+                +{newScopesCount} New {newScopesCount === 1 ? "Scope" : "Scopes"}
+              </span>
+            )}
+          </div>
           <span className="flex items-center gap-1 text-[11px] text-gray-400 group-hover:text-gray-600 transition-colors">
             <span>Google Workspace OAuth Permissions</span>
             <svg
@@ -561,12 +577,34 @@ export default function ApplicationsView({
           scopes && scopes.length > 0 ? (
             <div className="space-y-1.5 text-xs">
               {scopes.map((s, i) => (
-                <div key={i} className="bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 flex justify-between items-center gap-3">
+                <div
+                  key={i}
+                  className={`rounded-lg px-3 py-2 flex justify-between items-center gap-3 border ${
+                    s.isNewlyRequested
+                      ? "bg-purple-50/40 border-purple-200"
+                      : "bg-gray-50 border-gray-200"
+                  }`}
+                >
                   <div className="flex items-center gap-2 min-w-0">
                     <div className="w-5 h-5 bg-white rounded p-0.5 border border-gray-200/60 flex items-center justify-center shrink-0">
                       <GoogleProductIcon service={s.service || s.scope} className="w-3.5 h-3.5" />
                     </div>
-                    <span className="truncate font-mono text-gray-800">{s.scope}</span>
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-1.5">
+                        <span className="truncate font-mono text-gray-800">{s.scope}</span>
+                        {s.isNewlyRequested && (
+                          <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-bold uppercase tracking-wide bg-purple-100 text-purple-800 border border-purple-300 shrink-0">
+                            New Scope
+                          </span>
+                        )}
+                      </div>
+                      {s.isNewlyRequested && (s.authorizedBy || s.lastAuthorizedAt) && (
+                        <div className="text-[10px] text-purple-700 mt-0.5">
+                          Authorized{s.authorizedBy ? ` by ${s.authorizedBy}` : ""}
+                          {s.lastAuthorizedAt ? ` on ${new Date(s.lastAuthorizedAt).toLocaleDateString("en-GB")}` : ""}
+                        </div>
+                      )}
+                    </div>
                   </div>
                   <div className="flex items-center gap-1.5 shrink-0">
                     {getTierBadge(s.googleTier)}
@@ -672,6 +710,30 @@ export default function ApplicationsView({
           </div>
         </div>
 
+        {/* Decision Tree Tier & Gate Path Summary Bar */}
+        {((app as any).gatePath || (app as any).triageDirective) && (
+          <div className="p-3 rounded-lg bg-white border border-slate-200/90 space-y-1.5 text-xs">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <div className="flex flex-wrap items-center gap-1.5">
+                <span className="font-extrabold text-slate-800">🗺️ Decision Tree Path:</span>
+                <span className="font-mono text-[11px] px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200 font-semibold">
+                  {(app as any).gatePath || "Evaluated via AdminLens Governance Decision Tree"}
+                </span>
+              </div>
+              {(app as any).triageBadge && (
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-amber-50 text-amber-900 border border-amber-200">
+                  {(app as any).triageBadge}
+                </span>
+              )}
+            </div>
+            {(app as any).triageDirective && (
+              <div className="text-gray-700 font-medium leading-relaxed">
+                <strong className="text-gray-900">👉 Directive:</strong> {(app as any).triageDirective}
+              </div>
+            )}
+          </div>
+        )}
+
         {/* 4 Radio Options List */}
         <div className="divide-y divide-gray-100 rounded-lg border border-gray-200 bg-white overflow-hidden">
           {/* 1. Trusted */}
@@ -690,6 +752,9 @@ export default function ApplicationsView({
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="text-sm font-bold text-gray-900">Trusted</span>
                   <span className="text-xs text-gray-600">— App can request access to all Google data</span>
+                  <span className="text-[10px] font-extrabold px-2 py-0.5 rounded bg-orange-100 text-orange-900 border border-orange-300 tracking-wide">
+                    🚫 NEVER RECOMMENDED
+                  </span>
                   {policyLevel === "TRUSTED" && (
                     <span className="text-[10px] font-extrabold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 tracking-wide">
                       ACTIVE
@@ -723,6 +788,9 @@ export default function ApplicationsView({
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="text-sm font-bold text-gray-900">Limited</span>
                   <span className="text-xs text-gray-600">— App can request access to unrestricted Google data only</span>
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-300 tracking-wide">
+                    ⚪ CASE-BY-CASE ONLY
+                  </span>
                   {policyLevel === "LIMITED" && (
                     <span className="text-[10px] font-extrabold px-2 py-0.5 rounded bg-blue-100 text-blue-800 tracking-wide">
                       ACTIVE
@@ -736,12 +804,12 @@ export default function ApplicationsView({
           {/* 3. Specific Google data */}
           <div className={`p-3 px-3.5 transition-colors ${
             policyLevel === "SPECIFIC_DATA"
-              ? "bg-amber-50/40 border-l-4 border-l-amber-600"
-              : "hover:bg-gray-50/60"
+              ? "bg-emerald-50/50 border-l-4 border-l-emerald-600"
+              : "bg-emerald-50/20 hover:bg-emerald-50/40 border-l-4 border-l-emerald-500"
           }`}>
             <div className="flex items-start gap-3">
               <span className={`mt-0.5 w-4 h-4 rounded-full border shrink-0 flex items-center justify-center ${
-                policyLevel === "SPECIFIC_DATA" ? "border-blue-600 bg-white" : "border-gray-300 bg-white"
+                policyLevel === "SPECIFIC_DATA" ? "border-blue-600 bg-white" : "border-emerald-600 bg-white"
               }`}>
                 {policyLevel === "SPECIFIC_DATA" && <span className="w-2 h-2 rounded-full bg-blue-600"></span>}
               </span>
@@ -750,6 +818,9 @@ export default function ApplicationsView({
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="text-sm font-bold text-gray-900">Specific Google data</span>
                     <span className="text-xs text-gray-600">— Restricted to specified services &amp; scopes only</span>
+                    <span className="text-[10px] font-black px-2 py-0.5 rounded bg-emerald-600 text-white tracking-wide shadow-2xs">
+                      🏆 RECOMMENDED (&quot;THE HOLY GRAIL&quot;)
+                    </span>
                     {policyLevel === "SPECIFIC_DATA" && (
                       <span className="text-[10px] font-extrabold px-2 py-0.5 rounded bg-amber-100 text-amber-800 tracking-wide">
                         ACTIVE
@@ -799,6 +870,9 @@ export default function ApplicationsView({
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="text-sm font-bold text-gray-900">Blocked</span>
                   <span className="text-xs text-gray-600">— Blocked from accessing any Google data</span>
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-red-50 text-red-800 border border-red-200 tracking-wide">
+                    🚨 RARE EXCEPTION ONLY (EXTREME RISK + KNOWN SCHOOL ISSUE)
+                  </span>
                   {policyLevel === "BLOCKED" && (
                     <span className="text-[10px] font-extrabold px-2 py-0.5 rounded bg-red-100 text-red-800 tracking-wide">
                       ACTIVE

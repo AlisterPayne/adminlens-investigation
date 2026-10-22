@@ -1,35 +1,35 @@
 {
-  "updatedAt": "2026-10-11T00:02:48.249Z",
+  "updatedAt": "2026-10-18T00:02:53.204Z",
   "metrics": {
-    "totalEvents": 733,
-    "totalWorkspaceEvents": 702,
-    "totalNotebookEvents": 31,
+    "totalEvents": 751,
+    "totalWorkspaceEvents": 719,
+    "totalNotebookEvents": 32,
     "totalActiveUsers": 30,
-    "agenticEventsCount": 26,
-    "userInitiatedCount": 707,
+    "agenticEventsCount": 36,
+    "userInitiatedCount": 715,
     "uniqueAppsCount": 9,
     "notebooksCount": 9,
     "artifactsCount": 7,
     "sourcesIngestedCount": 9
   },
   "appCounts": {
-    "meet": 31,
-    "workflows": 124,
+    "gmail": 57,
+    "workflows": 136,
+    "meet": 32,
     "gemini_app": 294,
     "forms": 2,
-    "gmail": 53,
     "classroom": 49,
     "slides": 96,
     "docs": 24,
     "vids": 29
   },
   "actionCounts": {
-    "classic_use_case_meet_studio_sound": 31,
-    "evaluate_natural_language_condition": 49,
-    "classic_use_case_workspace_studio_flow_execution": 61,
-    "summarize_unreads": 14,
+    "summarize_proactive": 59,
+    "summarize_unreads": 19,
+    "classic_use_case_workspace_studio_flow_execution": 67,
+    "evaluate_natural_language_condition": 50,
+    "classic_use_case_meet_studio_sound": 32,
     "classic_use_case_gemini_app": 294,
-    "summarize_proactive": 55,
     "classic_use_case_generate_questions": 15,
     "edit_image": 7,
     "classic_use_case_generate_story": 11,
@@ -55,8 +55,8 @@
     "generate_videos_from_image": 7
   },
   "categoryCounts": {
-    "inactive": 147,
-    "active_generate": 226,
+    "inactive": 152,
+    "active_generate": 238,
     "active_conversations": 329
   },
   "dailyTimeline": [
@@ -883,9 +883,68 @@
       "notebook": 0,
       "agentic": 2,
       "userInitiated": 4
+    },
+    {
+      "date": "2026-10-12",
+      "total": 2,
+      "workspace": 2,
+      "notebook": 0,
+      "agentic": 2,
+      "userInitiated": 0
+    },
+    {
+      "date": "2026-10-13",
+      "total": 2,
+      "workspace": 2,
+      "notebook": 0,
+      "agentic": 2,
+      "userInitiated": 0
+    },
+    {
+      "date": "2026-10-14",
+      "total": 5,
+      "workspace": 5,
+      "notebook": 0,
+      "agentic": 2,
+      "userInitiated": 3
+    },
+    {
+      "date": "2026-10-15",
+      "total": 5,
+      "workspace": 5,
+      "notebook": 0,
+      "agentic": 2,
+      "userInitiated": 3
+    },
+    {
+      "date": "2026-10-16",
+      "total": 4,
+      "workspace": 3,
+      "notebook": 1,
+      "agentic": 2,
+      "userInitiated": 2
     }
   ],
   "userLeaderboard": [
+    {
+      "email": "themba@gafe.co.za",
+      "workspaceEvents": 133,
+      "notebookEvents": 7,
+      "totalEvents": 140,
+      "agenticEvents": 0,
+      "appsUsed": [
+        "gmail",
+        "classroom",
+        "gemini_app",
+        "meet",
+        "docs",
+        "forms",
+        "slides",
+        "vids",
+        "notebooklm"
+      ],
+      "lastActive": "2026-10-16T07:34:13.133Z"
+    },
     {
       "email": "plutt@gafe.co.za",
       "workspaceEvents": 139,
@@ -901,47 +960,28 @@
       "lastActive": "2026-06-19T11:49:21.000Z"
     },
     {
-      "email": "themba@gafe.co.za",
-      "workspaceEvents": 129,
-      "notebookEvents": 7,
-      "totalEvents": 136,
-      "agenticEvents": 0,
-      "appsUsed": [
-        "gmail",
-        "classroom",
-        "gemini_app",
-        "meet",
-        "docs",
-        "forms",
-        "slides",
-        "vids",
-        "notebooklm"
-      ],
-      "lastActive": "2026-09-11T15:55:41.122Z"
-    },
-    {
       "email": "mickey@gafe.co.za",
-      "workspaceEvents": 100,
+      "workspaceEvents": 103,
       "notebookEvents": 0,
-      "totalEvents": 100,
+      "totalEvents": 103,
       "agenticEvents": 0,
       "appsUsed": [
-        "meet",
-        "workflows"
+        "workflows",
+        "meet"
       ],
-      "lastActive": "2026-10-09T11:18:08.067Z"
+      "lastActive": "2026-10-14T12:50:21.173Z"
     },
     {
       "email": "alister@gafe.co.za",
       "workspaceEvents": 49,
-      "notebookEvents": 20,
-      "totalEvents": 69,
+      "notebookEvents": 21,
+      "totalEvents": 70,
       "agenticEvents": 0,
       "appsUsed": [
         "gemini_app",
         "notebooklm"
       ],
-      "lastActive": "2026-09-30T13:02:42.048Z"
+      "lastActive": "2026-10-16T07:58:33.089Z"
     },
     {
       "email": "karien@gafe.co.za",
@@ -957,6 +997,17 @@
         "notebooklm"
       ],
       "lastActive": "2026-09-30T12:15:44.242Z"
+    },
+    {
+      "email": "deidre@gafe.co.za",
+      "workspaceEvents": 37,
+      "notebookEvents": 0,
+      "totalEvents": 37,
+      "agenticEvents": 36,
+      "appsUsed": [
+        "workflows"
+      ],
+      "lastActive": "2026-10-16T05:17:20.431Z"
     },
     {
       "email": "farrakhan@gafe.co.za",
@@ -996,17 +1047,6 @@
         "workflows"
       ],
       "lastActive": "2026-09-07T09:09:06.934Z"
-    },
-    {
-      "email": "deidre@gafe.co.za",
-      "workspaceEvents": 27,
-      "notebookEvents": 0,
-      "totalEvents": 27,
-      "agenticEvents": 26,
-      "appsUsed": [
-        "workflows"
-      ],
-      "lastActive": "2026-10-09T05:17:20.400Z"
     },
     {
       "email": "mazk@gafe.co.za",
@@ -1261,11 +1301,11 @@
       "visibility": "private",
       "aiPlanTier": "plus",
       "firstSeen": "2026-09-30T13:00:32.778Z",
-      "lastActive": "2026-09-30T13:02:42.048Z",
-      "eventCount": 14,
+      "lastActive": "2026-10-16T07:58:33.089Z",
+      "eventCount": 15,
       "actions": {
+        "view_notebook": 2,
         "generate_studio_artifact": 2,
-        "view_notebook": 1,
         "rename_notebook": 1,
         "add_source": 8,
         "discover_sources": 1,
@@ -1735,6 +1775,193 @@
     }
   ],
   "recentWorkspaceEvents": [
+    {
+      "id": "639849003290931151_0",
+      "time": "2026-10-16T07:34:13.133Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gmail",
+      "action": "summarize_proactive",
+      "category": "inactive",
+      "featureSource": "side_panel",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-4391919767418936769_0",
+      "time": "2026-10-16T05:17:20.431Z",
+      "userEmail": "deidre@gafe.co.za",
+      "appName": "workflows",
+      "action": "summarize_unreads",
+      "category": "active_generate",
+      "featureSource": "workflows_execution",
+      "clientAppName": "Get a daily summary of unread emails",
+      "isAgenticAction": true
+    },
+    {
+      "id": "2976050557643068545_0",
+      "time": "2026-10-16T05:17:11.431Z",
+      "userEmail": "deidre@gafe.co.za",
+      "appName": "workflows",
+      "action": "classic_use_case_workspace_studio_flow_execution",
+      "category": "active_generate",
+      "featureSource": "feature_source_unspecified",
+      "clientAppName": "Get a daily summary of unread emails",
+      "isAgenticAction": true
+    },
+    {
+      "id": "-564497877183820072_0",
+      "time": "2026-10-15T13:04:45.997Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gmail",
+      "action": "summarize_proactive",
+      "category": "inactive",
+      "featureSource": "side_panel",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "4396088703139380811_0",
+      "time": "2026-10-15T12:48:39.396Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gmail",
+      "action": "summarize_proactive",
+      "category": "inactive",
+      "featureSource": "side_panel",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "-6156633115242136475_0",
+      "time": "2026-10-15T12:48:12.552Z",
+      "userEmail": "themba@gafe.co.za",
+      "appName": "gmail",
+      "action": "summarize_proactive",
+      "category": "inactive",
+      "featureSource": "side_panel",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "6088861056530557603_0",
+      "time": "2026-10-15T05:17:21.069Z",
+      "userEmail": "deidre@gafe.co.za",
+      "appName": "workflows",
+      "action": "summarize_unreads",
+      "category": "active_generate",
+      "featureSource": "workflows_execution",
+      "clientAppName": "Get a daily summary of unread emails",
+      "isAgenticAction": true
+    },
+    {
+      "id": "8796279452210765562_0",
+      "time": "2026-10-15T05:17:11.524Z",
+      "userEmail": "deidre@gafe.co.za",
+      "appName": "workflows",
+      "action": "classic_use_case_workspace_studio_flow_execution",
+      "category": "active_generate",
+      "featureSource": "feature_source_unspecified",
+      "clientAppName": "Get a daily summary of unread emails",
+      "isAgenticAction": true
+    },
+    {
+      "id": "-7607659823124169686_0",
+      "time": "2026-10-14T12:50:21.173Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "workflows",
+      "action": "evaluate_natural_language_condition",
+      "category": "active_generate",
+      "featureSource": "workflows_execution",
+      "clientAppName": "Google Calendar for Workspace Studio",
+      "isAgenticAction": false
+    },
+    {
+      "id": "-4109520988660675028_0",
+      "time": "2026-10-14T12:50:01.841Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "workflows",
+      "action": "classic_use_case_workspace_studio_flow_execution",
+      "category": "active_generate",
+      "featureSource": "feature_source_unspecified",
+      "clientAppName": "Google Calendar for Workspace Studio",
+      "isAgenticAction": false
+    },
+    {
+      "id": "4083306462917694630_0",
+      "time": "2026-10-14T12:48:51.027Z",
+      "userEmail": "mickey@gafe.co.za",
+      "appName": "meet",
+      "action": "classic_use_case_meet_studio_sound",
+      "category": "inactive",
+      "featureSource": "studio_sound",
+      "clientAppName": null,
+      "isAgenticAction": false
+    },
+    {
+      "id": "9088435080327594021_0",
+      "time": "2026-10-14T05:17:20.322Z",
+      "userEmail": "deidre@gafe.co.za",
+      "appName": "workflows",
+      "action": "summarize_unreads",
+      "category": "active_generate",
+      "featureSource": "workflows_execution",
+      "clientAppName": "Get a daily summary of unread emails",
+      "isAgenticAction": true
+    },
+    {
+      "id": "5994299195011250285_0",
+      "time": "2026-10-14T05:17:11.485Z",
+      "userEmail": "deidre@gafe.co.za",
+      "appName": "workflows",
+      "action": "classic_use_case_workspace_studio_flow_execution",
+      "category": "active_generate",
+      "featureSource": "feature_source_unspecified",
+      "clientAppName": "Get a daily summary of unread emails",
+      "isAgenticAction": true
+    },
+    {
+      "id": "5011566777690755093_0",
+      "time": "2026-10-13T05:17:22.083Z",
+      "userEmail": "deidre@gafe.co.za",
+      "appName": "workflows",
+      "action": "summarize_unreads",
+      "category": "active_generate",
+      "featureSource": "workflows_execution",
+      "clientAppName": "Get a daily summary of unread emails",
+      "isAgenticAction": true
+    },
+    {
+      "id": "-3542945142331526403_0",
+      "time": "2026-10-13T05:17:11.495Z",
+      "userEmail": "deidre@gafe.co.za",
+      "appName": "workflows",
+      "action": "classic_use_case_workspace_studio_flow_execution",
+      "category": "active_generate",
+      "featureSource": "feature_source_unspecified",
+      "clientAppName": "Get a daily summary of unread emails",
+      "isAgenticAction": true
+    },
+    {
+      "id": "-5888468256365760814_0",
+      "time": "2026-10-12T05:17:20.712Z",
+      "userEmail": "deidre@gafe.co.za",
+      "appName": "workflows",
+      "action": "summarize_unreads",
+      "category": "active_generate",
+      "featureSource": "workflows_execution",
+      "clientAppName": "Get a daily summary of unread emails",
+      "isAgenticAction": true
+    },
+    {
+      "id": "868471035902658545_0",
+      "time": "2026-10-12T05:17:11.514Z",
+      "userEmail": "deidre@gafe.co.za",
+      "appName": "workflows",
+      "action": "classic_use_case_workspace_studio_flow_execution",
+      "category": "active_generate",
+      "featureSource": "feature_source_unspecified",
+      "clientAppName": "Get a daily summary of unread emails",
+      "isAgenticAction": true
+    },
     {
       "id": "4510012805385219178_0",
       "time": "2026-10-09T11:18:08.067Z",
@@ -9459,6 +9686,21 @@
     }
   ],
   "recentNotebookEvents": [
+    {
+      "id": "-1292551705158791664_0",
+      "time": "2026-10-16T07:58:33.089Z",
+      "userEmail": "alister@gafe.co.za",
+      "eventName": "view_notebook",
+      "notebookTitle": "Analysis of the 2019 Ransomware Attack at Maastricht University",
+      "visibility": "private",
+      "artifactType": null,
+      "artifactName": null,
+      "sourceName": null,
+      "sourceType": null,
+      "sourceUrl": null,
+      "ipAddress": "197.155.22.16",
+      "country": "ZA"
+    },
     {
       "id": "-5347778369896955230_0",
       "time": "2026-09-30T13:02:42.048Z",

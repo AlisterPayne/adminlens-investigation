@@ -3,16 +3,7 @@
   "domain": "gafe.co.za",
   "scheduleCadence": "Every 24 Hours",
   "cronExpression": "0 2 * * *",
-  "status": "SUCCESS",
-  "lastRunTimestamp": "2026-10-11T00:02:48.274Z",
-  "nextRunTimestamp": "2026-10-12T00:02:48.274Z",
-  "durationSeconds": 166.2,
-  "summary": {
-    "usersProcessed": 296,
-    "activeTokensCollected": 268,
-    "applicationsIndexed": 93,
-    "distinctScopesMapped": 95,
-    "totalScopeGrants": 416,
-    "adminPolicyChanges": 10
-  }
+  "status": "FAILED",
+  "lastRunTimestamp": "2026-10-22T00:03:01.686Z",
+  "error": "Command failed: /usr/bin/node ingest_generative_ai.mjs"
 }
