@@ -803,7 +803,15 @@ for (const [id, app] of catalog.entries()) {
 
   // -------------------------------------------------------------------------
   // ADMINLENS GOVERNANCE DECISION TREE EVALUATION
-  // Root Gate ➔ Secured Baseline vs Branch A (Trusted: Gates T1–T4) vs Branch B (Unconfigured: Gates U1–U3 ➔ Tiers 1–4)
+  // Standardized Naming Convention across all tracks:
+  //   - TIER_1 (Critical Priority)
+  //   - TIER_2 (High Priority)
+  //   - TIER_3 (Medium Priority)
+  //   - TIER_4 (Low Priority)
+  //   - COMPLIANT (No Action Needed)
+  // Actions:
+  //   - Google-Owned Track: TRUSTED (or BLOCKED)
+  //   - 3rd-Party Track: BLOCKED | SPECIFIC_DATA | LIMITED | NONE
   // -------------------------------------------------------------------------
   const REF_NOW_MS = new Date('2026-09-26T00:00:00Z').getTime();
   const SIX_MONTHS_MS = 180 * 24 * 60 * 60 * 1000;
@@ -813,10 +821,12 @@ for (const [id, app] of catalog.entries()) {
     : !isStale;
 
   const policyUpper = (adminAccessLevel || 'UNCONFIGURED').toUpperCase();
+  const isGoogleOwned = app.vendor === 'Google LLC' || app.category === 'Google Workspace Core' || (app.publisherDomain && app.publisherDomain.endsWith('google.com') && app.appType !== 'Google Apps Script');
   const isSecuredPolicy = policyUpper === 'SPECIFIC_DATA' || policyUpper === 'BLOCKED' || policyUpper === 'LIMITED';
   const isTrustedPolicy = policyUpper === 'TRUSTED';
-  const isHighOrCritRisk = calculatedRiskLevel === 'CRITICAL' || calculatedRiskLevel === 'HIGH' || calculatedRiskScore > 3.0;
-  const isCritRisk = calculatedRiskLevel === 'CRITICAL' || calculatedRiskScore >= 4.0;
+  const hasActiveBreach = inherentRisk.breachBracket === 'ACTIVE_CRISIS' || (inherentRisk.breachDaysElapsed !== null && inherentRisk.breachDaysElapsed <= 90);
+  const isHighOrCritRisk = calculatedRiskLevel === 'CRITICAL' || calculatedRiskLevel === 'HIGH' || calculatedRiskScore >= 4.0;
+  const isModerateRisk = !isHighOrCritRisk && calculatedRiskScore >= 2.5;
   const totalUsersCountVal = usersList.length;
   const adminUsersCountVal = usersList.filter(u => u.isAdmin).length;
   const hasSprawlVal = totalUsersCountVal > 1 || adminUsersCountVal > 0;
@@ -825,114 +835,172 @@ for (const [id, app] of catalog.entries()) {
   let decisionTree = {
     branch: 'UNCONFIGURED',
     triageTier: 'TIER_4',
-    triageBadge: '⚪ TIER 4: DORMANT SHADOW IT',
-    gatePath: 'Gate U1 (Score 1–3) ➔ Gate U3 (Dormant >30d) ➔ Tier 4',
-    recommendedPolicy: 'SPECIFIC_DATA',
-    recommendedPolicyLabel: 'Specific Google Data (The Holy Grail)',
+    triageBadge: 'Tier 4 (Low) — Action: LIMITED',
+    gatePath: 'Gate 0 (3rd-Party) ➔ Gate 1 (Unconfigured) ➔ Gate U2 (Score 1–2 Low/SSO) ➔ Tier 4',
+    recommendedPolicy: 'LIMITED',
+    recommendedPolicyLabel: 'Limited (Unrestricted Data Only)',
     recommendationSeverity: 'LOW',
     needsAction: true,
-    directive: "Recommended Action: Review in Google Admin Console and configure to 'Specific Google Data' (The Holy Grail) to lock the baseline scope footprint. (Never set to Trusted; 'Limited' is case-by-case only.)",
+    directive: "Tier 4 (Low): Configure to 'Limited' so the app can only access unrestricted/non-sensitive SSO scopes while restricted scopes are automatically blocked.",
     trustedGateReason: null,
     trustedScopeCategory: null,
   };
 
-  if (isSecuredPolicy) {
+  // GATE 0: Google-Owned Applications (Only support TRUSTED or BLOCKED in Admin Console)
+  if (isGoogleOwned) {
+    if (isTrustedPolicy) {
+      decisionTree = {
+        branch: 'GOOGLE_OWNED',
+        triageTier: 'SECURED',
+        triageBadge: 'Compliant — No Action Needed (Google-Owned Trusted)',
+        gatePath: 'Gate 0 (Google-Owned: YES) ➔ Gate G1 (Already TRUSTED) ➔ Compliant',
+        recommendedPolicy: 'NONE',
+        recommendedPolicyLabel: 'Compliant (Google-Owned Trusted)',
+        recommendationSeverity: 'NONE',
+        needsAction: false,
+        directive: 'Compliant. Google-owned first-party application is already set to TRUSTED.',
+        trustedGateReason: 'Google-Owned First-Party Service',
+        trustedScopeCategory: null,
+      };
+    } else {
+      decisionTree = {
+        branch: 'GOOGLE_OWNED',
+        triageTier: 'TIER_3',
+        triageBadge: 'Tier 3 (Medium) — Action: TRUSTED',
+        gatePath: `Gate 0 (Google-Owned: YES) ➔ Gate G1 (${policyUpper}) ➔ Tier 3 (Action: TRUSTED)`,
+        recommendedPolicy: 'TRUSTED',
+        recommendedPolicyLabel: 'Trusted (Standard for Google-Owned Apps)',
+        recommendationSeverity: 'MEDIUM',
+        needsAction: true,
+        directive: "Tier 3 (Medium): Google-owned applications only support TRUSTED or BLOCKED in Google Workspace API Controls. Recommended Action: Configure to 'Trusted'.",
+        trustedGateReason: null,
+        trustedScopeCategory: null,
+      };
+    }
+  } else if (isSecuredPolicy) {
+    // GATE 1: 3rd-Party Already Hardened (SPECIFIC_DATA, LIMITED, or BLOCKED)
     decisionTree = {
       branch: 'SECURED',
       triageTier: 'SECURED',
-      triageBadge: '🏆 Secured Baseline',
-      gatePath: `Root Gate (${policyUpper}) ➔ Secured Baseline`,
+      triageBadge: `Compliant — No Action Needed (${policyUpper})`,
+      gatePath: `Gate 0 (3rd-Party) ➔ Gate 1 (${policyUpper}) ➔ Compliant`,
       recommendedPolicy: 'NONE',
-      recommendedPolicyLabel: 'Already Secured (No Action)',
+      recommendedPolicyLabel: 'Compliant (Already Configured)',
       recommendationSeverity: 'NONE',
       needsAction: false,
-      directive: 'Compliant. Locked to Specific Google Data (The Holy Grail) or configured policy. Zero recommendations generated.',
+      directive: `Compliant. 3rd-party application is already locked to ${policyUpper}. Zero recommendations generated.`,
       trustedGateReason: null,
       trustedScopeCategory: null,
     };
   } else if (isTrustedPolicy) {
+    // BRANCH A: 3rd-Party TRUSTED Policy Governance (Gates T1 ➔ T2 ➔ T3)
     const newScopeObjs = scopesList.filter(s => s.isNewlyRequested || newlyRequestedArr.includes(s.scope));
     const lastReviewedStr = app.lastReviewedAt || null;
     const reviewedWithinSixMonths = lastReviewedStr
-      ? (Date.now() - new Date(lastReviewedStr).getTime()) <= SIX_MONTHS_MS
+      ? (REF_NOW_MS - new Date(lastReviewedStr).getTime()) <= SIX_MONTHS_MS
       : false;
 
-    if (hasNewScopesVal) {
-      const hasRestricted = newScopeObjs.some(s => s.googleTier === 'Restricted');
-      const hasSensitive = newScopeObjs.some(s => s.googleTier === 'Sensitive');
-      let sev = 'MEDIUM';
-      let cat = 'Non-Sensitive';
-      if (hasRestricted) {
-        sev = 'CRITICAL';
-        cat = 'Restricted';
-      } else if (hasSensitive) {
-        sev = 'HIGH';
-        cat = 'Sensitive';
-      }
-      const reason = `Gate T1 (New Scope: YES) ➔ Gate T2 (Google '${cat}' Criteria) ➔ ${sev} Recommendation`;
+    if (hasActiveBreach) {
+      const reason = `Gate T1 (Exception: Active Vendor Breach) ➔ Tier 1 (Critical) — Action: BLOCK`;
       decisionTree = {
         branch: 'TRUSTED',
-        triageTier: 'TRUSTED',
-        triageBadge: `⚠️ ${sev} Trusted Review`,
+        triageTier: 'TIER_1',
+        triageBadge: 'Tier 1 (Critical) — Action: BLOCK',
         gatePath: reason,
-        recommendedPolicy: 'SPECIFIC_DATA',
-        recommendedPolicyLabel: 'Specific Google Data (The Holy Grail)',
-        recommendationSeverity: sev,
+        recommendedPolicy: 'BLOCKED',
+        recommendedPolicyLabel: 'Block (Active Vendor Breach)',
+        recommendationSeverity: 'CRITICAL',
         needsAction: true,
-        directive: `Trusted app requested ${newScopeObjs.length} new ${cat} scope(s). Transition from blanket 'Trusted' to 'Specific Google Data' (The Holy Grail) — or 'Blocked' ONLY if there is an extreme, known school safety issue.`,
+        directive: `Tier 1 (Critical): Trusted vendor has an active security breach. Recommended Action: Set policy to 'Blocked' immediately to sever active tokens.`,
+        trustedGateReason: reason,
+        trustedScopeCategory: 'Restricted',
+      };
+    } else if (hasNewScopesVal) {
+      const hasRestricted = newScopeObjs.some(s => s.googleTier === 'Restricted');
+      const hasSensitive = newScopeObjs.some(s => s.googleTier === 'Sensitive');
+      const cat = hasRestricted ? 'Restricted' : (hasSensitive ? 'Sensitive' : 'Non-Sensitive');
+      const targetPolicy = (cat === 'Non-Sensitive' && calculatedRiskScore < 3.0) ? 'LIMITED' : 'SPECIFIC_DATA';
+      const targetLabel = targetPolicy === 'LIMITED' ? 'Limited' : 'Specific Google Data';
+      const reason = `Gate T1 (Exception: ${newScopeObjs.length} New ${cat} Scope) ➔ Tier 1 (Critical) — Action: ${targetLabel.toUpperCase()}`;
+      decisionTree = {
+        branch: 'TRUSTED',
+        triageTier: 'TIER_1',
+        triageBadge: `Tier 1 (Critical) — Action: ${targetLabel.toUpperCase()}`,
+        gatePath: reason,
+        recommendedPolicy: targetPolicy,
+        recommendedPolicyLabel: targetLabel,
+        recommendationSeverity: 'CRITICAL',
+        needsAction: true,
+        directive: `Tier 1 (Critical): Trusted app requested ${newScopeObjs.length} new ${cat} scope(s). Recommended Action: Downgrade from blanket 'Trusted' to '${targetLabel}' to lock approved scopes and block unapproved scope escalation.`,
         trustedGateReason: reason,
         trustedScopeCategory: cat,
       };
-    } else if (reviewedWithinSixMonths) {
-      const reason = `Gate T1 (No New Scopes) ➔ Gate T3 (Reviewed < 6 Months) ➔ No Recommendation`;
+    } else if (!isHighOrCritRisk) {
+      // Gate T2: Score 1, 2, 3 (< 4.00) -> Low risk, No Recommendation
+      const reason = `Gate T1 (No Exception) ➔ Gate T2 (Score ${calculatedRiskScore.toFixed(1)} [1–3 Low/Mod]) ➔ Compliant`;
       decisionTree = {
         branch: 'TRUSTED',
-        triageTier: 'TRUSTED',
-        triageBadge: '✓ Compliant Trusted',
+        triageTier: 'SECURED',
+        triageBadge: 'Compliant — No Action Needed (Trusted Score 1–3)',
         gatePath: reason,
         recommendedPolicy: 'NONE',
-        recommendedPolicyLabel: 'Compliant (< 6 Months Review)',
+        recommendedPolicyLabel: 'Compliant (Trusted Score 1–3)',
         recommendationSeverity: 'NONE',
         needsAction: false,
-        directive: reason,
+        directive: 'Compliant. Trusted app has a low/moderate risk score (1–3) and no breach or new scope exception.',
         trustedGateReason: reason,
         trustedScopeCategory: null,
       };
-    } else if (isHighOrCritRisk) {
-      const sev = isCritRisk ? 'CRITICAL' : 'HIGH';
-      const reason = `Gate T1 (No New Scopes) ➔ Gate T3 (≥ 6 Months) ➔ Gate T4 (${calculatedRiskLevel} Risk, Score ${calculatedRiskScore.toFixed(1)}) ➔ Review Again`;
+    } else if (reviewedWithinSixMonths) {
+      // Gate T3: Score 4, 5 reviewed within last 6 months (<= 180d) -> No Recommendation
+      const reason = `Gate T1 (No Exception) ➔ Gate T2 (Score ${calculatedRiskScore.toFixed(1)} [4–5]) ➔ Gate T3 (Reviewed ≤ 6 Mo) ➔ Compliant`;
       decisionTree = {
         branch: 'TRUSTED',
-        triageTier: 'TRUSTED',
-        triageBadge: `⚠️ ${sev} Trusted Review`,
+        triageTier: 'SECURED',
+        triageBadge: 'Compliant — No Action Needed (Reviewed ≤ 6 Mo)',
         gatePath: reason,
-        recommendedPolicy: 'SPECIFIC_DATA',
-        recommendedPolicyLabel: 'Specific Google Data (The Holy Grail)',
-        recommendationSeverity: sev,
-        needsAction: true,
-        directive: `${reason}. Recommended Action: Transition from blanket 'Trusted' to 'Specific Google Data' (The Holy Grail) — we never recommend keeping blanket Trusted access.`,
+        recommendedPolicy: 'NONE',
+        recommendedPolicyLabel: 'Compliant (Reviewed ≤ 6 Months)',
+        recommendationSeverity: 'NONE',
+        needsAction: false,
+        directive: 'Compliant. High-risk Trusted app (Score 4–5) was explicitly reviewed and approved within the last 6 months.',
         trustedGateReason: reason,
         trustedScopeCategory: null,
       };
     } else {
-      const reason = `Gate T1 (No New Scopes) ➔ Gate T3 (≥ 6 Months) ➔ Gate T4 (Score ${calculatedRiskScore.toFixed(1)} ≤ 3.0 Low/Mod Risk) ➔ Fine (No Recommendation)`;
+      // Gate T3: Score 4, 5 NOT reviewed in last 6 months (> 180d) -> Tier 2 (High)
+      const reason = `Gate T1 (No Exception) ➔ Gate T2 (Score ${calculatedRiskScore.toFixed(1)} [4–5]) ➔ Gate T3 (> 6 Months) ➔ Tier 2 (High)`;
       decisionTree = {
         branch: 'TRUSTED',
-        triageTier: 'TRUSTED',
-        triageBadge: '✓ Compliant Trusted (Score 1–3)',
+        triageTier: 'TIER_2',
+        triageBadge: 'Tier 2 (High) — Action: SPECIFIC GOOGLE DATA',
         gatePath: reason,
-        recommendedPolicy: 'NONE',
-        recommendedPolicyLabel: 'Fine (Score 1–3, No Action)',
-        recommendationSeverity: 'NONE',
-        needsAction: false,
-        directive: reason,
+        recommendedPolicy: 'SPECIFIC_DATA',
+        recommendedPolicyLabel: 'Specific Google Data (or Re-Confirm 6-Mo Schedule)',
+        recommendationSeverity: 'HIGH',
+        needsAction: true,
+        directive: `Tier 2 (High): High-risk Trusted app (Score ${calculatedRiskScore.toFixed(1)}) has not been reviewed in > 6 months. Recommended Action: Downgrade to 'Specific Google Data' to lock current scopes, or re-confirm Trusted to reset the 6-month timer.`,
         trustedGateReason: reason,
         trustedScopeCategory: null,
       };
     }
   } else {
-    // UNCONFIGURED BRANCH B: Gates U1 ➔ U2 / U3 ➔ 4 Priority Tiers
-    if (isHighOrCritRisk && (!effectiveVerified || !isRecent30d || totalUsersCountVal <= 1)) {
+    // BRANCH B: 3rd-Party UNCONFIGURED (Shadow IT) Sifting (Gates U1 ➔ U2 ➔ Tiers 1–4)
+    if (hasActiveBreach) {
+      decisionTree = {
+        branch: 'UNCONFIGURED',
+        triageTier: 'TIER_1',
+        triageBadge: 'Tier 1 (Critical) — Action: BLOCK',
+        gatePath: `Gate U1 (Active Breach ≤ 90d) ➔ Tier 1 (Critical) — Action: BLOCK`,
+        recommendedPolicy: 'BLOCKED',
+        recommendedPolicyLabel: 'Block (Active Vendor Breach)',
+        recommendationSeverity: 'CRITICAL',
+        needsAction: true,
+        directive: "Tier 1 (Critical): Unconfigured app with a recent vendor security breach (≤ 90d). Recommended Action: Set to 'Blocked' immediately.",
+        trustedGateReason: null,
+        trustedScopeCategory: null,
+      };
+    } else if (isHighOrCritRisk && (!effectiveVerified || !isRecent30d || totalUsersCountVal <= 1)) {
       const contextTriggers = [
         !effectiveVerified ? 'Unverified' : null,
         totalUsersCountVal <= 1 ? 'Single-User (≤1)' : null,
@@ -941,13 +1009,13 @@ for (const [id, app] of catalog.entries()) {
       decisionTree = {
         branch: 'UNCONFIGURED',
         triageTier: 'TIER_1',
-        triageBadge: '🚨 TIER 1: CRITICAL UNVERIFIED / HIGH RISK',
-        gatePath: `Gate U1 (Score ${calculatedRiskScore.toFixed(1)} High/Crit) ➔ Gate U2 (${contextTriggers}) ➔ Tier 1`,
-        recommendedPolicy: 'SPECIFIC_DATA',
-        recommendedPolicyLabel: 'Specific Google Data (The Holy Grail) — or Rare Block if Known School Issue',
+        triageBadge: 'Tier 1 (Critical) — Action: BLOCK',
+        gatePath: `Gate U1 (No Breach) ➔ Gate U2 (Score ${calculatedRiskScore.toFixed(1)} [4–5], ${contextTriggers}) ➔ Tier 1 (Critical)`,
+        recommendedPolicy: 'BLOCKED',
+        recommendedPolicyLabel: 'Block (High/Critical Unverified or Dormant)',
         recommendationSeverity: 'CRITICAL',
         needsAction: true,
-        directive: "Recommended Action: Set to 'Specific Google Data' (The Holy Grail) if validated for school use. Reserve 'Blocked' ONLY for the very few apps with extreme risk and a known issue for the school environment. (Never set to Trusted.)",
+        directive: `Tier 1 (Critical): Score 4–5 app (${contextTriggers}) holding high/critical scopes without verified multi-user adoption. Recommended Action: Set to 'Blocked' (or 'Specific Google Data' only if explicitly validated).`,
         trustedGateReason: null,
         trustedScopeCategory: null,
       };
@@ -955,27 +1023,32 @@ for (const [id, app] of catalog.entries()) {
       decisionTree = {
         branch: 'UNCONFIGURED',
         triageTier: 'TIER_2',
-        triageBadge: '🟠 TIER 2: HIGH RISK SPRAWL',
-        gatePath: `Gate U1 (Score ${calculatedRiskScore.toFixed(1)} High/Crit) ➔ Gate U2 (Verified & Active ≤30d, ${totalUsersCountVal} Users) ➔ Tier 2`,
+        triageBadge: 'Tier 2 (High) — Action: SPECIFIC GOOGLE DATA',
+        gatePath: `Gate U1 (No Breach) ➔ Gate U2 (Score ${calculatedRiskScore.toFixed(1)} [4–5], Verified & Active, ${totalUsersCountVal} Users) ➔ Tier 2 (High)`,
         recommendedPolicy: 'SPECIFIC_DATA',
-        recommendedPolicyLabel: 'Specific Google Data (The Holy Grail)',
+        recommendedPolicyLabel: 'Specific Google Data',
         recommendationSeverity: 'HIGH',
         needsAction: true,
-        directive: "Recommended Action: Configure to 'Specific Google Data' (The Holy Grail) to approve exact current scopes while blocking future scope escalation. (Never set to Trusted.)",
+        directive: "Tier 2 (High): Verified, actively used business app with Score 4–5 scopes. Recommended Action: Configure to 'Specific Google Data' to lock approved scopes and block silent scope escalation.",
         trustedGateReason: null,
         trustedScopeCategory: null,
       };
-    } else if (isRecent30d && totalUsersCountVal > 0) {
+    } else if (isModerateRisk) {
+      const useSpecificData = effectiveVerified && isRecent30d && totalUsersCountVal > 0;
+      const targetPol = useSpecificData ? 'SPECIFIC_DATA' : 'LIMITED';
+      const targetLbl = useSpecificData ? 'Specific Google Data' : 'Limited';
       decisionTree = {
         branch: 'UNCONFIGURED',
         triageTier: 'TIER_3',
-        triageBadge: '🟡 TIER 3: MODERATE / LOW SPRAWL',
-        gatePath: `Gate U1 (Score ${calculatedRiskScore.toFixed(1)} Mod/Low) ➔ Gate U3 (Active ≤30d, ${totalUsersCountVal} Users) ➔ Tier 3`,
-        recommendedPolicy: 'SPECIFIC_DATA',
-        recommendedPolicyLabel: 'Specific Google Data (The Holy Grail)',
+        triageBadge: `Tier 3 (Medium) — Action: ${targetLbl.toUpperCase()}`,
+        gatePath: `Gate U1 (No Breach) ➔ Gate U2 (Score ${calculatedRiskScore.toFixed(1)} [3 Mod], ${useSpecificData ? 'Verified Active' : 'Unverified/Dormant'}) ➔ Tier 3 (Medium)`,
+        recommendedPolicy: targetPol,
+        recommendedPolicyLabel: targetLbl,
         recommendationSeverity: 'MEDIUM',
         needsAction: true,
-        directive: "Recommended Action: Configure to 'Specific Google Data' (The Holy Grail) to lock current scope footprint. ('Limited' is case-by-case only; never set to Trusted.)",
+        directive: useSpecificData
+          ? "Tier 3 (Medium): Verified, active app with moderate scopes. Recommended Action: Configure to 'Specific Google Data' to approve current scopes."
+          : "Tier 3 (Medium): Unverified or dormant app with moderate scopes. Recommended Action: Configure to 'Limited' to allow only unrestricted Google data and block restricted scopes.",
         trustedGateReason: null,
         trustedScopeCategory: null,
       };
@@ -983,13 +1056,13 @@ for (const [id, app] of catalog.entries()) {
       decisionTree = {
         branch: 'UNCONFIGURED',
         triageTier: 'TIER_4',
-        triageBadge: '⚪ TIER 4: DORMANT SHADOW IT',
-        gatePath: `Gate U1 (Score ${calculatedRiskScore.toFixed(1)} Mod/Low) ➔ Gate U3 (Dormant >30d) ➔ Tier 4`,
-        recommendedPolicy: 'SPECIFIC_DATA',
-        recommendedPolicyLabel: 'Specific Google Data (The Holy Grail)',
+        triageBadge: 'Tier 4 (Low) — Action: LIMITED',
+        gatePath: `Gate U1 (No Breach) ➔ Gate U2 (Score ${calculatedRiskScore.toFixed(1)} [1–2 Low/SSO]) ➔ Tier 4 (Low)`,
+        recommendedPolicy: 'LIMITED',
+        recommendedPolicyLabel: 'Limited (Unrestricted Data Only)',
         recommendationSeverity: 'LOW',
         needsAction: true,
-        directive: "Recommended Action: Review in Google Admin Console and configure to 'Specific Google Data' (The Holy Grail) to lock the baseline scope footprint. (Never set to Trusted; 'Limited' is case-by-case only.)",
+        directive: "Tier 4 (Low): Low-risk / SSO-only application (Score 1–2). Recommended Action: Bulk-configure to 'Limited' to allow unrestricted login scopes while automatically blocking restricted scopes.",
         trustedGateReason: null,
         trustedScopeCategory: null,
       };
